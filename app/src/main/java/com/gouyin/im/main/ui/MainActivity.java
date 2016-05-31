@@ -40,7 +40,12 @@ public class MainActivity extends BaseActivity {
     protected void onBaseCreate(Bundle savedInstanceState) {
         super.onBaseCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initPage();
 
+    }
+
+    private void initPage() {
+        onClick(tvHomePage);
     }
 
     @OnClick({R.id.tv_home_page, R.id.tv_im_page, R.id.tv_center_page, R.id.tv_find_page, R.id.tv_my_page})
