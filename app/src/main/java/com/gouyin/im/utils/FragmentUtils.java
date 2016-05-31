@@ -19,8 +19,13 @@ public class FragmentUtils {
      */
     public static void switchHideFragment(FragmentManager manager, int layout,
                                           Fragment hide, Fragment show) {
-        if (hide == null || show == null || manager == null)
+
+        if (show == null || manager == null)
             return;
+        if (hide == null) {
+            swichReplaceFramgent(manager, layout, show);
+            return;
+        }
         FragmentTransaction transaction = manager.beginTransaction();
         // FragmentTransaction transaction =mFm. getSupportFragmentManager()
         // .beginTransaction().setCustomAnimations(R.anim.tran_pre_in,
@@ -36,7 +41,7 @@ public class FragmentUtils {
     }
 
     /**
-     * 替换Fragment
+     * 替换Fragmentc
      *
      * @param manager
      * @param containerViewId
