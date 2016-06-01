@@ -7,7 +7,7 @@
     <LinearLayout
         android:id="@+id/layou_navigation"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/y160"
+        android:layout_height="@dimen/y100"
         android:layout_alignParentBottom="true"
         android:background="@android:color/white"
         android:orientation="horizontal">
@@ -15,26 +15,35 @@
         <TextView
             android:id="@+id/tv_home_page"
             style="@style/home_text"
+            android:drawableTop="@drawable/selector_home_text_draw"
             android:text="@string/app_home_page" />
 
         <TextView
             android:id="@+id/tv_im_page"
             style="@style/home_text"
+            android:drawableTop="@drawable/selector_im_text_draw"
             android:text="@string/app_im_page" />
 
-        <TextView
+
+        <ImageView
+            android:layout_gravity="center"
             android:id="@+id/tv_center_page"
-            style="@style/home_text"
-            android:text="@string/app_home_page" />
+            android:scaleType="center"
+            android:src="@drawable/selector_center_text_draw"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
 
         <TextView
             android:id="@+id/tv_find_page"
             style="@style/home_text"
+            android:drawableTop="@drawable/selector_find_text_draw"
             android:text="@string/app_find_page" />
 
         <TextView
             android:id="@+id/tv_my_page"
             style="@style/home_text"
+            android:drawableTop="@drawable/selector_my_text_draw"
             android:text="@string/app__my_page" />
 
     </LinearLayout>

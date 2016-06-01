@@ -1,4 +1,4 @@
-package com.gouyin.im.main.ui;
+package com.gouyin.im.find.widget;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -8,19 +8,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.gouyin.im.R;
 import com.gouyin.im.base.BaseFragment;
 
 /**
  * Created by pc on 2016/5/31.
  */
-public class HomeFragment extends BaseFragment {
+public class FindFragment extends BaseFragment {
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         TextView textView = new TextView(getActivity());
-        textView.setText("HomeFragment");
+        textView.setText("FindFragment");
         textView.setTextColor(Color.RED);
         textView.setGravity(Gravity.CENTER);
         return textView;
+    }
+
+    @Override
+    protected void initData() {
+
     }
 }

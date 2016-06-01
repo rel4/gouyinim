@@ -3,5 +3,13 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="app_line">#FF4081</color>
+    <color name="app_line">#DFDFE0</color>
+    <!--首页导航栏文字颜色-灰-->
+    <color name="home_navigation_text_gred">#999999</color>
+    <!--首页导航栏文件颜色-红色-->
+    <color name="home_navigation_text_red">#FF3366</color>
+    <!--app inflate-->
+    <color name="app_inflate_color">#FFFFFF</color>
+    <!--主页导航栏颜色-->
+    <color name="home_navigation_text_black">#333333</color>
 </resources>

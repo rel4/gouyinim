@@ -1,4 +1,4 @@
-package com.gouyin.im.main.ui;
+package com.gouyin.im.im.widget;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.gouyin.im.R;
 import com.gouyin.im.base.BaseFragment;
 
 /**
@@ -22,5 +21,10 @@ public class IMFragment extends BaseFragment {
         textView.setTextColor(Color.RED);
         textView.setGravity(Gravity.CENTER);
         return textView;
+    }
+
+    @Override
+    protected void initData() {
+
     }
 }

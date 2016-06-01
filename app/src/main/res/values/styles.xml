@@ -14,12 +14,29 @@
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:gravity">center</item>
-        <item name="android:textColor">@android:color/holo_blue_bright</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@drawable/selector_home_text_color</item>
     </style>
+    <!--app m-->
     <style name="app_line_horizontal">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/x2</item>
         <item name="android:background">@color/app_line</item>
+    </style>
+    <!--主页一级菜单文字-->
+    <style name="text_color_home_one_menu" parent="android:Widget.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@drawable/selector_home_text_color</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:paddingLeft">@dimen/x20</item>
+        <item name="android:paddingRight">@dimen/x20</item>
+        <item name="android:paddingTop">@dimen/x20</item>
+        <item name="android:drawablePadding">@dimen/y3</item>
+        <item name="android:drawableBottom">@drawable/selector_home_one_menu_line</item>
+
     </style>
 
 

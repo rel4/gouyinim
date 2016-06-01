@@ -8,15 +8,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import butterknife.ButterKnife;
+
 /**
  * Created by pc on 2016/5/31.
  */
 public abstract class BaseFragment extends Fragment {
+    private View mRootView;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-        return onBaseCreateView(inflater, container, savedInstanceState);
+        mRootView = onBaseCreateView(inflater, container, savedInstanceState);
+        ButterKnife.bind(this,mRootView);
+        return mRootView;
 
     }
 
@@ -34,7 +38,10 @@ public abstract class BaseFragment extends Fragment {
      */
     protected abstract View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState);
 
-
+    /**
+     * 初始化数据
+     */
+    protected abstract void initData();
     @Override
     public void onStart() {
         super.onStart();
@@ -57,7 +64,10 @@ public abstract class BaseFragment extends Fragment {
     public void onResume() {
         super.onResume();
         onBaseResume();
+        initData();
     }
+
+
 
     protected void onBaseResume() {
     }
@@ -78,5 +88,11 @@ public abstract class BaseFragment extends Fragment {
     }
 
     protected void onBaseDestroy() {
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.unbind(this);
     }
 }
