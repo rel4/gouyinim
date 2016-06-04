@@ -1,12 +1,15 @@
 package com.gouyin.im.home.widget;
 
-import android.app.ProgressDialog;
-import android.graphics.Rect;
+
+import im.gouyin.com.progressdialog.ProgressDialog;
+
+
 import android.os.Bundle;
-import android.os.Handler;
+
 import android.support.v7.widget.GridLayoutManager;
 
-import android.support.v7.widget.RecyclerView;
+
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,16 +18,16 @@ import android.widget.TextView;
 import com.gouyin.im.R;
 import com.gouyin.im.base.BaseFragment;
 import com.gouyin.im.bean.GoodSelectBaen;
+import com.gouyin.im.home.adapter.GoodSelectAdapter;
 import com.gouyin.im.home.adapter.MyAdapter;
 
 import com.gouyin.im.home.presenetr.GoodSelectPresenter;
 import com.gouyin.im.home.presenetr.GoodSelectPresenterImpl;
 import com.gouyin.im.home.view.GoodSelectView;
+import com.gouyin.im.utils.ConfigUtils;
 import com.gouyin.im.widget.SpacesItemDecoration;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
-
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -50,66 +53,50 @@ public class GoodSelectFragment extends BaseFragment implements GoodSelectView {
 
     @Override
     protected void initData() {
-        progressDialog = new ProgressDialog(getActivity());
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
-//        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-//        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        progressDialog = new ProgressDialog(ConfigUtils.getInstance().getActivityContext());
+        GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
 
-        recyclerview.setLayoutManager(gridLayoutManager);
+//        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+
+        recyclerview.setLayoutManager(layoutManager);
         recyclerview.addItemDecoration(new SpacesItemDecoration(10));
         recyclerview.setRefreshProgressStyle(ProgressStyle.BallSpinFadeLoader);
-
-
         recyclerview.setLoadingMoreProgressStyle(ProgressStyle.SysProgress);
         recyclerview.setArrowImageView(R.mipmap.iconfont_downgrey);
+        recyclerview.setEmptyView(textEmpty);
         recyclerview.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
-                isloadMore=false;
+                isloadMore = false;
                 goodSelectPresenter.loadGoodSelectDateList();
-//                new Handler().postDelayed(new Runnable() {
-//                    @Override
-//                    public void run() {
-//
-//                        recyclerview.refreshComplete();
-//                    }
-//                }, 5000);
+
             }
 
             @Override
             public void onLoadMore() {
-                isloadMore=true;
+                isloadMore = true;
                 goodSelectPresenter.loadGoodSelectDateList();
-//                new Handler().postDelayed(new Runnable() {
-//                    @Override
-//                    public void run() {
-//
-//                        recyclerview.loadMoreComplete();
-//                    }
-//                }, 5000);
+
             }
         });
         goodSelectPresenter.loadGoodSelectDateList();
     }
 
-    private MyAdapter mAdapter;
+    private GoodSelectAdapter mAdapter;
     private int index;
-    private boolean isloadMore =false;
+    private boolean isloadMore = false;
+
     @Override
     public void addGoodSelectDate(List<GoodSelectBaen> list) {
 
-        ArrayList listData = new ArrayList<String>();
-        for (int i = 0; i < 15; i++) {
-            index =index+i;
-            listData.add("item" + (index + listData.size()));
-
-        }
         if (mAdapter == null) {
-            mAdapter = new MyAdapter(listData);
+            mAdapter = new GoodSelectAdapter(list);
             recyclerview.setAdapter(mAdapter);
             recyclerview.setRefreshing(true);
         } else {
-            mAdapter.addData(listData);
+            mAdapter.addData(list);
+
         }
         loadMoreComplete();
 
@@ -128,8 +115,9 @@ public class GoodSelectFragment extends BaseFragment implements GoodSelectView {
             progressDialog.dismiss();
 
     }
-    private void loadMoreComplete(){
-        if (recyclerview==null)
+
+    private void loadMoreComplete() {
+        if (recyclerview == null)
             return;
         if (isloadMore)
             recyclerview.loadMoreComplete();

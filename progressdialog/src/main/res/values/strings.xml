@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ProgressDialog</string>
+    <string name="pregress_text">玩命加载中...</string>
+</resources>

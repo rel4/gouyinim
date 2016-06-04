@@ -39,4 +39,5 @@ dependencies {
 //    compile rootProject.ext.dependencies["okhttp"];
 
 
+    compile project(path: ':progressdialog')
 }
