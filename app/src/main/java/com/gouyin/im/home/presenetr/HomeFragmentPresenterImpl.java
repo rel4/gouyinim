@@ -1,7 +1,8 @@
 package com.gouyin.im.home.presenetr;
 
 import com.gouyin.im.R;
-import com.gouyin.im.home.view.widget.HomeView;
+import com.gouyin.im.home.view.HomeView;
+
 
 /**
  * Created by pc on 2016/6/1.

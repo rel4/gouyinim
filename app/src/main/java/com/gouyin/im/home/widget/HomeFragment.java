@@ -13,7 +13,8 @@ import com.gouyin.im.R;
 import com.gouyin.im.base.BaseFragment;
 import com.gouyin.im.home.presenetr.HomeFragmentPresenter;
 import com.gouyin.im.home.presenetr.HomeFragmentPresenterImpl;
-import com.gouyin.im.home.view.widget.HomeView;
+
+import com.gouyin.im.home.view.HomeView;
 import com.gouyin.im.utils.FragmentUtils;
 
 import butterknife.Bind;
@@ -89,20 +90,6 @@ public class HomeFragment extends BaseFragment implements HomeView {
         tvNavigationSameCity.setSelected(fragment == sameCityFragment);
     }
 
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        ButterKnife.bind(this, rootView);
-        return rootView;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        ButterKnife.unbind(this);
-    }
 
     @OnClick({R.id.tv_navigation_good_select, R.id.tv_navigation_same_city})
     public void onClick(View view) {

@@ -1,4 +1,4 @@
-package com.gouyin.im.home.view.widget;
+package com.gouyin.im.home.view;
 
 /**
  * Created by pc on 2016/6/1.

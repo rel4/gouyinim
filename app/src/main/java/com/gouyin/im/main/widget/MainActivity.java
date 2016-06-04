@@ -4,6 +4,7 @@ package com.gouyin.im.main.widget;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -20,7 +21,9 @@ import com.gouyin.im.main.presenter.MainPresenter;
 import com.gouyin.im.main.presenter.MainPresenterImpl;
 import com.gouyin.im.main.view.MainView;
 import com.gouyin.im.my.widget.MyFragment;
+import com.gouyin.im.utils.ConfigUtils;
 import com.gouyin.im.utils.FragmentUtils;
+import com.gouyin.im.utils.UIUtils;
 
 import butterknife.Bind;
 
@@ -47,19 +50,20 @@ public class MainActivity extends BaseActivity implements MainView {
     private MainPresenter mMainPresenter;
 
     @Override
-    protected void onBaseCreate(Bundle savedInstanceState) {
-        super.onBaseCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected void initView() {
         mMainPresenter = new MainPresenterImpl(this);
-    }
-
-    private void initPage() {
         onClick(tvHomePage);
     }
 
     @Override
-    protected void onBaseResume() {
-        initPage();
+    protected View setRootContentView() {
+        return  UIUtils.inflateLayout(R.layout.activity_main);
+    }
+
+    @Override
+    protected void onBaseCreate(Bundle savedInstanceState) {
+        super.onBaseCreate(savedInstanceState);
+        ConfigUtils.getInstance().setActivityContext(this);
     }
 
     @OnClick({R.id.tv_home_page, R.id.tv_im_page, R.id.tv_center_page, R.id.tv_find_page, R.id.tv_my_page})
