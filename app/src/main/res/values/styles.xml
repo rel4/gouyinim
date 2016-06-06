@@ -38,6 +38,28 @@
         <item name="android:drawableBottom">@drawable/selector_home_one_menu_line</item>
 
     </style>
+    <!--动态文字-->
+    <style name="userinfo_dynamic_text_style" parent="android:Widget.TextView">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">@dimen/y80</item>
+        <item name="android:textSize">@dimen/x16</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <!--动态头部数字-->
+    <style name="text_user_info_number" parent="android:Widget.TextView">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+    <!--动态头部文字-->
+    <style name="text_user_info_text" parent="android:Widget.TextView">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textColor">@color/text_black_color</item>
+    </style>
 
 
 </resources>

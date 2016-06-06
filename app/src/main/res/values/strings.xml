@@ -9,4 +9,12 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="home_one_menu_good_select">精选</string>
     <string name="home_one_menu_same_city">同城</string>
+    <string name="reward">打赏</string>
+    <string name="send_msg">发消息</string>
+    <string name="appointment">约会</string>
+    <string name="send_flowers">送花</string>
+    <string name="str_fen">粉丝</string>
+    <string name="wacth">关注</string>
+    <string name="dynamic">动态</string>
+    <string name="flower">花束</string>
 </resources>

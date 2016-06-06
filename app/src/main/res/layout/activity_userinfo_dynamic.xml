@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/app_titlebar" />
+
+    <com.jcodecraeer.xrecyclerview.XRecyclerView
+        android:layout_below="@+id/app_title_bar"
+        android:id="@+id/recyclerview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+
+    <TextView
+        android:id="@+id/text_empty"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerInParent="true"
+        android:background="#dcdcdc"
+        android:gravity="center"
+        android:text="emptyView"
+        android:visibility="gone" />
+
+
+    <LinearLayout
+        android:id="@+id/layout_usee_action"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y160"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/y40"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginRight="@dimen/x30"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_reward"
+            style="@style/userinfo_dynamic_text_style"
+            android:layout_weight="1"
+            android:background="@drawable/shape_useinfo_dynamic_left_round"
+            android:text="@string/reward"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/tv_send_msg"
+            style="@style/userinfo_dynamic_text_style"
+            android:layout_weight="1"
+            android:background="@color/background_white_color"
+            android:text="@string/send_msg"
+            android:textColor="@color/background_red_color" />
+
+        <TextView
+            android:id="@+id/tv_appointment"
+            style="@style/userinfo_dynamic_text_style"
+            android:layout_weight="1"
+            android:background="@color/background_red_color"
+            android:text="@string/appointment"
+            android:textColor="@color/background_white_color" />
+
+        <TextView
+            android:id="@+id/tv_send_flowers"
+            style="@style/userinfo_dynamic_text_style"
+            android:layout_weight="1"
+            android:background="@drawable/shape_useinfo_dynamic_right_round"
+            android:text="@string/send_flowers"
+            android:textColor="@color/background_red_color" />
+
+
+    </LinearLayout>
+</RelativeLayout>

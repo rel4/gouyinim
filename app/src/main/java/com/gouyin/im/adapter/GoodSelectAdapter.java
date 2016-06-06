@@ -1,4 +1,4 @@
-package com.gouyin.im.home.adapter;
+package com.gouyin.im.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +8,7 @@ import com.gouyin.im.R;
 import com.gouyin.im.base.BaseRecyclerViewAdapter;
 import com.gouyin.im.base.BaseViewHolder;
 import com.gouyin.im.bean.GoodSelectBaen;
+import com.gouyin.im.viewholder.GoodSelectViewHolder;
 
 import java.util.List;
 

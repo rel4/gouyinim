@@ -13,7 +13,7 @@ import butterknife.ButterKnife;
  * Created by pc on 2016/6/4.
  */
 public abstract class BaseViewHolder<T extends BaseBean> extends RecyclerView.ViewHolder {
-    protected View mRootView;
+    private View mRootView;
 
     public BaseViewHolder(View view) {
         super(view);
@@ -31,6 +31,13 @@ public abstract class BaseViewHolder<T extends BaseBean> extends RecyclerView.Vi
             });
     }
 
+    /**
+     * 得到根布局
+     * @return
+     */
+    public View getRootView(){
+        return  mRootView;
+    }
     protected abstract void onBindData(T t);
 
     protected abstract void onItemclick(View view, int position);

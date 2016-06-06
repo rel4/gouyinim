@@ -8,29 +8,37 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.gouyin.im.utils.ConfigUtils;
+
 import butterknife.ButterKnife;
+import im.gouyin.com.progressdialog.ProgressDialog;
 
 /**
  * Created by pc on 2016/5/31.
  */
 public abstract class BaseFragment extends Fragment {
     private View mRootView;
+    private ProgressDialog progressDialog;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mRootView = onBaseCreateView(inflater, container, savedInstanceState);
-        ButterKnife.bind(this,mRootView);
+        ButterKnife.bind(this, mRootView);
+
         return mRootView;
 
     }
 
+
     protected View onBaseCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-       View mView = initView(inflater, container, savedInstanceState);
+        View mView = initView(inflater, container, savedInstanceState);
         return mView;
     }
 
     /**
      * fragment 布局
+     *
      * @param inflater
      * @param container
      * @param savedInstanceState
@@ -42,6 +50,7 @@ public abstract class BaseFragment extends Fragment {
      * 初始化数据
      */
     protected abstract void initData();
+
     @Override
     public void onStart() {
         super.onStart();
@@ -66,7 +75,6 @@ public abstract class BaseFragment extends Fragment {
         onBaseResume();
         initData();
     }
-
 
 
     protected void onBaseResume() {
@@ -94,5 +102,32 @@ public abstract class BaseFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.unbind(this);
+    }
+
+    /**
+     * 初始化加载进度条
+     */
+    private void initProgressDialog() {
+        progressDialog = new ProgressDialog(ConfigUtils.getInstance().getActivityContext());
+    }
+
+    /**
+     * 显示加载jindt
+     */
+    protected void showProgressDialog() {
+        if (progressDialog == null)
+            initProgressDialog();
+        if (!progressDialog.isShowing())
+            progressDialog.show();
+    }
+
+    /**
+     * 隐藏加载进度条
+     */
+    protected void hideProgressDialog() {
+        if (progressDialog == null)
+            return;
+        if (progressDialog.isShowing())
+            progressDialog.dismiss();
     }
 }

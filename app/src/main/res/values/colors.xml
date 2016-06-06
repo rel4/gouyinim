@@ -7,9 +7,19 @@
     <!--首页导航栏文字颜色-灰-->
     <color name="home_navigation_text_gred">#999999</color>
     <!--首页导航栏文件颜色-红色-->
-    <color name="home_navigation_text_red">#FF3366</color>
+    <color name="home_navigation_text_red">@color/background_red_color</color>
     <!--app inflate-->
     <color name="app_inflate_color">#FFFFFF</color>
     <!--主页导航栏颜色-->
     <color name="home_navigation_text_black">#333333</color>
+    <!--红色背景-->
+    <color name="background_red_color">#FF3366</color>
+    <!--白色背景-->
+
+    <color name="background_white_color">@android:color/white</color>
+    <!--文字灰色-->
+    <color name="text_gray_color">@android:color/darker_gray</color>
+    <color name="gred_color">@android:color/darker_gray</color>
+    <!--文字黑色-->
+    <color name="text_black_color">@android:color/black</color>
 </resources>

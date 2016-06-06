@@ -18,8 +18,7 @@ import android.widget.TextView;
 import com.gouyin.im.R;
 import com.gouyin.im.base.BaseFragment;
 import com.gouyin.im.bean.GoodSelectBaen;
-import com.gouyin.im.home.adapter.GoodSelectAdapter;
-import com.gouyin.im.home.adapter.MyAdapter;
+import com.gouyin.im.adapter.GoodSelectAdapter;
 
 import com.gouyin.im.home.presenetr.GoodSelectPresenter;
 import com.gouyin.im.home.presenetr.GoodSelectPresenterImpl;
@@ -42,7 +41,7 @@ public class GoodSelectFragment extends BaseFragment implements GoodSelectView {
     XRecyclerView recyclerview;
     @Bind(R.id.text_empty)
     TextView textEmpty;
-    private ProgressDialog progressDialog;
+
     private GoodSelectPresenter goodSelectPresenter;
 
     @Override
@@ -53,11 +52,11 @@ public class GoodSelectFragment extends BaseFragment implements GoodSelectView {
 
     @Override
     protected void initData() {
-        progressDialog = new ProgressDialog(ConfigUtils.getInstance().getActivityContext());
+
         GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
 
 //        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
         recyclerview.setLayoutManager(layoutManager);
         recyclerview.addItemDecoration(new SpacesItemDecoration(10));
@@ -105,15 +104,12 @@ public class GoodSelectFragment extends BaseFragment implements GoodSelectView {
 
     @Override
     public void show() {
-        if (progressDialog != null && !progressDialog.isShowing())
-            progressDialog.show();
+        showProgressDialog();
     }
 
     @Override
     public void hide() {
-        if (progressDialog != null && progressDialog.isShowing())
-            progressDialog.dismiss();
-
+      hideProgressDialog();
     }
 
     private void loadMoreComplete() {
