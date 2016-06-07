@@ -22,7 +22,7 @@
 
             <include
                 layout="@layout/item_dynamic"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_above="@+id/lv"
                 android:layout_width="match_parent" />
 
