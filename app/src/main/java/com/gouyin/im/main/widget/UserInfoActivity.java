@@ -1,5 +1,6 @@
 package com.gouyin.im.main.widget;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
@@ -14,6 +15,8 @@ import com.gouyin.im.main.presenter.UserInfoPresenter;
 import com.gouyin.im.main.presenter.UserInfoPresenterImpl;
 import com.gouyin.im.main.view.UserInfoView;
 import com.gouyin.im.utils.UIUtils;
+import com.gouyin.im.widget.DividerItemDecoration;
+import com.gouyin.im.widget.SpacesItemDecoration;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
@@ -54,6 +57,7 @@ public class UserInfoActivity extends BaseActivity implements UserInfoView {
         recyclerview.setLoadingMoreProgressStyle(ProgressStyle.SysProgress);
         recyclerview.setArrowImageView(R.mipmap.iconfont_downgrey);
         recyclerview.addHeaderView(initHeadLayout());
+        recyclerview.addItemDecoration(new DividerItemDecoration(this,LinearLayoutManager.VERTICAL, Color.GREEN,true));
         recyclerview.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {

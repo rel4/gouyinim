@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.support.annotation.ColorInt;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
@@ -23,11 +24,11 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration{
     * 横向和纵向对应的分割想画法不一样
     * */
     private int mOrientation = LinearLayoutManager.VERTICAL ;
-
+    private  boolean isHasvHeader;
     /**
      * item之间分割线的size，默认为1
      */
-    private int mItemSize = 1 ;
+    private int mItemSize = 10 ;
 
     /**
      * 绘制item分割线的画笔，和设置其属性
@@ -40,14 +41,15 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration{
      * @param context
      * @param orientation
      */
-    public DividerItemDecoration(Context context, int orientation) {
+    public DividerItemDecoration(Context context, int orientation,@ColorInt int color ,boolean isHasvHeader) {
         this.mOrientation = orientation;
+        this.isHasvHeader =isHasvHeader;
         if(orientation != LinearLayoutManager.VERTICAL && orientation != LinearLayoutManager.HORIZONTAL){
             throw new IllegalArgumentException("请传入正确的参数") ;
         }
-        mItemSize = (int) TypedValue.applyDimension(mItemSize, TypedValue.COMPLEX_UNIT_DIP,context.getResources().getDisplayMetrics());
+//        mItemSize = (int) TypedValue.applyDimension(mItemSize, TypedValue.COMPLEX_UNIT_DIP,context.getResources().getDisplayMetrics());
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG) ;
-        mPaint.setColor(Color.BLUE);
+        mPaint.setColor(color);
          /*设置填充*/
         mPaint.setStyle(Paint.Style.FILL);
     }
@@ -71,7 +73,12 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration{
         final int right = parent.getMeasuredWidth() - parent.getPaddingRight() ;
         final int childSize = parent.getChildCount() ;
         for(int i = 0 ; i < childSize ; i ++){
+//            if (i==0)
+//               continue;
             final View child = parent.getChildAt( i ) ;
+            int childAdapterPosition = parent.getChildAdapterPosition(child);
+            if (childAdapterPosition==0&&isHasvHeader)
+                continue;
             RecyclerView.LayoutParams layoutParams = (RecyclerView.LayoutParams) child.getLayoutParams();
             final int top = child.getBottom() + layoutParams.bottomMargin ;
             final int bottom = top + mItemSize ;

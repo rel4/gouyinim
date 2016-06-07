@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".main.widget.UserInfoActivity"  ></activity>
+        <activity android:name=".main.widget.DynamicDatailsActivity"/>
     </application>
 
 </manifest>

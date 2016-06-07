@@ -22,6 +22,7 @@ public class UserInfoModelImpl implements UserInfoModel {
                 for (int i = 0; i < 10; i++) {
                     UserInfoBean userInfoBean = new UserInfoBean();
                     userInfoBean.setName("item : " + i);
+                    userInfoBean.setAction(i%2+1);
                     arraylist.add(userInfoBean);
                 }
                 UIUtils.onRunMainThred(new Runnable() {

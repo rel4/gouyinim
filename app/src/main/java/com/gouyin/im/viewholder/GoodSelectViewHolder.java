@@ -21,9 +21,8 @@ import butterknife.Bind;
 public class GoodSelectViewHolder extends BaseViewHolder<GoodSelectBaen> {
     @Bind(R.id.riv_user_image)
     RoundedImageView rivUserImage;
-    @Bind(R.id.tv_str)
+    @Bind(R.id.tv_user_name)
     TextView tvStr;
-    private GoodSelectBaen goodSelectBaen;
     public GoodSelectViewHolder(View view) {
         super(view);
 
@@ -31,15 +30,14 @@ public class GoodSelectViewHolder extends BaseViewHolder<GoodSelectBaen> {
 
     @Override
     protected void onBindData(GoodSelectBaen goodSelectBaen) {
-        this.goodSelectBaen =goodSelectBaen;
         tvStr.setText(goodSelectBaen.getMsg());
     }
 
 
 
     @Override
-    protected void onItemclick(View view, int position) {
-        LogUtils.e("MyAdapter", " position : " + position +"-----------msg  : "+ (goodSelectBaen.getMsg()));
+    protected void onItemclick(View view,GoodSelectBaen baen, int position) {
+        LogUtils.e("MyAdapter", " position : " + position +"-----------msg  : "+ (baen.getMsg()));
         UIUtils.startActivity(UserInfoActivity.class);
     }
 

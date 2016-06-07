@@ -21,12 +21,17 @@ public abstract class BaseViewHolder<T extends BaseBean> extends RecyclerView.Vi
         ButterKnife.bind(this, view);
     }
 
-    public void setOnClick(final int position) {
+    /**
+     * 设置点击事件
+     * @param t
+     * @param position
+     */
+    public void setOnClick(final T t, final int position) {
         if (mRootView != null)
             mRootView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    onItemclick(v, position);
+                    onItemclick(v,t, position);
                 }
             });
     }
@@ -40,6 +45,12 @@ public abstract class BaseViewHolder<T extends BaseBean> extends RecyclerView.Vi
     }
     protected abstract void onBindData(T t);
 
-    protected abstract void onItemclick(View view, int position);
+    /**
+     *
+     * @param view 点击的view
+     * @param t  点击的对象数据
+     * @param position  点击位置
+     */
+    protected abstract void onItemclick(View view,T t, int position);
 
 }

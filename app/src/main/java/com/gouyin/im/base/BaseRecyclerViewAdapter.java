@@ -1,19 +1,19 @@
 package com.gouyin.im.base;
 
-        import android.support.v7.widget.RecyclerView;
-        import android.view.View;
-        import android.view.ViewGroup;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.view.ViewGroup;
 
-        import com.gouyin.im.bean.BaseBean;
+import com.gouyin.im.bean.BaseBean;
 
-        import java.util.ArrayList;
-        import java.util.List;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by pc on 2016/6/4.
  */
 public abstract class BaseRecyclerViewAdapter<T extends BaseBean> extends RecyclerView.Adapter {
-    private List<T> datas;
+    protected List<T> datas;
 //    private int layoutID;
 
     public BaseRecyclerViewAdapter(List<T> list) {
@@ -29,21 +29,21 @@ public abstract class BaseRecyclerViewAdapter<T extends BaseBean> extends Recycl
     @Override
     public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View v =  initRootView(parent,viewType);
-        return getBaseViewHolder(v,viewType);
+        View v = initRootView(parent, viewType);
+        return getBaseViewHolder(v, viewType);
     }
 
     protected abstract View initRootView(ViewGroup parent, int viewType);
 
-    protected abstract BaseViewHolder getBaseViewHolder(View v,int viewType);
+    protected abstract BaseViewHolder getBaseViewHolder(View v, int viewType);
 
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        if (holder instanceof BaseViewHolder){
+        if (holder instanceof BaseViewHolder) {
             BaseViewHolder bvh = (BaseViewHolder) holder;
             bvh.onBindData(datas.get(position));
-            bvh.setOnClick(position);
+            bvh.setOnClick(datas.get(position), position);
         }
 
 

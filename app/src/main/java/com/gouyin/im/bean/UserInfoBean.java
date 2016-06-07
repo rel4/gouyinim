@@ -5,6 +5,7 @@ package com.gouyin.im.bean;
  */
 public class UserInfoBean extends BaseBean {
     private String name;
+    private int action;
 
     public String getName() {
         return name;
@@ -12,5 +13,13 @@ public class UserInfoBean extends BaseBean {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getAction() {
+        return action;
+    }
+
+    public void setAction(int action) {
+        this.action = action;
     }
 }
