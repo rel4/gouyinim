@@ -5,7 +5,7 @@ import android.view.ViewGroup;
 
 import com.gouyin.im.R;
 import com.gouyin.im.base.BaseRecyclerViewAdapter;
-import com.gouyin.im.base.BaseViewHolder;
+import com.gouyin.im.base.BaseRecyclerViewHolder;
 import com.gouyin.im.bean.UserInfoBean;
 import com.gouyin.im.utils.UIUtils;
 import com.gouyin.im.viewholder.UserInfoViewHolder;
@@ -32,7 +32,7 @@ public class UserInfoAdapter extends BaseRecyclerViewAdapter <UserInfoBean>{
     }
 
     @Override
-    protected BaseViewHolder getBaseViewHolder(View v, int viewType) {
+    protected BaseRecyclerViewHolder getBaseViewHolder(View v, int viewType) {
         return new UserInfoViewHolder(v,viewType);
     }
 //    private BaseViewHolder getTypeViewHolder(View view, int viewType){

@@ -3,31 +3,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include
-        layout="@layout/app_titlebar" />
+    <include layout="@layout/app_titlebar" />
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/app_title_bar">
 
-        <RelativeLayout
+
+        <com.jcodecraeer.xrecyclerview.XRecyclerView
+            android:id="@+id/lv"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent" />
 
-            <ListView
-                android:id="@+id/lv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"></ListView>
-
-            <include
-                layout="@layout/item_dynamic"
-                android:layout_height="match_parent"
-                android:layout_above="@+id/lv"
-                android:layout_width="match_parent" />
-
-
-        </RelativeLayout>
 
     </FrameLayout>
 

@@ -1,33 +1,33 @@
 package com.gouyin.im.adapter;
 
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.gouyin.im.R;
 import com.gouyin.im.base.BaseRecyclerViewAdapter;
 import com.gouyin.im.base.BaseRecyclerViewHolder;
-import com.gouyin.im.bean.GoodSelectBaen;
-import com.gouyin.im.viewholder.GoodSelectViewHolder;
+import com.gouyin.im.bean.BaseBean;
+import com.gouyin.im.utils.UIUtils;
+import com.gouyin.im.viewholder.DynamicCommentViewHolder;
 
 import java.util.List;
 
 /**
- * Created by pc on 2016/6/4.
+ * Created by pc on 2016/6/8.
  */
-public class GoodSelectAdapter extends BaseRecyclerViewAdapter <GoodSelectBaen>{
+public class DynamiDayailsAdapter  extends BaseRecyclerViewAdapter<BaseBean>{
 
-    public GoodSelectAdapter(List list) {
+    public DynamiDayailsAdapter(List<BaseBean> list) {
         super(list);
     }
 
     @Override
     protected View initRootView(ViewGroup parent, int viewType) {
-        return  LayoutInflater.from(parent.getContext()).inflate(R.layout.item_home_one_menu, parent, false);
+        return UIUtils.inflateLayout(R.layout.item_comment);
     }
 
     @Override
     protected BaseRecyclerViewHolder getBaseViewHolder(View v, int viewType) {
-        return new GoodSelectViewHolder(v);
+        return new DynamicCommentViewHolder(v);
     }
 }

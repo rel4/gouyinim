@@ -59,19 +59,14 @@
 -keep class com.jcodecraeer.**{*;}
 -keep class android.support.**{*;}
 -keep class com.android.tools.**{*;}
-
+-keep class im.gouyin.com.progressdialog.**{*;}
+-dontwarn im.gouyin.com.progressdialog.**
 #自己项目特殊处理代码
 #忽略警告
 -dontwarn com.veidy.mobile.common.**
 #保留一个完整的包
--keep class com.veidy.mobile.common.** {
-    *;
- }
-# 忽略
-#-keep class  com.gouyin.im.base.BaseActivity{*;}
-#-keep class com.gouyin.im.base.BaseFragment{*;}
-#-keep class com.gouyin.im.main.widget.MainActivity{*;}
-#-keep class com.gouyin.im.widget.RoundedImageView{*;}
+-keep class com.veidy.mobile.common.** {*;}
+
 #------忽略butterknife框架的混淆开始-----
 -keep class butterknife.** { *; }
 -dontwarn butterknife.internal.**

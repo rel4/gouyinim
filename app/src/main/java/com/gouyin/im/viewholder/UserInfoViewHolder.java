@@ -7,14 +7,11 @@ import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
 import com.gouyin.im.R;
-import com.gouyin.im.base.BaseViewHolder;
+import com.gouyin.im.base.BaseRecyclerViewHolder;
 import com.gouyin.im.bean.UserInfoBean;
 import com.gouyin.im.main.widget.DynamicDatailsActivity;
-import com.gouyin.im.main.widget.UserInfoActivity;
-import com.gouyin.im.utils.ConfigUtils;
 import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.UIUtils;
 import com.gouyin.im.widget.NoScrollGridView;
@@ -29,7 +26,7 @@ import butterknife.Bind;
 /**
  * Created by pc on 2016/6/4.
  */
-public class UserInfoViewHolder extends BaseViewHolder<UserInfoBean> {
+public class UserInfoViewHolder extends BaseRecyclerViewHolder<UserInfoBean> {
     public static final int FLAG_TYPE_TV = 1;
     public static final int FLAG_TYPE_PIC = 2;
     @Bind(R.id.riv_user_image)

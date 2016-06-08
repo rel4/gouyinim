@@ -27,7 +27,7 @@ public abstract class BaseRecyclerViewAdapter<T extends BaseBean> extends Recycl
     }
 
     @Override
-    public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public BaseRecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View v = initRootView(parent, viewType);
         return getBaseViewHolder(v, viewType);
@@ -35,13 +35,13 @@ public abstract class BaseRecyclerViewAdapter<T extends BaseBean> extends Recycl
 
     protected abstract View initRootView(ViewGroup parent, int viewType);
 
-    protected abstract BaseViewHolder getBaseViewHolder(View v, int viewType);
+    protected abstract BaseRecyclerViewHolder getBaseViewHolder(View v, int viewType);
 
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        if (holder instanceof BaseViewHolder) {
-            BaseViewHolder bvh = (BaseViewHolder) holder;
+        if (holder instanceof BaseRecyclerViewHolder) {
+            BaseRecyclerViewHolder bvh = (BaseRecyclerViewHolder) holder;
             bvh.onBindData(datas.get(position));
             bvh.setOnClick(datas.get(position), position);
         }

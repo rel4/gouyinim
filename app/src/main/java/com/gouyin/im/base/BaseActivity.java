@@ -3,12 +3,10 @@ package com.gouyin.im.base;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
 import com.gouyin.im.R;
-import com.gouyin.im.utils.ConfigUtils;
 
 import butterknife.ButterKnife;
 import im.gouyin.com.progressdialog.ProgressDialog;

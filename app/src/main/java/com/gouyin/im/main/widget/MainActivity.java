@@ -4,7 +4,6 @@ package com.gouyin.im.main.widget;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -12,7 +11,6 @@ import android.widget.TextView;
 
 import com.gouyin.im.R;
 import com.gouyin.im.base.BaseActivity;
-
 import com.gouyin.im.center.widget.CenterFragment;
 import com.gouyin.im.find.widget.FindFragment;
 import com.gouyin.im.home.widget.HomeFragment;
@@ -26,7 +24,6 @@ import com.gouyin.im.utils.FragmentUtils;
 import com.gouyin.im.utils.UIUtils;
 
 import butterknife.Bind;
-
 import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity implements MainView {
@@ -51,12 +48,13 @@ public class MainActivity extends BaseActivity implements MainView {
 
     @Override
     protected void initView() {
-        mMainPresenter = new MainPresenterImpl(this);
-        onClick(tvHomePage);
+        mMainPresenter.switchNavigation(R.id.tv_home_page);
+//        onClick(tvHomePage);
     }
 
     @Override
     protected View setRootContentView() {
+        mMainPresenter = new MainPresenterImpl(this);
         return  UIUtils.inflateLayout(R.layout.activity_main);
     }
 
@@ -68,7 +66,9 @@ public class MainActivity extends BaseActivity implements MainView {
 
     @OnClick({R.id.tv_home_page, R.id.tv_im_page, R.id.tv_center_page, R.id.tv_find_page, R.id.tv_my_page})
     public void onClick(View view) {
-        mMainPresenter.switchNavigation(view.getId());
+
+        mMainPresenter.switchNavigation(
+                view.getId());
     }
 
     @Override

@@ -12,7 +12,7 @@ import java.util.List;
 public class BaseListViewAdapter<T> extends BaseAdapter {
     protected List<T> datas;
 
-    public BaseListViewAdapter(List<T> datas) {
+    public BaseListViewAdapter(List<T> datas ) {
         this.datas = datas;
     }
 

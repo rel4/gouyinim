@@ -1,7 +1,6 @@
 package com.gouyin.im.base;
 
 import android.support.v7.widget.RecyclerView;
-
 import android.view.View;
 
 import com.gouyin.im.bean.BaseBean;
@@ -12,10 +11,10 @@ import butterknife.ButterKnife;
 /**
  * Created by pc on 2016/6/4.
  */
-public abstract class BaseViewHolder<T extends BaseBean> extends RecyclerView.ViewHolder {
+public abstract class BaseRecyclerViewHolder<T extends BaseBean> extends RecyclerView.ViewHolder {
     private View mRootView;
 
-    public BaseViewHolder(View view) {
+    public BaseRecyclerViewHolder(View view) {
         super(view);
         this.mRootView = view;
         ButterKnife.bind(this, view);

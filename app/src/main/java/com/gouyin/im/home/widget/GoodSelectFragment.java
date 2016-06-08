@@ -1,14 +1,8 @@
 package com.gouyin.im.home.widget;
 
 
-import im.gouyin.com.progressdialog.ProgressDialog;
-
-
 import android.os.Bundle;
-
 import android.support.v7.widget.GridLayoutManager;
-
-
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,19 +10,17 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.gouyin.im.R;
+import com.gouyin.im.adapter.GoodSelectAdapter;
 import com.gouyin.im.base.BaseFragment;
 import com.gouyin.im.bean.GoodSelectBaen;
-import com.gouyin.im.adapter.GoodSelectAdapter;
-
 import com.gouyin.im.home.presenetr.GoodSelectPresenter;
 import com.gouyin.im.home.presenetr.GoodSelectPresenterImpl;
 import com.gouyin.im.home.view.GoodSelectView;
-import com.gouyin.im.utils.ConfigUtils;
 import com.gouyin.im.widget.SpacesItemDecoration;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
-import java.util.List;
 
+import java.util.List;
 
 import butterknife.Bind;
 

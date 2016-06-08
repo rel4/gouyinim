@@ -4,8 +4,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.gouyin.im.R;
-import com.gouyin.im.base.BaseViewHolder;
-
+import com.gouyin.im.base.BaseRecyclerViewHolder;
 import com.gouyin.im.bean.GoodSelectBaen;
 import com.gouyin.im.main.widget.UserInfoActivity;
 import com.gouyin.im.utils.LogUtils;
@@ -18,7 +17,7 @@ import butterknife.Bind;
 /**
  * Created by pc on 2016/6/4.
  */
-public class GoodSelectViewHolder extends BaseViewHolder<GoodSelectBaen> {
+public class GoodSelectViewHolder extends BaseRecyclerViewHolder<GoodSelectBaen> {
     @Bind(R.id.riv_user_image)
     RoundedImageView rivUserImage;
     @Bind(R.id.tv_user_name)
