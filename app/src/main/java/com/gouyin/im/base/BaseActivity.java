@@ -15,6 +15,7 @@ import im.gouyin.com.progressdialog.ProgressDialog;
  * Created by jb on 2016/5/30.
  */
 public abstract class BaseActivity extends AppCompatActivity {
+    protected  String TAG =this.getClass().getSimpleName();
     protected View mRootView;
     private View titleView;
     private ProgressDialog progressDialog;

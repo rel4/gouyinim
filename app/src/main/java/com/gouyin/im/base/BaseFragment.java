@@ -25,7 +25,7 @@ public abstract class BaseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mRootView = onBaseCreateView(inflater, container, savedInstanceState);
         ButterKnife.bind(this, mRootView);
-
+        initData();
         return mRootView;
 
     }
@@ -73,7 +73,7 @@ public abstract class BaseFragment extends Fragment {
     public void onResume() {
         super.onResume();
         onBaseResume();
-        initData();
+
     }
 
 

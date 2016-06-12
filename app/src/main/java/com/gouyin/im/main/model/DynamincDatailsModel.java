@@ -6,5 +6,5 @@ import com.gouyin.im.base.onLoadDateListener;
  * Created by pc on 2016/6/8.
  */
 public interface DynamincDatailsModel {
-    void loadData(onLoadDateListener listener);
+    void loadData(String fileName,onLoadDateListener listener);
 }

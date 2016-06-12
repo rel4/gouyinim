@@ -20,9 +20,9 @@ public class DynamincDatailsPresenterImpl implements DynamincDatailsPresenter, o
     }
 
     @Override
-    public void loadData() {
+    public void loadData(String fileName) {
         view.show();
-        dynamincDatailsModel.loadData(this);
+        dynamincDatailsModel.loadData(fileName,this);
 
     }
 

@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'com.neenbedankt.android-apt'
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     buildToolsVersion rootProject.ext.android.buildToolsVersion
@@ -28,16 +28,28 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Reactive Programming RxJava
+    compile 'com.squareup.retrofit:retrofit:2.0.0-beta2'
+    compile 'com.squareup.retrofit:adapter-rxjava:2.0.0-beta2'
+    compile 'com.google.code.gson:gson:2.4'
+    compile 'com.squareup.retrofit:converter-gson:2.0.0-beta2'
+    compile 'io.reactivex:rxandroid:1.0.1'
+    compile 'io.reactivex:rxjava:1.0.14'
+    compile 'com.jakewharton.rxbinding:rxbinding:0.3.0'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'javax.annotation:jsr250-api:1.0'
+    compile 'com.google.dagger:dagger:2.0'
+    //dagger2
+    compile 'com.google.dagger:dagger:2.0'
+    apt 'com.google.dagger:dagger-compiler:2.0'
+    provided 'org.glassfish:javax.annotation:10.0-b28'
+    //
     compile rootProject.ext.dependencies["appcompat-v7"];
     compile rootProject.ext.dependencies["butterknife"];
     compile rootProject.ext.dependencies["support-v4"];
     compile rootProject.ext.dependencies["xrecyclerview"];
-    compile rootProject.ext.dependencies["gson"];
-    compile rootProject.ext.dependencies["okhttp"];
-    compile rootProject.ext.dependencies["otto"];
-//    compile rootProject.ext.dependencies["okhttp"];
-//    compile rootProject.ext.dependencies["okhttp"];
-
+//    compile rootProject.ext.dependencies["gson"];
 
     compile project(path: ':progressdialog')
 }

@@ -9,17 +9,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.gouyin.im.CacheManager;
 import com.gouyin.im.R;
 import com.gouyin.im.adapter.GoodSelectAdapter;
 import com.gouyin.im.base.BaseFragment;
+import com.gouyin.im.bean.BaseBean;
 import com.gouyin.im.bean.GoodSelectBaen;
 import com.gouyin.im.home.presenetr.GoodSelectPresenter;
 import com.gouyin.im.home.presenetr.GoodSelectPresenterImpl;
 import com.gouyin.im.home.view.GoodSelectView;
+import com.gouyin.im.utils.ConfigUtils;
+import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.widget.SpacesItemDecoration;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
@@ -56,6 +61,7 @@ public class GoodSelectFragment extends BaseFragment implements GoodSelectView {
         recyclerview.setLoadingMoreProgressStyle(ProgressStyle.SysProgress);
         recyclerview.setArrowImageView(R.mipmap.iconfont_downgrey);
         recyclerview.setEmptyView(textEmpty);
+
         recyclerview.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
@@ -71,6 +77,18 @@ public class GoodSelectFragment extends BaseFragment implements GoodSelectView {
 
             }
         });
+        if (CacheManager.isExist4DataCache(ConfigUtils.getInstance().getApplicationContext(), "1." + "txt")) {
+            Object o = CacheManager.readObject(ConfigUtils.getInstance().getApplicationContext(), "1." + "txt");
+            if (o!=null&&o instanceof ArrayList) {
+//                LogUtils.e(TAG, "CacheManager : " + ((ArrayList<BaseBean>)o).toString());
+
+                addGoodSelectDate((ArrayList<GoodSelectBaen>)o);
+
+//                addGoodSelectDate(null);
+                recyclerview.setRefreshing(true);
+            }
+        }
+
         goodSelectPresenter.loadGoodSelectDateList();
     }
 
@@ -84,12 +102,11 @@ public class GoodSelectFragment extends BaseFragment implements GoodSelectView {
         if (mAdapter == null) {
             mAdapter = new GoodSelectAdapter(list);
             recyclerview.setAdapter(mAdapter);
-            recyclerview.setRefreshing(true);
         } else {
             mAdapter.addData(list);
-
+            loadMoreComplete();
         }
-        loadMoreComplete();
+
 
 
     }

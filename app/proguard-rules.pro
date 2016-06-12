@@ -137,3 +137,8 @@
 -keepclassmembers class **.R$* {
     public static <fields>;
     }
+#    retrofit2
+    -dontwarn retrofit2.**
+    -keep class retrofit2.** { *; }
+    -keepattributes Signature
+    -keepattributes Exceptions
