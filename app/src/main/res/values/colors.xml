@@ -18,8 +18,8 @@
 
     <color name="background_white_color">@android:color/white</color>
     <!--文字灰色-->
-    <color name="text_gray_color">@android:color/darker_gray</color>
-    <color name="gred_color">@android:color/darker_gray</color>
+    <color name="text_gray_color">@color/gray_color</color>
+    <color name="gray_color">@android:color/darker_gray</color>
     <!--文字黑色-->
     <color name="text_black_color">@android:color/black</color>
 </resources>

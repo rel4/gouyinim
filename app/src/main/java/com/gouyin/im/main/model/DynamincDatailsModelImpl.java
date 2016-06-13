@@ -13,7 +13,6 @@ import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.UIUtils;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import rx.Observable;
 import rx.Subscriber;

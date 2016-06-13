@@ -1,7 +1,6 @@
 package com.gouyin.im.main.widget;
 
 import android.graphics.Color;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 import android.widget.TextView;
@@ -9,21 +8,18 @@ import android.widget.TextView;
 import com.gouyin.im.R;
 import com.gouyin.im.adapter.UserInfoAdapter;
 import com.gouyin.im.base.BaseActivity;
-import com.gouyin.im.bean.GoodSelectBaen;
 import com.gouyin.im.bean.UserInfoBean;
 import com.gouyin.im.main.presenter.UserInfoPresenter;
 import com.gouyin.im.main.presenter.UserInfoPresenterImpl;
 import com.gouyin.im.main.view.UserInfoView;
 import com.gouyin.im.utils.UIUtils;
 import com.gouyin.im.widget.DividerItemDecoration;
-import com.gouyin.im.widget.SpacesItemDecoration;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**

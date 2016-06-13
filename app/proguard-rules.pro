@@ -61,6 +61,12 @@
 -keep class com.android.tools.**{*;}
 -keep class im.gouyin.com.progressdialog.**{*;}
 -dontwarn im.gouyin.com.progressdialog.**
+
+-keep class retrofit.**{*;}
+-keep class dagger.**{*;}
+-keep class rx.**{*;}
+-keep class com.squareup.**{*;}
+-keep class javax.inject.**{*;}
 #自己项目特殊处理代码
 #忽略警告
 -dontwarn com.veidy.mobile.common.**

@@ -18,4 +18,11 @@
     <string name="dynamic">动态</string>
     <string name="flower">花束</string>
     <string name="activity_name_dynamic_datails">动态详情</string>
+    <string name="str_login">登录</string>
+    <string name="str_register">注册</string>
+    <string name="username">用户名 : </string>
+    <string name="input_phone_number">输入手机号</string>
+    <string name="password">密  码 :</string>
+    <string name="forget_password">忘记密码</string>
+    <string name="get_security_code">获取验证码</string>
 </resources>

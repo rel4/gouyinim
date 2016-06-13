@@ -61,5 +61,24 @@
         <item name="android:textColor">@color/text_black_color</item>
     </style>
 
+    <style name="textview_login" parent="android:Widget.TextView">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">@color/text_black_color</item>
+    </style>
+
+    <style name="edittext_login" parent="android:Widget.EditText">
+        <item name="android:paddingLeft">@dimen/x30</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:cursorVisible">true</item>
+        <item name="android:textCursorDrawable">@color/background_red_color</item>
+        <item name="android:background">@null</item>
+        <item name="android:textColor">@color/text_black_color</item>
+        <item name="android:textColorHint">@color/text_gray_color</item>
+    </style>
+
 
 </resources>

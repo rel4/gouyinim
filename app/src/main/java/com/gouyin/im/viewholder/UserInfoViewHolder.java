@@ -11,7 +11,8 @@ import android.widget.TextView;
 import com.gouyin.im.R;
 import com.gouyin.im.base.BaseRecyclerViewHolder;
 import com.gouyin.im.bean.UserInfoBean;
-import com.gouyin.im.main.widget.DynamicDatailsActivity;
+
+import com.gouyin.im.login.view.LoginMainActivity;
 import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.UIUtils;
 import com.gouyin.im.widget.NoScrollGridView;
@@ -96,7 +97,7 @@ public class UserInfoViewHolder extends BaseRecyclerViewHolder<UserInfoBean> {
     @Override
     protected void onItemclick(View view, UserInfoBean bean, int position) {
         LogUtils.e("MyAdapter", " position : " + position + "-----------msg  : " + (bean.getName()));
-        UIUtils.startActivity(DynamicDatailsActivity.class);
+        UIUtils.startActivity(LoginMainActivity.class);
     }
     private class PicGridView extends BaseAdapter{
         private List<String> list;
