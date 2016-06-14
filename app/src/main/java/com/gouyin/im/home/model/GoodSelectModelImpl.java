@@ -35,7 +35,7 @@ public class GoodSelectModelImpl  implements GoodSelectModel {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                SystemClock.sleep(5000);
+//                SystemClock.sleep(5000);
                 final List<GoodSelectBaen> goodSelectBaens = new ArrayList<GoodSelectBaen>();
                 for (int i = 0; i < 15; i++) {
                     index =index+i;

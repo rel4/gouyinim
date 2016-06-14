@@ -1,4 +1,4 @@
-package com.gouyin.im.login.view;
+package com.gouyin.im.login.widget;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

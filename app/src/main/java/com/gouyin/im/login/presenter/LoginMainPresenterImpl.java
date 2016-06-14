@@ -1,9 +1,8 @@
 package com.gouyin.im.login.presenter;
 
-import android.view.View;
-
 import com.gouyin.im.R;
-import com.gouyin.im.login.widget.LoginMainView;
+import com.gouyin.im.login.view.LoginMainView;
+
 
 /**
  * Created by pc on 2016/6/13.

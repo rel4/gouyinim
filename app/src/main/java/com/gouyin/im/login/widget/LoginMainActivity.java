@@ -1,4 +1,4 @@
-package com.gouyin.im.login.view;
+package com.gouyin.im.login.widget;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -10,7 +10,8 @@ import com.gouyin.im.R;
 import com.gouyin.im.base.BaseActivity;
 import com.gouyin.im.login.presenter.LoginMainPresenter;
 import com.gouyin.im.login.presenter.LoginMainPresenterImpl;
-import com.gouyin.im.login.widget.LoginMainView;
+
+import com.gouyin.im.login.view.LoginMainView;
 import com.gouyin.im.utils.FragmentUtils;
 import com.gouyin.im.utils.UIUtils;
 

@@ -11,8 +11,7 @@ import android.widget.TextView;
 import com.gouyin.im.R;
 import com.gouyin.im.base.BaseRecyclerViewHolder;
 import com.gouyin.im.bean.UserInfoBean;
-
-import com.gouyin.im.login.view.LoginMainActivity;
+import com.gouyin.im.login.widget.LoginMainActivity;
 import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.UIUtils;
 import com.gouyin.im.widget.NoScrollGridView;
