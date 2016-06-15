@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.gouyin.im.R;
 import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.UIUtils;
+import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
 import java.util.List;
 
@@ -21,7 +22,7 @@ import im.gouyin.com.progressdialog.ProgressDialog;
 /**
  * Created by jb on 2016/5/30.
  */
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends RxAppCompatActivity {
     protected String TAG = this.getClass().getSimpleName();
     protected View mRootView;
     private View titleView;

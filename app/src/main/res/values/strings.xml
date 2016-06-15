@@ -36,4 +36,7 @@
     <string name="photo_album">相册</string>
     <string name="cancel">取消</string>
     <string name="input_password">输入密码</string>
+    <string name="framat">格式</string>
+    <string name="error">错误</string>
+    <string name="net_Exception">网络异常</string>
 </resources>

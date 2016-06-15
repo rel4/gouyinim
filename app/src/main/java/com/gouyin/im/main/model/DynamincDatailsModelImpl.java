@@ -5,7 +5,7 @@ import android.os.SystemClock;
 
 import com.gouyin.im.CacheManager;
 import com.gouyin.im.ServerApi;
-import com.gouyin.im.base.onLoadDateListener;
+import com.gouyin.im.base.BaseIModel;
 import com.gouyin.im.bean.BaseBean;
 import com.gouyin.im.bean.GoodSelectBaen;
 import com.gouyin.im.utils.ConfigUtils;
@@ -25,7 +25,7 @@ public class DynamincDatailsModelImpl implements DynamincDatailsModel {
 
     private String TAG =this.getClass().getSimpleName();
     @Override
-    public void loadData(final String fileName , final onLoadDateListener listener) {
+    public void loadData(final String fileName , final BaseIModel.onLoadDateListener listener) {
 
         Observable<GoodSelectBaen> login = ServerApi.getAppAPI().login("haha", "hahh");
 //        login.observeOn(AndroidSchedulers.mainThread())

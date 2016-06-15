@@ -9,11 +9,15 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Toast;
 
 import com.gouyin.im.R;
+import com.gouyin.im.event.Events;
+import com.gouyin.im.event.EventsMessage;
+import com.gouyin.im.event.RxBus;
 import com.gouyin.im.utils.GlobalConstantUtils;
 import com.gouyin.im.utils.IconCompress;
 import com.gouyin.im.utils.UIUtils;
@@ -36,7 +40,9 @@ public class SelectPicPopupActivity extends Activity {
     // 从Intent获取图片路径的KEY
     public static final String KEY_PHOTO_PATH = "photo_path";
 
-    /** 获取到的图片路径 */
+    /**
+     * 获取到的图片路径
+     */
     private String picPath;
     private Intent lastIntent;
     private Uri photoUri;
@@ -71,6 +77,7 @@ public class SelectPicPopupActivity extends Activity {
                 break;
         }
     }
+
     /**
      * 拍照获取图片
      */
@@ -104,13 +111,16 @@ public class SelectPicPopupActivity extends Activity {
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(intent, SELECT_PIC_BY_PICK_PHOTO);
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == Activity.RESULT_OK) {
             doPhoto2(requestCode, resultCode, data);
+
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
+
 
     private static final int REQUESTCODE_CUTTING = 3;
 
@@ -133,12 +143,20 @@ public class SelectPicPopupActivity extends Activity {
             Bitmap photo = extras.getParcelable("data");
             Bitmap bmCoompress = null;
             bmCoompress = IconCompress.comp(photo);
-            IconCompress.saveBitmap(bmCoompress,
-                    GlobalConstantUtils.HEAD_ICON_SAVEPATH, "backup.jpg");
-            setResult(1, lastIntent);
+            File file = IconCompress.saveBitmap(bmCoompress,
+                    GlobalConstantUtils.HEAD_ICON_SAVEPATH, System.currentTimeMillis()+".jpg");
+
+            seedRxBusMsg(file.getAbsolutePath());
             finish();
         }
 
+    }
+
+    private void seedRxBusMsg(String filePath) {
+        Events<String> events = new Events<String>();
+        events.message = filePath;
+        events.what = Events.EventEnum.GET_PHOTO;
+        RxBus.getInstance().send(events);
     }
 
     /**
@@ -176,12 +194,12 @@ public class SelectPicPopupActivity extends Activity {
             }
         }
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
         ButterKnife.unbind(this);
     }
-
 
 
 }

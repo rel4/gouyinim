@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import com.gouyin.im.R;
 import com.gouyin.im.base.BaseFragment;
+import com.gouyin.im.event.Events;
+import com.gouyin.im.event.RxBus;
 import com.gouyin.im.login.presenter.RegiterFragmentPresener;
 import com.gouyin.im.login.presenter.RegiterFragmentPresenerImpl;
 import com.gouyin.im.login.view.RegiterFragmentView;
@@ -18,6 +20,7 @@ import com.gouyin.im.utils.ConfigUtils;
 import com.gouyin.im.utils.FragmentUtils;
 import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.UIUtils;
+import com.trello.rxlifecycle.FragmentEvent;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -57,7 +60,6 @@ public class RegiterFragment extends BaseFragment implements RegiterFragmentView
 
     @Override
     protected void initData() {
-
     }
 
 
@@ -73,15 +75,15 @@ public class RegiterFragment extends BaseFragment implements RegiterFragmentView
                 showToast(resources.getString(R.string.input_phone_number) + resources.getString(R.string.not_empty));
 
         } else if (view.getId() == R.id.tv_submit) {
-            navigationNext();
-//            String code = etCode.getText().toString().trim();
-//            String phoneNumber = etPhoneNumber.getText().toString().trim();
-//            if (code == null || code.isEmpty() || phoneNumber == null || phoneNumber.isEmpty()) {
-//                showToast(resources.getString(R.string.input_Security_code) + resources.getString(R.string.input_phone_number) + resources.getString(R.string.not_empty));
-//
-//            } else {
-//                presener.submitRegiter(phoneNumber, code);
-//            }
+
+            String code = etCode.getText().toString().trim();
+            String phoneNumber = etPhoneNumber.getText().toString().trim();
+            if (code == null || code.isEmpty() || phoneNumber == null || phoneNumber.isEmpty()) {
+                showToast(resources.getString(R.string.input_Security_code) + resources.getString(R.string.input_phone_number) + resources.getString(R.string.not_empty));
+
+            } else {
+                presener.submitRegiter(phoneNumber, code);
+            }
 
         }
 
@@ -124,9 +126,13 @@ public class RegiterFragment extends BaseFragment implements RegiterFragmentView
 
 
     @Override
-    public void navigationNext() {
+    public void navigationNext(String code) {
         if (null != regiterFragment)
             FragmentUtils.switchHideFragment(getFragmentManager(), R.id.frameLyout_home_content, regiterFragment, RegiterDataFragment.newInstance());
+        if (mActivity instanceof  LoginMainActivity){
+            LoginMainActivity loginMainActivity = (LoginMainActivity) mActivity;
+            loginMainActivity.regiterCode=code;
+        }
     }
 
     @Override

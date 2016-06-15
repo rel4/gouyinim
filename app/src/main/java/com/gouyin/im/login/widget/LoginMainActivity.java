@@ -1,7 +1,7 @@
 package com.gouyin.im.login.widget;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
@@ -22,6 +22,7 @@ import butterknife.OnClick;
  * Created by pc on 2016/6/13.
  */
 public class LoginMainActivity extends BaseActivity implements LoginMainView {
+
     @Bind(R.id.frameLyout_home_content)
     FrameLayout frameLyoutHomeContent;
     @Bind(R.id.tv_navigation_login)
@@ -30,9 +31,10 @@ public class LoginMainActivity extends BaseActivity implements LoginMainView {
     TextView tv_navigation_register;
     private LoginMainPresenter presenter;
     private FragmentManager fragmentManager;
+    protected String regiterCode;
     @Override
     protected void initView() {
-        fragmentManager = getSupportFragmentManager();
+        fragmentManager = getFragmentManager();
         presenter.swicthNavigation(R.id.tv_navigation_login);
     }
 

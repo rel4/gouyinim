@@ -3,6 +3,7 @@ package com.gouyin.im;
 
 import com.gouyin.im.bean.BaseBean;
 import com.gouyin.im.bean.GoodSelectBaen;
+import com.gouyin.im.bean.RegiterBean;
 import com.gouyin.im.utils.LogUtils;
 import com.squareup.okhttp.Interceptor;
 import com.squareup.okhttp.OkHttpClient;
@@ -10,7 +11,6 @@ import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
 import java.io.IOException;
-import java.nio.charset.CodingErrorAction;
 import java.util.concurrent.TimeUnit;
 
 import retrofit.GsonConverterFactory;
@@ -18,7 +18,6 @@ import retrofit.Retrofit;
 import retrofit.RxJavaCallAdapterFactory;
 import retrofit.http.Field;
 import retrofit.http.FormUrlEncoded;
-import retrofit.http.GET;
 import retrofit.http.POST;
 import retrofit.http.Query;
 import rx.Observable;
@@ -77,13 +76,30 @@ public class ServerApi {
 
         /**
          * 验证验证码
+         *
          * @param mobile
          * @param code
          * @return
          */
         @FormUrlEncoded
         @POST("User/register_step1")
-        Observable<BaseBean> verifySecurityCode(@Field("mobile") String mobile,
-                                                @Field("code") String code);
+        Observable<RegiterBean> verifySecurityCode(@Field("mobile") String mobile,
+                                                   @Field("code") String code);
+
+        /**
+         * 注册完成
+         *
+         * @param face
+         * @param sex
+         * @param pwd
+
+         * @return
+         */
+        @FormUrlEncoded
+        @POST("User/register_step2")
+        Observable<BaseBean> regiterLogin(@Field("face") String face,
+                                          @Field("sex") String sex,
+                                          @Field("pwd") String pwd,
+                                          @Field("mobileauth") String mobileauth);
     }
 }

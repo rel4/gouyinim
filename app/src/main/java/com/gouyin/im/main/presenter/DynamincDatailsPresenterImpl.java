@@ -1,6 +1,6 @@
 package com.gouyin.im.main.presenter;
 
-import com.gouyin.im.base.onLoadDateListener;
+import com.gouyin.im.base.BaseIModel;
 import com.gouyin.im.bean.BaseBean;
 import com.gouyin.im.main.model.DynamincDatailsModelImpl;
 import com.gouyin.im.main.view.DynamicDatailsView;
@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by pc on 2016/6/8.
  */
-public class DynamincDatailsPresenterImpl implements DynamincDatailsPresenter, onLoadDateListener<List<BaseBean>> {
+public class DynamincDatailsPresenterImpl implements DynamincDatailsPresenter, BaseIModel.onLoadDateListener<List<BaseBean>> {
     private DynamicDatailsView view;
     private DynamincDatailsModelImpl dynamincDatailsModel;
 
@@ -33,7 +33,7 @@ public class DynamincDatailsPresenterImpl implements DynamincDatailsPresenter, o
     }
 
     @Override
-    public void onFailure(String msg, Exception e) {
+    public void onFailure(String msg, Throwable e) {
 
     }
 }

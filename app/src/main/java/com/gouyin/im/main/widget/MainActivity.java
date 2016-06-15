@@ -2,8 +2,8 @@ package com.gouyin.im.main.widget;
 
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -119,7 +119,7 @@ public class MainActivity extends BaseActivity implements MainView {
             return;
         switchNatvigationSelect(fragment);
         if (mFragmentManager == null)
-            mFragmentManager = getSupportFragmentManager();
+            mFragmentManager = getFragmentManager();
 
         FragmentUtils.switchHideFragment(mFragmentManager, R.id.main_content, mCurrentFragment, fragment);
         mCurrentFragment = fragment;

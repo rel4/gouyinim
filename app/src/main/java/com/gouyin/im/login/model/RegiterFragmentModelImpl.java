@@ -1,8 +1,8 @@
 package com.gouyin.im.login.model;
 
 import com.gouyin.im.ServerApi;
-import com.gouyin.im.base.onLoadDateListener;
 import com.gouyin.im.bean.BaseBean;
+import com.gouyin.im.bean.RegiterBean;
 import com.gouyin.im.utils.LogUtils;
 
 import rx.Observable;
@@ -16,6 +16,31 @@ import rx.schedulers.Schedulers;
 public class RegiterFragmentModelImpl implements RegiterFragmentModel {
     private String TAG = getClass().getSimpleName();
 
+
+    @Override
+    public void loadSubmit(String phoneNumber, String code, onLoadSubmitListenter listenter) {
+        ServerApi.getAppAPI().verifySecurityCode(phoneNumber, code).observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+
+                .subscribe(new Subscriber<RegiterBean>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        LogUtils.e(TAG, "Throwable : " + e.toString());
+                        listenter.onSubmitFailure(e.getLocalizedMessage(), (Exception) e);
+                    }
+
+                    @Override
+                    public void onNext(RegiterBean baseBean) {
+                        LogUtils.e(TAG, "onNext : " + baseBean.toString());
+                        listenter.onSubmitSuccess(baseBean);
+                    }
+                });
+    }
 
     @Override
     public void loadSecurity(String phoneMunber, final onLoadDateListener listener) {
@@ -44,32 +69,4 @@ public class RegiterFragmentModelImpl implements RegiterFragmentModel {
     }
 
 
-    @Override
-    public void loadSubmit(String phoneNumber, String code, final onLoadSubmitListenter listener) {
-        ServerApi.getAppAPI().verifySecurityCode(phoneNumber, code).observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
-                .subscribe(new Subscriber<BaseBean>() {
-                    @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        LogUtils.e(TAG, "Throwable : " + e.toString());
-                        listener.onSubmitFailure(e.getLocalizedMessage(), (Exception) e);
-                    }
-
-                    @Override
-                    public void onNext(BaseBean baseBean) {
-                        LogUtils.e(TAG, "onNext : " + baseBean.toString());
-                        listener.onSubmitSuccess(baseBean);
-                    }
-                });
-    }
-
-    @Override
-    public void loadPageData(onLoadDateListener listener) {
-
-    }
 }

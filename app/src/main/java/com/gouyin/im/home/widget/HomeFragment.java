@@ -1,8 +1,10 @@
 package com.gouyin.im.home.widget;
 
+import android.annotation.TargetApi;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,12 +15,10 @@ import com.gouyin.im.R;
 import com.gouyin.im.base.BaseFragment;
 import com.gouyin.im.home.presenetr.HomeFragmentPresenter;
 import com.gouyin.im.home.presenetr.HomeFragmentPresenterImpl;
-
 import com.gouyin.im.home.view.HomeView;
 import com.gouyin.im.utils.FragmentUtils;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
@@ -72,6 +72,7 @@ public class HomeFragment extends BaseFragment implements HomeView {
      *
      * @param fragment
      */
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     private void enterPage(Fragment fragment) {
         if (fragment == null)
             return;

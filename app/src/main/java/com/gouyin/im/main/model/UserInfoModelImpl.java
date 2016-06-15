@@ -2,7 +2,7 @@ package com.gouyin.im.main.model;
 
 import android.os.SystemClock;
 
-import com.gouyin.im.base.onLoadDateListener;
+import com.gouyin.im.base.BaseIModel;
 import com.gouyin.im.bean.UserInfoBean;
 import com.gouyin.im.utils.UIUtils;
 
@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class UserInfoModelImpl implements UserInfoModel {
     @Override
-    public void loadUserInfoData(final onLoadDateListener listener) {
+    public void loadUserInfoData(final BaseIModel.onLoadDateListener listener) {
         new Thread(new Runnable() {
             @Override
             public void run() {

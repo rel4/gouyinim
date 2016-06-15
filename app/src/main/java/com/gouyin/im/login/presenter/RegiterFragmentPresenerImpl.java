@@ -2,17 +2,19 @@ package com.gouyin.im.login.presenter;
 
 
 import com.gouyin.im.R;
-import com.gouyin.im.base.onLoadDateListener;
+import com.gouyin.im.base.BaseIModel;
 import com.gouyin.im.bean.BaseBean;
+import com.gouyin.im.bean.RegiterBean;
 import com.gouyin.im.login.model.RegiterFragmentModel;
 import com.gouyin.im.login.model.RegiterFragmentModelImpl;
 import com.gouyin.im.login.view.RegiterFragmentView;
 import com.gouyin.im.utils.ConfigUtils;
+import com.gouyin.im.utils.LogUtils;
 
 /**
  * Created by pc on 2016/6/14.
  */
-public class RegiterFragmentPresenerImpl implements RegiterFragmentPresener<RegiterFragmentView>, onLoadDateListener<BaseBean>, RegiterFragmentModel.onLoadSubmitListenter<BaseBean> {
+public class RegiterFragmentPresenerImpl implements RegiterFragmentPresener, BaseIModel.onLoadDateListener<BaseBean>, RegiterFragmentModel.onLoadSubmitListenter<RegiterBean> {
     private RegiterFragmentView view;
     private RegiterFragmentModel fragmentModel;
 
@@ -53,14 +55,14 @@ public class RegiterFragmentPresenerImpl implements RegiterFragmentPresener<Regi
     }
 
     @Override
-    public void onFailure(String msg, Exception e) {
+    public void onFailure(String msg, Throwable e) {
         view.hideLoading();
         view.requestFailed(msg);
     }
 
 
     @Override
-    public void onSubmitSuccess(BaseBean baseBean) {
+    public void onSubmitSuccess(RegiterBean baseBean) {
         view.hideLoading();
         if (baseBean != null) {
             view.requestFailed(baseBean.getMsg());
@@ -68,7 +70,8 @@ public class RegiterFragmentPresenerImpl implements RegiterFragmentPresener<Regi
                 ConfigUtils.getInstance().getMainHandler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        view.navigationNext();
+                        LogUtils.e(RegiterFragmentPresenerImpl.class,"RegiterCode  : " +baseBean.getData().toString());
+                        view.navigationNext(baseBean.getData().getAuthcode());
                     }
                 },1000);
 

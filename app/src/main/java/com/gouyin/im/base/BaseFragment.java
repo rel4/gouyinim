@@ -1,6 +1,7 @@
 package com.gouyin.im.base;
 
 
+import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,6 +14,7 @@ import android.view.ViewGroup;
 
 import com.gouyin.im.utils.ConfigUtils;
 import com.gouyin.im.utils.UIUtils;
+import com.trello.rxlifecycle.components.RxFragment;
 
 import butterknife.ButterKnife;
 import im.gouyin.com.progressdialog.ProgressDialog;
@@ -20,11 +22,11 @@ import im.gouyin.com.progressdialog.ProgressDialog;
 /**
  * Created by pc on 2016/5/31.
  */
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment extends RxFragment {
     private View mRootView;
     private ProgressDialog progressDialog;
     protected Resources resources;
-    protected FragmentActivity mActivity;
+    protected Activity mActivity;
 
     @Nullable
     @Override
