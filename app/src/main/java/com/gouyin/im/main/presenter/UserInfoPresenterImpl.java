@@ -1,7 +1,7 @@
 package com.gouyin.im.main.presenter;
 
 import com.gouyin.im.R;
-import com.gouyin.im.base.onLoadDateListener;
+import com.gouyin.im.base.BaseIModel;
 import com.gouyin.im.bean.UserInfoBean;
 import com.gouyin.im.main.model.UserInfoModel;
 import com.gouyin.im.main.model.UserInfoModelImpl;
@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Created by pc on 2016/6/6.
  */
-public class UserInfoPresenterImpl implements UserInfoPresenter, onLoadDateListener<List<UserInfoBean>> {
+public class UserInfoPresenterImpl implements UserInfoPresenter, BaseIModel.onLoadDateListener<List<UserInfoBean>> {
     private final UserInfoView mUserInfoView;
     private UserInfoModel mUserInfoModel;
 
@@ -54,7 +54,7 @@ public class UserInfoPresenterImpl implements UserInfoPresenter, onLoadDateListe
     }
 
     @Override
-    public void onFailure(String msg, Exception e) {
+    public void onFailure(String msg, Throwable e) {
 
     }
 }

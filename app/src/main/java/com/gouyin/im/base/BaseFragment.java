@@ -1,14 +1,20 @@
 package com.gouyin.im.base;
 
 
+import android.app.Activity;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.gouyin.im.utils.ConfigUtils;
+import com.gouyin.im.utils.UIUtils;
+import com.trello.rxlifecycle.components.RxFragment;
 
 import butterknife.ButterKnife;
 import im.gouyin.com.progressdialog.ProgressDialog;
@@ -16,18 +22,26 @@ import im.gouyin.com.progressdialog.ProgressDialog;
 /**
  * Created by pc on 2016/5/31.
  */
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment extends RxFragment {
     private View mRootView;
     private ProgressDialog progressDialog;
+    protected Resources resources;
+    protected Activity mActivity;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        resources = getResources();
+        mActivity = getActivity();
         mRootView = onBaseCreateView(inflater, container, savedInstanceState);
         ButterKnife.bind(this, mRootView);
         initData();
         return mRootView;
 
+    }
+
+    protected void showToast(String msg) {
+        UIUtils.showToast(getActivity(), msg);
     }
 
 
@@ -108,7 +122,7 @@ public abstract class BaseFragment extends Fragment {
      * 初始化加载进度条
      */
     private void initProgressDialog() {
-        progressDialog = new ProgressDialog(ConfigUtils.getInstance().getActivityContext());
+        progressDialog = new ProgressDialog(mActivity==null?ConfigUtils.getInstance().getActivityContext():mActivity);
     }
 
     /**
@@ -130,4 +144,6 @@ public abstract class BaseFragment extends Fragment {
         if (progressDialog.isShowing())
             progressDialog.dismiss();
     }
+
+
 }

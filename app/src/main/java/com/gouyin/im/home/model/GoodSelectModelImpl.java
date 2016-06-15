@@ -1,8 +1,6 @@
 package com.gouyin.im.home.model;
 
-import android.os.SystemClock;
-
-import com.gouyin.im.base.onLoadDateListener;
+import com.gouyin.im.base.BaseIModel;
 import com.gouyin.im.bean.GoodSelectBaen;
 
 import com.gouyin.im.utils.UIUtils;
@@ -17,7 +15,7 @@ import java.util.List;
 public class GoodSelectModelImpl  implements GoodSelectModel {
     private int index;
     @Override
-    public void loadGoodSelectDate(final onLoadDateListener<List<GoodSelectBaen>> listener) {
+    public void loadGoodSelectDate(final BaseIModel.onLoadDateListener<List<GoodSelectBaen>> listener) {
 //        String url = "";
 //        OkHttpUtils.ResultCallback<String> loadNewsCallback = new OkHttpUtils.ResultCallback<String>() {
 //            @Override
@@ -35,7 +33,7 @@ public class GoodSelectModelImpl  implements GoodSelectModel {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                SystemClock.sleep(5000);
+//                SystemClock.sleep(5000);
                 final List<GoodSelectBaen> goodSelectBaens = new ArrayList<GoodSelectBaen>();
                 for (int i = 0; i < 15; i++) {
                     index =index+i;

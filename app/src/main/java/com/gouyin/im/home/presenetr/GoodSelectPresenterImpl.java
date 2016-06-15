@@ -2,7 +2,7 @@ package com.gouyin.im.home.presenetr;
 
 
 
-import com.gouyin.im.base.onLoadDateListener;
+import com.gouyin.im.base.BaseIModel;
 import com.gouyin.im.bean.GoodSelectBaen;
 import com.gouyin.im.home.model.GoodSelectModelImpl;
 import com.gouyin.im.home.view.GoodSelectView;
@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Created by pc on 2016/6/3.
  */
-public class GoodSelectPresenterImpl implements GoodSelectPresenter ,onLoadDateListener<List<GoodSelectBaen>> {
+public class GoodSelectPresenterImpl implements GoodSelectPresenter ,BaseIModel.onLoadDateListener<List<GoodSelectBaen>> {
     private final GoodSelectModelImpl mGoodModel;
     private final GoodSelectView mGoodView;
 
@@ -36,7 +36,7 @@ public class GoodSelectPresenterImpl implements GoodSelectPresenter ,onLoadDateL
     }
 
     @Override
-    public void onFailure(String msg, Exception e) {
+    public void onFailure(String msg, Throwable e) {
         mGoodView.hide();
         LogUtils.e(this,msg);
     }

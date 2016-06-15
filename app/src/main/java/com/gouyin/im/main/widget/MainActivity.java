@@ -2,8 +2,9 @@ package com.gouyin.im.main.widget;
 
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -118,7 +119,7 @@ public class MainActivity extends BaseActivity implements MainView {
             return;
         switchNatvigationSelect(fragment);
         if (mFragmentManager == null)
-            mFragmentManager = getSupportFragmentManager();
+            mFragmentManager = getFragmentManager();
 
         FragmentUtils.switchHideFragment(mFragmentManager, R.id.main_content, mCurrentFragment, fragment);
         mCurrentFragment = fragment;
@@ -134,4 +135,21 @@ public class MainActivity extends BaseActivity implements MainView {
         tvMyPage.setSelected(fragment == myFragment);
 
     }
+    private  long exitTime;
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (KeyEvent.KEYCODE_BACK == keyCode) {
+            // 判断是否在两秒之内连续点击返回键，是则退出，否则不退出
+            if (System.currentTimeMillis() - exitTime > 2000) {
+               showToast( "再按一次退出程序");
+                // 将系统当前的时间赋值给exitTime
+                exitTime = System.currentTimeMillis();
+            } else {
+                finish();
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
 }

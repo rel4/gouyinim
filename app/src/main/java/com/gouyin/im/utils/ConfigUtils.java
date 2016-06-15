@@ -2,6 +2,7 @@ package com.gouyin.im.utils;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
 import android.os.Handler;
 import android.os.Looper;
 
@@ -13,11 +14,13 @@ public class ConfigUtils {
     private static Activity mActivityContext;
     private static Handler mHandler;
     private static final ConfigUtils instance = new ConfigUtils();
+    private Resources resources;
 
     private ConfigUtils() {
     }
 
     public static ConfigUtils getInstance() {
+
         return instance;
     }
 
@@ -27,6 +30,7 @@ public class ConfigUtils {
      * @return ApplicationContext
      */
     public Context getApplicationContext() {
+
         return mApplicationContext;
     }
 
@@ -37,8 +41,8 @@ public class ConfigUtils {
      */
     public void setApplicationContext(Context applicationContext) {
         mApplicationContext = applicationContext;
-        if (mHandler==null)
-            mHandler =new Handler(Looper.getMainLooper());
+        getMainHandler();
+        getResources();
     }
 
     /**
@@ -68,5 +72,11 @@ public class ConfigUtils {
         if (mHandler == null)
             mHandler = new Handler(Looper.getMainLooper());
         return mHandler;
+    }
+
+    public Resources getResources() {
+        if (resources == null)
+            resources = mApplicationContext.getResources();
+        return resources;
     }
 }
