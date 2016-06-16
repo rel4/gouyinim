@@ -16,20 +16,7 @@ public class GoodSelectModelImpl  implements GoodSelectModel {
     private int index;
     @Override
     public void loadGoodSelectDate(final BaseIModel.onLoadDateListener<List<GoodSelectBaen>> listener) {
-//        String url = "";
-//        OkHttpUtils.ResultCallback<String> loadNewsCallback = new OkHttpUtils.ResultCallback<String>() {
-//            @Override
-//            public void onSuccess(String response) {
-////                List<GoodSelectBaen> iamgeBeanList = ImageJsonUtils.readJsonImageBeans(response);
-//                listener.onSuccess(null);
-//            }
-//
-//            @Override
-//            public void onFailure(Exception e) {
-//                listener.onFailure("load image list failure.", e);
-//            }
-//        };
-//        OkHttpUtils.get(url, loadNewsCallback);
+
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -46,7 +33,7 @@ public class GoodSelectModelImpl  implements GoodSelectModel {
                 UIUtils.onRunMainThred(new Runnable() {
                     @Override
                     public void run() {
-                        listener.onSuccess(goodSelectBaens);
+                        listener.onSuccess(goodSelectBaens,0);
                     }
                 });
 

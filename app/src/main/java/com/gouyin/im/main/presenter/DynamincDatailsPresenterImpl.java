@@ -27,7 +27,7 @@ public class DynamincDatailsPresenterImpl implements DynamincDatailsPresenter, B
     }
 
     @Override
-    public void onSuccess(List<BaseBean> beans) {
+    public void onSuccess(List<BaseBean> beans,int type) {
         view.loadData(beans);
         view.hide();
     }

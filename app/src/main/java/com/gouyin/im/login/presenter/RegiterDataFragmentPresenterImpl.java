@@ -29,6 +29,11 @@ public class RegiterDataFragmentPresenterImpl implements RegiterDataFragmentPres
     }
 
     @Override
+    public void upLoadIcon(String iconPath) {
+            model.upLoadIcon(iconPath,null);
+    }
+
+    @Override
     public void onCreate() {
 
     }
@@ -40,7 +45,7 @@ public class RegiterDataFragmentPresenterImpl implements RegiterDataFragmentPres
     }
 
     @Override
-    public void onSuccess(BaseBean baseBean) {
+    public void onSuccess(BaseBean baseBean,int type) {
 
         if (baseBean != null) {
             LogUtils.e(this,"msg : "+baseBean.getMsg());

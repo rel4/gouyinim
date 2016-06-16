@@ -45,7 +45,7 @@ public class RegiterFragmentPresenerImpl implements RegiterFragmentPresener, Bas
 
 
     @Override
-    public void onSuccess(BaseBean baseBean) {
+    public void onSuccess(BaseBean baseBean,int type) {
         view.hideLoading();
         if (baseBean != null) {
             if ("1".equals(baseBean.getCode()))
@@ -57,7 +57,7 @@ public class RegiterFragmentPresenerImpl implements RegiterFragmentPresener, Bas
     @Override
     public void onFailure(String msg, Throwable e) {
         view.hideLoading();
-        view.requestFailed(msg);
+        view.requestFailed(ConfigUtils.getInstance().getResources().getString(R.string.net_Exception));
     }
 
 

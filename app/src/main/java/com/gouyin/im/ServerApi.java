@@ -1,25 +1,33 @@
 package com.gouyin.im;
 
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.gouyin.im.bean.BaseBean;
 import com.gouyin.im.bean.GoodSelectBaen;
 import com.gouyin.im.bean.RegiterBean;
 import com.gouyin.im.utils.LogUtils;
-import com.squareup.okhttp.Interceptor;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;
+import com.gouyin.im.utils.UnicodeUtils;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-import retrofit.GsonConverterFactory;
-import retrofit.Retrofit;
-import retrofit.RxJavaCallAdapterFactory;
-import retrofit.http.Field;
-import retrofit.http.FormUrlEncoded;
-import retrofit.http.POST;
-import retrofit.http.Query;
+import okhttp3.Authenticator;
+import okhttp3.Interceptor;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+import okhttp3.Route;
+import okhttp3.logging.HttpLoggingInterceptor;
+import okio.Buffer;
+import okio.BufferedSource;
+import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.POST;
+import retrofit2.http.Query;
 import rx.Observable;
 
 /**
@@ -31,21 +39,71 @@ public class ServerApi {
 
     public static AppAPI getAppAPI() {
         if (mAppApi == null) {
-            OkHttpClient httpClient = new OkHttpClient();
+            Gson gson = new GsonBuilder().create();
 
-            httpClient.interceptors().add(new Interceptor() {
+            Interceptor mTokenInterceptor = new Interceptor() {
                 @Override
                 public Response intercept(Chain chain) throws IOException {
-                    Request request = chain.request();
-                    LogUtils.e(AppAPI.class, "The Cookie is " + request.header("Cookie"));
-                    LogUtils.e(AppAPI.class, "访问网络地址: " + request.urlString());
-                    return chain.proceed(chain.request());
+                    Response response = chain.proceed(chain.request());
+                    LogUtils.d(AppAPI.class, "addNetworkInterceptor : Response  code: " + response.code());
+                    BufferedSource source = response.body().source();
+                    source.request(Long.MAX_VALUE);
+                    Buffer clone = source.buffer().clone();
+                    LogUtils.d(AppAPI.class, "addNetworkInterceptor : Response  content: " + UnicodeUtils.decodeUnicode(clone.readUtf8()));
+                    return response;
                 }
+
+            };
+            // init okhttp 3 logger
+            HttpLoggingInterceptor logging = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
+                @Override
+                public void log(String message) {
+                    LogUtils.d(AppAPI.class, "HttpLoggingInterceptor: " + message);
+                }
+
             });
-            httpClient.setConnectTimeout(4, TimeUnit.MINUTES);
+            logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+            //401 Not Authorised
+            Authenticator mAuthenticator = new Authenticator() {
+
+                @Override
+                public Request authenticate(Route route, Response response) throws IOException {
+                    Request request = response.request();
+                    LogUtils.d(AppAPI.class, "Authenticator : The Cookie is " + request.header("Cookie"));
+                    LogUtils.d(AppAPI.class, "Authenticator : 访问网络地址: " + request.url().toString());
+                    LogUtils.d(AppAPI.class, "Authenticator : 访问body : " + request.body().toString());
+                    return request;
+                }
+            };
+
+            Interceptor interceptor = new Interceptor() {
+                @Override
+                public Response intercept(Chain chain) throws IOException {
+                    LogUtils.d(AppAPI.class, "addInterceptor : 访问request : " + chain.request().toString());
+                    Response response = chain.proceed(chain.request());
+
+                    LogUtils.d(AppAPI.class, "addInterceptor : Response  code: " + response.code());
+                    BufferedSource source = response.body().source();
+                    source.request(Long.MAX_VALUE);
+                    Buffer clone = source.buffer().clone();
+                    LogUtils.d(AppAPI.class, "addInterceptor : Response  content: " + UnicodeUtils.decodeUnicode(clone.readUtf8()));
+                    return response;
+                }
+            };
+
+            //OkHttpClient
+            OkHttpClient httpClient = new OkHttpClient.Builder()
+//                    .addInterceptor(logging)
+                    .addInterceptor(interceptor)
+                    .retryOnConnectionFailure(false)
+                    .authenticator(mAuthenticator)
+                    .connectTimeout(15, TimeUnit.SECONDS)
+                    .addNetworkInterceptor(mTokenInterceptor)
+                    .build();
+            //Retrofit.
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(AppAPI.baseUrl)
-                    .addConverterFactory(GsonConverterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create(gson))
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .client(httpClient)
                     .build();
@@ -92,7 +150,6 @@ public class ServerApi {
          * @param face
          * @param sex
          * @param pwd
-
          * @return
          */
         @FormUrlEncoded
@@ -101,5 +158,6 @@ public class ServerApi {
                                           @Field("sex") String sex,
                                           @Field("pwd") String pwd,
                                           @Field("mobileauth") String mobileauth);
+//        Observable<>
     }
 }

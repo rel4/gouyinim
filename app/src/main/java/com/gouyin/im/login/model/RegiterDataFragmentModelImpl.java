@@ -1,8 +1,8 @@
 package com.gouyin.im.login.model;
 
 import com.gouyin.im.ServerApi;
+import com.gouyin.im.aliyun.AliyunManager;
 import com.gouyin.im.bean.BaseBean;
-
 
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -14,10 +14,9 @@ import rx.schedulers.Schedulers;
 public class RegiterDataFragmentModelImpl implements RegiterDataFragmentModel {
 
 
-
     @Override
     public void login(String face, String sex, String pwd, String authcode, onLoadDateListener<BaseBean> listener) {
-        ServerApi.getAppAPI().regiterLogin(face,sex,pwd,authcode)
+        ServerApi.getAppAPI().regiterLogin(face, sex, pwd, authcode)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Subscriber<BaseBean>() {
@@ -28,13 +27,19 @@ public class RegiterDataFragmentModelImpl implements RegiterDataFragmentModel {
 
                     @Override
                     public void onError(Throwable e) {
-                            listener.onFailure(e.getMessage(),e);
+                        listener.onFailure(e.getMessage(), e);
                     }
 
                     @Override
                     public void onNext(BaseBean baseBean) {
-                            listener.onSuccess(baseBean);
+                        listener.onSuccess(baseBean, 0);
                     }
                 });
+    }
+
+    @Override
+    public void upLoadIcon(String iconPath, onLoadDateListener listener) {
+        AliyunManager.getInstance().upLoadFile(iconPath, null);
+
     }
 }

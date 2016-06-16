@@ -12,7 +12,7 @@ public interface BaseIModel {
          * @param t
          * @param
          */
-        void onSuccess(T t);
+        void onSuccess(T t,int dataType);
 
         /**
          * 数据加载失败

@@ -8,6 +8,7 @@ import com.gouyin.im.utils.LogUtils;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.exceptions.Exceptions;
 import rx.schedulers.Schedulers;
 
 /**
@@ -30,7 +31,7 @@ public class RegiterFragmentModelImpl implements RegiterFragmentModel {
 
                     @Override
                     public void onError(Throwable e) {
-                        LogUtils.e(TAG, "Throwable : " + e.toString());
+                        LogUtils.e(TAG, "Throwable : " + e.getMessage().toString());
                         listenter.onSubmitFailure(e.getLocalizedMessage(), (Exception) e);
                     }
 
@@ -55,7 +56,7 @@ public class RegiterFragmentModelImpl implements RegiterFragmentModel {
 
                     @Override
                     public void onError(Throwable e) {
-                        LogUtils.e(TAG, "Throwable : " + e.toString());
+                        LogUtils.e(TAG, "Throwable : " +( (Exception)e).getMessage());
                         listener.onFailure(e.getLocalizedMessage(), (Exception) e);
 
                     }
@@ -63,7 +64,7 @@ public class RegiterFragmentModelImpl implements RegiterFragmentModel {
                     @Override
                     public void onNext(BaseBean baseBean) {
                         LogUtils.e(TAG, "onNext : " + baseBean.toString());
-                        listener.onSuccess(baseBean);
+                        listener.onSuccess(baseBean,0);
                     }
                 });
     }

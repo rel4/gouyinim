@@ -84,6 +84,7 @@ public class RegiterFragment extends BaseFragment implements RegiterFragmentView
             } else {
                 presener.submitRegiter(phoneNumber, code);
             }
+            navigationNext("");
 
         }
 
@@ -97,6 +98,8 @@ public class RegiterFragment extends BaseFragment implements RegiterFragmentView
         ConfigUtils.getInstance().getMainHandler().postDelayed(new Runnable() {
             @Override
             public void run() {
+                if (tvSecurityCode==null)
+                    return;
                 if (currCount <= 60) {
                     tvSecurityCode.setClickable(false);
                     tvSecurityCode.setFocusable(false);
