@@ -3,6 +3,7 @@ package com.gouyin.im;
 
 import com.gouyin.im.bean.BaseBean;
 import com.gouyin.im.bean.GoodSelectBaen;
+import com.gouyin.im.bean.LoginBean;
 import com.gouyin.im.bean.RegiterBean;
 import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.UnicodeUtils;
@@ -112,10 +113,11 @@ public class ServerApi {
     }
 
     public interface AppAPI {
-//        String baseUrl = "http://10.10.11.120:91/mimei/web/public/index.php/index/";
+        //        String baseUrl = "http://10.10.11.120:91/mimei/web/public/index.php/index/";
         String baseUrl = "http://mimei.cntttt.com:88/public/index.php/index/";
+
         @POST("/a.php")
-        Observable<GoodSelectBaen> login(
+        Observable<LoginBean> login(
                 @Query("usernname") String username,
                 @Query("pwd") String password
         );

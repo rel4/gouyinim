@@ -9,17 +9,19 @@ import android.widget.TextView;
 
 import com.gouyin.im.R;
 import com.gouyin.im.base.BaseFragment;
+import com.gouyin.im.login.presenter.LoginFragmentPersenter;
+import com.gouyin.im.login.presenter.LoginFragmentPersenterImpl;
 import com.gouyin.im.login.view.LoginFragmentView;
+import com.gouyin.im.utils.StringUtis;
 import com.gouyin.im.utils.UIUtils;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
  * Created by pc on 2016/6/13.
  */
-public class LoginFragment extends BaseFragment  implements LoginFragmentView{
+public class LoginFragment extends BaseFragment implements LoginFragmentView {
     @Bind(R.id.et_phone_number)
     EditText etPhoneNumber;
     @Bind(R.id.et_password)
@@ -28,6 +30,7 @@ public class LoginFragment extends BaseFragment  implements LoginFragmentView{
     TextView tvForgetPassword;
     @Bind(R.id.submit_login)
     TextView submitLogin;
+    private LoginFragmentPersenter persenter;
 
     public static LoginFragment newInstance() {
         return new LoginFragment();
@@ -35,6 +38,8 @@ public class LoginFragment extends BaseFragment  implements LoginFragmentView{
 
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        persenter = new LoginFragmentPersenterImpl();
+        persenter.attachView(this);
         return UIUtils.inflateLayout(R.layout.fragment_login, container);
     }
 
@@ -48,19 +53,48 @@ public class LoginFragment extends BaseFragment  implements LoginFragmentView{
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_forget_password:
+
                 break;
             case R.id.submit_login:
+                login();
                 break;
         }
     }
 
-    @Override
-    public void showLoading() {
+    private void login() {
+        String password = etPassword.getText().toString().trim();
+        String phone = etPhoneNumber.getText().toString().trim();
+        if (StringUtis.isEmpty(password)){
+            showToast(resources.getString(R.string.input_password)+resources.getString(R.string.not_empty));
+            return;
+        }
+        if (StringUtis.isEmpty(phone))
+        {
+            showToast(resources.getString(R.string.input_phone_number)+resources.getString(R.string.not_empty));
+            return;
+        }
+        persenter.login(phone,password);
 
     }
 
     @Override
-    public void hideLoading() {
+    public void showLoading() {
+        showLoading();
+    }
 
+    @Override
+    public void hideLoading() {
+            hideLoading();
+    }
+
+    @Override
+    public void loginSuccss() {
+        showToast(resources.getString(R.string.str_login)+resources.getString(R.string.success));
+        UIUtils.sendDelayed(new Runnable() {
+            @Override
+            public void run() {
+                getActivity().finish();
+            }
+        },1000);
     }
 }
