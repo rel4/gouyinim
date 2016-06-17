@@ -23,7 +23,7 @@ import butterknife.OnClick;
  */
 public class LoginMainActivity extends BaseActivity implements LoginMainView {
 
-    @Bind(R.id.frameLyout_home_content)
+    @Bind(R.id.frameLyout_login_main_content)
     FrameLayout frameLyoutHomeContent;
     @Bind(R.id.tv_navigation_login)
     TextView tv_navigation_login;
@@ -50,7 +50,7 @@ public class LoginMainActivity extends BaseActivity implements LoginMainView {
            loginFragment = LoginFragment.newInstance();
         }
         switchNatvigationSelect(loginFragment);
-        FragmentUtils.switchHideFragment(fragmentManager,R.id.frameLyout_home_content,currentFragment,loginFragment);
+        FragmentUtils.swichReplaceFramgent(fragmentManager,R.id.frameLyout_login_main_content,loginFragment);
     }
 
     @Override
@@ -59,7 +59,7 @@ public class LoginMainActivity extends BaseActivity implements LoginMainView {
             regiterFragment = RegiterFragment.newInstance();
         }
         switchNatvigationSelect(regiterFragment);
-        FragmentUtils.switchHideFragment(fragmentManager,R.id.frameLyout_home_content,currentFragment,regiterFragment);
+        FragmentUtils.swichReplaceFramgent(fragmentManager,R.id.frameLyout_login_main_content,regiterFragment);
     }
 
 

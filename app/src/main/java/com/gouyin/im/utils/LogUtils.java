@@ -18,63 +18,63 @@ public class LogUtils {
 
 	public static <T> void d(Class<T> clz, String msg) {
 		if (DEBUG) {
-			Log.d(clz.getSimpleName(), "[" + getFileLineMethod() + "]" + msg);
+			Log.d(clz.getSimpleName(), "[" + getFileLineMethod() + "]" + "----->"+msg);
 		}
 	}
 
 	public static void d(String msg) {
 		if (DEBUG) {
-			Log.d(_FILE_(), "[" + getLineMethod() + "]" + msg);
+			Log.d(_FILE_(), "[" + getLineMethod() + "]" +  "----->"+msg);
 		}
 	}
 
 	public static void e(String msg) {
 		if (DEBUG) {
-			Log.e(_FILE_(), getLineMethod() + msg);
+			Log.e(_FILE_(), getLineMethod() +  "----->"+msg);
 		}
 	}
 
 	public static void e(Object obj, String msg) {
 		if (DEBUG) {
-			Log.e(obj.getClass().getSimpleName(), getLineMethod() + msg);
+			Log.e(obj.getClass().getSimpleName(), getLineMethod() + "----->"+ msg);
 		}
 	}
 
 	public static void i(Object obj, String msg) {
 		if (DEBUG) {
-			Log.i(obj.getClass().getSimpleName(), getLineMethod() + msg);
+			Log.i(obj.getClass().getSimpleName(), getLineMethod() + "----->"+ msg);
 		}
 	}
 
 	public static void v(Object obj, String msg) {
 		if (DEBUG) {
-			Log.v(obj.getClass().getSimpleName(), getLineMethod() + msg);
+			Log.v(obj.getClass().getSimpleName(), getLineMethod() + "----->"+ msg);
 		}
 	}
 
 	public static void d(Object obj, String msg) {
 		if (DEBUG) {
 			Log.d(obj.getClass().getSimpleName(), "[" + getFileLineMethod()
-					+ "]" + msg);
+					+ "]" + "----->"+ msg);
 		}
 	}
 
 	/********************** 非静态方法 **********************/
 	public static void e(String TAG, String msg) {
 		if (DEBUG) {
-			Log.e(TAG, getLineMethod() + msg);
+			Log.e(TAG, getLineMethod() +  "----->"+msg);
 		}
 	}
 
 	public static void i(String TAG, String msg) {
 		if (DEBUG) {
-			Log.i(TAG, getLineMethod() + msg);
+			Log.i(TAG, getLineMethod() + "----->"+ msg);
 		}
 	}
 
 	public static void v(String TAG, String msg) {
 		if (DEBUG) {
-			Log.v(TAG, getLineMethod() + msg);
+			Log.v(TAG, getLineMethod() + "----->"+ msg);
 		}
 	}
 

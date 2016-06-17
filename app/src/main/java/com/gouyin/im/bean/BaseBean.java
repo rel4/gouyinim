@@ -9,7 +9,6 @@ public class BaseBean implements Serializable {
     private String code;
     private String msg;
 
-
     public String getCode() {
         return code;
     }
@@ -27,12 +26,4 @@ public class BaseBean implements Serializable {
     }
 
 
-    @Override
-    public String toString() {
-        return "BaseBean{" +
-                "code='" + code + '\'' +
-                ", msg='" + msg + '\'' +
-
-                '}';
-    }
 }

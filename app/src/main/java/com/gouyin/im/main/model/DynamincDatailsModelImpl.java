@@ -73,7 +73,7 @@ public class DynamincDatailsModelImpl implements DynamincDatailsModel {
                         UIUtils.onRunMainThred(new Runnable() {
                             @Override
                             public void run() {
-                                listener.onSuccess(beans);
+                                listener.onSuccess(beans,0);
                             }
                         });
 

@@ -101,6 +101,7 @@ public class GoodSelectFragment extends BaseFragment implements GoodSelectView {
 
         if (mAdapter == null) {
             mAdapter = new GoodSelectAdapter(list);
+            if (recyclerview!=null)
             recyclerview.setAdapter(mAdapter);
         } else {
             mAdapter.addData(list);

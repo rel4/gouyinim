@@ -8,11 +8,12 @@ import com.gouyin.im.login.model.RegiterDataFragmentModelImpl;
 import com.gouyin.im.login.view.RegiterDataFragmentView;
 import com.gouyin.im.utils.ConfigUtils;
 import com.gouyin.im.utils.LogUtils;
+import com.gouyin.im.utils.UIUtils;
 
 /**
  * Created by jb on 2016/6/15.
  */
-public class RegiterDataFragmentPresenterImpl implements RegiterDataFragmentPresenter, BaseIModel.onLoadDateListener<BaseBean> {
+public class RegiterDataFragmentPresenterImpl implements RegiterDataFragmentPresenter, BaseIModel.onLoadDateListener {
 
     private RegiterDataFragmentView view;
     private RegiterDataFragmentModel model;
@@ -20,12 +21,18 @@ public class RegiterDataFragmentPresenterImpl implements RegiterDataFragmentPres
     @Override
     public void login(String face, String sex, String pwd, String authcode) {
         view.showLoading();
-        LogUtils.e(this, "login  : "+face + " sex " +
+        LogUtils.e(this, "login  : " + face + " sex " +
                 sex + " pwd" +
                 pwd + " authcode " +
                 authcode + " ");
         model.login(face, sex, pwd, authcode, this);
 
+    }
+
+    @Override
+    public void upLoadIcon(String iconPath) {
+        view.showLoading();
+        model.upLoadIcon(iconPath, this);
     }
 
     @Override
@@ -40,15 +47,32 @@ public class RegiterDataFragmentPresenterImpl implements RegiterDataFragmentPres
     }
 
     @Override
-    public void onSuccess(BaseBean baseBean) {
+    public void onSuccess(Object o, int type) {
+        switch (type) {
+            case 0:
+                if (o != null && o instanceof BaseBean) {
+                    BaseBean baseBean = (BaseBean) o;
+                    LogUtils.e(this, "msg : " + baseBean.getMsg());
+                    view.requestFailed(baseBean.getMsg());
+                    if ("1".equals(baseBean.getCode())) {
+                        UIUtils.sendDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                view.navigationNext();
+                            }
+                        }, 500);
 
-        if (baseBean != null) {
-            LogUtils.e(this,"msg : "+baseBean.getMsg());
-            view.requestFailed(baseBean.getMsg());
-            if ("1".equals(baseBean.getCode())) {
-                view.navigationNext();
-            }
+                    }
+                }
+                break;
+            case 1:
+                if (o != null && o instanceof String) {
+                    view.uploadSuccess((String) o);
+                    view.requestFailed(UIUtils.getResources().getString(R.string.upload) + UIUtils.getResources().getString(R.string.success));
+                }
+                break;
         }
+
         view.hideLoading();
 
     }

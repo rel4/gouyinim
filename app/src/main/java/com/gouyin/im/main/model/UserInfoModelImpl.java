@@ -28,7 +28,7 @@ public class UserInfoModelImpl implements UserInfoModel {
                 UIUtils.onRunMainThred(new Runnable() {
                     @Override
                     public void run() {
-                        listener.onSuccess(arraylist);
+                        listener.onSuccess(arraylist,0);
                     }
                 });
 

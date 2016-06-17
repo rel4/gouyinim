@@ -18,6 +18,7 @@ import com.trello.rxlifecycle.components.RxFragment;
 
 import butterknife.ButterKnife;
 import im.gouyin.com.progressdialog.ProgressDialog;
+import rx.Observable;
 
 /**
  * Created by pc on 2016/5/31.
@@ -122,7 +123,7 @@ public abstract class BaseFragment extends RxFragment {
      * 初始化加载进度条
      */
     private void initProgressDialog() {
-        progressDialog = new ProgressDialog(mActivity==null?ConfigUtils.getInstance().getActivityContext():mActivity);
+        progressDialog = new ProgressDialog(getActivity()==null?ConfigUtils.getInstance().getActivityContext():getActivity());
     }
 
     /**

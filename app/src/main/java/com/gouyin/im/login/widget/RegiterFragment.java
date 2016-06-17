@@ -11,8 +11,6 @@ import android.widget.TextView;
 
 import com.gouyin.im.R;
 import com.gouyin.im.base.BaseFragment;
-import com.gouyin.im.event.Events;
-import com.gouyin.im.event.RxBus;
 import com.gouyin.im.login.presenter.RegiterFragmentPresener;
 import com.gouyin.im.login.presenter.RegiterFragmentPresenerImpl;
 import com.gouyin.im.login.view.RegiterFragmentView;
@@ -20,7 +18,6 @@ import com.gouyin.im.utils.ConfigUtils;
 import com.gouyin.im.utils.FragmentUtils;
 import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.UIUtils;
-import com.trello.rxlifecycle.FragmentEvent;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -97,6 +94,8 @@ public class RegiterFragment extends BaseFragment implements RegiterFragmentView
         ConfigUtils.getInstance().getMainHandler().postDelayed(new Runnable() {
             @Override
             public void run() {
+                if (tvSecurityCode==null)
+                    return;
                 if (currCount <= 60) {
                     tvSecurityCode.setClickable(false);
                     tvSecurityCode.setFocusable(false);
@@ -128,7 +127,7 @@ public class RegiterFragment extends BaseFragment implements RegiterFragmentView
     @Override
     public void navigationNext(String code) {
         if (null != regiterFragment)
-            FragmentUtils.switchHideFragment(getFragmentManager(), R.id.frameLyout_home_content, regiterFragment, RegiterDataFragment.newInstance());
+            FragmentUtils.swichReplaceFramgent(getFragmentManager(), R.id.frameLyout_login_main_content, new RegiterDataFragment());
         if (mActivity instanceof  LoginMainActivity){
             LoginMainActivity loginMainActivity = (LoginMainActivity) mActivity;
             loginMainActivity.regiterCode=code;

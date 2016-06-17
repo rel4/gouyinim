@@ -47,7 +47,7 @@ public class UserInfoPresenterImpl implements UserInfoPresenter, BaseIModel.onLo
 
 
     @Override
-    public void onSuccess(List<UserInfoBean> users) {
+    public void onSuccess(List<UserInfoBean> users,int type) {
 
         mUserInfoView.loadUserinfo(users);
         mUserInfoView.hide();

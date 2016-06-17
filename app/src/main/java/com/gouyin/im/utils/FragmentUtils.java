@@ -42,7 +42,7 @@ public class FragmentUtils {
     }
 
     /**
-     * 替换Fragmentc
+     * 替换Fragment
      *
      * @param manager
      * @param containerViewId

@@ -8,4 +8,5 @@ import com.gouyin.im.login.view.RegiterDataFragmentView;
  */
 public interface RegiterDataFragmentPresenter extends BaseIPresenter<RegiterDataFragmentView>{
     void  login(String face,String sex,String pwd,String authcode);
+    void  upLoadIcon(String iconPath);
 }

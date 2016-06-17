@@ -1,5 +1,6 @@
 package com.gouyin.im.login.widget;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,6 +40,7 @@ public class RegiterDataFragment extends BaseFragment implements RegiterDataFrag
     EditText editPassword;
     private RegiterDataFragmentPresenter presenter;
     private String sex = "1";
+    private String facePath;
 
     public static RegiterDataFragment newInstance() {
         return new RegiterDataFragment();
@@ -68,7 +70,9 @@ public class RegiterDataFragment extends BaseFragment implements RegiterDataFrag
                         .onNext((events) -> {
                             String message = (String) events.message;
                             LogUtils.e(RegiterDataFragment.class, "pic_path : " + message);
+
                             ImageServerApi.showURLImage(addIcom, message);
+                            presenter.upLoadIcon(message);
                         }).create();
 
                 break;
@@ -88,11 +92,11 @@ public class RegiterDataFragment extends BaseFragment implements RegiterDataFrag
                     showToast(resources.getString(R.string.password) + resources.getString(R.string.not_empty));
                     return;
                 }
-                if (pwd .length()>16 || pwd.length() < 0) {
-                    showToast(resources.getString(R.string.password) +resources.getString(R.string.framat)+resources.getString(R.string.error));
+                if (pwd.length() > 16 || pwd.length() < 0) {
+                    showToast(resources.getString(R.string.password) + resources.getString(R.string.framat) + resources.getString(R.string.error));
                     return;
                 }
-                presenter.login("", sex,pwd,((LoginMainActivity)getActivity()).regiterCode );
+                presenter.login(facePath, sex, pwd, ((LoginMainActivity) getActivity()).regiterCode);
                 break;
         }
     }
@@ -100,12 +104,19 @@ public class RegiterDataFragment extends BaseFragment implements RegiterDataFrag
 
     @Override
     public void navigationNext() {
-        getActivity().finish();
+        Activity activity = getActivity();
+        if (activity instanceof LoginMainActivity)
+            ((LoginMainActivity)activity).swicth2Login();
     }
 
     @Override
     public void requestFailed(String reason) {
         showToast(reason);
+    }
+
+    @Override
+    public void uploadSuccess(String path) {
+        this.facePath = path;
     }
 
     @Override

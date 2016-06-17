@@ -3,6 +3,7 @@ package com.gouyin.im.utils;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.LayoutInflater;
@@ -53,14 +54,33 @@ public class UIUtils {
         ConfigUtils.getInstance().getActivityContext().startActivity(intent);
     }
 
+    /**
+     * 获取Resources
+     *
+     * @return
+     */
+    public static Resources getResources() {
+        return ConfigUtils.getInstance().getResources();
+    }
+
+    /**
+     * 运行在主线程
+     *
+     * @param r
+     */
     public static void onRunMainThred(Runnable r) {
         ConfigUtils.getInstance().getMainHandler().post(r);
+    }
+
+    public static void sendDelayed(Runnable r, long time) {
+        ConfigUtils.getInstance().getMainHandler().postDelayed(r, time);
     }
 
     private static Toast toast;
 
     /**
      * 单列
+     *
      * @param ctx
      * @param text
      */
