@@ -112,9 +112,8 @@ public class ServerApi {
     }
 
     public interface AppAPI {
-        //        String baseUrl = "http://10.10.11.120:91/mimei/web/public/index.php/index/";
+//        String baseUrl = "http://10.10.11.120:91/mimei/web/public/index.php/index/";
         String baseUrl = "http://mimei.cntttt.com:88/public/index.php/index/";
-
         @POST("/a.php")
         Observable<GoodSelectBaen> login(
                 @Query("usernname") String username,
