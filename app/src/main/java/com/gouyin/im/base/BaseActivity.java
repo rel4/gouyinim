@@ -126,6 +126,11 @@ public abstract class BaseActivity extends RxAppCompatActivity {
         super.onDestroy();
         onBaseDestroy();
         ButterKnife.unbind(this);
+        if (progressDialog != null) {
+            if (progressDialog.isShowing())
+                progressDialog.dismiss();
+            progressDialog = null;
+        }
     }
 
 

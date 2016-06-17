@@ -18,6 +18,7 @@ import com.trello.rxlifecycle.components.RxFragment;
 
 import butterknife.ButterKnife;
 import im.gouyin.com.progressdialog.ProgressDialog;
+import rx.Observable;
 
 /**
  * Created by pc on 2016/5/31.

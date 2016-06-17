@@ -5,9 +5,9 @@ import java.io.Serializable;
 /**
  * Created by jb on 2016/6/15.
  */
-public class RegiterBean extends BaseBean<RegiterBean.RegiterCode> {
+public class RegiterBean extends BaseBean {
 //        private RegiterCode data;
-
+        private RegiterCode data;
         public  class RegiterCode implements Serializable{
             private  String authcode;
 
@@ -27,11 +27,11 @@ public class RegiterBean extends BaseBean<RegiterBean.RegiterCode> {
             }
         }
 
-//    public RegiterCode getData() {
-//        return data;
-//    }
-//
-//    public void setData(RegiterCode data) {
-//        this.data = data;
-//    }
+    public RegiterCode getData() {
+        return data;
+    }
+
+    public void setData(RegiterCode data) {
+        this.data = data;
+    }
 }

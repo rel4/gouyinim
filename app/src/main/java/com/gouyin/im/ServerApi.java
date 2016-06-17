@@ -1,8 +1,6 @@
 package com.gouyin.im;
 
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.gouyin.im.bean.BaseBean;
 import com.gouyin.im.bean.GoodSelectBaen;
 import com.gouyin.im.bean.RegiterBean;
@@ -10,6 +8,7 @@ import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.UnicodeUtils;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Authenticator;
@@ -39,7 +38,6 @@ public class ServerApi {
 
     public static AppAPI getAppAPI() {
         if (mAppApi == null) {
-            Gson gson = new GsonBuilder().create();
 
             Interceptor mTokenInterceptor = new Interceptor() {
                 @Override
@@ -93,7 +91,7 @@ public class ServerApi {
 
             //OkHttpClient
             OkHttpClient httpClient = new OkHttpClient.Builder()
-//                    .addInterceptor(logging)
+                    .addInterceptor(logging)
                     .addInterceptor(interceptor)
                     .retryOnConnectionFailure(false)
                     .authenticator(mAuthenticator)
@@ -103,7 +101,7 @@ public class ServerApi {
             //Retrofit.
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(AppAPI.baseUrl)
-                    .addConverterFactory(GsonConverterFactory.create(gson))
+                    .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .client(httpClient)
                     .build();
@@ -114,7 +112,8 @@ public class ServerApi {
     }
 
     public interface AppAPI {
-        String baseUrl = "http://10.10.11.120:91/mimei/web/public/index.php/index/";
+        //        String baseUrl = "http://10.10.11.120:91/mimei/web/public/index.php/index/";
+        String baseUrl = "http://mimei.cntttt.com:88/public/index.php/index/";
 
         @POST("/a.php")
         Observable<GoodSelectBaen> login(
@@ -158,6 +157,7 @@ public class ServerApi {
                                           @Field("sex") String sex,
                                           @Field("pwd") String pwd,
                                           @Field("mobileauth") String mobileauth);
-//        Observable<>
+
+
     }
 }

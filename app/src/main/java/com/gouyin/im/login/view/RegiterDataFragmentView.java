@@ -8,4 +8,6 @@ import com.gouyin.im.base.BaseIView;
 public interface RegiterDataFragmentView  extends BaseIView{
     void navigationNext();
     void requestFailed(String reason);
+
+    void uploadSuccess(String path);
 }

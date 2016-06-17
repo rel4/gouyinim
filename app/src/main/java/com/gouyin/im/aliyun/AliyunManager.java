@@ -1,23 +1,22 @@
 package com.gouyin.im.aliyun;
 
-import android.provider.CalendarContract;
-import android.util.Log;
-
 import com.alibaba.sdk.android.oss.ClientConfiguration;
 import com.alibaba.sdk.android.oss.ClientException;
 import com.alibaba.sdk.android.oss.OSS;
 import com.alibaba.sdk.android.oss.OSSClient;
 import com.alibaba.sdk.android.oss.ServiceException;
-import com.alibaba.sdk.android.oss.callback.OSSCompletedCallback;
-import com.alibaba.sdk.android.oss.callback.OSSProgressCallback;
 import com.alibaba.sdk.android.oss.common.OSSLog;
 import com.alibaba.sdk.android.oss.common.auth.OSSCredentialProvider;
 import com.alibaba.sdk.android.oss.common.auth.OSSPlainTextAKSKCredentialProvider;
-import com.alibaba.sdk.android.oss.internal.OSSAsyncTask;
 import com.alibaba.sdk.android.oss.model.PutObjectRequest;
 import com.alibaba.sdk.android.oss.model.PutObjectResult;
 import com.gouyin.im.utils.ConfigUtils;
+import com.gouyin.im.utils.FilePathUtlis;
 import com.gouyin.im.utils.LogUtils;
+
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by jb on 2016/6/16.
@@ -26,13 +25,13 @@ public class AliyunManager {
     private OSS oss;
 
     // 运行sample前需要配置以下字段为有效的值
-    private static final String endpoint = "http://mimei.oss-cn-beijing.aliyuncs.com";
+    private static final String endpoint = "http://oss-cn-beijing.aliyuncs.com";
     private static final String accessKeyId = "qfNP5fs6r3MYzYy7";
-    private static final String accessKeySecret = "qfNP5fs6r3MYzYy7";
+    private static final String accessKeySecret = "yrvj6Yv9Vm6ZcZFEgxaxOsPCcYy4Jy";
 
 
-    private static final String testBucket = "mimei";
-    private static final String uploadObject = "mm";
+    private static final String bucket = "mimei";
+
     private static final String downloadObject = "sampleObject";
     private static AliyunManager instances;
 
@@ -59,47 +58,36 @@ public class AliyunManager {
         return instances;
     }
 
-    public void upLoadFile(String uploadFilePath, onAliyunListener listener) {
-        LogUtils.e(this,  "uploadFilePath : " + uploadFilePath);
+    public String upLoadFile(String uploadFilePath, FilePathUtlis.FileType fileType) throws ClientException, ServiceException {
+        LogUtils.e(this, "uploadFilePath : " + uploadFilePath);
         // 构造上传请求
-        PutObjectRequest put = new PutObjectRequest(testBucket, uploadObject, uploadFilePath);
+        String path = fileType.getFileFormat() + File.separator + FilePathUtlis.getUpAliyunFilePath(fileType);
+        PutObjectRequest put = new PutObjectRequest(bucket, path, uploadFilePath);
+//        try {
 
-        // 异步上传时可以设置进度回调
-        put.setProgressCallback(new OSSProgressCallback<PutObjectRequest>() {
-            @Override
-            public void onProgress(PutObjectRequest request, long currentSize, long totalSize) {
+            PutObjectResult putResult = oss.putObject(put);
 
-                LogUtils.e(this, "currentSize: " + currentSize + " totalSize: " + totalSize);
-            }
-        });
+            LogUtils.e("PutObject", "UploadSuccess");
+            String host = endpoint.substring(0, endpoint.indexOf("//") + 2) + put.getBucketName() + "." + endpoint.substring(endpoint.indexOf("//") + 2) + File.separator + put.getObjectKey();
 
-        OSSAsyncTask task = oss.asyncPutObject(put, new OSSCompletedCallback<PutObjectRequest, PutObjectResult>() {
-            @Override
-            public void onSuccess(PutObjectRequest request, PutObjectResult result) {
-                LogUtils.e(this, "UploadSuccess : ");
-                LogUtils.e(this, "ETag : " + result.getETag());
-                LogUtils.e(this, "RequestId : " + result.getRequestId());
-            }
+            LogUtils.e(this, "ServerCallbackReturnBody : " + host);
+            LogUtils.e("ETag", "ETag : " + putResult.getETag());
+            LogUtils.e("RequestId", "  : " + putResult.getRequestId());
 
-            @Override
-            public void onFailure(PutObjectRequest request, ClientException clientExcepion, ServiceException serviceException) {
-                // 请求异常
-                if (clientExcepion != null) {
-                    // 本地异常如网络异常等
-                    clientExcepion.printStackTrace();
-                }
-                if (serviceException != null) {
-                    // 服务异常
-
-
-                    LogUtils.e(this, "ErrorCode : " + serviceException.getErrorCode());
-                    LogUtils.e(this, "RequestId : " + serviceException.getRequestId());
-                    LogUtils.e(this, "HostId : " + serviceException.getHostId());
-                    LogUtils.e(this, "RawMessage : " + serviceException.getRawMessage());
-
-                }
-            }
-        });
+            return host;
+//        } catch (ClientException e) {
+//            // 本地异常如网络异常等
+//
+//            e.printStackTrace();
+//
+//        } catch (ServiceException e) {
+//            // 服务异常
+//            LogUtils.e("RequestId", e.getRequestId());
+//            LogUtils.e("ErrorCode", e.getErrorCode());
+//            LogUtils.e("HostId", e.getHostId());
+//            LogUtils.e("RawMessage", e.getRawMessage());
+//
+//        }
 
 
     }
@@ -107,5 +95,11 @@ public class AliyunManager {
 
     public interface onAliyunListener<T> {
         void onResuit(boolean isSucced, T t);
+    }
+
+    public class AliyunCallBack {
+        private String eTag;
+        private String RequestId;
+        private String serverFilePath;
     }
 }

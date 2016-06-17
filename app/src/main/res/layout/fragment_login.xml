@@ -22,6 +22,7 @@
             android:text="@string/username" />
 
         <EditText
+            android:id="@+id/et_phone_number"
             style="@style/edittext_login"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/tv_username"
@@ -46,10 +47,11 @@
             android:text="@string/password" />
 
         <EditText
+            android:id="@+id/et_password"
             style="@style/edittext_login"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/tv_pwd"
-            android:hint="@string/input_phone_number" />
+            android:hint="@string/input_password" />
     </RelativeLayout>
 
     <TextView
@@ -62,6 +64,7 @@
         android:text="@string/forget_password" />
 
     <TextView
+        android:id="@+id/submit_login"
         android:layout_width="match_parent"
         android:layout_height="@dimen/y92"
         android:layout_below="@+id/tv_forget_password"

@@ -47,7 +47,7 @@
     </RelativeLayout>
 
     <FrameLayout
-        android:id="@+id/frameLyout_home_content"
+        android:id="@+id/frameLyout_login_main_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/layou_navigation_title" />

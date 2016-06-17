@@ -5,6 +5,9 @@ import com.gouyin.im.bean.BaseBean;
 import com.gouyin.im.bean.RegiterBean;
 import com.gouyin.im.utils.LogUtils;
 
+import java.util.List;
+import java.util.Objects;
+
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
