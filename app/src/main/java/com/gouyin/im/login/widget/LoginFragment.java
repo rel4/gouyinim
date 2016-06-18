@@ -12,6 +12,7 @@ import com.gouyin.im.base.BaseFragment;
 import com.gouyin.im.login.presenter.LoginFragmentPersenter;
 import com.gouyin.im.login.presenter.LoginFragmentPersenterImpl;
 import com.gouyin.im.login.view.LoginFragmentView;
+import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.StringUtis;
 import com.gouyin.im.utils.UIUtils;
 
@@ -64,37 +65,41 @@ public class LoginFragment extends BaseFragment implements LoginFragmentView {
     private void login() {
         String password = etPassword.getText().toString().trim();
         String phone = etPhoneNumber.getText().toString().trim();
-        if (StringUtis.isEmpty(password)){
-            showToast(resources.getString(R.string.input_password)+resources.getString(R.string.not_empty));
+        if (StringUtis.isEmpty(password)) {
+            showToast(resources.getString(R.string.input_password) + resources.getString(R.string.not_empty));
             return;
         }
-        if (StringUtis.isEmpty(phone))
-        {
-            showToast(resources.getString(R.string.input_phone_number)+resources.getString(R.string.not_empty));
+        if (StringUtis.isEmpty(phone)) {
+            showToast(resources.getString(R.string.input_phone_number) + resources.getString(R.string.not_empty));
             return;
         }
-        persenter.login(phone,password);
+        persenter.loginSubmit(phone, password);
 
     }
 
     @Override
     public void showLoading() {
-        showLoading();
+        showProgressDialog();
     }
 
     @Override
     public void hideLoading() {
-            hideLoading();
+        hideProgressDialog();
+    }
+
+    @Override
+    public void transfePageMsg(String msg) {
+        showToast(msg);
     }
 
     @Override
     public void loginSuccss() {
-        showToast(resources.getString(R.string.str_login)+resources.getString(R.string.success));
+        showToast(resources.getString(R.string.str_login) + resources.getString(R.string.success));
         UIUtils.sendDelayed(new Runnable() {
             @Override
             public void run() {
                 getActivity().finish();
             }
-        },1000);
+        }, 1000);
     }
 }

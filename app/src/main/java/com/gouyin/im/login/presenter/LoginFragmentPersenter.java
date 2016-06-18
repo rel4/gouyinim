@@ -7,5 +7,5 @@ import com.gouyin.im.login.view.LoginFragmentView;
  * Created by jb on 2016/6/17.
  */
 public interface LoginFragmentPersenter extends BaseIPresenter<LoginFragmentView> {
-    void login(String phone, String password);
+    void loginSubmit(String phone, String password);
 }

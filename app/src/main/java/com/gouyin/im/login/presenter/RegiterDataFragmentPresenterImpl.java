@@ -53,7 +53,7 @@ public class RegiterDataFragmentPresenterImpl implements RegiterDataFragmentPres
                 if (o != null && o instanceof BaseBean) {
                     BaseBean baseBean = (BaseBean) o;
                     LogUtils.e(this, "msg : " + baseBean.getMsg());
-                    view.requestFailed(baseBean.getMsg());
+                    view.transfePageMsg(baseBean.getMsg());
                     if ("1".equals(baseBean.getCode())) {
                         UIUtils.sendDelayed(new Runnable() {
                             @Override
@@ -68,7 +68,7 @@ public class RegiterDataFragmentPresenterImpl implements RegiterDataFragmentPres
             case 1:
                 if (o != null && o instanceof String) {
                     view.uploadSuccess((String) o);
-                    view.requestFailed(UIUtils.getResources().getString(R.string.upload) + UIUtils.getResources().getString(R.string.success));
+                    view.transfePageMsg(UIUtils.getResources().getString(R.string.upload) + UIUtils.getResources().getString(R.string.success));
                 }
                 break;
         }
@@ -80,7 +80,7 @@ public class RegiterDataFragmentPresenterImpl implements RegiterDataFragmentPres
     @Override
     public void onFailure(String msg, Throwable e) {
         LogUtils.e(this, "Throwable : " + msg);
-        view.requestFailed(ConfigUtils.getInstance().getResources().getString(R.string.net_Exception));
+        view.transfePageMsg(ConfigUtils.getInstance().getResources().getString(R.string.net_Exception));
         view.hideLoading();
     }
 }

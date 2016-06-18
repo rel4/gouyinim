@@ -6,10 +6,15 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Handler;
 import android.os.Looper;
+import android.support.annotation.IdRes;
+import android.support.annotation.NonNull;
+import android.support.annotation.StringRes;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
+import javax.annotation.Resource;
 
 /**
  * Created by pc on 2016/6/3.
@@ -55,6 +60,18 @@ public class UIUtils {
     }
 
     /**
+     * 获取字符串资源
+     *
+     * @param resid
+     * @return
+     */
+    @NonNull
+    public static String getStringRes(@StringRes int resid) {
+        return getResources().getString(resid);
+
+    }
+
+    /**
      * 获取Resources
      *
      * @return
@@ -72,8 +89,24 @@ public class UIUtils {
         ConfigUtils.getInstance().getMainHandler().post(r);
     }
 
+    /**
+     * 延迟执行
+     *
+     * @param r
+     * @param time
+     */
     public static void sendDelayed(Runnable r, long time) {
         ConfigUtils.getInstance().getMainHandler().postDelayed(r, time);
+    }
+
+    /**
+     * 延迟1秒执行
+     *
+     * @param r
+     * @param
+     */
+    public static void sendDelayedOneMillis(Runnable r) {
+        ConfigUtils.getInstance().getMainHandler().postDelayed(r, 1000);
     }
 
     private static Toast toast;
@@ -85,6 +118,8 @@ public class UIUtils {
      * @param text
      */
     public static void showToast(Context ctx, String text) {
+        if (ctx == null || StringUtis.isEmpty(text))
+            return;
         if (toast == null) {
             toast = Toast.makeText(ctx, text, Toast.LENGTH_SHORT);
         } else {
@@ -92,4 +127,5 @@ public class UIUtils {
         }
         toast.show();
     }
+
 }

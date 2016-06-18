@@ -109,10 +109,6 @@ public class RegiterDataFragment extends BaseFragment implements RegiterDataFrag
             ((LoginMainActivity)activity).swicth2Login();
     }
 
-    @Override
-    public void requestFailed(String reason) {
-        showToast(reason);
-    }
 
     @Override
     public void uploadSuccess(String path) {
@@ -127,5 +123,10 @@ public class RegiterDataFragment extends BaseFragment implements RegiterDataFrag
     @Override
     public void hideLoading() {
         hideProgressDialog();
+    }
+
+    @Override
+    public void transfePageMsg(String msg) {
+        showToast(msg);
     }
 }

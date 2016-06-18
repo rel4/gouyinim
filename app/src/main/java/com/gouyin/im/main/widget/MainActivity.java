@@ -1,6 +1,7 @@
 package com.gouyin.im.main.widget;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -20,12 +21,17 @@ import com.gouyin.im.main.presenter.MainPresenter;
 import com.gouyin.im.main.presenter.MainPresenterImpl;
 import com.gouyin.im.main.view.MainView;
 import com.gouyin.im.my.widget.MyFragment;
+import com.gouyin.im.rongyun.widget.AppConversationActivity;
 import com.gouyin.im.utils.ConfigUtils;
 import com.gouyin.im.utils.FragmentUtils;
+import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.UIUtils;
 
 import butterknife.Bind;
 import butterknife.OnClick;
+import io.rong.imkit.RongLogUtils;
+import io.rong.imkit.RongyunConfig;
+import io.rong.imlib.RongIMClient;
 
 public class MainActivity extends BaseActivity implements MainView {
     @Bind(R.id.tv_home_page)
@@ -51,12 +57,33 @@ public class MainActivity extends BaseActivity implements MainView {
     protected void initView() {
         mMainPresenter.switchNavigation(R.id.tv_home_page);
 //        onClick(tvHomePage);
+
     }
+
 
     @Override
     protected View setRootContentView() {
         mMainPresenter = new MainPresenterImpl(this);
-        return  UIUtils.inflateLayout(R.layout.activity_main);
+        RongyunConfig.getInstance().connectRonyun("szr8DvbkpxjhVYgwTJBOy14E80Qlu5sSomiFVkhRoX6fvIUQ2yA3o8Dw8WNWCRbBKAxe9Aln5eE=", new RongyunConfig.ConnectCallback() {
+
+            @Override
+            public void onSuccess(String s) {
+                LogUtils.e(MainActivity.class, "onSuccess : " + s);
+            }
+
+            @Override
+            public void onError(RongIMClient.ErrorCode errorCode) {
+                LogUtils.e(MainActivity.class, "onTokenIncorrect Message : " + errorCode.getMessage());
+                LogUtils.e(MainActivity.class, "onTokenIncorrect name : " + errorCode.name());
+                LogUtils.e(MainActivity.class, "onTokenIncorrect Value : " + errorCode.getValue());
+            }
+
+            @Override
+            public void onTokenIncorrect() {
+                LogUtils.e(MainActivity.class, "onTokenIncorrect : ");
+            }
+        });
+        return UIUtils.inflateLayout(R.layout.activity_main);
     }
 
     @Override
@@ -81,9 +108,13 @@ public class MainActivity extends BaseActivity implements MainView {
 
     @Override
     public void switch2IM() {
-        if (imFragment == null)
-            imFragment = new IMFragment();
-        enterPage(imFragment);
+        Intent intent = new Intent(this, AppConversationActivity.class);
+        intent.putExtra("targetId","11");
+        UIUtils.startActivity(intent);
+
+//        if (imFragment == null)
+//            imFragment = new IMFragment();
+//        enterPage(imFragment);
     }
 
     @Override
@@ -135,13 +166,15 @@ public class MainActivity extends BaseActivity implements MainView {
         tvMyPage.setSelected(fragment == myFragment);
 
     }
-    private  long exitTime;
+
+    private long exitTime;
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (KeyEvent.KEYCODE_BACK == keyCode) {
             // 判断是否在两秒之内连续点击返回键，是则退出，否则不退出
             if (System.currentTimeMillis() - exitTime > 2000) {
-               showToast( "再按一次退出程序");
+                showToast("再按一次退出程序");
                 // 将系统当前的时间赋值给exitTime
                 exitTime = System.currentTimeMillis();
             } else {

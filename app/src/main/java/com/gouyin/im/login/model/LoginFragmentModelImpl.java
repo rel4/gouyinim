@@ -2,6 +2,7 @@ package com.gouyin.im.login.model;
 
 import com.gouyin.im.ServerApi;
 import com.gouyin.im.bean.LoginBean;
+import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.MD5Util;
 
 import rx.Subscriber;

@@ -123,6 +123,11 @@ public class RegiterFragment extends BaseFragment implements RegiterFragmentView
         hideProgressDialog();
     }
 
+    @Override
+    public void transfePageMsg(String msg) {
+
+    }
+
 
     @Override
     public void navigationNext(String code) {

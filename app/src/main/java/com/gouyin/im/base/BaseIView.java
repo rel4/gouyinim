@@ -4,6 +4,20 @@ package com.gouyin.im.base;
  * Created by pc on 2016/6/14.
  */
 public interface BaseIView {
-    void  showLoading();
-    void  hideLoading();
+    /**
+     * 显示加载行为
+     */
+    void showLoading();
+
+    /**
+     * 隐藏加载行为
+     */
+    void hideLoading();
+
+    /**
+     * 传递页面消息
+     *
+     * @param msg
+     */
+    void transfePageMsg(String msg);
 }
