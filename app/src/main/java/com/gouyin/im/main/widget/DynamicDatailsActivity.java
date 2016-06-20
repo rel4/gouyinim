@@ -12,6 +12,7 @@ import com.gouyin.im.R;
 import com.gouyin.im.adapter.DynamiDayailsAdapter;
 import com.gouyin.im.base.BaseActivity;
 import com.gouyin.im.bean.BaseBean;
+import com.gouyin.im.bean.BaseDataBean;
 import com.gouyin.im.main.presenter.DynamincDatailsPresenter;
 import com.gouyin.im.main.presenter.DynamincDatailsPresenterImpl;
 import com.gouyin.im.main.view.DynamicDatailsView;
@@ -53,7 +54,7 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
             Object o = CacheManager.readObject(ConfigUtils.getInstance().getApplicationContext(), TAG + "txt");
             if (o instanceof ArrayList) {
                 LogUtils.e(TAG, "CacheManager : " + ((ArrayList<BaseBean>)o).toString());
-                loadData((ArrayList<BaseBean>)o);
+                loadData((ArrayList<BaseDataBean>)o);
                 recyclerView.setRefreshing(true);
             }
         }
@@ -74,7 +75,7 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
     }
 
     @Override
-    public void loadData(List<BaseBean> datas) {
+    public void loadData(List<BaseDataBean> datas) {
         if (mAdapter == null) {
             mAdapter = new DynamiDayailsAdapter(datas);
             View view = UIUtils.inflateLayout(R.layout.item_home_one_menu);

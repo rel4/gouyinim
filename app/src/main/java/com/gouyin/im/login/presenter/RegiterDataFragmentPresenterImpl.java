@@ -13,7 +13,7 @@ import com.gouyin.im.utils.UIUtils;
 /**
  * Created by jb on 2016/6/15.
  */
-public class RegiterDataFragmentPresenterImpl implements RegiterDataFragmentPresenter, BaseIModel.onLoadDateListener {
+public class RegiterDataFragmentPresenterImpl implements RegiterDataFragmentPresenter, BaseIModel.onLoadDateSingleListener {
 
     private RegiterDataFragmentView view;
     private RegiterDataFragmentModel model;

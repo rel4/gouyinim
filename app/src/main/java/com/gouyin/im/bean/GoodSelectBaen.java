@@ -1,46 +1,88 @@
 package com.gouyin.im.bean;
 
+import java.util.List;
+
 /**
  * Created by pc on 2016/6/3.
  */
 public class GoodSelectBaen extends BaseBean {
 
-    private String data;
+    private List<GoodSelectBaen.Data> data;
 
-    private String code;
-
-    private String msg;
-
-    public String getData() {
+    public List<Data> getData() {
         return data;
     }
 
-    public void setData(String data) {
+    public void setData(List<Data> data) {
         this.data = data;
     }
 
-    public String getCode() {
-        return code;
+    public class Data extends BaseDataBean {
+        private String face;
+        private String nickname;
+        private String sex;
+        private String place;
+        private String fansnum;
+        private String uid;
+
+        public String getUserid() {
+            return uid;
+        }
+
+        public void setUserid(String userid) {
+            this.uid = userid;
+        }
+
+        public String getFace() {
+            return face;
+        }
+
+        public void setFace(String face) {
+            this.face = face;
+        }
+
+        public String getNickname() {
+            return nickname;
+        }
+
+        public void setNickname(String nickname) {
+            this.nickname = nickname;
+        }
+
+        public String getSex() {
+            return sex;
+        }
+
+        public void setSex(String sex) {
+            this.sex = sex;
+        }
+
+        public String getPlace() {
+            return place;
+        }
+
+        public void setPlace(String place) {
+            this.place = place;
+        }
+
+        public String getFansnum() {
+            return fansnum;
+        }
+
+        public void setFansnum(String fansnum) {
+            this.fansnum = fansnum;
+        }
+
+        @Override
+        public String toString() {
+            return "Data{" +
+                    "face='" + face + '\'' +
+                    ", nickname='" + nickname + '\'' +
+                    ", sex='" + sex + '\'' +
+                    ", place='" + place + '\'' +
+                    ", fansnum='" + fansnum + '\'' +
+                    '}';
+        }
     }
 
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getMsg() {
-        return msg;
-    }
-
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
-
-    @Override
-    public String toString() {
-        return "GoodSelectBaen{" +
-                "data='" + data + '\'' +
-                ", code='" + code + '\'' +
-                ", msg='" + msg + '\'' +
-                '}';
-    }
 }

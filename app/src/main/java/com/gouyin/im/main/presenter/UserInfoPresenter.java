@@ -7,4 +7,6 @@ public interface UserInfoPresenter {
     void loadUserInfoData();
 
     void switchNavigation(int id);
+
+    void loadUserInfodetail(String uid);
 }

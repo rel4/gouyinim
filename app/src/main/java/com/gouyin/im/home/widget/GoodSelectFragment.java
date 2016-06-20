@@ -66,30 +66,31 @@ public class GoodSelectFragment extends BaseFragment implements GoodSelectView {
             @Override
             public void onRefresh() {
                 isloadMore = false;
-                goodSelectPresenter.loadGoodSelectDateList();
+                goodSelectPresenter.uploadGoodSelectDateList();
 
             }
 
             @Override
             public void onLoadMore() {
                 isloadMore = true;
-                goodSelectPresenter.loadGoodSelectDateList();
+                goodSelectPresenter.downloadGoodSelectDateList();
 
             }
         });
-        if (CacheManager.isExist4DataCache(ConfigUtils.getInstance().getApplicationContext(), "1." + "txt")) {
-            Object o = CacheManager.readObject(ConfigUtils.getInstance().getApplicationContext(), "1." + "txt");
-            if (o!=null&&o instanceof ArrayList) {
-//                LogUtils.e(TAG, "CacheManager : " + ((ArrayList<BaseBean>)o).toString());
+//        if (CacheManager.isExist4DataCache(ConfigUtils.getInstance().getApplicationContext(), "1." + "txt")) {
+//            Object o = CacheManager.readObject(ConfigUtils.getInstance().getApplicationContext(), "1." + "txt");
+//            if (o!=null&&o instanceof ArrayList) {
+////                LogUtils.e(TAG, "CacheManager : " + ((ArrayList<BaseBean>)o).toString());
+//
+//                addGoodSelectDate((ArrayList<GoodSelectBaen.Data>)o);
+//
+////                addGoodSelectDate(null);
+//                recyclerview.setRefreshing(true);
+//            }
+//        }
 
-                addGoodSelectDate((ArrayList<GoodSelectBaen>)o);
-
-//                addGoodSelectDate(null);
-                recyclerview.setRefreshing(true);
-            }
-        }
-
-        goodSelectPresenter.loadGoodSelectDateList();
+//        goodSelectPresenter.uploadGoodSelectDateList();
+        recyclerview.setRefreshing(true);
     }
 
     private GoodSelectAdapter mAdapter;
@@ -97,17 +98,17 @@ public class GoodSelectFragment extends BaseFragment implements GoodSelectView {
     private boolean isloadMore = false;
 
     @Override
-    public void addGoodSelectDate(List<GoodSelectBaen> list) {
+    public void addGoodSelectDate(List<GoodSelectBaen.Data> list) {
 
         if (mAdapter == null) {
             mAdapter = new GoodSelectAdapter(list);
-            if (recyclerview!=null)
-            recyclerview.setAdapter(mAdapter);
+            if (recyclerview != null)
+                recyclerview.setAdapter(mAdapter);
         } else {
             mAdapter.addData(list);
-            loadMoreComplete();
-        }
 
+        }
+        loadMoreComplete();
 
 
     }
@@ -119,7 +120,7 @@ public class GoodSelectFragment extends BaseFragment implements GoodSelectView {
 
     @Override
     public void hide() {
-      hideProgressDialog();
+        hideProgressDialog();
     }
 
     private void loadMoreComplete() {

@@ -3,7 +3,7 @@ package com.gouyin.im.bean;
 /**
  * Created by pc on 2016/6/6.
  */
-public class UserInfoBean extends BaseBean {
+public class UserInfoBean extends BaseDataBean {
     private String name;
     private int action;
 

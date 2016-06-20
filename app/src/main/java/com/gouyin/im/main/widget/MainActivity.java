@@ -1,10 +1,9 @@
 package com.gouyin.im.main.widget;
 
 
-import android.content.Intent;
+
 import android.os.Bundle;
-import android.app.Fragment;
-import android.app.FragmentManager;
+import android.support.v4.app.FragmentManager;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -13,15 +12,15 @@ import android.widget.TextView;
 
 import com.gouyin.im.R;
 import com.gouyin.im.base.BaseActivity;
+import com.gouyin.im.base.BaseFragment;
 import com.gouyin.im.center.widget.CenterFragment;
 import com.gouyin.im.find.widget.FindFragment;
 import com.gouyin.im.home.widget.HomeFragment;
-import com.gouyin.im.im.widget.IMFragment;
+import com.gouyin.im.im.widget.IMHomeFragment;
 import com.gouyin.im.main.presenter.MainPresenter;
 import com.gouyin.im.main.presenter.MainPresenterImpl;
 import com.gouyin.im.main.view.MainView;
 import com.gouyin.im.my.widget.MyFragment;
-import com.gouyin.im.rongyun.widget.AppConversationActivity;
 import com.gouyin.im.utils.ConfigUtils;
 import com.gouyin.im.utils.FragmentUtils;
 import com.gouyin.im.utils.LogUtils;
@@ -29,7 +28,6 @@ import com.gouyin.im.utils.UIUtils;
 
 import butterknife.Bind;
 import butterknife.OnClick;
-import io.rong.imkit.RongLogUtils;
 import io.rong.imkit.RongyunConfig;
 import io.rong.imlib.RongIMClient;
 
@@ -48,7 +46,7 @@ public class MainActivity extends BaseActivity implements MainView {
     @Bind(R.id.main_content)
     FrameLayout mainContent;
     //当前一级页面显示的Fragment
-    private Fragment mCurrentFragment, homeFragment, imFragment, centerFragment, findFragment, myFragment;
+    private BaseFragment mCurrentFragment, homeFragment, imHomeFragment, centerFragment, findFragment, myFragment;
 
     private FragmentManager mFragmentManager;
     private MainPresenter mMainPresenter;
@@ -108,13 +106,9 @@ public class MainActivity extends BaseActivity implements MainView {
 
     @Override
     public void switch2IM() {
-        Intent intent = new Intent(this, AppConversationActivity.class);
-        intent.putExtra("targetId","11");
-        UIUtils.startActivity(intent);
-
-//        if (imFragment == null)
-//            imFragment = new IMFragment();
-//        enterPage(imFragment);
+        if (imHomeFragment == null)
+            imHomeFragment = new IMHomeFragment();
+        enterPage(imHomeFragment);
     }
 
     @Override
@@ -145,22 +139,22 @@ public class MainActivity extends BaseActivity implements MainView {
      *
      * @param fragment
      */
-    private void enterPage(Fragment fragment) {
+    private void enterPage(BaseFragment fragment) {
         if (fragment == null)
             return;
         switchNatvigationSelect(fragment);
         if (mFragmentManager == null)
-            mFragmentManager = getFragmentManager();
+            mFragmentManager = getSupportFragmentManager();
 
         FragmentUtils.switchHideFragment(mFragmentManager, R.id.main_content, mCurrentFragment, fragment);
         mCurrentFragment = fragment;
     }
 
-    private void switchNatvigationSelect(Fragment fragment) {
+    private void switchNatvigationSelect(BaseFragment fragment) {
         if (fragment == null)
             return;
         tvHomePage.setSelected(fragment == homeFragment);
-        tvImPage.setSelected(fragment == imFragment);
+        tvImPage.setSelected(fragment == imHomeFragment);
         tvCenterPage.setSelected(fragment == centerFragment);
         tvFindPage.setSelected(fragment == findFragment);
         tvMyPage.setSelected(fragment == myFragment);

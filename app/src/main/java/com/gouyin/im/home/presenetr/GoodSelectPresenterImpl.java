@@ -1,7 +1,6 @@
 package com.gouyin.im.home.presenetr;
 
 
-
 import com.gouyin.im.base.BaseIModel;
 import com.gouyin.im.bean.GoodSelectBaen;
 import com.gouyin.im.home.model.GoodSelectModelImpl;
@@ -14,22 +13,31 @@ import java.util.List;
 /**
  * Created by pc on 2016/6/3.
  */
-public class GoodSelectPresenterImpl implements GoodSelectPresenter ,BaseIModel.onLoadDateListener<List<GoodSelectBaen>> {
+public class GoodSelectPresenterImpl implements GoodSelectPresenter, BaseIModel.onLoadDateSingleListener<List<GoodSelectBaen.Data>> {
     private final GoodSelectModelImpl mGoodModel;
     private final GoodSelectView mGoodView;
+    private int page = 1;
 
-    public GoodSelectPresenterImpl(GoodSelectView goodSelectView){
-        this.mGoodView =goodSelectView;
+    public GoodSelectPresenterImpl(GoodSelectView goodSelectView) {
+        this.mGoodView = goodSelectView;
         this.mGoodModel = new GoodSelectModelImpl();
     }
+
     @Override
-    public void loadGoodSelectDateList() {
+    public void uploadGoodSelectDateList() {
         mGoodView.show();
-        mGoodModel.loadGoodSelectDate(this);
+        mGoodModel.loadGoodSelectDate("1", 1, this);
+        page++;
     }
 
     @Override
-    public void onSuccess(List<GoodSelectBaen> list,int type) {
+    public void downloadGoodSelectDateList() {
+        mGoodView.show();
+        mGoodModel.loadGoodSelectDate("1", page, this);
+    }
+
+    @Override
+    public void onSuccess(List<GoodSelectBaen.Data> list, int type) {
 
         mGoodView.addGoodSelectDate(list);
         mGoodView.hide();
@@ -38,6 +46,6 @@ public class GoodSelectPresenterImpl implements GoodSelectPresenter ,BaseIModel.
     @Override
     public void onFailure(String msg, Throwable e) {
         mGoodView.hide();
-        LogUtils.e(this,msg);
+        LogUtils.e(this, msg);
     }
 }

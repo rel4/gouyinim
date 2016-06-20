@@ -23,7 +23,7 @@ public class RegiterDataFragmentModelImpl implements RegiterDataFragmentModel {
 
 
     @Override
-    public void login(String face, String sex, String pwd, String authcode, onLoadDateListener listener) {
+    public void login(String face, String sex, String pwd, String authcode, onLoadDateSingleListener listener) {
 //
 
 
@@ -53,7 +53,7 @@ public class RegiterDataFragmentModelImpl implements RegiterDataFragmentModel {
 
 
     @Override
-    public void upLoadIcon(String iconPath, onLoadDateListener listener) {
+    public void upLoadIcon(String iconPath, onLoadDateSingleListener listener) {
         Observable.create(new Observable.OnSubscribe<String>() {
             @Override
             public void call(Subscriber<? super String> subscriber) {

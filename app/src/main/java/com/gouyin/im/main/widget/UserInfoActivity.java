@@ -3,15 +3,20 @@ package com.gouyin.im.main.widget;
 import android.graphics.Color;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.gouyin.im.AppConstant;
+import com.gouyin.im.ImageServerApi;
 import com.gouyin.im.R;
 import com.gouyin.im.adapter.UserInfoAdapter;
 import com.gouyin.im.base.BaseActivity;
 import com.gouyin.im.bean.UserInfoBean;
+import com.gouyin.im.bean.UserInfoDetailBean;
 import com.gouyin.im.main.presenter.UserInfoPresenter;
 import com.gouyin.im.main.presenter.UserInfoPresenterImpl;
 import com.gouyin.im.main.view.UserInfoView;
+import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.UIUtils;
 import com.gouyin.im.widget.DividerItemDecoration;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
@@ -20,6 +25,7 @@ import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import java.util.List;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -37,14 +43,16 @@ public class UserInfoActivity extends BaseActivity implements UserInfoView {
     TextView tvSendMsg;
     @Bind(R.id.tv_appointment)
     TextView tvAppointment;
-    @Bind(R.id.tv_send_flowers)
-    TextView tvSendFlowers;
+
+
     private UserInfoPresenter mPresenter;
     private UserInfoAdapter mAdapter;
     private boolean isRefresh;
+    private ViewHolder headHolder;
 
     @Override
     protected void initView() {
+        String userId = getIntent().getStringExtra(AppConstant.USER_ID);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerview.setEmptyView(textEmpty);
@@ -53,7 +61,7 @@ public class UserInfoActivity extends BaseActivity implements UserInfoView {
         recyclerview.setLoadingMoreProgressStyle(ProgressStyle.SysProgress);
         recyclerview.setArrowImageView(R.mipmap.iconfont_downgrey);
         recyclerview.addHeaderView(initHeadLayout());
-        recyclerview.addItemDecoration(new DividerItemDecoration(this,LinearLayoutManager.VERTICAL, Color.GREEN,true));
+        recyclerview.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL, Color.GREEN, true));
         recyclerview.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
@@ -67,16 +75,21 @@ public class UserInfoActivity extends BaseActivity implements UserInfoView {
                 mPresenter.loadUserInfoData();
             }
         });
+        LogUtils.e(this, "userId : " + userId);
+        mPresenter.loadUserInfodetail(userId);
         recyclerview.setRefreshing(true);
 
     }
 
     /**
      * 初始化头部局
+     *
      * @return
      */
-    private View initHeadLayout(){
-        return UIUtils.inflateLayout(R.layout.head_user_info);
+    private View initHeadLayout() {
+        View headView = UIUtils.inflateLayout(R.layout.head_user_info);
+        headHolder = new ViewHolder(headView);
+        return headView;
     }
 
     @Override
@@ -141,5 +154,42 @@ public class UserInfoActivity extends BaseActivity implements UserInfoView {
     public void hide() {
         hideProgressDialog();
         colseload();
+    }
+
+    @Override
+    public void setUserInfodetail(UserInfoDetailBean bean) {
+        headHolder.setUserInfodetail(bean);
+    }
+
+    static class ViewHolder {
+
+        @Bind(R.id.user_background)
+        ImageView userBackground;
+        @Bind(R.id.iv_user_icon)
+        ImageView ivUserIcon;
+        @Bind(R.id.tv_user_name)
+        TextView tvUserName;
+        @Bind(R.id.tv_fen_number)
+        TextView tvFenNumber;
+        @Bind(R.id.tv_wacth_number)
+        TextView tvWacthNumber;
+        @Bind(R.id.tv_dynamic_number)
+        TextView tvDynamicNumber;
+        @Bind(R.id.tv_flower_number)
+        TextView tvFlowerNumber;
+        @Bind(R.id.tv_wacth)
+        TextView tvWacth;
+        private UserInfoDetailBean userInfodetail;
+
+        ViewHolder(View view) {
+            ButterKnife.bind(this, view);
+        }
+
+        public void setUserInfodetail(UserInfoDetailBean userInfodetail) {
+            if (userInfodetail == null)
+                return;
+            UserInfoDetailBean.UserInfoDetailDataBean data = userInfodetail.getData();
+            ImageServerApi.showURLImage(userBackground, data.getLikeImage());
+        }
     }
 }

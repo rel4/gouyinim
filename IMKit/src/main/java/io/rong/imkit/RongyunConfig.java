@@ -38,7 +38,7 @@ public class RongyunConfig {
             @Override
             public void onSuccess(String s) {
                 if (callback != null)
-                    callback.onSuccess( s);
+                    callback.onSuccess(s);
             }
 
             @Override

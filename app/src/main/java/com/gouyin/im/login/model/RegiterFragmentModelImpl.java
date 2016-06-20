@@ -5,13 +5,9 @@ import com.gouyin.im.bean.BaseBean;
 import com.gouyin.im.bean.RegiterBean;
 import com.gouyin.im.utils.LogUtils;
 
-import java.util.List;
-import java.util.Objects;
-
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.exceptions.Exceptions;
 import rx.schedulers.Schedulers;
 
 /**
@@ -47,7 +43,7 @@ public class RegiterFragmentModelImpl implements RegiterFragmentModel {
     }
 
     @Override
-    public void loadSecurity(String phoneMunber, final onLoadDateListener listener) {
+    public void loadSecurity(String phoneMunber, final onLoadDateSingleListener listener) {
         Observable<BaseBean> observable = ServerApi.getAppAPI().sendSecurityCode(phoneMunber);
         observable.observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())

@@ -8,7 +8,7 @@ import com.gouyin.im.base.BaseIModel;
 public interface RegiterFragmentModel extends BaseIModel {
     void loadSubmit(String phoneNumber,String code,onLoadSubmitListenter listenter);
 
-     void loadSecurity(String phoneMunber,onLoadDateListener listener);
+     void loadSecurity(String phoneMunber,onLoadDateSingleListener listener);
 
     public interface onLoadSubmitListenter<T> {
 

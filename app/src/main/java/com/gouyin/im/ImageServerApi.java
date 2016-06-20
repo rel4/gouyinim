@@ -14,7 +14,7 @@ import java.io.File;
 public class ImageServerApi {
     private static volatile Picasso mPicasso;
     private static int errorImage = R.mipmap.ic_launcher;
-    private static int loadingImage = R.mipmap.affirm_icon;
+    private static int loadingImage = R.mipmap.ic_launcher;
 
     private static Picasso getPicasso() {
         if (mPicasso == null) {

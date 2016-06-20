@@ -14,7 +14,7 @@ import com.gouyin.im.utils.LogUtils;
 /**
  * Created by pc on 2016/6/14.
  */
-public class RegiterFragmentPresenerImpl implements RegiterFragmentPresener, BaseIModel.onLoadDateListener<BaseBean>, RegiterFragmentModel.onLoadSubmitListenter<RegiterBean> {
+public class RegiterFragmentPresenerImpl implements RegiterFragmentPresener, BaseIModel.onLoadDateSingleListener<BaseBean>, RegiterFragmentModel.onLoadSubmitListenter<RegiterBean> {
     private RegiterFragmentView view;
     private RegiterFragmentModel fragmentModel;
 

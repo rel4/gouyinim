@@ -9,5 +9,5 @@ import java.util.List;
  * Created by pc on 2016/6/3.
  */
 public interface GoodSelectModel {
-    void loadGoodSelectDate(BaseIModel.onLoadDateListener<List<GoodSelectBaen>> listener);
+    void loadGoodSelectDate(String type,int page,BaseIModel.onLoadDateSingleListener<List<GoodSelectBaen.Data>> listener);
 }

@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.gouyin.im.bean.BaseBean;
+import com.gouyin.im.bean.BaseDataBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.List;
 /**
  * Created by pc on 2016/6/4.
  */
-public abstract class BaseRecyclerViewAdapter<T extends BaseBean> extends RecyclerView.Adapter {
+public abstract class BaseRecyclerViewAdapter<T extends BaseDataBean> extends RecyclerView.Adapter {
     protected List<T> datas;
 //    private int layoutID;
 

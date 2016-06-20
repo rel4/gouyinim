@@ -1,6 +1,7 @@
 package com.gouyin.im.main.view;
 
 import com.gouyin.im.bean.UserInfoBean;
+import com.gouyin.im.bean.UserInfoDetailBean;
 
 import java.util.List;
 
@@ -21,4 +22,6 @@ public interface UserInfoView {
     void show();
 
     void hide();
+
+    void setUserInfodetail(UserInfoDetailBean bean);
 }

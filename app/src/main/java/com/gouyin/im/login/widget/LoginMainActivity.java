@@ -1,16 +1,15 @@
 package com.gouyin.im.login.widget;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
+import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.gouyin.im.R;
 import com.gouyin.im.base.BaseActivity;
+import com.gouyin.im.base.BaseFragment;
 import com.gouyin.im.login.presenter.LoginMainPresenter;
 import com.gouyin.im.login.presenter.LoginMainPresenterImpl;
-
 import com.gouyin.im.login.view.LoginMainView;
 import com.gouyin.im.utils.FragmentUtils;
 import com.gouyin.im.utils.UIUtils;
@@ -34,7 +33,7 @@ public class LoginMainActivity extends BaseActivity implements LoginMainView {
     protected String regiterCode;
     @Override
     protected void initView() {
-        fragmentManager = getFragmentManager();
+        fragmentManager = getSupportFragmentManager();
         presenter.swicthNavigation(R.id.tv_navigation_login);
     }
 
@@ -43,7 +42,7 @@ public class LoginMainActivity extends BaseActivity implements LoginMainView {
         presenter = new LoginMainPresenterImpl(this);
         return UIUtils.inflateLayout(R.layout.activity_login_main);
     }
-    private Fragment currentFragment,loginFragment,regiterFragment;
+    private BaseFragment currentFragment,loginFragment,regiterFragment;
     @Override
     public void swicth2Login() {
         if (loginFragment==null) {
@@ -68,7 +67,7 @@ public class LoginMainActivity extends BaseActivity implements LoginMainView {
         presenter.swicthNavigation(view.getId());
     }
 
-    private void switchNatvigationSelect(Fragment fragment) {
+    private void switchNatvigationSelect(BaseFragment fragment) {
         if (fragment == null)
             return;
         tv_navigation_login.setSelected(fragment == loginFragment);

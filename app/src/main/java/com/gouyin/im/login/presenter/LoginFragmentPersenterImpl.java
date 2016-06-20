@@ -12,7 +12,7 @@ import com.gouyin.im.utils.UIUtils;
 /**
  * Created by jb on 2016/6/17.
  */
-public class LoginFragmentPersenterImpl implements LoginFragmentPersenter, BaseIModel.onLoadDateListener<LoginBean> {
+public class LoginFragmentPersenterImpl implements LoginFragmentPersenter, BaseIModel.onLoadDateSingleListener<LoginBean> {
     private LoginFragmentView loginView;
     private LoginFragmentModel loginFragmentModel;
 

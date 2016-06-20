@@ -1,10 +1,13 @@
 package com.gouyin.im;
 
 
+import android.graphics.pdf.PdfDocument;
+
 import com.gouyin.im.bean.BaseBean;
 import com.gouyin.im.bean.GoodSelectBaen;
 import com.gouyin.im.bean.LoginBean;
 import com.gouyin.im.bean.RegiterBean;
+import com.gouyin.im.bean.UserInfoDetailBean;
 import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.UnicodeUtils;
 
@@ -26,7 +29,10 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 import rx.Observable;
 
@@ -115,6 +121,7 @@ public class ServerApi {
     public interface AppAPI {
         //        String baseUrl = "http://10.10.11.120:91/mimei/web/public/index.php/index/";
         String baseUrl = "http://mimei.cntttt.com:88/public/index.php/index/";
+
         @FormUrlEncoded
         @POST("User/login")
         Observable<LoginBean> login(
@@ -159,6 +166,21 @@ public class ServerApi {
                                           @Field("pwd") String pwd,
                                           @Field("mobileauth") String mobileauth);
 
+        /**
+         * 精选数据
+         *
+         * @param type
+         * @param page
+         * @return
+         */
+        @FormUrlEncoded
+        @POST("Userrec/get_list_jingxuan")
+        Observable<GoodSelectBaen> getGoodSelect(@Field("type") String type,
+                                                 @Field("page") int page);
+
+        @GET("User/user_detail_addon1")
+        Observable<UserInfoDetailBean> getUserInfoDetail(@Query("uid") String uid,
+                                                         @Query("authcode") String authcode);
 
     }
 }
