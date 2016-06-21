@@ -8,6 +8,7 @@ import com.gouyin.im.bean.GoodSelectBaen;
 import com.gouyin.im.bean.LoginBean;
 import com.gouyin.im.bean.RegiterBean;
 import com.gouyin.im.bean.UserInfoDetailBean;
+import com.gouyin.im.bean.UserInfoListBean;
 import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.UnicodeUtils;
 
@@ -178,9 +179,28 @@ public class ServerApi {
         Observable<GoodSelectBaen> getGoodSelect(@Field("type") String type,
                                                  @Field("page") int page);
 
+        /**
+         * 个人动态信息列表
+         *
+         * @param uid
+         * @param authcode
+         * @return
+         */
         @GET("User/user_detail_addon1")
         Observable<UserInfoDetailBean> getUserInfoDetail(@Query("uid") String uid,
                                                          @Query("authcode") String authcode);
 
+        /**
+         * 个人动态列表
+         *
+         * @param userId
+         * @param authcode
+         * @param page
+         * @return
+         */
+        @GET("Latest/get_latest_list")
+        Observable<UserInfoListBean> getPersonDynamincList(@Query("uid") String userId,
+                                                           @Query("authcode") String authcode,
+                                                           @Query("page") int page);
     }
 }

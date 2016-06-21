@@ -8,11 +8,15 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.gouyin.im.AppConstant;
+import com.gouyin.im.ImageServerApi;
 import com.gouyin.im.R;
 import com.gouyin.im.base.BaseRecyclerViewHolder;
 import com.gouyin.im.bean.UserInfoBean;
+import com.gouyin.im.bean.UserInfoListBeanDataList;
 import com.gouyin.im.login.widget.LoginMainActivity;
 import com.gouyin.im.utils.LogUtils;
+import com.gouyin.im.utils.StringUtis;
 import com.gouyin.im.utils.UIUtils;
 import com.gouyin.im.widget.NoScrollGridView;
 import com.gouyin.im.widget.RoundedImageView;
@@ -26,9 +30,17 @@ import butterknife.Bind;
 /**
  * Created by pc on 2016/6/4.
  */
-public class UserInfoViewHolder extends BaseRecyclerViewHolder<UserInfoBean> {
-    public static final int FLAG_TYPE_TV = 1;
-    public static final int FLAG_TYPE_PIC = 2;
+public class UserInfoViewHolder extends BaseRecyclerViewHolder<UserInfoListBeanDataList> {
+
+    //1 红包图集
+    public static final int FLAG_TYPE_PIC_LIST = 1;
+
+    //2 普通图片
+    public static final int FLAG_TYPE_PIC_ = 2;
+    //3 视频
+    public static final int FLAG_TYPE_TV = 3;
+
+
     @Bind(R.id.riv_user_image)
     RoundedImageView rivUserImage;
     @Bind(R.id.tv_user_name)
@@ -50,11 +62,12 @@ public class UserInfoViewHolder extends BaseRecyclerViewHolder<UserInfoBean> {
 
     private void initFragment() {
         switch (viewType) {
-            case FLAG_TYPE_PIC:
+            case  FLAG_TYPE_PIC_:
+            case FLAG_TYPE_PIC_LIST:
                 View view = UIUtils.inflateLayout(R.layout.item_user_pic);
                 mfragment.addView(view);
 
-                gvUserPic =(NoScrollGridView) view.findViewById(R.id.gv_user_pic);
+                gvUserPic = (NoScrollGridView) view.findViewById(R.id.gv_user_pic);
 //                ViewGroup.LayoutParams layoutParams = gvUserPic.getLayoutParams();
 //                layoutParams.height= ViewGroup.LayoutParams.MATCH_PARENT;
 //                layoutParams.width= ViewGroup.LayoutParams.MATCH_PARENT;
@@ -67,11 +80,14 @@ public class UserInfoViewHolder extends BaseRecyclerViewHolder<UserInfoBean> {
     }
 
     @Override
-    protected void onBindData(UserInfoBean bean) {
-        LogUtils.e(this,"onBindData " +bean.getName());
-        tvStr.setText(bean.getName());
-        switch (bean.getAction()) {
-            case FLAG_TYPE_PIC:
+    protected void onBindData(UserInfoListBeanDataList bean) {
+        LogUtils.e(this, "onBindData " + bean.getTitle());
+        tvStr.setText(bean.getTitle());
+        switch (bean.getType()) {
+            case FLAG_TYPE_PIC_LIST:
+                setPICData(bean);
+                break;
+            case FLAG_TYPE_PIC_:
                 setPICData(bean);
                 break;
             case FLAG_TYPE_TV:
@@ -81,31 +97,54 @@ public class UserInfoViewHolder extends BaseRecyclerViewHolder<UserInfoBean> {
         }
     }
 
-    private void setTVData(UserInfoBean bean) {
+    private void setTVData(UserInfoListBeanDataList bean) {
 
     }
 
-    private void setPICData(UserInfoBean bean) {
-        ArrayList<String> ls =new ArrayList<String>();
-        for (int i =0 ;i<9;i++)
-            ls.add("pic id is "+i);
-        LogUtils.e(this,"ArrayList size : "+ls.size());
-        gvUserPic.setAdapter(new PicGridView(ls));
+    private void setPICData(UserInfoListBeanDataList bean) {
+        if (bean == null)
+            return;
+        String img = bean.getImg().trim();
+        if (StringUtis.isEmpty(img))
+            return;
+        if (img.contains(AppConstant.IMAGE_SPLIT)) {
+            String[] split = img.split(AppConstant.IMAGE_SPLIT);
+            ArrayList<String> smallImages = new ArrayList<String>();
+            ArrayList<String> bigImages = new ArrayList<String>();
+            for (int i = 0; i < split.length; i++) {
+                String s = split[i];
+                if (s.contains(AppConstant.SMALL_IMAGE_SPLIT)) {
+                    String[] split1 = s.split(AppConstant.SMALL_IMAGE_SPLIT);
+                    if (split1 != null && split1.length >= 2) {
+                        smallImages.add(split1[0]);
+                        bigImages.add(split1[1]);
+                    }
+                }
+
+            }
+            gvUserPic.setAdapter(new PicGridView(smallImages));
+
+
+        }
+
     }
 
     @Override
-    protected void onItemclick(View view, UserInfoBean bean, int position) {
-        LogUtils.e("MyAdapter", " position : " + position + "-----------msg  : " + (bean.getName()));
+    protected void onItemclick(View view, UserInfoListBeanDataList bean, int position) {
+        LogUtils.e("MyAdapter", " position : " + position + "-----------msg  : " + (bean.getTitle()));
         UIUtils.startActivity(LoginMainActivity.class);
     }
-    private class PicGridView extends BaseAdapter{
+
+    private class PicGridView extends BaseAdapter {
         private List<String> list;
-        public  PicGridView(List<String> list){
-            this.list =list;
+
+        public PicGridView(List<String> list) {
+            this.list = list;
         }
+
         @Override
         public int getCount() {
-            return list==null?0:list.size();
+            return list == null ? 0 : list.size();
         }
 
         @Override
@@ -121,10 +160,9 @@ public class UserInfoViewHolder extends BaseRecyclerViewHolder<UserInfoBean> {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             ImageView imageView = new ImageView(parent.getContext());
-            imageView.setImageResource(R.mipmap.ic_launcher);
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-            LogUtils.e("MyAdapter","ImageView  position" +position);
-
+            LogUtils.e("MyAdapter", "ImageView  position" + position);
+            ImageServerApi.showURLImage(imageView, list.get(position));
 
 //            ImageView imageView;
 //            if (convertView == null) {
@@ -138,7 +176,7 @@ public class UserInfoViewHolder extends BaseRecyclerViewHolder<UserInfoBean> {
 //                imageView = (ImageView) convertView;
 //            }
 //            imageView.setImageResource(R.mipmap.ic_launcher);//为ImageView设置图片资源
-            LogUtils.e("MyAdapter","ImageView  position-->" +position);
+            LogUtils.e("MyAdapter", "ImageView  position-->" + position);
             return imageView;
         }
     }

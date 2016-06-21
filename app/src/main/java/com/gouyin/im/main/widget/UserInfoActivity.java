@@ -13,6 +13,7 @@ import com.gouyin.im.adapter.UserInfoAdapter;
 import com.gouyin.im.base.BaseActivity;
 import com.gouyin.im.bean.UserInfoBean;
 import com.gouyin.im.bean.UserInfoDetailBean;
+import com.gouyin.im.bean.UserInfoListBeanDataList;
 import com.gouyin.im.main.presenter.UserInfoPresenter;
 import com.gouyin.im.main.presenter.UserInfoPresenterImpl;
 import com.gouyin.im.main.view.UserInfoView;
@@ -49,10 +50,12 @@ public class UserInfoActivity extends BaseActivity implements UserInfoView {
     private UserInfoAdapter mAdapter;
     private boolean isRefresh;
     private ViewHolder headHolder;
+    private String userId;
 
     @Override
     protected void initView() {
-        String userId = getIntent().getStringExtra(AppConstant.USER_ID);
+        userId = getIntent().getStringExtra(AppConstant.USER_ID);
+        userId = "104002";
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerview.setEmptyView(textEmpty);
@@ -66,13 +69,13 @@ public class UserInfoActivity extends BaseActivity implements UserInfoView {
             @Override
             public void onRefresh() {
                 isRefresh = true;
-                mPresenter.loadUserInfoData();
+                mPresenter.loadonRefreshData(userId);
             }
 
             @Override
             public void onLoadMore() {
                 isRefresh = false;
-                mPresenter.loadUserInfoData();
+                mPresenter.loadLoadMoreData(userId);
             }
         });
         LogUtils.e(this, "userId : " + userId);
@@ -94,7 +97,8 @@ public class UserInfoActivity extends BaseActivity implements UserInfoView {
 
     @Override
     protected View setRootContentView() {
-        mPresenter = new UserInfoPresenterImpl(this);
+        mPresenter = new UserInfoPresenterImpl();
+        mPresenter.attachView(this);
         return UIUtils.inflateLayout(R.layout.activity_userinfo_dynamic);
     }
 
@@ -104,7 +108,7 @@ public class UserInfoActivity extends BaseActivity implements UserInfoView {
     }
 
     @Override
-    public void loadUserinfo(List<UserInfoBean> list) {
+    public void loadUserinfo(List<UserInfoListBeanDataList> list) {
 
         if (mAdapter == null) {
             mAdapter = new UserInfoAdapter(list);
@@ -146,19 +150,24 @@ public class UserInfoActivity extends BaseActivity implements UserInfoView {
     }
 
     @Override
-    public void show() {
+    public void setUserInfodetail(UserInfoDetailBean bean) {
+        headHolder.setUserInfodetail(bean);
+    }
+
+    @Override
+    public void showLoading() {
         showProgressDialog();
     }
 
     @Override
-    public void hide() {
+    public void hideLoading() {
         hideProgressDialog();
         colseload();
     }
 
     @Override
-    public void setUserInfodetail(UserInfoDetailBean bean) {
-        headHolder.setUserInfodetail(bean);
+    public void transfePageMsg(String msg) {
+
     }
 
     static class ViewHolder {
@@ -186,10 +195,34 @@ public class UserInfoActivity extends BaseActivity implements UserInfoView {
         }
 
         public void setUserInfodetail(UserInfoDetailBean userInfodetail) {
-            if (userInfodetail == null)
+            if (userInfodetail == null || userInfodetail.getData() == null)
                 return;
             UserInfoDetailBean.UserInfoDetailDataBean data = userInfodetail.getData();
-            ImageServerApi.showURLImage(userBackground, data.getLikeImage());
+            UserInfoDetailBean.UserInfoDetailDataBean.Addons addons = data.getAddons();
+            UserInfoDetailBean.UserInfoDetailDataBean.Baseinfo baseinfo = data.getBaseinfo();
+
+
+            ImageServerApi.showURLImage(userBackground, baseinfo.getLikeImage());
+            ImageServerApi.showURLImage(ivUserIcon, baseinfo.getFace());
+            tvUserName.setText(baseinfo.getNickname());
+            tvFenNumber.setText(addons.getUfann());
+            tvDynamicNumber.setText(addons.getUlatn());
+            tvFlowerNumber.setText(addons.getUfann());
+            tvWacthNumber.setText(addons.getUfoln());
+            tvWacth.setText(getwacthStatus(data.getFollow()));
         }
+
+        private String getwacthStatus(String str) {
+            String status = null;
+            if ("1".equals(str)) {
+                status = UIUtils.getStringRes(R.string.already) + UIUtils.getStringRes(R.string.wacth);
+            } else if ("2".equals(str))
+                status = UIUtils.getStringRes(R.string.one_another) + UIUtils.getStringRes(R.string.wacth);
+            else if ("3".equals(str))
+                status = UIUtils.getStringRes(R.string.no) + UIUtils.getStringRes(R.string.wacth);
+
+            return status;
+        }
+
     }
 }

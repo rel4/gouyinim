@@ -1,6 +1,7 @@
 package com.gouyin.im.base;
 
 import com.gouyin.im.bean.GoodSelectBaen;
+import com.gouyin.im.bean.UserInfoListBeanDataList;
 
 import java.util.List;
 
@@ -38,10 +39,10 @@ public interface BaseIModel {
         /**
          * 数据加载成功
          *
-         * @param t
+         * @param
          * @param
          */
-        void onSuccess(List<T> t, int dataType);
+        void onSuccess(List<T> l, int dataType);
 
         /**
          * 数据加载失败
@@ -50,6 +51,7 @@ public interface BaseIModel {
          * @param e
          */
         void onFailure(String msg, Throwable e);
+
 
 
     }

@@ -45,4 +45,7 @@
     <string name="private_hat">私聊</string>
     <string name="friend">好友</string>
     <string name="loading">加载中....</string>
+    <string name="already">已经</string>
+    <string name="one_another">互相</string>
+    <string name="no">没有</string>
 </resources>
