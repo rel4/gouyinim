@@ -1,34 +1,29 @@
 package com.gouyin.im.main.widget;
 
 import android.graphics.Color;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.FrameLayout;
 
-import com.gouyin.im.CacheManager;
+import com.gouyin.im.AppConstant;
 import com.gouyin.im.R;
 import com.gouyin.im.adapter.DynamiDayailsAdapter;
 import com.gouyin.im.base.BaseActivity;
-import com.gouyin.im.bean.BaseBean;
 import com.gouyin.im.bean.BaseDataBean;
+import com.gouyin.im.bean.CommentDataListBean;
+import com.gouyin.im.bean.UserInfoListBean;
 import com.gouyin.im.main.presenter.DynamincDatailsPresenter;
 import com.gouyin.im.main.presenter.DynamincDatailsPresenterImpl;
 import com.gouyin.im.main.view.DynamicDatailsView;
-import com.gouyin.im.main.view.UserInfoView;
-import com.gouyin.im.utils.ConfigUtils;
 import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.UIUtils;
+import com.gouyin.im.viewholder.UserInfoHeadViewHolder;
 import com.gouyin.im.viewholder.UserInfoViewHolder;
 import com.gouyin.im.widget.DividerItemDecoration;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 
 /**
  * Created by pc on 2016/6/7.
@@ -39,33 +34,35 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
     XRecyclerView recyclerView;
     private DynamiDayailsAdapter mAdapter;
     private DynamincDatailsPresenter presenter;
+    private UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList userInfo;
 
     @Override
 
     protected void initView() {
-        TAG="1.";
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL, Color.RED, true));
         recyclerView.setLoadingMoreEnabled(false);
         recyclerView.setPullRefreshEnabled(false);
-        if (CacheManager.isExist4DataCache(ConfigUtils.getInstance().getApplicationContext(), TAG + "txt")) {
-            Object o = CacheManager.readObject(ConfigUtils.getInstance().getApplicationContext(), TAG + "txt");
-            if (o instanceof ArrayList) {
-                LogUtils.e(TAG, "CacheManager : " + ((ArrayList<BaseBean>)o).toString());
-                loadData((ArrayList<BaseDataBean>)o);
-                recyclerView.setRefreshing(true);
-            }
+        if (userInfo != null) {
+            presenter.loadCommentListData(userInfo.getLatest_id());
         }
-        presenter.loadData(TAG + "txt");
-//        recyclerView.setAdapter( );
-//        lv.setAdapter(new );
+
+
     }
 
     @Override
     protected View setRootContentView() {
-        presenter = new DynamincDatailsPresenterImpl(this);
+        userInfo = (UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList) getIntent().getSerializableExtra(AppConstant.DYNAMIC_DATAILS);
+        if (userInfo == null) {
+            finish();
+            return null;
+        }
+        LogUtils.e(this, "userInfo id : " + userInfo.getUid());
+        presenter = new DynamincDatailsPresenterImpl();
+        presenter.attachView(this);
         return UIUtils.inflateLayout(R.layout.activity_dynamic_datails);
     }
 
@@ -75,28 +72,31 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
     }
 
     @Override
-    public void loadData(List<BaseDataBean> datas) {
+    public void loadData(List<CommentDataListBean.CommentListBean> datas) {
         if (mAdapter == null) {
             mAdapter = new DynamiDayailsAdapter(datas);
             View view = UIUtils.inflateLayout(R.layout.item_home_one_menu);
-            UserInfoViewHolder holder = new UserInfoViewHolder(view, 1);
+            UserInfoViewHolder holder = new UserInfoViewHolder(view, userInfo.getType());
+            holder.onBindData(userInfo);
             recyclerView.addHeaderView(holder.getRootView());
-//            layoutContent.addView(holder.getRootView());
             recyclerView.setAdapter(mAdapter);
         } else {
             mAdapter.addData(datas);
-            mAdapter.onRefresh();
         }
     }
 
     @Override
-    public void hide() {
+    public void showLoading() {
+        showProgressDialog();
+    }
+
+    @Override
+    public void hideLoading() {
         hideProgressDialog();
     }
 
     @Override
-    public void show() {
-        showProgressDialog();
-    }
+    public void transfePageMsg(String msg) {
 
+    }
 }

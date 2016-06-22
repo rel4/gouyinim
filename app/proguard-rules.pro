@@ -67,6 +67,10 @@
 -keep class rx.**{*;}
 -keep class com.squareup.**{*;}
 -keep class javax.inject.**{*;}
+-keep class org.**{*;}
+-keep class com.trello.**{*;}
+-keep class com.gouyin.im.utils.*{*;}
+-keep class com.gouyin.im.AppConstant{*;}
 #自己项目特殊处理代码
 #忽略警告
 -dontwarn com.veidy.mobile.common.**
@@ -149,7 +153,7 @@
     -keepattributes Signature
     -keepattributes Exceptions
 
-#    rongyun  start
+#   融云 rongyun  start
 
 -keepclassmembers class fqcn.of.javascript.interface.for.webview {
  public *;
@@ -177,4 +181,4 @@
 
 -keep class com.ultrapower.** {*;}
 
-#    rongyun end
+#  融云  rongyun end

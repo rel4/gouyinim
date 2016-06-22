@@ -63,7 +63,7 @@ public class RegiterFragmentModelImpl implements RegiterFragmentModel {
                     @Override
                     public void onNext(BaseBean baseBean) {
                         LogUtils.e(TAG, "onNext : " + baseBean.toString());
-                        listener.onSuccess(baseBean,0);
+                        listener.onSuccess(baseBean,DataType.DATA_ZERO);
                     }
                 });
     }

@@ -65,4 +65,9 @@ public class TimeUtils {
     private static Date getDate() {
         return new Date();
     }
+
+    public static String format(long time) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(DATE_FORMAT);
+        return simpleDateFormat.format(time);
+    }
 }

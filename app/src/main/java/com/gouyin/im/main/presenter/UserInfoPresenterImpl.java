@@ -1,14 +1,10 @@
 package com.gouyin.im.main.presenter;
 
-import android.graphics.pdf.PdfDocument;
-
 import com.gouyin.im.R;
 import com.gouyin.im.base.BaseIModel;
 import com.gouyin.im.base.BaseIModel.onLoadDateSingleListener;
-import com.gouyin.im.base.BaseIView;
-import com.gouyin.im.bean.BaseDataBean;
 import com.gouyin.im.bean.UserInfoDetailBean;
-import com.gouyin.im.bean.UserInfoListBeanDataList;
+import com.gouyin.im.bean.UserInfoListBean;
 import com.gouyin.im.main.model.UserInfoModel;
 import com.gouyin.im.main.model.UserInfoModelImpl;
 import com.gouyin.im.main.view.UserInfoView;
@@ -20,7 +16,7 @@ import java.util.List;
 /**
  * Created by pc on 2016/6/6.
  */
-public class UserInfoPresenterImpl implements UserInfoPresenter, onLoadDateSingleListener<UserInfoDetailBean>, BaseIModel.onLoadListDateListener<UserInfoListBeanDataList> {
+public class UserInfoPresenterImpl implements UserInfoPresenter, onLoadDateSingleListener<UserInfoDetailBean>, BaseIModel.onLoadListDateListener<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList> {
     private UserInfoView mUserInfoView;
     private UserInfoModel mUserInfoModel;
     private int page = 1;
@@ -39,12 +35,14 @@ public class UserInfoPresenterImpl implements UserInfoPresenter, onLoadDateSingl
     @Override
     public void loadonRefreshData(String userId) {
         mUserInfoView.showLoading();
-        mUserInfoModel.loadUserInfoData(userId, page, this);
+        mUserInfoModel.loadUserInfoData(userId, 1, this);
     }
 
     @Override
     public void loadLoadMoreData(String userId) {
-
+        mUserInfoView.showLoading();
+        mUserInfoModel.loadUserInfoData(userId, page, this);
+        page++;
     }
 
     @Override
@@ -73,14 +71,14 @@ public class UserInfoPresenterImpl implements UserInfoPresenter, onLoadDateSingl
 
 
     @Override
-    public void onSuccess(UserInfoDetailBean bean, int type) {
+    public void onSuccess(UserInfoDetailBean bean, BaseIModel.DataType type) {
         mUserInfoView.setUserInfodetail(bean);
         mUserInfoView.hideLoading();
 
     }
 
     @Override
-    public void onSuccess(List<UserInfoListBeanDataList> t, int dataType) {
+    public void onSuccess(List<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList> t, BaseIModel.DataType dataType) {
         mUserInfoView.loadUserinfo(t);
         mUserInfoView.hideLoading();
 

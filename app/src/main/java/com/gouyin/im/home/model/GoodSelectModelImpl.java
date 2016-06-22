@@ -39,7 +39,7 @@ public class GoodSelectModelImpl implements GoodSelectModel {
                     public void onNext(GoodSelectBaen goodSelectBaen) {
                         if (goodSelectBaen != null) {
                             if ("1".equals(goodSelectBaen.getCode()))
-                                listener.onSuccess(goodSelectBaen.getData(), 0);
+                                listener.onSuccess(goodSelectBaen.getData(), BaseIModel.DataType.DATA_ZERO);
                             else
                                 listener.onFailure(goodSelectBaen.getMsg(), null);
                         } else

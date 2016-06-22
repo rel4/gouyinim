@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
@@ -33,8 +32,12 @@ public abstract class BaseActivity extends RxAppCompatActivity {
         super.onCreate(savedInstanceState);
         onBaseCreate(savedInstanceState);
         mRootView = setRootContentView();
-        if (mRootView == null)
-            throw new RuntimeException("root layout not null");
+        if (mRootView == null) {
+            if (LogUtils.getDeBugState())
+                throw new RuntimeException("root layout not null");
+            else
+                return;
+        }
         setContentView(mRootView);
 
         ButterKnife.bind(this);

@@ -12,11 +12,11 @@ import com.gouyin.im.AppConstant;
 import com.gouyin.im.ImageServerApi;
 import com.gouyin.im.R;
 import com.gouyin.im.base.BaseRecyclerViewHolder;
-import com.gouyin.im.bean.UserInfoBean;
-import com.gouyin.im.bean.UserInfoListBeanDataList;
-import com.gouyin.im.login.widget.LoginMainActivity;
+import com.gouyin.im.bean.UserInfoListBean;
+import com.gouyin.im.utils.ActivityUtils;
 import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.StringUtis;
+import com.gouyin.im.utils.TimeUtils;
 import com.gouyin.im.utils.UIUtils;
 import com.gouyin.im.widget.NoScrollGridView;
 import com.gouyin.im.widget.RoundedImageView;
@@ -30,7 +30,7 @@ import butterknife.Bind;
 /**
  * Created by pc on 2016/6/4.
  */
-public class UserInfoViewHolder extends BaseRecyclerViewHolder<UserInfoListBeanDataList> {
+public class UserInfoViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList> {
 
     //1 红包图集
     public static final int FLAG_TYPE_PIC_LIST = 1;
@@ -47,12 +47,21 @@ public class UserInfoViewHolder extends BaseRecyclerViewHolder<UserInfoListBeanD
     TextView tvStr;
     @Bind(R.id.layout_content)
     FrameLayout mfragment;
-
+    @Bind(R.id.tv_content)
     TextView tvContent;
-
+    @Bind(R.id.tv_time)
+    TextView tvTime;
+    @Bind(R.id.tv_wacth_number)
+    TextView tv_wacth_number;
+    @Bind(R.id.tv_reply_number)
+    TextView tv_reply_number;
+    @Bind(R.id.tv_play_number)
+    TextView tv_play_number;
     NoScrollGridView gvUserPic;
     private int viewType;
     private GridView mGridView;
+    private TextView tvPlay;
+    private ImageView playBackground;
 
     public UserInfoViewHolder(View view, int viewType) {
         super(view);
@@ -62,25 +71,26 @@ public class UserInfoViewHolder extends BaseRecyclerViewHolder<UserInfoListBeanD
 
     private void initFragment() {
         switch (viewType) {
-            case  FLAG_TYPE_PIC_:
+            case FLAG_TYPE_PIC_:
             case FLAG_TYPE_PIC_LIST:
                 View view = UIUtils.inflateLayout(R.layout.item_user_pic);
+                mfragment.removeAllViews();
                 mfragment.addView(view);
 
                 gvUserPic = (NoScrollGridView) view.findViewById(R.id.gv_user_pic);
-//                ViewGroup.LayoutParams layoutParams = gvUserPic.getLayoutParams();
-//                layoutParams.height= ViewGroup.LayoutParams.MATCH_PARENT;
-//                layoutParams.width= ViewGroup.LayoutParams.MATCH_PARENT;
-//                gvUserPic.setLayoutParams(layoutParams);
                 break;
             case FLAG_TYPE_TV:
-                mfragment.addView(UIUtils.inflateLayout(R.layout.item_user_tv));
+                mfragment.removeAllViews();
+                View palyView = UIUtils.inflateLayout(R.layout.item_user_tv);
+                tvPlay = (TextView) palyView.findViewById(R.id.tv_play_content);
+                playBackground = (ImageView) palyView.findViewById(R.id.iv_play_background);
+                mfragment.addView(palyView);
                 break;
         }
     }
 
     @Override
-    protected void onBindData(UserInfoListBeanDataList bean) {
+    public void onBindData(UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList bean) {
         LogUtils.e(this, "onBindData " + bean.getTitle());
         tvStr.setText(bean.getTitle());
         switch (bean.getType()) {
@@ -97,42 +107,50 @@ public class UserInfoViewHolder extends BaseRecyclerViewHolder<UserInfoListBeanD
         }
     }
 
-    private void setTVData(UserInfoListBeanDataList bean) {
+    /**
+     * 视频信息
+     *
+     * @param bean
+     */
+    private void setTVData(UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList bean) {
+        if (bean == null)
+            return;
+        ImageServerApi.showURLImage(playBackground, bean.getVimg());
+        tvContent.setText(bean.getTitle());
+        tvTime.setText(TimeUtils.format(bean.getCreate_time()));
+        tv_play_number.setText(bean.getLkpicn() + "");
+        tv_reply_number.setText(bean.getLcomn() + "");
+        tv_wacth_number.setText(bean.getLupn() + "");
+        tvStr.setText(bean.getNickname());
+        ImageServerApi.showURLImage(rivUserImage, bean.getFace());
 
     }
 
-    private void setPICData(UserInfoListBeanDataList bean) {
+    /**
+     * 图片信息
+     *
+     * @param bean
+     */
+    private void setPICData(UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList bean) {
         if (bean == null)
             return;
-        String img = bean.getImg().trim();
-        if (StringUtis.isEmpty(img))
-            return;
-        if (img.contains(AppConstant.IMAGE_SPLIT)) {
-            String[] split = img.split(AppConstant.IMAGE_SPLIT);
-            ArrayList<String> smallImages = new ArrayList<String>();
-            ArrayList<String> bigImages = new ArrayList<String>();
-            for (int i = 0; i < split.length; i++) {
-                String s = split[i];
-                if (s.contains(AppConstant.SMALL_IMAGE_SPLIT)) {
-                    String[] split1 = s.split(AppConstant.SMALL_IMAGE_SPLIT);
-                    if (split1 != null && split1.length >= 2) {
-                        smallImages.add(split1[0]);
-                        bigImages.add(split1[1]);
-                    }
-                }
 
-            }
-            gvUserPic.setAdapter(new PicGridView(smallImages));
-
-
-        }
+        tvContent.setText(bean.getTitle());
+        tvTime.setText(TimeUtils.format(bean.getCreate_time()));
+        tv_play_number.setText(bean.getLkpicn() + "");
+        tv_reply_number.setText(bean.getLcomn() + "");
+        tv_wacth_number.setText(bean.getLupn() + "");
+        tvStr.setText(bean.getNickname());
+        ImageServerApi.showURLImage(rivUserImage, bean.getFace());
+        List<String> imgs = bean.getImg();
+        gvUserPic.setAdapter(new PicGridView(imgs));
 
     }
 
     @Override
-    protected void onItemclick(View view, UserInfoListBeanDataList bean, int position) {
+    protected void onItemclick(View view, UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList bean, int position) {
         LogUtils.e("MyAdapter", " position : " + position + "-----------msg  : " + (bean.getTitle()));
-        UIUtils.startActivity(LoginMainActivity.class);
+        ActivityUtils.startDynamicDatailsActivity(bean);
     }
 
     private class PicGridView extends BaseAdapter {
@@ -160,23 +178,8 @@ public class UserInfoViewHolder extends BaseRecyclerViewHolder<UserInfoListBeanD
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             ImageView imageView = new ImageView(parent.getContext());
-            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-            LogUtils.e("MyAdapter", "ImageView  position" + position);
+            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             ImageServerApi.showURLImage(imageView, list.get(position));
-
-//            ImageView imageView;
-//            if (convertView == null) {
-//                imageView = new ImageView(ConfigUtils.getInstance().getActivityContext());
-//                imageView.setLayoutParams(new GridView.LayoutParams(75, 75));//设置ImageView对象布局
-//                imageView.setAdjustViewBounds(false);//设置边界对齐
-//                imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);//设置刻度的类型
-//                imageView.setPadding(8, 8, 8, 8);//设置间距
-//            }
-//            else {
-//                imageView = (ImageView) convertView;
-//            }
-//            imageView.setImageResource(R.mipmap.ic_launcher);//为ImageView设置图片资源
-            LogUtils.e("MyAdapter", "ImageView  position-->" + position);
             return imageView;
         }
     }

@@ -30,7 +30,7 @@ public class LoginFragmentModelImpl  implements  LoginFragmentModel{
 
                     @Override
                     public void onNext(LoginBean loginBean) {
-                        Listener.onSuccess(loginBean,0);
+                        Listener.onSuccess(loginBean,DataType.DATA_ZERO);
                     }
                 });
     }

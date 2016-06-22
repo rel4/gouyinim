@@ -37,7 +37,7 @@ public class GoodSelectPresenterImpl implements GoodSelectPresenter, BaseIModel.
     }
 
     @Override
-    public void onSuccess(List<GoodSelectBaen.Data> list, int type) {
+    public void onSuccess(List<GoodSelectBaen.Data> list, BaseIModel.DataType type) {
 
         mGoodView.addGoodSelectDate(list);
         mGoodView.hide();

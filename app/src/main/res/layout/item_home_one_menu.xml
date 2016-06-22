@@ -18,18 +18,20 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/riv_user_image"
         android:layout_toRightOf="@+id/riv_user_image"
-        android:text="mingzi"
+        android:text="@string/loading"
         android:textColor="@android:color/white" />
 
     <TextView
+        android:id="@+id/tv_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@id/riv_user_image"
         android:layout_toRightOf="@id/riv_user_image"
         android:singleLine="true"
-        android:text="测试。。。。。。。。。。。。" />
+        android:text="@string/loading" />
 
     <TextView
+        android:id="@+id/tv_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
@@ -37,11 +39,11 @@
         android:text="shijin" />
 
     <FrameLayout
-        android:layout_toRightOf="@+id/riv_user_image"
         android:id="@+id/layout_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/riv_user_image"
+        android:layout_toRightOf="@+id/riv_user_image"
         android:background="@android:color/darker_gray"></FrameLayout>
 
     <TextView
@@ -50,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/layout_content"
         android:layout_toRightOf="@+id/riv_user_image"
-        android:text="111" />
+        android:text="@string/loading" />
 
     <TextView
         android:id="@+id/tv_reply_number"
@@ -59,7 +61,7 @@
         android:layout_alignTop="@+id/tv_wacth_number"
         android:layout_below="@id/layout_content"
         android:layout_toRightOf="@+id/tv_wacth_number"
-        android:text="222" />
+        android:text="@string/loading" />
 
     <TextView
         android:id="@+id/tv_play_number"
@@ -68,7 +70,7 @@
         android:layout_alignTop="@+id/tv_reply_number"
         android:layout_below="@id/layout_content"
         android:layout_toRightOf="@+id/tv_reply_number"
-        android:text="333" />
+        android:text="@string/loading" />
 
     <TextView
         android:id="@+id/tv_more__number"
@@ -77,6 +79,6 @@
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/tv_reply_number"
         android:layout_below="@id/layout_content"
-        android:text="111" />
+        android:text="@string/loading" />
 
 </RelativeLayout>

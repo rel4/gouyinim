@@ -7,6 +7,7 @@ import com.gouyin.im.R;
 import com.gouyin.im.base.BaseRecyclerViewAdapter;
 import com.gouyin.im.base.BaseRecyclerViewHolder;
 import com.gouyin.im.bean.BaseDataBean;
+import com.gouyin.im.bean.CommentDataListBean;
 import com.gouyin.im.utils.UIUtils;
 import com.gouyin.im.viewholder.DynamicCommentViewHolder;
 
@@ -15,9 +16,9 @@ import java.util.List;
 /**
  * Created by pc on 2016/6/8.
  */
-public class DynamiDayailsAdapter  extends BaseRecyclerViewAdapter<BaseDataBean>{
+public class DynamiDayailsAdapter  extends BaseRecyclerViewAdapter<CommentDataListBean.CommentListBean>{
 
-    public DynamiDayailsAdapter(List<BaseDataBean> list) {
+    public DynamiDayailsAdapter(List<CommentDataListBean.CommentListBean> list) {
         super(list);
     }
 

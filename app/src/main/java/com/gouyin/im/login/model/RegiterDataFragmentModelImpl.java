@@ -46,7 +46,7 @@ public class RegiterDataFragmentModelImpl implements RegiterDataFragmentModel {
                     @Override
                     public void onNext(BaseBean baseBean) {
                         LogUtils.e(RegiterDataFragmentModelImpl.class, "onNext : " + baseBean.toString());
-                        listener.onSuccess(baseBean, 0);
+                        listener.onSuccess(baseBean, DataType.DATA_ZERO);
                     }
                 });
     }
@@ -85,7 +85,7 @@ public class RegiterDataFragmentModelImpl implements RegiterDataFragmentModel {
 
                     @Override
                     public void onNext(String host) {
-                        listener.onSuccess(host, 1);
+                        listener.onSuccess(host, DataType.DATA_ONE);
                     }
                 });
 

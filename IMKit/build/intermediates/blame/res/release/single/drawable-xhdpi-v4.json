@@ -200,12 +200,12 @@
         "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f4de.png"
     },
     {
-        "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi-v4\\u1f615.png",
-        "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f615.png"
-    },
-    {
         "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi-v4\\rc_bg_text_hover.9.png",
         "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_bg_text_hover.9.png"
+    },
+    {
+        "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi-v4\\u1f615.png",
+        "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f615.png"
     },
     {
         "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi-v4\\rc_ic_voice_receive.png",
@@ -884,12 +884,12 @@
         "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_ic_extend_normal.png"
     },
     {
-        "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi-v4\\rc_ic_notice_wraning.png",
-        "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_ic_notice_wraning.png"
-    },
-    {
         "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi-v4\\rc_ic_star_hover.png",
         "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_ic_star_hover.png"
+    },
+    {
+        "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi-v4\\rc_ic_notice_wraning.png",
+        "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_ic_notice_wraning.png"
     },
     {
         "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi-v4\\u26a1.png",
@@ -1200,12 +1200,12 @@
         "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f3c2.png"
     },
     {
-        "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi-v4\\u1f61a.png",
-        "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f61a.png"
-    },
-    {
         "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi-v4\\u2601.png",
         "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\src\\main\\res\\drawable-xhdpi\\u2601.png"
+    },
+    {
+        "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi-v4\\u1f61a.png",
+        "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f61a.png"
     },
     {
         "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi-v4\\u1f4b0.png",

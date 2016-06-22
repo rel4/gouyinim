@@ -13,5 +13,9 @@ public interface AppConstant {
      */
     String IMAGE_SPLIT = "---";
 
-    String SMALL_IMAGE_SPLIT ="|||";
+    String SMALL_IMAGE_SPLIT = "|||";
+    /**
+     * 动态详情页的数据
+     */
+    String DYNAMIC_DATAILS = "dynamic_datails";
 }

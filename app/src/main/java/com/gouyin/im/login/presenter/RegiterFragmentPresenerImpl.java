@@ -45,7 +45,7 @@ public class RegiterFragmentPresenerImpl implements RegiterFragmentPresener, Bas
 
 
     @Override
-    public void onSuccess(BaseBean baseBean,int type) {
+    public void onSuccess(BaseBean baseBean,BaseIModel.DataType type) {
         view.hideLoading();
         if (baseBean != null) {
             if ("1".equals(baseBean.getCode()))

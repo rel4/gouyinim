@@ -5,13 +5,9 @@ import com.gouyin.im.ServerApi;
 import com.gouyin.im.base.BaseIModel;
 import com.gouyin.im.bean.UserInfoDetailBean;
 import com.gouyin.im.bean.UserInfoListBean;
-import com.gouyin.im.bean.UserInfoListBeanData;
-import com.gouyin.im.bean.UserInfoListBeanDataList;
 import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.UIUtils;
 import com.gouyin.im.utils.UserInfoUtils;
-
-import org.w3c.dom.ls.LSException;
 
 import java.util.List;
 
@@ -26,7 +22,7 @@ public class UserInfoModelImpl implements UserInfoModel {
 
 
     @Override
-    public void loadUserInfoData(String userId, int page, BaseIModel.onLoadListDateListener<UserInfoListBeanDataList> listener) {
+    public void loadUserInfoData(String userId, int page, BaseIModel.onLoadListDateListener<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList> listener) {
         String authcode = UserInfoUtils.getAuthcode();
         ServerApi.getAppAPI().getPersonDynamincList(userId,authcode,page)
                 .subscribeOn(Schedulers.io())
@@ -46,10 +42,10 @@ public class UserInfoModelImpl implements UserInfoModel {
                     @Override
                     public void onNext(UserInfoListBean userInfoListBean) {
                             if (userInfoListBean!=null){
-                                UserInfoListBeanData data = userInfoListBean.getData();
+                                UserInfoListBean.UserInfoListBeanData data = userInfoListBean.getData();
                                 if (data!=null){
-                                    List<UserInfoListBeanDataList> list = data.getList();
-                                    listener.onSuccess(list,0);
+                                    List<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList> list = data.getList();
+                                    listener.onSuccess(list, BaseIModel.DataType.DATA_ZERO);
                                 }
                             }
                         listener.onFailure(UIUtils.getStringRes(R.string.request_failed),null);
@@ -76,7 +72,7 @@ public class UserInfoModelImpl implements UserInfoModel {
 
                     @Override
                     public void onNext(UserInfoDetailBean userInfoDetailBean) {
-                        listener.onSuccess(userInfoDetailBean, 1);
+                        listener.onSuccess(userInfoDetailBean, BaseIModel.DataType.DATA_ONE);
                         LogUtils.e(this, userInfoDetailBean.toString());
                     }
                 });

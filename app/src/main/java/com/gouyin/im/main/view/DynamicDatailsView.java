@@ -1,17 +1,16 @@
 package com.gouyin.im.main.view;
 
+import com.gouyin.im.base.BaseIView;
 import com.gouyin.im.bean.BaseBean;
 import com.gouyin.im.bean.BaseDataBean;
+import com.gouyin.im.bean.CommentDataListBean;
 
 import java.util.List;
 
 /**
  * Created by jb on 2016/6/8.
  */
-public interface DynamicDatailsView {
-    void loadData(List<BaseDataBean> datas);
+public interface DynamicDatailsView extends BaseIView {
+    void loadData(List<CommentDataListBean.CommentListBean> datas);
 
-    void hide();
-
-    void show();
 }

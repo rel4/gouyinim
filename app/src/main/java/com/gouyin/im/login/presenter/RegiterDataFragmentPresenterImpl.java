@@ -47,9 +47,9 @@ public class RegiterDataFragmentPresenterImpl implements RegiterDataFragmentPres
     }
 
     @Override
-    public void onSuccess(Object o, int type) {
+    public void onSuccess(Object o, BaseIModel.DataType type) {
         switch (type) {
-            case 0:
+            case DATA_ZERO:
                 if (o != null && o instanceof BaseBean) {
                     BaseBean baseBean = (BaseBean) o;
                     LogUtils.e(this, "msg : " + baseBean.getMsg());
@@ -65,7 +65,7 @@ public class RegiterDataFragmentPresenterImpl implements RegiterDataFragmentPres
                     }
                 }
                 break;
-            case 1:
+            case DATA_ONE:
                 if (o != null && o instanceof String) {
                     view.uploadSuccess((String) o);
                     view.transfePageMsg(UIUtils.getResources().getString(R.string.upload) + UIUtils.getResources().getString(R.string.success));

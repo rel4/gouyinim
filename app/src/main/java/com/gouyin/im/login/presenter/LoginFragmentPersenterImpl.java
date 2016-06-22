@@ -36,7 +36,7 @@ public class LoginFragmentPersenterImpl implements LoginFragmentPersenter, BaseI
     }
 
     @Override
-    public void onSuccess(LoginBean loginBean, int dataType) {
+    public void onSuccess(LoginBean loginBean, BaseIModel.DataType dataType) {
         loginView.hideLoading();
         if (loginBean != null) {
             if ("1".equals(loginBean.getCode())) {

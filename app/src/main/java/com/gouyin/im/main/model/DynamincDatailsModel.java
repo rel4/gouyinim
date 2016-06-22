@@ -1,10 +1,11 @@
 package com.gouyin.im.main.model;
 
 import com.gouyin.im.base.BaseIModel;
+import com.gouyin.im.bean.CommentDataListBean;
 
 /**
  * Created by pc on 2016/6/8.
  */
-public interface DynamincDatailsModel {
-    void loadData(String fileName,BaseIModel.onLoadDateSingleListener listener);
+public interface DynamincDatailsModel extends BaseIModel {
+    void loadCommentListData(String id, int page, BaseIModel.onLoadListDateListener<CommentDataListBean.CommentListBean> listener);
 }

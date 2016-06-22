@@ -1,8 +1,5 @@
 package com.gouyin.im.base;
 
-import com.gouyin.im.bean.GoodSelectBaen;
-import com.gouyin.im.bean.UserInfoListBeanDataList;
-
 import java.util.List;
 
 /**
@@ -17,7 +14,7 @@ public interface BaseIModel {
          * @param t
          * @param
          */
-        void onSuccess(T t, int dataType);
+        void onSuccess(T t, DataType dataType);
 
         /**
          * 数据加载失败
@@ -42,7 +39,7 @@ public interface BaseIModel {
          * @param
          * @param
          */
-        void onSuccess(List<T> l, int dataType);
+        void onSuccess(List<T> t, DataType dataType);
 
         /**
          * 数据加载失败
@@ -53,6 +50,18 @@ public interface BaseIModel {
         void onFailure(String msg, Throwable e);
 
 
+    }
 
+    public enum DataType {
+        DATA_ZERO(0), DATA_ONE(1), DATA_TWO(2), DATA_THREE(3), DATA_FOUR(4);
+        private int value;
+
+        private DataType(int value) {
+            this.value = value;
+        }
+
+        public int getValue() {
+            return value;
+        }
     }
 }

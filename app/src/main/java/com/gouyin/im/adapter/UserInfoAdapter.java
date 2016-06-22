@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import com.gouyin.im.R;
 import com.gouyin.im.base.BaseRecyclerViewAdapter;
 import com.gouyin.im.base.BaseRecyclerViewHolder;
-import com.gouyin.im.bean.UserInfoListBeanDataList;
+import com.gouyin.im.bean.UserInfoListBean;
 import com.gouyin.im.utils.UIUtils;
 import com.gouyin.im.viewholder.UserInfoViewHolder;
 
@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Created by pc on 2016/6/6.
  */
-public class UserInfoAdapter extends BaseRecyclerViewAdapter <UserInfoListBeanDataList>{
+public class UserInfoAdapter extends BaseRecyclerViewAdapter <UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList>{
     private UserInfoViewHolder tvViewHolder;
     private UserInfoViewHolder picViewHolder;
 
