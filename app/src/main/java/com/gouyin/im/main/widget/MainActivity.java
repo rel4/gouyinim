@@ -13,7 +13,6 @@ import android.widget.TextView;
 import com.gouyin.im.R;
 import com.gouyin.im.base.BaseActivity;
 import com.gouyin.im.base.BaseFragment;
-import com.gouyin.im.center.widget.CenterFragment;
 import com.gouyin.im.find.widget.FindFragment;
 import com.gouyin.im.home.widget.HomeFragment;
 import com.gouyin.im.im.widget.IMHomeFragment;
@@ -21,6 +20,7 @@ import com.gouyin.im.main.presenter.MainPresenter;
 import com.gouyin.im.main.presenter.MainPresenterImpl;
 import com.gouyin.im.main.view.MainView;
 import com.gouyin.im.my.widget.MyFragment;
+import com.gouyin.im.utils.ActivityUtils;
 import com.gouyin.im.utils.ConfigUtils;
 import com.gouyin.im.utils.FragmentUtils;
 import com.gouyin.im.utils.LogUtils;
@@ -46,7 +46,7 @@ public class MainActivity extends BaseActivity implements MainView {
     @Bind(R.id.main_content)
     FrameLayout mainContent;
     //当前一级页面显示的Fragment
-    private BaseFragment mCurrentFragment, homeFragment, imHomeFragment, centerFragment, findFragment, myFragment;
+    private BaseFragment mCurrentFragment, homeFragment, imHomeFragment, findFragment, myFragment;
 
     private FragmentManager mFragmentManager;
     private MainPresenter mMainPresenter;
@@ -113,9 +113,10 @@ public class MainActivity extends BaseActivity implements MainView {
 
     @Override
     public void switch2Center() {
-        if (centerFragment == null)
-            centerFragment = new CenterFragment();
-        enterPage(centerFragment);
+//        if (centerFragment == null)
+//            centerFragment = new CenterFragment();
+//        enterPage(centerFragment);
+        ActivityUtils.startDynamicSendActivity();
     }
 
     @Override
@@ -155,7 +156,7 @@ public class MainActivity extends BaseActivity implements MainView {
             return;
         tvHomePage.setSelected(fragment == homeFragment);
         tvImPage.setSelected(fragment == imHomeFragment);
-        tvCenterPage.setSelected(fragment == centerFragment);
+//        tvCenterPage.setSelected(fragment == centerFragment);
         tvFindPage.setSelected(fragment == findFragment);
         tvMyPage.setSelected(fragment == myFragment);
 

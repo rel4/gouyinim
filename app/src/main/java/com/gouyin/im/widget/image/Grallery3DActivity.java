@@ -1,5 +1,6 @@
 package com.gouyin.im.widget.image;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -9,6 +10,7 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.gouyin.im.AppConstant;
 import com.gouyin.im.R;
 
 public class Grallery3DActivity extends Activity {
@@ -27,6 +29,8 @@ public class Grallery3DActivity extends Activity {
 	}
 
 	private void initRes(){
+		Intent intent = getIntent();
+		intent.getSerializableExtra(AppConstant.IMAGE_LIST);
 		tvTitle = (TextView) findViewById(R.id.tvTitle);
 		gallery = (GalleryView) findViewById(R.id.mygallery);
 

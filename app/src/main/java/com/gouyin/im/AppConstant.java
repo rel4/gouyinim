@@ -18,4 +18,8 @@ public interface AppConstant {
      * 动态详情页的数据
      */
     String DYNAMIC_DATAILS = "dynamic_datails";
+    /**
+     * 图片集
+     */
+    String IMAGE_LIST = "image_list";
 }

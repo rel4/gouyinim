@@ -22,4 +22,5 @@
     <color name="gray_color">@android:color/darker_gray</color>
     <!--文字黑色-->
     <color name="text_black_color">@android:color/black</color>
+    <color name="app_background">@color/gray_color</color>
 </resources>

@@ -9,14 +9,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Toast;
 
 import com.gouyin.im.R;
 import com.gouyin.im.event.Events;
-import com.gouyin.im.event.EventsMessage;
 import com.gouyin.im.event.RxBus;
 import com.gouyin.im.utils.GlobalConstantUtils;
 import com.gouyin.im.utils.IconCompress;
