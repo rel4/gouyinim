@@ -46,6 +46,8 @@ public class DefaultDynamicModelImpl implements DefaultDynamicModel {
                     }
 
                     subscriber.onNext(aliyunPtahs);
+                    String serialize = JsonUtils.serialize(aliyunPtahs);
+                    LogUtils.e(DefaultDynamicModelImpl.this, "aliyunPtahs --JsonUtils : " + serialize);
                 } catch (ClientException e) {
                     subscriber.onError(e);
                     e.printStackTrace();
