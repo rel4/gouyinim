@@ -16,6 +16,7 @@ import com.gouyin.im.bean.UserInfoListBean;
 import com.gouyin.im.main.presenter.UserInfoPresenter;
 import com.gouyin.im.main.presenter.UserInfoPresenterImpl;
 import com.gouyin.im.main.view.UserInfoView;
+import com.gouyin.im.utils.ActivityUtils;
 import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.UIUtils;
 import com.gouyin.im.viewholder.UserInfoHeadViewHolder;
@@ -55,7 +56,7 @@ public class UserInfoActivity extends BaseActivity implements UserInfoView {
     @Override
     protected void initView() {
         userId = getIntent().getStringExtra(AppConstant.USER_ID);
-        userId = "104002";
+        userId = "144015";
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerview.setEmptyView(textEmpty);
@@ -119,6 +120,7 @@ public class UserInfoActivity extends BaseActivity implements UserInfoView {
         }
         loadMoreComplete();
     }
+
     private void loadMoreComplete() {
         if (recyclerview == null)
             return;
@@ -131,12 +133,12 @@ public class UserInfoActivity extends BaseActivity implements UserInfoView {
 
     @Override
     public void switch2RewardActivity() {
-
+        ActivityUtils.startRedpacketActivity(userId,"","");
     }
 
     @Override
     public void switch2SendMsgActivity() {
-
+        ActivityUtils.startAppConversationActivity(userId, "", "");
     }
 
     @Override

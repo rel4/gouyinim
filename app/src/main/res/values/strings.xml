@@ -52,4 +52,8 @@
     <string name="send_dynamic">发布动态</string>
     <string name="finish">完成</string>
     <string name="photo">图片</string>
+    <string name="xml_send_red_packet">发个红包，拉近距离</string>
+    <string name="input_money">输入金额</string>
+    <string name="weixin_play">微信支付</string>
+    <string name="aliplay_play">支付宝支付</string>
 </resources>

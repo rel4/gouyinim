@@ -51,8 +51,8 @@ public class GoodSelectViewHolder extends BaseRecyclerViewHolder<GoodSelectBaen.
     @Override
     protected void onItemclick(View view, GoodSelectBaen.Data baen, int position) {
 
-//        ActivityUtils.startUserInfoActivity(baen.getUserid());
-        ActivityUtils.startLoginMainActivity();
+        ActivityUtils.startUserInfoActivity(baen.getUserid());
+
     }
 
 }

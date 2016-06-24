@@ -6,8 +6,10 @@ import com.gouyin.im.AppConstant;
 import com.gouyin.im.bean.UserInfoListBean;
 import com.gouyin.im.center.widget.DefaultDynamicSendActivity;
 import com.gouyin.im.center.widget.DynamicSendActivity;
+import com.gouyin.im.im.widget.AppConversationActivity;
 import com.gouyin.im.login.widget.LoginMainActivity;
 import com.gouyin.im.main.widget.DynamicDatailsActivity;
+import com.gouyin.im.main.widget.RedpacketAcitivity;
 import com.gouyin.im.main.widget.UserInfoActivity;
 import com.gouyin.im.widget.image.PhonePicActivity;
 import com.gouyin.im.widget.image.ShowImageActivity;
@@ -22,13 +24,32 @@ public class ActivityUtils {
     private static String TAG = "ActivityUtils";
 
     /**
+     * 开启一个activity
+     *
+     * @param clz
+     */
+    public static void startActivity(Class clz) {
+        Intent intent = new Intent(ConfigUtils.getInstance().getActivityContext(), clz);
+        ConfigUtils.getInstance().getActivityContext().startActivity(intent);
+    }
+
+    /**
+     * 开启一个activity
+     *
+     * @param intent
+     */
+    public static void startActivity(Intent intent) {
+        ConfigUtils.getInstance().getActivityContext().startActivity(intent);
+    }
+
+    /**
      * 进入用户信息列表
      */
     public static void startUserInfoActivity(String userId) {
         Intent intent = new Intent(ConfigUtils.getInstance().getApplicationContext(), UserInfoActivity.class);
         LogUtils.e(TAG, "userid : " + userId);
         intent.putExtra(AppConstant.USER_ID, userId);
-        UIUtils.startActivity(intent);
+        startActivity(intent);
     }
 
     /**
@@ -42,25 +63,25 @@ public class ActivityUtils {
         Intent intent = new Intent(ConfigUtils.getInstance().getApplicationContext(), DynamicDatailsActivity.class);
         intent.putExtra(AppConstant.DYNAMIC_DATAILS, bean);
         LogUtils.d(TAG, bean.getId());
-        UIUtils.startActivity(intent);
+        startActivity(intent);
     }
 
     /**
      * 开启动态页面
      */
     public static void startDynamicSendActivity() {
-        UIUtils.startActivity(DynamicSendActivity.class);
+        startActivity(DynamicSendActivity.class);
     }
 
     /**
      * 普通动态发布
      */
     public static void startDefaultDynamicSendActivity() {
-        UIUtils.startActivity(DefaultDynamicSendActivity.class);
+        startActivity(DefaultDynamicSendActivity.class);
     }
 
     public static void startPhonePicActivity() {
-        UIUtils.startActivity(PhonePicActivity.class);
+        startActivity(PhonePicActivity.class);
     }
 
     public static void startShowImageActivity(List<String> childList) {
@@ -68,10 +89,37 @@ public class ActivityUtils {
                 ShowImageActivity.class);
         mIntent.putStringArrayListExtra("data",
                 (ArrayList<String>) childList);
-        UIUtils.startActivity(mIntent);
+        startActivity(mIntent);
     }
 
+    /**
+     * 开启登录页面
+     */
     public static void startLoginMainActivity() {
-        UIUtils.startActivity(LoginMainActivity.class);
+        startActivity(LoginMainActivity.class);
+    }
+
+    /**
+     * 开启聊天页面
+     *
+     * @param userId
+     * @param name
+     * @param avatar
+     */
+    public static void startAppConversationActivity(String userId, String name, String avatar) {
+        Intent intent = new Intent(ConfigUtils.getInstance().getActivityContext(), AppConversationActivity.class);
+        intent.putExtra("id", userId);
+        intent.putExtra("name", name);
+        intent.putExtra("avater", avatar);
+        startActivity(intent);
+
+    }
+
+    public static void startRedpacketActivity(String userId, String name, String avater) {
+        Intent intent = new Intent(ConfigUtils.getInstance().getActivityContext(), RedpacketAcitivity.class);
+        intent.putExtra("id", userId);
+        intent.putExtra("name", name);
+        intent.putExtra("avater", avater);
+        startActivity(intent);
     }
 }

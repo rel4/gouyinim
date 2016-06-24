@@ -40,24 +40,6 @@ public class UIUtils {
         return LayoutInflater.from(ConfigUtils.getInstance().getApplicationContext()).inflate(resID, root, false);
     }
 
-    /**
-     * 开启一个activity
-     *
-     * @param clz
-     */
-    public static void startActivity(Class clz) {
-        Intent intent = new Intent(ConfigUtils.getInstance().getActivityContext(), clz);
-        ConfigUtils.getInstance().getActivityContext().startActivity(intent);
-    }
-
-    /**
-     * 开启一个activity
-     *
-     * @param intent
-     */
-    public static void startActivity(Intent intent) {
-        ConfigUtils.getInstance().getActivityContext().startActivity(intent);
-    }
 
     /**
      * 获取字符串资源

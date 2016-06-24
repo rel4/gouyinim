@@ -42,6 +42,7 @@ public class DefaultDynamicPresenterImpl implements DefaultDynamicPresenter, Bas
     public void onSuccess(Object o, BaseIModel.DataType dataType) {
         view.hideLoading();
         view.transfePageMsg(UIUtils.getStringRes(R.string.upload)+UIUtils.getStringRes(R.string.success));
+        view.finishPage();
     }
 
     @Override

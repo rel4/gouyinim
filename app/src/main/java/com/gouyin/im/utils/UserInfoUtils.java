@@ -10,6 +10,6 @@ public class UserInfoUtils {
     }
 
     public static String getAuthcode() {
-        return "";
+        return "1841615dc241703a46dd3bb1c861b672";
     }
 }

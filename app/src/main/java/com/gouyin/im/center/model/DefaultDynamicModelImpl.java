@@ -2,19 +2,22 @@ package com.gouyin.im.center.model;
 
 import com.alibaba.sdk.android.oss.ClientException;
 import com.alibaba.sdk.android.oss.ServiceException;
+import com.gouyin.im.ServerApi;
 import com.gouyin.im.aliyun.AliyunManager;
 import com.gouyin.im.base.ImageObjoct;
-import com.gouyin.im.base.PicUplodeBean;
+import com.gouyin.im.bean.BaseBean;
 import com.gouyin.im.center.presenter.DefaultDynamicPresenterImpl;
 import com.gouyin.im.utils.FilePathUtlis;
 import com.gouyin.im.utils.JsonUtils;
 import com.gouyin.im.utils.LogUtils;
+import com.gouyin.im.utils.UserInfoUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import rx.Observable;
 import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
@@ -74,9 +77,7 @@ public class DefaultDynamicModelImpl implements DefaultDynamicModel {
                     @Override
                     public void onNext(ArrayList<ImageObjoct> s) {
                         LogUtils.e(DefaultDynamicPresenterImpl.class, "  onNext :　" + aliyunPtahs.toString());
-                        PicUplodeBean picUplodeBean = new PicUplodeBean();
-                        picUplodeBean.setImg(s);
-                        String serialize = JsonUtils.serialize(picUplodeBean);
+                        String serialize = JsonUtils.serialize(s);
                         LogUtils.e(DefaultDynamicModelImpl.this, "JsonUtils : " + serialize);
                         sendAllDynamic(content, serialize, address, listener);
                     }
@@ -84,7 +85,26 @@ public class DefaultDynamicModelImpl implements DefaultDynamicModel {
     }
 
     private void sendAllDynamic(String content, String json, String address, onLoadDateSingleListener listener) {
-//        ServerApi.getAppAPI().sendAllDynamic
+        String authcode = UserInfoUtils.getAuthcode();
+        ServerApi.getAppAPI().sendAllDefaultDynamic("1", content, json, "", address, authcode)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(new Subscriber<BaseBean>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        listener.onFailure(e.getMessage(), e);
+                    }
+
+                    @Override
+                    public void onNext(BaseBean bean) {
+                        listener.onSuccess(bean, DataType.DATA_ZERO);
+                    }
+                });
 
     }
 

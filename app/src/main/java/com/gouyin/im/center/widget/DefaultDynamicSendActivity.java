@@ -129,6 +129,17 @@ public class DefaultDynamicSendActivity extends BaseActivity implements DefaultD
         showToast(msg);
     }
 
+    @Override
+    public void finishPage() {
+        UIUtils.sendDelayedOneMillis(new Runnable() {
+            @Override
+            public void run() {
+                finish();
+            }
+        });
+
+    }
+
     private class ShowPicAdapter extends BaseAdapter {
         private List datas;
 

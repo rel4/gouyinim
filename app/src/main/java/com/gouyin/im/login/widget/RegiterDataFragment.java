@@ -17,6 +17,7 @@ import com.gouyin.im.event.RxBus;
 import com.gouyin.im.login.presenter.RegiterDataFragmentPresenter;
 import com.gouyin.im.login.presenter.RegiterDataFragmentPresenterImpl;
 import com.gouyin.im.login.view.RegiterDataFragmentView;
+import com.gouyin.im.utils.ActivityUtils;
 import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.UIUtils;
 import com.trello.rxlifecycle.FragmentEvent;
@@ -63,7 +64,7 @@ public class RegiterDataFragment extends BaseFragment implements RegiterDataFrag
         switch (view.getId()) {
             case R.id.add_icom:
 
-                UIUtils.startActivity(SelectPicPopupActivity.class);
+                ActivityUtils.startActivity(SelectPicPopupActivity.class);
                 RxBus.with(this)
                         .setEvent(Events.EventEnum.GET_PHOTO)
                         .setEndEvent(FragmentEvent.DESTROY)

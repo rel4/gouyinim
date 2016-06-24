@@ -3,11 +3,13 @@ package com.gouyin.im;
 
 import com.gouyin.im.bean.BaseBean;
 import com.gouyin.im.bean.CommentDataListBean;
+import com.gouyin.im.bean.DefaultDataBean;
 import com.gouyin.im.bean.GoodSelectBaen;
 import com.gouyin.im.bean.LoginBean;
 import com.gouyin.im.bean.RegiterBean;
 import com.gouyin.im.bean.UserInfoDetailBean;
 import com.gouyin.im.bean.UserInfoListBean;
+import com.gouyin.im.center.model.DefaultDynamicModel;
 import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.UnicodeUtils;
 
@@ -211,5 +213,41 @@ public class ServerApi {
         Observable<CommentDataListBean> getCommentList(@Query("lid") String id,
                                                        @Query("page") int page,
                                                        @Query("authcode") String authcode);
+
+        /**
+         * 动态发布
+         *
+         * @param type
+         * @param content
+         * @param pics
+         * @param videos
+         * @param address
+         * @param authcode
+         * @return
+         */
+        @FormUrlEncoded
+        @POST("Latest/insert_latest")
+        Observable<BaseBean> sendAllDefaultDynamic(@Field("type") String type,
+                                                   @Field("title") String content,
+                                                   @Field("img  ") String pics,
+                                                   @Field("video ") String videos,
+                                                   @Field("address") String address,
+                                                   @Field("authcode") String authcode);
+
+        /**
+         * 打赏
+         *
+         * @param playType
+         * @param uid
+         * @param money
+         * @param authcode
+         * @return
+         */
+        @FormUrlEncoded
+        @POST("Reward/pub_reward")
+        Observable<DefaultDataBean> aliPay(@Field("pay_type") String playType,
+                                           @Field("to_uid") String uid,
+                                           @Field("money") String money,
+                                           @Field("authcode") String authcode);
     }
 }
