@@ -102,6 +102,7 @@ public class DefaultDynamicModelImpl implements DefaultDynamicModel {
 
                     @Override
                     public void onNext(BaseBean bean) {
+                        LogUtils.e(DefaultDynamicModelImpl.class, "onNext BaseBean : " + bean.toString());
                         listener.onSuccess(bean, DataType.DATA_ZERO);
                     }
                 });

@@ -1,7 +1,6 @@
 package com.gouyin.im.main.widget;
 
 
-
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.view.KeyEvent;
@@ -13,6 +12,8 @@ import android.widget.TextView;
 import com.gouyin.im.R;
 import com.gouyin.im.base.BaseActivity;
 import com.gouyin.im.base.BaseFragment;
+import com.gouyin.im.event.Events;
+import com.gouyin.im.event.RxBus;
 import com.gouyin.im.find.widget.FindFragment;
 import com.gouyin.im.home.widget.HomeFragment;
 import com.gouyin.im.im.widget.IMHomeFragment;
@@ -25,6 +26,7 @@ import com.gouyin.im.utils.ConfigUtils;
 import com.gouyin.im.utils.FragmentUtils;
 import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.UIUtils;
+import com.trello.rxlifecycle.ActivityEvent;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -55,7 +57,7 @@ public class MainActivity extends BaseActivity implements MainView {
     protected void initView() {
         mMainPresenter.switchNavigation(R.id.tv_home_page);
 //        onClick(tvHomePage);
-
+        initRxBus();
     }
 
 
@@ -179,5 +181,15 @@ public class MainActivity extends BaseActivity implements MainView {
         }
         return super.onKeyDown(keyCode, event);
     }
+
+    private void initRxBus() {
+        RxBus.with(this)
+                .setEndEvent(ActivityEvent.DESTROY)
+                .setEvent(Events.EventEnum.LOGIN)
+                .onNext(events ->
+                        ActivityUtils.startLoginMainActivity())
+                .create();
+    }
+
 
 }

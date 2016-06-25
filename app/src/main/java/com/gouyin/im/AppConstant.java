@@ -1,5 +1,7 @@
 package com.gouyin.im;
 
+import com.gouyin.im.login.widget.LoginFragment;
+
 /**
  * Created by jb on 2016/6/20.
  */
@@ -9,12 +11,6 @@ public interface AppConstant {
      */
     String USER_ID = "user_id";
     /**
-     * 图片分隔符
-     */
-    String IMAGE_SPLIT = "---";
-
-    String SMALL_IMAGE_SPLIT = "|||";
-    /**
      * 动态详情页的数据
      */
     String DYNAMIC_DATAILS = "dynamic_datails";
@@ -22,4 +18,9 @@ public interface AppConstant {
      * 图片集
      */
     String IMAGE_LIST = "image_list";
+
+    /**
+     * 登录状态
+     */
+    String FLAG_LOGIN_STATUS = "flag_login_status";
 }

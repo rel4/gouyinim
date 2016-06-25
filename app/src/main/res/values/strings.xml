@@ -56,4 +56,7 @@
     <string name="input_money">输入金额</string>
     <string name="weixin_play">微信支付</string>
     <string name="aliplay_play">支付宝支付</string>
+    <string name="pay_success">支付成功</string>
+    <string name="pay_affirm">支付确认</string>
+    <string name="pay_failure">支付失败</string>
 </resources>

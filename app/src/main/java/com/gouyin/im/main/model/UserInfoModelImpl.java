@@ -24,7 +24,7 @@ public class UserInfoModelImpl implements UserInfoModel {
     @Override
     public void loadUserInfoData(String userId, int page, BaseIModel.onLoadListDateListener<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList> listener) {
         String authcode = UserInfoUtils.getAuthcode();
-        ServerApi.getAppAPI().getPersonDynamincList(userId,authcode,page)
+        ServerApi.getAppAPI().getPersonDynamincList(userId, authcode, page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<UserInfoListBean>() {
@@ -36,19 +36,19 @@ public class UserInfoModelImpl implements UserInfoModel {
 
                     @Override
                     public void onError(Throwable e) {
-                        listener.onFailure(e.getMessage(),e);
+                        listener.onFailure(e.getMessage(), e);
                     }
 
                     @Override
                     public void onNext(UserInfoListBean userInfoListBean) {
-                            if (userInfoListBean!=null){
-                                UserInfoListBean.UserInfoListBeanData data = userInfoListBean.getData();
-                                if (data!=null){
-                                    List<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList> list = data.getList();
-                                    listener.onSuccess(list, BaseIModel.DataType.DATA_ZERO);
-                                }
+                        if (userInfoListBean != null) {
+                            UserInfoListBean.UserInfoListBeanData data = userInfoListBean.getData();
+                            if (data != null) {
+                                List<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList> list = data.getList();
+                                listener.onSuccess(list, BaseIModel.DataType.DATA_ZERO);
                             }
-                        listener.onFailure(UIUtils.getStringRes(R.string.request_failed),null);
+                        } else
+                            listener.onFailure(UIUtils.getStringRes(R.string.request_failed), null);
                     }
                 });
 

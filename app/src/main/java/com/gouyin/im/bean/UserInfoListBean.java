@@ -1,5 +1,6 @@
 package com.gouyin.im.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class UserInfoListBean extends BaseBean {
@@ -43,6 +44,33 @@ public class UserInfoListBean extends BaseBean {
             private String nickname;
             private String sex;
             private String uid;
+
+
+            public class Simg implements Serializable {
+                private String url;
+
+                public void setUrl(String url) {
+                    this.url = url;
+                }
+
+                public String getUrl() {
+                    return this.url;
+                }
+
+            }
+
+            public class Img implements Serializable {
+                private String url;
+
+                public void setUrl(String url) {
+                    this.url = url;
+                }
+
+                public String getUrl() {
+                    return this.url;
+                }
+
+            }
 
             public long getCreate_time() {
                 return create_time;

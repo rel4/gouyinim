@@ -7,7 +7,7 @@ package com.gouyin.im.event;
 public class Events<T> {
 
     public enum EventEnum {
-       GET_PHOTO,REGITER_CODE, PIC_DESTROY, GET_PHOTO_LIST;
+       GET_PHOTO,REGITER_CODE, PIC_DESTROY, GET_PHOTO_LIST, LOGIN;
     }
 
     public EventEnum what;

@@ -6,6 +6,8 @@ import com.gouyin.im.AppConstant;
 import com.gouyin.im.bean.UserInfoListBean;
 import com.gouyin.im.center.widget.DefaultDynamicSendActivity;
 import com.gouyin.im.center.widget.DynamicSendActivity;
+import com.gouyin.im.event.Events;
+import com.gouyin.im.event.RxBus;
 import com.gouyin.im.im.widget.AppConversationActivity;
 import com.gouyin.im.login.widget.LoginMainActivity;
 import com.gouyin.im.main.widget.DynamicDatailsActivity;
@@ -77,7 +79,11 @@ public class ActivityUtils {
      * 普通动态发布
      */
     public static void startDefaultDynamicSendActivity() {
-        startActivity(DefaultDynamicSendActivity.class);
+        if (UserInfoUtils.isLogin()) {
+            startActivity(DefaultDynamicSendActivity.class);
+        } else
+            RxBus.getInstance().send(Events.EventEnum.LOGIN, null);
+
     }
 
     public static void startPhonePicActivity() {
@@ -107,6 +113,10 @@ public class ActivityUtils {
      * @param avatar
      */
     public static void startAppConversationActivity(String userId, String name, String avatar) {
+        if (!UserInfoUtils.isLogin()) {
+            RxBus.getInstance().send(Events.EventEnum.LOGIN, null);
+            return;
+        }
         Intent intent = new Intent(ConfigUtils.getInstance().getActivityContext(), AppConversationActivity.class);
         intent.putExtra("id", userId);
         intent.putExtra("name", name);
@@ -115,7 +125,18 @@ public class ActivityUtils {
 
     }
 
+    /**
+     * 打赏
+     *
+     * @param userId
+     * @param name
+     * @param avater
+     */
     public static void startRedpacketActivity(String userId, String name, String avater) {
+        if (!UserInfoUtils.isLogin()) {
+            RxBus.getInstance().send(Events.EventEnum.LOGIN, null);
+            return;
+        }
         Intent intent = new Intent(ConfigUtils.getInstance().getActivityContext(), RedpacketAcitivity.class);
         intent.putExtra("id", userId);
         intent.putExtra("name", name);

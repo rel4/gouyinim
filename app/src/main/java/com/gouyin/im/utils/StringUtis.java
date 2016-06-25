@@ -1,5 +1,7 @@
 package com.gouyin.im.utils;
 
+import android.text.TextUtils;
+
 /**
  * Created by jb on 2016/6/17.
  */
@@ -15,5 +17,16 @@ public class StringUtis {
             return true;
         return false;
 
+    }
+
+    /**
+     * 比较两个字符串一致
+     *
+     * @param a
+     * @param b
+     * @return
+     */
+    public static boolean equals(String a, String b) {
+        return TextUtils.equals(a, b);
     }
 }

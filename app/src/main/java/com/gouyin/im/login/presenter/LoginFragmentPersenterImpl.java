@@ -1,12 +1,17 @@
 package com.gouyin.im.login.presenter;
 
+import com.gouyin.im.AppConstant;
+import com.gouyin.im.CacheManager;
 import com.gouyin.im.R;
 import com.gouyin.im.base.BaseIModel;
 import com.gouyin.im.bean.LoginBean;
 import com.gouyin.im.login.model.LoginFragmentModel;
 import com.gouyin.im.login.model.LoginFragmentModelImpl;
 import com.gouyin.im.login.view.LoginFragmentView;
+import com.gouyin.im.utils.ConfigUtils;
 import com.gouyin.im.utils.LogUtils;
+import com.gouyin.im.utils.PrefUtils;
+import com.gouyin.im.utils.SDUtils;
 import com.gouyin.im.utils.UIUtils;
 
 /**
@@ -43,6 +48,8 @@ public class LoginFragmentPersenterImpl implements LoginFragmentPersenter, BaseI
                 UIUtils.sendDelayedOneMillis(new Runnable() {
                     @Override
                     public void run() {
+                        PrefUtils.setBoolean(AppConstant.FLAG_LOGIN_STATUS, true);
+                        CacheManager.saveObject(ConfigUtils.getInstance().getApplicationContext(), loginBean.getData(), CacheManager.CachePath.FLAG_LOGIN_CODE);
                         loginView.loginSuccss();
                     }
                 });

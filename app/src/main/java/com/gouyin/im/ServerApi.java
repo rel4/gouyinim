@@ -229,8 +229,8 @@ public class ServerApi {
         @POST("Latest/insert_latest")
         Observable<BaseBean> sendAllDefaultDynamic(@Field("type") String type,
                                                    @Field("title") String content,
-                                                   @Field("img  ") String pics,
-                                                   @Field("video ") String videos,
+                                                   @Field("img") String pics,
+                                                   @Field("video") String videos,
                                                    @Field("address") String address,
                                                    @Field("authcode") String authcode);
 

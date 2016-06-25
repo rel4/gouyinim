@@ -2,6 +2,8 @@ package com.gouyin.im;
 
 import android.content.Context;
 
+import com.gouyin.im.login.widget.LoginFragment;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -100,6 +102,13 @@ public class CacheManager {
             return false;
         return context.getFileStreamPath(fn).exists();
     }
+    public  interface CachePath{
+        /**
+         * 登录加密串
+         */
+        String FLAG_LOGIN_CODE = LoginFragment.class.getName();
+    }
+
 
 
 

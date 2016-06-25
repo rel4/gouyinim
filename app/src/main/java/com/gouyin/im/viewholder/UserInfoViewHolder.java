@@ -1,5 +1,6 @@
 package com.gouyin.im.viewholder;
 
+import android.media.Image;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -13,6 +14,7 @@ import com.gouyin.im.ImageServerApi;
 import com.gouyin.im.R;
 import com.gouyin.im.base.BaseRecyclerViewHolder;
 import com.gouyin.im.bean.UserInfoListBean;
+import com.gouyin.im.main.model.UserInfoModelImpl;
 import com.gouyin.im.utils.ActivityUtils;
 import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.StringUtis;
@@ -122,6 +124,7 @@ public class UserInfoViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.
         tv_reply_number.setText(bean.getLcomn() + "");
         tv_wacth_number.setText(bean.getLupn() + "");
         tvStr.setText(bean.getNickname());
+
         ImageServerApi.showURLImage(rivUserImage, bean.getFace());
 
     }
@@ -142,7 +145,7 @@ public class UserInfoViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.
         tv_wacth_number.setText(bean.getLupn() + "");
         tvStr.setText(bean.getNickname());
         ImageServerApi.showURLImage(rivUserImage, bean.getFace());
-        List<String> imgs = bean.getImg();
+        List<String> imgs = bean.getSimg();
         gvUserPic.setAdapter(new PicGridView(imgs));
 
     }
@@ -180,6 +183,13 @@ public class UserInfoViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.
             ImageView imageView = new ImageView(parent.getContext());
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             ImageServerApi.showURLImage(imageView, list.get(position));
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    LogUtils.e("position", "url : " + list.get(position));
+                    LogUtils.e("position", "url : " + list.get(position));
+                }
+            });
             return imageView;
         }
     }

@@ -118,7 +118,7 @@ public abstract class BaseFragment extends BaseRxFragment {
      * 初始化加载进度条
      */
     private void initProgressDialog() {
-        progressDialog = new ProgressDialog(getActivity()==null?ConfigUtils.getInstance().getActivityContext():getActivity());
+        progressDialog = new ProgressDialog(getActivity() == null ? ConfigUtils.getInstance().getActivityContext() : getActivity());
     }
 
     /**
