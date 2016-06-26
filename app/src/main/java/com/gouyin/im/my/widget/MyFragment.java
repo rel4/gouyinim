@@ -7,6 +7,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.gouyin.im.AppConstant;
@@ -47,12 +48,13 @@ public class MyFragment extends BaseFragment implements UserInfoView {
     TextView tvSendMsg;
     @Bind(R.id.tv_appointment)
     TextView tvAppointment;
-
+    @Bind(R.id.layout_usee_action)
+    LinearLayout layout_usee_action;
 
     private UserInfoPresenter mPresenter;
     private UserInfoAdapter mAdapter;
     private boolean isRefresh;
-//    private UserInfoHeadViewHolder headHolder;
+    //    private UserInfoHeadViewHolder headHolder;
     private String userId;
     private PersonDynamicViewholder personDynamicViewholder;
 
@@ -66,6 +68,7 @@ public class MyFragment extends BaseFragment implements UserInfoView {
 
     @Override
     protected void initData() {
+        layout_usee_action.setVisibility(View.GONE);
 //        userId = getIntent().getStringExtra(AppConstant.USER_ID);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
