@@ -3,6 +3,7 @@ package com.gouyin.im.utils;
 import com.gouyin.im.AppConstant;
 import com.gouyin.im.CacheManager;
 import com.gouyin.im.bean.LoginBean;
+import com.gouyin.im.bean.PresonInfo;
 
 /**
  * Created by jb on 2016/6/20.
@@ -11,6 +12,7 @@ public class UserInfoUtils {
     private static String authcode = "";
 
     public static String getUserId() {
+
         return null;
     }
 
@@ -18,7 +20,7 @@ public class UserInfoUtils {
         if (!isLogin())
             return "";
         if (StringUtis.isEmpty(authcode)) {
-            LoginBean.PresonInfo presonInfo = getPresonInfo();
+            PresonInfo presonInfo = getPresonInfo();
             if (presonInfo != null)
                 authcode = presonInfo.getAuthcode();
         }
@@ -27,6 +29,9 @@ public class UserInfoUtils {
 
     public static void setAuthcode(String code) {
         authcode = code;
+        PresonInfo presonInfo = getPresonInfo();
+        presonInfo.setAuthcode(authcode);
+        saveUserInfo(presonInfo);
     }
 
     public static boolean isLogin() {
@@ -34,17 +39,36 @@ public class UserInfoUtils {
     }
 
     /**
-     * 用户信息
+     * 获取信息
      *
      * @return
      */
-    private static LoginBean.PresonInfo getPresonInfo() {
+    public static PresonInfo getPresonInfo() {
         Object o = CacheManager.readObject(ConfigUtils.getInstance().getApplicationContext(), CacheManager.CachePath.FLAG_LOGIN_CODE);
-        if (o != null && o instanceof LoginBean.PresonInfo) {
-            LoginBean.PresonInfo info = (LoginBean.PresonInfo) o;
+        if (o != null && o instanceof PresonInfo) {
+            PresonInfo info = (PresonInfo) o;
             return info;
 
         }
         return null;
+    }
+
+    /**
+     * 获取融云key
+     *
+     * @return
+     */
+    public static String getRongyunKey() {
+        return getPresonInfo().getRongyunkey();
+    }
+
+    /**
+     * 保存用户信息对象
+     *
+     * @param info
+     */
+    public static void saveUserInfo(PresonInfo info) {
+        authcode = "";
+        CacheManager.saveObject(ConfigUtils.getInstance().getApplicationContext(), info, CacheManager.CachePath.FLAG_LOGIN_CODE);
     }
 }

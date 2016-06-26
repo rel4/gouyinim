@@ -10,6 +10,8 @@ import android.widget.TextView;
 import com.gouyin.im.AppConstant;
 import com.gouyin.im.R;
 import com.gouyin.im.base.BaseFragment;
+import com.gouyin.im.event.Events;
+import com.gouyin.im.event.RxBus;
 import com.gouyin.im.login.presenter.LoginFragmentPersenter;
 import com.gouyin.im.login.presenter.LoginFragmentPersenterImpl;
 import com.gouyin.im.login.view.LoginFragmentView;
@@ -17,6 +19,7 @@ import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.PrefUtils;
 import com.gouyin.im.utils.StringUtis;
 import com.gouyin.im.utils.UIUtils;
+import com.gouyin.im.utils.UserInfoUtils;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -97,7 +100,8 @@ public class LoginFragment extends BaseFragment implements LoginFragmentView {
     @Override
     public void loginSuccss() {
         showToast(resources.getString(R.string.str_login) + resources.getString(R.string.success));
-
+        RxBus.getInstance().send(Events.EventEnum.GET_RONGYUN_KEY, null);
+        UserInfoUtils.isLogin();
         UIUtils.sendDelayed(new Runnable() {
             @Override
             public void run() {

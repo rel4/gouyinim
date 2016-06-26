@@ -23,14 +23,13 @@ import butterknife.OnClick;
  * Created by jb on 2016/6/24.
  */
 public class RedpacketAcitivity extends BaseActivity implements PlayUserAcitivityView {
-    private String[] moneys = {};
     @Bind(R.id.iv_user_icon)
     TextView ivUserIcon;
     @Bind(R.id.gv_pic_list)
     GridView gvPicList;
     @Bind(R.id.et_input_money)
     EditText editText;
-    private  String uid;
+    private String uid;
     private RedpacketAcitivityPresenter presenter;
 
     @Override
@@ -50,6 +49,7 @@ public class RedpacketAcitivity extends BaseActivity implements PlayUserAcitivit
 
     @Override
     protected View setRootContentView() {
+        uid = getIntent().getStringExtra("id");
         presenter = new RedpacketAcitivityPresenterImpl();
         presenter.attachView(this);
         return UIUtils.inflateLayout(R.layout.activity_red_packet);
@@ -68,13 +68,13 @@ public class RedpacketAcitivity extends BaseActivity implements PlayUserAcitivit
 
     @Override
     public void swicthAliPlay() {
-        if (editText!=null){
+        if (editText != null) {
             String trim = editText.getText().toString().trim();
-            if (StringUtis.isEmpty(trim)){
-                showToast(getString(R.string.input_money)+getResources().getString(R.string.not_empty));
+            if (StringUtis.isEmpty(trim)) {
+                showToast(getString(R.string.input_money) + getResources().getString(R.string.not_empty));
                 return;
             }
-           presenter.aliPay(uid,trim);
+            presenter.aliPay(uid, trim);
         }
     }
 

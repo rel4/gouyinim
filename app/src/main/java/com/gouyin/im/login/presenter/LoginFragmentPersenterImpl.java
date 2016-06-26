@@ -13,6 +13,7 @@ import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.PrefUtils;
 import com.gouyin.im.utils.SDUtils;
 import com.gouyin.im.utils.UIUtils;
+import com.gouyin.im.utils.UserInfoUtils;
 
 /**
  * Created by jb on 2016/6/17.
@@ -49,7 +50,7 @@ public class LoginFragmentPersenterImpl implements LoginFragmentPersenter, BaseI
                     @Override
                     public void run() {
                         PrefUtils.setBoolean(AppConstant.FLAG_LOGIN_STATUS, true);
-                        CacheManager.saveObject(ConfigUtils.getInstance().getApplicationContext(), loginBean.getData(), CacheManager.CachePath.FLAG_LOGIN_CODE);
+                        UserInfoUtils.saveUserInfo(loginBean.getData());
                         loginView.loginSuccss();
                     }
                 });

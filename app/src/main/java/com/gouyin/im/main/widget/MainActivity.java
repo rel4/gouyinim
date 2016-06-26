@@ -1,6 +1,7 @@
 package com.gouyin.im.main.widget;
 
 
+import android.graphics.ImageFormat;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.view.KeyEvent;
@@ -12,11 +13,17 @@ import android.widget.TextView;
 import com.gouyin.im.R;
 import com.gouyin.im.base.BaseActivity;
 import com.gouyin.im.base.BaseFragment;
+import com.gouyin.im.base.BaseIModel;
+import com.gouyin.im.bean.LoginBean;
+import com.gouyin.im.bean.PresonInfo;
+import com.gouyin.im.bean.RongyunBean;
 import com.gouyin.im.event.Events;
 import com.gouyin.im.event.RxBus;
 import com.gouyin.im.find.widget.FindFragment;
 import com.gouyin.im.home.widget.HomeFragment;
 import com.gouyin.im.im.widget.IMHomeFragment;
+import com.gouyin.im.main.model.RongyunKeyModel;
+import com.gouyin.im.main.model.RongyunKeyModelImpl;
 import com.gouyin.im.main.presenter.MainPresenter;
 import com.gouyin.im.main.presenter.MainPresenterImpl;
 import com.gouyin.im.main.view.MainView;
@@ -25,13 +32,16 @@ import com.gouyin.im.utils.ActivityUtils;
 import com.gouyin.im.utils.ConfigUtils;
 import com.gouyin.im.utils.FragmentUtils;
 import com.gouyin.im.utils.LogUtils;
+import com.gouyin.im.utils.StringUtis;
 import com.gouyin.im.utils.UIUtils;
+import com.gouyin.im.utils.UserInfoUtils;
 import com.trello.rxlifecycle.ActivityEvent;
 
 import butterknife.Bind;
 import butterknife.OnClick;
 import io.rong.imkit.RongyunConfig;
 import io.rong.imlib.RongIMClient;
+import io.rong.imlib.model.UserData;
 
 public class MainActivity extends BaseActivity implements MainView {
     @Bind(R.id.tv_home_page)
@@ -58,31 +68,14 @@ public class MainActivity extends BaseActivity implements MainView {
         mMainPresenter.switchNavigation(R.id.tv_home_page);
 //        onClick(tvHomePage);
         initRxBus();
+        loginRongyun();
     }
 
 
     @Override
     protected View setRootContentView() {
         mMainPresenter = new MainPresenterImpl(this);
-        RongyunConfig.getInstance().connectRonyun("szr8DvbkpxjhVYgwTJBOy14E80Qlu5sSomiFVkhRoX6fvIUQ2yA3o8Dw8WNWCRbBKAxe9Aln5eE=", new RongyunConfig.ConnectCallback() {
 
-            @Override
-            public void onSuccess(String s) {
-                LogUtils.e(MainActivity.class, "onSuccess : " + s);
-            }
-
-            @Override
-            public void onError(RongIMClient.ErrorCode errorCode) {
-                LogUtils.e(MainActivity.class, "onTokenIncorrect Message : " + errorCode.getMessage());
-                LogUtils.e(MainActivity.class, "onTokenIncorrect name : " + errorCode.name());
-                LogUtils.e(MainActivity.class, "onTokenIncorrect Value : " + errorCode.getValue());
-            }
-
-            @Override
-            public void onTokenIncorrect() {
-                LogUtils.e(MainActivity.class, "onTokenIncorrect : ");
-            }
-        });
         return UIUtils.inflateLayout(R.layout.activity_main);
     }
 
@@ -182,6 +175,41 @@ public class MainActivity extends BaseActivity implements MainView {
         return super.onKeyDown(keyCode, event);
     }
 
+    /**
+     *
+     */
+    public void loginRongyun() {
+        if (!UserInfoUtils.isLogin())
+            return;
+        String rongyunKey = UserInfoUtils.getRongyunKey();
+        if (StringUtis.isEmpty(rongyunKey))
+            return;
+        RongyunConfig.getInstance().connectRonyun(rongyunKey, new RongyunConfig.ConnectCallback() {
+
+            @Override
+            public void onSuccess(String s) {
+
+                LogUtils.e(MainActivity.class, "onSuccess : " + s);
+            }
+
+            @Override
+            public void onError(RongIMClient.ErrorCode errorCode) {
+                LogUtils.e(MainActivity.class, "onTokenIncorrect Message : " + errorCode.getMessage());
+                LogUtils.e(MainActivity.class, "onTokenIncorrect name : " + errorCode.name());
+                LogUtils.e(MainActivity.class, "onTokenIncorrect Value : " + errorCode.getValue());
+            }
+
+            @Override
+            public void onTokenIncorrect() {
+                LogUtils.e(MainActivity.class, "onTokenIncorrect : ");
+                RxBus.getInstance().send(Events.EventEnum.GET_RONGYUN_KEY, null);
+            }
+        });
+    }
+
+    /**
+     * rxbus
+     */
     private void initRxBus() {
         RxBus.with(this)
                 .setEndEvent(ActivityEvent.DESTROY)
@@ -189,7 +217,39 @@ public class MainActivity extends BaseActivity implements MainView {
                 .onNext(events ->
                         ActivityUtils.startLoginMainActivity())
                 .create();
+        RxBus.with(this)
+                .setEndEvent(ActivityEvent.DESTROY)
+                .setEvent(Events.EventEnum.GET_RONGYUN_KEY)
+                .onNext(events -> {
+                    getRongyunKey();
+                })
+                .create();
     }
 
+    /**
+     * 获取key
+     */
+    public void getRongyunKey() {
+        RongyunKeyModel rongyunKeyModel = new RongyunKeyModelImpl();
+        rongyunKeyModel.getRongyunKey(new BaseIModel.onLoadDateSingleListener() {
+            @Override
+            public void onSuccess(Object o, BaseIModel.DataType dataType) {
+                if (o != null && o instanceof RongyunBean) {
+                    RongyunBean bean = (RongyunBean) o;
+                    PresonInfo presonInfo = UserInfoUtils.getPresonInfo();
+                    presonInfo.setFace(bean.getData().getFace());
+                    presonInfo.setNickname(bean.getData().getNickname());
+                    presonInfo.setRongyunkey(bean.getData().getToken());
+                    UserInfoUtils.saveUserInfo(presonInfo);
+                    loginRongyun();
+                }
+            }
 
+            @Override
+            public void onFailure(String msg, Throwable e) {
+
+            }
+        });
+
+    }
 }

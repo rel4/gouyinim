@@ -7,6 +7,7 @@ import com.gouyin.im.bean.DefaultDataBean;
 import com.gouyin.im.bean.GoodSelectBaen;
 import com.gouyin.im.bean.LoginBean;
 import com.gouyin.im.bean.RegiterBean;
+import com.gouyin.im.bean.RongyunBean;
 import com.gouyin.im.bean.UserInfoDetailBean;
 import com.gouyin.im.bean.UserInfoListBean;
 import com.gouyin.im.center.model.DefaultDynamicModel;
@@ -249,5 +250,9 @@ public class ServerApi {
                                            @Field("to_uid") String uid,
                                            @Field("money") String money,
                                            @Field("authcode") String authcode);
+
+        @GET("Rong/get_token")
+        Observable<RongyunBean> getRongyunKey(@Query("authcode") String authcode);
     }
 }
+

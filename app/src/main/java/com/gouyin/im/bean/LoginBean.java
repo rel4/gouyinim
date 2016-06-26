@@ -13,19 +13,6 @@ public class LoginBean extends BaseBean {
     public void setData(PresonInfo data) {
         this.data = data;
     }
-
-    public class PresonInfo extends BaseDataBean {
-
-
-        private String authcode;
-
-        public String getAuthcode() {
-            return authcode;
-        }
-
-        public void setAuthcode(String authcode) {
-            this.authcode = authcode;
-        }
-
-    }
 }
+
+

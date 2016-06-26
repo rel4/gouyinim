@@ -23,4 +23,8 @@ public interface AppConstant {
      * 登录状态
      */
     String FLAG_LOGIN_STATUS = "flag_login_status";
+    /**
+     * rongyunkey
+     */
+    String RONGYUN_KEY = "rongyun_key";
 }
