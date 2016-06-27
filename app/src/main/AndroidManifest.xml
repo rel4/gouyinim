@@ -96,6 +96,24 @@
         <activity
             android:name=".my.widget.RZThidActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".my.widget.AppointmentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".my.widget.RefundActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".utils.ChangepwdActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".my.widget.SettingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".my.widget.WithdRawDepositActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".my.widget.GetMoneyActivity"
+            android:screenOrientation="portrait" />
         <!--会话页面-->
         <activity
             android:name=".im.widget.AppConversationActivity"

@@ -27,4 +27,12 @@ public interface AppConstant {
      * rongyunkey
      */
     String RONGYUN_KEY = "rongyun_key";
+    /**
+     * 过期码
+     */
+    String code_timeout = "1000";
+    /**
+     * 请求成功
+     */
+    String code_request_success = "1";
 }

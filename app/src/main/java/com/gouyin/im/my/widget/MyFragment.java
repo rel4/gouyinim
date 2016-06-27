@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import com.gouyin.im.R;
 import com.gouyin.im.adapter.UserInfoAdapter;
 import com.gouyin.im.base.BaseFragment;
+import com.gouyin.im.bean.UserInfoListBean;
 import com.gouyin.im.my.persenter.MyFragmentPresenter;
 import com.gouyin.im.my.persenter.MyFragmentPresenterImpl;
 
@@ -21,6 +22,8 @@ import com.gouyin.im.viewholder.PersonDynamicViewholder;
 import com.gouyin.im.widget.DividerItemDecoration;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
+
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -63,17 +66,17 @@ public class MyFragment extends BaseFragment implements MyFragmentView {
             @Override
             public void onRefresh() {
                 isRefresh = true;
-                mPresenter.loadonRefreshData("");
+                mPresenter.loadonRefreshData();
             }
 
             @Override
             public void onLoadMore() {
                 isRefresh = false;
-                mPresenter.loadLoadMoreData("");
+                mPresenter.loadLoadMoreData();
             }
         });
         LogUtils.e(this, "userId : " + "");
-        mPresenter.loadUserInfodetail("");
+        mPresenter.loadPersonHeader();
         recyclerview.setRefreshing(true);
 
     }
@@ -95,24 +98,6 @@ public class MyFragment extends BaseFragment implements MyFragmentView {
 
     }
 
-    //
-//    @Override
-//    public void loadUserinfo(List<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList> list) {
-//
-//        if (mAdapter == null) {
-//            mAdapter = new UserInfoAdapter(list);
-//            recyclerview.setAdapter(mAdapter);
-//        } else {
-//            mAdapter.addData(list);
-//            mAdapter.onRefresh();
-//        }
-//        loadMoreComplete();
-//    }
-//    @Override
-//    public void setUserInfodetail(UserInfoDetailBean bean) {
-//        personDynamicViewholder.refreshView(null);
-////        headHolder.setUserInfodetail(bean);
-//    }
 
     private void loadMoreComplete() {
         if (recyclerview == null)
@@ -159,12 +144,12 @@ public class MyFragment extends BaseFragment implements MyFragmentView {
 
     @Override
     public void swich2WithdRawDeposit() {
-
+        ActivityUtils.startWithdRawDepositActivity();
     }
 
     @Override
     public void swich2Appointment() {
-
+        ActivityUtils.startAppointmentActivity();
     }
 
     @Override
@@ -174,6 +159,18 @@ public class MyFragment extends BaseFragment implements MyFragmentView {
 
     @Override
     public void swich2PersonSetting() {
+        ActivityUtils.startSettingActivity();
+    }
 
+    @Override
+    public void setListData(List<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList> list) {
+        if (mAdapter == null) {
+            mAdapter = new UserInfoAdapter(list);
+            recyclerview.setAdapter(mAdapter);
+        } else {
+            mAdapter.addData(list);
+            mAdapter.onRefresh();
+        }
+        loadMoreComplete();
     }
 }

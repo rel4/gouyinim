@@ -13,10 +13,15 @@ import com.gouyin.im.login.widget.LoginMainActivity;
 import com.gouyin.im.main.widget.DynamicDatailsActivity;
 import com.gouyin.im.main.widget.RedpacketAcitivity;
 import com.gouyin.im.main.widget.UserInfoActivity;
+import com.gouyin.im.my.widget.AppointmentActivity;
 import com.gouyin.im.my.widget.CertificationActivity;
+import com.gouyin.im.my.widget.GetMoneyActivity;
 import com.gouyin.im.my.widget.MyOrderActivity;
 import com.gouyin.im.my.widget.RZFirstActivity;
 import com.gouyin.im.my.widget.RZSecondActivity;
+import com.gouyin.im.my.widget.RefundActivity;
+import com.gouyin.im.my.widget.SettingActivity;
+import com.gouyin.im.my.widget.WithdRawDepositActivity;
 import com.gouyin.im.widget.image.PhonePicActivity;
 import com.gouyin.im.widget.image.ShowImageActivity;
 
@@ -174,5 +179,47 @@ public class ActivityUtils {
      */
     public static void startRZSecondActivity() {
         startActivity(RZSecondActivity.class);
+    }
+
+    /**
+     * 预约
+     */
+    public static void startAppointmentActivity() {
+        startActivity(AppointmentActivity.class);
+    }
+
+    /**
+     * 退款
+     */
+    public static void startRefundActivity() {
+        startActivity(RefundActivity.class);
+    }
+
+    /**
+     * 设置
+     */
+    public static void startSettingActivity() {
+        startActivity(SettingActivity.class);
+    }
+
+    /**
+     * 密码修改
+     */
+    public static void startChangepwdActivity() {
+        startActivity(ChangepwdActivity.class);
+    }
+
+    /**
+     * 体现
+     */
+    public static void startWithdRawDepositActivity() {
+        startActivity(WithdRawDepositActivity.class);
+    }
+
+    /**
+     * 提现
+     */
+    public static void startGetMoneyActivity() {
+        startActivity(GetMoneyActivity.class);
     }
 }

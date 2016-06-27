@@ -62,4 +62,5 @@
     <string name="authentication">认证</string>
     <string name="withdraw_deposit">提现</string>
     <string name="order">单</string>
+    <string name="code_timeout">身份过期,请重新登录</string>
 </resources>

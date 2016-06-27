@@ -1,0 +1,166 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/top"
+            layout="@layout/comman_title_bar" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/x30"
+            android:paddingTop="@dimen/x40"
+            android:paddingRight="@dimen/x30">
+
+            <RelativeLayout
+                android:id="@+id/relative_video"
+                android:layout_width="@dimen/x300"
+                android:background="@mipmap/video_small"
+                android:layout_marginRight="@dimen/x15"
+                android:layout_height="@dimen/x300"
+                >
+
+
+
+                <ImageView
+                    android:id="@+id/iv_play"
+                    android:layout_width="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_height="wrap_content"
+                    android:background="@mipmap/icon_video"/>
+
+                <TextView
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="@dimen/x10"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:background="@mipmap/ornament"
+                    android:text="视频"
+                    android:layout_below="@+id/iv_play"
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relative_activi"
+                android:layout_width="@dimen/x300"
+                android:background="@mipmap/video_small"
+                android:layout_marginLeft="@dimen/x15"
+                android:layout_height="@dimen/x300"
+                >
+
+
+
+                <ImageView
+                    android:id="@+id/iv_activit"
+                    android:layout_width="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_height="wrap_content"
+                    android:background="@mipmap/icon_move_about"/>
+
+                <TextView
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="@dimen/x10"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:background="@mipmap/ornament"
+                    android:text="活动"
+                    android:layout_below="@+id/iv_activit"
+                    />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/x30"
+            android:paddingTop="@dimen/x15"
+            android:paddingRight="@dimen/x30">
+
+            <RelativeLayout
+                android:id="@+id/relative_nearby"
+                android:layout_width="@dimen/x300"
+                android:background="@mipmap/video_small"
+                android:layout_marginRight="@dimen/x15"
+                android:layout_height="@dimen/x300"
+                >
+
+
+
+                <ImageView
+                    android:id="@+id/iv_nearby"
+                    android:layout_width="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_height="wrap_content"
+                    android:background="@mipmap/icon_nearby"/>
+
+                <TextView
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="@dimen/x10"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:background="@mipmap/ornament"
+                    android:text="附近"
+                    android:layout_below="@+id/iv_nearby"
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relative_rank"
+                android:layout_width="@dimen/x300"
+                android:background="@mipmap/video_small"
+                android:layout_marginLeft="@dimen/x15"
+                android:layout_height="@dimen/x300"
+                >
+
+
+
+                <ImageView
+                    android:id="@+id/iv_rank"
+                    android:layout_width="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_height="wrap_content"
+                    android:background="@mipmap/icon_ranking_list"/>
+
+                <TextView
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="@dimen/x10"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:background="@mipmap/ornament"
+                    android:text="排行榜"
+                    android:layout_below="@+id/iv_rank"
+                    />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

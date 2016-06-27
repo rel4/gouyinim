@@ -253,6 +253,10 @@ public class ServerApi {
 
         @GET("Rong/get_token")
         Observable<RongyunBean> getRongyunKey(@Query("authcode") String authcode);
+
+        @GET("Latest/get_latests_friends")
+        Observable<UserInfoListBean> loadPersonDynamic(@Query("authcode") String authcode,
+                                                       @Query("page") int page);
     }
 }
 

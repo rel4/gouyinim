@@ -1,0 +1,133 @@
+package com.gouyin.im.my.widget;
+
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.widget.TextView;
+
+import com.gouyin.im.R;
+import com.gouyin.im.base.BaseActivity;
+import com.gouyin.im.utils.ActivityUtils;
+import com.gouyin.im.utils.UIUtils;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.Bind;
+import butterknife.OnClick;
+
+/**
+ * Created by jb on 2016/6/27.
+ */
+public class WithdRawDepositActivity extends BaseActivity {
+
+    @Bind(R.id.view_pager)
+    ViewPager viewPager;
+
+    @Bind(R.id.tv_tixian)
+    TextView tvTiXian;
+
+    @Bind(R.id.tv_chongzhi)
+    TextView tvChongZhi;
+    private MyAccountChongZFragment chongZFragment;
+    private MyAccountTiXianFragment tiXianFragment;
+    private List<Fragment> fragmentList;
+
+    @Override
+    protected View setRootContentView() {
+        return UIUtils.inflateLayout(R.layout.activity_my_account);
+    }
+
+    @Override
+    protected void initView() {
+
+        fragmentList = new ArrayList<Fragment>();
+        chongZFragment = new MyAccountChongZFragment();
+        tiXianFragment = new MyAccountTiXianFragment();
+
+
+        fragmentList.add(tiXianFragment);
+        fragmentList.add(chongZFragment);
+
+        tvTiXian.setSelected(true);
+        viewPager.setAdapter(new MyFrageStatePagerAdapter(getSupportFragmentManager(), fragmentList));
+        viewPager.setCurrentItem(0);
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+                changeView(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+    }
+
+    class MyFrageStatePagerAdapter extends FragmentPagerAdapter {
+
+        List<Fragment> fragmentList = new ArrayList<Fragment>();
+
+        public MyFrageStatePagerAdapter(FragmentManager fm, List<Fragment> fragmentList) {
+            super(getSupportFragmentManager());
+            this.fragmentList = fragmentList;
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return fragmentList.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            if (fragmentList == null) {
+                return 0;
+            } else {
+                return fragmentList.size();
+            }
+        }
+
+    }
+
+    public void changeView(int currentItem) {
+        switch (currentItem) {
+            case 0:
+                tvChongZhi.setSelected(false);
+                tvTiXian.setSelected(true);
+                break;
+            case 1:
+                tvChongZhi.setSelected(true);
+                tvTiXian.setSelected(false);
+                break;
+
+        }
+
+
+    }
+
+    @OnClick({R.id.tv_chongzhi, R.id.tv_tixian, R.id.get_money})
+    public void onClick(View v) {
+        switch (v.getId()) {
+
+            case R.id.tv_chongzhi:
+                viewPager.setCurrentItem(1);
+                break;
+            case R.id.tv_tixian:
+                viewPager.setCurrentItem(0);
+                break;
+            case R.id.get_money:
+                ActivityUtils.startGetMoneyActivity();
+                break;
+        }
+    }
+}
