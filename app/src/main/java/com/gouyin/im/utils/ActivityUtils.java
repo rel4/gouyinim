@@ -13,7 +13,10 @@ import com.gouyin.im.login.widget.LoginMainActivity;
 import com.gouyin.im.main.widget.DynamicDatailsActivity;
 import com.gouyin.im.main.widget.RedpacketAcitivity;
 import com.gouyin.im.main.widget.UserInfoActivity;
+import com.gouyin.im.my.widget.CertificationActivity;
 import com.gouyin.im.my.widget.MyOrderActivity;
+import com.gouyin.im.my.widget.RZFirstActivity;
+import com.gouyin.im.my.widget.RZSecondActivity;
 import com.gouyin.im.widget.image.PhonePicActivity;
 import com.gouyin.im.widget.image.ShowImageActivity;
 
@@ -145,7 +148,31 @@ public class ActivityUtils {
         startActivity(intent);
     }
 
+    /**
+     * 订单
+     */
     public static void startMyOrderActivity() {
         startActivity(MyOrderActivity.class);
+    }
+
+    /**
+     * 认证
+     */
+    public static void startCertification() {
+        startActivity(CertificationActivity.class);
+    }
+
+    /**
+     * 认证第一步
+     */
+    public static void startRZFirstActivity() {
+        startActivity(RZFirstActivity.class);
+    }
+
+    /**
+     * 认证第二步
+     */
+    public static void startRZSecondActivity() {
+        startActivity(RZSecondActivity.class);
     }
 }

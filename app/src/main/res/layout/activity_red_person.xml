@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/comman_title_bar" />
+
+    <ImageView
+        android:layout_width="@dimen/x120"
+        android:layout_height="@dimen/x120"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="@dimen/x30"
+        android:background="@mipmap/panel_head_sculpture" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/x25"
+        android:text="申请规则："
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/order_text_small4" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/x25"
+        android:text="规则1：贫困军绿色的咖啡机来上课季度发"
+
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/order_text_small2" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/x25"
+        android:paddingTop="@dimen/x10"
+
+        android:text="规则2：贫困军绿色的咖啡机来上课季度发"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/order_text_small2" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/x25"
+        android:paddingTop="@dimen/x10"
+        android:text="规则3：贫困军绿色的咖啡机来上课季度发"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/order_text_small2" />
+
+
+    <TextView
+        android:id="@+id/tv_apply"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x70"
+        android:layout_marginRight="@dimen/x70"
+        android:layout_marginTop="@dimen/x250"
+        android:background="@mipmap/apply_renz"
+        android:gravity="center"
+        android:paddingBottom="@dimen/x10"
+        android:paddingTop="@dimen/x10"
+        android:textColor="@color/white" />
+</LinearLayout>

@@ -89,7 +89,7 @@ public class MyFragment extends BaseFragment implements MyFragmentView {
         return personDynamicViewholder.getContentView();
     }
 
-    @OnClick({R.id.tv_person_red, R.id.tv_withdraw_deposit, R.id.tv_appointment, R.id.tv_person_order, R.id.tv_person_setting})
+    @OnClick({R.id.tv_certification, R.id.tv_withdraw_deposit, R.id.tv_appointment, R.id.tv_person_order, R.id.tv_person_setting})
     public void onClick(View view) {
         mPresenter.swicth2Page(view.getId());
 
@@ -154,7 +154,7 @@ public class MyFragment extends BaseFragment implements MyFragmentView {
 
     @Override
     public void swich2PersonRed() {
-
+        ActivityUtils.startCertification();
     }
 
     @Override

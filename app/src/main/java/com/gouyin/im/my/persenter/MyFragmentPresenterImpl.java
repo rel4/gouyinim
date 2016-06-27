@@ -22,7 +22,7 @@ public class MyFragmentPresenterImpl implements MyFragmentPresenter {
     @Override
     public void swicth2Page(int id) {
         switch (id) {
-            case R.id.tv_person_red:
+            case R.id.tv_certification:
                 view.swich2PersonRed();
                 break;
             case R.id.tv_withdraw_deposit:
