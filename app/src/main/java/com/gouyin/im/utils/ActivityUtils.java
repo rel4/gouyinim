@@ -13,6 +13,7 @@ import com.gouyin.im.login.widget.LoginMainActivity;
 import com.gouyin.im.main.widget.DynamicDatailsActivity;
 import com.gouyin.im.main.widget.RedpacketAcitivity;
 import com.gouyin.im.main.widget.UserInfoActivity;
+import com.gouyin.im.my.widget.MyOrderActivity;
 import com.gouyin.im.widget.image.PhonePicActivity;
 import com.gouyin.im.widget.image.ShowImageActivity;
 
@@ -142,5 +143,9 @@ public class ActivityUtils {
         intent.putExtra("name", name);
         intent.putExtra("avater", avater);
         startActivity(intent);
+    }
+
+    public static void startMyOrderActivity() {
+        startActivity(MyOrderActivity.class);
     }
 }

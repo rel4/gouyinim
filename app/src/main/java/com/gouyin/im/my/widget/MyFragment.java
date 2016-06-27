@@ -14,6 +14,7 @@ import com.gouyin.im.my.persenter.MyFragmentPresenter;
 import com.gouyin.im.my.persenter.MyFragmentPresenterImpl;
 
 import com.gouyin.im.my.view.MyFragmentView;
+import com.gouyin.im.utils.ActivityUtils;
 import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.UIUtils;
 import com.gouyin.im.viewholder.PersonDynamicViewholder;
@@ -168,7 +169,7 @@ public class MyFragment extends BaseFragment implements MyFragmentView {
 
     @Override
     public void swich2PersonOrder() {
-
+        ActivityUtils.startMyOrderActivity();
     }
 
     @Override

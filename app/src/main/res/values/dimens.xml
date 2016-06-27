@@ -3,4 +3,10 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="user_icon">-10dp</dimen>
+    <dimen name="order_text_small1">13sp</dimen>
+    <dimen name="order_text_small2">14sp</dimen>
+    <dimen name="order_text_small3">15sp</dimen>
+    <dimen name="order_text_small4">16sp</dimen>
+    <dimen name="order_text_small5">18sp</dimen>
+    <dimen name="order_text_small6">20sp</dimen>
 </resources>
