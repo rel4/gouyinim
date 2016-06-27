@@ -59,4 +59,7 @@
     <string name="pay_success">支付成功</string>
     <string name="pay_affirm">支付确认</string>
     <string name="pay_failure">支付失败</string>
+    <string name="authentication">认证</string>
+    <string name="withdraw_deposit">提现</string>
+    <string name="order">单</string>
 </resources>

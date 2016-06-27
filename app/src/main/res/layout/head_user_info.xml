@@ -7,54 +7,75 @@
 
         android:id="@+id/user_background"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/y240"
+        android:layout_height="@dimen/y421"
         android:scaleType="fitXY"
-        android:src="@mipmap/ic_launcher" />
+        android:src="@mipmap/load_big" />
 
     <ImageView
-        android:layout_marginLeft="@dimen/y30"
-        android:id="@+id/iv_user_icon"
+        android:id="@+id/iv_guardian"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/x32"
+        android:layout_marginTop="@dimen/y135"
+        android:src="@mipmap/guardian" />
+
+    <com.gouyin.im.widget.RoundedImageView
+        android:layout_width="@dimen/x82"
+        android:layout_height="@dimen/y82"
+        android:layout_alignBaseline="@id/iv_guardian"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/iv_guardian"
+        android:layout_marginRight="@dimen/x50"
+        android:src="@mipmap/load_small" />
+
+    <com.gouyin.im.widget.RoundedImageView
+        android:id="@+id/iv_user_icon"
+        android:layout_width="@dimen/x150"
+        android:layout_height="@dimen/y150"
         android:layout_below="@+id/user_background"
+        android:layout_marginLeft="@dimen/y30"
         android:layout_marginTop="@dimen/user_icon"
-        android:src="@mipmap/ic_launcher" />
+        android:src="@mipmap/load_small" />
 
     <TextView
         android:id="@+id/tv_user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/user_background"
+        android:layout_marginLeft="@dimen/x20"
         android:layout_toRightOf="@+id/iv_user_icon"
-        android:text="mingzi" />
+        android:text="@string/loading"
+        android:textSize="15sp" />
 
     <LinearLayout
         android:id="@+id/layout_text_number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_user_name"
+        android:layout_marginLeft="@dimen/x20"
         android:layout_toRightOf="@+id/iv_user_icon"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/tv_fen_number"
             style="@style/text_user_info_number"
-            android:text="11111" />
+            android:text="@string/loading" />
 
         <TextView
             android:id="@+id/tv_wacth_number"
             style="@style/text_user_info_number"
-            android:text="11111" />
+            android:text="@string/loading" />
 
         <TextView
             android:id="@+id/tv_dynamic_number"
             style="@style/text_user_info_number"
-            android:text="11111" />
+            android:text="@string/loading" />
 
         <TextView
             android:id="@+id/tv_flower_number"
             style="@style/text_user_info_number"
-            android:text="11111" />
+            android:text="@string/loading" />
 
 
     </LinearLayout>
@@ -64,37 +85,51 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/layout_text_number"
+        android:layout_marginLeft="@dimen/x20"
         android:layout_toRightOf="@+id/iv_user_icon"
         android:orientation="horizontal">
 
         <TextView
             style="@style/text_user_info_number"
-            android:text="@string/str_fen" />
+            android:text="@string/str_fen"
+            android:textSize="12sp" />
 
         <TextView
             style="@style/text_user_info_number"
-            android:text="@string/wacth" />
+            android:text="@string/wacth"
+            android:textSize="12sp" />
 
         <TextView
             style="@style/text_user_info_number"
-            android:text="@string/dynamic" />
+            android:text="@string/dynamic"
+            android:textSize="12sp" />
 
         <TextView
             style="@style/text_user_info_number"
-            android:text="@string/flower" />
+            android:text="@string/flower"
+            android:textSize="12sp" />
 
 
     </LinearLayout>
-    <TextView
-        android:layout_margin="@dimen/y30"
-        android:padding="@dimen/y15"
-        android:textColor="@color/text_black_color"
-        android:textSize="18sp"
-        android:background="@drawable/shape_two_half_round"
-        android:gravity="center"
-        android:text="@string/wacth"
-        android:layout_below="@+id/layot_text"
-        android:id="@+id/tv_wacth"
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="@dimen/y60"
+        android:layout_below="@+id/layot_text"
+        android:layout_margin="@dimen/y30"
+        android:background="@drawable/shape_two_half_round">
+
+
+        <TextView
+            android:id="@+id/tv_wacth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:drawableLeft="@mipmap/puls"
+            android:drawablePadding="@dimen/x10"
+            android:text="@string/wacth"
+            android:textColor="@color/text_black_color"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
 </RelativeLayout>

@@ -5,6 +5,7 @@
     android:background="@android:color/holo_green_dark"
     android:layout_height="@dimen/y90">
 
+    ...
     <ImageView
         android:padding="@dimen/x20"
         android:id="@+id/action_back"

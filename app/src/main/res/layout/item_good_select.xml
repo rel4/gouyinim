@@ -26,8 +26,11 @@
             android:layout_alignParentStart="true"
             android:layout_margin="@dimen/x30"
             android:layout_marginBottom="@dimen/y10"
+            android:drawableLeft="@mipmap/home_watch"
+            android:drawablePadding="@dimen/x10"
             android:text="@string/loading"
-            android:textColor="@color/background_white_color" />
+            android:textColor="@color/background_white_color"
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/tv_fen_number"
@@ -38,7 +41,8 @@
             android:layout_margin="@dimen/x30"
             android:layout_marginBottom="@dimen/y10"
             android:text="@string/loading"
-            android:textColor="@color/background_white_color" />
+            android:textColor="@color/background_white_color"
+            android:textSize="10sp" />
     </RelativeLayout>
 
     <TextView
@@ -47,8 +51,13 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/layout_pic"
         android:layout_margin="@dimen/x15"
+        android:ellipsize="end"
+        android:ems="8"
+        android:maxEms="8"
+        android:singleLine="true"
         android:text="@string/loading"
-        android:textColor="@color/text_black_color" />
+        android:textColor="@color/text_black_color"
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/tv_address"
@@ -58,5 +67,6 @@
         android:layout_alignTop="@+id/tv_user_name"
         android:layout_margin="@dimen/x15"
         android:text="@string/loading"
-        android:textColor="@color/gray_color" />
+        android:textColor="@color/gray_color"
+        android:textSize="12sp" />
 </RelativeLayout>

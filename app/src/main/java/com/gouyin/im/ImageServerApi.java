@@ -13,8 +13,9 @@ import java.io.File;
  */
 public class ImageServerApi {
     private static volatile Picasso mPicasso;
-    private static int errorImage = R.mipmap.ic_launcher;
-    private static int loadingImage = R.mipmap.ic_launcher;
+    private static int errorImage = R.mipmap.load_failure;
+    private static int loadingSamllImage = R.mipmap.load_small;
+    private static int loadingBigImage = R.mipmap.load_small;
 
     private static Picasso getPicasso() {
         if (mPicasso == null) {
@@ -40,15 +41,47 @@ public class ImageServerApi {
 
         if (url.startsWith("http"))
 
-            getPicasso().load(url).placeholder(loadingImage).error(errorImage).into(imageView);
+            getPicasso().load(url).placeholder(loadingSamllImage).error(errorImage).into(imageView);
         else {
-            getPicasso().load(new File(url)).placeholder(loadingImage).error(errorImage).into(imageView);
+            getPicasso().load(new File(url)).placeholder(loadingSamllImage).error(errorImage).into(imageView);
+        }
+    }
+
+    /**
+     * 显示url小图片
+     *
+     * @param imageView
+     * @param url
+     */
+    public static void showURLSamllImage(@NonNull ImageView imageView, @NonNull String url) {
+
+        if (url.startsWith("http"))
+
+            getPicasso().load(url).placeholder(loadingSamllImage).error(errorImage).into(imageView);
+        else {
+            getPicasso().load(new File(url)).placeholder(loadingSamllImage).error(errorImage).into(imageView);
+        }
+    }
+
+    /**
+     * 显示url大图片
+     *
+     * @param imageView
+     * @param url
+     */
+    public static void showURLBigImage(@NonNull ImageView imageView, @NonNull String url) {
+
+        if (url.startsWith("http"))
+
+            getPicasso().load(url).placeholder(loadingBigImage).error(errorImage).into(imageView);
+        else {
+            getPicasso().load(new File(url)).placeholder(loadingBigImage).error(errorImage).into(imageView);
         }
     }
 
     public static void showResourcesImage(@NonNull ImageView imageView, int resourceId) {
 
-        getPicasso().load(resourceId).placeholder(loadingImage).error(errorImage).into(imageView);
+        getPicasso().load(resourceId).placeholder(loadingSamllImage).error(errorImage).into(imageView);
     }
 
 

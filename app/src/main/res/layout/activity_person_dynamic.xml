@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/layout_person_head"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y90"
+        android:background="@color/background_white_color"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/x100">
+
+        <TextView
+            android:id="@+id/tv_person_red"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:drawableLeft="@mipmap/icon_authentication"
+            android:drawablePadding="@dimen/x10"
+            android:text="@string/authentication"
+            android:textColor="@color/text_black_color" />
+
+        <TextView
+            android:id="@+id/tv_withdraw_deposit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:drawableLeft="@mipmap/icon_withdraw_deposit"
+            android:drawablePadding="@dimen/x10"
+            android:text="@string/withdraw_deposit"
+            android:textColor="@color/text_black_color" />
+
+        <TextView
+            android:id="@+id/tv_appointment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:drawableLeft="@mipmap/icon_appointment"
+            android:drawablePadding="@dimen/x10"
+            android:text="@string/appointment"
+            android:textColor="@color/text_black_color" />
+
+        <TextView
+            android:id="@+id/tv_person_order"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:drawableLeft="@mipmap/icon_order"
+            android:drawablePadding="@dimen/x10"
+            android:text="@string/order"
+            android:textColor="@color/text_black_color" />
+
+        <TextView
+            android:id="@+id/tv_person_setting"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:drawableLeft="@mipmap/menu_icon" />
+    </LinearLayout>
+
+    <com.jcodecraeer.xrecyclerview.XRecyclerView
+
+        android:id="@+id/recyclerview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/layout_person_head" />
+
+    <TextView
+        android:id="@+id/text_empty"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerInParent="true"
+        android:background="#dcdcdc"
+        android:gravity="center"
+        android:text="emptyView"
+        android:visibility="gone" />
+
+
+</RelativeLayout>

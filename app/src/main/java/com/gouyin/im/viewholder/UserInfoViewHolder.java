@@ -180,17 +180,17 @@ public class UserInfoViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            ImageView imageView = new ImageView(parent.getContext());
-            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            ImageServerApi.showURLImage(imageView, list.get(position));
-            imageView.setOnClickListener(new View.OnClickListener() {
+            View view = UIUtils.inflateLayout(R.layout.item_pics);
+            ImageView pic = (ImageView) view.findViewById(R.id.iv_pic);
+            ImageServerApi.showURLImage(pic, list.get(position));
+            pic.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     LogUtils.e("position", "url : " + list.get(position));
                     LogUtils.e("position", "url : " + list.get(position));
                 }
             });
-            return imageView;
+            return pic;
         }
     }
 
