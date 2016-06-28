@@ -85,6 +85,24 @@ public class UserInfoDetailBean extends BaseBean {
             private String ufoln;
             private String ulatn;
             private String uflon;
+            private String income_all;
+            private String income_today;
+
+            public String getIncome_all() {
+                return income_all;
+            }
+
+            public void setIncome_all(String income_all) {
+                this.income_all = income_all;
+            }
+
+            public String getIncome_today() {
+                return income_today;
+            }
+
+            public void setIncome_today(String income_today) {
+                this.income_today = income_today;
+            }
 
             public String getUfann() {
                 return ufann;

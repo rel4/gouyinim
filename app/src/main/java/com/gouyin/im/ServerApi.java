@@ -252,12 +252,34 @@ public class ServerApi {
                                            @Field("money") String money,
                                            @Field("authcode") String authcode);
 
+        /**
+         * 获取token
+         *
+         * @param authcode
+         * @return
+         */
         @GET("Rong/get_token")
         Observable<RongyunBean> getRongyunKey(@Query("authcode") String authcode);
 
+        /**
+         * 朋友圈
+         *
+         * @param authcode
+         * @param page
+         * @return
+         */
         @GET("Latest/get_latests_friends")
         Observable<UserInfoListBean> loadPersonDynamic(@Query("authcode") String authcode,
                                                        @Query("page") int page);
+
+        /**
+         * 获取个人的信息
+         *
+         * @param authcode
+         * @return
+         */
+        @GET("User/user_detail_addon1_center")
+        Observable<UserInfoDetailBean> loadPersonInfo(@Query("authcode") String authcode);
     }
 }
 

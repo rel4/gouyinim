@@ -6,7 +6,7 @@ import com.gouyin.im.base.BaseIModel;
  * Created by jb on 2016/6/27.
  */
 public interface MyFragmentModel extends BaseIModel {
-    void loadPersonHeader();
+    void loadPersonHeader(BaseIModel.onLoadDateSingleListener listener);
 
     void loadonRefreshData(int page,onLoadListDateListener listener);
 }

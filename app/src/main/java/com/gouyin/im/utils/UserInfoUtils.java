@@ -5,6 +5,8 @@ import com.gouyin.im.CacheManager;
 import com.gouyin.im.bean.LoginBean;
 import com.gouyin.im.bean.PresonInfo;
 
+import io.rong.imkit.RongyunConfig;
+
 /**
  * Created by jb on 2016/6/20.
  */
@@ -79,6 +81,7 @@ public class UserInfoUtils {
         authcode = "";
         PrefUtils.setBoolean(AppConstant.FLAG_LOGIN_STATUS, false);
         saveUserInfo(null);
+        RongyunConfig.getInstance().offline();
 
     }
 }

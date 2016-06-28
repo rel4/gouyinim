@@ -8,8 +8,8 @@
         android:id="@+id/user_background"
         android:layout_width="match_parent"
         android:layout_height="@dimen/y421"
-        android:scaleType="fitXY"
-        android:src="@mipmap/load_big" />
+        android:scaleType="centerCrop"
+     />
 
     <ImageView
         android:id="@+id/iv_guardian"

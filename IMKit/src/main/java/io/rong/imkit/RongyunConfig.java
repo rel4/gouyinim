@@ -50,6 +50,10 @@ public class RongyunConfig {
         });
     }
 
+    public void offline() {
+        RongIM.getInstance().logout();
+    }
+
     public interface ConnectCallback {
         void onSuccess(String s);
 

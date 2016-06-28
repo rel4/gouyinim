@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import com.gouyin.im.R;
 import com.gouyin.im.adapter.UserInfoAdapter;
 import com.gouyin.im.base.BaseFragment;
+import com.gouyin.im.bean.UserInfoDetailBean;
 import com.gouyin.im.bean.UserInfoListBean;
 import com.gouyin.im.my.persenter.MyFragmentPresenter;
 import com.gouyin.im.my.persenter.MyFragmentPresenterImpl;
@@ -55,7 +56,6 @@ public class MyFragment extends BaseFragment implements MyFragmentView {
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-
         recyclerview.setLayoutManager(linearLayoutManager);
         recyclerview.setRefreshProgressStyle(ProgressStyle.BallSpinFadeLoader);
         recyclerview.setLoadingMoreProgressStyle(ProgressStyle.SysProgress);
@@ -110,16 +110,6 @@ public class MyFragment extends BaseFragment implements MyFragmentView {
     }
 
 
-    private void colseload() {
-        if (recyclerview == null)
-            return;
-        if (isRefresh)
-            recyclerview.refreshComplete();
-        else recyclerview.loadMoreComplete();
-
-    }
-
-
     @Override
     public void showLoading() {
         showProgressDialog();
@@ -128,12 +118,12 @@ public class MyFragment extends BaseFragment implements MyFragmentView {
     @Override
     public void hideLoading() {
         hideProgressDialog();
-        colseload();
+
     }
 
     @Override
     public void transfePageMsg(String msg) {
-
+        showToast(msg);
     }
 
 
@@ -172,5 +162,10 @@ public class MyFragment extends BaseFragment implements MyFragmentView {
             mAdapter.onRefresh();
         }
         loadMoreComplete();
+    }
+
+    @Override
+    public void setUserInfo(UserInfoDetailBean bean) {
+        personDynamicViewholder.refreshView(bean);
     }
 }

@@ -114,6 +114,9 @@
         <activity
             android:name=".my.widget.GetMoneyActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".center.widget.RedpacketDynaimcActivity"
+            android:screenOrientation="portrait" />
         <!--会话页面-->
         <activity
             android:name=".im.widget.AppConversationActivity"

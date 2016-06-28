@@ -43,9 +43,9 @@ public class ImageServerApi {
             return;
         if (url.startsWith("http"))
 
-            getPicasso().load(url).placeholder(loadingSamllImage).error(errorImage).into(imageView);
+            getPicasso().load(url).placeholder(loadingSamllImage).error(loadingSamllImage).into(imageView);
         else {
-            getPicasso().load(new File(url)).placeholder(loadingSamllImage).error(errorImage).into(imageView);
+            getPicasso().load(new File(url)).placeholder(loadingSamllImage).error(loadingSamllImage).into(imageView);
         }
     }
 
@@ -60,9 +60,9 @@ public class ImageServerApi {
             return;
         if (url.startsWith("http"))
 
-            getPicasso().load(url).placeholder(loadingSamllImage).error(errorImage).into(imageView);
+            getPicasso().load(url).placeholder(loadingSamllImage).error(loadingSamllImage).into(imageView);
         else {
-            getPicasso().load(new File(url)).placeholder(loadingSamllImage).error(errorImage).into(imageView);
+            getPicasso().load(new File(url)).placeholder(loadingSamllImage).error(loadingSamllImage).into(imageView);
         }
     }
 
@@ -77,15 +77,15 @@ public class ImageServerApi {
             return;
         if (url.startsWith("http"))
 
-            getPicasso().load(url).placeholder(loadingBigImage).error(errorImage).into(imageView);
+            getPicasso().load(url).placeholder(loadingBigImage).error(loadingBigImage).into(imageView);
         else {
-            getPicasso().load(new File(url)).placeholder(loadingBigImage).error(errorImage).into(imageView);
+            getPicasso().load(new File(url)).placeholder(loadingBigImage).error(loadingBigImage).into(imageView);
         }
     }
 
     public static void showResourcesImage(@NonNull ImageView imageView, int resourceId) {
 
-        getPicasso().load(resourceId).placeholder(loadingSamllImage).error(errorImage).into(imageView);
+        getPicasso().load(resourceId).placeholder(loadingSamllImage).error(loadingSamllImage).into(imageView);
     }
 
 

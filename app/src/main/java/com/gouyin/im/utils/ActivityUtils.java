@@ -6,6 +6,7 @@ import com.gouyin.im.AppConstant;
 import com.gouyin.im.bean.UserInfoListBean;
 import com.gouyin.im.center.widget.DefaultDynamicSendActivity;
 import com.gouyin.im.center.widget.DynamicSendActivity;
+import com.gouyin.im.center.widget.RedpacketDynaimcActivity;
 import com.gouyin.im.event.Events;
 import com.gouyin.im.event.RxBus;
 import com.gouyin.im.im.widget.AppConversationActivity;
@@ -86,10 +87,15 @@ public class ActivityUtils {
 
     /**
      * 普通动态发布
+     *
+     * @param pics
      */
-    public static void startDefaultDynamicSendActivity() {
+    public static void startDefaultDynamicSendActivity(ArrayList pics, DynamicSendActivity.DynamicType type) {
         if (UserInfoUtils.isLogin()) {
-            startActivity(DefaultDynamicSendActivity.class);
+            Intent intent = new Intent(ConfigUtils.getInstance().getActivityContext(), DefaultDynamicSendActivity.class);
+            intent.putExtra("type", type.getValue());
+            intent.putExtra("data", pics);
+            startActivity(intent);
         } else
             RxBus.getInstance().send(Events.EventEnum.LOGIN, null);
 
@@ -221,5 +227,12 @@ public class ActivityUtils {
      */
     public static void startGetMoneyActivity() {
         startActivity(GetMoneyActivity.class);
+    }
+
+    /**
+     * 红包动态
+     */
+    public static void startRedpacketDynaimcActivity() {
+        startActivity(RedpacketDynaimcActivity.class);
     }
 }

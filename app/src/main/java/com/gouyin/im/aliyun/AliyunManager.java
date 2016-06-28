@@ -1,6 +1,7 @@
 package com.gouyin.im.aliyun;
 
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.alibaba.sdk.android.oss.ClientConfiguration;
 import com.alibaba.sdk.android.oss.ClientException;
@@ -20,6 +21,7 @@ import com.gouyin.im.utils.LogUtils;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 /**
  * Created by jb on 2016/6/16.
@@ -70,12 +72,12 @@ public class AliyunManager {
 
         PutObjectResult putResult = oss.putObject(put);
 
-        LogUtils.e("PutObject", "UploadSuccess");
+        LogUtils.d("PutObject", "UploadSuccess");
         String host = endpoint.substring(0, endpoint.indexOf("//") + 2) + put.getBucketName() + "." + endpoint.substring(endpoint.indexOf("//") + 2) + File.separator + put.getObjectKey();
 
-        LogUtils.e(this, "ServerCallbackReturnBody : " + host);
-        LogUtils.e("ETag", "ETag : " + putResult.getETag());
-        LogUtils.e("RequestId", "  : " + putResult.getRequestId());
+        LogUtils.e(this, "host : " + host);
+        LogUtils.d("ETag", "ETag : " + putResult.getETag());
+        LogUtils.d("RequestId", "  : " + putResult.getRequestId());
 
         return host;
 //        } catch (ClientException e) {
@@ -95,13 +97,42 @@ public class AliyunManager {
 
     }
 
+    // 直接上传二进制数据，使用阻塞的同步接口
+    public String upLoadFiletFromByteArray(byte[] uploadData, FilePathUtlis.FileType fileType) {
+        String path = fileType.getFileFormat() + File.separator + FilePathUtlis.getUpAliyunFilePath(fileType);
+        // 构造上传请求
+        PutObjectRequest put = new PutObjectRequest(bucket, path, uploadData);
+
+        try {
+            PutObjectResult putResult = oss.putObject(put);
+            String host = endpoint.substring(0, endpoint.indexOf("//") + 2) + put.getBucketName() + "." + endpoint.substring(endpoint.indexOf("//") + 2) + File.separator + put.getObjectKey();
+            LogUtils.d("PutObject", "UploadSuccess");
+            LogUtils.e(this, "host : " + host);
+            LogUtils.d("ETag", putResult.getETag());
+            LogUtils.d("RequestId", putResult.getRequestId());
+            return host;
+        } catch (ClientException e) {
+            // 本地异常如网络异常等
+            e.printStackTrace();
+            return null;
+        } catch (ServiceException e) {
+            // 服务异常
+            Log.e("RequestId", e.getRequestId());
+            Log.e("ErrorCode", e.getErrorCode());
+            Log.e("HostId", e.getHostId());
+            Log.e("RawMessage", e.getRawMessage());
+            return null;
+        }
+    }
+
+
     /**
      * 支付支付
      *
      * @param playInfo
      * @return
      */
-    public String play(String playInfo) throws Exception{
+    public String play(String playInfo) throws Exception {
 
 
         // 构造PayTask 对象

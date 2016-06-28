@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/background_white_color">
 
     <ImageView
 
         android:id="@+id/user_background"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/y240"
-        android:scaleType="fitXY"
-        android:src="@mipmap/ic_launcher" />
+        android:layout_height="@dimen/y421"
+        android:scaleType="centerCrop" />
 
-    <ImageView
+    <com.gouyin.im.widget.RoundedImageView
         android:id="@+id/iv_user_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/x150"
+        android:layout_height="@dimen/y150"
         android:layout_below="@+id/user_background"
         android:layout_marginLeft="@dimen/y30"
-        android:layout_marginTop="@dimen/user_icon"
-        android:src="@mipmap/ic_launcher" />
+        android:layout_marginTop="@dimen/user_icon" />
 
 
     <TextView
@@ -26,32 +25,39 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/user_background"
+        android:layout_marginLeft="@dimen/x20"
         android:layout_toRightOf="@+id/iv_user_icon"
-        android:text="@string/loading" />
+        android:text="@string/loading"
+        android:textColor="@color/text_black_color" />
 
     <TextView
-
         android:id="@+id/tv_user_all_income"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_user_name"
+        android:layout_marginLeft="@dimen/x20"
+        android:layout_marginTop="@dimen/y20"
         android:layout_toRightOf="@+id/iv_user_icon"
+        android:background="@color/text_black_color"
         android:text="@string/loading" />
 
     <TextView
         android:id="@+id/tv_user_day_income"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_user_name"
         android:layout_marginLeft="@dimen/x50"
         android:layout_toRightOf="@+id/tv_user_all_income"
-        android:text="@string/loading" />
+        android:text="@string/loading"
+        android:textColor="@color/text_black_color" />
 
     <LinearLayout
         android:id="@+id/layout_info"
         android:layout_width="match_parent"
         android:layout_height="@dimen/y90"
         android:layout_below="@+id/iv_user_icon"
+        android:layout_marginLeft="@dimen/x20"
         android:orientation="horizontal">
 
         <RelativeLayout
@@ -64,16 +70,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:text="@string/loading" />
+                android:text="@string/loading"
+                android:textColor="@color/text_black_color" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_fen_number"
                 android:layout_centerHorizontal="true"
-                android:text="@string/str_fen" />
+                android:text="@string/str_fen"
+                android:textColor="@color/gray_color" />
 
             <ImageView
+
                 android:layout_width="@dimen/x2"
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true"
@@ -90,16 +99,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:text="@string/loading" />
+                android:text="@string/loading"
+                android:textColor="@color/text_black_color" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_wacth_number"
                 android:layout_centerHorizontal="true"
-                android:text="@string/wacth" />
+                android:text="@string/wacth"
+                android:textColor="@color/gray_color" />
 
             <ImageView
+
                 android:layout_width="@dimen/x2"
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true"
@@ -117,16 +129,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:text="@string/loading" />
+                android:text="@string/loading"
+                android:textColor="@color/text_black_color" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_dynamic_number"
                 android:layout_centerHorizontal="true"
-                android:text="@string/dynamic" />
+                android:text="@string/dynamic"
+                android:textColor="@color/gray_color" />
 
             <ImageView
+
                 android:layout_width="@dimen/x2"
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true"
@@ -144,14 +159,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:text="@string/loading" />
+                android:text="@string/loading"
+                android:textColor="@color/text_black_color" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_flower_number"
                 android:layout_centerHorizontal="true"
-                android:text="@string/flower" />
+                android:text="@string/flower"
+                android:textColor="@color/gray_color" />
 
         </RelativeLayout>
     </LinearLayout>

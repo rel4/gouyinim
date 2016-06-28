@@ -1,9 +1,8 @@
 package com.gouyin.im.my.persenter;
 
-import android.view.View;
-
 import com.gouyin.im.R;
 import com.gouyin.im.base.BaseIModel;
+import com.gouyin.im.bean.UserInfoDetailBean;
 import com.gouyin.im.bean.UserInfoListBean;
 import com.gouyin.im.my.model.MyFragmentModel;
 import com.gouyin.im.my.model.MyFragmentModelImpl;
@@ -14,7 +13,7 @@ import java.util.List;
 /**
  * Created by jb on 2016/6/27.
  */
-public class MyFragmentPresenterImpl implements MyFragmentPresenter, BaseIModel.onLoadListDateListener<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList> {
+public class MyFragmentPresenterImpl implements MyFragmentPresenter, BaseIModel.onLoadListDateListener<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList>, BaseIModel.onLoadDateSingleListener<UserInfoDetailBean> {
     private MyFragmentView view;
     private MyFragmentModel model;
     private int page = 1;
@@ -54,7 +53,7 @@ public class MyFragmentPresenterImpl implements MyFragmentPresenter, BaseIModel.
     @Override
     public void loadPersonHeader() {
         view.showLoading();
-        model.loadPersonHeader();
+        model.loadPersonHeader(this);
     }
 
 
@@ -69,6 +68,7 @@ public class MyFragmentPresenterImpl implements MyFragmentPresenter, BaseIModel.
     public void loadLoadMoreData() {
         view.showLoading();
         model.loadonRefreshData(page, this);
+        page++;
     }
 
 
@@ -81,6 +81,12 @@ public class MyFragmentPresenterImpl implements MyFragmentPresenter, BaseIModel.
         }
         view.hideLoading();
 
+    }
+
+    @Override
+    public void onSuccess(UserInfoDetailBean bean, BaseIModel.DataType dataType) {
+
+        view.setUserInfo(bean);
     }
 
     @Override

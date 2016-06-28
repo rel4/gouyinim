@@ -1,6 +1,7 @@
 package com.gouyin.im.my.view;
 
 import com.gouyin.im.base.BaseIView;
+import com.gouyin.im.bean.UserInfoDetailBean;
 import com.gouyin.im.bean.UserInfoListBean;
 
 import java.util.List;
@@ -21,4 +22,5 @@ public interface MyFragmentView extends BaseIView {
 
     void setListData(List<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList> t);
 
+    void setUserInfo(UserInfoDetailBean bean);
 }

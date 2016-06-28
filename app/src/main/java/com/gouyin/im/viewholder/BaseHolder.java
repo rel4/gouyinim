@@ -10,8 +10,8 @@ public abstract class BaseHolder<T> {
 
     public BaseHolder() {
         contentView = initView();
-        ButterKnife.bind(contentView);
-        contentView.setTag(this);
+        ButterKnife.bind(this,contentView);
+//        contentView.setTag(this);
     }
 
     /**

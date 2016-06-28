@@ -45,9 +45,34 @@ public class DefaultDynamicSendActivity extends BaseActivity implements DefaultD
     private DefaultDynamicPresenter presenter;
     private ShowPicAdapter showPicAdapter;
     private List<String> datas;
+    private DynamicSendActivity.DynamicType dynamicType;
+    ArrayList<Object> objects = new ArrayList<>();
 
     @Override
     protected View setRootContentView() {
+
+
+//       type 动态类型 1红包图集，2普通图文，3普通小视频动态
+        String type = getIntent().getStringExtra("type");
+        switch (type) {
+            case "3":
+                dynamicType = DynamicSendActivity.DynamicType.video;
+                break;
+            case "2":
+                dynamicType = DynamicSendActivity.DynamicType.DEFAULT;
+                objects.add(R.mipmap.ic_launcher);
+                break;
+            case "1":
+                dynamicType = DynamicSendActivity.DynamicType.RED_PACKET;
+                ArrayList<String> pics = getIntent().getStringArrayListExtra("data");
+                objects.addAll(pics);
+                if (datas == null)
+                    datas = new ArrayList<String>();
+                datas.addAll(pics);
+                if (pics.size() < 9)
+                    objects.add(R.mipmap.ic_launcher);
+                break;
+        }
         presenter = new DefaultDynamicPresenterImpl();
         presenter.attachView(this);
         return UIUtils.inflateLayout(R.layout.activity_default_dynamic_send);
@@ -56,8 +81,8 @@ public class DefaultDynamicSendActivity extends BaseActivity implements DefaultD
 
     @Override
     protected void initView() {
-        ArrayList<Object> objects = new ArrayList<>();
-        objects.add(R.mipmap.ic_launcher);
+
+
         showPicAdapter = new ShowPicAdapter(objects);
         gvPicList.setAdapter(showPicAdapter);
     }
@@ -79,7 +104,7 @@ public class DefaultDynamicSendActivity extends BaseActivity implements DefaultD
                 String address = tvAddress.getText().toString().trim();
                 String s = datas.get(datas.size() - 1);
 
-                presenter.sendDynamic(content, datas, address);
+                presenter.sendDynamic(dynamicType, content, datas, address);
                 break;
             case R.id.tv_address:
                 break;
