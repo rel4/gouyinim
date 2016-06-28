@@ -35,10 +35,10 @@ public class FragmentUtils {
         if (!show.isAdded()) {
             // 隐藏当前的fragment，add下一个到Activity中
             transaction.hide(hide).add(layout, show)
-                    .commit();
+                    .commitAllowingStateLoss();
         } else {
             // 隐藏当前的fragment，显示下一个
-            transaction.hide(hide).show(show).commit();
+            transaction.hide(hide).show(show).commitAllowingStateLoss();
         }
     }
 

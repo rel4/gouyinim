@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 import android.widget.ImageView;
 
 import com.gouyin.im.utils.ConfigUtils;
+import com.gouyin.im.utils.StringUtis;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -38,7 +39,8 @@ public class ImageServerApi {
      */
     public static void showURLImage(@NonNull ImageView imageView, @NonNull String url) {
 
-
+        if (StringUtis.isEmpty(url))
+            return;
         if (url.startsWith("http"))
 
             getPicasso().load(url).placeholder(loadingSamllImage).error(errorImage).into(imageView);
@@ -54,7 +56,8 @@ public class ImageServerApi {
      * @param url
      */
     public static void showURLSamllImage(@NonNull ImageView imageView, @NonNull String url) {
-
+        if (StringUtis.isEmpty(url))
+            return;
         if (url.startsWith("http"))
 
             getPicasso().load(url).placeholder(loadingSamllImage).error(errorImage).into(imageView);
@@ -70,7 +73,8 @@ public class ImageServerApi {
      * @param url
      */
     public static void showURLBigImage(@NonNull ImageView imageView, @NonNull String url) {
-
+        if (StringUtis.isEmpty(url))
+            return;
         if (url.startsWith("http"))
 
             getPicasso().load(url).placeholder(loadingBigImage).error(errorImage).into(imageView);

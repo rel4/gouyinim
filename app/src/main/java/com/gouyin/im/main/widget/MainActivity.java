@@ -3,6 +3,7 @@ package com.gouyin.im.main.widget;
 
 import android.graphics.ImageFormat;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.view.KeyEvent;
 import android.view.View;
@@ -101,6 +102,10 @@ public class MainActivity extends BaseActivity implements MainView {
 
     @Override
     public void switch2IM() {
+        if (!UserInfoUtils.isLogin()) {
+            RxBus.getInstance().send(Events.EventEnum.LOGIN, null);
+            return;
+        }
         if (imHomeFragment == null)
             imHomeFragment = new IMHomeFragment();
         enterPage(imHomeFragment);
@@ -111,6 +116,10 @@ public class MainActivity extends BaseActivity implements MainView {
 //        if (centerFragment == null)
 //            centerFragment = new CenterFragment();
 //        enterPage(centerFragment);
+        if (!UserInfoUtils.isLogin()) {
+            RxBus.getInstance().send(Events.EventEnum.LOGIN, null);
+            return;
+        }
         ActivityUtils.startDynamicSendActivity();
     }
 
@@ -123,6 +132,10 @@ public class MainActivity extends BaseActivity implements MainView {
 
     @Override
     public void switch2My() {
+        if (!UserInfoUtils.isLogin()) {
+            RxBus.getInstance().send(Events.EventEnum.LOGIN, null);
+            return;
+        }
         if (myFragment == null)
             myFragment = new MyFragment();
 
@@ -211,17 +224,40 @@ public class MainActivity extends BaseActivity implements MainView {
      * rxbus
      */
     private void initRxBus() {
+        /**
+         * 进入登录
+         */
         RxBus.with(this)
                 .setEndEvent(ActivityEvent.DESTROY)
                 .setEvent(Events.EventEnum.LOGIN)
-                .onNext(events ->
-                        ActivityUtils.startLoginMainActivity())
+                .onNext(events -> {
+                            UserInfoUtils.offline();
+                            showToast(UIUtils.getStringRes(R.string.login_action));
+                            ActivityUtils.startLoginMainActivity();
+                        }
+                )
                 .create();
+        /**
+         * 获取融云key
+         */
         RxBus.with(this)
                 .setEndEvent(ActivityEvent.DESTROY)
                 .setEvent(Events.EventEnum.GET_RONGYUN_KEY)
                 .onNext(events -> {
                     getRongyunKey();
+                })
+                .create();
+        /**
+         * 退出进入首页
+         */
+        RxBus.with(this)
+                .setEndEvent(ActivityEvent.DESTROY)
+                .setEvent(Events.EventEnum.GO_TO_HOME)
+                .onNext(events -> {
+                    imHomeFragment = null;
+                    findFragment = null;
+                    myFragment = null;
+                    switch2Home();
                 })
                 .create();
     }

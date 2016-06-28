@@ -42,6 +42,7 @@ import rx.Observable;
 
 public class ServerApi {
     private static AppAPI mAppApi;
+    private static String TAG = "ServerApi";
 
     public static AppAPI getAppAPI() {
         if (mAppApi == null) {
@@ -50,11 +51,11 @@ public class ServerApi {
                 @Override
                 public Response intercept(Chain chain) throws IOException {
                     Response response = chain.proceed(chain.request());
-                    LogUtils.d(AppAPI.class, "addNetworkInterceptor : Response  code: " + response.code());
+                    LogUtils.d(TAG, "addNetworkInterceptor : Response  code: " + response.code());
                     BufferedSource source = response.body().source();
                     source.request(Long.MAX_VALUE);
                     Buffer clone = source.buffer().clone();
-                    LogUtils.d(AppAPI.class, "addNetworkInterceptor : Response  content: " + UnicodeUtils.decodeUnicode(clone.readUtf8()));
+                    LogUtils.d(TAG, "addNetworkInterceptor : Response  content: " + UnicodeUtils.decodeUnicode(clone.readUtf8()));
                     return response;
                 }
 
@@ -63,7 +64,7 @@ public class ServerApi {
             HttpLoggingInterceptor logging = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
                 @Override
                 public void log(String message) {
-                    LogUtils.d(AppAPI.class, "HttpLoggingInterceptor: " + message);
+                    LogUtils.e(TAG, "HttpLoggingInterceptor: " + message);
                 }
 
             });
@@ -75,7 +76,7 @@ public class ServerApi {
                 public Request authenticate(Route route, Response response) throws IOException {
                     Request request = response.request();
                     LogUtils.d(AppAPI.class, "Authenticator : The Cookie is " + request.header("Cookie"));
-                    LogUtils.d(AppAPI.class, "Authenticator : 访问网络地址: " + request.url().toString());
+                    LogUtils.e(TAG, "Authenticator : 访问网络地址: " + request.url().toString());
                     LogUtils.d(AppAPI.class, "Authenticator : 访问body : " + request.body().toString());
                     return request;
                 }
@@ -119,8 +120,8 @@ public class ServerApi {
     }
 
     public interface AppAPI {
-        //        String baseUrl = "http://10.10.11.120:91/mimei/web/public/index.php/index/";
-        String baseUrl = "http://mimei.cntttt.com:88/public/index.php/index/";
+        String baseUrl = "http://2.yytbzs.cn:88/public/index.php/index/";
+//        String baseUrl = "http://mimei.cntttt.com:88/public/index.php/index/";
 
         @FormUrlEncoded
         @POST("User/login")

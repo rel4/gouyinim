@@ -65,7 +65,7 @@ public class UserInfoPresenterImpl implements UserInfoPresenter, onLoadDateSingl
 
     @Override
     public void loadUserInfodetail(String uid) {
-
+        mUserInfoView.showLoading();
         mUserInfoModel.loadUserInfodetail(uid, this);
     }
 

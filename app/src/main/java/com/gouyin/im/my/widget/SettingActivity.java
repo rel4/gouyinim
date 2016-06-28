@@ -1,20 +1,25 @@
 package com.gouyin.im.my.widget;
 
-import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.gouyin.im.R;
 import com.gouyin.im.base.BaseActivity;
+import com.gouyin.im.event.Events;
+import com.gouyin.im.event.RxBus;
 import com.gouyin.im.utils.ActivityUtils;
 import com.gouyin.im.utils.UIUtils;
 
-import butterknife.ButterKnife;
+import butterknife.Bind;
 import butterknife.OnClick;
 
 /**
  * Created by jb on 2016/6/27.
  */
 public class SettingActivity extends BaseActivity {
+    @Bind(R.id.timeout)
+    TextView timeout;
+
     @Override
     protected View setRootContentView() {
         return UIUtils.inflateLayout(R.layout.activity_other_setting);
@@ -26,8 +31,22 @@ public class SettingActivity extends BaseActivity {
     }
 
 
-    @OnClick(R.id.tv_changepwd)
-    public void onClick() {
-        ActivityUtils.startChangepwdActivity();
+    @OnClick({R.id.tv_changepwd, R.id.timeout})
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.timeout:
+                RxBus.getInstance().send(Events.EventEnum.GO_TO_HOME, null);
+                RxBus.getInstance().send(Events.EventEnum.LOGIN, null);
+                finish();
+
+                break;
+            case R.id.tv_changepwd:
+                ActivityUtils.startChangepwdActivity();
+                break;
+        }
+
+
     }
+
+
 }

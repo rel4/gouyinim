@@ -71,4 +71,14 @@ public class UserInfoUtils {
         authcode = "";
         CacheManager.saveObject(ConfigUtils.getInstance().getApplicationContext(), info, CacheManager.CachePath.FLAG_LOGIN_CODE);
     }
+
+    /**
+     * 用户下线
+     */
+    public static void offline() {
+        authcode = "";
+        PrefUtils.setBoolean(AppConstant.FLAG_LOGIN_STATUS, false);
+        saveUserInfo(null);
+
+    }
 }
