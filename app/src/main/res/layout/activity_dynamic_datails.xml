@@ -5,18 +5,21 @@
 
     <include layout="@layout/app_titlebar" />
 
-    <FrameLayout
+
+    <com.jcodecraeer.xrecyclerview.XRecyclerView
+        android:id="@+id/lv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/app_title_bar">
+        android:layout_below="@+id/app_title_bar" />
 
+    <include
+        android:id="@+id/edit"
+        layout="@layout/layout_editview"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
 
-        <com.jcodecraeer.xrecyclerview.XRecyclerView
-            android:id="@+id/lv"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+        />
 
-
-    </FrameLayout>
 
 </RelativeLayout>

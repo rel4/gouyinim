@@ -1,9 +1,11 @@
 package com.gouyin.im.main.model;
 
+import com.gouyin.im.R;
 import com.gouyin.im.ServerApi;
 import com.gouyin.im.aliyun.AliyunManager;
 import com.gouyin.im.bean.DefaultDataBean;
 import com.gouyin.im.utils.LogUtils;
+import com.gouyin.im.utils.UIUtils;
 import com.gouyin.im.utils.UserInfoUtils;
 
 import rx.Observable;
@@ -41,7 +43,8 @@ public class PlayUserAcitivityModelImpl implements PlayUserAcitivityModel {
                             String res = (String) defaultDataBean.getObj();
                             LogUtils.e(PlayUserAcitivityModelImpl.this, " defaultDataBean " + res);
                             startAliPlayApp(res, listener);
-                        }
+                        } else
+                            listener.onFailure(UIUtils.getStringRes(R.string.request_failed), null);
 
                     }
                 });

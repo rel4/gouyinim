@@ -52,6 +52,7 @@ public class DynamicSendActivity extends BaseActivity {
                 ActivityUtils.startRedpacketDynaimcActivity();
                 break;
             case R.id.send_video:
+                ActivityUtils.startTakeVideoActivity();
                 break;
             case R.id.send_dynamic:
                 ActivityUtils.startDefaultDynamicSendActivity(null, DynamicType.DEFAULT);

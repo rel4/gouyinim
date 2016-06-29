@@ -1,6 +1,5 @@
 package com.gouyin.im.viewholder;
 
-import android.media.Image;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -9,22 +8,16 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.gouyin.im.AppConstant;
 import com.gouyin.im.ImageServerApi;
 import com.gouyin.im.R;
 import com.gouyin.im.base.BaseRecyclerViewHolder;
 import com.gouyin.im.bean.UserInfoListBean;
-import com.gouyin.im.main.model.UserInfoModelImpl;
 import com.gouyin.im.utils.ActivityUtils;
 import com.gouyin.im.utils.LogUtils;
-import com.gouyin.im.utils.StringUtis;
 import com.gouyin.im.utils.TimeUtils;
 import com.gouyin.im.utils.UIUtils;
 import com.gouyin.im.widget.NoScrollGridView;
 import com.gouyin.im.widget.RoundedImageView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.Bind;
 
@@ -145,27 +138,25 @@ public class UserInfoViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.
         tv_wacth_number.setText(bean.getLupn() + "");
         tvStr.setText(bean.getNickname());
         ImageServerApi.showURLImage(rivUserImage, bean.getFace());
-        List<String> imgs = bean.getSimg();
-        gvUserPic.setAdapter(new PicGridView(imgs));
+        gvUserPic.setAdapter(new PicGridView(bean));
 
     }
 
     @Override
     protected void onItemclick(View view, UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList bean, int position) {
-        LogUtils.e("MyAdapter", " position : " + position + "-----------msg  : " + (bean.getTitle()));
         ActivityUtils.startDynamicDatailsActivity(bean);
     }
 
     private class PicGridView extends BaseAdapter {
-        private List<String> list;
+        private UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList bean;
 
-        public PicGridView(List<String> list) {
-            this.list = list;
+        public PicGridView(UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList bean) {
+            this.bean = bean;
         }
 
         @Override
         public int getCount() {
-            return list == null ? 0 : list.size();
+            return bean.getSimg() == null ? 0 : bean.getSimg().size();
         }
 
         @Override
@@ -182,12 +173,15 @@ public class UserInfoViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.
         public View getView(int position, View convertView, ViewGroup parent) {
             View view = UIUtils.inflateLayout(R.layout.item_pics);
             ImageView pic = (ImageView) view.findViewById(R.id.iv_pic);
-            ImageServerApi.showURLImage(pic, list.get(position));
+            ImageServerApi.showURLImage(pic, bean.getSimg().get(position));
             pic.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    LogUtils.e("position", "url : " + list.get(position));
-                    LogUtils.e("position", "url : " + list.get(position));
+                    if (bean.getType() == 1) {
+                        ActivityUtils.startPayDynamicRedPackketActivity(bean.getMoney(), bean.getLatest_id());
+                    } else {
+                        ActivityUtils.startImagePagerActivity(bean.getImg(), position);
+                    }
                 }
             });
             return pic;

@@ -19,6 +19,7 @@ import com.gouyin.im.utils.ActivityUtils;
 import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.StringUtis;
 import com.gouyin.im.utils.UIUtils;
+import com.gouyin.im.utils.VideoUtils;
 import com.gouyin.im.widget.NoScrollGridView;
 import com.trello.rxlifecycle.ActivityEvent;
 
@@ -42,11 +43,16 @@ public class DefaultDynamicSendActivity extends BaseActivity implements DefaultD
     TextView tvAddress;
     @Bind(R.id.iv_switch)
     ImageView ivSwitch;
+    @Bind(R.id.video_back)
+    ImageView video_back;
     private DefaultDynamicPresenter presenter;
     private ShowPicAdapter showPicAdapter;
     private List<String> datas;
     private DynamicSendActivity.DynamicType dynamicType;
-    ArrayList<Object> objects = new ArrayList<>();
+
+    private ArrayList<Object> objects = new ArrayList<>();
+    private String videoPath;
+    private String videoBackPath;
 
     @Override
     protected View setRootContentView() {
@@ -57,6 +63,16 @@ public class DefaultDynamicSendActivity extends BaseActivity implements DefaultD
         switch (type) {
             case "3":
                 dynamicType = DynamicSendActivity.DynamicType.video;
+                ArrayList<String> videos = getIntent().getStringArrayListExtra("data");
+                if (videos != null && videos.size() == 1) {
+                    videoPath = videos.get(0);
+
+                    videoBackPath = VideoUtils.getInstance().getVideoThumbnail(videoPath);
+                }
+                if (datas == null)
+                    datas = new ArrayList<String>();
+                datas.add(videoPath);
+                datas.add(videoBackPath);
                 break;
             case "2":
                 dynamicType = DynamicSendActivity.DynamicType.DEFAULT;
@@ -82,9 +98,17 @@ public class DefaultDynamicSendActivity extends BaseActivity implements DefaultD
     @Override
     protected void initView() {
 
+        if (dynamicType == DynamicSendActivity.DynamicType.video) {
 
-        showPicAdapter = new ShowPicAdapter(objects);
-        gvPicList.setAdapter(showPicAdapter);
+            gvPicList.setVisibility(View.GONE);
+            ViewGroup.LayoutParams params = video_back.getLayoutParams();
+            params.height = 400;
+            video_back.setLayoutParams(params);
+            ImageServerApi.showURLBigImage(video_back, videoBackPath);
+        } else {
+            showPicAdapter = new ShowPicAdapter(objects);
+            gvPicList.setAdapter(showPicAdapter);
+        }
     }
 
 
@@ -96,13 +120,13 @@ public class DefaultDynamicSendActivity extends BaseActivity implements DefaultD
                     showToast(getResources().getString(R.string.photo) + getResources().getString(R.string.not_empty));
                     break;
                 }
+
                 String content = etContent.getText().toString().trim();
                 if (StringUtis.isEmpty(content)) {
                     showToast(getResources().getString(R.string.not_empty));
                     break;
                 }
                 String address = tvAddress.getText().toString().trim();
-                String s = datas.get(datas.size() - 1);
 
                 presenter.sendDynamic(dynamicType, content, datas, address);
                 break;

@@ -280,6 +280,18 @@ public class ServerApi {
          */
         @GET("User/user_detail_addon1_center")
         Observable<UserInfoDetailBean> loadPersonInfo(@Query("authcode") String authcode);
+
+        /**
+         * 动态红包支付
+         *
+         * @param id
+         * @param authcode
+         * @return
+         */
+        @FormUrlEncoded
+        @POST("Latestbuy/latest_buy")
+        Observable<DefaultDataBean> redPacketPay(@Field("latest_id") String id,
+                                                 @Field("authcode") String authcode);
     }
 }
 

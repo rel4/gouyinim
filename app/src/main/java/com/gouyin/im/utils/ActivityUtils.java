@@ -6,6 +6,7 @@ import com.gouyin.im.AppConstant;
 import com.gouyin.im.bean.UserInfoListBean;
 import com.gouyin.im.center.widget.DefaultDynamicSendActivity;
 import com.gouyin.im.center.widget.DynamicSendActivity;
+import com.gouyin.im.center.widget.PayDynamicRedPackketActivity;
 import com.gouyin.im.center.widget.RedpacketDynaimcActivity;
 import com.gouyin.im.event.Events;
 import com.gouyin.im.event.RxBus;
@@ -25,8 +26,11 @@ import com.gouyin.im.my.widget.SettingActivity;
 import com.gouyin.im.my.widget.WithdRawDepositActivity;
 import com.gouyin.im.widget.image.PhonePicActivity;
 import com.gouyin.im.widget.image.ShowImageActivity;
+import com.gouyin.im.widget.image.photoview.ImagePagerActivity;
+import com.gouyin.im.widget.takevideo.TakeVideoActivity;
 
 import java.util.ArrayList;
+import java.util.IdentityHashMap;
 import java.util.List;
 
 /**
@@ -234,5 +238,39 @@ public class ActivityUtils {
      */
     public static void startRedpacketDynaimcActivity() {
         startActivity(RedpacketDynaimcActivity.class);
+    }
+
+    /**
+     * 发红包看照片
+     *
+     * @param money
+     */
+    public static void startPayDynamicRedPackketActivity(String money, String id
+    ) {
+        Intent intent = new Intent(ConfigUtils.getInstance().getActivityContext(), PayDynamicRedPackketActivity.class);
+        intent.putExtra("money", money);
+        intent.putExtra("id", id);
+        startActivity(intent);
+    }
+
+    /**
+     * 开启图片查看器
+     *
+     * @param urls2
+     * @param position
+     */
+    public static void startImagePagerActivity(ArrayList<String> urls2, int position) {
+        Intent intent = new Intent(ConfigUtils.getInstance().getActivityContext(), ImagePagerActivity.class);
+        // 图片url,为了演示这里使用常量，一般从数据库中或网络中获取
+        intent.putExtra(ImagePagerActivity.EXTRA_IMAGE_URLS, urls2);
+        intent.putExtra(ImagePagerActivity.EXTRA_IMAGE_INDEX, position);
+        startActivity(intent);
+    }
+
+    /**
+     * 开启相机
+     */
+    public static void startTakeVideoActivity() {
+        startActivity(TakeVideoActivity.class);
     }
 }

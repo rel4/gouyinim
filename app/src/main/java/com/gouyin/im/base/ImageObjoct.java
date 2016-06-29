@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Created by jb on 2016/6/23.
  */
-public class ImageObjoct implements Serializable{
+public class ImageObjoct implements Serializable {
     /**
      * 模糊图片
      */
@@ -14,6 +14,7 @@ public class ImageObjoct implements Serializable{
      * 原图
      */
     public String l;
+    private String v;
 
     public String getS() {
         return s;
@@ -29,6 +30,14 @@ public class ImageObjoct implements Serializable{
 
     public void setL(String l) {
         this.l = l;
+    }
+
+    public void setV(String v) {
+        this.v = v;
+    }
+
+    public String getV() {
+        return v;
     }
 }
 

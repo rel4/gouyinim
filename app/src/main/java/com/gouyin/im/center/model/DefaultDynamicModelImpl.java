@@ -35,10 +35,37 @@ public class DefaultDynamicModelImpl implements DefaultDynamicModel {
     public void sendDynamicPics(DynamicSendActivity.DynamicType dynamicType, String content, List<String> srcdatas, String address, onLoadDateSingleListener listener) {
         LogUtils.e(DefaultDynamicModelImpl.this, "start upload");
         ArrayList<ImageObjoct> aliyunPtahs = new ArrayList<ImageObjoct>();
-        boolean isHaveFuzz = dynamicType == DynamicSendActivity.DynamicType.RED_PACKET;
+
         Observable.create(new Observable.OnSubscribe<ArrayList<ImageObjoct>>() {
             @Override
             public void call(Subscriber<? super ArrayList<ImageObjoct>> subscriber) {
+                if (dynamicType == DynamicSendActivity.DynamicType.video) {
+                    if (srcdatas != null && srcdatas.size() == 2) {
+
+                        try {
+                            //视频
+                            String vidoPath = AliyunManager.getInstance().upLoadFile(srcdatas.get(0), FilePathUtlis.FileType.MP4);
+                            //图片
+                            //压缩大小
+                            Bitmap bitmap = ImageUtils.compressImage(BitmapFactory.decodeFile(srcdatas.get(1)), 100);
+                            Bitmap bitmapsize = ImageUtils.compressImageSzie(bitmap, 200, 180);
+                            String loadFile = AliyunManager.getInstance().upLoadFiletFromByteArray(ImageUtils.getBitmapByte(bitmapsize), FilePathUtlis.FileType.JPG);
+                            ImageObjoct image = new ImageObjoct();
+                            image.setS(loadFile);
+                            image.setV(vidoPath);
+                            image.setL("");
+                            aliyunPtahs.add(image);
+                        } catch (ClientException e) {
+                            e.printStackTrace();
+                        } catch (ServiceException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                    subscriber.onNext(aliyunPtahs);
+                    return;
+                }
+                boolean isHaveFuzz = dynamicType == DynamicSendActivity.DynamicType.RED_PACKET;
                 try {
                     for (int i = 0; i < srcdatas.size(); i++) {
                         ImageObjoct image = new ImageObjoct();
@@ -67,8 +94,6 @@ public class DefaultDynamicModelImpl implements DefaultDynamicModel {
                     }
 
                     subscriber.onNext(aliyunPtahs);
-                    String serialize = JsonUtils.serialize(aliyunPtahs);
-                    LogUtils.e(DefaultDynamicModelImpl.this, "aliyunPtahs --JsonUtils : " + serialize);
                 } catch (Exception e) {
 
                 }
@@ -100,8 +125,14 @@ public class DefaultDynamicModelImpl implements DefaultDynamicModel {
 
     private void sendAllDynamic(DynamicSendActivity.DynamicType dynamicType, String content, String json, String address, onLoadDateSingleListener listener) {
         String authcode = UserInfoUtils.getAuthcode();
-        ServerApi.getAppAPI().sendAllDefaultDynamic(dynamicType.getValue(), content, json, "", address, authcode)
-                .observeOn(AndroidSchedulers.mainThread())
+        Observable<BaseBean> baseBeanObservable = null;
+        if (dynamicType == DynamicSendActivity.DynamicType.video) {
+            baseBeanObservable = ServerApi.getAppAPI().sendAllDefaultDynamic(dynamicType.getValue(), content, "", json, address, authcode);
+        } else {
+            baseBeanObservable = ServerApi.getAppAPI().sendAllDefaultDynamic(dynamicType.getValue(), content, json, "", address, authcode);
+        }
+
+        baseBeanObservable.observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Subscriber<BaseBean>() {
                     @Override

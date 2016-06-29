@@ -35,4 +35,6 @@
     <color name="text_color">#999999</color>
     <color name="title_text">#464545</color>
     <color name="blue">#1498fb</color>
+    <color name="grid_state_pressed">#1Affffff</color>
+    <color name="grid_state_focused">#80000000</color>
 </resources>

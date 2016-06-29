@@ -117,6 +117,14 @@
         <activity
             android:name=".center.widget.RedpacketDynaimcActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".center.widget.PayDynamicRedPackketActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent" />
+        <activity
+            android:name=".widget.image.photoview.ImagePagerActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".widget.takevideo.TakeVideoActivity" />
         <!--会话页面-->
         <activity
             android:name=".im.widget.AppConversationActivity"

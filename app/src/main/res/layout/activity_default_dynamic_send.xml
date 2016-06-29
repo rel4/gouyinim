@@ -50,14 +50,26 @@
         android:paddingLeft="@dimen/x30"
         android:textColor="@color/text_black_color" />
 
-    <com.gouyin.im.widget.NoScrollGridView
-        android:id="@+id/gv_pic_list"
-        android:layout_width="match_parent"
+    <RelativeLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:horizontalSpacing="@dimen/x30"
-        android:numColumns="4"
-        android:padding="@dimen/x30"
-        android:verticalSpacing="@dimen/x30"></com.gouyin.im.widget.NoScrollGridView>
+        android:padding="@dimen/x30">
+
+        <ImageView
+            android:id="@+id/video_back"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop" />
+
+        <com.gouyin.im.widget.NoScrollGridView
+
+            android:id="@+id/gv_pic_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:horizontalSpacing="@dimen/x30"
+            android:numColumns="4"
+            android:verticalSpacing="@dimen/x30"></com.gouyin.im.widget.NoScrollGridView>
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
