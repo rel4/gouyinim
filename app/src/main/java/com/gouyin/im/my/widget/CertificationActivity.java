@@ -14,6 +14,7 @@ import butterknife.Bind;
 import butterknife.OnClick;
 
 /**
+ * 认证
  * Created by jb on 2016/6/27.
  */
 public class CertificationActivity extends BaseActivity {

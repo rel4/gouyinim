@@ -295,7 +295,6 @@ public class ServerApi {
                                                  @Field("authcode") String authcode);
 
         /**
-         *
          * @param id
          * @param authcode
          * @return
@@ -303,6 +302,30 @@ public class ServerApi {
         @GET("Latest/get_latest_pay")
         Observable<PayRedPacketPicsBean> getPayDynamicPic(@Query("latest_id") String id,
                                                           @Query("authcode") String authcode);
+
+        /**
+         * @param address1
+         * @param address2
+         * @param height
+         * @param sexid
+         * @param nike
+         * @param loadFile
+         * @param serialize
+         * @param authcode
+         * @return
+         */
+        @FormUrlEncoded
+        @POST("Apply/pub")
+        Observable<DefaultDataBean> sendAllRzInfo(@Field("province") String address1,
+                                                  @Field("city") String address2,
+                                                  @Field("height") String height,
+                                                  @Field("sex") String sexid,
+                                                  @Field("nickname") String nike,
+                                                  @Field("face") String loadFile,
+                                                  @Field("apply_image") String serialize,
+                                                  @Field("authcode") String authcode);
+
+
     }
 }
 

@@ -124,6 +124,7 @@
             android:textColor="@color/text_color"
             android:textSize="@dimen/order_text_small3"/>
         <ImageView
+            android:id="@+id/tv_add_pic"
             android:layout_marginTop="@dimen/x25"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"

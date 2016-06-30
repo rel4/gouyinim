@@ -1,5 +1,6 @@
 package com.gouyin.im.utils;
 
+import android.content.Context;
 import android.content.Intent;
 
 import com.gouyin.im.AppConstant;
@@ -13,6 +14,7 @@ import com.gouyin.im.event.RxBus;
 import com.gouyin.im.im.widget.AppConversationActivity;
 import com.gouyin.im.login.widget.LoginMainActivity;
 import com.gouyin.im.main.widget.DynamicDatailsActivity;
+import com.gouyin.im.main.widget.PersonInfoChangeActivity;
 import com.gouyin.im.main.widget.RedpacketAcitivity;
 import com.gouyin.im.main.widget.UserInfoActivity;
 import com.gouyin.im.manager.UserInfoManager;
@@ -22,6 +24,7 @@ import com.gouyin.im.my.widget.GetMoneyActivity;
 import com.gouyin.im.my.widget.MyOrderActivity;
 import com.gouyin.im.my.widget.RZFirstActivity;
 import com.gouyin.im.my.widget.RZSecondActivity;
+import com.gouyin.im.my.widget.RZThidActivity;
 import com.gouyin.im.my.widget.RefundActivity;
 import com.gouyin.im.my.widget.SettingActivity;
 import com.gouyin.im.my.widget.WithdRawDepositActivity;
@@ -39,6 +42,10 @@ import java.util.List;
  */
 public class ActivityUtils {
     private static String TAG = "ActivityUtils";
+
+    private static Context getContext() {
+        return ConfigUtils.getInstance().getActivityContext();
+    }
 
     /**
      * 开启一个activity
@@ -187,9 +194,20 @@ public class ActivityUtils {
 
     /**
      * 认证第二步
+     *
+     * @param address
+     * @param height
+     * @param sex
+     * @param nike
      */
-    public static void startRZSecondActivity() {
-        startActivity(RZSecondActivity.class);
+    public static void startRZSecondActivity(String address, String height, String sex, String nike, String path) {
+        Intent intent = new Intent(getContext(), RZSecondActivity.class);
+        intent.putExtra("address", address);
+        intent.putExtra("height", height);
+        intent.putExtra("sex", sex);
+        intent.putExtra("nike", nike);
+        intent.putExtra("path", path);
+        startActivity(intent);
     }
 
     /**
@@ -276,5 +294,20 @@ public class ActivityUtils {
      */
     public static void startTakeVideoActivity() {
         startActivity(TakeVideoActivity.class);
+    }
+
+    /**
+     * 修改信息
+     *
+     * @param type
+     */
+    public static void startPersonInfoChangeActivity(PersonInfoChangeActivity.ChangeType type) {
+        Intent intent = new Intent(getContext(), PersonInfoChangeActivity.class);
+        intent.putExtra("type", type.getValue());
+        startActivity(intent);
+    }
+
+    public static void startRZThidActivity() {
+        startActivity(RZThidActivity.class);
     }
 }

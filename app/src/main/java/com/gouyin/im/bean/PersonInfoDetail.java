@@ -11,6 +11,15 @@ public class PersonInfoDetail extends BaseDataBean {
     private String rongyunkey;
     private String nickname;
     private boolean isLogin;
+    private String sex;
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
 
     public boolean isLogin() {
         return isLogin;

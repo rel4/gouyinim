@@ -5,8 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 
+import com.gouyin.im.ImageServerApi;
 import com.gouyin.im.R;
+import com.gouyin.im.utils.UIUtils;
+
+import java.util.ArrayList;
 
 
 /**
@@ -14,15 +19,15 @@ import com.gouyin.im.R;
  */
 public class RZGridViewAdapter extends BaseAdapter {
 
-    private Context mContext;
+    private ArrayList<String> pics;
 
-    public RZGridViewAdapter(Context mContext){
-        this.mContext = mContext;
+    public RZGridViewAdapter(ArrayList<String> pics) {
+        this.pics = pics;
     }
 
     @Override
     public int getCount() {
-        return 6;
+        return pics == null ? 0 : pics.size();
     }
 
     @Override
@@ -37,7 +42,9 @@ public class RZGridViewAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        convertView = LayoutInflater.from(mContext).inflate(R.layout.item_renzheng_grid_item, null);
-        return convertView;
+        View view = UIUtils.inflateLayout(R.layout.item_pics);
+        ImageView pic = (ImageView) view.findViewById(R.id.iv_pic);
+        ImageServerApi.showURLSamllImage(pic, pics.get(position));
+        return view;
     }
 }

@@ -69,4 +69,12 @@
     <string name="temporary_does_not">暂不支持大于10M的视频！</string>
     <string name="Video_footage">拍摄录像</string>
     <string name="ok">ok</string>
+    <string name="nike">昵称</string>
+    <string name="renzhengxin">认证信息</string>
+    <string name="height">身高</string>
+    <string name="address">地址</string>
+    <string name="KG">KG</string>
+    <string name="cm">cm</string>
+    <string name="Provice">省</string>
+    <string name="City">市</string>
 </resources>

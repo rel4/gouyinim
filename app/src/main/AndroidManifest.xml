@@ -24,6 +24,7 @@
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
     <!-- GCM 配置开始 < -->
     <permission
         android:name="io.rong.app.permission.C2D_MESSAGE"
@@ -78,7 +79,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".login.widget.SelectPicPopupActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/MyDialogStyleBottom" />
         <activity
             android:name=".main.widget.RedpacketAcitivity"
             android:screenOrientation="portrait" />
@@ -126,6 +128,17 @@
             android:name=".widget.image.photoview.ImagePagerActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".widget.takevideo.TakeVideoActivity" />
+        <activity
+            android:name=".main.widget.PersonInfoChangeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".my.widget.info.SelectPlandWindowActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyDialogStyleBottom" />
+        <activity
+            android:name=".my.widget.info.SelectSexActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyDialogStyleBottom" />
         <!--会话页面-->
         <activity
             android:name=".im.widget.AppConversationActivity"
