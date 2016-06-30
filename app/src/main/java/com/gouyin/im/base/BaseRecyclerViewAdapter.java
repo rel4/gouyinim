@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 
 import com.gouyin.im.bean.BaseBean;
 import com.gouyin.im.bean.BaseDataBean;
+import com.gouyin.im.bean.PayRedPacketPicsBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,4 +65,5 @@ public abstract class BaseRecyclerViewAdapter<T extends BaseDataBean> extends Re
     public void onRefresh() {
         notifyDataSetChanged();
     }
+
 }

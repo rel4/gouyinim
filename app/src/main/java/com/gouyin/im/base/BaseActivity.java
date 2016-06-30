@@ -130,8 +130,9 @@ public abstract class BaseActivity extends RxAppCompatActivity {
         onBaseDestroy();
         ButterKnife.unbind(this);
         if (progressDialog != null) {
-            if (progressDialog.isShowing())
-                progressDialog.dismiss();
+            if (progressDialog.isShowing()) {
+            }
+            progressDialog.dismiss();
             progressDialog = null;
         }
     }
@@ -200,6 +201,7 @@ public abstract class BaseActivity extends RxAppCompatActivity {
             return;
         if (progressDialog.isShowing())
             progressDialog.dismiss();
+        progressDialog = null;
     }
 
     /**

@@ -19,7 +19,7 @@ import java.util.List;
 public class UserInfoPresenterImpl implements UserInfoPresenter, onLoadDateSingleListener<UserInfoDetailBean>, BaseIModel.onLoadListDateListener<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList> {
     private UserInfoView mUserInfoView;
     private UserInfoModel mUserInfoModel;
-    private int page = 1;
+    private int page = 2;
 
     @Override
     public void onCreate() {

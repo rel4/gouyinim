@@ -11,6 +11,7 @@ import com.gouyin.im.ImageServerApi;
 import com.gouyin.im.R;
 import com.gouyin.im.adapter.UserInfoAdapter;
 import com.gouyin.im.base.BaseActivity;
+import com.gouyin.im.bean.PayRedPacketPicsBean;
 import com.gouyin.im.bean.UserInfoDetailBean;
 import com.gouyin.im.bean.UserInfoListBean;
 import com.gouyin.im.event.Events;
@@ -18,6 +19,7 @@ import com.gouyin.im.event.RxBus;
 import com.gouyin.im.main.presenter.UserInfoPresenter;
 import com.gouyin.im.main.presenter.UserInfoPresenterImpl;
 import com.gouyin.im.main.view.UserInfoView;
+import com.gouyin.im.my.widget.MyFragment;
 import com.gouyin.im.utils.ActivityUtils;
 import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.UIUtils;
@@ -26,6 +28,7 @@ import com.gouyin.im.viewholder.UserInfoHeadViewHolder;
 import com.gouyin.im.widget.DividerItemDecoration;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
+import com.trello.rxlifecycle.ActivityEvent;
 
 import java.util.List;
 
@@ -58,6 +61,7 @@ public class UserInfoActivity extends BaseActivity implements UserInfoView {
 
     @Override
     protected void initView() {
+        setRxbus();
         userId = getIntent().getStringExtra(AppConstant.USER_ID);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -85,6 +89,24 @@ public class UserInfoActivity extends BaseActivity implements UserInfoView {
         mPresenter.loadUserInfodetail(userId);
         recyclerview.setRefreshing(true);
 
+    }
+
+    private void setRxbus() {
+        RxBus.with(this)
+                .setEndEvent(ActivityEvent.DESTROY)
+                .setEvent(Events.EventEnum.PAY_SUCCESS_GET_DATA)
+                .onNext(events -> {
+                    LogUtils.e("MyFragment", "PAY_SUCCESS_GET_DATA 数据");
+                    if (events != null && mAdapter != null) {
+                        Object message = events.message;
+                        if (message instanceof PayRedPacketPicsBean) {
+                            PayRedPacketPicsBean bean = (PayRedPacketPicsBean) message;
+                            mAdapter.updataPayData(bean);
+
+                        }
+                    }
+                })
+                .create();
     }
 
     /**

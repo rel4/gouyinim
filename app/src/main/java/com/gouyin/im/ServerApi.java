@@ -6,6 +6,7 @@ import com.gouyin.im.bean.CommentDataListBean;
 import com.gouyin.im.bean.DefaultDataBean;
 import com.gouyin.im.bean.GoodSelectBaen;
 import com.gouyin.im.bean.LoginBean;
+import com.gouyin.im.bean.PayRedPacketPicsBean;
 import com.gouyin.im.bean.RegiterBean;
 import com.gouyin.im.bean.RongyunBean;
 import com.gouyin.im.bean.UserInfoDetailBean;
@@ -292,6 +293,16 @@ public class ServerApi {
         @POST("Latestbuy/latest_buy")
         Observable<DefaultDataBean> redPacketPay(@Field("latest_id") String id,
                                                  @Field("authcode") String authcode);
+
+        /**
+         *
+         * @param id
+         * @param authcode
+         * @return
+         */
+        @GET("Latest/get_latest_pay")
+        Observable<PayRedPacketPicsBean> getPayDynamicPic(@Query("latest_id") String id,
+                                                          @Query("authcode") String authcode);
     }
 }
 

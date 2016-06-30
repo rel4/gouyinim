@@ -10,8 +10,11 @@ import android.view.ViewGroup;
 import com.gouyin.im.R;
 import com.gouyin.im.adapter.UserInfoAdapter;
 import com.gouyin.im.base.BaseFragment;
+import com.gouyin.im.bean.PayRedPacketPicsBean;
 import com.gouyin.im.bean.UserInfoDetailBean;
 import com.gouyin.im.bean.UserInfoListBean;
+import com.gouyin.im.event.Events;
+import com.gouyin.im.event.RxBus;
 import com.gouyin.im.my.persenter.MyFragmentPresenter;
 import com.gouyin.im.my.persenter.MyFragmentPresenterImpl;
 
@@ -23,6 +26,7 @@ import com.gouyin.im.viewholder.PersonDynamicViewholder;
 import com.gouyin.im.widget.DividerItemDecoration;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
+import com.trello.rxlifecycle.FragmentEvent;
 
 import java.util.List;
 
@@ -51,9 +55,23 @@ public class MyFragment extends BaseFragment implements MyFragmentView {
         return UIUtils.inflateLayout(R.layout.activity_person_dynamic);
     }
 
+    /**
+     *
+     */
+    private void setRxbus() {
+
+
+    }
+
+    public void updataPayData(PayRedPacketPicsBean bean) {
+        if (mAdapter != null) {
+            mAdapter.updataPayData(bean);
+        }
+    }
+
     @Override
     protected void initData() {
-
+        setRxbus();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerview.setLayoutManager(linearLayoutManager);

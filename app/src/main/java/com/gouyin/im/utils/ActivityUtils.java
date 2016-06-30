@@ -245,8 +245,11 @@ public class ActivityUtils {
      *
      * @param money
      */
-    public static void startPayDynamicRedPackketActivity(String money, String id
-    ) {
+    public static void startPayDynamicRedPackketActivity(String money, String id) {
+        if (!UserInfoUtils.isLogin()) {
+            RxBus.getInstance().send(Events.EventEnum.LOGIN, null);
+            return;
+        }
         Intent intent = new Intent(ConfigUtils.getInstance().getActivityContext(), PayDynamicRedPackketActivity.class);
         intent.putExtra("money", money);
         intent.putExtra("id", id);

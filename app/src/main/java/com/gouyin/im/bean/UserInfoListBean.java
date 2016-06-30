@@ -46,6 +46,29 @@ public class UserInfoListBean extends BaseBean {
             private String sex;
             private String uid;
             private String money;
+            private String video;
+
+            public String getIspay() {
+                return ispay;
+            }
+
+            public void setIspay(String ispay) {
+                this.ispay = ispay;
+            }
+
+            /**
+             * 1 已支付  2 未支付
+             */
+
+            private String ispay;
+
+            public String getVideo() {
+                return video;
+            }
+
+            public void setVideo(String video) {
+                this.video = video;
+            }
 
             public String getMoney() {
                 return money;

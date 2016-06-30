@@ -12,7 +12,10 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/y350">
-
+        <VideoView
+            android:id="@+id/play"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
         <ImageView
             android:scaleType="centerCrop"
             android:id="@+id/iv_play_background"

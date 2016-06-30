@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.gouyin.im.bean.PayRedPacketPicsBean;
 import com.gouyin.im.utils.ConfigUtils;
 import com.gouyin.im.utils.UIUtils;
 

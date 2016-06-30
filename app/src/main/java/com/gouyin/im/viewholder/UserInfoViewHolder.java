@@ -1,5 +1,6 @@
 package com.gouyin.im.viewholder;
 
+import android.media.MediaPlayer;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -7,6 +8,7 @@ import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import com.gouyin.im.ImageServerApi;
 import com.gouyin.im.R;
@@ -14,6 +16,7 @@ import com.gouyin.im.base.BaseRecyclerViewHolder;
 import com.gouyin.im.bean.UserInfoListBean;
 import com.gouyin.im.utils.ActivityUtils;
 import com.gouyin.im.utils.LogUtils;
+import com.gouyin.im.utils.StringUtis;
 import com.gouyin.im.utils.TimeUtils;
 import com.gouyin.im.utils.UIUtils;
 import com.gouyin.im.widget.NoScrollGridView;
@@ -57,6 +60,7 @@ public class UserInfoViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.
     private GridView mGridView;
     private TextView tvPlay;
     private ImageView playBackground;
+    private VideoView play;
 
     public UserInfoViewHolder(View view, int viewType) {
         super(view);
@@ -79,6 +83,7 @@ public class UserInfoViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.
                 View palyView = UIUtils.inflateLayout(R.layout.item_user_tv);
                 tvPlay = (TextView) palyView.findViewById(R.id.tv_play_content);
                 playBackground = (ImageView) palyView.findViewById(R.id.iv_play_background);
+                play = (VideoView) palyView.findViewById(R.id.play);
                 mfragment.addView(palyView);
                 break;
         }
@@ -119,7 +124,30 @@ public class UserInfoViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.
         tvStr.setText(bean.getNickname());
 
         ImageServerApi.showURLImage(rivUserImage, bean.getFace());
+        playBackground.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (play != null) {
+                    play.setVideoPath(bean.getVideo());
 
+                    play.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                        @Override
+                        public void onPrepared(MediaPlayer mp) {
+                            playBackground.setVisibility(View.GONE);
+                            play.start();
+                        }
+                    });
+
+                    play.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mp) {
+                            playBackground.setVisibility(View.VISIBLE);
+
+                        }
+                    });
+                }
+            }
+        });
     }
 
     /**
@@ -177,7 +205,7 @@ public class UserInfoViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.
             pic.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (bean.getType() == 1) {
+                    if (StringUtis.equals(bean.getIspay(), "2")) {
                         ActivityUtils.startPayDynamicRedPackketActivity(bean.getMoney(), bean.getLatest_id());
                     } else {
                         ActivityUtils.startImagePagerActivity(bean.getImg(), position);

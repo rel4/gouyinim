@@ -16,7 +16,7 @@ import java.util.List;
 public class MyFragmentPresenterImpl implements MyFragmentPresenter, BaseIModel.onLoadListDateListener<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList>, BaseIModel.onLoadDateSingleListener<UserInfoDetailBean> {
     private MyFragmentView view;
     private MyFragmentModel model;
-    private int page = 1;
+    private int page = 2;
 
     @Override
     public void onCreate() {

@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.gouyin.im.R;
+import com.gouyin.im.center.presenter.PayDynamicRedPackketPersenter;
+import com.gouyin.im.center.presenter.PayDynamicRedPackketPersenterImpl;
 import com.gouyin.im.center.view.PayDynamicRedPackketView;
 import com.gouyin.im.utils.UIUtils;
 
@@ -106,5 +108,10 @@ public class PayDynamicRedPackketActivity extends Activity implements PayDynamic
             return;
         if (progressDialog.isShowing())
             progressDialog.dismiss();
+    }
+
+    @Override
+    public void finishPage() {
+        finish();
     }
 }

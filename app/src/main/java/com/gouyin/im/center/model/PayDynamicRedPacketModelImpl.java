@@ -4,7 +4,9 @@ import com.gouyin.im.R;
 import com.gouyin.im.ServerApi;
 import com.gouyin.im.aliyun.AliyunManager;
 import com.gouyin.im.bean.DefaultDataBean;
+import com.gouyin.im.bean.PayRedPacketPicsBean;
 import com.gouyin.im.utils.LogUtils;
+import com.gouyin.im.utils.StringUtis;
 import com.gouyin.im.utils.UIUtils;
 import com.gouyin.im.utils.UserInfoUtils;
 
@@ -39,7 +41,7 @@ public class PayDynamicRedPacketModelImpl implements PayDynamicRedPacketModel {
                         if (defaultDataBean != null && defaultDataBean.getObj() instanceof String) {
                             String res = (String) defaultDataBean.getObj();
                             LogUtils.e(PayDynamicRedPacketModelImpl.this, " defaultDataBean " + res);
-                            startAliPlayApp(res, listener);
+                            startAliPlayApp(id, res, listener);
                         } else
                             listener.onFailure(UIUtils.getStringRes(R.string.request_failed), null);
 
@@ -47,7 +49,7 @@ public class PayDynamicRedPacketModelImpl implements PayDynamicRedPacketModel {
                 });
     }
 
-    private void startAliPlayApp(String res, onLoadDateSingleListener listener) {
+    private void startAliPlayApp(String id, String res, onLoadDateSingleListener listener) {
         Observable.create(new Observable.OnSubscribe<String>() {
             @Override
             public void call(Subscriber<? super String> subscriber) {
@@ -77,7 +79,43 @@ public class PayDynamicRedPacketModelImpl implements PayDynamicRedPacketModel {
 
                     @Override
                     public void onNext(String s) {
-                        listener.onSuccess(s, DataType.DATA_ZERO);
+                        if (s != null) {
+                            if (StringUtis.equals(s, "9000"))
+                                getPayDynamicPic(id, listener);
+                            else if (StringUtis.equals(s, "8000"))
+                                getPayDynamicPic(id, listener);
+                            else
+//
+                                listener.onFailure(UIUtils.getStringRes(R.string.pay_failure), null);
+//                                view.transfePageMsg(UIUtils.getStringRes(R.string.pay_failure));
+                        } else
+                            listener.onFailure(UIUtils.getStringRes(R.string.request_failed), null);
+                    }
+                });
+    }
+
+    private void getPayDynamicPic(String id, onLoadDateSingleListener listener) {
+        ServerApi.getAppAPI().getPayDynamicPic(id, UserInfoUtils.getAuthcode())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<PayRedPacketPicsBean>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        listener.onFailure(UIUtils.getStringRes(R.string.request_failed), e);
+                    }
+
+                    @Override
+                    public void onNext(PayRedPacketPicsBean bean) {
+                        if (bean != null) {
+                            listener.onSuccess(bean, DataType.DATA_ZERO);
+                        } else
+                            listener.onFailure(UIUtils.getStringRes(R.string.request_failed), null);
+
                     }
                 });
     }

@@ -1,4 +1,4 @@
-package com.gouyin.im.center.widget;
+package com.gouyin.im.center.presenter;
 
 
 import com.gouyin.im.base.BaseIPresenter;

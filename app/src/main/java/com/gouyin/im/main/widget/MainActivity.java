@@ -16,6 +16,7 @@ import com.gouyin.im.base.BaseActivity;
 import com.gouyin.im.base.BaseFragment;
 import com.gouyin.im.base.BaseIModel;
 import com.gouyin.im.bean.LoginBean;
+import com.gouyin.im.bean.PayRedPacketPicsBean;
 import com.gouyin.im.bean.PresonInfo;
 import com.gouyin.im.bean.RongyunBean;
 import com.gouyin.im.event.Events;
@@ -37,6 +38,7 @@ import com.gouyin.im.utils.StringUtis;
 import com.gouyin.im.utils.UIUtils;
 import com.gouyin.im.utils.UserInfoUtils;
 import com.trello.rxlifecycle.ActivityEvent;
+import com.trello.rxlifecycle.FragmentEvent;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -258,6 +260,21 @@ public class MainActivity extends BaseActivity implements MainView {
                     findFragment = null;
                     myFragment = null;
                     switch2Home();
+                })
+                .create();
+
+        RxBus.with(this)
+                .setEndEvent(ActivityEvent.DESTROY)
+                .setEvent(Events.EventEnum.PAY_SUCCESS_GET_DATA)
+                .onNext(events -> {
+                    LogUtils.e("MyFragment", "PAY_SUCCESS_GET_DATA 数据");
+                    if (events != null && myFragment != null) {
+                        Object message = events.message;
+                        if (message instanceof PayRedPacketPicsBean) {
+                            PayRedPacketPicsBean bean = (PayRedPacketPicsBean) message;
+                            ((MyFragment) myFragment).updataPayData(bean);
+                        }
+                    }
                 })
                 .create();
     }
