@@ -224,7 +224,7 @@ public class DefaultDynamicSendActivity extends BaseActivity implements DefaultD
             Object o = datas.get(position);
             if (o != null) {
                 if (o instanceof String) {
-                    ImageServerApi.showURLImage(pic, (String) o);
+                    ImageServerApi.showURLSamllImage(pic, (String) o);
 
                 } else if (o instanceof Integer) {
                     ImageServerApi.showResourcesImage(pic, (Integer) o);

@@ -7,6 +7,7 @@ import com.gouyin.im.base.BaseActivity;
 import com.gouyin.im.utils.UIUtils;
 
 /**
+ * 申诉
  * Created by jb on 2016/6/27.
  */
 public class RefundActivity extends BaseActivity {

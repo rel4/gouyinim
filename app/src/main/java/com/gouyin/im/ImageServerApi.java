@@ -60,9 +60,9 @@ public class ImageServerApi {
             return;
         if (url.startsWith("http"))
 
-            getPicasso().load(url).placeholder(loadingSamllImage).error(loadingSamllImage).into(imageView);
+            getPicasso().load(url).resize(100,80).placeholder(loadingSamllImage).error(loadingSamllImage).into(imageView);
         else {
-            getPicasso().load(new File(url)).placeholder(loadingSamllImage).error(loadingSamllImage).into(imageView);
+            getPicasso().load(new File(url)).resize(100,80).placeholder(loadingSamllImage).error(loadingSamllImage).into(imageView);
         }
     }
 

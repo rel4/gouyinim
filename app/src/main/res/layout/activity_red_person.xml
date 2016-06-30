@@ -4,14 +4,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/comman_title_bar" />
+    <include layout="@layout/app_titlebar" />
 
     <ImageView
         android:layout_width="@dimen/x120"
         android:layout_height="@dimen/x120"
         android:layout_gravity="center_horizontal"
         android:layout_margin="@dimen/x30"
-        android:background="@mipmap/panel_head_sculpture" />
+        android:background="@mipmap/panel_head_sculpture"
+        android:id="@+id/iv_avater" />
 
     <TextView
         android:layout_width="match_parent"

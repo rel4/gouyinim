@@ -147,7 +147,7 @@ public class MyFragment extends BaseFragment implements MyFragmentView {
 
     @Override
     public void swich2PersonRed() {
-        ActivityUtils.startCertification();
+        ActivityUtils.startCertificationActivity();
     }
 
     @Override

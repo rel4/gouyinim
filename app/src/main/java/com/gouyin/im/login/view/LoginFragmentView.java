@@ -7,4 +7,6 @@ import com.gouyin.im.base.BaseIView;
  */
 public interface LoginFragmentView extends BaseIView {
     void loginSuccss();
+
+
 }

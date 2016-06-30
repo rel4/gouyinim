@@ -4,13 +4,13 @@ package com.gouyin.im.bean;
  * Created by jb on 2016/6/17.
  */
 public class LoginBean extends BaseBean {
-    private PresonInfo data;
+    private PersonInfoDetail data;
 
-    public PresonInfo getData() {
+    public PersonInfoDetail getData() {
         return data;
     }
 
-    public void setData(PresonInfo data) {
+    public void setData(PersonInfoDetail data) {
         this.data = data;
     }
 }

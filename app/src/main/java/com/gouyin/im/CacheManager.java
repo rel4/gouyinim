@@ -20,11 +20,12 @@ public class CacheManager {
 
     /**
      * 保存缓存
+     *
      * @param context context
-     * @param object 缓存对象
-     * @param fn 文件名
+     * @param object  缓存对象
+     * @param fn      文件名
      */
-    public static void saveObject(Context context, Serializable object, String fn){
+    public static void saveObject(Context context, Serializable object, String fn) {
         ObjectOutputStream oos = null;
         FileOutputStream fos = null;
         try {
@@ -35,15 +36,15 @@ public class CacheManager {
             oos.close();
         } catch (Exception e) {
             e.printStackTrace();
-        }finally {
-            if (fos!=null){
+        } finally {
+            if (fos != null) {
                 try {
                     fos.close();
                 } catch (IOException e1) {
                     //pass
                 }
             }
-            if (oos!=null){
+            if (oos != null) {
                 try {
                     oos.close();
                 } catch (IOException e1) {
@@ -55,33 +56,34 @@ public class CacheManager {
 
     /**
      * 读取缓存
+     *
      * @param context context
-     * @param fn 文件名
+     * @param fn      文件名
      * @return
      */
-    public static <T> T readObject(Context context, String fn){
+    public static <T> T readObject(Context context, String fn) {
         FileInputStream fis = null;
         ObjectInputStream ois = null;
-        try{
+        try {
             fis = context.openFileInput(fn);
             ois = new ObjectInputStream(fis);
             return (T) ois.readObject();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             File file = context.getFileStreamPath(fn);
-            if (file!=null){
+            if (file != null) {
                 file.delete();
             }
             return null;
-        }finally {
-            if (fis!=null){
+        } finally {
+            if (fis != null) {
                 try {
                     fis.close();
                 } catch (IOException e1) {
                     //pass
                 }
             }
-            if (ois!=null){
+            if (ois != null) {
                 try {
                     ois.close();
                 } catch (IOException e1) {
@@ -93,24 +95,28 @@ public class CacheManager {
 
     /**
      * 缓存是否存在
+     *
      * @param context context
-     * @param fn 文件名
+     * @param fn      文件名
      * @return
      */
-    public static boolean isExist4DataCache(Context context, String fn){
+    public static boolean isExist4DataCache(Context context, String fn) {
         if (fn == null)
             return false;
         return context.getFileStreamPath(fn).exists();
     }
-    public  interface CachePath{
+
+    public interface CachePath {
         /**
          * 登录加密串
          */
         String FLAG_LOGIN_CODE = LoginFragment.class.getName();
+        /**
+         * 信息对象
+         */
+        String PERSON_INFODETAIL_INSTANCE = "person_infodetail_instance";
+
     }
-
-
-
 
 
 }

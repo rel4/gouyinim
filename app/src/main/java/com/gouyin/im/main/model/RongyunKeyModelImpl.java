@@ -6,9 +6,9 @@ import com.gouyin.im.ServerApi;
 import com.gouyin.im.bean.RongyunBean;
 import com.gouyin.im.event.Events;
 import com.gouyin.im.event.RxBus;
+import com.gouyin.im.manager.UserInfoManager;
 import com.gouyin.im.utils.StringUtis;
 import com.gouyin.im.utils.UIUtils;
-import com.gouyin.im.utils.UserInfoUtils;
 
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -21,7 +21,7 @@ public class RongyunKeyModelImpl implements RongyunKeyModel {
     @Override
     public void getRongyunKey(onLoadDateSingleListener listener) {
 
-        String authcode = UserInfoUtils.getAuthcode();
+        String authcode = UserInfoManager.getInstance().getAuthcode();
         ServerApi.getAppAPI().getRongyunKey(authcode)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())

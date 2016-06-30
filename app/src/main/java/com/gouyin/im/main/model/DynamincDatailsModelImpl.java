@@ -4,8 +4,8 @@ import com.gouyin.im.R;
 import com.gouyin.im.ServerApi;
 import com.gouyin.im.base.BaseIModel;
 import com.gouyin.im.bean.CommentDataListBean;
+import com.gouyin.im.manager.UserInfoManager;
 import com.gouyin.im.utils.UIUtils;
-import com.gouyin.im.utils.UserInfoUtils;
 
 import java.util.List;
 
@@ -23,7 +23,7 @@ public class DynamincDatailsModelImpl implements DynamincDatailsModel {
     @Override
     public void loadCommentListData(String id, int page, final BaseIModel.onLoadListDateListener listener) {
 
-        ServerApi.getAppAPI().getCommentList(id, page, UserInfoUtils.getAuthcode())
+        ServerApi.getAppAPI().getCommentList(id, page, UserInfoManager.getInstance().getAuthcode())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<CommentDataListBean>() {

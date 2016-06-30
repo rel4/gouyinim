@@ -4,9 +4,9 @@ import com.gouyin.im.R;
 import com.gouyin.im.ServerApi;
 import com.gouyin.im.aliyun.AliyunManager;
 import com.gouyin.im.bean.DefaultDataBean;
+import com.gouyin.im.manager.UserInfoManager;
 import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.UIUtils;
-import com.gouyin.im.utils.UserInfoUtils;
 
 import rx.Observable;
 import rx.Subscriber;
@@ -21,7 +21,7 @@ public class PlayUserAcitivityModelImpl implements PlayUserAcitivityModel {
 
     @Override
     public void aliPay(PayType playType, String uid, String money, onLoadDateSingleListener listener) {
-        String authcode = UserInfoUtils.getAuthcode();
+        String authcode = UserInfoManager.getInstance().getAuthcode();
         ServerApi.getAppAPI().aliPay(playType.getType(), uid, money, authcode)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

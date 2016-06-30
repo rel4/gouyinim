@@ -11,14 +11,12 @@ import com.gouyin.im.base.ImageObjoct;
 import com.gouyin.im.bean.BaseBean;
 import com.gouyin.im.center.presenter.DefaultDynamicPresenterImpl;
 import com.gouyin.im.center.widget.DynamicSendActivity;
+import com.gouyin.im.manager.UserInfoManager;
 import com.gouyin.im.utils.FilePathUtlis;
 import com.gouyin.im.utils.ImageUtils;
 import com.gouyin.im.utils.JsonUtils;
 import com.gouyin.im.utils.LogUtils;
-import com.gouyin.im.utils.SDUtils;
-import com.gouyin.im.utils.UserInfoUtils;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,10 +44,10 @@ public class DefaultDynamicModelImpl implements DefaultDynamicModel {
                             //视频
                             String vidoPath = AliyunManager.getInstance().upLoadFile(srcdatas.get(0), FilePathUtlis.FileType.MP4);
                             //图片
+                            Bitmap size = ImageUtils.compressImageWithPathSzie(srcdatas.get(1), 200, 160);
                             //压缩大小
-                            Bitmap bitmap = ImageUtils.compressImage(BitmapFactory.decodeFile(srcdatas.get(1)), 100);
-                            Bitmap bitmapsize = ImageUtils.compressImageSzie(bitmap, 200, 180);
-                            String loadFile = AliyunManager.getInstance().upLoadFiletFromByteArray(ImageUtils.getBitmapByte(bitmapsize), FilePathUtlis.FileType.JPG);
+                            Bitmap bitmap = ImageUtils.compressImage(size, 100);
+                            String loadFile = AliyunManager.getInstance().upLoadFiletFromByteArray(ImageUtils.getBitmapByte(bitmap), FilePathUtlis.FileType.JPG);
                             ImageObjoct image = new ImageObjoct();
                             image.setS(loadFile);
                             image.setV(vidoPath);
@@ -70,14 +68,15 @@ public class DefaultDynamicModelImpl implements DefaultDynamicModel {
                     for (int i = 0; i < srcdatas.size(); i++) {
                         ImageObjoct image = new ImageObjoct();
                         String path = srcdatas.get(i);
-                        Bitmap bitmap = ImageUtils.compressImage(BitmapFactory.decodeFile(path), 100);
+                        Bitmap size = ImageUtils.compressImageWithPathSzie(path, 800, 600);
+                        Bitmap bitmap = ImageUtils.compressImage(size, 1000);
 //                        String loadFile = AliyunManager.getInstance().upLoadFile(path, FilePathUtlis.FileType.JPG);
                         String loadFile = AliyunManager.getInstance().upLoadFiletFromByteArray(ImageUtils.getBitmapByte(bitmap), FilePathUtlis.FileType.JPG);
                         if (isHaveFuzz) {
                             //压缩质量
 
                             //压缩大小
-                            Bitmap bitmapsize = ImageUtils.compressImageSzie(bitmap, 30, 30);
+                            Bitmap bitmapsize = ImageUtils.compressImageSzie(bitmap, 60, 60);
                             Bitmap bitmap1 = ImageUtils.compressImage(bitmapsize, 50);
                             //模糊
                             Bitmap bitmapblur = ImageUtils.blurImageAmeliorate(bitmap1);
@@ -124,7 +123,7 @@ public class DefaultDynamicModelImpl implements DefaultDynamicModel {
     }
 
     private void sendAllDynamic(DynamicSendActivity.DynamicType dynamicType, String content, String json, String address, onLoadDateSingleListener listener) {
-        String authcode = UserInfoUtils.getAuthcode();
+        String authcode = UserInfoManager.getInstance().getAuthcode();
         Observable<BaseBean> baseBeanObservable = null;
         if (dynamicType == DynamicSendActivity.DynamicType.video) {
             baseBeanObservable = ServerApi.getAppAPI().sendAllDefaultDynamic(dynamicType.getValue(), content, "", json, address, authcode);

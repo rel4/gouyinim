@@ -5,10 +5,10 @@ import com.gouyin.im.ServerApi;
 import com.gouyin.im.aliyun.AliyunManager;
 import com.gouyin.im.bean.DefaultDataBean;
 import com.gouyin.im.bean.PayRedPacketPicsBean;
+import com.gouyin.im.manager.UserInfoManager;
 import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.StringUtis;
 import com.gouyin.im.utils.UIUtils;
-import com.gouyin.im.utils.UserInfoUtils;
 
 import rx.Observable;
 import rx.Subscriber;
@@ -21,7 +21,7 @@ import rx.schedulers.Schedulers;
 public class PayDynamicRedPacketModelImpl implements PayDynamicRedPacketModel {
     @Override
     public void pay(String id, onLoadDateSingleListener listener) {
-        ServerApi.getAppAPI().redPacketPay(id, UserInfoUtils.getAuthcode())
+        ServerApi.getAppAPI().redPacketPay(id, UserInfoManager.getInstance().getAuthcode())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<DefaultDataBean>() {
@@ -95,7 +95,7 @@ public class PayDynamicRedPacketModelImpl implements PayDynamicRedPacketModel {
     }
 
     private void getPayDynamicPic(String id, onLoadDateSingleListener listener) {
-        ServerApi.getAppAPI().getPayDynamicPic(id, UserInfoUtils.getAuthcode())
+        ServerApi.getAppAPI().getPayDynamicPic(id, UserInfoManager.getInstance().getAuthcode())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<PayRedPacketPicsBean>() {

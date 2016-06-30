@@ -7,10 +7,10 @@ import com.gouyin.im.bean.UserInfoDetailBean;
 import com.gouyin.im.bean.UserInfoListBean;
 import com.gouyin.im.event.Events;
 import com.gouyin.im.event.RxBus;
+import com.gouyin.im.manager.UserInfoManager;
 import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.StringUtis;
 import com.gouyin.im.utils.UIUtils;
-import com.gouyin.im.utils.UserInfoUtils;
 
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -23,7 +23,7 @@ public class MyFragmentModelImpl implements MyFragmentModel {
     @Override
     public void loadPersonHeader(BaseIModel.onLoadDateSingleListener listener) {
 
-        ServerApi.getAppAPI().loadPersonInfo(UserInfoUtils.getAuthcode())
+        ServerApi.getAppAPI().loadPersonInfo(UserInfoManager.getInstance().getAuthcode())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<UserInfoDetailBean>() {
@@ -48,7 +48,7 @@ public class MyFragmentModelImpl implements MyFragmentModel {
     @Override
     public void loadonRefreshData(int page, onLoadListDateListener listener) {
 
-        ServerApi.getAppAPI().loadPersonDynamic(UserInfoUtils.getAuthcode(), page)
+        ServerApi.getAppAPI().loadPersonDynamic(UserInfoManager.getInstance().getAuthcode(), page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<UserInfoListBean>() {

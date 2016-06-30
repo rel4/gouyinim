@@ -15,6 +15,7 @@ import com.gouyin.im.login.widget.LoginMainActivity;
 import com.gouyin.im.main.widget.DynamicDatailsActivity;
 import com.gouyin.im.main.widget.RedpacketAcitivity;
 import com.gouyin.im.main.widget.UserInfoActivity;
+import com.gouyin.im.manager.UserInfoManager;
 import com.gouyin.im.my.widget.AppointmentActivity;
 import com.gouyin.im.my.widget.CertificationActivity;
 import com.gouyin.im.my.widget.GetMoneyActivity;
@@ -95,7 +96,7 @@ public class ActivityUtils {
      * @param pics
      */
     public static void startDefaultDynamicSendActivity(ArrayList pics, DynamicSendActivity.DynamicType type) {
-        if (UserInfoUtils.isLogin()) {
+        if (UserInfoManager.getInstance().isLogin()) {
             Intent intent = new Intent(ConfigUtils.getInstance().getActivityContext(), DefaultDynamicSendActivity.class);
             intent.putExtra("type", type.getValue());
             intent.putExtra("data", pics);
@@ -132,7 +133,7 @@ public class ActivityUtils {
      * @param avatar
      */
     public static void startAppConversationActivity(String userId, String name, String avatar) {
-        if (!UserInfoUtils.isLogin()) {
+        if (!UserInfoManager.getInstance().isLogin()) {
             RxBus.getInstance().send(Events.EventEnum.LOGIN, null);
             return;
         }
@@ -152,7 +153,7 @@ public class ActivityUtils {
      * @param avater
      */
     public static void startRedpacketActivity(String userId, String name, String avater) {
-        if (!UserInfoUtils.isLogin()) {
+        if (!UserInfoManager.getInstance().isLogin()) {
             RxBus.getInstance().send(Events.EventEnum.LOGIN, null);
             return;
         }
@@ -173,7 +174,7 @@ public class ActivityUtils {
     /**
      * 认证
      */
-    public static void startCertification() {
+    public static void startCertificationActivity() {
         startActivity(CertificationActivity.class);
     }
 
@@ -246,7 +247,7 @@ public class ActivityUtils {
      * @param money
      */
     public static void startPayDynamicRedPackketActivity(String money, String id) {
-        if (!UserInfoUtils.isLogin()) {
+        if (!UserInfoManager.getInstance().isLogin()) {
             RxBus.getInstance().send(Events.EventEnum.LOGIN, null);
             return;
         }

@@ -3,13 +3,22 @@ package com.gouyin.im.bean;
 /**
  * Created by jb on 2016/6/26.
  */
-public class PresonInfo  extends BaseDataBean{
+public class PersonInfoDetail extends BaseDataBean {
 
 
     private String authcode;
     private String face;
     private String rongyunkey;
     private String nickname;
+    private boolean isLogin;
+
+    public boolean isLogin() {
+        return isLogin;
+    }
+
+    public void setLogin(boolean login) {
+        isLogin = login;
+    }
 
     public String getFace() {
         return face;

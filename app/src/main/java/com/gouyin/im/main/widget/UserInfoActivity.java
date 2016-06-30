@@ -3,11 +3,9 @@ package com.gouyin.im.main.widget;
 import android.graphics.Color;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.gouyin.im.AppConstant;
-import com.gouyin.im.ImageServerApi;
 import com.gouyin.im.R;
 import com.gouyin.im.adapter.UserInfoAdapter;
 import com.gouyin.im.base.BaseActivity;
@@ -19,11 +17,9 @@ import com.gouyin.im.event.RxBus;
 import com.gouyin.im.main.presenter.UserInfoPresenter;
 import com.gouyin.im.main.presenter.UserInfoPresenterImpl;
 import com.gouyin.im.main.view.UserInfoView;
-import com.gouyin.im.my.widget.MyFragment;
 import com.gouyin.im.utils.ActivityUtils;
 import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.UIUtils;
-import com.gouyin.im.utils.UserInfoUtils;
 import com.gouyin.im.viewholder.UserInfoHeadViewHolder;
 import com.gouyin.im.widget.DividerItemDecoration;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
@@ -33,7 +29,6 @@ import com.trello.rxlifecycle.ActivityEvent;
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**

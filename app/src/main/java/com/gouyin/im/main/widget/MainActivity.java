@@ -1,9 +1,7 @@
 package com.gouyin.im.main.widget;
 
 
-import android.graphics.ImageFormat;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.view.KeyEvent;
 import android.view.View;
@@ -11,13 +9,13 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.gouyin.im.AppConstant;
 import com.gouyin.im.R;
 import com.gouyin.im.base.BaseActivity;
 import com.gouyin.im.base.BaseFragment;
 import com.gouyin.im.base.BaseIModel;
-import com.gouyin.im.bean.LoginBean;
 import com.gouyin.im.bean.PayRedPacketPicsBean;
-import com.gouyin.im.bean.PresonInfo;
+import com.gouyin.im.bean.PersonInfoDetail;
 import com.gouyin.im.bean.RongyunBean;
 import com.gouyin.im.event.Events;
 import com.gouyin.im.event.RxBus;
@@ -29,6 +27,7 @@ import com.gouyin.im.main.model.RongyunKeyModelImpl;
 import com.gouyin.im.main.presenter.MainPresenter;
 import com.gouyin.im.main.presenter.MainPresenterImpl;
 import com.gouyin.im.main.view.MainView;
+import com.gouyin.im.manager.UserInfoManager;
 import com.gouyin.im.my.widget.MyFragment;
 import com.gouyin.im.utils.ActivityUtils;
 import com.gouyin.im.utils.ConfigUtils;
@@ -36,15 +35,12 @@ import com.gouyin.im.utils.FragmentUtils;
 import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.StringUtis;
 import com.gouyin.im.utils.UIUtils;
-import com.gouyin.im.utils.UserInfoUtils;
 import com.trello.rxlifecycle.ActivityEvent;
-import com.trello.rxlifecycle.FragmentEvent;
 
 import butterknife.Bind;
 import butterknife.OnClick;
 import io.rong.imkit.RongyunConfig;
 import io.rong.imlib.RongIMClient;
-import io.rong.imlib.model.UserData;
 
 public class MainActivity extends BaseActivity implements MainView {
     @Bind(R.id.tv_home_page)
@@ -104,7 +100,7 @@ public class MainActivity extends BaseActivity implements MainView {
 
     @Override
     public void switch2IM() {
-        if (!UserInfoUtils.isLogin()) {
+        if (!UserInfoManager.getInstance().isLogin()) {
             RxBus.getInstance().send(Events.EventEnum.LOGIN, null);
             return;
         }
@@ -118,7 +114,7 @@ public class MainActivity extends BaseActivity implements MainView {
 //        if (centerFragment == null)
 //            centerFragment = new CenterFragment();
 //        enterPage(centerFragment);
-        if (!UserInfoUtils.isLogin()) {
+        if (!UserInfoManager.getInstance().isLogin()) {
             RxBus.getInstance().send(Events.EventEnum.LOGIN, null);
             return;
         }
@@ -134,7 +130,7 @@ public class MainActivity extends BaseActivity implements MainView {
 
     @Override
     public void switch2My() {
-        if (!UserInfoUtils.isLogin()) {
+        if (!UserInfoManager.getInstance().isLogin()) {
             RxBus.getInstance().send(Events.EventEnum.LOGIN, null);
             return;
         }
@@ -194,9 +190,9 @@ public class MainActivity extends BaseActivity implements MainView {
      *
      */
     public void loginRongyun() {
-        if (!UserInfoUtils.isLogin())
+        if (!UserInfoManager.getInstance().isLogin())
             return;
-        String rongyunKey = UserInfoUtils.getRongyunKey();
+        String rongyunKey = UserInfoManager.getInstance().getRongyunKey();
         if (StringUtis.isEmpty(rongyunKey))
             return;
         RongyunConfig.getInstance().connectRonyun(rongyunKey, new RongyunConfig.ConnectCallback() {
@@ -233,7 +229,7 @@ public class MainActivity extends BaseActivity implements MainView {
                 .setEndEvent(ActivityEvent.DESTROY)
                 .setEvent(Events.EventEnum.LOGIN)
                 .onNext(events -> {
-                            UserInfoUtils.offline();
+                            UserInfoManager.getInstance().logout();
                             showToast(UIUtils.getStringRes(R.string.login_action));
                             ActivityUtils.startLoginMainActivity();
                         }
@@ -287,14 +283,20 @@ public class MainActivity extends BaseActivity implements MainView {
         rongyunKeyModel.getRongyunKey(new BaseIModel.onLoadDateSingleListener() {
             @Override
             public void onSuccess(Object o, BaseIModel.DataType dataType) {
+
+
                 if (o != null && o instanceof RongyunBean) {
+
                     RongyunBean bean = (RongyunBean) o;
-                    PresonInfo presonInfo = UserInfoUtils.getPresonInfo();
-                    presonInfo.setFace(bean.getData().getFace());
-                    presonInfo.setNickname(bean.getData().getNickname());
-                    presonInfo.setRongyunkey(bean.getData().getToken());
-                    UserInfoUtils.saveUserInfo(presonInfo);
-                    loginRongyun();
+                    if (StringUtis.equals(bean.getCode(), AppConstant.code_request_success)){
+                        PersonInfoDetail presonInfo = UserInfoManager.getInstance().getMemoryPersonInfoDetail();
+                        presonInfo.setFace(bean.getData().getFace());
+                        presonInfo.setNickname(bean.getData().getNickname());
+                        presonInfo.setRongyunkey(bean.getData().getToken());
+                        UserInfoManager.getInstance().saveMemoryInstance(presonInfo);
+                        loginRongyun();
+                    }
+
                 }
             }
 

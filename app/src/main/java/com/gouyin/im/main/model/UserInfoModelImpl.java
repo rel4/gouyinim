@@ -5,9 +5,9 @@ import com.gouyin.im.ServerApi;
 import com.gouyin.im.base.BaseIModel;
 import com.gouyin.im.bean.UserInfoDetailBean;
 import com.gouyin.im.bean.UserInfoListBean;
+import com.gouyin.im.manager.UserInfoManager;
 import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.UIUtils;
-import com.gouyin.im.utils.UserInfoUtils;
 
 import java.util.List;
 
@@ -23,7 +23,7 @@ public class UserInfoModelImpl implements UserInfoModel {
 
     @Override
     public void loadUserInfoData(String userId, int page, BaseIModel.onLoadListDateListener<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList> listener) {
-        String authcode = UserInfoUtils.getAuthcode();
+        String authcode = UserInfoManager.getInstance().getAuthcode();
         ServerApi.getAppAPI().getPersonDynamincList(userId, authcode, page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -56,7 +56,7 @@ public class UserInfoModelImpl implements UserInfoModel {
 
     @Override
     public void loadUserInfodetail(String uid, BaseIModel.onLoadDateSingleListener listener) {
-        String authcode = UserInfoUtils.getAuthcode();
+        String authcode = UserInfoManager.getInstance().getAuthcode();
         ServerApi.getAppAPI().getUserInfoDetail(uid, authcode).observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Subscriber<UserInfoDetailBean>() {
