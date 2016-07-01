@@ -14,6 +14,8 @@ import com.gouyin.im.event.RxBus;
 import com.gouyin.im.im.widget.AppConversationActivity;
 import com.gouyin.im.login.widget.LoginMainActivity;
 import com.gouyin.im.main.widget.DynamicDatailsActivity;
+import com.gouyin.im.main.widget.PayAppointmentActivity;
+import com.gouyin.im.main.widget.PayAppointmentOrderActivity;
 import com.gouyin.im.main.widget.PersonInfoChangeActivity;
 import com.gouyin.im.main.widget.RedpacketAcitivity;
 import com.gouyin.im.main.widget.UserInfoActivity;
@@ -156,17 +158,17 @@ public class ActivityUtils {
      * 打赏
      *
      * @param userId
-     * @param name
+     * @param typ
      * @param avater
      */
-    public static void startRedpacketActivity(String userId, String name, String avater) {
+    public static void startRedpacketActivity(String userId, int typ, String avater) {
         if (!UserInfoManager.getInstance().isLogin()) {
             RxBus.getInstance().send(Events.EventEnum.LOGIN, null);
             return;
         }
         Intent intent = new Intent(ConfigUtils.getInstance().getActivityContext(), RedpacketAcitivity.class);
         intent.putExtra("id", userId);
-        intent.putExtra("name", name);
+        intent.putExtra("type", typ);
         intent.putExtra("avater", avater);
         startActivity(intent);
     }
@@ -307,7 +309,24 @@ public class ActivityUtils {
         startActivity(intent);
     }
 
+    /**
+     * 认证三步
+     */
     public static void startRZThidActivity() {
         startActivity(RZThidActivity.class);
+    }
+
+    /**
+     * 约会
+     */
+    public static void startPayAppointmentActivity() {
+        startActivity(PayAppointmentActivity.class);
+    }
+
+    /**
+     * 约会订单页
+     */
+    public static void startPayAppointmentOrderActivity() {
+            startActivity(PayAppointmentOrderActivity.class);
     }
 }

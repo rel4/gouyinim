@@ -80,4 +80,30 @@
     <string name="already_Certification">已认证</string>
     <string name="Certificationing">认证中</string>
     <string name="not_Certificationing">未认证</string>
+    <string name="signed">商业签约</string>
+    <string name="about_rice">约饭</string>
+    <string name="iv_asleep">发呆</string>
+    <string name="wacth_movie">看电影</string>
+    <string-array name="moneys">
+        <item>8</item>
+        <item>28</item>
+        <item>69</item>
+        <item>122</item>
+        <item>258</item>
+        <item>520</item>
+        <item>666</item>
+        <item>999</item>
+        <item>1314</item>
+    </string-array>
+    <string-array name="flower_name">
+        <item>我爱你</item>
+        <item>我心永恒</item>
+        <item>薰衣草之恋</item>
+        <item>蓝色妖姬</item>
+        <item>百年好合</item>
+        <item>星语星愿</item>
+        <item>希望之魅</item>
+        <item>土豪随便花</item>
+        <item>萌萌的爱</item>
+    </string-array>
 </resources>

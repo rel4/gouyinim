@@ -22,4 +22,7 @@ public interface UserInfoView extends BaseIView {
 
 
     void setUserInfodetail(UserInfoDetailBean bean);
+
+    void pageFinish();
+
 }

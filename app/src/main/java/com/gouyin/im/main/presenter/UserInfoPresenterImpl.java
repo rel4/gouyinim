@@ -60,6 +60,9 @@ public class UserInfoPresenterImpl implements UserInfoPresenter, onLoadDateSingl
             case R.id.tv_reward:
                 mUserInfoView.switch2RewardActivity();
                 break;
+            case R.id.action_back:
+                mUserInfoView.pageFinish();
+                break;
         }
     }
 

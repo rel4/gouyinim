@@ -153,7 +153,7 @@ public class UserInfoActivity extends BaseActivity implements UserInfoView {
     @Override
     public void switch2RewardActivity() {
 
-        ActivityUtils.startRedpacketActivity(userId, "", "");
+        ActivityUtils.startRedpacketActivity(userId, 1, avater);
 
     }
 
@@ -164,12 +164,12 @@ public class UserInfoActivity extends BaseActivity implements UserInfoView {
 
     @Override
     public void switch2AppointmentActivity() {
-
+        ActivityUtils.startPayAppointmentActivity();
     }
 
     @Override
     public void swicth2SendFlowersActivity() {
-
+        ActivityUtils.startRedpacketActivity(userId, 2, avater);
     }
 
     private void colseload() {
@@ -181,9 +181,19 @@ public class UserInfoActivity extends BaseActivity implements UserInfoView {
 
     }
 
+    private String avater;
+
     @Override
     public void setUserInfodetail(UserInfoDetailBean bean) {
+        if (bean != null && bean.getData() != null) {
+            avater = bean.getData().getBaseinfo().getFace();
+        }
         headHolder.setUserInfodetail(bean);
+    }
+
+    @Override
+    public void pageFinish() {
+        finish();
     }
 
     @Override

@@ -31,6 +31,7 @@ public class RedpacketAcitivityPresenterImpl implements RedpacketAcitivityPresen
     public void swicthAction(int id) {
         switch (id) {
             case R.id.action_back:
+                view.pageFinish();
                 break;
             case R.id.tv_weixin_play:
                 break;
@@ -41,9 +42,9 @@ public class RedpacketAcitivityPresenterImpl implements RedpacketAcitivityPresen
     }
 
     @Override
-    public void aliPay(String uid, String money) {
+    public void aliPay(int type, String uid, String money) {
         view.showLoading();
-        model.aliPay(PlayUserAcitivityModel.PayType.ALIPAY, uid, money, this);
+        model.aliPay(type,PlayUserAcitivityModel.PayType.ALIPAY, uid, money, this);
     }
 
     @Override

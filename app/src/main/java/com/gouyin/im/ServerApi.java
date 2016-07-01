@@ -213,7 +213,7 @@ public class ServerApi {
          * @param authcode
          * @return
          */
-        @GET("Latest/get_latest_comment")
+        @GET("Latestcomment/get_latest_comment")
         Observable<CommentDataListBean> getCommentList(@Query("lid") String id,
                                                        @Query("page") int page,
                                                        @Query("authcode") String authcode);
@@ -249,10 +249,26 @@ public class ServerApi {
          */
         @FormUrlEncoded
         @POST("Reward/pub_reward")
-        Observable<DefaultDataBean> aliPay(@Field("pay_type") String playType,
-                                           @Field("to_uid") String uid,
-                                           @Field("money") String money,
-                                           @Field("authcode") String authcode);
+        Observable<DefaultDataBean> getredPacketIndent(@Field("pay_type") String playType,
+                                                       @Field("to_uid") String uid,
+                                                       @Field("money") String money,
+                                                       @Field("authcode") String authcode);
+
+        /**
+         * 送花
+         *
+         * @param type
+         * @param uid
+         * @param money
+         * @param authcode
+         * @return
+         */
+        @FormUrlEncoded
+        @POST("Flower/pub_flower")
+        Observable<DefaultDataBean> getFlowerIndent(@Field("pay_type") String type,
+                                                    @Field("to_uid") String uid,
+                                                    @Field("flower_type") String money,
+                                                    @Field("authcode") String authcode);
 
         /**
          * 获取token
@@ -328,6 +344,8 @@ public class ServerApi {
 
         @GET("Apply/get_apply_status")
         Observable<CertificationStatusBean> getCertificationStatus(@Query("authcode") String authcode);
+
+
     }
 }
 

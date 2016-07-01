@@ -6,7 +6,7 @@ import com.gouyin.im.base.BaseIModel;
  * Created by jb on 2016/6/24.
  */
 public interface PlayUserAcitivityModel extends BaseIModel {
-    void aliPay(PayType playType, String uid, String money, onLoadDateSingleListener listener);
+    void aliPay(int type, PayType playType, String uid, String money, onLoadDateSingleListener listener);
 
     public enum PayType {
         ALIPAY("alipay"), WXPAY("wxpay");

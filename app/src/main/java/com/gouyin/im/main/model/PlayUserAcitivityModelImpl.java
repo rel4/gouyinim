@@ -1,11 +1,13 @@
 package com.gouyin.im.main.model;
 
+import com.gouyin.im.AppConstant;
 import com.gouyin.im.R;
 import com.gouyin.im.ServerApi;
 import com.gouyin.im.aliyun.AliyunManager;
 import com.gouyin.im.bean.DefaultDataBean;
 import com.gouyin.im.manager.UserInfoManager;
 import com.gouyin.im.utils.LogUtils;
+import com.gouyin.im.utils.StringUtis;
 import com.gouyin.im.utils.UIUtils;
 
 import rx.Observable;
@@ -20,34 +22,50 @@ public class PlayUserAcitivityModelImpl implements PlayUserAcitivityModel {
 
 
     @Override
-    public void aliPay(PayType playType, String uid, String money, onLoadDateSingleListener listener) {
+    public void aliPay(int type, PayType playType, String uid, String money, onLoadDateSingleListener listener) {
         String authcode = UserInfoManager.getInstance().getAuthcode();
-        ServerApi.getAppAPI().aliPay(playType.getType(), uid, money, authcode)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<DefaultDataBean>() {
-                    @Override
-                    public void onCompleted() {
+        Observable<DefaultDataBean> pay = null;
+        if (type == 1) {
+            pay = ServerApi.getAppAPI().getredPacketIndent(playType.getType(), uid, money, authcode);
+        } else if (type == 2) {
+            pay = ServerApi.getAppAPI().getFlowerIndent(playType.getType(), uid, money, authcode);
+        }
+        if (pay != null) {
+            pay.subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Subscriber<DefaultDataBean>() {
+                        @Override
+                        public void onCompleted() {
 
-                    }
+                        }
 
-                    @Override
-                    public void onError(Throwable e) {
-                        LogUtils.e(PlayUserAcitivityModelImpl.this, " onError " + e.getMessage());
-                    }
+                        @Override
+                        public void onError(Throwable e) {
+                            listener.onFailure(UIUtils.getStringRes(R.string.request_failed), e);
+                            LogUtils.e(PlayUserAcitivityModelImpl.this, " onError " + e.getMessage());
+                        }
 
-                    @Override
-                    public void onNext(DefaultDataBean defaultDataBean) {
-                        LogUtils.e(PlayUserAcitivityModelImpl.this, " onNext " + defaultDataBean.toString());
-                        if (defaultDataBean != null && defaultDataBean.getObj() instanceof String) {
-                            String res = (String) defaultDataBean.getObj();
-                            LogUtils.e(PlayUserAcitivityModelImpl.this, " defaultDataBean " + res);
-                            startAliPlayApp(res, listener);
-                        } else
-                            listener.onFailure(UIUtils.getStringRes(R.string.request_failed), null);
+                        @Override
+                        public void onNext(DefaultDataBean defaultDataBean) {
+                            if (defaultDataBean == null) {
+                                listener.onFailure(UIUtils.getStringRes(R.string.request_failed), null);
+                            } else {
+                                if (StringUtis.equals(defaultDataBean.getCode(), AppConstant.code_request_success)) {
+                                    Object obj = defaultDataBean.getObj();
+                                    LogUtils.e(PlayUserAcitivityModelImpl.this, " defaultDataBean " + obj);
+                                    startAliPlayApp((String) obj, listener);
+                                } else {
+                                    listener.onFailure(defaultDataBean.getMsg(), null);
+                                }
 
-                    }
-                });
+                            }
+
+                        }
+                    });
+
+        }
+
+
     }
 
     private void startAliPlayApp(String res, onLoadDateSingleListener listener) {

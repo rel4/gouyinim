@@ -5,27 +5,41 @@
     android:orientation="vertical">
 
     <ImageView
+        android:padding="@dimen/y30"
         android:id="@+id/action_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/app_back_icon" />
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginTop="@dimen/x30"
+        android:src="@mipmap/dynamic_logout" />
+
+    <com.gouyin.im.widget.RoundedImageView
+        android:id="@+id/iv_user_icon"
+        android:layout_width="@dimen/x120"
+        android:layout_height="@dimen/y120"
+        android:layout_gravity="center_horizontal"
+        android:src="@mipmap/load_small" />
 
     <TextView
-        android:id="@+id/iv_user_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:drawableTop="@mipmap/ic_launcher"
-        android:text="@string/xml_send_red_packet" />
+        android:layout_marginTop="@dimen/x15"
+        android:text="@string/xml_send_red_packet"
+        android:textColor="@color/text_black_color" />
 
     <EditText
         android:id="@+id/et_input_money"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:hint="@string/input_money" />
+        android:layout_marginTop="@dimen/x30"
+        android:hint="@string/input_money"
+        android:textColor="@color/text_black_color"
+        android:textColorHint="@color/text_black_color" />
 
     <GridView
+        android:layout_marginBottom="@dimen/y20"
         android:id="@+id/gv_pic_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,19 +53,25 @@
 
         <TextView
             android:id="@+id/tv_weixin_play"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/x50"
-            android:background="@color/background_red_color"
-            android:text="@string/weixin_play" />
+            android:layout_width="@dimen/x200"
+            android:layout_height="@dimen/x90"
+            android:layout_marginLeft="@dimen/x100"
+            android:layout_marginTop="@dimen/y30"
+            android:background="@drawable/shape_background_text_white_color"
+            android:gravity="center"
+            android:text="@string/weixin_play"
+            android:textColor="@color/text_black_color" />
 
         <TextView
             android:id="@+id/tv_aliplay_play"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/x200"
+            android:layout_height="@dimen/x90"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="@dimen/x50"
-            android:background="@color/background_red_color"
-            android:text="@string/aliplay_play" />
+            android:layout_marginRight="@dimen/x100"
+            android:layout_marginTop="@dimen/y30"
+            android:background="@drawable/shape_background_text_white_color"
+            android:gravity="center"
+            android:text="@string/aliplay_play"
+            android:textColor="@color/text_black_color" />
     </RelativeLayout>
 </LinearLayout>

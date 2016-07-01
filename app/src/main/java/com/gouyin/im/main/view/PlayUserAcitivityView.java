@@ -8,4 +8,6 @@ import com.gouyin.im.base.BaseIView;
 public interface PlayUserAcitivityView extends BaseIView {
 
     void swicthAliPlay();
+
+    void pageFinish();
 }

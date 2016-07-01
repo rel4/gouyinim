@@ -22,7 +22,7 @@
             android:layout_centerVertical="true"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/x25"
-            android:background="@mipmap/icon_stare_blanklysmall"/>
+    />
 
         <TextView
             android:layout_toRightOf="@+id/iv"

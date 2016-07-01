@@ -139,6 +139,12 @@
             android:name=".my.widget.info.SelectSexActivity"
             android:screenOrientation="portrait"
             android:theme="@style/MyDialogStyleBottom" />
+        <activity
+            android:name=".main.widget.PayAppointmentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".main.widget.PayAppointmentOrderActivity"
+            android:screenOrientation="portrait" />
         <!--会话页面-->
         <activity
             android:name=".im.widget.AppConversationActivity"

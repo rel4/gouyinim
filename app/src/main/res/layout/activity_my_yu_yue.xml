@@ -132,7 +132,7 @@
             android:paddingLeft="@dimen/x25"
             android:paddingTop="@dimen/x10"
             android:textSize="@dimen/order_text_small4"
-            android:drawableLeft="@mipmap/icon_stare_blanklysmall"/>
+           />
 
         <RelativeLayout
             android:layout_width="match_parent"

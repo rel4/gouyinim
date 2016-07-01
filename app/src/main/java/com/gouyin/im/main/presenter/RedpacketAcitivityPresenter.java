@@ -10,6 +10,6 @@ public interface RedpacketAcitivityPresenter extends BaseIPresenter<PlayUserAcit
 
     void swicthAction(int id);
 
-    void aliPay(String uid, String trim);
+    void aliPay(int type, String uid, String trim);
 }
 
