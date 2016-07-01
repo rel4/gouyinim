@@ -18,6 +18,24 @@ public class RongyunBean extends BaseBean {
         private String token;
         private String face;
         private String nickname;
+        private String sex;
+        private String apply_status;
+
+        public String getApply_status() {
+            return apply_status;
+        }
+
+        public void setApply_status(String apply_status) {
+            this.apply_status = apply_status;
+        }
+
+        public String getSex() {
+            return sex;
+        }
+
+        public void setSex(String sex) {
+            this.sex = sex;
+        }
 
         public String getToken() {
             return token;

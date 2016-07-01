@@ -2,6 +2,7 @@ package com.gouyin.im;
 
 
 import com.gouyin.im.bean.BaseBean;
+import com.gouyin.im.bean.CertificationStatusBean;
 import com.gouyin.im.bean.CommentDataListBean;
 import com.gouyin.im.bean.DefaultDataBean;
 import com.gouyin.im.bean.GoodSelectBaen;
@@ -325,7 +326,8 @@ public class ServerApi {
                                                   @Field("apply_image") String serialize,
                                                   @Field("authcode") String authcode);
 
-
+        @GET("Apply/get_apply_status")
+        Observable<CertificationStatusBean> getCertificationStatus(@Query("authcode") String authcode);
     }
 }
 

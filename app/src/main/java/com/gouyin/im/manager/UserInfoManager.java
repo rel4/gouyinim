@@ -135,4 +135,14 @@ public class UserInfoManager {
         saveFileInstance(info);
 
     }
+
+    /**
+     * 认证状态
+     *
+     * @return
+     */
+
+    public int getCertificationStatus() {
+        return info.getAttestation();
+    }
 }

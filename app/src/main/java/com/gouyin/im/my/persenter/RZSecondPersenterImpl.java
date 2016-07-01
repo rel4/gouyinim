@@ -4,6 +4,8 @@ import com.gouyin.im.AppConstant;
 import com.gouyin.im.R;
 import com.gouyin.im.base.BaseIModel;
 import com.gouyin.im.bean.DefaultDataBean;
+import com.gouyin.im.bean.PersonInfoDetail;
+import com.gouyin.im.manager.UserInfoManager;
 import com.gouyin.im.my.model.RZSecondModel;
 import com.gouyin.im.my.model.RZSecondModelImpl;
 import com.gouyin.im.my.view.RZSecondView;
@@ -42,6 +44,9 @@ public class RZSecondPersenterImpl implements RZSecondPersenter, BaseIModel.onLo
         if (o != null && o instanceof DefaultDataBean) {
             DefaultDataBean bean = (DefaultDataBean) o;
             if (StringUtis.equals(AppConstant.code_request_success, bean.getCode())) {
+                PersonInfoDetail memoryPersonInfoDetail = UserInfoManager.getInstance().getMemoryPersonInfoDetail();
+                memoryPersonInfoDetail.setAttestation(2);
+                UserInfoManager.getInstance().saveMemoryInstance(memoryPersonInfoDetail);
                 UIUtils.sendDelayedOneMillis(new Runnable() {
                     @Override
                     public void run() {

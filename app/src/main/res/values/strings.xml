@@ -77,4 +77,7 @@
     <string name="cm">cm</string>
     <string name="Provice">省</string>
     <string name="City">市</string>
+    <string name="already_Certification">已认证</string>
+    <string name="Certificationing">认证中</string>
+    <string name="not_Certificationing">未认证</string>
 </resources>

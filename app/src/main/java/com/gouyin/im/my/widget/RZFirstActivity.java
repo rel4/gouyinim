@@ -50,12 +50,31 @@ public class RZFirstActivity extends BaseActivity {
                 UserInfoManager.getInstance().getMemoryPersonInfoDetail();
         String sex = info.getSex();
         if (!StringUtis.isEmpty(sex)) {
-            tvAddress.setText(sex);
+            if (StringUtis.equals("1", sex)) {
+                tvSex.setText(UIUtils.getStringRes(R.string.boy));
+            } else {
+                tvSex.setText(UIUtils.getStringRes(R.string.girls));
+            }
+
         }
+        String nickname = info.getNickname();
+        if (!StringUtis.isEmpty(nickname))
+            tvNike.setText(nickname);
         setRX();
     }
 
+
+    private void pageFinish() {
+        finish();
+    }
+
     private void setRX() {
+
+        RxBus.with(this)
+                .setEndEvent(ActivityEvent.DESTROY)
+                .setEvent(Events.EventEnum.CERTIFICATION_PAGE_FINISH)
+                .onNext(events -> pageFinish())
+                .create();
         RxBus.with(this)
                 .setEndEvent(ActivityEvent.DESTROY)
                 .setEvent(Events.EventEnum.PERSON_INFO_CHANGE)
@@ -130,6 +149,6 @@ public class RZFirstActivity extends BaseActivity {
         String sex = tvSex.getText().toString().trim();
         String nike = tvNike.getText().toString().trim();
 
-        ActivityUtils.startRZSecondActivity(address,height,sex,nike,avaterPath);
+        ActivityUtils.startRZSecondActivity(address, height, sex, nike, avaterPath);
     }
 }

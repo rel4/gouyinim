@@ -12,6 +12,10 @@ public class PersonInfoDetail extends BaseDataBean {
     private String nickname;
     private boolean isLogin;
     private String sex;
+    /**
+     * 认证状态 1 已认证  2 认证中  3 未认证
+     */
+    private int attestation;
 
     public String getSex() {
         return sex;
@@ -61,4 +65,11 @@ public class PersonInfoDetail extends BaseDataBean {
         this.authcode = authcode;
     }
 
+    public void setAttestation(int attestation) {
+        this.attestation = attestation;
+    }
+
+    public int getAttestation() {
+        return attestation;
+    }
 }

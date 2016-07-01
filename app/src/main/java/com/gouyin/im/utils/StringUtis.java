@@ -29,4 +29,13 @@ public class StringUtis {
     public static boolean equals(String a, String b) {
         return TextUtils.equals(a, b);
     }
+
+    public static int string2Int(String string) {
+        try {
+            return Integer.parseInt(string);
+        } catch (NumberFormatException e) {
+
+        }
+        return 0;
+    }
 }

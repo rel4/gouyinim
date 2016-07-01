@@ -15,7 +15,7 @@ import java.util.List;
 public class DynamincDatailsPresenterImpl implements DynamincDatailsPresenter, BaseIModel.onLoadListDateListener<CommentDataListBean.CommentListBean> {
     private DynamicDatailsView view;
     private DynamincDatailsModelImpl dynamincDatailsModel;
-    private int page;
+    private int page = 1;
 
     @Override
     public void onCreate() {

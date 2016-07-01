@@ -8,6 +8,7 @@ import io.rong.imlib.RongIMClient;
  * Created by jb on 2016/6/18.
  */
 public class RongyunConfig {
+    private String TAG = "RongyunConfig";
     private static final RongyunConfig instance = new RongyunConfig();
     private Context context;
     private boolean isConnectRonyun;
@@ -18,7 +19,7 @@ public class RongyunConfig {
 
     public void init(Context context) {
         this.context = context;
-        RongLogUtils.e(this, "-------------初始化融云-----------------");
+        RongLogUtils.d(TAG, "-------------初始化融云-----------------");
         RongIM.init(context);
     }
 
@@ -26,7 +27,7 @@ public class RongyunConfig {
         if (isConnectRonyun)
             return;
         isConnectRonyun = true;
-        RongLogUtils.e(this, "-------------连接融云-----------------");
+        RongLogUtils.d(TAG, "-------------连接融云-----------------");
         RongIM.connect(token, new RongIMClient.ConnectCallback() {
             @Override
             public void onTokenIncorrect() {
@@ -37,15 +38,16 @@ public class RongyunConfig {
 
             @Override
             public void onSuccess(String s) {
-                if (callback != null)
-                    callback.onSuccess(s);
+                RongLogUtils.d(TAG, "-------------连接融云成功 id : " + s);
+//                if (callback != null)
+//                    callback.onSuccess(s);
             }
 
             @Override
             public void onError(RongIMClient.ErrorCode errorCode) {
-
-                if (callback != null)
-                    callback.onError(errorCode);
+                RongLogUtils.e(TAG, "------------->连接融云失败 code : " + errorCode);
+//                if (callback != null)
+////                    callback.onError(errorCode);
             }
         });
     }
@@ -55,9 +57,9 @@ public class RongyunConfig {
     }
 
     public interface ConnectCallback {
-        void onSuccess(String s);
-
-        void onError(RongIMClient.ErrorCode errorCode);
+//        void onSuccess(String s);
+//
+//        void onError(RongIMClient.ErrorCode errorCode);
 
         void onTokenIncorrect();
     }

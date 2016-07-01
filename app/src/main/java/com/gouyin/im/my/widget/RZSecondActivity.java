@@ -42,9 +42,24 @@ public class RZSecondActivity extends BaseActivity implements RZSecondView {
         return UIUtils.inflateLayout(R.layout.activity_rzsecond);
     }
 
+
     @Override
     protected void initView() {
+
+
+        RxBus.with(this)
+                .setEndEvent(ActivityEvent.DESTROY)
+                .setEvent(Events.EventEnum.CERTIFICATION_PAGE_FINISH)
+                .onNext(events -> pageFinish())
+                .create();
+
+
         gridView.setVisibility(View.GONE);
+    }
+
+    private void pageFinish() {
+
+        finish();
     }
 
 

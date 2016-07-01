@@ -3,68 +3,89 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/tv_person_setting"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/y90"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="center_vertical"
+        android:background="@color/background_white_color"
+
+        android:drawableLeft="@mipmap/menu_icon"
+        android:gravity="right"
+        android:paddingRight="@dimen/x60"
+        android:textSize="12sp" />
+
     <LinearLayout
         android:id="@+id/layout_person_head"
         android:layout_width="match_parent"
         android:layout_height="@dimen/y90"
+        android:layout_toLeftOf="@+id/tv_person_setting"
         android:background="@color/background_white_color"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingLeft="@dimen/x100">
+        android:paddingLeft="@dimen/x160">
 
         <TextView
             android:id="@+id/tv_certification"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
             android:layout_weight="1"
+
             android:drawableLeft="@mipmap/icon_authentication"
-            android:drawablePadding="@dimen/x10"
-            android:text="@string/authentication"
-            android:textColor="@color/text_black_color" />
+            android:gravity="center"
+            android:text="@string/not_Certificationing"
+            android:textColor="@color/text_black_color"
+            android:textSize="13sp" />
 
         <TextView
             android:id="@+id/tv_withdraw_deposit"
+
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
             android:layout_weight="1"
+
             android:drawableLeft="@mipmap/icon_withdraw_deposit"
-            android:drawablePadding="@dimen/x10"
+            android:drawablePadding="@dimen/x5"
+            android:gravity="center"
+            android:padding="@dimen/x5"
             android:text="@string/withdraw_deposit"
-            android:textColor="@color/text_black_color" />
+            android:textColor="@color/text_black_color"
+            android:textSize="13sp" />
 
         <TextView
             android:id="@+id/tv_appointment"
+
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
             android:layout_weight="1"
+
             android:drawableLeft="@mipmap/icon_appointment"
-            android:drawablePadding="@dimen/x10"
+            android:drawablePadding="@dimen/x5"
+            android:gravity="center"
+            android:padding="@dimen/x5"
             android:text="@string/appointment"
-            android:textColor="@color/text_black_color" />
+            android:textColor="@color/text_black_color"
+            android:textSize="13sp" />
 
         <TextView
             android:id="@+id/tv_person_order"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:drawableLeft="@mipmap/icon_order"
-            android:drawablePadding="@dimen/x10"
-            android:text="@string/order"
-            android:textColor="@color/text_black_color" />
 
-        <TextView
-            android:id="@+id/tv_person_setting"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:drawableLeft="@mipmap/menu_icon" />
+
+            android:drawableLeft="@mipmap/icon_order"
+            android:gravity="center"
+            android:padding="@dimen/x5"
+            android:text="@string/order"
+            android:textColor="@color/text_black_color"
+            android:textSize="13sp" />
+
+
     </LinearLayout>
 
-    <com.jcodecraeer.xrecyclerview.XRecyclerView
+    <com.gouyin.im.viewholder.XListView
 
         android:id="@+id/recyclerview"
         android:layout_width="fill_parent"

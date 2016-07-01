@@ -65,16 +65,31 @@ public class MainActivity extends BaseActivity implements MainView {
     @Override
     protected void initView() {
         mMainPresenter.switchNavigation(R.id.tv_home_page);
-//        onClick(tvHomePage);
         initRxBus();
-        loginRongyun();
+        initNetMianData();
     }
 
+    /**
+     * 初始化网络数据
+     */
+    private void initNetMianData() {
+        PersonInfoDetail memoryPersonInfoDetail = UserInfoManager.getInstance().getMemoryPersonInfoDetail();
+        if (!memoryPersonInfoDetail.isLogin())
+            return;
+        /**
+         * 登录融云
+         */
+        mMainPresenter.loginRongyun();
+        /**
+         *认证状态
+         */
+        mMainPresenter.getCertificationStatus();
+    }
 
     @Override
     protected View setRootContentView() {
-        mMainPresenter = new MainPresenterImpl(this);
-
+        mMainPresenter = new MainPresenterImpl();
+        mMainPresenter.attachView(this);
         return UIUtils.inflateLayout(R.layout.activity_main);
     }
 
@@ -86,7 +101,6 @@ public class MainActivity extends BaseActivity implements MainView {
 
     @OnClick({R.id.tv_home_page, R.id.tv_im_page, R.id.tv_center_page, R.id.tv_find_page, R.id.tv_my_page})
     public void onClick(View view) {
-
         mMainPresenter.switchNavigation(
                 view.getId());
     }
@@ -111,9 +125,6 @@ public class MainActivity extends BaseActivity implements MainView {
 
     @Override
     public void switch2Center() {
-//        if (centerFragment == null)
-//            centerFragment = new CenterFragment();
-//        enterPage(centerFragment);
         if (!UserInfoManager.getInstance().isLogin()) {
             RxBus.getInstance().send(Events.EventEnum.LOGIN, null);
             return;
@@ -162,7 +173,6 @@ public class MainActivity extends BaseActivity implements MainView {
             return;
         tvHomePage.setSelected(fragment == homeFragment);
         tvImPage.setSelected(fragment == imHomeFragment);
-//        tvCenterPage.setSelected(fragment == centerFragment);
         tvFindPage.setSelected(fragment == findFragment);
         tvMyPage.setSelected(fragment == myFragment);
 
@@ -184,38 +194,6 @@ public class MainActivity extends BaseActivity implements MainView {
             return true;
         }
         return super.onKeyDown(keyCode, event);
-    }
-
-    /**
-     *
-     */
-    public void loginRongyun() {
-        if (!UserInfoManager.getInstance().isLogin())
-            return;
-        String rongyunKey = UserInfoManager.getInstance().getRongyunKey();
-        if (StringUtis.isEmpty(rongyunKey))
-            return;
-        RongyunConfig.getInstance().connectRonyun(rongyunKey, new RongyunConfig.ConnectCallback() {
-
-            @Override
-            public void onSuccess(String s) {
-
-                LogUtils.e(MainActivity.class, "onSuccess : " + s);
-            }
-
-            @Override
-            public void onError(RongIMClient.ErrorCode errorCode) {
-                LogUtils.e(MainActivity.class, "onTokenIncorrect Message : " + errorCode.getMessage());
-                LogUtils.e(MainActivity.class, "onTokenIncorrect name : " + errorCode.name());
-                LogUtils.e(MainActivity.class, "onTokenIncorrect Value : " + errorCode.getValue());
-            }
-
-            @Override
-            public void onTokenIncorrect() {
-                LogUtils.e(MainActivity.class, "onTokenIncorrect : ");
-                RxBus.getInstance().send(Events.EventEnum.GET_RONGYUN_KEY, null);
-            }
-        });
     }
 
     /**
@@ -258,7 +236,9 @@ public class MainActivity extends BaseActivity implements MainView {
                     switch2Home();
                 })
                 .create();
-
+        /**
+         * 更新红包数据
+         */
         RxBus.with(this)
                 .setEndEvent(ActivityEvent.DESTROY)
                 .setEvent(Events.EventEnum.PAY_SUCCESS_GET_DATA)
@@ -279,32 +259,21 @@ public class MainActivity extends BaseActivity implements MainView {
      * 获取key
      */
     public void getRongyunKey() {
-        RongyunKeyModel rongyunKeyModel = new RongyunKeyModelImpl();
-        rongyunKeyModel.getRongyunKey(new BaseIModel.onLoadDateSingleListener() {
-            @Override
-            public void onSuccess(Object o, BaseIModel.DataType dataType) {
+        mMainPresenter.getRongyunKey();
+    }
 
+    @Override
+    public void showLoading() {
+        showProgressDialog();
+    }
 
-                if (o != null && o instanceof RongyunBean) {
+    @Override
+    public void hideLoading() {
+        hideProgressDialog();
+    }
 
-                    RongyunBean bean = (RongyunBean) o;
-                    if (StringUtis.equals(bean.getCode(), AppConstant.code_request_success)){
-                        PersonInfoDetail presonInfo = UserInfoManager.getInstance().getMemoryPersonInfoDetail();
-                        presonInfo.setFace(bean.getData().getFace());
-                        presonInfo.setNickname(bean.getData().getNickname());
-                        presonInfo.setRongyunkey(bean.getData().getToken());
-                        UserInfoManager.getInstance().saveMemoryInstance(presonInfo);
-                        loginRongyun();
-                    }
-
-                }
-            }
-
-            @Override
-            public void onFailure(String msg, Throwable e) {
-
-            }
-        });
-
+    @Override
+    public void transfePageMsg(String msg) {
+        showToast(msg);
     }
 }

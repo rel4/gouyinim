@@ -4,12 +4,9 @@ import android.graphics.Bitmap;
 
 import com.gouyin.im.ServerApi;
 import com.gouyin.im.aliyun.AliyunManager;
-import com.gouyin.im.base.BaseIModel;
 import com.gouyin.im.base.ImageObjoct;
-import com.gouyin.im.bean.BaseBean;
 import com.gouyin.im.bean.DefaultDataBean;
 import com.gouyin.im.center.presenter.DefaultDynamicPresenterImpl;
-import com.gouyin.im.center.widget.DynamicSendActivity;
 import com.gouyin.im.manager.UserInfoManager;
 import com.gouyin.im.utils.FilePathUtlis;
 import com.gouyin.im.utils.ImageUtils;
@@ -111,34 +108,5 @@ public class RZSecondModelImpl implements RZSecondModel {
 
     }
 
-    private void sendAllDynamic(DynamicSendActivity.DynamicType dynamicType, String content, String json, String address, onLoadDateSingleListener listener) {
-        String authcode = UserInfoManager.getInstance().getAuthcode();
-        Observable<BaseBean> baseBeanObservable = null;
-        if (dynamicType == DynamicSendActivity.DynamicType.video) {
-            baseBeanObservable = ServerApi.getAppAPI().sendAllDefaultDynamic(dynamicType.getValue(), content, "", json, address, authcode);
-        } else {
-            baseBeanObservable = ServerApi.getAppAPI().sendAllDefaultDynamic(dynamicType.getValue(), content, json, "", address, authcode);
-        }
 
-        baseBeanObservable.observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
-                .subscribe(new Subscriber<BaseBean>() {
-                    @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        listener.onFailure(e.getMessage(), e);
-                    }
-
-                    @Override
-                    public void onNext(BaseBean bean) {
-                        LogUtils.e(RZSecondModelImpl.class, "onNext BaseBean : " + bean.toString());
-                        listener.onSuccess(bean, DataType.DATA_ZERO);
-                    }
-                });
-
-    }
 }

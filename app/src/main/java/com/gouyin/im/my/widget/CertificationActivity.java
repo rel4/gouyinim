@@ -6,9 +6,12 @@ import android.widget.ImageView;
 import com.gouyin.im.ImageServerApi;
 import com.gouyin.im.R;
 import com.gouyin.im.base.BaseActivity;
+import com.gouyin.im.event.Events;
+import com.gouyin.im.event.RxBus;
 import com.gouyin.im.manager.UserInfoManager;
 import com.gouyin.im.utils.ActivityUtils;
 import com.gouyin.im.utils.UIUtils;
+import com.trello.rxlifecycle.ActivityEvent;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -28,10 +31,17 @@ public class CertificationActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-
+        RxBus.with(this)
+                .setEndEvent(ActivityEvent.DESTROY)
+                .setEvent(Events.EventEnum.CERTIFICATION_PAGE_FINISH)
+                .onNext(events ->pageFinish())
+                .create();
         ImageServerApi.showURLSamllImage(ivAvater, UserInfoManager.getInstance().getAvater());
     }
 
+    private void pageFinish() {
+        finish();
+    }
 
     @OnClick(R.id.tv_apply)
     public void onClick() {
