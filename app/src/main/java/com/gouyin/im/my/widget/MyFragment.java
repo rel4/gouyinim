@@ -21,7 +21,7 @@ import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.StringUtis;
 import com.gouyin.im.utils.UIUtils;
 import com.gouyin.im.viewholder.PersonDynamicViewholder;
-import com.gouyin.im.viewholder.XListView;
+import com.gouyin.im.widget.XListView;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 import java.util.List;
@@ -143,7 +143,9 @@ public class MyFragment extends BaseFragment implements MyFragmentView {
         showToast(msg);
     }
 
-
+    /**
+     * 认证
+     */
     @Override
     public void swich2PersonRed() {
         int certification = UserInfoManager.getInstance().getCertificationStatus();
@@ -169,21 +171,33 @@ public class MyFragment extends BaseFragment implements MyFragmentView {
 
     }
 
+    /**
+     * 提现
+     */
     @Override
     public void swich2WithdRawDeposit() {
         ActivityUtils.startWithdRawDepositActivity();
     }
 
+    /**
+     * 约会
+     */
     @Override
     public void swich2Appointment() {
         ActivityUtils.startAppointmentActivity();
     }
 
+    /**
+     * 订单
+     */
     @Override
     public void swich2PersonOrder() {
         ActivityUtils.startMyOrderActivity();
     }
 
+    /**
+     * 设置
+     */
     @Override
     public void swich2PersonSetting() {
         ActivityUtils.startSettingActivity();

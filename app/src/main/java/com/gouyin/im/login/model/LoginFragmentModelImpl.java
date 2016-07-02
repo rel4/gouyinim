@@ -25,7 +25,7 @@ public class LoginFragmentModelImpl  implements  LoginFragmentModel{
 
                     @Override
                     public void onError(Throwable e) {
-                        Listener.onFailure(e.getMessage(),e);
+                        Listener.onFailure(e.getMessage());
                     }
 
                     @Override

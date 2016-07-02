@@ -23,9 +23,9 @@
             android:layout_height="1dp"
             android:background="@color/j_wheel_timebtn_pre" />
 
-        <ListView
+        <com.gouyin.im.widget.XListView
             android:id="@+id/list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></ListView>
+            android:layout_height="match_parent"></com.gouyin.im.widget.XListView>
     </LinearLayout>
 </FrameLayout>

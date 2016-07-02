@@ -36,7 +36,7 @@ public class UserInfoModelImpl implements UserInfoModel {
 
                     @Override
                     public void onError(Throwable e) {
-                        listener.onFailure(e.getMessage(), e);
+                        listener.onFailure(e.getMessage());
                     }
 
                     @Override
@@ -48,7 +48,7 @@ public class UserInfoModelImpl implements UserInfoModel {
                                 listener.onSuccess(list, BaseIModel.DataType.DATA_ZERO);
                             }
                         } else
-                            listener.onFailure(UIUtils.getStringRes(R.string.request_failed), null);
+                            listener.onFailure(UIUtils.getStringRes(R.string.request_failed));
                     }
                 });
 
@@ -67,7 +67,7 @@ public class UserInfoModelImpl implements UserInfoModel {
 
                     @Override
                     public void onError(Throwable e) {
-                        listener.onFailure(e.getMessage(), e);
+                        listener.onFailure(e.getMessage());
                     }
 
                     @Override

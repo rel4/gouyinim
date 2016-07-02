@@ -43,7 +43,7 @@ public class DynamincDatailsModelImpl implements DynamincDatailsModel {
                             List<CommentDataListBean.CommentListBean> datas = commentListBean.getData();
                             listener.onSuccess(datas,DataType.DATA_ONE);
                         } else
-                            listener.onFailure(UIUtils.getStringRes(R.string.request_failed), null);
+                            listener.onFailure(UIUtils.getStringRes(R.string.request_failed));
                     }
                 });
 

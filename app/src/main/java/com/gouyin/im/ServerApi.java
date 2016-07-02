@@ -10,6 +10,7 @@ import com.gouyin.im.bean.LoginBean;
 import com.gouyin.im.bean.PayRedPacketPicsBean;
 import com.gouyin.im.bean.RegiterBean;
 import com.gouyin.im.bean.RongyunBean;
+import com.gouyin.im.bean.TiXinrRecordBean;
 import com.gouyin.im.bean.UserInfoDetailBean;
 import com.gouyin.im.bean.UserInfoListBean;
 import com.gouyin.im.center.model.DefaultDynamicModel;
@@ -342,10 +343,26 @@ public class ServerApi {
                                                   @Field("apply_image") String serialize,
                                                   @Field("authcode") String authcode);
 
+        /**
+         * 获取认证状态
+         *
+         * @param authcode
+         * @return
+         */
         @GET("Apply/get_apply_status")
         Observable<CertificationStatusBean> getCertificationStatus(@Query("authcode") String authcode);
 
+        /**
+         * 提现列表
+         *
+         * @param authcode
+         * @return
+         */
+        @GET("Withdraw/get_withdraw_list")
+        Observable<TiXinrRecordBean> getTixinRecord(@Query("authcode") String authcode);
 
+        @GET("Withdraw/get_withdraw_money")
+        Observable<DefaultDataBean> getEnableMoney(@Query("authcode") String authcode);
     }
 }
 

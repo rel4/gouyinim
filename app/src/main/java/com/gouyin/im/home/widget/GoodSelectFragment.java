@@ -21,6 +21,7 @@ import com.gouyin.im.home.view.GoodSelectView;
 import com.gouyin.im.utils.ConfigUtils;
 import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.widget.SpacesItemDecoration;
+import com.gouyin.im.widget.XListView;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
@@ -35,7 +36,7 @@ import butterknife.Bind;
  */
 public class GoodSelectFragment extends BaseFragment implements GoodSelectView {
     @Bind(R.id.recyclerview)
-    XRecyclerView recyclerview;
+    XListView recyclerview;
     @Bind(R.id.text_empty)
     TextView textEmpty;
 
@@ -50,16 +51,7 @@ public class GoodSelectFragment extends BaseFragment implements GoodSelectView {
     @Override
     protected void initData() {
 
-        GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
-
-//        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-
-        recyclerview.setLayoutManager(layoutManager);
-        recyclerview.addItemDecoration(new SpacesItemDecoration(10));
-        recyclerview.setRefreshProgressStyle(ProgressStyle.BallSpinFadeLoader);
-        recyclerview.setLoadingMoreProgressStyle(ProgressStyle.SysProgress);
-        recyclerview.setArrowImageView(R.mipmap.iconfont_downgrey);
+        recyclerview.setVerticalGridLayoutManager(2);
         recyclerview.setEmptyView(textEmpty);
 
         recyclerview.setLoadingListener(new XRecyclerView.LoadingListener() {
@@ -77,19 +69,6 @@ public class GoodSelectFragment extends BaseFragment implements GoodSelectView {
 
             }
         });
-//        if (CacheManager.isExist4DataCache(ConfigUtils.getInstance().getApplicationContext(), "1." + "txt")) {
-//            Object o = CacheManager.readObject(ConfigUtils.getInstance().getApplicationContext(), "1." + "txt");
-//            if (o!=null&&o instanceof ArrayList) {
-////                LogUtils.e(TAG, "CacheManager : " + ((ArrayList<BaseBean>)o).toString());
-//
-//                addGoodSelectDate((ArrayList<GoodSelectBaen.Data>)o);
-//
-////                addGoodSelectDate(null);
-//                recyclerview.setRefreshing(true);
-//            }
-//        }
-
-//        goodSelectPresenter.uploadGoodSelectDateList();
         recyclerview.setRefreshing(true);
     }
 

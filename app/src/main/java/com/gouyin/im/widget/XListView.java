@@ -1,4 +1,4 @@
-package com.gouyin.im.viewholder;
+package com.gouyin.im.widget;
 
 import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;

@@ -155,7 +155,7 @@ public class MainPresenterImpl implements MainPresenter, BaseIModel.onLoadDateSi
     }
 
     @Override
-    public void onFailure(String msg, Throwable e) {
+    public void onFailure(String msg) {
         view.transfePageMsg(msg);
         view.hideLoading();
     }

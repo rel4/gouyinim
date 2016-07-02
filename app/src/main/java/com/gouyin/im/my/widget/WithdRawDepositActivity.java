@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 import com.gouyin.im.R;
 import com.gouyin.im.base.BaseActivity;
+import com.gouyin.im.my.persenter.WithdRawDepositPresenter;
+import com.gouyin.im.my.persenter.WithdRawDepositPresenterImpl;
+import com.gouyin.im.my.view.WithdRawDepositView;
 import com.gouyin.im.utils.ActivityUtils;
 import com.gouyin.im.utils.UIUtils;
 
@@ -21,22 +24,26 @@ import butterknife.OnClick;
 /**
  * Created by jb on 2016/6/27.
  */
-public class WithdRawDepositActivity extends BaseActivity {
+public class WithdRawDepositActivity extends BaseActivity implements WithdRawDepositView {
 
     @Bind(R.id.view_pager)
     ViewPager viewPager;
 
     @Bind(R.id.tv_tixian)
     TextView tvTiXian;
-
+    @Bind(R.id.tv_enable_money)
+    TextView tv_enable_money;
     @Bind(R.id.tv_chongzhi)
     TextView tvChongZhi;
     private MyAccountChongZFragment chongZFragment;
     private MyAccountTiXianFragment tiXianFragment;
     private List<Fragment> fragmentList;
+    private WithdRawDepositPresenter presenter;
 
     @Override
     protected View setRootContentView() {
+        presenter = new WithdRawDepositPresenterImpl();
+        presenter.attachView(this);
         return UIUtils.inflateLayout(R.layout.activity_my_account);
     }
 
@@ -71,7 +78,28 @@ public class WithdRawDepositActivity extends BaseActivity {
 
             }
         });
+        presenter.loadEnableMoney();
 
+    }
+
+    @Override
+    public void showLoading() {
+        showProgressDialog();
+    }
+
+    @Override
+    public void hideLoading() {
+        hideProgressDialog();
+    }
+
+    @Override
+    public void transfePageMsg(String msg) {
+        showToast(msg);
+    }
+
+    @Override
+    public void setloadEnableMoney(String str) {
+        tv_enable_money.setText(UIUtils.getStringRes(R.string.enable_money) + " : " + str);
     }
 
     class MyFrageStatePagerAdapter extends FragmentPagerAdapter {

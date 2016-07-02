@@ -67,7 +67,7 @@ public class PayDynamicRedPackketPersenterImpl implements PayDynamicRedPackketPe
     }
 
     @Override
-    public void onFailure(String msg, Throwable e) {
+    public void onFailure(String msg) {
         view.hideLoading();
         view.transfePageMsg(msg);
     }

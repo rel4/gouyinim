@@ -41,21 +41,21 @@ public class PlayUserAcitivityModelImpl implements PlayUserAcitivityModel {
 
                         @Override
                         public void onError(Throwable e) {
-                            listener.onFailure(UIUtils.getStringRes(R.string.request_failed), e);
+                            listener.onFailure(UIUtils.getStringRes(R.string.request_failed));
                             LogUtils.e(PlayUserAcitivityModelImpl.this, " onError " + e.getMessage());
                         }
 
                         @Override
                         public void onNext(DefaultDataBean defaultDataBean) {
                             if (defaultDataBean == null) {
-                                listener.onFailure(UIUtils.getStringRes(R.string.request_failed), null);
+                                listener.onFailure(UIUtils.getStringRes(R.string.request_failed));
                             } else {
                                 if (StringUtis.equals(defaultDataBean.getCode(), AppConstant.code_request_success)) {
                                     Object obj = defaultDataBean.getObj();
                                     LogUtils.e(PlayUserAcitivityModelImpl.this, " defaultDataBean " + obj);
                                     startAliPlayApp((String) obj, listener);
                                 } else {
-                                    listener.onFailure(defaultDataBean.getMsg(), null);
+                                    listener.onFailure(defaultDataBean.getMsg());
                                 }
 
                             }
@@ -92,7 +92,7 @@ public class PlayUserAcitivityModelImpl implements PlayUserAcitivityModel {
 
                     @Override
                     public void onError(Throwable e) {
-                        listener.onFailure(e.getMessage(), e);
+                        listener.onFailure(e.getMessage());
                     }
 
                     @Override

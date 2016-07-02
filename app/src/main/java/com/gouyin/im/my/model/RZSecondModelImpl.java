@@ -62,7 +62,7 @@ public class RZSecondModelImpl implements RZSecondModel {
                     public void onError(Throwable e) {
                         LogUtils.e(RZSecondModelImpl.this, "onError :　" + e.getMessage());
                         e.printStackTrace();
-                        listener.onFailure(e.getMessage(), e);
+                        listener.onFailure(e.getMessage());
                     }
 
                     @Override
@@ -96,7 +96,7 @@ public class RZSecondModelImpl implements RZSecondModel {
 
                     @Override
                     public void onError(Throwable e) {
-                        listener.onFailure(e.getMessage(), e);
+                        listener.onFailure(e.getMessage());
                     }
 
                     @Override

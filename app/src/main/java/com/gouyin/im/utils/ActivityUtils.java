@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.gouyin.im.AppConstant;
+import com.gouyin.im.bean.TiXinrRecordBean;
 import com.gouyin.im.bean.UserInfoListBean;
 import com.gouyin.im.center.widget.DefaultDynamicSendActivity;
 import com.gouyin.im.center.widget.DynamicSendActivity;
@@ -29,6 +30,7 @@ import com.gouyin.im.my.widget.RZSecondActivity;
 import com.gouyin.im.my.widget.RZThidActivity;
 import com.gouyin.im.my.widget.RefundActivity;
 import com.gouyin.im.my.widget.SettingActivity;
+import com.gouyin.im.my.widget.TiXianRecordActivity;
 import com.gouyin.im.my.widget.WithdRawDepositActivity;
 import com.gouyin.im.widget.image.PhonePicActivity;
 import com.gouyin.im.widget.image.ShowImageActivity;
@@ -241,7 +243,7 @@ public class ActivityUtils {
     }
 
     /**
-     * 体现
+     * 提现
      */
     public static void startWithdRawDepositActivity() {
         startActivity(WithdRawDepositActivity.class);
@@ -327,6 +329,17 @@ public class ActivityUtils {
      * 约会订单页
      */
     public static void startPayAppointmentOrderActivity() {
-            startActivity(PayAppointmentOrderActivity.class);
+        startActivity(PayAppointmentOrderActivity.class);
+    }
+
+    /**
+     * 提现记录
+     *
+     * @param dataBean
+     */
+    public static void startTiXianRecordActivity(TiXinrRecordBean.DataBean dataBean) {
+        Intent intent = new Intent(getContext(), TiXianRecordActivity.class);
+        intent.putExtra("data", dataBean);
+        startActivity(intent);
     }
 }

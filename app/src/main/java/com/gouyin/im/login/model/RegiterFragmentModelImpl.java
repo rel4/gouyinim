@@ -56,7 +56,7 @@ public class RegiterFragmentModelImpl implements RegiterFragmentModel {
                     @Override
                     public void onError(Throwable e) {
                         LogUtils.e(TAG, "Throwable : " +( (Exception)e).getMessage());
-                        listener.onFailure(e.getLocalizedMessage(), (Exception) e);
+                        listener.onFailure(e.getLocalizedMessage());
 
                     }
 

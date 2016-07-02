@@ -22,7 +22,7 @@ public interface BaseIModel {
          * @param msg
          * @param e
          */
-        void onFailure(String msg, Throwable e);
+        void onFailure(String msg);
 
 
     }
@@ -45,9 +45,8 @@ public interface BaseIModel {
          * 数据加载失败
          *
          * @param msg
-         * @param e
          */
-        void onFailure(String msg, Throwable e);
+        void onFailure(String msg);
 
 
     }

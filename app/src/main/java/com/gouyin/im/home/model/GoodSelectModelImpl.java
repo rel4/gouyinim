@@ -32,7 +32,7 @@ public class GoodSelectModelImpl implements GoodSelectModel {
 
                     @Override
                     public void onError(Throwable e) {
-                        listener.onFailure(e.getMessage(), e);
+                        listener.onFailure(e.getMessage());
                     }
 
                     @Override
@@ -41,9 +41,9 @@ public class GoodSelectModelImpl implements GoodSelectModel {
                             if ("1".equals(goodSelectBaen.getCode()))
                                 listener.onSuccess(goodSelectBaen.getData(), BaseIModel.DataType.DATA_ZERO);
                             else
-                                listener.onFailure(goodSelectBaen.getMsg(), null);
+                                listener.onFailure(goodSelectBaen.getMsg());
                         } else
-                            listener.onFailure(UIUtils.getStringRes(R.string.request_failed), null);
+                            listener.onFailure(UIUtils.getStringRes(R.string.request_failed));
                     }
                 });
     }

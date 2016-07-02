@@ -109,7 +109,7 @@ public class DefaultDynamicModelImpl implements DefaultDynamicModel {
                     public void onError(Throwable e) {
                         LogUtils.e(DefaultDynamicModelImpl.this, "onError :　" + e.getMessage());
                         e.printStackTrace();
-                        listener.onFailure(e.getMessage(), e);
+                        listener.onFailure(e.getMessage());
                     }
 
                     @Override
@@ -141,7 +141,7 @@ public class DefaultDynamicModelImpl implements DefaultDynamicModel {
 
                     @Override
                     public void onError(Throwable e) {
-                        listener.onFailure(e.getMessage(), e);
+                        listener.onFailure(e.getMessage());
                     }
 
                     @Override

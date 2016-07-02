@@ -88,7 +88,7 @@ public class UserInfoPresenterImpl implements UserInfoPresenter, onLoadDateSingl
     }
 
     @Override
-    public void onFailure(String msg, Throwable e) {
+    public void onFailure(String msg) {
         LogUtils.e(this, msg);
         mUserInfoView.hideLoading();
         mUserInfoView.transfePageMsg(UIUtils.getStringRes(R.string.request_failed));

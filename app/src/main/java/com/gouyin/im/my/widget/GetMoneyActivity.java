@@ -6,7 +6,7 @@ import com.gouyin.im.R;
 import com.gouyin.im.base.BaseActivity;
 import com.gouyin.im.utils.UIUtils;
 
-/**
+/**提现到银行卡
  * Created by jb on 2016/6/27.
  */
 public class GetMoneyActivity  extends BaseActivity{

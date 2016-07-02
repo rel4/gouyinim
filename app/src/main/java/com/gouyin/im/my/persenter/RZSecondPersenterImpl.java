@@ -62,7 +62,7 @@ public class RZSecondPersenterImpl implements RZSecondPersenter, BaseIModel.onLo
     }
 
     @Override
-    public void onFailure(String msg, Throwable e) {
+    public void onFailure(String msg) {
         view.transfePageMsg(UIUtils.getStringRes(R.string.request_failed));
         view.hideLoading();
     }

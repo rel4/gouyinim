@@ -44,7 +44,7 @@ public class GoodSelectPresenterImpl implements GoodSelectPresenter, BaseIModel.
     }
 
     @Override
-    public void onFailure(String msg, Throwable e) {
+    public void onFailure(String msg) {
         mGoodView.hide();
         LogUtils.e(this, msg);
     }

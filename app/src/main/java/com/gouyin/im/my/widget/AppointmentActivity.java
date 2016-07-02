@@ -11,7 +11,8 @@ import com.gouyin.im.utils.UIUtils;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-/**
+/**约会
+ *
  * Created by jb on 2016/6/27.
  */
 public class AppointmentActivity extends BaseActivity {

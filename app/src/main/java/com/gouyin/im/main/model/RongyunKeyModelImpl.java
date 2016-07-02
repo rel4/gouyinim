@@ -33,7 +33,7 @@ public class RongyunKeyModelImpl implements RongyunKeyModel {
 
                     @Override
                     public void onError(Throwable e) {
-                        listener.onFailure(e.getMessage(), e);
+                        listener.onFailure(e.getMessage());
                     }
 
                     @Override
@@ -41,12 +41,12 @@ public class RongyunKeyModelImpl implements RongyunKeyModel {
                         if (rongyunBean != null) {
                             String code = rongyunBean.getCode();
                             if (StringUtis.equals(code, AppConstant.code_timeout)) {
-                                listener.onFailure(UIUtils.getStringRes(R.string.code_timeout), null);
+                                listener.onFailure(UIUtils.getStringRes(R.string.code_timeout));
                                 RxBus.getInstance().send(Events.EventEnum.LOGIN, null);
                             } else if (StringUtis.equals(code, AppConstant.code_request_success)) {
                                 listener.onSuccess(rongyunBean, DataType.DATA_ZERO);
                             } else
-                                listener.onFailure(UIUtils.getStringRes(R.string.request_failed), null);
+                                listener.onFailure(UIUtils.getStringRes(R.string.request_failed));
                         }
 
                     }

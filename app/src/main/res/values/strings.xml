@@ -84,6 +84,10 @@
     <string name="about_rice">约饭</string>
     <string name="iv_asleep">发呆</string>
     <string name="wacth_movie">看电影</string>
+    <string name="tixian_succ">提交</string>
+    <string name="system_time">系统受理</string>
+    <string name="money">金额</string>
+    <string name="enable_money">可提现金额</string>
     <string-array name="moneys">
         <item>8</item>
         <item>28</item>

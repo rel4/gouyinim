@@ -39,7 +39,7 @@ public class RegiterDataFragmentModelImpl implements RegiterDataFragmentModel {
                     @Override
                     public void onError(Throwable e) {
                         LogUtils.e(RegiterDataFragmentModelImpl.class, "Throwable : " + ((Exception) e).getMessage());
-                        listener.onFailure(e.getLocalizedMessage(), (Exception) e);
+                        listener.onFailure(e.getLocalizedMessage());
 
                     }
 
@@ -79,7 +79,7 @@ public class RegiterDataFragmentModelImpl implements RegiterDataFragmentModel {
 
                     @Override
                     public void onError(Throwable e) {
-                        listener.onFailure(ConfigUtils.getInstance().getResources().getString(R.string.upload_failure), e);
+                        listener.onFailure(ConfigUtils.getInstance().getResources().getString(R.string.upload_failure));
 
                     }
 

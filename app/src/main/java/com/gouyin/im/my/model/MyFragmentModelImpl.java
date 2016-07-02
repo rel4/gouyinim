@@ -34,7 +34,7 @@ public class MyFragmentModelImpl implements MyFragmentModel {
 
                     @Override
                     public void onError(Throwable e) {
-                        listener.onFailure(e.getMessage(), e);
+                        listener.onFailure(e.getMessage());
                     }
 
                     @Override
@@ -59,7 +59,7 @@ public class MyFragmentModelImpl implements MyFragmentModel {
 
                     @Override
                     public void onError(Throwable e) {
-                        listener.onFailure(e.getMessage(), e);
+                        listener.onFailure(e.getMessage());
                     }
 
                     @Override
@@ -71,7 +71,7 @@ public class MyFragmentModelImpl implements MyFragmentModel {
                             } else if (StringUtis.equals("1000", code)) {
                                 RxBus.getInstance().send(Events.EventEnum.LOGIN, null);
                             } else
-                                listener.onFailure(UIUtils.getStringRes(R.string.request_failed), null);
+                                listener.onFailure(UIUtils.getStringRes(R.string.request_failed));
                         }
                     }
                 });

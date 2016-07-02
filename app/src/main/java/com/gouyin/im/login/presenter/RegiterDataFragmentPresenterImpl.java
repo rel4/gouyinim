@@ -78,7 +78,7 @@ public class RegiterDataFragmentPresenterImpl implements RegiterDataFragmentPres
     }
 
     @Override
-    public void onFailure(String msg, Throwable e) {
+    public void onFailure(String msg) {
         LogUtils.e(this, "Throwable : " + msg);
         view.transfePageMsg(ConfigUtils.getInstance().getResources().getString(R.string.net_Exception));
         view.hideLoading();

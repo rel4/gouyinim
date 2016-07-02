@@ -7,7 +7,7 @@ import java.util.Date;
  * Created by jb on 2016/6/17.
  */
 public class TimeUtils {
-    private static final String DATE_FORMAT = "yyyy-MM-dd-HH:mm:ss";
+    private static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
     private static final String YEAR_MONTH_DAY = "yyyyMMdd";
     private static final String HOUR_MINUTE_SECOND = "HHmmss";
     private static final String HOUR = "HH";
@@ -68,6 +68,7 @@ public class TimeUtils {
 
     public static String format(long time) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(DATE_FORMAT);
-        return simpleDateFormat.format(time);
+
+        return simpleDateFormat.format(new Date(time));
     }
 }

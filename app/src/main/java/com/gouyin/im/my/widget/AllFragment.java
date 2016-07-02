@@ -12,7 +12,7 @@ import com.gouyin.im.adapter.MyOrderAdapter;
 import com.gouyin.im.base.BaseFragment;
 import com.gouyin.im.bean.BaseDataBean;
 import com.gouyin.im.utils.UIUtils;
-import com.gouyin.im.viewholder.XListView;
+import com.gouyin.im.widget.XListView;
 
 
 import java.util.ArrayList;
@@ -26,11 +26,17 @@ public class AllFragment extends BaseFragment {
     @Bind(R.id.list)
     XListView xRecyclerView;
     private static int mLayoutId;
+    public enum  OrderType{
+        all_order,
 
+    }
     public static BaseFragment newInstance(@LayoutRes @NonNull int layoutId) {
         mLayoutId = layoutId;
         BaseFragment allFragment = new AllFragment();
         return allFragment;
+    }
+    private void swicthLayout(){
+//        switch ()
     }
 
     @Override

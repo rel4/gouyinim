@@ -68,7 +68,7 @@ public class LoginFragmentPersenterImpl implements LoginFragmentPersenter, BaseI
     }
 
     @Override
-    public void onFailure(String msg, Throwable e) {
+    public void onFailure(String msg) {
 
         loginView.transfePageMsg(UIUtils.getResources().getString(R.string.str_login) + UIUtils.getStringRes(R.string.request_failed));
         LogUtils.e(this, msg);

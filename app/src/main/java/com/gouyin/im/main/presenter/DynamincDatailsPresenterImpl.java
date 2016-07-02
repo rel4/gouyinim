@@ -40,7 +40,7 @@ public class DynamincDatailsPresenterImpl implements DynamincDatailsPresenter, B
     }
 
     @Override
-    public void onFailure(String msg, Throwable e) {
+    public void onFailure(String msg) {
 
     }
 

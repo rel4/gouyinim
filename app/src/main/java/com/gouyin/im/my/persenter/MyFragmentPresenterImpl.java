@@ -90,7 +90,7 @@ public class MyFragmentPresenterImpl implements MyFragmentPresenter, BaseIModel.
     }
 
     @Override
-    public void onFailure(String msg, Throwable e) {
+    public void onFailure(String msg) {
         view.hideLoading();
         view.transfePageMsg(msg);
     }

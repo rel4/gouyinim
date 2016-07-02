@@ -43,7 +43,7 @@ public class PayDynamicRedPacketModelImpl implements PayDynamicRedPacketModel {
                             LogUtils.e(PayDynamicRedPacketModelImpl.this, " defaultDataBean " + res);
                             startAliPlayApp(id, res, listener);
                         } else
-                            listener.onFailure(UIUtils.getStringRes(R.string.request_failed), null);
+                            listener.onFailure(UIUtils.getStringRes(R.string.request_failed));
 
                     }
                 });
@@ -74,7 +74,7 @@ public class PayDynamicRedPacketModelImpl implements PayDynamicRedPacketModel {
                     @Override
                     public void onError(Throwable e) {
 
-                        listener.onFailure(e.getMessage(), e);
+                        listener.onFailure(e.getMessage());
                     }
 
                     @Override
@@ -86,10 +86,10 @@ public class PayDynamicRedPacketModelImpl implements PayDynamicRedPacketModel {
                                 getPayDynamicPic(id, listener);
                             else
 //
-                                listener.onFailure(UIUtils.getStringRes(R.string.pay_failure), null);
+                                listener.onFailure(UIUtils.getStringRes(R.string.pay_failure));
 //                                view.transfePageMsg(UIUtils.getStringRes(R.string.pay_failure));
                         } else
-                            listener.onFailure(UIUtils.getStringRes(R.string.request_failed), null);
+                            listener.onFailure(UIUtils.getStringRes(R.string.request_failed));
                     }
                 });
     }
@@ -106,7 +106,7 @@ public class PayDynamicRedPacketModelImpl implements PayDynamicRedPacketModel {
 
                     @Override
                     public void onError(Throwable e) {
-                        listener.onFailure(UIUtils.getStringRes(R.string.request_failed), e);
+                        listener.onFailure(UIUtils.getStringRes(R.string.request_failed));
                     }
 
                     @Override
@@ -114,7 +114,7 @@ public class PayDynamicRedPacketModelImpl implements PayDynamicRedPacketModel {
                         if (bean != null) {
                             listener.onSuccess(bean, DataType.DATA_ZERO);
                         } else
-                            listener.onFailure(UIUtils.getStringRes(R.string.request_failed), null);
+                            listener.onFailure(UIUtils.getStringRes(R.string.request_failed));
 
                     }
                 });
