@@ -148,6 +148,9 @@
         <activity
             android:name=".my.widget.TiXianRecordActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".my.widget.AddCardActivity"
+            android:screenOrientation="portrait" />
         <!--会话页面-->
         <activity
             android:name=".im.widget.AppConversationActivity"

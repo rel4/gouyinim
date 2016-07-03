@@ -88,6 +88,10 @@
     <string name="system_time">系统受理</string>
     <string name="money">金额</string>
     <string name="enable_money">可提现金额</string>
+    <string name="account_number">账号 : </string>
+    <string name="account_error_hint">请务必添加正确的账号,以免提现失败</string>
+    <string name="name">名字</string>
+    <string name="alipay">支付宝</string>
     <string-array name="moneys">
         <item>8</item>
         <item>28</item>

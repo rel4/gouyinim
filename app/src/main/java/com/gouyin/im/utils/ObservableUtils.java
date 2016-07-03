@@ -1,7 +1,9 @@
 package com.gouyin.im.utils;
 
+import com.gouyin.im.AppConstant;
 import com.gouyin.im.R;
 import com.gouyin.im.bean.BaseBean;
+import com.gouyin.im.bean.DefaultDataBean;
 import com.gouyin.im.event.Events;
 import com.gouyin.im.event.RxBus;
 
@@ -44,6 +46,10 @@ public class ObservableUtils {
                         if (StringUtis.equals("1000", t.getCode())) {
                             callback.onFailure(UIUtils.getStringRes(R.string.code_timeout));
                             RxBus.getInstance().send(Events.EventEnum.LOGIN, null);
+                            return;
+                        }
+                        if (!StringUtis.equals(AppConstant.code_request_success, t.getCode())) {
+                            callback.onFailure(t.getMsg());
                             return;
                         }
                         callback.onSuccess(t);

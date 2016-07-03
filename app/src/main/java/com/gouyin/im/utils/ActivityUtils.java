@@ -21,6 +21,7 @@ import com.gouyin.im.main.widget.PersonInfoChangeActivity;
 import com.gouyin.im.main.widget.RedpacketAcitivity;
 import com.gouyin.im.main.widget.UserInfoActivity;
 import com.gouyin.im.manager.UserInfoManager;
+import com.gouyin.im.my.widget.AddCardActivity;
 import com.gouyin.im.my.widget.AppointmentActivity;
 import com.gouyin.im.my.widget.CertificationActivity;
 import com.gouyin.im.my.widget.GetMoneyActivity;
@@ -340,6 +341,16 @@ public class ActivityUtils {
     public static void startTiXianRecordActivity(TiXinrRecordBean.DataBean dataBean) {
         Intent intent = new Intent(getContext(), TiXianRecordActivity.class);
         intent.putExtra("data", dataBean);
+        startActivity(intent);
+    }
+
+    /**
+     * 添加银行账号
+     */
+    public static void startAddCardActivity(String bankname, String type) {
+        Intent intent = new Intent(getContext(), AddCardActivity.class);
+        intent.putExtra("type", type);
+        intent.putExtra("bankname", bankname);
         startActivity(intent);
     }
 }

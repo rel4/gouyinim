@@ -5,117 +5,128 @@
     android:background="@color/line_color"
     android:orientation="vertical">
 
-    <include layout="@layout/comman_title_bar"/>
+    <include layout="@layout/comman_title_bar" />
 
     <RelativeLayout
-        android:background="@color/white"
-        android:padding="@dimen/x35"
+        android:id="@+id/layout_swicth_card"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="@dimen/x35">
 
         <ImageView
-            android:id="@+id/iv_bank"
+            android:id="@+id/iv_bank_logo"
+            android:layout_width="@dimen/x150"
+            android:layout_height="@dimen/x100"
+            android:scaleType="centerCrop" />
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@mipmap/panel_bank"/>
-        <LinearLayout
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/x20"
-            android:orientation="vertical"
-            android:layout_toRightOf="@+id/iv_bank"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_toRightOf="@+id/iv_bank_logo"
+            android:orientation="vertical">
+
             <TextView
+                android:id="@+id/tv_bank_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="建设银行"
                 android:textColor="@color/title_text"
-                android:textSize="@dimen/order_text_small6"
-                android:text="建设银行"/>
+                android:textSize="@dimen/order_text_small6" />
+
             <TextView
+                android:id="@+id/tv_bank_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/text_color"
                 android:layout_marginTop="@dimen/x15"
-                android:textSize="@dimen/order_text_small2"
-                android:text="尾号1234储蓄卡"/>
+                android:text="尾号1234储蓄卡"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/order_text_small2" />
 
 
         </LinearLayout>
 
         <ImageView
-            android:layout_alignParentRight="true"
             android:id="@+id/iv_right"
-            android:layout_centerVertical="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@mipmap/panel_return"/>
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@mipmap/panel_return" />
     </RelativeLayout>
 
     <LinearLayout
-        android:padding="@dimen/x35"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/x30"
+        android:background="@color/white"
         android:orientation="horizontal"
-        android:background="@color/white">
+        android:padding="@dimen/x35">
 
         <TextView
+            android:id="@+id/tv_add_alipay"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@mipmap/panel_alipay"
-            android:layout_height="wrap_content" />
+            android:background="@mipmap/panel_alipay" />
+
         <TextView
-            android:layout_marginLeft="@dimen/x50"
+            android:id="@+id/tv_add_bank_card"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x50"
             android:layout_weight="1"
-            android:background="@mipmap/panel_neocaine"
-            android:layout_height="wrap_content" />
+            android:background="@mipmap/panel_neocaine" />
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/j_wheel_timebtn_pre"/>
+        android:background="@color/j_wheel_timebtn_pre" />
 
     <RelativeLayout
-        android:padding="@dimen/x25"
-        android:background="@color/white"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="@dimen/x25">
+
         <TextView
             android:id="@+id/tv_money"
-            android:layout_centerVertical="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:text="转出金额："
             android:textColor="@color/title_text"
-            android:textSize="@dimen/order_text_small4"/>
+            android:textSize="@dimen/order_text_small4" />
 
         <EditText
+            android:id="@+id/et_input_money"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/tv_money"
-            android:layout_width="match_parent"
             android:background="@null"
-            android:padding="@dimen/x7"
             android:hint="本次可转出10001"
-            android:textSize="@dimen/order_text_small4"
+            android:padding="@dimen/x7"
             android:textColor="@color/text_color"
-            android:layout_height="wrap_content" />
+            android:textSize="@dimen/order_text_small4" />
 
     </RelativeLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/x25"
         android:paddingTop="@dimen/x15"
-        android:text="每次转出金额需≥100"
-        android:paddingLeft="@dimen/x25"/>
+        android:text="每次转出金额需≥100" />
 
     <TextView
         android:id="@+id/tv_sure"
         android:layout_width="wrap_content"
-        android:layout_gravity="center_horizontal"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/x70"
-        android:background="@mipmap/btn_affirm"/>
+        android:background="@mipmap/btn_affirm" />
 </LinearLayout>

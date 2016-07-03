@@ -5,6 +5,7 @@ import com.gouyin.im.bean.BaseBean;
 import com.gouyin.im.bean.CertificationStatusBean;
 import com.gouyin.im.bean.CommentDataListBean;
 import com.gouyin.im.bean.DefaultDataBean;
+import com.gouyin.im.bean.GetMoneyBean;
 import com.gouyin.im.bean.GoodSelectBaen;
 import com.gouyin.im.bean.LoginBean;
 import com.gouyin.im.bean.PayRedPacketPicsBean;
@@ -13,9 +14,9 @@ import com.gouyin.im.bean.RongyunBean;
 import com.gouyin.im.bean.TiXinrRecordBean;
 import com.gouyin.im.bean.UserInfoDetailBean;
 import com.gouyin.im.bean.UserInfoListBean;
-import com.gouyin.im.center.model.DefaultDynamicModel;
 import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.UnicodeUtils;
+import com.gouyin.im.utils.gson.GsonConverterFactory;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -31,7 +32,7 @@ import okio.Buffer;
 import okio.BufferedSource;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
+
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -363,6 +364,34 @@ public class ServerApi {
 
         @GET("Withdraw/get_withdraw_money")
         Observable<DefaultDataBean> getEnableMoney(@Query("authcode") String authcode);
+
+        /**
+         * 提现基本信息
+         *
+         * @param authcode
+         * @return
+         */
+        @GET("Account/get_latest_info")
+        Observable<GetMoneyBean> getGetmoney(@Query("authcode") String authcode);
+
+        /**
+         * 添加银行卡
+         *
+         * @param cardNumber
+         * @param username
+         * @param cardType
+         * @param bankname
+         * @param authcode
+         * @return
+         */
+        @FormUrlEncoded
+        @POST("Account/add")
+        Observable<DefaultDataBean> getsubmitAccount(@Field("bank_no") String cardNumber,
+                                                     @Field("name") String username,
+                                                     @Field("type") String cardType,
+                                                     @Field("bank_name") String bankname,
+                                                     @Field("authcode") String authcode);
+
     }
 }
 
