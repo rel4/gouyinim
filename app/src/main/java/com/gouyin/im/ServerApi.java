@@ -225,8 +225,6 @@ public class ServerApi {
          *
          * @param type
          * @param content
-         * @param pics
-         * @param videos
          * @param address
          * @param authcode
          * @return
@@ -234,9 +232,8 @@ public class ServerApi {
         @FormUrlEncoded
         @POST("Latest/insert_latest")
         Observable<BaseBean> sendAllDefaultDynamic(@Field("type") String type,
-                                                   @Field("title") String content,
-                                                   @Field("img") String pics,
-                                                   @Field("video") String videos,
+                                                   @Field("title") String title,
+                                                   @Field("contents") String content,
                                                    @Field("address") String address,
                                                    @Field("authcode") String authcode);
 

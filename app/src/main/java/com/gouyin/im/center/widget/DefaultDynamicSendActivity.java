@@ -20,7 +20,9 @@ import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.StringUtis;
 import com.gouyin.im.utils.UIUtils;
 import com.gouyin.im.utils.VideoUtils;
+import com.gouyin.im.widget.MySwitch;
 import com.gouyin.im.widget.NoScrollGridView;
+import com.gouyin.im.widget.RoundedImageView;
 import com.trello.rxlifecycle.ActivityEvent;
 
 import java.util.ArrayList;
@@ -41,16 +43,14 @@ public class DefaultDynamicSendActivity extends BaseActivity implements DefaultD
     NoScrollGridView gvPicList;
     @Bind(R.id.tv_address)
     TextView tvAddress;
-    @Bind(R.id.iv_switch)
-    ImageView ivSwitch;
+    @Bind(R.id.ms_sm_getmessage)
+    MySwitch ivSwitch;
     @Bind(R.id.video_back)
     ImageView video_back;
     private DefaultDynamicPresenter presenter;
     private ShowPicAdapter showPicAdapter;
-    private List<String> datas;
+    private List datas;
     private DynamicSendActivity.DynamicType dynamicType;
-
-    private ArrayList<Object> objects = new ArrayList<>();
     private String videoPath;
     private String videoBackPath;
 
@@ -70,28 +70,41 @@ public class DefaultDynamicSendActivity extends BaseActivity implements DefaultD
                     videoBackPath = VideoUtils.getInstance().getVideoThumbnail(videoPath);
                 }
                 if (datas == null)
-                    datas = new ArrayList<String>();
+                    datas = new ArrayList();
                 datas.add(videoPath);
                 datas.add(videoBackPath);
                 break;
             case "2":
+
                 dynamicType = DynamicSendActivity.DynamicType.DEFAULT;
-                objects.add(R.mipmap.ic_launcher);
+                if (datas == null)
+                    datas = new ArrayList();
+                datas.add(R.mipmap.add_dynamic_pic);
                 break;
             case "1":
                 dynamicType = DynamicSendActivity.DynamicType.RED_PACKET;
                 ArrayList<String> pics = getIntent().getStringArrayListExtra("data");
-                objects.addAll(pics);
+
                 if (datas == null)
-                    datas = new ArrayList<String>();
-                datas.addAll(pics);
+                    datas = new ArrayList();
+                addData(pics);
                 if (pics.size() < 9)
-                    objects.add(R.mipmap.ic_launcher);
+                    datas.add(R.mipmap.add_dynamic_pic);
                 break;
         }
         presenter = new DefaultDynamicPresenterImpl();
         presenter.attachView(this);
+        setRxBus();
         return UIUtils.inflateLayout(R.layout.activity_default_dynamic_send);
+    }
+
+    private void addData(ArrayList ls) {
+        if (datas == null)
+            datas = new ArrayList();
+
+        for (int i = 0; i < ls.size(); i++) {
+            datas.add(0, ls.get(i));
+        }
     }
 
 
@@ -106,13 +119,13 @@ public class DefaultDynamicSendActivity extends BaseActivity implements DefaultD
             video_back.setLayoutParams(params);
             ImageServerApi.showURLBigImage(video_back, videoBackPath);
         } else {
-            showPicAdapter = new ShowPicAdapter(objects);
+            showPicAdapter = new ShowPicAdapter(datas);
             gvPicList.setAdapter(showPicAdapter);
         }
     }
 
 
-    @OnClick({R.id.tv_send_submit, R.id.tv_address, R.id.iv_switch})
+    @OnClick({R.id.tv_send_submit, R.id.tv_address, R.id.ms_sm_getmessage})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_send_submit:
@@ -127,12 +140,16 @@ public class DefaultDynamicSendActivity extends BaseActivity implements DefaultD
                     break;
                 }
                 String address = tvAddress.getText().toString().trim();
-
+                if (dynamicType != DynamicSendActivity.DynamicType.video) {
+                    if (datas.size() < 9) {
+                        datas.remove(datas.size() - 1);
+                    }
+                }
                 presenter.sendDynamic(dynamicType, content, datas, address);
                 break;
             case R.id.tv_address:
                 break;
-            case R.id.iv_switch:
+            case R.id.ms_sm_getmessage:
                 break;
         }
     }
@@ -146,17 +163,24 @@ public class DefaultDynamicSendActivity extends BaseActivity implements DefaultD
                             if (events != null) {
                                 Object message = events.getMessage();
                                 if (message != null && message instanceof List) {
-                                    List pics = (List) message;
+                                    ArrayList pics = (ArrayList) message;
                                     LogUtils.e(DefaultDynamicSendActivity.class, "pics : " + pics.toString());
                                     if (datas == null) {
                                         datas = new ArrayList<String>();
-
+                                        datas.clear();
                                     }
-                                    datas.clear();
-                                    datas.addAll(pics);
-                                    pics.add(R.mipmap.password_icon);
-                                    showPicAdapter = new ShowPicAdapter(pics);
-                                    gvPicList.setAdapter(showPicAdapter);
+                                    if ((datas.size() + pics.size()) > 10) {
+                                        showToast(UIUtils.getStringRes(R.string.pic_more_nine));
+
+                                    } else {
+                                        if ((datas.size() + pics.size()) == 10) {
+                                            datas.remove(datas.size() - 1);
+                                        }
+                                        addData(pics);
+//                                    datas.addAll(pics);
+                                        showPicAdapter = new ShowPicAdapter(datas);
+                                        gvPicList.setAdapter(showPicAdapter);
+                                    }
                                 }
                             }
                         }
@@ -190,15 +214,15 @@ public class DefaultDynamicSendActivity extends BaseActivity implements DefaultD
     }
 
     private class ShowPicAdapter extends BaseAdapter {
-        private List datas;
+        private List adatperdatas;
 
         public ShowPicAdapter(List datas) {
-            this.datas = datas;
+            this.adatperdatas = datas;
         }
 
         @Override
         public int getCount() {
-            return datas == null ? 0 : datas.size();
+            return adatperdatas == null ? 0 : adatperdatas.size();
         }
 
         @Override
@@ -211,16 +235,11 @@ public class DefaultDynamicSendActivity extends BaseActivity implements DefaultD
             return 0;
         }
 
-        public void addDatas(List data) {
-            for (int i = 0; i < data.size(); i++)
-                datas.add(0, data.get(i));
-            notifyDataSetChanged();
-        }
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             View view = UIUtils.inflateLayout(R.layout.item_pics);
-            ImageView pic = (ImageView) view.findViewById(R.id.iv_pic);
+            RoundedImageView pic = (RoundedImageView) view.findViewById(R.id.iv_pic);
             Object o = datas.get(position);
             if (o != null) {
                 if (o instanceof String) {
@@ -232,7 +251,7 @@ public class DefaultDynamicSendActivity extends BaseActivity implements DefaultD
                         @Override
                         public void onClick(View v) {
                             ActivityUtils.startPhonePicActivity();
-                            setRxBus();
+
                         }
                     });
                 }

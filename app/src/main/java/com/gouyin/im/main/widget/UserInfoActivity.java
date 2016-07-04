@@ -22,6 +22,7 @@ import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.UIUtils;
 import com.gouyin.im.viewholder.UserInfoHeadViewHolder;
 import com.gouyin.im.widget.DividerItemDecoration;
+import com.gouyin.im.widget.XListView;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.trello.rxlifecycle.ActivityEvent;
@@ -37,7 +38,7 @@ import butterknife.OnClick;
 public class UserInfoActivity extends BaseActivity implements UserInfoView {
 
     @Bind(R.id.recyclerview)
-    XRecyclerView recyclerview;
+    XListView recyclerview;
     @Bind(R.id.text_empty)
     TextView textEmpty;
     @Bind(R.id.tv_reward)
@@ -53,20 +54,15 @@ public class UserInfoActivity extends BaseActivity implements UserInfoView {
     private boolean isRefresh;
     private UserInfoHeadViewHolder headHolder;
     private String userId;
+    private String nikeName;
 
     @Override
     protected void initView() {
         setRxbus();
         userId = getIntent().getStringExtra(AppConstant.USER_ID);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        recyclerview.setEmptyView(textEmpty);
-        recyclerview.setLayoutManager(linearLayoutManager);
-        recyclerview.setRefreshProgressStyle(ProgressStyle.BallSpinFadeLoader);
-        recyclerview.setLoadingMoreProgressStyle(ProgressStyle.SysProgress);
-        recyclerview.setArrowImageView(R.mipmap.iconfont_downgrey);
+        recyclerview.setVerticalLinearLayoutManager();
         recyclerview.addHeaderView(initHeadLayout());
-        recyclerview.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL, Color.GREEN, true));
+
         recyclerview.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
@@ -159,7 +155,7 @@ public class UserInfoActivity extends BaseActivity implements UserInfoView {
 
     @Override
     public void switch2SendMsgActivity() {
-        ActivityUtils.startAppConversationActivity(userId, "", "");
+        ActivityUtils.startAppConversationActivity(userId, nikeName, avater);
     }
 
     @Override
@@ -187,6 +183,7 @@ public class UserInfoActivity extends BaseActivity implements UserInfoView {
     public void setUserInfodetail(UserInfoDetailBean bean) {
         if (bean != null && bean.getData() != null) {
             avater = bean.getData().getBaseinfo().getFace();
+            nikeName = bean.getData().getBaseinfo().getNickname();
         }
         headHolder.setUserInfodetail(bean);
     }

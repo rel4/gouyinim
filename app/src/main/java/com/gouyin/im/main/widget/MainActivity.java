@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.gouyin.im.AppConstant;
+import com.gouyin.im.ApplicationConfig;
 import com.gouyin.im.R;
 import com.gouyin.im.base.BaseActivity;
 import com.gouyin.im.base.BaseFragment;
@@ -67,6 +68,11 @@ public class MainActivity extends BaseActivity implements MainView {
         mMainPresenter.switchNavigation(R.id.tv_home_page);
         initRxBus();
         initNetMianData();
+    }
+
+    @Override
+    public boolean isaddActivity() {
+        return false;
     }
 
     /**
@@ -210,6 +216,7 @@ public class MainActivity extends BaseActivity implements MainView {
                             UserInfoManager.getInstance().logout();
                             showToast(UIUtils.getStringRes(R.string.login_action));
                             ActivityUtils.startLoginMainActivity();
+                            ((ApplicationConfig) ConfigUtils.getInstance().getApplicationContext()).logout();
                         }
                 )
                 .create();

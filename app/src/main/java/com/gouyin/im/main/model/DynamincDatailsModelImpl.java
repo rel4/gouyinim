@@ -3,12 +3,15 @@ package com.gouyin.im.main.model;
 import com.gouyin.im.R;
 import com.gouyin.im.ServerApi;
 import com.gouyin.im.base.BaseIModel;
+import com.gouyin.im.bean.BaseBean;
 import com.gouyin.im.bean.CommentDataListBean;
 import com.gouyin.im.manager.UserInfoManager;
+import com.gouyin.im.utils.ObservableUtils;
 import com.gouyin.im.utils.UIUtils;
 
 import java.util.List;
 
+import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -23,29 +26,21 @@ public class DynamincDatailsModelImpl implements DynamincDatailsModel {
     @Override
     public void loadCommentListData(String id, int page, final BaseIModel.onLoadListDateListener listener) {
 
-        ServerApi.getAppAPI().getCommentList(id, page, UserInfoManager.getInstance().getAuthcode())
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<CommentDataListBean>() {
-                    @Override
-                    public void onCompleted() {
+        Observable<CommentDataListBean> commentList = ServerApi.getAppAPI().getCommentList(id, page, UserInfoManager.getInstance().getAuthcode());
+        ObservableUtils.parser(commentList, new ObservableUtils.Callback<CommentDataListBean>() {
+            @Override
+            public void onSuccess(CommentDataListBean bean) {
+                if (bean != null) {
+                    List<CommentDataListBean.CommentListBean> datas = bean.getData();
+                    listener.onSuccess(datas, DataType.DATA_ONE);
+                } else
+                    listener.onFailure(UIUtils.getStringRes(R.string.request_failed));
+            }
 
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onNext(CommentDataListBean commentListBean) {
-                        if (commentListBean != null && commentListBean.getData() != null) {
-                            List<CommentDataListBean.CommentListBean> datas = commentListBean.getData();
-                            listener.onSuccess(datas,DataType.DATA_ONE);
-                        } else
-                            listener.onFailure(UIUtils.getStringRes(R.string.request_failed));
-                    }
-                });
-
+            @Override
+            public void onFailure(String msg) {
+                listener.onFailure(msg);
+            }
+        });
     }
 }

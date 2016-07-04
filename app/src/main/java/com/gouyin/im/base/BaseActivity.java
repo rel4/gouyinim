@@ -8,7 +8,9 @@ import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.widget.TextView;
 
+import com.gouyin.im.ApplicationConfig;
 import com.gouyin.im.R;
+import com.gouyin.im.utils.ConfigUtils;
 import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.UIUtils;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
@@ -30,6 +32,8 @@ public abstract class BaseActivity extends RxAppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (isaddActivity())
+            ((ApplicationConfig) ConfigUtils.getInstance().getApplicationContext()).addActivity(this);
         onBaseCreate(savedInstanceState);
         mRootView = setRootContentView();
         if (mRootView == null) {
@@ -135,6 +139,7 @@ public abstract class BaseActivity extends RxAppCompatActivity {
             progressDialog.dismiss();
             progressDialog = null;
         }
+        ((ApplicationConfig) ConfigUtils.getInstance().getApplicationContext()).removeActivity(this);
     }
 
 
@@ -254,4 +259,7 @@ public abstract class BaseActivity extends RxAppCompatActivity {
     }
 
 
+    public boolean isaddActivity() {
+        return true;
+    }
 }

@@ -16,6 +16,7 @@ import com.gouyin.im.utils.FilePathUtlis;
 import com.gouyin.im.utils.ImageUtils;
 import com.gouyin.im.utils.JsonUtils;
 import com.gouyin.im.utils.LogUtils;
+import com.gouyin.im.utils.ObservableUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -124,32 +125,19 @@ public class DefaultDynamicModelImpl implements DefaultDynamicModel {
 
     private void sendAllDynamic(DynamicSendActivity.DynamicType dynamicType, String content, String json, String address, onLoadDateSingleListener listener) {
         String authcode = UserInfoManager.getInstance().getAuthcode();
-        Observable<BaseBean> baseBeanObservable = null;
-        if (dynamicType == DynamicSendActivity.DynamicType.video) {
-            baseBeanObservable = ServerApi.getAppAPI().sendAllDefaultDynamic(dynamicType.getValue(), content, "", json, address, authcode);
-        } else {
-            baseBeanObservable = ServerApi.getAppAPI().sendAllDefaultDynamic(dynamicType.getValue(), content, json, "", address, authcode);
-        }
+        Observable<BaseBean> baseBeanObservable = ServerApi.getAppAPI().sendAllDefaultDynamic(dynamicType.getValue(), content, json, address, authcode);
 
-        baseBeanObservable.observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
-                .subscribe(new Subscriber<BaseBean>() {
-                    @Override
-                    public void onCompleted() {
+        ObservableUtils.parser(baseBeanObservable, new ObservableUtils.Callback() {
+            @Override
+            public void onSuccess(BaseBean bean) {
+                listener.onSuccess(bean, DataType.DATA_ZERO);
+            }
 
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        listener.onFailure(e.getMessage());
-                    }
-
-                    @Override
-                    public void onNext(BaseBean bean) {
-                        LogUtils.e(DefaultDynamicModelImpl.class, "onNext BaseBean : " + bean.toString());
-                        listener.onSuccess(bean, DataType.DATA_ZERO);
-                    }
-                });
+            @Override
+            public void onFailure(String msg) {
+                listener.onFailure(msg);
+            }
+        });
 
     }
 

@@ -42,7 +42,7 @@ public class GetMoneyActivity extends BaseActivity implements GetMoneyView {
     RelativeLayout layout_swicth_card;
     private GetMoneyPersenter persenter;
     private String number;
-
+    private  String cardType;
     @Override
     protected View setRootContentView() {
         persenter = new GetMoneyPersenterImpl();
@@ -60,7 +60,7 @@ public class GetMoneyActivity extends BaseActivity implements GetMoneyView {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.layout_swicth_card:
-                ActivityUtils.startSwitchCardActivity(number);
+                ActivityUtils.startSwitchCardActivity(number,cardType);
                 setSwicthCardRxbus();
                 break;
             case R.id.tv_add_alipay:
@@ -68,6 +68,7 @@ public class GetMoneyActivity extends BaseActivity implements GetMoneyView {
                 ActivityUtils.startAddCardActivity(UIUtils.getStringRes(R.string.alipay), "2");
                 break;
             case R.id.tv_add_bank_card:
+                ActivityUtils.startAddCardActivity(UIUtils.getStringRes(R.string.winxinpay), "3");
                 break;
             case R.id.tv_sure:
                 if (StringUtis.isEmpty(number)) {
@@ -97,7 +98,7 @@ public class GetMoneyActivity extends BaseActivity implements GetMoneyView {
                 .setEndEvent(ActivityEvent.DESTROY)
                 .setEvent(Events.EventEnum.CLICK_SWITCH_CARD_POSITION)
                 .onNext(events -> {
-                    if (events!=null&&events.message instanceof GetMoneyBean ){
+                    if (events != null && events.message instanceof GetMoneyBean) {
                         setBasicInfo((GetMoneyBean) events.message);
                     }
                 })
@@ -135,6 +136,7 @@ public class GetMoneyActivity extends BaseActivity implements GetMoneyView {
         tv_add_card.setVisibility(View.GONE);
         tvBankName.setText(data.getBank_name());
         number = data.getBank_no();
+        cardType = data.getType();
         tvBankNumber.setText(number);
         ImageServerApi.showURLSamllImage(ivBankLogo, data.getLogo());
     }

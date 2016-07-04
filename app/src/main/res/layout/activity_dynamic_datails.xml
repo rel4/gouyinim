@@ -6,7 +6,7 @@
     <include layout="@layout/app_titlebar" />
 
 
-    <com.jcodecraeer.xrecyclerview.XRecyclerView
+    <com.gouyin.im.widget.XListView
         android:id="@+id/lv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

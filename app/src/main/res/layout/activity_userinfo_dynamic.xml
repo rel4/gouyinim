@@ -5,11 +5,11 @@
 
     <include layout="@layout/app_titlebar" />
 
-    <com.jcodecraeer.xrecyclerview.XRecyclerView
-        android:layout_below="@+id/app_title_bar"
+    <com.gouyin.im.widget.XListView
         android:id="@+id/recyclerview"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" />
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/app_title_bar" />
 
     <TextView
         android:id="@+id/text_empty"

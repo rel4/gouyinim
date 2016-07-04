@@ -19,6 +19,7 @@ import com.gouyin.im.utils.UIUtils;
 import com.gouyin.im.viewholder.UserInfoHeadViewHolder;
 import com.gouyin.im.viewholder.UserInfoViewHolder;
 import com.gouyin.im.widget.DividerItemDecoration;
+import com.gouyin.im.widget.XListView;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 import java.util.List;
@@ -31,7 +32,7 @@ import butterknife.Bind;
 public class DynamicDatailsActivity extends BaseActivity implements DynamicDatailsView {
 
     @Bind(R.id.lv)
-    XRecyclerView recyclerView;
+    XListView recyclerView;
     private DynamiDayailsAdapter mAdapter;
     private DynamincDatailsPresenter presenter;
     private UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList userInfo;
@@ -40,10 +41,7 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
 
     protected void initView() {
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL, Color.RED, true));
+        recyclerView.setVerticalLinearLayoutManager();
         recyclerView.setLoadingMoreEnabled(false);
         recyclerView.setPullRefreshEnabled(false);
         if (userInfo != null) {

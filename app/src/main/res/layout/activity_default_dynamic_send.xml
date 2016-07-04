@@ -45,14 +45,17 @@
         android:layout_marginTop="@dimen/y1"
         android:background="@color/background_white_color"
         android:gravity="top|left"
-        android:hint="@string/loading"
-        android:lines="10"
+        android:hint="@string/hint_dynamic_text"
+        android:lines="5"
+        android:padding="@dimen/x10"
         android:paddingLeft="@dimen/x30"
-        android:textColor="@color/text_black_color" />
+        android:textColor="@color/text_black_color"
+        android:textColorHint="@color/gray_color" />
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@color/background_white_color"
         android:padding="@dimen/x30">
 
         <ImageView
@@ -67,7 +70,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:horizontalSpacing="@dimen/x30"
-            android:numColumns="4"
+            android:numColumns="3"
             android:verticalSpacing="@dimen/x30"></com.gouyin.im.widget.NoScrollGridView>
     </RelativeLayout>
 
@@ -75,22 +78,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/y30"
-        android:background="@color/background_white_color">
+        android:background="@color/background_white_color"
+        android:padding="@dimen/x40">
 
         <TextView
             android:id="@+id/tv_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:text="@string/loading" />
+            android:text="@string/loading"
+            android:textColor="@color/text_black_color" />
 
-        <ImageView
-            android:id="@+id/iv_switch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+
+        <com.gouyin.im.widget.MySwitch
+            android:id="@+id/ms_sm_getmessage"
+            android:layout_width="@dimen/x138"
+            android:layout_height="@dimen/y46"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:src="@mipmap/ic_launcher" />
+            android:layout_marginRight="@dimen/x30" />
     </RelativeLayout>
 
 </LinearLayout>

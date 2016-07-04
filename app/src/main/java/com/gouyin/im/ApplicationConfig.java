@@ -4,8 +4,11 @@ import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
 
+import com.gouyin.im.base.BaseActivity;
 import com.gouyin.im.utils.ConfigUtils;
 import com.gouyin.im.utils.SystemUtils;
+
+import java.util.ArrayList;
 
 import io.rong.imkit.RongContext;
 import io.rong.imkit.RongIM;
@@ -18,6 +21,7 @@ import io.rong.message.RichContentMessage;
  */
 public class ApplicationConfig extends Application {
     AppComponent appComponent;
+    private ArrayList<BaseActivity> activities = new ArrayList<BaseActivity>();
 
     @Override
     public void onCreate() {
@@ -75,5 +79,33 @@ public class ApplicationConfig extends Application {
         }
         return null;
     }
+
+    /**
+     * 添加activity
+     *
+     * @param activity
+     */
+    public void addActivity(BaseActivity activity) {
+        if (!activities.contains(activity))
+            activities.add(activity);
+    }
+
+    /**
+     * 添加activity
+     *
+     * @param activity
+     */
+    public void removeActivity(BaseActivity activity) {
+        if (activities.contains(activity))
+            activities.remove(activity);
+    }
+
+    public void logout() {
+        for (int i = 0; i < activities.size(); i++) {
+            activities.get(i).finish();
+        }
+        activities.clear();
+    }
+
 
 }

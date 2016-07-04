@@ -79,6 +79,12 @@ public class MainPresenterImpl implements MainPresenter, BaseIModel.onLoadDateSi
         RongyunConfig.getInstance().connectRonyun(rongyunKey, new RongyunConfig.ConnectCallback() {
 
             @Override
+            public void onSuccess(String s) {
+                PersonInfoDetail infoDetail = UserInfoManager.getInstance().getMemoryPersonInfoDetail();
+                RongyunConfig.getInstance().setCurrentUserInfo(infoDetail.getId(), infoDetail.getNickname(), infoDetail.getFace());
+            }
+
+            @Override
             public void onTokenIncorrect() {
                 LogUtils.e(MainActivity.class, "onTokenIncorrect : ");
                 RxBus.getInstance().send(Events.EventEnum.GET_RONGYUN_KEY, null);
@@ -117,6 +123,7 @@ public class MainPresenterImpl implements MainPresenter, BaseIModel.onLoadDateSi
                         presonInfo.setNickname(bean.getData().getNickname());
                         presonInfo.setRongyunkey(bean.getData().getToken());
                         presonInfo.setSex(bean.getData().getSex());
+                        presonInfo.setId(bean.getData().getUid());
                         presonInfo.setAttestation(StringUtis.string2Int(bean.getData().getApply_status()));
                         UserInfoManager.getInstance().saveMemoryInstance(presonInfo);
                         loginRongyun();

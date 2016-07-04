@@ -15,11 +15,20 @@ public class RongyunBean extends BaseBean {
     }
 
     public class RongyunData {
+        private String uid;
         private String token;
         private String face;
         private String nickname;
         private String sex;
         private String apply_status;
+
+        public String getUid() {
+            return uid;
+        }
+
+        public void setUid(String uid) {
+            this.uid = uid;
+        }
 
         public String getApply_status() {
             return apply_status;

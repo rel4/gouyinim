@@ -5,14 +5,14 @@ import java.util.List;
 /**
  * Created by jb on 2016/6/22.
  */
-public class CommentDataListBean extends BaseDataBean {
+public class CommentDataListBean extends BaseBean {
     private List<CommentListBean> data;
 
-    public List<CommentListBean>  getData() {
+    public List<CommentListBean> getData() {
         return data;
     }
 
-    public void setData(List<CommentListBean>  data) {
+    public void setData(List<CommentListBean> data) {
         this.data = data;
     }
 

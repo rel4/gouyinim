@@ -84,7 +84,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@mipmap/panel_alipay" />
+            android:background="@drawable/shape_background_text_white_color"
+            android:drawableLeft="@mipmap/alipay_icon"
+            android:gravity="center"
+            android:padding="@dimen/x25"
+            android:text="@string/add_alipay_card"
+            android:textColor="@color/text_black_color" />
 
         <TextView
             android:id="@+id/tv_add_bank_card"
@@ -92,7 +97,12 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/x50"
             android:layout_weight="1"
-            android:background="@mipmap/panel_neocaine" />
+            android:background="@drawable/shape_background_text_white_color"
+            android:drawableLeft="@mipmap/winxinpay_icon"
+            android:gravity="center"
+            android:padding="@dimen/x25"
+            android:text="@string/add_winxin_card"
+            android:textColor="@color/text_black_color" />
 
     </LinearLayout>
 

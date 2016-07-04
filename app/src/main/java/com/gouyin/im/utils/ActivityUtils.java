@@ -40,8 +40,9 @@ import com.gouyin.im.widget.image.photoview.ImagePagerActivity;
 import com.gouyin.im.widget.takevideo.TakeVideoActivity;
 
 import java.util.ArrayList;
-import java.util.IdentityHashMap;
 import java.util.List;
+
+import io.rong.imkit.RongyunConfig;
 
 /**
  * Created by jb on 2016/6/20.
@@ -154,6 +155,7 @@ public class ActivityUtils {
         intent.putExtra("id", userId);
         intent.putExtra("name", name);
         intent.putExtra("avater", avatar);
+        RongyunConfig.getInstance().setUserInfoCache(userId, name, avatar);
         startActivity(intent);
 
     }
@@ -357,11 +359,14 @@ public class ActivityUtils {
 
     /**
      * 选择支付银行卡
+     *
+     * @param type
      * @param number
      */
-    public static void startSwitchCardActivity(String number) {
+    public static void startSwitchCardActivity(String type, String number) {
         Intent intent = new Intent(getContext(), SwitchCardActivity.class);
-        intent.putExtra("number",number);
+        intent.putExtra("number", number);
+        intent.putExtra("type", type);
         startActivity(intent);
 
     }
