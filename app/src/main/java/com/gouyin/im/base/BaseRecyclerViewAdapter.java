@@ -46,13 +46,42 @@ public abstract class BaseRecyclerViewAdapter<T extends BaseDataBean> extends Re
             BaseRecyclerViewHolder bvh = (BaseRecyclerViewHolder) holder;
             bvh.onBindData(datas.get(position));
             bvh.setOnClick(datas.get(position), position);
+            ((BaseRecyclerViewHolder) holder).setOnItemClickListener(new BaseRecyclerViewHolder.onItemClickListener() {
+                @Override
+                public void onItemclick(View view, int position) {
+                    BaseRecyclerViewAdapter.this.onItemclick(view, position);
+                    if (listener != null)
+                        listener.onItemclick(view, position);
+                }
+            });
         }
 
 
     }
 
+    /**
+     * 条目点击事件
+     *
+     * @param view
+     * @param position
+     */
+    public void onItemclick(View view, int position) {
+
+    }
+
+    private onItemClickListener listener;
+
+    public void setOnItemClickListener(onItemClickListener listener) {
+        this.listener = listener;
+    }
+
+    public interface onItemClickListener {
+        void onItemclick(View view, int position);
+    }
+
     @Override
     public int getItemCount() {
+
         return datas == null ? 0 : datas.size();
     }
 

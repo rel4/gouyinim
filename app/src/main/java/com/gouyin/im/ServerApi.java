@@ -2,6 +2,7 @@ package com.gouyin.im;
 
 
 import com.gouyin.im.bean.BaseBean;
+import com.gouyin.im.bean.CardInfoBean;
 import com.gouyin.im.bean.CertificationStatusBean;
 import com.gouyin.im.bean.CommentDataListBean;
 import com.gouyin.im.bean.DefaultDataBean;
@@ -32,7 +33,6 @@ import okio.Buffer;
 import okio.BufferedSource;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
-
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -392,6 +392,28 @@ public class ServerApi {
                                                      @Field("bank_name") String bankname,
                                                      @Field("authcode") String authcode);
 
+        /**
+         * 提现
+         *
+         * @param number
+         * @param money
+         * @param authcode
+         * @return
+         */
+        @FormUrlEncoded
+        @POST("Withdraw/add")
+        Observable<DefaultDataBean> getTiXianReason(@Field("account_id") String number,
+                                                    @Field("money") int money,
+                                                    @Field("authcode") String authcode);
+
+        /**
+         * y银行卡列表
+         *
+         * @param authcode
+         * @return
+         */
+        @GET("Account/get_list")
+        Observable<CardInfoBean> getCardInfo(@Query("authcode") String authcode);
     }
 }
 

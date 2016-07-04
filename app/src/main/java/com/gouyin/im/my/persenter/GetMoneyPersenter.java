@@ -8,4 +8,6 @@ import com.gouyin.im.my.view.GetMoneyView;
  */
 public interface GetMoneyPersenter  extends BaseIPresenter<GetMoneyView>{
     void loadbasicInfo();
+
+    void PaySubmit(String number, int money);
 }

@@ -23,6 +23,7 @@ public abstract class BaseRecyclerViewHolder<T extends BaseDataBean> extends Rec
 
     /**
      * 设置点击事件
+     *
      * @param t
      * @param position
      */
@@ -31,26 +32,38 @@ public abstract class BaseRecyclerViewHolder<T extends BaseDataBean> extends Rec
             mRootView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    onItemclick(v,t, position);
+                    onItemclick(v, t, position);
+                    if (listener != null)
+                        listener.onItemclick(v, position);
                 }
             });
     }
 
     /**
      * 得到根布局
+     *
      * @return
      */
-    public View getRootView(){
-        return  mRootView;
+    public View getRootView() {
+        return mRootView;
     }
+
     protected abstract void onBindData(T t);
 
     /**
-     *
-     * @param view 点击的view
-     * @param t  点击的对象数据
-     * @param position  点击位置
+     * @param view     点击的view
+     * @param t        点击的对象数据
+     * @param position 点击位置
      */
-    protected abstract void onItemclick(View view,T t, int position);
+    protected abstract void onItemclick(View view, T t, int position);
 
+    private onItemClickListener listener;
+
+    public void setOnItemClickListener(onItemClickListener listener) {
+        this.listener = listener;
+    }
+
+    public interface onItemClickListener {
+        void onItemclick(View view, int position);
+    }
 }

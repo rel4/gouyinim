@@ -151,6 +151,9 @@
         <activity
             android:name=".my.widget.AddCardActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".my.widget.SwitchCardActivity"
+            android:screenOrientation="portrait" />
         <!--会话页面-->
         <activity
             android:name=".im.widget.AppConversationActivity"

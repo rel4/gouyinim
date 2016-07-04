@@ -92,6 +92,10 @@
     <string name="account_error_hint">请务必添加正确的账号,以免提现失败</string>
     <string name="name">名字</string>
     <string name="alipay">支付宝</string>
+    <string name="add_card" >添加卡</string>
+    <string name="switch_card">选择一张支付卡</string>
+    <string name="money_get">只能整取</string>
+    <string name="money_number_more_200">金额必须大于等于两百</string>
     <string-array name="moneys">
         <item>8</item>
         <item>28</item>

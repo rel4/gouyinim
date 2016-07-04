@@ -31,6 +31,7 @@ import com.gouyin.im.my.widget.RZSecondActivity;
 import com.gouyin.im.my.widget.RZThidActivity;
 import com.gouyin.im.my.widget.RefundActivity;
 import com.gouyin.im.my.widget.SettingActivity;
+import com.gouyin.im.my.widget.SwitchCardActivity;
 import com.gouyin.im.my.widget.TiXianRecordActivity;
 import com.gouyin.im.my.widget.WithdRawDepositActivity;
 import com.gouyin.im.widget.image.PhonePicActivity;
@@ -352,5 +353,16 @@ public class ActivityUtils {
         intent.putExtra("type", type);
         intent.putExtra("bankname", bankname);
         startActivity(intent);
+    }
+
+    /**
+     * 选择支付银行卡
+     * @param number
+     */
+    public static void startSwitchCardActivity(String number) {
+        Intent intent = new Intent(getContext(), SwitchCardActivity.class);
+        intent.putExtra("number",number);
+        startActivity(intent);
+
     }
 }

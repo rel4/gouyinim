@@ -8,4 +8,6 @@ import com.gouyin.im.bean.GetMoneyBean;
  */
 public interface GetMoneyView extends BaseIView {
     void setBasicInfo(GetMoneyBean getMoneyBean);
+
+    void pageFinish();
 }

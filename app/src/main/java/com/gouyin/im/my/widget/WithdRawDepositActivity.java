@@ -9,11 +9,14 @@ import android.widget.TextView;
 
 import com.gouyin.im.R;
 import com.gouyin.im.base.BaseActivity;
+import com.gouyin.im.event.Events;
+import com.gouyin.im.event.RxBus;
 import com.gouyin.im.my.persenter.WithdRawDepositPresenter;
 import com.gouyin.im.my.persenter.WithdRawDepositPresenterImpl;
 import com.gouyin.im.my.view.WithdRawDepositView;
 import com.gouyin.im.utils.ActivityUtils;
 import com.gouyin.im.utils.UIUtils;
+import com.trello.rxlifecycle.ActivityEvent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -79,7 +82,17 @@ public class WithdRawDepositActivity extends BaseActivity implements WithdRawDep
             }
         });
         presenter.loadEnableMoney();
+        setRx();
+    }
 
+    private void setRx() {
+        RxBus.with(this)
+                .setEndEvent(ActivityEvent.DESTROY)
+                .setEvent(Events.EventEnum.MONEY_CHANGE)
+                .onNext(events -> {
+                    presenter.loadEnableMoney();
+                })
+                .create();
     }
 
     @Override

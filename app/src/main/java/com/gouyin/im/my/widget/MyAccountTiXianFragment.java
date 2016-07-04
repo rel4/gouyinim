@@ -9,12 +9,15 @@ import com.gouyin.im.R;
 import com.gouyin.im.adapter.TiXianAdapter;
 import com.gouyin.im.base.BaseFragment;
 import com.gouyin.im.bean.TiXinrRecordBean;
+import com.gouyin.im.event.Events;
+import com.gouyin.im.event.RxBus;
 import com.gouyin.im.my.persenter.TiXianFragmentPresenter;
 import com.gouyin.im.my.persenter.TiXianFragmentPresenterImpl;
 import com.gouyin.im.my.view.TiXianFragmentView;
 import com.gouyin.im.utils.UIUtils;
 import com.gouyin.im.widget.XListView;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
+import com.trello.rxlifecycle.FragmentEvent;
 
 import java.util.List;
 
@@ -43,7 +46,13 @@ public class MyAccountTiXianFragment extends BaseFragment implements TiXianFragm
         xListView.setRefreshing(false);
         xListView.setLoadingMoreEnabled(false);
         presenter.loadTixin();
-
+        RxBus.with(this)
+                .setEndEvent(FragmentEvent.DESTROY)
+                .setEvent(Events.EventEnum.MONEY_CHANGE)
+                .onNext(events -> {
+                    presenter.loadTixin();
+                })
+                .create();
     }
 
     @Override
@@ -64,9 +73,8 @@ public class MyAccountTiXianFragment extends BaseFragment implements TiXianFragm
     @Override
     public void setLoadData(TiXinrRecordBean bean) {
         List<TiXinrRecordBean.DataBean> data = bean.getData();
-        if (adapter == null) {
-            adapter = new TiXianAdapter(bean.getData());
-            xListView.setAdapter(adapter);
-        }
+        adapter = new TiXianAdapter(bean.getData());
+        xListView.setAdapter(adapter);
+
     }
 }

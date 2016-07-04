@@ -32,10 +32,20 @@ public class StringUtis {
 
     public static int string2Int(String string) {
         try {
+
             return Integer.parseInt(string);
         } catch (NumberFormatException e) {
 
         }
         return 0;
+    }
+
+    public static double string2Double(String string) {
+        try {
+            return Double.parseDouble(string);
+        } catch (NumberFormatException e) {
+
+        }
+        return 0.00;
     }
 }

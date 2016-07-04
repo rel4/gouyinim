@@ -20,7 +20,6 @@ public interface BaseIModel {
          * 数据加载失败
          *
          * @param msg
-         * @param e
          */
         void onFailure(String msg);
 
