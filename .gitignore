@@ -18,7 +18,7 @@ build/
 .idea/libraries
 
 # IMKit
-/IMKit
+/IMKit/
 /progressdialog
 # Built application files
 *.apk
