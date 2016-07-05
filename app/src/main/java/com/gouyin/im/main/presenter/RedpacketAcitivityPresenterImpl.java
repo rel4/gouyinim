@@ -2,6 +2,8 @@ package com.gouyin.im.main.presenter;
 
 import com.gouyin.im.R;
 import com.gouyin.im.base.BaseIModel;
+import com.gouyin.im.event.Events;
+import com.gouyin.im.event.RxBus;
 import com.gouyin.im.main.model.PlayUserAcitivityModel;
 import com.gouyin.im.main.model.PlayUserAcitivityModelImpl;
 import com.gouyin.im.main.view.PlayUserAcitivityView;
@@ -41,18 +43,32 @@ public class RedpacketAcitivityPresenterImpl implements RedpacketAcitivityPresen
         }
     }
 
+    private String moneyNumber;
+
     @Override
     public void aliPay(int type, String uid, String money) {
         view.showLoading();
-        model.aliPay(type,PlayUserAcitivityModel.PayType.ALIPAY, uid, money, this);
+        moneyNumber = money;
+        model.aliPay(type, PlayUserAcitivityModel.PayType.ALIPAY, uid, money, this);
     }
 
     @Override
     public void onSuccess(String o, BaseIModel.DataType dataType) {
         view.hideLoading();
-        if (StringUtis.equals("8000", o))
+
+        if (StringUtis.equals("9000", o)) {
+            Events<String> events = new Events<String>();
+            events.what = Events.EventEnum.CHAT_SEND_REDPACKET_SUCCESS;
+            events.message = moneyNumber;
+            RxBus.getInstance().send(events);
             view.transfePageMsg(UIUtils.getStringRes(R.string.pay_success));
-        else if (StringUtis.equals("9000", o))
+            UIUtils.sendDelayedOneMillis(new Runnable() {
+                @Override
+                public void run() {
+                    view.pageFinish();
+                }
+            });
+        } else if (StringUtis.equals("8000", o))
             view.transfePageMsg(UIUtils.getStringRes(R.string.pay_affirm));
         else view.transfePageMsg(UIUtils.getStringRes(R.string.pay_failure));
 

@@ -3,13 +3,19 @@ package io.rong.imkit;
 import android.content.Context;
 import android.net.Uri;
 
+import io.rong.imkit.provider.RedPacketMessage;
+import io.rong.imkit.provider.RedPacketMessageItemProvider;
+import io.rong.imkit.provider.RedPacketProvider;
+import io.rong.imkit.userInfoCache.RongUserInfoManager;
 import io.rong.imkit.widget.provider.CameraInputProvider;
 import io.rong.imkit.widget.provider.ImageInputProvider;
 import io.rong.imkit.widget.provider.InputProvider;
 import io.rong.imkit.widget.provider.LocationInputProvider;
 import io.rong.imlib.RongIMClient;
 import io.rong.imlib.model.Conversation;
+import io.rong.imlib.model.Message;
 import io.rong.imlib.model.UserInfo;
+import io.rong.message.TextMessage;
 
 /**
  * Created by jb on 2016/6/18.
@@ -20,6 +26,21 @@ public class RongyunConfig {
     private Context context;
     private boolean isConnectRonyun;
 
+    public String getUserName(String mTargetId) {
+        UserInfo userInfo = RongUserInfoManager.getInstance().getUserInfo(mTargetId);
+        if (userInfo != null)
+            return userInfo.getName();
+        return "";
+    }
+
+    public interface ConnectCallback {
+        void onSuccess(String s);
+//
+//        void onError(RongIMClient.ErrorCode errorCode);
+
+        void onTokenIncorrect();
+    }
+
     public static RongyunConfig getInstance() {
         return instance;
     }
@@ -28,6 +49,8 @@ public class RongyunConfig {
         this.context = context;
         RongLogUtils.d(TAG, "-------------初始化融云-----------------");
         RongIM.init(context);
+        RongIM.registerMessageType(RedPacketMessage.class);
+        RongIM.getInstance().registerMessageTemplate(new RedPacketMessageItemProvider());
 //        RongIM.getInstance().setMessageAttachedUserInfo(true);
     }
 
@@ -47,8 +70,10 @@ public class RongyunConfig {
             @Override
             public void onSuccess(String s) {
                 RongLogUtils.d(TAG, "-------------连接融云成功 id : " + s);
-//                if (callback != null)
-//                    callback.onSuccess(s);
+
+                if (callback != null)
+
+                    callback.onSuccess(s);
             }
 
             @Override
@@ -60,17 +85,16 @@ public class RongyunConfig {
         });
     }
 
+    /**
+     * 下线
+     */
     public void offline() {
+        RongIM.getInstance().disconnect();
         RongIM.getInstance().logout();
+        RongIM.getInstance().getRongIMClient().clearConversations(Conversation.ConversationType.PRIVATE);
+
     }
 
-    public interface ConnectCallback {
-        void onSuccess(String s);
-//
-//        void onError(RongIMClient.ErrorCode errorCode);
-
-        void onTokenIncorrect();
-    }
 
     /**
      * 设置用户信息
@@ -96,15 +120,40 @@ public class RongyunConfig {
         RongIM.getInstance().setCurrentUserInfo(new UserInfo(id, name, Uri.parse(avater)));
 
     }
-    public void ss(){
+
+    /**
+     * 输入类型
+     * //
+     */
+    public void setInputProvider(RedPacketProvider.onPluginClickListenter listenter) {
         //扩展功能自定义
+
+        RedPacketProvider redPacketProvider = new RedPacketProvider(RongContext.getInstance());
+        redPacketProvider.setOnPluginClickListenter(listenter);
         InputProvider.ExtendProvider[] provider = {
                 new ImageInputProvider(RongContext.getInstance()),//图片
                 new CameraInputProvider(RongContext.getInstance()),//相机
                 new LocationInputProvider(RongContext.getInstance()),//地理位置
-//                new VoIPInputProvider(RongContext.getInstance()),// 语音通话
+                redPacketProvider
+//                new VoiceInputProvider(RongContext.getInstance())// 语音通话
 //                new ContactsProvider(RongContext.getInstance())//自定义通讯录
         };
+
         RongIM.getInstance().resetInputExtensionProvider(Conversation.ConversationType.PRIVATE, provider);
+    }
+
+
+    public void sendRedPacketMessage(String uid, String content) {
+        /**
+         * 发送消息。
+         *
+         * @param type        会话类型。
+         * @param targetId    目标 Id。根据不同的 conversationType，可能是用户 Id、讨论组 Id、群组 Id 或聊天室 Id。
+         * @param content     消息内容。
+         * @param pushContent push 时提示内容，为空时提示文本内容。
+         * @param callback    发送消息的回调。
+         * @return
+         */
+        RongIM.getInstance().getRongIMClient().sendMessage(Conversation.ConversationType.PRIVATE, uid, RedPacketMessage.obtain(content), "", null, null);
     }
 }

@@ -1,5 +1,7 @@
 package com.gouyin.im.main.presenter;
 
+import android.view.View;
+
 import com.gouyin.im.AppConstant;
 import com.gouyin.im.R;
 import com.gouyin.im.base.BaseIModel;
@@ -14,11 +16,13 @@ import com.gouyin.im.main.model.MainActivityModelImpl;
 import com.gouyin.im.main.view.MainView;
 import com.gouyin.im.main.widget.MainActivity;
 import com.gouyin.im.manager.UserInfoManager;
+import com.gouyin.im.utils.ActivityUtils;
 import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.StringUtis;
 import com.gouyin.im.utils.UIUtils;
 
 import io.rong.imkit.RongyunConfig;
+import io.rong.imkit.provider.RedPacketProvider;
 import io.rong.imlib.model.UserData;
 
 /**
@@ -82,6 +86,13 @@ public class MainPresenterImpl implements MainPresenter, BaseIModel.onLoadDateSi
             public void onSuccess(String s) {
                 PersonInfoDetail infoDetail = UserInfoManager.getInstance().getMemoryPersonInfoDetail();
                 RongyunConfig.getInstance().setCurrentUserInfo(infoDetail.getId(), infoDetail.getNickname(), infoDetail.getFace());
+                RongyunConfig.getInstance().setInputProvider(new RedPacketProvider.onPluginClickListenter() {
+
+                    @Override
+                    public void onPluginClick(String userId, String name, String path) {
+                        ActivityUtils.startRedpacketActivity(userId, 1, path);
+                    }
+                });
             }
 
             @Override

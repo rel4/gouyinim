@@ -695,6 +695,7 @@
     <string name="rc_waiting">等待中</string>
     <string name="rc_yes">是</string>
     <string name="rc_yesterday_format">昨天 %1$s</string>
+    <string name="red_packet">红包</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>

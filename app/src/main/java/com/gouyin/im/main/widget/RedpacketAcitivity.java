@@ -1,6 +1,5 @@
 package com.gouyin.im.main.widget;
 
-import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -18,8 +17,6 @@ import com.gouyin.im.main.view.PlayUserAcitivityView;
 import com.gouyin.im.utils.StringUtis;
 import com.gouyin.im.utils.UIUtils;
 import com.gouyin.im.widget.RoundedImageView;
-
-import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

@@ -2,6 +2,8 @@ package com.gouyin.im.utils;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
+import android.text.TextUtils;
 
 import com.gouyin.im.AppConstant;
 import com.gouyin.im.bean.TiXinrRecordBean;
@@ -43,6 +45,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.rong.imkit.RongyunConfig;
+import io.rong.imlib.model.Conversation;
 
 /**
  * Created by jb on 2016/6/20.
@@ -151,12 +154,14 @@ public class ActivityUtils {
             RxBus.getInstance().send(Events.EventEnum.LOGIN, null);
             return;
         }
-        Intent intent = new Intent(ConfigUtils.getInstance().getActivityContext(), AppConversationActivity.class);
-        intent.putExtra("id", userId);
-        intent.putExtra("name", name);
-        intent.putExtra("avater", avatar);
+        Uri uri = Uri.parse("rong://" + ConfigUtils.getInstance().getApplicationContext().getApplicationInfo().processName)
+                .buildUpon().appendPath("conversation")
+                .appendPath(Conversation.ConversationType.PRIVATE.getName().toLowerCase())
+                .appendQueryParameter("targetId", userId)
+                .appendQueryParameter("title", name).build();
         RongyunConfig.getInstance().setUserInfoCache(userId, name, avatar);
-        startActivity(intent);
+        startActivity(new Intent("android.intent.action.VIEW", uri));
+
 
     }
 

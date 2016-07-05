@@ -520,6 +520,10 @@
         "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_ic_delete.png"
     },
     {
+        "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\red_packet.png",
+        "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\src\\main\\res\\drawable-xhdpi\\red_packet.png"
+    },
+    {
         "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_ic_volume_8.png",
         "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_ic_volume_8.png"
     },
@@ -708,12 +712,12 @@
         "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_ic_voice_sent_play2.png"
     },
     {
-        "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f4a9.png",
-        "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f4a9.png"
-    },
-    {
         "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_ic_bubble_no_right.9.png",
         "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_ic_bubble_no_right.9.png"
+    },
+    {
+        "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f4a9.png",
+        "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f4a9.png"
     },
     {
         "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f621.png",
@@ -1092,12 +1096,12 @@
         "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f3c2.png"
     },
     {
-        "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f52b.png",
-        "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f52b.png"
-    },
-    {
         "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_ic_def_coversation_portrait.png",
         "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_ic_def_coversation_portrait.png"
+    },
+    {
+        "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f52b.png",
+        "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f52b.png"
     },
     {
         "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f4de.png",

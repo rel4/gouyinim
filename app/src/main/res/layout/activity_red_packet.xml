@@ -5,12 +5,12 @@
     android:orientation="vertical">
 
     <ImageView
-        android:padding="@dimen/y30"
         android:id="@+id/action_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/x30"
         android:layout_marginTop="@dimen/x30"
+        android:padding="@dimen/y30"
         android:src="@mipmap/dynamic_logout" />
 
     <com.gouyin.im.widget.RoundedImageView
@@ -35,14 +35,15 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/x30"
         android:hint="@string/input_money"
+        android:inputType="number"
         android:textColor="@color/text_black_color"
         android:textColorHint="@color/text_black_color" />
 
     <GridView
-        android:layout_marginBottom="@dimen/y20"
         android:id="@+id/gv_pic_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/y20"
         android:horizontalSpacing="@dimen/x30"
         android:numColumns="3"
         android:verticalSpacing="@dimen/x30"></GridView>

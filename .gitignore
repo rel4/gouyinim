@@ -17,9 +17,9 @@ build/
 .idea/workspace.xml
 .idea/libraries
 
-# IMKit/
- IMKit/*
-
+# IMKit
+/IMKit
+/progressdialog
 # Built application files
 *.apk
 *.ap_

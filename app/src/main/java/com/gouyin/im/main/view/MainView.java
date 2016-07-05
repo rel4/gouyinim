@@ -15,5 +15,4 @@ public interface MainView extends BaseIView {
     void switchFind();
 
     void switch2My();
-
 }

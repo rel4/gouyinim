@@ -9,45 +9,62 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.gouyin.im.R;
+import com.gouyin.im.base.BaseActivity;
+import com.gouyin.im.event.Events;
+import com.gouyin.im.event.RxBus;
+import com.gouyin.im.utils.ConfigUtils;
+import com.gouyin.im.utils.StringUtis;
+import com.gouyin.im.utils.UIUtils;
+import com.trello.rxlifecycle.ActivityEvent;
 
 import java.util.Locale;
 
+import io.rong.imkit.RongyunConfig;
 import io.rong.imkit.fragment.ConversationFragment;
 import io.rong.imlib.model.Conversation;
 
 /**
  * Created by jb on 2016/6/18.
  */
-public class AppConversationActivity extends FragmentActivity {
+public class AppConversationActivity extends BaseActivity {
 
     /**
      * 目标 Id
      */
-    private String mTargetId = "11";
+    private String mTargetId;
 
     /**
      * 会话类型
      */
     private Conversation.ConversationType mConversationType = Conversation.ConversationType.PRIVATE;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.appconversation);
-        Intent intent = getIntent();
 
+    @Override
+    protected View setRootContentView() {
+        return UIUtils.inflateLayout(R.layout.appconversation);
+    }
+
+    @Override
+    protected void initView() {
+        Intent intent = getIntent();
         getIntentDate(intent);
-        String name = intent.getStringExtra("name");
-        TextView tv_title_name = (TextView) findViewById(R.id.tv_title_name);
-        tv_title_name.setText(name);
+
+    }
+
+    @Override
+    protected String initTitleName() {
+        String name = getIntent().getData().getQueryParameter("title");
+        if (StringUtis.isEmpty(name)) {
+            name = RongyunConfig.getInstance().getUserName(mTargetId);
+        }
+        return name;
     }
 
     /**
      * 展示如何从 Intent 中得到 融云会话页面传递的 Uri
      */
     private void getIntentDate(Intent intent) {
-        mTargetId = intent.getStringExtra("id");
-
+        mTargetId = intent.getData().getQueryParameter("targetId");
         enterFragment(mConversationType, mTargetId);
     }
 
@@ -71,5 +88,12 @@ public class AppConversationActivity extends FragmentActivity {
         //xxx 为你要加载的 id
         transaction.add(R.id.conversation, fragment);
         transaction.commit();
+        RxBus.with(this)
+                .setEndEvent(ActivityEvent.DESTROY)
+                .setEvent(Events.EventEnum.CHAT_SEND_REDPACKET_SUCCESS)
+                .onNext(events -> {
+                    RongyunConfig.getInstance().sendRedPacketMessage(mTargetId, (String) events.message);
+                })
+                .create();
     }
 }

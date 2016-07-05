@@ -57,7 +57,7 @@
     <string name="weixin_play">微信支付</string>
     <string name="aliplay_play">支付宝支付</string>
     <string name="pay_success">支付成功</string>
-    <string name="pay_affirm">支付确认</string>
+    <string name="pay_affirm">支付确认中</string>
     <string name="pay_failure">支付失败</string>
     <string name="authentication">认证</string>
     <string name="withdraw_deposit">提现</string>
@@ -100,7 +100,7 @@
     <string name="add_alipay_card">添加支付宝</string>
     <string name="winxinpay">微信</string>
     <string name="pic_more_nine">添加的图片不能大于九张</string>
-    <string name="hint_dynamic_text" >此时此地，想与大家分享什么？</string>
+    <string name="hint_dynamic_text">此时此地，想与大家分享什么？</string>
     <string name="not_success">拒绝</string>
     <string name="tixining">提现中</string>
     <string-array name="moneys">

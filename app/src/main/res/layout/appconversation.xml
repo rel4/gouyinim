@@ -3,10 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <include layout="@layout/app_titlebar"/>
-    <fragment
+
+    <include layout="@layout/app_titlebar" />
+
+    <FrameLayout
         android:id="@+id/conversation"
-        android:name="io.rong.imkit.fragment.ConversationFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>
