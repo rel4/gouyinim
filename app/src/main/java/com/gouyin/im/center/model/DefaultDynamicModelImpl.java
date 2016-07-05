@@ -12,6 +12,7 @@ import com.gouyin.im.bean.BaseBean;
 import com.gouyin.im.center.presenter.DefaultDynamicPresenterImpl;
 import com.gouyin.im.center.widget.DynamicSendActivity;
 import com.gouyin.im.manager.UserInfoManager;
+import com.gouyin.im.utils.FastBlur;
 import com.gouyin.im.utils.FilePathUtlis;
 import com.gouyin.im.utils.ImageUtils;
 import com.gouyin.im.utils.JsonUtils;
@@ -76,12 +77,14 @@ public class DefaultDynamicModelImpl implements DefaultDynamicModel {
                         if (isHaveFuzz) {
                             //压缩质量
 
-                            //压缩大小
-                            Bitmap bitmapsize = ImageUtils.compressImageSzie(bitmap, 60, 60);
+                            //宽高压缩
+                            Bitmap bitmapsize = ImageUtils.compressImageSzie(bitmap, 200, 200);
+                            //质量压缩
                             Bitmap bitmap1 = ImageUtils.compressImage(bitmapsize, 50);
                             //模糊
-                            Bitmap bitmapblur = ImageUtils.blurImageAmeliorate(bitmap1);
-                            byte[] bitmapByte = ImageUtils.getBitmapByte(bitmapblur);
+//                            Bitmap bitmapblur = ImageUtils.blurImageAmeliorate(bitmap1,30,true);
+                            Bitmap bitmap2 = FastBlur.doBlur(bitmap1, 15, true);
+                            byte[] bitmapByte = ImageUtils.getBitmapByte(bitmap2);
                             String fuzzyFile = AliyunManager.getInstance().upLoadFiletFromByteArray(bitmapByte, FilePathUtlis.FileType.JPG);
                             if (fuzzyFile == null)
                                 fuzzyFile = "";
@@ -95,7 +98,7 @@ public class DefaultDynamicModelImpl implements DefaultDynamicModel {
 
                     subscriber.onNext(aliyunPtahs);
                 } catch (Exception e) {
-
+                    e.printStackTrace();
                 }
             }
         }).observeOn(Schedulers.io())

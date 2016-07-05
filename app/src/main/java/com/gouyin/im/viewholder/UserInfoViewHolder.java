@@ -117,7 +117,7 @@ public class UserInfoViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.
             return;
         ImageServerApi.showURLImage(playBackground, bean.getVimg());
         tvContent.setText(bean.getTitle());
-        tvTime.setText(TimeUtils.format(bean.getCreate_time()));
+        tvTime.setText(TimeUtils.format(bean.getCreate_time()*1000));
         tv_play_number.setText(bean.getLkpicn() + "");
         tv_reply_number.setText(bean.getLcomn() + "");
         tv_wacth_number.setText(bean.getLupn() + "");
@@ -160,7 +160,7 @@ public class UserInfoViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.
             return;
 
         tvContent.setText(bean.getTitle());
-        tvTime.setText(TimeUtils.format(bean.getCreate_time()));
+        tvTime.setText(TimeUtils.format(bean.getCreate_time()*1000));
         tv_play_number.setText(bean.getLkpicn() + "");
         tv_reply_number.setText(bean.getLcomn() + "");
         tv_wacth_number.setText(bean.getLupn() + "");
@@ -199,7 +199,7 @@ public class UserInfoViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            View view = UIUtils.inflateLayout(R.layout.item_pics);
+            View view = UIUtils.inflateLayout(R.layout.item_dynamic_pics);
             ImageView pic = (ImageView) view.findViewById(R.id.iv_pic);
             ImageServerApi.showURLImage(pic, bean.getSimg().get(position));
             pic.setOnClickListener(new View.OnClickListener() {

@@ -19,7 +19,7 @@ import io.rong.imlib.model.UserInfo;
 /**
  * Created by jb on 2016/7/5.
  */
-@MessageTag(value = "app:custom", flag = MessageTag.ISCOUNTED | MessageTag.ISPERSISTED)
+@MessageTag(value = "app:redpacket", flag = MessageTag.ISCOUNTED | MessageTag.ISPERSISTED)
 public class RedPacketMessage extends MessageContent {
     private static final String TAG = "TextMessage";
     private String content;

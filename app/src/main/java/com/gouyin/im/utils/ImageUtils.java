@@ -414,6 +414,8 @@ public class ImageUtils {
             be = (int) (newOpts.outWidth / ww);
         } else if (w < h && h > hh) {//如果高度高的话根据宽度固定大小缩放
             be = (int) (newOpts.outHeight / hh);
+        }else if (w==h){//长宽一样
+            be = (int) (newOpts.outHeight / hh);
         }
         if (be <= 0)
             be = 1;
@@ -449,6 +451,8 @@ public class ImageUtils {
         if (w > h && w > ww) {
             be = (int) (newOpts.outWidth / ww);
         } else if (w < h && h > hh) {//如果高度高的话根据宽度固定大小缩放
+            be = (int) (newOpts.outHeight / hh);
+        }else if (w==h){//长宽一样
             be = (int) (newOpts.outHeight / hh);
         }
         if (be <= 0)

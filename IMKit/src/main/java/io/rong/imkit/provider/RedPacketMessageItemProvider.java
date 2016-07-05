@@ -24,9 +24,9 @@ public class RedPacketMessageItemProvider extends IContainerItemProvider.Message
         ViewHolder holder = (ViewHolder) view.getTag();
         String money = redPacketMessage.getContent();
         if (uiMessage.getMessageDirection() == Message.MessageDirection.SEND) {//消息方向，自己发送的
-            money = "您发了一个" + money + "红包";
+            money = "您发了一个" + money + "元红包";
         } else {
-            money = "您收到一个" + money + "红包";
+            money = "您收到一个" + money + "元红包";
         }
         holder.message.setText(money);
     }
