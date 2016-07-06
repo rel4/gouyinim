@@ -17,6 +17,11 @@ public class PersonInfoDetail extends BaseDataBean {
      */
     private int attestation;
 
+    /**
+     * 1男 2 女
+     *
+     * @return
+     */
     public String getSex() {
         return sex;
     }

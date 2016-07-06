@@ -1,6 +1,7 @@
 package com.gouyin.im.viewholder;
 
 
+import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -8,6 +9,8 @@ import android.widget.TextView;
 import com.gouyin.im.ImageServerApi;
 import com.gouyin.im.R;
 import com.gouyin.im.bean.UserInfoDetailBean;
+import com.gouyin.im.manager.UserInfoManager;
+import com.gouyin.im.utils.StringUtis;
 import com.gouyin.im.utils.UIUtils;
 
 import butterknife.Bind;
@@ -52,14 +55,26 @@ public class PersonDynamicViewholder extends BaseHolder<UserInfoDetailBean> {
         UserInfoDetailBean.UserInfoDetailDataBean.Baseinfo baseinfo = bean.getBaseinfo();
         if (baseinfo != null) {
             ImageServerApi.showURLBigImage(userBackground, baseinfo.getLike_image());
-            ImageServerApi.showURLSamllImage(ivUserIcon, baseinfo.getLikeImage());
+            ImageServerApi.showURLSamllImage(ivUserIcon, baseinfo.getFace());
             tvUserName.setText(baseinfo.getNickname());
+
+            String userSex = UserInfoManager.getInstance().getUserSex();
+            if (StringUtis.equals(userSex, "1")) {
+                Drawable nav_up = UIUtils.getResources().getDrawable(R.mipmap.icon_man);
+                nav_up.setBounds(0, 0, nav_up.getMinimumWidth(), nav_up.getMinimumHeight());
+                tvUserName.setCompoundDrawables(null, null, nav_up, null);
+            } else if (StringUtis.equals(userSex, "2")) {
+                Drawable nav_up = UIUtils.getResources().getDrawable(R.mipmap.icon_woman);
+                nav_up.setBounds(0, 0, nav_up.getMinimumWidth(), nav_up.getMinimumHeight());
+                tvUserName.setCompoundDrawables(null, null, nav_up, null);
+                tvUserName.setCompoundDrawablePadding(10);
+            }
 
         }
         UserInfoDetailBean.UserInfoDetailDataBean.Addons addons = bean.getAddons();
         if (addons != null) {
-            tvUserAllIncome.setText(addons.getIncome_all());
-            tvUserDayIncome.setText(addons.getIncome_today());
+            tvUserAllIncome.setText(UIUtils.getStringRes(R.string.all_income) + addons.getIncome_all() + UIUtils.getStringRes(R.string.yuan));
+            tvUserDayIncome.setText(UIUtils.getStringRes(R.string.day_income) + addons.getIncome_today() + UIUtils.getStringRes(R.string.yuan));
             tvFenNumber.setText(addons.getUfann());
             tvDynamicNumber.setText(addons.getUlatn());
             tvFlowerNumber.setText(addons.getUfann());

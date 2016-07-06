@@ -37,6 +37,7 @@ public class RedpacketAcitivity extends BaseActivity implements PlayUserAcitivit
     private String[] moneys;
     private int[] flowers = {R.mipmap.flower_1, R.mipmap.flower_2, R.mipmap.flower_3, R.mipmap.flower_4, R.mipmap.flower_5, R.mipmap.flower_6, R.mipmap.flower_7, R.mipmap.flower_8, R.mipmap.flower_9};
     private String[] flowerNames;
+    private String[] flowerMoney;
 
     public enum RedpacketType {
         TYPE_REDPACKET(1), TYPE_FLOWER(2);
@@ -57,7 +58,11 @@ public class RedpacketAcitivity extends BaseActivity implements PlayUserAcitivit
             moneys = UIUtils.getResources().getStringArray(R.array.moneys);
         } else if (2 == type) {
             flowerNames = UIUtils.getResources().getStringArray(R.array.flower_name);
-
+            flowerMoney = UIUtils.getResources().getStringArray(R.array.flower_money);
+            editText.setCursorVisible(false);
+            editText.setCursorVisible(false);
+            editText.setFocusable(false);
+            editText.setHint(UIUtils.getStringRes(R.string.switch_flower));
         }
     }
 
@@ -83,15 +88,15 @@ public class RedpacketAcitivity extends BaseActivity implements PlayUserAcitivit
 
         uid = getIntent().getStringExtra("id");
         type = getIntent().getIntExtra("type", -1);
-        addData();
+
         presenter = new RedpacketAcitivityPresenterImpl();
         presenter.attachView(this);
-
         return UIUtils.inflateLayout(R.layout.activity_red_packet);
     }
 
     @Override
     protected void initView() {
+        addData();
         String avater = getIntent().getStringExtra("avater");
         if (!StringUtis.isEmpty(avater))
             ImageServerApi.showURLSamllImage(ivUserIcon, avater);
@@ -175,7 +180,9 @@ public class RedpacketAcitivity extends BaseActivity implements PlayUserAcitivit
                     iv.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            editText.setText(moneys[position]);
+                            editText.setText("");
+                            String s = moneys[position];
+                            editText.getText().insert(editText.getSelectionStart(), s);
                         }
                     });
                     tvMoney.setText(moneys[position]);
@@ -191,7 +198,9 @@ public class RedpacketAcitivity extends BaseActivity implements PlayUserAcitivit
                     iv.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            editText.setText(position + "");
+                            editText.setText("");
+                            String s = flowerMoney[position];
+                            editText.getText().insert(editText.getSelectionStart(), s);
                         }
                     });
                     break;

@@ -87,6 +87,7 @@
         android:textSize="12sp" />
 
     <TextView
+
         android:id="@+id/tv_play_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -94,9 +95,12 @@
         android:layout_below="@id/layout_content"
         android:layout_marginLeft="@dimen/x40"
         android:layout_toRightOf="@+id/tv_reply_number"
+        android:drawableLeft="@mipmap/icon_red_packet"
+        android:drawablePadding="@dimen/x5"
         android:text="@string/loading"
-        android:textColor="@color/gray_color"
-        android:textSize="12sp" />
+        android:textColor="@color/background_red_color"
+        android:textSize="12sp"
+        android:visibility="invisible" />
 
     <TextView
         android:id="@+id/tv_more__number"

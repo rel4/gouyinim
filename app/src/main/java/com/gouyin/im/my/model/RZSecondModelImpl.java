@@ -1,6 +1,7 @@
 package com.gouyin.im.my.model;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
 import com.gouyin.im.ServerApi;
 import com.gouyin.im.aliyun.AliyunManager;
@@ -69,8 +70,8 @@ public class RZSecondModelImpl implements RZSecondModel {
                     public void onNext(ArrayList<ImageObjoct> s) {
                         String loadFile = "";
                         if (!StringUtis.isEmpty(avaterpath)) {
-                            Bitmap size = ImageUtils.compressImageWithPathSzie(avaterpath, 800, 600);
-                            Bitmap bitmap = ImageUtils.compressImage(size, 1000);
+                            Bitmap avater = ImageUtils.compressImageSzie(BitmapFactory.decodeFile(avaterpath), 120, 120);
+                            Bitmap bitmap = ImageUtils.compressImage(avater, 10);
                             loadFile = AliyunManager.getInstance().upLoadFiletFromByteArray(ImageUtils.getBitmapByte(bitmap), FilePathUtlis.FileType.JPG);
                         }
                         LogUtils.e(DefaultDynamicPresenterImpl.class, "  onNext :　" + aliyunPtahs.toString());

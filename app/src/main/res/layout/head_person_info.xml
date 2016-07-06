@@ -38,26 +38,26 @@
         android:layout_marginLeft="@dimen/x20"
         android:layout_marginTop="@dimen/y20"
         android:layout_toRightOf="@+id/iv_user_icon"
-        android:background="@color/text_black_color"
-        android:text="@string/loading" />
+        android:text="@string/loading"
+        android:textColor="@color/text_black_color" />
 
     <TextView
         android:id="@+id/tv_user_day_income"
-
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tv_user_all_income"
         android:layout_below="@+id/tv_user_name"
-        android:layout_marginLeft="@dimen/x50"
+        android:layout_marginLeft="@dimen/x100"
         android:layout_toRightOf="@+id/tv_user_all_income"
         android:text="@string/loading"
         android:textColor="@color/text_black_color" />
 
     <LinearLayout
+        android:layout_marginTop="@dimen/x20"
         android:id="@+id/layout_info"
         android:layout_width="match_parent"
         android:layout_height="@dimen/y90"
         android:layout_below="@+id/iv_user_icon"
-        android:layout_marginLeft="@dimen/x20"
         android:orientation="horizontal">
 
         <RelativeLayout
@@ -79,13 +79,15 @@
                 android:layout_below="@+id/tv_fen_number"
                 android:layout_centerHorizontal="true"
                 android:text="@string/str_fen"
-                android:textColor="@color/gray_color" />
+                android:textColor="@color/gray_color"
+                android:textSize="12sp" />
 
             <ImageView
-
-                android:layout_width="@dimen/x2"
+                android:layout_width="@dimen/x1"
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true"
+                android:layout_marginBottom="@dimen/x15"
+                android:layout_marginTop="@dimen/x15"
                 android:background="@color/gray_color" />
         </RelativeLayout>
 
@@ -104,17 +106,21 @@
 
             <TextView
                 android:layout_width="wrap_content"
+
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_wacth_number"
                 android:layout_centerHorizontal="true"
                 android:text="@string/wacth"
-                android:textColor="@color/gray_color" />
+                android:textColor="@color/gray_color"
+                android:textSize="12sp" />
+
 
             <ImageView
-
-                android:layout_width="@dimen/x2"
+                android:layout_width="@dimen/x1"
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true"
+                android:layout_marginBottom="@dimen/x15"
+                android:layout_marginTop="@dimen/x15"
                 android:background="@color/gray_color" />
         </RelativeLayout>
 
@@ -134,17 +140,21 @@
 
             <TextView
                 android:layout_width="wrap_content"
+
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_dynamic_number"
                 android:layout_centerHorizontal="true"
                 android:text="@string/dynamic"
-                android:textColor="@color/gray_color" />
+                android:textColor="@color/gray_color"
+                android:textSize="12sp" />
+
 
             <ImageView
-
-                android:layout_width="@dimen/x2"
+                android:layout_width="@dimen/x1"
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true"
+                android:layout_marginBottom="@dimen/x15"
+                android:layout_marginTop="@dimen/x15"
                 android:background="@color/gray_color" />
         </RelativeLayout>
 
@@ -156,11 +166,13 @@
 
             <TextView
                 android:id="@+id/tv_flower_number"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:text="@string/loading"
-                android:textColor="@color/text_black_color" />
+                android:textColor="@color/text_black_color"
+                android:textSize="12sp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -168,7 +180,8 @@
                 android:layout_below="@+id/tv_flower_number"
                 android:layout_centerHorizontal="true"
                 android:text="@string/flower"
-                android:textColor="@color/gray_color" />
+                android:textColor="@color/gray_color"
+                android:textSize="12sp" />
 
         </RelativeLayout>
     </LinearLayout>

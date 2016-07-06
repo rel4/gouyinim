@@ -61,6 +61,7 @@ public class MyFragmentPresenterImpl implements MyFragmentPresenter, BaseIModel.
     public void loadonRefreshData() {
         view.showLoading();
         model.loadonRefreshData(1, this);
+        page = 2;
 
     }
 

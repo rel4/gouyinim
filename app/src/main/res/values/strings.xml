@@ -103,6 +103,12 @@
     <string name="hint_dynamic_text">此时此地，想与大家分享什么？</string>
     <string name="not_success">拒绝</string>
     <string name="tixining">提现中</string>
+    <string name="all_income">总收入</string>
+    <string name="day_income">当日收入</string>
+    <string name="yuan">元</string>
+    <string name="show_wacth_redpacket">%1$s人看了照片，共%2$s元</string>
+    <string name="pay">支付</string>
+    <string name="switch_flower">请选择花束</string>
     <string-array name="moneys">
         <item>8</item>
         <item>28</item>
@@ -115,14 +121,27 @@
         <item>1314</item>
     </string-array>
     <string-array name="flower_name">
+
+        <item>约吧</item>
+        <item>爱吧</item>
+        <item>要吗</item>
+        <item>爱上你</item>
+        <item>爱我吧</item>
         <item>我爱你</item>
-        <item>我心永恒</item>
-        <item>薰衣草之恋</item>
-        <item>蓝色妖姬</item>
-        <item>百年好合</item>
-        <item>星语星愿</item>
-        <item>希望之魅</item>
+        <item>想约你</item>
         <item>土豪随便花</item>
-        <item>萌萌的爱</item>
+        <item>想泡你</item>
+    </string-array>
+    <string-array name="flower_money">
+
+        <item>18</item>
+        <item>28</item>
+        <item>122</item>
+        <item>230</item>
+        <item>258</item>
+        <item>520</item>
+        <item>666</item>
+        <item>1314</item>
+        <item>9420</item>
     </string-array>
 </resources>

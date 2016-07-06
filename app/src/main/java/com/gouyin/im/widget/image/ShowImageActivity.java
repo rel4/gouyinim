@@ -76,6 +76,8 @@ public class ShowImageActivity extends BaseActivity {
             showToast("一次最多只能选择9张图片");
             select_list.clear();
         } else {
+            tvTitleRight.setClickable(false);
+            tvTitleRight.setFocusable(false);
             RxBus.getInstance().send(Events.EventEnum.PIC_DESTROY, null);
             Events<List> event = new Events<List>();
             event.what = Events.EventEnum.GET_PHOTO_LIST;

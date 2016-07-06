@@ -1,8 +1,6 @@
 package com.gouyin.im.widget.image;
 
-import android.app.ProgressDialog;
 import android.content.ContentResolver;
-import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Environment;
@@ -16,9 +14,9 @@ import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.gouyin.im.R;
 import com.gouyin.im.base.BaseActivity;
 import com.gouyin.im.bean.ImageBean;
-import com.gouyin.im.R;
 import com.gouyin.im.event.Events;
 import com.gouyin.im.event.RxBus;
 import com.gouyin.im.utils.ActivityUtils;

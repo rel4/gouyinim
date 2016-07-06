@@ -75,6 +75,11 @@ public abstract class BaseRecyclerViewAdapter<T extends BaseDataBean> extends Re
         this.listener = listener;
     }
 
+    public void clean() {
+        if (datas != null)
+            datas.clear();
+    }
+
     public interface onItemClickListener {
         void onItemclick(View view, int position);
     }

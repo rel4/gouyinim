@@ -46,10 +46,10 @@ public class PayDynamicRedPackketActivity extends Activity implements PayDynamic
         return UIUtils.inflateLayout(R.layout.activity_pay_dynamic_packet);
     }
 
-
     protected void initView() {
-        SpannableString html = new SpannableString(money + "  元");
-        html.setSpan(new AbsoluteSizeSpan(30, true), 0, 1, Spanned.SPAN_INCLUSIVE_INCLUSIVE);
+        SpannableString html = new SpannableString(money + " " + UIUtils.getStringRes(R.string.yuan));
+
+        html.setSpan(new AbsoluteSizeSpan(30, true), 0, money.length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
         tvMoney.setText(html);
     }
 

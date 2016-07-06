@@ -31,12 +31,12 @@ import butterknife.Bind;
 public class UserInfoViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList> {
 
     //1 红包图集
-    public static final int FLAG_TYPE_PIC_LIST = 1;
+    public static final int TYPE_REDPACTKET_DYNAMIC = 1;
 
     //2 普通图片
-    public static final int FLAG_TYPE_PIC_ = 2;
+    public static final int TYPE_DEFAULT_DYNAMIC = 2;
     //3 视频
-    public static final int FLAG_TYPE_TV = 3;
+    public static final int TYPE_VIDEO_DYNAMIC = 3;
 
 
     @Bind(R.id.riv_user_image)
@@ -61,6 +61,7 @@ public class UserInfoViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.
     private TextView tvPlay;
     private ImageView playBackground;
     private VideoView play;
+    private TextView tv_show_redpacket;
 
     public UserInfoViewHolder(View view, int viewType) {
         super(view);
@@ -70,15 +71,16 @@ public class UserInfoViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.
 
     private void initFragment() {
         switch (viewType) {
-            case FLAG_TYPE_PIC_:
-            case FLAG_TYPE_PIC_LIST:
+            case TYPE_DEFAULT_DYNAMIC:
+            case TYPE_REDPACTKET_DYNAMIC:
                 View view = UIUtils.inflateLayout(R.layout.item_user_pic);
                 mfragment.removeAllViews();
                 mfragment.addView(view);
 
                 gvUserPic = (NoScrollGridView) view.findViewById(R.id.gv_user_pic);
+                tv_show_redpacket = (TextView) view.findViewById(R.id.tv_show_redpacket);
                 break;
-            case FLAG_TYPE_TV:
+            case TYPE_VIDEO_DYNAMIC:
                 mfragment.removeAllViews();
                 View palyView = UIUtils.inflateLayout(R.layout.item_user_tv);
                 tvPlay = (TextView) palyView.findViewById(R.id.tv_play_content);
@@ -91,16 +93,15 @@ public class UserInfoViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.
 
     @Override
     public void onBindData(UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList bean) {
-        LogUtils.e(this, "onBindData " + bean.getTitle());
         tvStr.setText(bean.getTitle());
         switch (bean.getType()) {
-            case FLAG_TYPE_PIC_LIST:
+            case TYPE_REDPACTKET_DYNAMIC:
                 setPICData(bean);
                 break;
-            case FLAG_TYPE_PIC_:
+            case TYPE_DEFAULT_DYNAMIC:
                 setPICData(bean);
                 break;
-            case FLAG_TYPE_TV:
+            case TYPE_VIDEO_DYNAMIC:
                 setTVData(bean);
                 break;
 
@@ -117,7 +118,7 @@ public class UserInfoViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.
             return;
         ImageServerApi.showURLImage(playBackground, bean.getVimg());
         tvContent.setText(bean.getTitle());
-        tvTime.setText(TimeUtils.format(bean.getCreate_time()*1000));
+        tvTime.setText(TimeUtils.format(bean.getCreate_time() * 1000));
         tv_play_number.setText(bean.getLkpicn() + "");
         tv_reply_number.setText(bean.getLcomn() + "");
         tv_wacth_number.setText(bean.getLupn() + "");
@@ -160,12 +161,31 @@ public class UserInfoViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.
             return;
 
         tvContent.setText(bean.getTitle());
-        tvTime.setText(TimeUtils.format(bean.getCreate_time()*1000));
-        tv_play_number.setText(bean.getLkpicn() + "");
-        tv_reply_number.setText(bean.getLcomn() + "");
-        tv_wacth_number.setText(bean.getLupn() + "");
+        tvTime.setText(TimeUtils.format(bean.getCreate_time() * 1000));
+
+        tv_reply_number.setText(bean.getLcomn());
+        tv_wacth_number.setText(bean.getLupn());
         tvStr.setText(bean.getNickname());
         ImageServerApi.showURLImage(rivUserImage, bean.getFace());
+
+        if (bean.getType() == TYPE_REDPACTKET_DYNAMIC) {
+            if (tv_show_redpacket != null) {
+                String format = String.format(UIUtils.getStringRes(R.string.show_wacth_redpacket), bean.getLredn(), bean.getTmoney());
+                tv_show_redpacket.setText(format);
+                tv_show_redpacket.setVisibility(View.VISIBLE);
+            }
+            if (tv_play_number != null) {
+                tv_play_number.setText(bean.getLkpicn());
+                tv_play_number.setVisibility(View.VISIBLE);
+            }
+        } else {
+            if (tv_show_redpacket != null) {
+                tv_show_redpacket.setVisibility(View.INVISIBLE);
+            }
+            if (tv_play_number != null) {
+                tv_play_number.setVisibility(View.INVISIBLE);
+            }
+        }
         gvUserPic.setAdapter(new PicGridView(bean));
 
     }

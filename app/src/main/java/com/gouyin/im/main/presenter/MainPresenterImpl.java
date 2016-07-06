@@ -78,8 +78,10 @@ public class MainPresenterImpl implements MainPresenter, BaseIModel.onLoadDateSi
         if (!UserInfoManager.getInstance().isLogin())
             return;
         String rongyunKey = UserInfoManager.getInstance().getRongyunKey();
-        if (StringUtis.isEmpty(rongyunKey))
+        if (StringUtis.isEmpty(rongyunKey)) {
+            RxBus.getInstance().send(Events.EventEnum.GET_RONGYUN_KEY, null);
             return;
+        }
         RongyunConfig.getInstance().connectRonyun(rongyunKey, new RongyunConfig.ConnectCallback() {
 
             @Override

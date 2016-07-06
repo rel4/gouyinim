@@ -3,21 +3,20 @@ package com.gouyin.im.my.widget;
 import android.content.Intent;
 import android.view.View;
 import android.widget.GridView;
+import android.widget.ImageView;
 
 import com.gouyin.im.R;
 import com.gouyin.im.adapter.RZGridViewAdapter;
 import com.gouyin.im.base.BaseActivity;
-import com.gouyin.im.center.widget.DefaultDynamicSendActivity;
-import com.gouyin.im.center.widget.DynamicSendActivity;
 import com.gouyin.im.event.Events;
 import com.gouyin.im.event.RxBus;
 import com.gouyin.im.my.persenter.RZSecondPersenter;
 import com.gouyin.im.my.persenter.RZSecondPersenterImpl;
 import com.gouyin.im.my.view.RZSecondView;
 import com.gouyin.im.utils.ActivityUtils;
-import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.StringUtis;
 import com.gouyin.im.utils.UIUtils;
+import com.gouyin.im.widget.NoScrollGridView;
 import com.trello.rxlifecycle.ActivityEvent;
 
 import java.util.ArrayList;
@@ -31,7 +30,9 @@ import butterknife.OnClick;
 public class RZSecondActivity extends BaseActivity implements RZSecondView {
 
     @Bind(R.id.grid_view)
-    GridView gridView;
+    NoScrollGridView gridView;
+    @Bind(R.id.tv_add_pic)
+    ImageView tv_add_pic;
     private ArrayList<String> pics;
     private RZSecondPersenter persenter;
 
@@ -53,8 +54,6 @@ public class RZSecondActivity extends BaseActivity implements RZSecondView {
                 .onNext(events -> pageFinish())
                 .create();
 
-
-        gridView.setVisibility(View.GONE);
     }
 
     private void pageFinish() {
@@ -72,14 +71,36 @@ public class RZSecondActivity extends BaseActivity implements RZSecondView {
                             if (events != null) {
                                 Object message = events.getMessage();
                                 if (message != null && message instanceof ArrayList) {
-                                    pics = (ArrayList) message;
-                                    gridView.setAdapter(new RZGridViewAdapter(pics));
-                                    gridView.setVisibility(View.VISIBLE);
+                                    ArrayList ls = (ArrayList) message;
+                                    addPic(ls);
 
                                 }
                             }
                         }
                 ).create();
+    }
+
+    public void addPic(ArrayList<String> ls) {
+        if (ls == null || ls.size() == 0)
+            return;
+        if (pics == null) {
+            pics = new ArrayList<String>();
+        }
+        if ((pics.size() + ls.size()) > 9) {
+            showToast(UIUtils.getStringRes(R.string.pic_more_nine));
+            return;
+        }
+        if ((pics.size() + ls.size()) == 9) {
+            tv_add_pic.setVisibility(View.INVISIBLE);
+        }
+        for (String s : ls) {
+            if (!pics.contains(s)) {
+                pics.add(s);
+            }
+        }
+        gridView.setAdapter(new RZGridViewAdapter(pics));
+
+
     }
 
     @OnClick({R.id.tv_add_pic, R.id.tv_submit})

@@ -209,6 +209,8 @@ public class MyFragment extends BaseFragment implements MyFragmentView {
             mAdapter = new UserInfoAdapter(list);
             recyclerview.setAdapter(mAdapter);
         } else {
+            if (isRefresh)
+                mAdapter.clean();
             mAdapter.addData(list);
             mAdapter.onRefresh();
         }
@@ -217,6 +219,7 @@ public class MyFragment extends BaseFragment implements MyFragmentView {
 
     @Override
     public void setUserInfo(UserInfoDetailBean bean) {
+
         personDynamicViewholder.refreshView(bean);
     }
 }

@@ -14,6 +14,7 @@ import io.rong.imkit.RongyunConfig;
 public class UserInfoManager {
     private volatile static UserInfoManager instance;
     private static PersonInfoDetail info;
+    private Object userSex;
 
 
     public static UserInfoManager getInstance() {
@@ -144,5 +145,9 @@ public class UserInfoManager {
 
     public int getCertificationStatus() {
         return info.getAttestation();
+    }
+
+    public String getUserSex() {
+        return info.getSex();
     }
 }

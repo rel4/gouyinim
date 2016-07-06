@@ -2,7 +2,9 @@ package com.gouyin.im.main.widget;
 
 import android.graphics.Color;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.gouyin.im.AppConstant;
@@ -47,7 +49,8 @@ public class UserInfoActivity extends BaseActivity implements UserInfoView {
     TextView tvSendMsg;
     @Bind(R.id.tv_appointment)
     TextView tvAppointment;
-
+    @Bind(R.id.layout_usee_action)
+    LinearLayout layout_usee_action;
 
     private UserInfoPresenter mPresenter;
     private UserInfoAdapter mAdapter;
@@ -62,7 +65,21 @@ public class UserInfoActivity extends BaseActivity implements UserInfoView {
         userId = getIntent().getStringExtra(AppConstant.USER_ID);
         recyclerview.setVerticalLinearLayoutManager();
         recyclerview.addHeaderView(initHeadLayout());
+        recyclerview.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                if (layout_usee_action != null && !layout_usee_action.isShown())
+                    layout_usee_action.setVisibility(View.VISIBLE);
+            }
 
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if (layout_usee_action != null && layout_usee_action.isShown())
+                    layout_usee_action.setVisibility(View.INVISIBLE);
+            }
+        });
         recyclerview.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {

@@ -96,8 +96,8 @@ public class IconCompress {
      * 保存方法
      */
     public static File saveBitmap(Bitmap bm, String imgpath, String picName) {
-        String s = imgpath.substring(0, imgpath.length() - 1);
-        File f = new File(s);
+//        String s = imgpath.substring(0, imgpath.length() - 1);
+        File f = new File(imgpath);
         if (!f.exists()) {
             try {
                 // 按照指定的路径创建文件夹

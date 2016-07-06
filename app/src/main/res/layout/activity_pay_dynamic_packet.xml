@@ -5,7 +5,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/y421"
+        android:layout_height="@dimen/y600"
         android:layout_alignParentBottom="true"
         android:background="@color/background_white_color">
 
@@ -15,6 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/x30"
             android:layout_marginTop="@dimen/x30"
+            android:padding="@dimen/x30"
             android:src="@mipmap/dynamic_logout" />
 
         <TextView
@@ -50,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:layout_marginTop="@dimen/x50"
-                android:text="@string/send_dynamic"
+                android:text="@string/pay"
                 android:textColor="@color/background_red_color" />
         </RelativeLayout>
     </RelativeLayout>

@@ -19,15 +19,16 @@ import java.util.ArrayList;
  */
 public class RZGridViewAdapter extends BaseAdapter {
 
-    private ArrayList<String> pics;
+    private ArrayList<String> ls;
 
     public RZGridViewAdapter(ArrayList<String> pics) {
-        this.pics = pics;
+        this.ls = pics;
     }
 
     @Override
     public int getCount() {
-        return pics == null ? 0 : pics.size();
+
+        return ls == null ? 0 : ls.size();
     }
 
     @Override
@@ -42,9 +43,9 @@ public class RZGridViewAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View view = UIUtils.inflateLayout(R.layout.item_pics);
+        View view = UIUtils.inflateLayout(R.layout.item_dynamic_pics);
         ImageView pic = (ImageView) view.findViewById(R.id.iv_pic);
-        ImageServerApi.showURLSamllImage(pic, pics.get(position));
+        ImageServerApi.showURLSamllImage(pic, ls.get(position));
         return view;
     }
 }
