@@ -2,30 +2,36 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/app_title_bar"
     android:layout_width="match_parent"
-    android:background="@android:color/holo_green_dark"
-    android:layout_height="@dimen/y90">
+    android:layout_height="@dimen/y90"
+    android:background="@color/background_white_color">
 
-    ...
     <ImageView
-        android:padding="@dimen/x20"
         android:id="@+id/action_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_marginLeft="@dimen/y40"
-        android:src="@mipmap/app_back_icon" />
+        android:padding="@dimen/x20"
+        android:src="@mipmap/icon_arrow_back" />
 
     <TextView
         android:id="@+id/tv_title_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true" />
+
     <TextView
-        android:layout_marginRight="@dimen/x30"
-        android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"
         android:id="@+id/tv_title_right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true" />
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/x30" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y1"
+        android:layout_alignParentBottom="true"
+        android:background="@color/gray_color" />
 </RelativeLayout>

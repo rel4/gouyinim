@@ -1,12 +1,11 @@
 package com.gouyin.im.center.model;
 
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 
 import com.alibaba.sdk.android.oss.ClientException;
 import com.alibaba.sdk.android.oss.ServiceException;
 import com.gouyin.im.ServerApi;
-import com.gouyin.im.aliyun.AliyunManager;
+import com.gouyin.im.manager.aliyun.AliyunManager;
 import com.gouyin.im.base.ImageObjoct;
 import com.gouyin.im.bean.BaseBean;
 import com.gouyin.im.center.presenter.DefaultDynamicPresenterImpl;
@@ -24,7 +23,6 @@ import java.util.List;
 
 import rx.Observable;
 import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
@@ -83,7 +81,7 @@ public class DefaultDynamicModelImpl implements DefaultDynamicModel {
                             Bitmap bitmap1 = ImageUtils.compressImage(bitmapsize, 50);
                             //模糊
 //                            Bitmap bitmapblur = ImageUtils.blurImageAmeliorate(bitmap1,30,true);
-                            Bitmap bitmap2 = FastBlur.doBlur(bitmap1, 15, true);
+                            Bitmap bitmap2 = FastBlur.doBlur(bitmap1, 20, true);
                             byte[] bitmapByte = ImageUtils.getBitmapByte(bitmap2);
                             String fuzzyFile = AliyunManager.getInstance().upLoadFiletFromByteArray(bitmapByte, FilePathUtlis.FileType.JPG);
                             if (fuzzyFile == null)

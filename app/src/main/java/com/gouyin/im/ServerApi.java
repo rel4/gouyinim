@@ -178,10 +178,9 @@ public class ServerApi {
          * @param page
          * @return
          */
-        @FormUrlEncoded
-        @POST("Userrec/get_list_jingxuan")
-        Observable<GoodSelectBaen> getGoodSelect(@Field("type") String type,
-                                                 @Field("page") int page);
+        @GET("Userrec/get_list_jingxuan")
+        Observable<GoodSelectBaen> getGoodSelect(@Query("type") String type,
+                                                 @Query("page") int page);
 
         /**
          * 个人动态信息列表
@@ -266,7 +265,7 @@ public class ServerApi {
         @POST("Flower/pub_flower")
         Observable<DefaultDataBean> getFlowerIndent(@Field("pay_type") String type,
                                                     @Field("to_uid") String uid,
-                                                    @Field("flower_type") String money,
+                                                    @Field("money") String money,
                                                     @Field("authcode") String authcode);
 
         /**
@@ -411,6 +410,20 @@ public class ServerApi {
          */
         @GET("Account/get_list")
         Observable<CardInfoBean> getCardInfo(@Query("authcode") String authcode);
+
+        /**
+         * 关注
+         *
+         * @param uid
+         * @param type     1关注操作，2取消关注操作
+         * @param authcode
+         * @return
+         */
+        @FormUrlEncoded
+        @POST("Follow/follow_act")
+        Observable<DefaultDataBean> getWacthAction(@Field("touid") String uid,
+                                                   @Field("type") String type,
+                                                   @Field("authcode") String authcode);
     }
 }
 

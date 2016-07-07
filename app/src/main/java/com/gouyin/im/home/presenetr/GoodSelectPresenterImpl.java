@@ -16,7 +16,7 @@ import java.util.List;
 public class GoodSelectPresenterImpl implements GoodSelectPresenter, BaseIModel.onLoadDateSingleListener<List<GoodSelectBaen.Data>> {
     private final GoodSelectModelImpl mGoodModel;
     private final GoodSelectView mGoodView;
-    private int page = 1;
+    private int page = 2;
 
     public GoodSelectPresenterImpl(GoodSelectView goodSelectView) {
         this.mGoodView = goodSelectView;
@@ -25,27 +25,27 @@ public class GoodSelectPresenterImpl implements GoodSelectPresenter, BaseIModel.
 
     @Override
     public void uploadGoodSelectDateList() {
-        mGoodView.show();
+        mGoodView.showLoading();
         mGoodModel.loadGoodSelectDate("1", 1, this);
-        page++;
+        page = 2;
     }
 
     @Override
     public void downloadGoodSelectDateList() {
-        mGoodView.show();
+        mGoodView.showLoading();
         mGoodModel.loadGoodSelectDate("1", page, this);
+        page++;
     }
 
     @Override
     public void onSuccess(List<GoodSelectBaen.Data> list, BaseIModel.DataType type) {
-
         mGoodView.addGoodSelectDate(list);
-        mGoodView.hide();
+        mGoodView.hideLoading();
     }
 
     @Override
     public void onFailure(String msg) {
-        mGoodView.hide();
-        LogUtils.e(this, msg);
+        mGoodView.hideLoading();
+        mGoodView.transfePageMsg(msg);
     }
 }

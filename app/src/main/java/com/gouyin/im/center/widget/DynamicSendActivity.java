@@ -45,7 +45,7 @@ public class DynamicSendActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.send_red_packet_list, R.id.send_video, R.id.send_dynamic})
+    @OnClick({R.id.send_red_packet_list, R.id.send_video, R.id.send_dynamic, R.id.iv_action_back})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.send_red_packet_list:
@@ -56,6 +56,9 @@ public class DynamicSendActivity extends BaseActivity {
                 break;
             case R.id.send_dynamic:
                 ActivityUtils.startDefaultDynamicSendActivity(null, DynamicType.DEFAULT);
+                break;
+            case R.id.iv_action_back:
+                finish();
                 break;
         }
     }

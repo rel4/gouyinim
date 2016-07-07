@@ -36,6 +36,7 @@ public class RedpacketAcitivityPresenterImpl implements RedpacketAcitivityPresen
                 view.pageFinish();
                 break;
             case R.id.tv_weixin_play:
+                view.weixinPay();
                 break;
             case R.id.tv_aliplay_play:
                 view.swicthAliPlay();

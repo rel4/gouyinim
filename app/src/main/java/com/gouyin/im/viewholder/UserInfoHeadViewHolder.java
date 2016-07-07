@@ -2,15 +2,23 @@ package com.gouyin.im.viewholder;
 
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.gouyin.im.AppConstant;
 import com.gouyin.im.ImageServerApi;
 import com.gouyin.im.R;
+import com.gouyin.im.base.BaseIModel;
+import com.gouyin.im.bean.DefaultDataBean;
 import com.gouyin.im.bean.UserInfoDetailBean;
+import com.gouyin.im.main.model.UserActionModelImpl;
+import com.gouyin.im.main.widget.UserInfoActivity;
+import com.gouyin.im.utils.StringUtis;
 import com.gouyin.im.utils.UIUtils;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by jb on 2016/6/22.
@@ -30,9 +38,12 @@ public class UserInfoHeadViewHolder {
     TextView tvDynamicNumber;
     @Bind(R.id.tv_flower_number)
     TextView tvFlowerNumber;
-    @Bind(R.id.tv_wacth)
-    TextView tvWacth;
+    @Bind(R.id.layout_click_wacth)
+    RelativeLayout layout_click_wacth;
+    @Bind(R.id.tv_wacth_status)
+    ImageView tv_wacth_status;
     private UserInfoDetailBean userInfodetail;
+    private UserInfoActivity userInfoView;
 
     public UserInfoHeadViewHolder(View view) {
         ButterKnife.bind(this, view);
@@ -53,18 +64,58 @@ public class UserInfoHeadViewHolder {
         tvDynamicNumber.setText(addons.getUlatn());
         tvFlowerNumber.setText(addons.getUfann());
         tvWacthNumber.setText(addons.getUfoln());
-        tvWacth.setText(getwacthStatus(data.getFollow()));
+        getwacthStatus(data.getFollow(), data.getUid());
+
     }
 
-    private String getwacthStatus(String str) {
-        String status = null;
+    private void getwacthStatus(String str, String uid) {
         if ("1".equals(str)) {
-            status = UIUtils.getStringRes(R.string.already) + UIUtils.getStringRes(R.string.wacth);
-        } else if ("2".equals(str))
-            status = UIUtils.getStringRes(R.string.one_another) + UIUtils.getStringRes(R.string.wacth);
-        else if ("3".equals(str))
-            status = UIUtils.getStringRes(R.string.no) + UIUtils.getStringRes(R.string.wacth);
+            layout_click_wacth.setVisibility(View.GONE);
+            ImageServerApi.showResourcesImage(tv_wacth_status, R.mipmap.btn_attention_has_been);
+        } else if ("2".equals(str)) {
+            layout_click_wacth.setVisibility(View.GONE);
+            ImageServerApi.showResourcesImage(tv_wacth_status, R.mipmap.btn_attention);
+        } else if ("3".equals(str)) {
+            layout_click_wacth.setVisibility(View.VISIBLE);
+            layout_click_wacth.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    userInfoView.showLoading();
+                    UserActionModelImpl userActionModel = new UserActionModelImpl();
+                    userActionModel.wacthAction(uid, "1", new BaseIModel.onLoadDateSingleListener<DefaultDataBean>() {
+                        @Override
+                        public void onSuccess(DefaultDataBean bean, BaseIModel.DataType dataType) {
+                            if (bean != null) {
+                                if (StringUtis.equals(bean.getCode(), AppConstant.code_request_success)) {
+                                    layout_click_wacth.setVisibility(View.GONE);
+                                    ImageServerApi.showResourcesImage(tv_wacth_status, R.mipmap.btn_attention_has_been);
+                                }
+                                userInfoView.transfePageMsg(bean.getMsg());
+                            } else {
+                                userInfoView.transfePageMsg(UIUtils.getStringRes(R.string.request_failed));
+                            }
+                            userInfoView.hideLoading();
+                        }
 
-        return status;
+                        @Override
+                        public void onFailure(String msg) {
+                            userInfoView.hideLoading();
+                            userInfoView.transfePageMsg(msg);
+                        }
+                    });
+                }
+            });
+        }
+
+
+    }
+
+    public void setUserInfoView(UserInfoActivity userInfoView) {
+        this.userInfoView = userInfoView;
+    }
+
+    @OnClick(R.id.iv_back)
+    public void onClick(View view) {
+        userInfoView.pageFinish();
     }
 }

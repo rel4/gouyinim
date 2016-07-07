@@ -139,9 +139,19 @@ public class DefaultDynamicSendActivity extends BaseActivity implements DefaultD
                     showToast(getResources().getString(R.string.not_empty));
                     break;
                 }
+                if (content.length() > 150) {
+                    showToast(UIUtils.getStringRes(R.string.text_numer_more_150));
+                    return;
+                }
                 String address = tvAddress.getText().toString().trim();
                 if (dynamicType != DynamicSendActivity.DynamicType.video) {
                     if (datas.size() < 9) {
+                        datas.remove(datas.size() - 1);
+                    }
+                }
+                if (datas.size() == 9) {
+                    Object o = datas.get(datas.size() - 1);
+                    if (o instanceof Integer) {
                         datas.remove(datas.size() - 1);
                     }
                 }

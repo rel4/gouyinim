@@ -10,4 +10,6 @@ public interface PlayUserAcitivityView extends BaseIView {
     void swicthAliPlay();
 
     void pageFinish();
+
+    void weixinPay();
 }

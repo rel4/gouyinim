@@ -28,10 +28,9 @@
         android:id="@+id/tv_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/riv_user_image"
         android:layout_marginLeft="@dimen/x30"
+        android:layout_marginTop="@dimen/y60"
         android:layout_toRightOf="@id/riv_user_image"
-        android:singleLine="true"
         android:text="@string/loading"
         android:textColor="@color/gray_color" />
 
@@ -51,7 +50,7 @@
         android:id="@+id/layout_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/riv_user_image"
+        android:layout_below="@+id/tv_content"
         android:layout_marginLeft="@dimen/x30"
         android:layout_marginRight="@dimen/x52"
         android:layout_marginTop="@dimen/y15"

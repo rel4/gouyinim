@@ -20,6 +20,15 @@ public class UserInfoDetailBean extends BaseBean {
         private Object guard;
         private String follow;
         private Baseinfo baseinfo;
+        private String uid;
+
+        public String getUid() {
+            return uid;
+        }
+
+        public void setUid(String uid) {
+            this.uid = uid;
+        }
 
         public void setGuard(Object guard) {
             this.guard = guard;

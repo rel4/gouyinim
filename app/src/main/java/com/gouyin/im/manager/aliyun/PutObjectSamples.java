@@ -1,4 +1,4 @@
-package com.gouyin.im.aliyun;
+package com.gouyin.im.manager.aliyun;
 
 import android.util.Log;
 

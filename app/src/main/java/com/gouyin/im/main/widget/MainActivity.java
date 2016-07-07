@@ -1,6 +1,8 @@
 package com.gouyin.im.main.widget;
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.view.KeyEvent;
@@ -155,6 +157,24 @@ public class MainActivity extends BaseActivity implements MainView {
             myFragment = new MyFragment();
 
         enterPage(myFragment);
+
+    }
+
+    @Override
+    public void offline() {
+
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(UIUtils.getStringRes(R.string.Logoff_notification));
+        builder.setMessage(UIUtils.getStringRes(R.string.connect_conflict));
+        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                RxBus.getInstance().send(Events.EventEnum.LOGIN, null);
+                dialog.dismiss();
+                dialog = null;
+            }
+        });
+
 
     }
 

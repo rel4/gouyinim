@@ -4,7 +4,7 @@ import com.alibaba.sdk.android.oss.ClientException;
 import com.alibaba.sdk.android.oss.ServiceException;
 import com.gouyin.im.R;
 import com.gouyin.im.ServerApi;
-import com.gouyin.im.aliyun.AliyunManager;
+import com.gouyin.im.manager.aliyun.AliyunManager;
 import com.gouyin.im.bean.BaseBean;
 import com.gouyin.im.utils.ConfigUtils;
 import com.gouyin.im.utils.FilePathUtlis;

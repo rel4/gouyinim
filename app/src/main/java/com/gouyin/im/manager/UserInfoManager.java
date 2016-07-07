@@ -14,7 +14,6 @@ import io.rong.imkit.RongyunConfig;
 public class UserInfoManager {
     private volatile static UserInfoManager instance;
     private static PersonInfoDetail info;
-    private Object userSex;
 
 
     public static UserInfoManager getInstance() {
@@ -44,14 +43,19 @@ public class UserInfoManager {
      */
     private static PersonInfoDetail getFilePersonInfoDetail() {
         PersonInfoDetail persinInfo = null;
-        Object o = CacheManager.readObject(ConfigUtils.getInstance().getApplicationContext(), CacheManager.CachePath.PERSON_INFODETAIL_INSTANCE);
-        if (o != null && o instanceof PersonInfoDetail) {
-            persinInfo = (PersonInfoDetail) o;
-
-
-        }
-        if (persinInfo == null)
+        if (CacheManager.isExist4DataCache(ConfigUtils.getInstance().getApplicationContext(), CacheManager.CachePath.PERSON_INFODETAIL_INSTANCE)) {
+            Object o = CacheManager.readObject(ConfigUtils.getInstance().getApplicationContext(), CacheManager.CachePath.PERSON_INFODETAIL_INSTANCE);
+            if (o != null && o instanceof PersonInfoDetail) {
+                persinInfo = (PersonInfoDetail) o;
+            }
+        } else {
             persinInfo = new PersonInfoDetail();
+            CacheManager.saveObject(ConfigUtils.getInstance().getApplicationContext(), persinInfo, CacheManager.CachePath.PERSON_INFODETAIL_INSTANCE);
+        }
+        if (persinInfo == null) {
+            persinInfo = new PersonInfoDetail();
+            CacheManager.saveObject(ConfigUtils.getInstance().getApplicationContext(), persinInfo, CacheManager.CachePath.PERSON_INFODETAIL_INSTANCE);
+        }
         return persinInfo;
     }
 

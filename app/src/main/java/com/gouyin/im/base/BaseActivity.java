@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.gouyin.im.ApplicationConfig;
 import com.gouyin.im.R;
+import com.gouyin.im.manager.DeviceManager;
 import com.gouyin.im.utils.ConfigUtils;
 import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.UIUtils;
@@ -69,6 +70,13 @@ public abstract class BaseActivity extends RxAppCompatActivity {
     }
 
     /**
+     * 隐藏键盘
+     */
+    public void hideSoftInput() {
+        DeviceManager.hideSoftInput(this, getCurrentFocus());
+    }
+
+    /**
      * 初始化title名字
      *
      * @return
@@ -117,6 +125,9 @@ public abstract class BaseActivity extends RxAppCompatActivity {
     protected void onPause() {
         super.onPause();
         onBasePause();
+        if (isFinishing()) {
+            DeviceManager.hideSoftInput(this, getCurrentFocus());
+        }
     }
 
 

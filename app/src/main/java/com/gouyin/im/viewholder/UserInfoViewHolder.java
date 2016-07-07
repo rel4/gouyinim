@@ -57,7 +57,6 @@ public class UserInfoViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.
     TextView tv_play_number;
     NoScrollGridView gvUserPic;
     private int viewType;
-    private GridView mGridView;
     private TextView tvPlay;
     private ImageView playBackground;
     private VideoView play;
@@ -73,10 +72,9 @@ public class UserInfoViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.
         switch (viewType) {
             case TYPE_DEFAULT_DYNAMIC:
             case TYPE_REDPACTKET_DYNAMIC:
-                View view = UIUtils.inflateLayout(R.layout.item_user_pic);
+                View view = UIUtils.inflateLayout(R.layout.item_user_pic, mfragment);
                 mfragment.removeAllViews();
                 mfragment.addView(view);
-
                 gvUserPic = (NoScrollGridView) view.findViewById(R.id.gv_user_pic);
                 tv_show_redpacket = (TextView) view.findViewById(R.id.tv_show_redpacket);
                 break;
@@ -175,7 +173,7 @@ public class UserInfoViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.
                 tv_show_redpacket.setVisibility(View.VISIBLE);
             }
             if (tv_play_number != null) {
-                tv_play_number.setText(bean.getLkpicn());
+                tv_play_number.setText(bean.getLredn());
                 tv_play_number.setVisibility(View.VISIBLE);
             }
         } else {
@@ -232,7 +230,7 @@ public class UserInfoViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.
                     }
                 }
             });
-            return pic;
+            return view;
         }
     }
 

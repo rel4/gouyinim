@@ -1,4 +1,4 @@
-package com.gouyin.im.aliyun;
+package com.gouyin.im.manager.aliyun;
 
 import android.text.TextUtils;
 import android.util.Log;
@@ -19,9 +19,6 @@ import com.gouyin.im.utils.FilePathUtlis;
 import com.gouyin.im.utils.LogUtils;
 
 import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
 
 /**
  * Created by jb on 2016/6/16.

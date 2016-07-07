@@ -3,13 +3,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <ImageView
 
         android:id="@+id/user_background"
         android:layout_width="match_parent"
         android:layout_height="@dimen/y421"
-        android:scaleType="centerCrop"
-     />
+        android:scaleType="centerCrop" />
+
+    <ImageView
+        android:id="@+id/iv_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginTop="@dimen/x30"
+        android:src="@mipmap/icon_back_white" />
 
     <ImageView
         android:id="@+id/iv_guardian"
@@ -47,6 +55,16 @@
         android:layout_toRightOf="@+id/iv_user_icon"
         android:text="@string/loading"
         android:textSize="15sp" />
+
+    <ImageView
+        android:id="@+id/tv_wacth_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/tv_user_name"
+        android:layout_below="@+id/user_background"
+        android:layout_marginRight="@dimen/x50"
+        android:paddingTop="@dimen/x10" />
 
     <LinearLayout
         android:id="@+id/layout_text_number"
@@ -113,6 +131,7 @@
     </LinearLayout>
 
     <RelativeLayout
+        android:id="@+id/layout_click_wacth"
         android:layout_width="match_parent"
         android:layout_height="@dimen/y60"
         android:layout_below="@+id/layot_text"

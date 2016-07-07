@@ -2,12 +2,14 @@ package com.gouyin.im.login.widget;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.gouyin.im.R;
+import com.gouyin.im.base.BaseActivity;
 import com.gouyin.im.base.BaseFragment;
 import com.gouyin.im.event.Events;
 import com.gouyin.im.event.RxBus;
@@ -51,6 +53,11 @@ public class LoginFragment extends BaseFragment implements LoginFragmentView {
 
     }
 
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        ((BaseActivity) getActivity()).hideSoftInput();
+        return super.onTouch(v, event);
+    }
 
     @OnClick({R.id.tv_forget_password, R.id.submit_login})
     public void onClick(View view) {
@@ -78,6 +85,7 @@ public class LoginFragment extends BaseFragment implements LoginFragmentView {
         persenter.loginSubmit(phone, password);
 
     }
+
 
     @Override
     public void showLoading() {

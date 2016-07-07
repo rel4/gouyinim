@@ -14,6 +14,7 @@ import com.gouyin.im.base.BaseActivity;
 import com.gouyin.im.main.presenter.RedpacketAcitivityPresenter;
 import com.gouyin.im.main.presenter.RedpacketAcitivityPresenterImpl;
 import com.gouyin.im.main.view.PlayUserAcitivityView;
+import com.gouyin.im.manager.WeixinManager;
 import com.gouyin.im.utils.StringUtis;
 import com.gouyin.im.utils.UIUtils;
 import com.gouyin.im.widget.RoundedImageView;
@@ -124,6 +125,11 @@ public class RedpacketAcitivity extends BaseActivity implements PlayUserAcitivit
     @Override
     public void pageFinish() {
         finish();
+    }
+
+    @Override
+    public void weixinPay() {
+        WeixinManager.getInstance().pay();
     }
 
     private class RedpacketAdapter extends BaseAdapter {

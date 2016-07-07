@@ -125,6 +125,7 @@ public class UserInfoActivity extends BaseActivity implements UserInfoView {
     private View initHeadLayout() {
         View headView = UIUtils.inflateLayout(R.layout.head_user_info);
         headHolder = new UserInfoHeadViewHolder(headView);
+        headHolder.setUserInfoView(this);
         return headView;
     }
 
@@ -201,6 +202,7 @@ public class UserInfoActivity extends BaseActivity implements UserInfoView {
         if (bean != null && bean.getData() != null) {
             avater = bean.getData().getBaseinfo().getFace();
             nikeName = bean.getData().getBaseinfo().getNickname();
+            bean.getData().setUid(userId);
         }
         headHolder.setUserInfodetail(bean);
     }
@@ -223,7 +225,7 @@ public class UserInfoActivity extends BaseActivity implements UserInfoView {
 
     @Override
     public void transfePageMsg(String msg) {
-
+        showToast(msg);
     }
 
 

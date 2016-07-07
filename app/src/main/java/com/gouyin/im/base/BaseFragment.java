@@ -5,7 +5,9 @@ import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -19,7 +21,7 @@ import im.gouyin.com.progressdialog.ProgressDialog;
 /**
  * Created by pc on 2016/5/31.
  */
-public abstract class BaseFragment extends BaseRxFragment {
+public abstract class BaseFragment extends BaseRxFragment implements View.OnTouchListener {
     private View mRootView;
     private ProgressDialog progressDialog;
     protected Resources resources;
@@ -33,6 +35,7 @@ public abstract class BaseFragment extends BaseRxFragment {
         mRootView = onBaseCreateView(inflater, container, savedInstanceState);
         ButterKnife.bind(this, mRootView);
         initData();
+        mRootView.setOnTouchListener(this);
         return mRootView;
 
     }
@@ -75,6 +78,10 @@ public abstract class BaseFragment extends BaseRxFragment {
     public void onPause() {
         super.onPause();
         onBasePause();
+        FragmentActivity activity = getActivity();
+        if (activity != null && activity instanceof BaseActivity) {
+            ((BaseActivity) activity).hideSoftInput();
+        }
     }
 
     protected void onBasePause() {
@@ -143,4 +150,8 @@ public abstract class BaseFragment extends BaseRxFragment {
     }
 
 
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        return false;
+    }
 }

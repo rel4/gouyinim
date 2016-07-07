@@ -2,7 +2,7 @@ package com.gouyin.im.center.model;
 
 import com.gouyin.im.R;
 import com.gouyin.im.ServerApi;
-import com.gouyin.im.aliyun.AliyunManager;
+import com.gouyin.im.manager.aliyun.AliyunManager;
 import com.gouyin.im.bean.DefaultDataBean;
 import com.gouyin.im.bean.PayRedPacketPicsBean;
 import com.gouyin.im.manager.UserInfoManager;

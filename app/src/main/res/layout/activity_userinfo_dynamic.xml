@@ -3,13 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include layout="@layout/app_titlebar" />
-
     <com.gouyin.im.widget.XListView
         android:id="@+id/recyclerview"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_below="@+id/app_title_bar" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <TextView
         android:id="@+id/text_empty"
@@ -27,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/y160"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="@dimen/y40"
+        android:layout_marginBottom="@dimen/y30"
         android:layout_marginLeft="@dimen/x30"
         android:layout_marginRight="@dimen/x30"
         android:orientation="horizontal">

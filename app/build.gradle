@@ -71,4 +71,5 @@ dependencies {
     compile project(path: ':progressdialog')
     compile files('libs/aliyun-oss-sdk-android-2.2.0.jar')
     compile files('libs/alipaySdk-20160516.jar')
+    compile files('libs/libammsdk.jar')
 }

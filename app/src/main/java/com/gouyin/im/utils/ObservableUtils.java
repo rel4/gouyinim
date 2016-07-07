@@ -30,9 +30,10 @@ public class ObservableUtils {
                     @Override
                     public void onError(Throwable e) {
                         LogUtils.e("ObservableUtils", "onError : " + e.getMessage());
-                        if (callback == null)
-                            return;
-                        callback.onFailure(e.getMessage());
+                        if (callback != null)
+                            callback.onFailure(e.getMessage());
+
+
                     }
 
                     @Override

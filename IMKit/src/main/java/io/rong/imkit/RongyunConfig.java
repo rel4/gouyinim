@@ -35,8 +35,6 @@ public class RongyunConfig {
 
     public interface ConnectCallback {
         void onSuccess(String s);
-//
-//        void onError(RongIMClient.ErrorCode errorCode);
 
         void onTokenIncorrect();
     }
@@ -46,12 +44,11 @@ public class RongyunConfig {
     }
 
     public void init(Context context) {
-        this.context = context;
-        RongLogUtils.d(TAG, "-------------初始化融云-----------------");
+//        this.context = context;
+//        RongLogUtils.d(TAG, "-------------初始化融云-----------------");
         RongIM.init(context);
         RongIM.registerMessageType(RedPacketMessage.class);
         RongIM.getInstance().registerMessageTemplate(new RedPacketMessageItemProvider());
-//        RongIM.getInstance().setMessageAttachedUserInfo(true);
     }
 
     public void connectRonyun(String token, final ConnectCallback callback) {
@@ -70,7 +67,7 @@ public class RongyunConfig {
             @Override
             public void onSuccess(String s) {
                 RongLogUtils.d(TAG, "-------------连接融云成功 id : " + s);
-
+                RongIM.getInstance().setMessageAttachedUserInfo(true);
                 if (callback != null)
 
                     callback.onSuccess(s);
@@ -101,12 +98,10 @@ public class RongyunConfig {
      *
      * @param id
      * @param name
-     * @param avater
+     * @param avater //
      */
     public void setUserInfoCache(String id, String name, String avater) {
-
         RongIM.getInstance().refreshUserInfoCache(new UserInfo(id, name, Uri.parse(avater)));
-
     }
 
     /**
@@ -155,5 +150,43 @@ public class RongyunConfig {
          * @return
          */
         RongIM.getInstance().getRongIMClient().sendMessage(Conversation.ConversationType.PRIVATE, uid, RedPacketMessage.obtain(content), "", null, null);
+    }
+
+    public void setConnectionStatusListener(final ConnectCallback callback) {
+        if (RongIM.getInstance() != null && RongIM.getInstance().getRongIMClient() != null) {
+            /**
+             * 设置连接状态变化的监听器.
+             */
+            RongIM.getInstance().getRongIMClient().setConnectionStatusListener(new RongIMClient.ConnectionStatusListener() {
+                @Override
+                public void onChanged(ConnectionStatus connectionStatus) {
+                    switch (connectionStatus) {
+
+                        case CONNECTED://连接成功。
+                            RongLogUtils.d(TAG, "连接成功");
+//                            callback.onSuccess(ConnectionStatus.CONNECTED.getValue() + "");
+                            break;
+                        case DISCONNECTED://断开连接。
+                            RongLogUtils.d(TAG, "断开连接");
+//                            callback.onSuccess(ConnectionStatus.DISCONNECTED.getValue() + "");
+                            break;
+                        case CONNECTING://连接中。
+                            RongLogUtils.d(TAG, "连接中");
+//                            callback.onSuccess(ConnectionStatus.CONNECTING.getValue() + "");
+                            break;
+                        case NETWORK_UNAVAILABLE://网络不可用。
+                            RongLogUtils.d(TAG, "网络不可用");
+//                            callback.onSuccess(ConnectionStatus.NETWORK_UNAVAILABLE.getValue() + "");
+                            break;
+                        case KICKED_OFFLINE_BY_OTHER_CLIENT://用户账户在其他设备登录，本机会被踢掉线
+                            if (callback != null)
+                                callback.onSuccess(ConnectionStatus.KICKED_OFFLINE_BY_OTHER_CLIENT.getValue() + "");
+                            RongLogUtils.d(TAG, "用户账户在其他设备登录，本机会被踢掉线");
+                            break;
+                    }
+                }
+            });
+        }
+
     }
 }
