@@ -65,7 +65,7 @@ public class XListView extends XRecyclerView {
     }
 
     public void setNoMore() {
-//        this.setIsnomore(true);
+        this.setIsnomore(true);
         this.noMoreLoading();
     }
 

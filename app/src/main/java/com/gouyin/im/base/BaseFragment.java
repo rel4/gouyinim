@@ -22,7 +22,7 @@ import im.gouyin.com.progressdialog.ProgressDialog;
  * Created by pc on 2016/5/31.
  */
 public abstract class BaseFragment extends BaseRxFragment implements View.OnTouchListener {
-    private View mRootView;
+    protected View mRootView;
     private ProgressDialog progressDialog;
     protected Resources resources;
     protected Activity mActivity;

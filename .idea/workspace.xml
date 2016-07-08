@@ -11,9 +11,50 @@
   </component>
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/viewholder/UserInfoHeadViewHolder.java" line="93" />
+    <bookmark url="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/adapter/FrientAdapter.java" description="View view = UIUtils.inflateLayout(R.layout.item_fr..." line="40" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f486f580-284d-41df-be08-41024deb82f4" name="Default" comment="" />
+    <list default="true" id="f486f580-284d-41df-be08-41024deb82f4" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/adapter/FrientAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/bean/FrientBaen.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/im/model/FrientFragmentModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/im/model/FrientFragmentModelImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/im/prsenter/FrientFragmentPresenter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/im/prsenter/FrientFragmentPresenterImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/my/view/FrientFragmentView.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/viewholder/FrientViewHoler.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragme_frient_main.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_frient.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IMKit/build/intermediates/bundles/debug/classes.jar" afterPath="$PROJECT_DIR$/IMKit/build/intermediates/bundles/debug/classes.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IMKit/build/intermediates/bundles/debug/libs/Rong_IMKit_v2_6_2.jar" afterPath="$PROJECT_DIR$/IMKit/build/intermediates/bundles/debug/libs/Rong_IMKit_v2_6_2.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IMKit/build/intermediates/bundles/release/classes.jar" afterPath="$PROJECT_DIR$/IMKit/build/intermediates/bundles/release/classes.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IMKit/build/intermediates/bundles/release/libs/Rong_IMKit_v2_6_2.jar" afterPath="$PROJECT_DIR$/IMKit/build/intermediates/bundles/release/libs/Rong_IMKit_v2_6_2.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IMKit/build/intermediates/res/resources-debug-androidTest.ap_" afterPath="$PROJECT_DIR$/IMKit/build/intermediates/res/resources-debug-androidTest.ap_" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IMKit/build/outputs/aar/IMKit-debug.aar" afterPath="$PROJECT_DIR$/IMKit/build/outputs/aar/IMKit-debug.aar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IMKit/build/outputs/aar/IMKit-release.aar" afterPath="$PROJECT_DIR$/IMKit/build/outputs/aar/IMKit-release.aar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IMKit/build/intermediates/blame/res/androidTest/debug/single/drawable-xhdpi-v4.json" afterPath="$PROJECT_DIR$/IMKit/build/intermediates/blame/res/androidTest/debug/single/drawable-xhdpi-v4.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IMKit/build/intermediates/blame/res/androidTest/debug/single/drawable-xxhdpi-v4.json" afterPath="$PROJECT_DIR$/IMKit/build/intermediates/blame/res/androidTest/debug/single/drawable-xxhdpi-v4.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IMKit/build/intermediates/blame/res/androidTest/debug/single/layout.json" afterPath="$PROJECT_DIR$/IMKit/build/intermediates/blame/res/androidTest/debug/single/layout.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IMKit/build/intermediates/blame/res/debug/single/drawable-xhdpi-v4.json" afterPath="$PROJECT_DIR$/IMKit/build/intermediates/blame/res/debug/single/drawable-xhdpi-v4.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IMKit/build/intermediates/blame/res/debug/single/drawable-xxhdpi-v4.json" afterPath="$PROJECT_DIR$/IMKit/build/intermediates/blame/res/debug/single/drawable-xxhdpi-v4.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IMKit/build/intermediates/blame/res/debug/single/drawable.json" afterPath="$PROJECT_DIR$/IMKit/build/intermediates/blame/res/debug/single/drawable.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IMKit/build/intermediates/blame/res/debug/single/layout.json" afterPath="$PROJECT_DIR$/IMKit/build/intermediates/blame/res/debug/single/layout.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IMKit/build/intermediates/blame/res/release/single/color.json" afterPath="$PROJECT_DIR$/IMKit/build/intermediates/blame/res/release/single/color.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IMKit/build/intermediates/blame/res/release/single/drawable-hdpi-v4.json" afterPath="$PROJECT_DIR$/IMKit/build/intermediates/blame/res/release/single/drawable-hdpi-v4.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IMKit/build/intermediates/blame/res/release/single/drawable-xhdpi-v4.json" afterPath="$PROJECT_DIR$/IMKit/build/intermediates/blame/res/release/single/drawable-xhdpi-v4.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IMKit/build/intermediates/blame/res/release/single/drawable-xxhdpi-v4.json" afterPath="$PROJECT_DIR$/IMKit/build/intermediates/blame/res/release/single/drawable-xxhdpi-v4.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IMKit/build/intermediates/blame/res/release/single/drawable.json" afterPath="$PROJECT_DIR$/IMKit/build/intermediates/blame/res/release/single/drawable.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IMKit/build/intermediates/blame/res/release/single/layout.json" afterPath="$PROJECT_DIR$/IMKit/build/intermediates/blame/res/release/single/layout.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/ServerApi.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/ServerApi.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/base/BaseFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/base/BaseFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/base/BaseRecyclerViewAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/base/BaseRecyclerViewAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/base/BaseRecyclerViewHolder.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/base/BaseRecyclerViewHolder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/event/Events.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/event/Events.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/im/widget/FrientFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/im/widget/FrientFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/im/widget/IMHomeFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/im/widget/IMHomeFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/widget/XListView.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/widget/XListView.java" />
+    </list>
     <ignored path="gouyinim.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,13 +73,130 @@
     <favorites_list name="gouyinim" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="FrientFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/im/widget/FrientFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="170" column="54" selection-start-line="170" selection-start-column="54" selection-end-line="170" selection-end-column="54" />
+              <folding>
+                <element signature="e#4378#4379#0" expanded="true" />
+                <element signature="e#4414#4415#0" expanded="true" />
+                <element signature="e#4461#4462#0" expanded="true" />
+                <element signature="e#4497#4498#0" expanded="true" />
+                <element signature="e#4557#4558#0" expanded="true" />
+                <element signature="e#4587#4588#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GoodSelectFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/home/widget/GoodSelectFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="91" column="24" selection-start-line="91" selection-start-column="8" selection-end-line="91" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FrientAdapter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/adapter/FrientAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="66" column="59" selection-start-line="66" selection-start-column="51" selection-end-line="66" selection-end-column="59" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2493#2516#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GsonResponseBodyConverter.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/utils/gson/GsonResponseBodyConverter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.5209059">
+              <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="List.java" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-23/java/util/List.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="263" column="19" selection-start-line="263" selection-start-column="19" selection-end-line="263" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BaseRecyclerViewAdapter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/base/BaseRecyclerViewAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="134" column="16" selection-start-line="134" selection-start-column="16" selection-end-line="134" selection-end-column="16" />
+              <folding>
+                <element signature="e#3330#3331#0" expanded="true" />
+                <element signature="e#3368#3369#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PayDynamicRedPackketPersenterImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/center/presenter/PayDynamicRedPackketPersenterImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="57" column="25" selection-start-line="57" selection-start-column="25" selection-end-line="57" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RZFirstActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/my/widget/RZFirstActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="89" column="70" selection-start-line="89" selection-start-column="70" selection-end-line="89" selection-end-column="70" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserInfoActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/main/widget/UserInfoActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="126" column="42" selection-start-line="126" selection-start-column="42" selection-end-line="126" selection-end-column="42" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserInfoHeadViewHolder.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/viewholder/UserInfoHeadViewHolder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="105" column="17" selection-start-line="81" selection-start-column="44" selection-end-line="105" selection-end-column="17" />
+              <folding>
+                <element signature="e#1416#1417#0" expanded="true" />
+                <element signature="e#1460#1461#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="valueResourceFile" />
+        <option value="Interface" />
         <option value="layoutResourceFile_vertical" />
         <option value="Class" />
       </list>
@@ -3427,27 +3585,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/CacheManager.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/item_user_pic.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/widget/NoScrollGridView.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/viewholder/UserInfoViewHolder.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/main/widget/UserInfoChangeActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_userinfo_change.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/main/model/UserActionModel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/main/model/UserActionModelImpl.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/bean/UserInfoDetailBean.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/center/widget/DefaultDynamicSendActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_red_person.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/app_titlebar.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/viewholder/UserInfoHeadViewHolder.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/head_user_info.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/center/model/DefaultDynamicModelImpl.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/home/view/GoodSelectView.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/home/presenetr/GoodSelectPresenterImpl.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/item_home_one_menu.xml" />
-        <option value="$PROJECT_DIR$/app/build/generated/source/r/debug/com/gouyin/im/R.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/center/widget/DynamicSendActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_dynamic_send.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/utils/ObservableUtils.java" />
         <option value="$PROJECT_DIR$/IMKit/src/main/java/io/rong/imkit/RongyunConfig.java" />
@@ -3464,8 +3601,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/main/view/DynamicDatailsView.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/manager/UserInfoManager.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/main/model/DynamincDatailsModelImpl.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/ServerApi.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/base/BaseRecyclerViewAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/home/widget/GoodSelectFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/main/widget/UserInfoActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/my/widget/MyFragment.java" />
@@ -3475,15 +3610,39 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/main/presenter/DynamincDatailsPresenterImpl.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/widget/SpacesItemDecoration.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/main/widget/DynamicDatailsActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/widget/XListView.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_userinfo_dynamic.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/base/BaseFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/im/widget/IMHomeFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/my/persenter/FrientFragmentModelImpl.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/my/model/FrientFragmentModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/my/model/FrientFragmentModelImpl.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/im/model/FrientFragmentModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/ServerApi.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/im/model/FrientFragmentModelImpl.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/my/persenter/FrientFragmentPresenterImpl.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/my/view/FrientFragmentView.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/bean/FrientBaen.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragme_frient_main.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/im/widget/FrientChlidFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/item_frient.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/my/persenter/FrientFragmentPresenter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/im/prsenter/FrientFragmentPresenter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/im/prsenter/FrientFragmentPresenterImpl.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/widget/XListView.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/base/BaseRecyclerViewAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/base/BaseRecyclerViewHolder.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/viewholder/FrientViewHoler.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/event/Events.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/im/widget/FrientFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/adapter/FrientAdapter.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="612" />
-    <option name="width" value="1374" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -3585,11 +3744,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
+              <option name="myItemId" value="build" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -3607,15 +3762,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="build" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
+              <option name="myItemId" value="outputs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -3633,49 +3784,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="build" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
+              <option name="myItemId" value="outputs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mipmap-xhdpi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gouyinim" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gouyinim" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="im" />
+              <option name="myItemId" value="apk" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -3691,14 +3808,15 @@
     <property name="settings.editor.selected.configurable" value="editor.preferences.import" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="device.picker.selection" value="7321c86a" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/java/com/gouyin/im/im" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.gouyin.im.viewholder" />
       <recent name="com.gouyin.im.adapter" />
-      <recent name="com.gouyin.im.my.model" />
+      <recent name="com.gouyin.im.bean" />
       <recent name="com.gouyin.im.my.persenter" />
-      <recent name="com.gouyin.im.my.view" />
+      <recent name="com.gouyin.im.my.model" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="io.rong.imkit" />
@@ -3993,32 +4111,32 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="612" y="0" width="1374" height="1056" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="FindBugs-IDEA" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32516703" sideWeight="0.4978678" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19265033" sideWeight="0.4978678" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.72939867" sideWeight="0.5042644" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.037861917" sideWeight="0.49573562" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33181125" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13697104" sideWeight="0.49573562" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31716418" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32850778" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2185501" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26066098" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14587973" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2494331" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -4033,27 +4151,27 @@
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.72939867" sideWeight="0.5042644" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29398665" sideWeight="0.49573562" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16815145" sideWeight="0.49573562" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14587973" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35412025" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32516703" sideWeight="0.4978678" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28730512" sideWeight="0.4978678" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20948827" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31716418" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32850778" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2185501" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47104678" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26119402" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
     </layout-to-restore>
@@ -4224,12 +4342,6 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/viewholder/UserInfoHeadViewHolder.java</url>
-          <line>71</line>
-          <properties />
-          <option name="timeStamp" value="85" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/viewholder/UserInfoHeadViewHolder.java</url>
           <line>87</line>
           <properties />
           <option name="timeStamp" value="87" />
@@ -4258,374 +4370,18 @@
           <properties />
           <option name="timeStamp" value="94" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/adapter/FrientAdapter.java</url>
+          <line>64</line>
+          <properties />
+          <option name="timeStamp" value="101" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="95" />
+      <option name="time" value="102" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$PROJECT_DIR$/IMKit/src/main/libs/Rong_IMKit_v2_6_2.jar!/io/rong/imkit/RongIM.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.857143">
-          <caret line="660" column="16" selection-start-line="660" selection-start-column="16" selection-end-line="660" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/ApplicationConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.8333333">
-          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/main/presenter/MainPresenterImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34711778">
-          <caret line="80" column="37" selection-start-line="80" selection-start-column="31" selection-end-line="80" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/IMKit/src/main/java/io/rong/imkit/RongyunConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-          <folding>
-            <element signature="e#5319#6884#0" expanded="false" />
-            <element signature="e#6883#6884#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/bg_input_edittext.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.10951009">
-          <caret line="4" column="34" selection-start-line="4" selection-start-column="34" selection-end-line="4" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/bg_send_button.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24639769">
-          <caret line="9" column="56" selection-start-line="9" selection-start-column="41" selection-end-line="9" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8192771">
-          <caret line="32" column="37" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/main/widget/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4473684">
-          <caret line="100" column="53" selection-start-line="100" selection-start-column="53" selection-end-line="100" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/bean/BaseDataBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/utils/TimeUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="68" column="31" selection-start-line="68" selection-start-column="25" selection-end-line="68" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/home/model/GoodSelectModelImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="43" selection-start-line="28" selection-start-column="32" selection-end-line="28" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/layout_editview.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.6206896">
-          <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/viewholder/DynamicCommentViewHolder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="39" column="68" selection-start-line="39" selection-start-column="64" selection-end-line="39" selection-end-column="68" />
-          <folding>
-            <element signature="e#866#867#0" expanded="false" />
-            <element signature="e#893#894#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.785714">
-          <caret line="97" column="18" selection-start-line="97" selection-start-column="18" selection-end-line="97" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/main/presenter/DynamincDatailsPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26522842">
-          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/main/presenter/DynamincDatailsPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="58" selection-start-line="12" selection-start-column="58" selection-end-line="12" selection-end-column="58" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/main/view/DynamicDatailsView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/manager/UserInfoManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8109453">
-          <caret line="157" column="4" selection-start-line="157" selection-start-column="4" selection-end-line="157" selection-end-column="4" />
-          <folding>
-            <element signature="e#3746#3747#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/manager/UserInfoManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.079602">
-          <caret line="157" column="34" selection-start-line="157" selection-start-column="34" selection-end-line="157" selection-end-column="34" />
-          <folding>
-            <element signature="e#3746#3747#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/retrofit/2.0.0-beta4/f4aba49a694be1a5eee22e2d9bf6c799db64876f/retrofit-2.0.0-beta4-sources.jar!/retrofit2/http/POST.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="29" column="18" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.reactivex/rxjava/1.1.1/403c0215220d990f2856904658185a7b5ba8b521/rxjava-1.1.1-sources.jar!/rx/Observable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21714285">
-          <caret line="45" column="13" selection-start-line="45" selection-start-column="13" selection-end-line="45" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/bean/CommentDataListBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/utils/ObservableUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5897436">
-          <caret line="70" column="13" selection-start-line="70" selection-start-column="13" selection-end-line="70" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/ServerApi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="406" column="10" selection-start-line="406" selection-start-column="10" selection-end-line="406" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/main/model/DynamincDatailsModelImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.79826087">
-          <caret line="51" column="80" selection-start-line="51" selection-start-column="80" selection-end-line="51" selection-end-column="80" />
-          <folding>
-            <element signature="e#2194#2195#0" expanded="true" />
-            <element signature="e#2249#2250#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/main/model/DynamincDatailsModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3140496">
-          <caret line="12" column="111" selection-start-line="12" selection-start-column="111" selection-end-line="12" selection-end-column="111" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/base/BaseActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="22" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/base/BaseRecyclerViewAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="115" column="12" selection-start-line="115" selection-start-column="12" selection-end-line="115" selection-end-column="12" />
-          <folding>
-            <element signature="e#3125#3126#0" expanded="false" />
-            <element signature="e#3163#3164#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/my/widget/MyFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.91334486">
-          <caret line="213" column="33" selection-start-line="213" selection-start-column="33" selection-end-line="213" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/home/widget/GoodSelectFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2566168">
-          <caret line="87" column="33" selection-start-line="87" selection-start-column="33" selection-end-line="87" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/include_input_layout.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8199753">
-          <caret line="35" column="12" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_home_one_menu.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3329223">
-          <caret line="73" column="4" selection-start-line="73" selection-start-column="4" selection-end-line="73" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_dynamic_datails.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7989031">
-          <caret line="23" column="40" selection-start-line="23" selection-start-column="40" selection-end-line="23" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/platforms/android-23/data/res/values/colors.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.50086653">
-          <caret line="36" column="17" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16464472">
-          <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/adapter/DynamiDayailsAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="30" column="52" selection-start-line="30" selection-start-column="52" selection-end-line="30" selection-end-column="52" />
-          <folding>
-            <element signature="e#696#697#0" expanded="false" />
-            <element signature="e#723#724#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_comment.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.120689">
-          <caret line="40" column="44" selection-start-line="40" selection-start-column="44" selection-end-line="40" selection-end-column="44" />
-          <folding>
-            <element signature="e#389#401#0" expanded="true" />
-            <element signature="e#1648#1665#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/main/presenter/DynamincDatailsPresenterImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="39" column="15" selection-start-line="39" selection-start-column="15" selection-end-line="39" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/AppData/Local/Android/Sdk/extras/android/m2repository/com/android/support/recyclerview-v7/23.1.0/recyclerview-v7-23.1.0-sources.jar!/android/support/v7/widget/RecyclerView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7875" column="33" selection-start-line="7875" selection-start-column="33" selection-end-line="7875" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/widget/SpacesItemDecoration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding>
-            <element signature="e#345#346#0" expanded="true" />
-            <element signature="e#379#380#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jcodecraeer/xrecyclerview/1.2.7/e8b3335a83a9c8e19caf1b263be97796c2e5c67a/xrecyclerview-1.2.7-sources.jar!/com/jcodecraeer/xrecyclerview/SimpleViewSwithcer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.4333334">
@@ -4662,14 +4418,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6459627">
           <caret line="81" column="29" selection-start-line="81" selection-start-column="17" selection-end-line="81" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/widget/XListView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="68" column="26" selection-start-line="68" selection-start-column="13" selection-end-line="68" selection-end-column="26" />
           <folding />
         </state>
       </provider>
@@ -4726,10 +4474,410 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/selector_center_text_draw.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/selector_home_text_color.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/im/widget/IMHomeFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.0227545">
+          <caret line="116" column="51" selection-start-line="116" selection-start-column="43" selection-end-line="116" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/im/model/FrientFragmentModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="71" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="71" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/my/view/FrientFragmentView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="45" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/bean/FrientBaen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="31" column="22" selection-start-line="31" selection-start-column="22" selection-end-line="31" selection-end-column="22" />
+          <folding>
+            <element signature="e#383#384#0" expanded="false" />
+            <element signature="e#410#411#0" expanded="false" />
+            <element signature="e#458#459#0" expanded="false" />
+            <element signature="e#490#491#0" expanded="false" />
+            <element signature="e#710#711#0" expanded="false" />
+            <element signature="e#749#750#0" expanded="false" />
+            <element signature="e#801#802#0" expanded="false" />
+            <element signature="e#849#850#0" expanded="false" />
+            <element signature="e#883#884#0" expanded="false" />
+            <element signature="e#917#918#0" expanded="false" />
+            <element signature="e#959#960#0" expanded="false" />
+            <element signature="e#997#998#0" expanded="false" />
+            <element signature="e#1032#1033#0" expanded="false" />
+            <element signature="e#1067#1068#0" expanded="false" />
+            <element signature="e#1111#1112#0" expanded="false" />
+            <element signature="e#1151#1152#0" expanded="false" />
+            <element signature="e#1191#1192#0" expanded="false" />
+            <element signature="e#1231#1232#0" expanded="false" />
+            <element signature="e#1285#1286#0" expanded="false" />
+            <element signature="e#1335#1336#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/im/model/FrientFragmentModelImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="30" column="38" selection-start-line="30" selection-start-column="38" selection-end-line="30" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#935#936#0" expanded="false" />
+            <element signature="e#1011#1012#0" expanded="false" />
+            <element signature="e#1082#1083#0" expanded="false" />
+            <element signature="e#1137#1138#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/ServerApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.45783132">
+          <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-23/android/os/MessageQueue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6800518">
+          <caret line="57" column="37" selection-start-line="57" selection-start-column="25" selection-end-line="57" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/main/widget/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.0106384">
+          <caret line="100" column="52" selection-start-line="100" selection-start-column="52" selection-end-line="100" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/AppData/Local/Android/Sdk/extras/android/m2repository/com/android/support/support-v4/23.4.0/support-v4-23.4.0-sources.jar!/android/support/v4/app/FragmentTransaction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.28313252">
+          <caret line="164" column="0" selection-start-line="164" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/AppData/Local/Android/Sdk/extras/android/m2repository/com/android/support/support-v4/23.4.0/support-v4-23.4.0-sources.jar!/android/support/v4/app/BackStackRecord.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.28313252">
+          <caret line="438" column="0" selection-start-line="438" selection-start-column="0" selection-end-line="438" selection-end-column="0" />
+          <folding>
+            <element signature="e#13919#13920#0" expanded="false" />
+            <element signature="e#13953#13954#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/AppData/Local/Android/Sdk/extras/android/m2repository/com/android/support/support-v4/23.4.0/support-v4-23.4.0-sources.jar!/android/support/v4/app/FragmentManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.28313252">
+          <caret line="564" column="0" selection-start-line="564" selection-start-column="0" selection-end-line="564" selection-end-column="0" />
+          <folding>
+            <element signature="e#21572#21573#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/utils/FragmentUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.0228915">
+          <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/base/BaseFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26760563">
+          <caret line="24" column="28" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragme_frient_main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.10326087">
+          <caret line="2" column="32" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/AppData/Local/Android/Sdk/extras/android/m2repository/com/android/support/support-v4/23.4.0/support-v4-23.4.0-sources.jar!/android/support/v4/app/Fragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="609" column="19" selection-start-line="609" selection-start-column="19" selection-end-line="609" selection-end-column="19" />
+          <folding>
+            <element signature="e#21465#21466#0" expanded="false" />
+            <element signature="e#21529#21530#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/home/widget/HomeFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="45" column="20" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/im/prsenter/FrientFragmentPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="6" selection-start-line="0" selection-start-column="6" selection-end-line="0" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/im/prsenter/FrientFragmentPresenterImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="39" column="36" selection-start-line="39" selection-start-column="28" selection-end-line="39" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/widget/XListView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="68" column="29" selection-start-line="68" selection-start-column="29" selection-end-line="68" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_frient.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.4827585">
+          <caret line="31" column="34" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="34" />
+          <folding>
+            <element signature="e#1593#1605#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/utils/UIUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="23" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/AppData/Local/Android/Sdk/extras/android/m2repository/com/android/support/recyclerview-v7/23.1.0/recyclerview-v7-23.1.0-sources.jar!/android/support/v7/widget/RecyclerView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33286908">
+          <caret line="143" column="13" selection-start-line="143" selection-start-column="13" selection-end-line="143" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/base/BaseRecyclerViewHolder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/viewholder/FrientViewHoler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="61" column="33" selection-start-line="61" selection-start-column="33" selection-end-line="61" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#841#842#0" expanded="true" />
+            <element signature="e#868#869#0" expanded="true" />
+            <element signature="e#1685#1686#0" expanded="true" />
+            <element signature="e#1723#1724#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/adapter/UserInfoAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.15304948">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/viewholder/UserInfoViewHolder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="224" column="26" selection-start-line="224" selection-start-column="26" selection-end-line="224" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/main/widget/UserInfoChangeActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/viewholder/UserInfoHeadViewHolder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="105" column="17" selection-start-line="81" selection-start-column="44" selection-end-line="105" selection-end-column="17" />
+          <folding>
+            <element signature="e#1416#1417#0" expanded="true" />
+            <element signature="e#1460#1461#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/main/widget/UserInfoActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0">
-          <caret line="135" column="55" selection-start-line="135" selection-start-column="55" selection-end-line="135" selection-end-column="55" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="126" column="42" selection-start-line="126" selection-start-column="42" selection-end-line="126" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/my/widget/RZFirstActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="89" column="70" selection-start-line="89" selection-start-column="70" selection-end-line="89" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/event/Events.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.65302783">
+          <caret line="21" column="31" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
+          <folding>
+            <element signature="e#671#672#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/center/presenter/PayDynamicRedPackketPersenterImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="57" column="25" selection-start-line="57" selection-start-column="25" selection-end-line="57" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/base/BaseRecyclerViewAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="134" column="16" selection-start-line="134" selection-start-column="16" selection-end-line="134" selection-end-column="16" />
+          <folding>
+            <element signature="e#3330#3331#0" expanded="true" />
+            <element signature="e#3368#3369#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/home/widget/GoodSelectFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="91" column="24" selection-start-line="91" selection-start-column="8" selection-end-line="91" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/im/widget/FrientFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="170" column="54" selection-start-line="170" selection-start-column="54" selection-end-line="170" selection-end-column="54" />
+          <folding>
+            <element signature="e#4378#4379#0" expanded="true" />
+            <element signature="e#4414#4415#0" expanded="true" />
+            <element signature="e#4461#4462#0" expanded="true" />
+            <element signature="e#4497#4498#0" expanded="true" />
+            <element signature="e#4557#4558#0" expanded="true" />
+            <element signature="e#4587#4588#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-23/java/util/List.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="263" column="19" selection-start-line="263" selection-start-column="19" selection-end-line="263" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/adapter/FrientAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="66" column="59" selection-start-line="66" selection-start-column="51" selection-end-line="66" selection-end-column="59" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2493#2516#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gouyin/im/utils/gson/GsonResponseBodyConverter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5209059">
+          <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
           <folding />
         </state>
       </provider>

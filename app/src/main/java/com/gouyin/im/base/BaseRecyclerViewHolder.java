@@ -50,6 +50,9 @@ public abstract class BaseRecyclerViewHolder<T extends BaseDataBean> extends Rec
 
     protected abstract void onBindData(T t);
 
+    public void onBindData(T t, int position) {
+    }
+
     /**
      * @param view     点击的view
      * @param t        点击的对象数据
@@ -62,6 +65,7 @@ public abstract class BaseRecyclerViewHolder<T extends BaseDataBean> extends Rec
     public void setOnItemClickListener(onItemClickListener listener) {
         this.listener = listener;
     }
+
 
     public interface onItemClickListener {
         void onItemclick(View view, int position);

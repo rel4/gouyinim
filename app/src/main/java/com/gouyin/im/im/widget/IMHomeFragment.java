@@ -90,7 +90,7 @@ public class IMHomeFragment extends BaseFragment implements BaseIView, IMHomeVie
     @Override
     public void swith2Friend() {
         if (frientFragment == null)
-            frientFragment = FrientFragment.newInstance();
+            frientFragment = FrientFragment.newInstance(3);
         enterPage(frientFragment);
     }
 

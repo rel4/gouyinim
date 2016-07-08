@@ -6,6 +6,7 @@ import com.gouyin.im.bean.CardInfoBean;
 import com.gouyin.im.bean.CertificationStatusBean;
 import com.gouyin.im.bean.CommentDataListBean;
 import com.gouyin.im.bean.DefaultDataBean;
+import com.gouyin.im.bean.FrientBaen;
 import com.gouyin.im.bean.GetMoneyBean;
 import com.gouyin.im.bean.GoodSelectBaen;
 import com.gouyin.im.bean.LoginBean;
@@ -440,6 +441,31 @@ public class ServerApi {
                                                    @Field("title") String content,
                                                    @Field("pid") String pid,
                                                    @Field("authcode") String authcode);
+
+        /**
+         * 关注列表
+         *
+         * @param page
+         * @param authcode
+         * @return
+         */
+        @GET("Follow/get_list_follows")
+        Observable<FrientBaen> getWacthList(@Query("page") int page,
+                                            @Query("authcode") String authcode);
+
+
+        /**
+         * 关注列表
+         *
+         * @param page
+         * @param authcode
+         * @return
+         */
+        @GET("Follow/get_list_fans")
+        Observable<FrientBaen> getFenList(@Query("page") int page,
+                                          @Query("authcode") String authcode);
+
+
     }
 }
 

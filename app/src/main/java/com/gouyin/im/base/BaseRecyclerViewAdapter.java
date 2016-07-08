@@ -9,6 +9,7 @@ import com.gouyin.im.bean.BaseDataBean;
 import com.gouyin.im.bean.PayRedPacketPicsBean;
 
 import java.util.ArrayList;
+import java.util.IdentityHashMap;
 import java.util.List;
 
 /**
@@ -25,6 +26,7 @@ public abstract class BaseRecyclerViewAdapter<T extends BaseDataBean> extends Re
 
     @Override
     public int getItemViewType(int position) {
+
         return super.getItemViewType(position);
     }
 
@@ -44,8 +46,14 @@ public abstract class BaseRecyclerViewAdapter<T extends BaseDataBean> extends Re
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof BaseRecyclerViewHolder) {
             BaseRecyclerViewHolder bvh = (BaseRecyclerViewHolder) holder;
-            bvh.onBindData(datas.get(position));
-            bvh.setOnClick(datas.get(position), position);
+            if (datas != null) {
+                T t = datas.get(position);
+                if (t != null) {
+                    bvh.onBindData(t);
+                    bvh.onBindData(t, position);
+                    bvh.setOnClick(t, position);
+                }
+            }
             ((BaseRecyclerViewHolder) holder).setOnItemClickListener(new BaseRecyclerViewHolder.onItemClickListener() {
                 @Override
                 public void onItemclick(View view, int position) {
