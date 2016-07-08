@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/app_line"
     android:padding="@dimen/x15">
 
     <com.gouyin.im.widget.RoundedImageView
@@ -29,16 +30,15 @@
         android:layout_alignTop="@+id/riv_item_user_image"
         android:layout_marginRight="@dimen/x30"
         android:text="@string/loading"
-        android:textColor="@color/gray_color" />
+        android:textColor="@color/text_time_gray_color" />
 
     <TextView
-
         android:id="@+id/tv_comment_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/riv_item_user_image"
         android:layout_alignLeft="@+id/tv_user_name"
-        android:layout_marginTop="@dimen/x24"
+        android:layout_below="@+id/tv_user_name"
+        android:layout_marginTop="@dimen/x10"
         android:text="@string/loading"
-        android:textColor="@color/gray_color" />
+        android:textColor="@color/text_gray_color" />
 </RelativeLayout>

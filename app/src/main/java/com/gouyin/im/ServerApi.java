@@ -424,6 +424,22 @@ public class ServerApi {
         Observable<DefaultDataBean> getWacthAction(@Field("touid") String uid,
                                                    @Field("type") String type,
                                                    @Field("authcode") String authcode);
+
+        /**
+         * 发布评论
+         *
+         * @param id
+         * @param content
+         * @param pid
+         * @param authcode
+         * @return
+         */
+        @FormUrlEncoded
+        @POST("Latestcomment/insert_latest_comment")
+        Observable<DefaultDataBean> getSendComment(@Field("lid") String id,
+                                                   @Field("title") String content,
+                                                   @Field("pid") String pid,
+                                                   @Field("authcode") String authcode);
     }
 }
 

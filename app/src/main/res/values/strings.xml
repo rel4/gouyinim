@@ -115,6 +115,8 @@
     <string name="connect_conflict">同一帐号已在其他设备登录</string>
     <string name="text_numer_more_150">字数不能超过150</string>
     <string name="renzheng_rule">规则一：上传相册照片或拍照免费认证会员；\n规则二：经过官方认证后，可获得更多粉丝及商家关注；\n规则三：认证后还可以开通粉丝打赏、送礼物等特权；\n规则四：请务必保证照片等个人信息的真实有效；\n </string>
+    <string name="input">输入</string>
+    <string name="input_text_number_100">输入文字不能大于一百</string>
     <string-array name="moneys">
         <item>8</item>
         <item>28</item>

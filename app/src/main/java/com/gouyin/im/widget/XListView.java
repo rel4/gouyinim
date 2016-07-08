@@ -33,6 +33,7 @@ public class XListView extends XRecyclerView {
 
     /**
      * 竖向GridView
+     *
      * @param number
      */
     public void setVerticalGridLayoutManager(int number) {
@@ -40,7 +41,7 @@ public class XListView extends XRecyclerView {
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
         this.setLayoutManager(layoutManager);
-        this.addItemDecoration(new SpacesItemDecoration(10));
+        this.addItemDecoration(new SpacesItemDecoration(2));
         this.setRefreshProgressStyle(ProgressStyle.BallSpinFadeLoader);
         this.setLoadingMoreProgressStyle(ProgressStyle.SysProgress);
         this.setArrowImageView(R.mipmap.iconfont_downgrey);
@@ -56,11 +57,16 @@ public class XListView extends XRecyclerView {
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
         this.setLayoutManager(layoutManager);
-        this.addItemDecoration(new SpacesItemDecoration(10));
+        this.addItemDecoration(new SpacesItemDecoration(2));
         this.setRefreshProgressStyle(ProgressStyle.BallSpinFadeLoader);
         this.setLoadingMoreProgressStyle(ProgressStyle.SysProgress);
         this.setArrowImageView(R.mipmap.iconfont_downgrey);
 
+    }
+
+    public void setNoMore() {
+//        this.setIsnomore(true);
+        this.noMoreLoading();
     }
 
 }

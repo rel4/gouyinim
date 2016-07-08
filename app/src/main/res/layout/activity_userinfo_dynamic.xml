@@ -34,6 +34,9 @@
             style="@style/userinfo_dynamic_text_style"
             android:layout_weight="1"
             android:background="@drawable/shape_useinfo_dynamic_left_round"
+            android:drawablePadding="0dp"
+            android:drawableTop="@mipmap/icon_dashang"
+            android:paddingTop="@dimen/x10"
             android:text="@string/reward"
             android:textColor="@android:color/white" />
 
@@ -42,6 +45,9 @@
             style="@style/userinfo_dynamic_text_style"
             android:layout_weight="1"
             android:background="@color/background_white_color"
+            android:drawablePadding="0dp"
+            android:drawableTop="@mipmap/icon_im"
+            android:paddingTop="@dimen/x10"
             android:text="@string/send_msg"
             android:textColor="@color/background_red_color" />
 
@@ -50,6 +56,9 @@
             style="@style/userinfo_dynamic_text_style"
             android:layout_weight="1"
             android:background="@color/background_red_color"
+            android:drawablePadding="0dp"
+            android:drawableTop="@mipmap/icon_yuehui"
+            android:paddingTop="@dimen/x10"
             android:text="@string/appointment"
             android:textColor="@color/background_white_color" />
 
@@ -58,6 +67,9 @@
             style="@style/userinfo_dynamic_text_style"
             android:layout_weight="1"
             android:background="@drawable/shape_useinfo_dynamic_right_round"
+            android:drawablePadding="0dp"
+            android:drawableTop="@mipmap/icon_follower"
+            android:paddingTop="@dimen/x10"
             android:text="@string/send_flowers"
             android:textColor="@color/background_red_color" />
 

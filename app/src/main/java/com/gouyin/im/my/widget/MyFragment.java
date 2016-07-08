@@ -211,7 +211,7 @@ public class MyFragment extends BaseFragment implements MyFragmentView {
         } else {
             if (isRefresh)
                 mAdapter.clean();
-            mAdapter.addData(list);
+            mAdapter.addListData(list);
             mAdapter.onRefresh();
         }
         loadMoreComplete();

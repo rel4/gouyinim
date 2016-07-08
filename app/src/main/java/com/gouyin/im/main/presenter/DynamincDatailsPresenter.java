@@ -9,4 +9,6 @@ import com.gouyin.im.main.view.DynamicDatailsView;
 public interface DynamincDatailsPresenter extends BaseIPresenter<DynamicDatailsView> {
 
     void loadCommentListData(String commentID);
+
+    void sendComment(String id, String content, String pid);
 }

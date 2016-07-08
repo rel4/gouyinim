@@ -90,10 +90,38 @@ public abstract class BaseRecyclerViewAdapter<T extends BaseDataBean> extends Re
         return datas == null ? 0 : datas.size();
     }
 
-    public void addData(List<T> list) {
+    /**
+     * 添加集合
+     *
+     * @param list
+     */
+    public void addListData(List<T> list) {
         if (datas == null)
             datas = new ArrayList<T>();
         datas.addAll(list);
+    }
+
+    /**
+     * 添加单个数据
+     *
+     * @param t
+     */
+    public void addSingleDate(T t) {
+        if (datas == null)
+            datas = new ArrayList<T>();
+        datas.add(t);
+    }
+
+    /**
+     * 在某个角标添加单个数据
+     *
+     * @param index
+     * @param t
+     */
+    public void addSingeData(int index, T t) {
+        if (datas == null)
+            datas = new ArrayList<T>();
+        datas.add(index, t);
     }
 
     public void onRefresh() {

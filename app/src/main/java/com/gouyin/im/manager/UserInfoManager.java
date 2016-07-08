@@ -154,4 +154,8 @@ public class UserInfoManager {
     public String getUserSex() {
         return info.getSex();
     }
+
+    public String getNickeName() {
+        return info.getNickname();
+    }
 }

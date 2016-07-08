@@ -148,7 +148,7 @@ public class UserInfoActivity extends BaseActivity implements UserInfoView {
             mAdapter = new UserInfoAdapter(list);
             recyclerview.setAdapter(mAdapter);
         } else {
-            mAdapter.addData(list);
+            mAdapter.addListData(list);
             mAdapter.onRefresh();
         }
         loadMoreComplete();

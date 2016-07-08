@@ -85,7 +85,7 @@ public class GoodSelectFragment extends BaseFragment implements GoodSelectView {
         } else {
             if (!isloadMore)
                 mAdapter.clean();
-            mAdapter.addData(list);
+            mAdapter.addListData(list);
             mAdapter.onRefresh();
 
         }
