@@ -39,8 +39,15 @@ public class GoodSelectFragment extends BaseFragment implements GoodSelectView {
     XListView recyclerview;
     @Bind(R.id.text_empty)
     TextView textEmpty;
-
+    private static int pageType;
     private GoodSelectPresenter goodSelectPresenter;
+    public static final int GOOD_SELECT = 1;
+    public static final int SAME_CITY = 2;
+
+    public static BaseFragment newInstance(int type) {
+        pageType = type;
+        return new GoodSelectFragment();
+    }
 
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -58,14 +65,14 @@ public class GoodSelectFragment extends BaseFragment implements GoodSelectView {
             @Override
             public void onRefresh() {
                 isloadMore = false;
-                goodSelectPresenter.uploadGoodSelectDateList();
+                goodSelectPresenter.uploadGoodSelectDateList(pageType);
 
             }
 
             @Override
             public void onLoadMore() {
                 isloadMore = true;
-                goodSelectPresenter.downloadGoodSelectDateList();
+                goodSelectPresenter.downloadGoodSelectDateList(pageType);
 
             }
         });

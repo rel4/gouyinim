@@ -23,6 +23,9 @@ public class HomeFragmentPresenterImpl implements HomeFragmentPresenter {
             case R.id.tv_navigation_same_city:
                 mHomwVie.switch2SameCity();
                 break;
+            case R.id.tv_search:
+                mHomwVie.switch2Search();
+                break;
         }
     }
 }

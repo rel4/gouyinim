@@ -14,6 +14,8 @@ import com.gouyin.im.center.widget.PayDynamicRedPackketActivity;
 import com.gouyin.im.center.widget.RedpacketDynaimcActivity;
 import com.gouyin.im.event.Events;
 import com.gouyin.im.event.RxBus;
+import com.gouyin.im.home.widget.SearchActivity;
+import com.gouyin.im.home.widget.SearchReasonActivity;
 import com.gouyin.im.im.widget.AppConversationActivity;
 import com.gouyin.im.login.widget.LoginMainActivity;
 import com.gouyin.im.main.widget.DynamicDatailsActivity;
@@ -374,5 +376,23 @@ public class ActivityUtils {
         intent.putExtra("type", type);
         startActivity(intent);
 
+    }
+
+    /**
+     * 开启搜索页面
+     */
+    public static void startSearchActivity() {
+        startActivity(SearchActivity.class);
+    }
+
+    /**
+     * 搜索结果
+     *
+     * @param search
+     */
+    public static void startSearchReasonActivity(String search) {
+        Intent intent = new Intent(getContext(), SearchReasonActivity.class);
+        intent.putExtra("key", search);
+        startActivity(intent);
     }
 }

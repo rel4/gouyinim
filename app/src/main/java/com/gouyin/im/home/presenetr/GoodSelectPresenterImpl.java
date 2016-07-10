@@ -6,8 +6,6 @@ import com.gouyin.im.bean.GoodSelectBaen;
 import com.gouyin.im.home.model.GoodSelectModelImpl;
 import com.gouyin.im.home.view.GoodSelectView;
 
-import com.gouyin.im.utils.LogUtils;
-
 import java.util.List;
 
 /**
@@ -24,16 +22,16 @@ public class GoodSelectPresenterImpl implements GoodSelectPresenter, BaseIModel.
     }
 
     @Override
-    public void uploadGoodSelectDateList() {
+    public void uploadGoodSelectDateList(int pageType) {
         mGoodView.showLoading();
-        mGoodModel.loadGoodSelectDate("1", 1, this);
+        mGoodModel.loadGoodSelectDate(pageType,"1", 1, this);
         page = 2;
     }
 
     @Override
-    public void downloadGoodSelectDateList() {
+    public void downloadGoodSelectDateList(int pageType) {
         mGoodView.showLoading();
-        mGoodModel.loadGoodSelectDate("1", page, this);
+        mGoodModel.loadGoodSelectDate(pageType,"1", page, this);
         page++;
     }
 

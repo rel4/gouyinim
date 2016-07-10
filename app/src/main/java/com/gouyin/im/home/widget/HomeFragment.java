@@ -18,6 +18,7 @@ import com.gouyin.im.base.BaseFragment;
 import com.gouyin.im.home.presenetr.HomeFragmentPresenter;
 import com.gouyin.im.home.presenetr.HomeFragmentPresenterImpl;
 import com.gouyin.im.home.view.HomeView;
+import com.gouyin.im.utils.ActivityUtils;
 import com.gouyin.im.utils.FragmentUtils;
 
 import butterknife.Bind;
@@ -56,7 +57,7 @@ public class HomeFragment extends BaseFragment implements HomeView {
     @Override
     public void switch2GoodSelect() {
         if (goodSelectFragment == null)
-            goodSelectFragment = new GoodSelectFragment();
+            goodSelectFragment = GoodSelectFragment.newInstance(GoodSelectFragment.GOOD_SELECT);
         enterPage(goodSelectFragment);
 
     }
@@ -64,8 +65,13 @@ public class HomeFragment extends BaseFragment implements HomeView {
     @Override
     public void switch2SameCity() {
         if (sameCityFragment == null)
-            sameCityFragment = new SameCityFragment();
+            sameCityFragment = GoodSelectFragment.newInstance(GoodSelectFragment.SAME_CITY);
         enterPage(sameCityFragment);
+    }
+
+    @Override
+    public void switch2Search() {
+        ActivityUtils.startSearchActivity();
     }
 
 
@@ -94,7 +100,7 @@ public class HomeFragment extends BaseFragment implements HomeView {
     }
 
 
-    @OnClick({R.id.tv_navigation_good_select, R.id.tv_navigation_same_city})
+    @OnClick({R.id.tv_navigation_good_select, R.id.tv_navigation_same_city, R.id.tv_search})
     public void onClick(View view) {
         mPresenter.swicthNavigation(view.getId());
     }

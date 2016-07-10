@@ -13,6 +13,7 @@ import com.gouyin.im.bean.LoginBean;
 import com.gouyin.im.bean.PayRedPacketPicsBean;
 import com.gouyin.im.bean.RegiterBean;
 import com.gouyin.im.bean.RongyunBean;
+import com.gouyin.im.bean.SearchReasonBaen;
 import com.gouyin.im.bean.TiXinrRecordBean;
 import com.gouyin.im.bean.UserInfoDetailBean;
 import com.gouyin.im.bean.UserInfoListBean;
@@ -181,7 +182,21 @@ public class ServerApi {
          */
         @GET("Userrec/get_list_jingxuan")
         Observable<GoodSelectBaen> getGoodSelect(@Query("type") String type,
-                                                 @Query("page") int page);
+                                                 @Query("page") int page,
+                                                 @Query("authcode") String authcode);
+
+        /**
+         * 同城
+         *
+         * @param type
+         * @param page
+         * @param authcode
+         * @return
+         */
+        @GET("Userrec/get_list_tongcheng")
+        Observable<GoodSelectBaen> getSameCity(@Query("type") String type,
+                                               @Query("page") int page,
+                                               @Query("authcode") String authcode);
 
         /**
          * 个人动态信息列表
@@ -465,7 +480,15 @@ public class ServerApi {
         Observable<FrientBaen> getFenList(@Query("page") int page,
                                           @Query("authcode") String authcode);
 
-
+        /**
+         * @param key
+         * @param page
+         * @param authcode @return
+         */
+        @GET("User/search")
+        Observable<SearchReasonBaen> getSearchReason(@Query("name") String key,
+                                                     @Query("page") int page,
+                                                     @Query("authcode") String authcode);
     }
 }
 

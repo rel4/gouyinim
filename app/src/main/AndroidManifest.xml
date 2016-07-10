@@ -157,6 +157,12 @@
         <activity
             android:name=".wxapi.WXPayEntryActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".home.widget.SearchActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".home.widget.SearchReasonActivity"
+            android:screenOrientation="portrait" />
         <!--会话页面-->
         <activity
             android:name=".im.widget.AppConversationActivity"

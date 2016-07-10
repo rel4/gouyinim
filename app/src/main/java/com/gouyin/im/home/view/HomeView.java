@@ -5,6 +5,9 @@ package com.gouyin.im.home.view;
  */
 public interface HomeView {
     void switch2GoodSelect();
+
     void switch2SameCity();
+
+    void switch2Search();
 
 }

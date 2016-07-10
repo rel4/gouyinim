@@ -115,7 +115,10 @@ public class CacheManager {
          * 信息对象
          */
         String PERSON_INFODETAIL_INSTANCE = "person_infodetail_instance";
-
+        /**
+         * 搜索历史
+         */
+        String SEARCH_HISTPRY = "search_histpry";
     }
 
 
