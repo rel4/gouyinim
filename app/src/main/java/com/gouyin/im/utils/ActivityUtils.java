@@ -15,8 +15,10 @@ import com.gouyin.im.event.Events;
 import com.gouyin.im.event.RxBus;
 import com.gouyin.im.home.widget.SearchActivity;
 import com.gouyin.im.home.widget.SearchReasonActivity;
+import com.gouyin.im.login.widget.FindPasswordActivity;
 import com.gouyin.im.login.widget.LoginMainActivity;
 import com.gouyin.im.main.widget.DynamicDatailsActivity;
+import com.gouyin.im.login.widget.FindPasswordNextActivity;
 import com.gouyin.im.main.widget.PayAppointmentActivity;
 import com.gouyin.im.main.widget.PayAppointmentOrderActivity;
 import com.gouyin.im.main.widget.PersonInfoChangeActivity;
@@ -406,11 +408,27 @@ public class ActivityUtils {
 
     /**
      * 展示用户信息
+     *
      * @param uid
      */
     public static void startUserinfoActivity(String uid) {
         Intent intent = new Intent(getContext(), UserinfoActivity.class);
         intent.putExtra("uid", uid);
         startActivity(intent);
+    }
+
+    /**
+     * 找回密码第二步
+     *
+     * @param authcode
+     */
+    public static void startFindPasswordNextActivity(String authcode) {
+        Intent intent = new Intent(getContext(), FindPasswordNextActivity.class);
+        intent.putExtra("code", authcode);
+        startActivity(intent);
+    }
+
+    public static void startFindPasswordActivity() {
+        startActivity(FindPasswordActivity.class);
     }
 }

@@ -68,12 +68,12 @@
         "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\src\\main\\res\\layout\\rc_cs_alert_warning.xml"
     },
     {
-        "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\debug\\layout\\rc_fr_dialog_alter.xml",
-        "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\src\\main\\res\\layout\\rc_fr_dialog_alter.xml"
-    },
-    {
         "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\debug\\layout\\rc_wi_vo_provider.xml",
         "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\src\\main\\res\\layout\\rc_wi_vo_provider.xml"
+    },
+    {
+        "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\debug\\layout\\rc_fr_dialog_alter.xml",
+        "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\src\\main\\res\\layout\\rc_fr_dialog_alter.xml"
     },
     {
         "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\debug\\layout\\rc_fr_conversation.xml",

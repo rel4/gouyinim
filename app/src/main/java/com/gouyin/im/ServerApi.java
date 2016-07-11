@@ -533,6 +533,39 @@ public class ServerApi {
         Observable<DefaultDataBean> getChangePassword(@Field("pwd1") String oldpwd,
                                                       @Field("pwd2") String newpwd,
                                                       @Field("authcode") String authcode);
+
+        /**
+         * 找回密码 验证码
+         *
+         * @param phoneNumber
+         * @return
+         */
+        @FormUrlEncoded
+        @POST("User/findpwd_send_mobile_code")
+        Observable<BaseBean> getSecurityCode(@Field("mobile") String phoneNumber);
+
+        /**
+         * 找回密码 验证验证码
+         *
+         * @param phone
+         * @param code
+         * @return
+         */
+        @FormUrlEncoded
+        @POST("User/findpwd_step1")
+        Observable<RegiterBean> getFindPasswordSecurity(@Field("mobile") String phone, @Field("code") String code);
+
+        /**
+         * 找回密码 输入新密码
+         *
+         * @param newpwd
+         * @param code
+         * @return
+         */
+        @FormUrlEncoded
+        @POST("User/findpwd_step2")
+        Observable<BaseBean> getFindPasswordNext(@Field("pwd ") String newpwd,
+                                                 @Field("mobileauth") String code);
     }
 }
 

@@ -167,6 +167,8 @@
             android:name=".my.widget.UserInfoChangeActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".main.widget.UserinfoActivity" />
+        <activity android:name=".login.widget.FindPasswordActivity" />
+        <activity android:name=".login.widget.FindPasswordNextActivity" />
         <!--会话页面-->
         <activity
             android:name=".im.widget.AppConversationActivity"

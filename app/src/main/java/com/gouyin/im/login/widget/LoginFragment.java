@@ -17,6 +17,7 @@ import com.gouyin.im.login.presenter.LoginFragmentPersenter;
 import com.gouyin.im.login.presenter.LoginFragmentPersenterImpl;
 import com.gouyin.im.login.view.LoginFragmentView;
 import com.gouyin.im.manager.UserInfoManager;
+import com.gouyin.im.utils.ActivityUtils;
 import com.gouyin.im.utils.StringUtis;
 import com.gouyin.im.utils.UIUtils;
 
@@ -63,7 +64,7 @@ public class LoginFragment extends BaseFragment implements LoginFragmentView {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_forget_password:
-
+                ActivityUtils.startFindPasswordActivity();
                 break;
             case R.id.submit_login:
                 login();
