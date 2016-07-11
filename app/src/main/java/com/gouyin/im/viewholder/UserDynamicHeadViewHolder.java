@@ -12,7 +12,8 @@ import com.gouyin.im.base.BaseIModel;
 import com.gouyin.im.bean.DefaultDataBean;
 import com.gouyin.im.bean.UserInfoDetailBean;
 import com.gouyin.im.main.model.UserActionModelImpl;
-import com.gouyin.im.main.widget.UserInfoActivity;
+import com.gouyin.im.main.widget.UserDynamicActivity;
+import com.gouyin.im.utils.ActivityUtils;
 import com.gouyin.im.utils.StringUtis;
 import com.gouyin.im.utils.UIUtils;
 
@@ -23,7 +24,7 @@ import butterknife.OnClick;
 /**
  * Created by jb on 2016/6/22.
  */
-public class UserInfoHeadViewHolder {
+public class UserDynamicHeadViewHolder {
     @Bind(R.id.user_background)
     ImageView userBackground;
     @Bind(R.id.iv_user_icon)
@@ -43,9 +44,9 @@ public class UserInfoHeadViewHolder {
     @Bind(R.id.tv_wacth_status)
     ImageView tv_wacth_status;
     private UserInfoDetailBean userInfodetail;
-    private UserInfoActivity userInfoView;
+    private UserDynamicActivity userInfoView;
 
-    public UserInfoHeadViewHolder(View view) {
+    public UserDynamicHeadViewHolder(View view) {
         ButterKnife.bind(this, view);
     }
 
@@ -55,8 +56,6 @@ public class UserInfoHeadViewHolder {
         UserInfoDetailBean.UserInfoDetailDataBean data = userInfodetail.getData();
         UserInfoDetailBean.UserInfoDetailDataBean.Addons addons = data.getAddons();
         UserInfoDetailBean.UserInfoDetailDataBean.Baseinfo baseinfo = data.getBaseinfo();
-
-
         ImageServerApi.showURLImage(userBackground, baseinfo.getLikeImage());
         ImageServerApi.showURLImage(ivUserIcon, baseinfo.getFace());
         tvUserName.setText(baseinfo.getNickname());
@@ -65,6 +64,12 @@ public class UserInfoHeadViewHolder {
         tvFlowerNumber.setText(addons.getUfann());
         tvWacthNumber.setText(addons.getUfoln());
         getwacthStatus(data.getFollow(), data.getUid());
+        ivUserIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivityUtils.startUserinfoActivity(userInfodetail.getData().getUid());
+            }
+        });
 
     }
 
@@ -110,7 +115,7 @@ public class UserInfoHeadViewHolder {
 
     }
 
-    public void setUserInfoView(UserInfoActivity userInfoView) {
+    public void setUserInfoView(UserDynamicActivity userInfoView) {
         this.userInfoView = userInfoView;
     }
 

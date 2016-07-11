@@ -6,7 +6,7 @@ import android.graphics.drawable.Icon;
  * Created by jb on 2016/6/16.
  */
 public class IconUpLoadBean extends BaseBean {
-    public class Icon {
+    public static class Icon {
         private String id;
         private String img_path;
         private String width;

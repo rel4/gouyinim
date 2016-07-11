@@ -48,4 +48,15 @@ public class StringUtis {
         }
         return 0.00;
     }
+
+    /**
+     * 格式化接口
+     *
+     * @param arg
+     */
+    public static String formatAPI(String arg) {
+        if (isEmpty(arg))
+            return "";
+        return arg;
+    }
 }

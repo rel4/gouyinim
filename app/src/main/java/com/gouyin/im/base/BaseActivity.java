@@ -1,6 +1,7 @@
 package com.gouyin.im.base;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -50,6 +51,8 @@ public abstract class BaseActivity extends RxAppCompatActivity {
         View titleView = mRootView.findViewById(R.id.app_title_bar);
         if (titleView != null)
             initTitieBar(titleView);
+        // 方向锁定
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
     }
 

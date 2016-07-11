@@ -7,10 +7,7 @@ import com.gouyin.im.ImageServerApi;
 import com.gouyin.im.R;
 import com.gouyin.im.base.BaseRecyclerViewHolder;
 import com.gouyin.im.bean.GoodSelectBaen;
-import com.gouyin.im.main.widget.UserInfoActivity;
 import com.gouyin.im.utils.ActivityUtils;
-import com.gouyin.im.utils.LogUtils;
-import com.gouyin.im.utils.UIUtils;
 import com.gouyin.im.widget.RoundedImageView;
 
 import butterknife.Bind;

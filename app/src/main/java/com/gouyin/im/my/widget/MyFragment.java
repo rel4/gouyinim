@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.gouyin.im.R;
-import com.gouyin.im.adapter.UserInfoAdapter;
+import com.gouyin.im.adapter.UserDynamicAdapter;
 import com.gouyin.im.base.BaseFragment;
 import com.gouyin.im.bean.PayRedPacketPicsBean;
 import com.gouyin.im.bean.UserInfoDetailBean;
@@ -39,7 +39,7 @@ public class MyFragment extends BaseFragment implements MyFragmentView {
     @Bind(R.id.recyclerview)
     XListView recyclerview;
     private MyFragmentPresenter mPresenter;
-    private UserInfoAdapter mAdapter;
+    private UserDynamicAdapter mAdapter;
     private boolean isRefresh;
 
     private PersonDynamicViewholder personDynamicViewholder;
@@ -206,7 +206,7 @@ public class MyFragment extends BaseFragment implements MyFragmentView {
     @Override
     public void setListData(List<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList> list) {
         if (mAdapter == null) {
-            mAdapter = new UserInfoAdapter(list);
+            mAdapter = new UserDynamicAdapter(list);
             recyclerview.setAdapter(mAdapter);
         } else {
             if (isRefresh)

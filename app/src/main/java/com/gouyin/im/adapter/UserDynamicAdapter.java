@@ -8,22 +8,18 @@ import com.gouyin.im.base.BaseRecyclerViewAdapter;
 import com.gouyin.im.base.BaseRecyclerViewHolder;
 import com.gouyin.im.bean.PayRedPacketPicsBean;
 import com.gouyin.im.bean.UserInfoListBean;
-import com.gouyin.im.center.widget.DynamicSendActivity;
-import com.gouyin.im.main.widget.DynamicDatailsActivity;
 import com.gouyin.im.utils.StringUtis;
 import com.gouyin.im.utils.UIUtils;
-import com.gouyin.im.viewholder.UserInfoViewHolder;
+import com.gouyin.im.viewholder.UserDynamicViewHolder;
 
 import java.util.List;
 
 /**
  * Created by pc on 2016/6/6.
  */
-public class UserInfoAdapter extends BaseRecyclerViewAdapter<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList> {
-    private UserInfoViewHolder tvViewHolder;
-    private UserInfoViewHolder picViewHolder;
+public class UserDynamicAdapter extends BaseRecyclerViewAdapter<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList> {
 
-    public UserInfoAdapter(List list) {
+    public UserDynamicAdapter(List list) {
         super(list);
 
     }
@@ -37,7 +33,7 @@ public class UserInfoAdapter extends BaseRecyclerViewAdapter<UserInfoListBean.Us
 
     @Override
     protected BaseRecyclerViewHolder getBaseViewHolder(View v, int viewType) {
-        return new UserInfoViewHolder(v, viewType);
+        return new UserDynamicViewHolder(v, viewType);
     }
 
     @Override

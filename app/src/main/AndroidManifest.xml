@@ -56,7 +56,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".main.widget.UserInfoActivity"
+            android:name=".main.widget.UserDynamicActivity"
             android:screenOrientation="portrait"></activity>
         <activity
             android:name=".main.widget.DynamicDatailsActivity"
@@ -163,6 +163,10 @@
         <activity
             android:name=".home.widget.SearchReasonActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".my.widget.UserInfoChangeActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".main.widget.UserinfoActivity" />
         <!--会话页面-->
         <activity
             android:name=".im.widget.AppConversationActivity"

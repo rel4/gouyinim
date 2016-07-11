@@ -140,7 +140,8 @@ public class SearchReasonActivity extends BaseActivity implements TextWatcher, S
             finish();
         } else {
             key = etChannelFind.getText().toString();
-            adapter.clean();
+            if (adapter != null)
+                adapter.clean();
             search();
         }
     }

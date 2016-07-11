@@ -1,6 +1,5 @@
 package com.gouyin.im.main.widget;
 
-import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
@@ -17,15 +16,13 @@ import com.gouyin.im.manager.UserInfoManager;
 import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.StringUtis;
 import com.gouyin.im.utils.UIUtils;
-import com.gouyin.im.viewholder.UserInfoViewHolder;
+import com.gouyin.im.viewholder.UserDynamicViewHolder;
 import com.gouyin.im.widget.XListView;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -88,7 +85,7 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
         if (mAdapter == null) {
             mAdapter = new DynamiDayailsAdapter(datas);
             View view = UIUtils.inflateLayout(R.layout.item_home_one_menu);
-            UserInfoViewHolder holder = new UserInfoViewHolder(view, userInfo.getType());
+            UserDynamicViewHolder holder = new UserDynamicViewHolder(view, userInfo.getType());
             holder.onBindData(userInfo);
             recyclerView.addHeaderView(holder.getRootView());
             recyclerView.setAdapter(mAdapter);

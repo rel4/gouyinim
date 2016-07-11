@@ -55,7 +55,7 @@ public class RedPacketMessageItemProvider extends IContainerItemProvider.Message
         return view;
     }
 
-    class ViewHolder {
+    static class ViewHolder {
         TextView message;
     }
 }

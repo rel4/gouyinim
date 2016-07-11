@@ -17,7 +17,7 @@ public class UserInfoListBean extends BaseBean {
         this.data = data;
     }
 
-    public class UserInfoListBeanData {
+    public static  class UserInfoListBeanData {
         private List<UserInfoListBeanDataList> list;
 
         public List<UserInfoListBeanDataList> getList() {
@@ -28,7 +28,7 @@ public class UserInfoListBean extends BaseBean {
             this.list = list;
         }
 
-        public class UserInfoListBeanDataList extends BaseDataBean {
+        public static class UserInfoListBeanDataList extends BaseDataBean {
             private String lkpicn;
             private ArrayList<String> img;
             private long create_time;
@@ -215,7 +215,7 @@ public class UserInfoListBean extends BaseBean {
                 this.uid = uid;
             }
 
-            public class Simg implements Serializable {
+            public static class Simg implements Serializable {
                 private String url;
 
                 public void setUrl(String url) {
@@ -228,7 +228,7 @@ public class UserInfoListBean extends BaseBean {
 
             }
 
-            public class Img implements Serializable {
+            public static  class Img implements Serializable {
                 private String url;
 
                 public void setUrl(String url) {

@@ -3,7 +3,6 @@ package com.gouyin.im.utils;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.text.TextUtils;
 
 import com.gouyin.im.AppConstant;
 import com.gouyin.im.bean.TiXinrRecordBean;
@@ -16,14 +15,14 @@ import com.gouyin.im.event.Events;
 import com.gouyin.im.event.RxBus;
 import com.gouyin.im.home.widget.SearchActivity;
 import com.gouyin.im.home.widget.SearchReasonActivity;
-import com.gouyin.im.im.widget.AppConversationActivity;
 import com.gouyin.im.login.widget.LoginMainActivity;
 import com.gouyin.im.main.widget.DynamicDatailsActivity;
 import com.gouyin.im.main.widget.PayAppointmentActivity;
 import com.gouyin.im.main.widget.PayAppointmentOrderActivity;
 import com.gouyin.im.main.widget.PersonInfoChangeActivity;
 import com.gouyin.im.main.widget.RedpacketAcitivity;
-import com.gouyin.im.main.widget.UserInfoActivity;
+import com.gouyin.im.main.widget.UserDynamicActivity;
+import com.gouyin.im.main.widget.UserinfoActivity;
 import com.gouyin.im.manager.UserInfoManager;
 import com.gouyin.im.my.widget.AddCardActivity;
 import com.gouyin.im.my.widget.AppointmentActivity;
@@ -37,6 +36,7 @@ import com.gouyin.im.my.widget.RefundActivity;
 import com.gouyin.im.my.widget.SettingActivity;
 import com.gouyin.im.my.widget.SwitchCardActivity;
 import com.gouyin.im.my.widget.TiXianRecordActivity;
+import com.gouyin.im.my.widget.UserInfoChangeActivity;
 import com.gouyin.im.my.widget.WithdRawDepositActivity;
 import com.gouyin.im.widget.image.PhonePicActivity;
 import com.gouyin.im.widget.image.ShowImageActivity;
@@ -82,7 +82,7 @@ public class ActivityUtils {
      * 进入用户信息列表
      */
     public static void startUserInfoActivity(String userId) {
-        Intent intent = new Intent(ConfigUtils.getInstance().getApplicationContext(), UserInfoActivity.class);
+        Intent intent = new Intent(ConfigUtils.getInstance().getApplicationContext(), UserDynamicActivity.class);
         LogUtils.e(TAG, "userid : " + userId);
         intent.putExtra(AppConstant.USER_ID, userId);
         startActivity(intent);
@@ -393,6 +393,23 @@ public class ActivityUtils {
     public static void startSearchReasonActivity(String search) {
         Intent intent = new Intent(getContext(), SearchReasonActivity.class);
         intent.putExtra("key", search);
+        startActivity(intent);
+    }
+
+    /**
+     * 修改资料
+     */
+    public static void startUserInfoChangeActivity() {
+        startActivity(UserInfoChangeActivity.class);
+    }
+
+    /**
+     * 展示用户信息
+     * @param uid
+     */
+    public static void startUserinfoActivity(String uid) {
+        Intent intent = new Intent(getContext(), UserinfoActivity.class);
+        intent.putExtra("uid", uid);
         startActivity(intent);
     }
 }

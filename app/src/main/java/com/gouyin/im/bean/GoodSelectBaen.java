@@ -17,7 +17,7 @@ public class GoodSelectBaen extends BaseBean {
         this.data = data;
     }
 
-    public class Data extends BaseDataBean {
+    public static  class Data extends BaseDataBean {
         private String face;
         private String nickname;
         private String sex;

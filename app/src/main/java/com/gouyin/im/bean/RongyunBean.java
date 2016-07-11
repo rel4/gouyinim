@@ -14,7 +14,7 @@ public class RongyunBean extends BaseBean {
         this.data = data;
     }
 
-    public class RongyunData {
+    public static class RongyunData {
         private String uid;
         private String token;
         private String face;

@@ -10,10 +10,12 @@ import com.gouyin.im.ImageServerApi;
 import com.gouyin.im.R;
 import com.gouyin.im.bean.UserInfoDetailBean;
 import com.gouyin.im.manager.UserInfoManager;
+import com.gouyin.im.utils.ActivityUtils;
 import com.gouyin.im.utils.StringUtis;
 import com.gouyin.im.utils.UIUtils;
 
 import butterknife.Bind;
+import butterknife.OnClick;
 
 /**
  * Created by jb on 2016/6/25.
@@ -82,5 +84,10 @@ public class PersonDynamicViewholder extends BaseHolder<UserInfoDetailBean> {
         }
 
 
+    }
+
+    @OnClick(R.id.iv_user_icon)
+    public void onClick() {
+        ActivityUtils.startUserInfoChangeActivity();
     }
 }

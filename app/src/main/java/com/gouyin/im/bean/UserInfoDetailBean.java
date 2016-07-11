@@ -1,5 +1,7 @@
 package com.gouyin.im.bean;
 
+import java.io.Serializable;
+
 /**
  * Created by jb on 2016/6/20.
  */
@@ -14,7 +16,7 @@ public class UserInfoDetailBean extends BaseBean {
         this.data = data;
     }
 
-    public class UserInfoDetailDataBean extends BaseDataBean {
+    public  static  class UserInfoDetailDataBean extends BaseDataBean {
 
         private Addons addons;
         private Object guard;
@@ -42,7 +44,7 @@ public class UserInfoDetailBean extends BaseBean {
             this.baseinfo = baseinfo;
         }
 
-        public class Baseinfo {
+        public static  class Baseinfo implements Serializable {
             private String nickname;
             private int sex;
             private String face;
@@ -89,7 +91,7 @@ public class UserInfoDetailBean extends BaseBean {
             }
         }
 
-        public class Addons {
+        public static  class Addons {
             private String ufann;
             private String ufoln;
             private String ulatn;

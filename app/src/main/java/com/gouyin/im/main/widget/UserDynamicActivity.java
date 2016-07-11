@@ -1,7 +1,5 @@
 package com.gouyin.im.main.widget;
 
-import android.graphics.Color;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -9,7 +7,7 @@ import android.widget.TextView;
 
 import com.gouyin.im.AppConstant;
 import com.gouyin.im.R;
-import com.gouyin.im.adapter.UserInfoAdapter;
+import com.gouyin.im.adapter.UserDynamicAdapter;
 import com.gouyin.im.base.BaseActivity;
 import com.gouyin.im.bean.PayRedPacketPicsBean;
 import com.gouyin.im.bean.UserInfoDetailBean;
@@ -22,10 +20,8 @@ import com.gouyin.im.main.view.UserInfoView;
 import com.gouyin.im.utils.ActivityUtils;
 import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.UIUtils;
-import com.gouyin.im.viewholder.UserInfoHeadViewHolder;
-import com.gouyin.im.widget.DividerItemDecoration;
+import com.gouyin.im.viewholder.UserDynamicHeadViewHolder;
 import com.gouyin.im.widget.XListView;
-import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.trello.rxlifecycle.ActivityEvent;
 
@@ -37,7 +33,7 @@ import butterknife.OnClick;
 /**
  * Created by pc on 2016/6/3.
  */
-public class UserInfoActivity extends BaseActivity implements UserInfoView {
+public class UserDynamicActivity extends BaseActivity implements UserInfoView {
 
     @Bind(R.id.recyclerview)
     XListView recyclerview;
@@ -53,9 +49,9 @@ public class UserInfoActivity extends BaseActivity implements UserInfoView {
     LinearLayout layout_usee_action;
 
     private UserInfoPresenter mPresenter;
-    private UserInfoAdapter mAdapter;
+    private UserDynamicAdapter mAdapter;
     private boolean isRefresh;
-    private UserInfoHeadViewHolder headHolder;
+    private UserDynamicHeadViewHolder headHolder;
     private String userId;
     private String nikeName;
 
@@ -124,7 +120,7 @@ public class UserInfoActivity extends BaseActivity implements UserInfoView {
      */
     private View initHeadLayout() {
         View headView = UIUtils.inflateLayout(R.layout.head_user_info);
-        headHolder = new UserInfoHeadViewHolder(headView);
+        headHolder = new UserDynamicHeadViewHolder(headView);
         headHolder.setUserInfoView(this);
         return headView;
     }
@@ -145,7 +141,7 @@ public class UserInfoActivity extends BaseActivity implements UserInfoView {
     public void loadUserinfo(List<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList> list) {
 
         if (mAdapter == null) {
-            mAdapter = new UserInfoAdapter(list);
+            mAdapter = new UserDynamicAdapter(list);
             recyclerview.setAdapter(mAdapter);
         } else {
             mAdapter.addListData(list);

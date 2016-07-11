@@ -1,9 +1,11 @@
 package com.gouyin.im.main.widget;
 
+import android.text.InputType;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.gouyin.im.CacheManager;
 import com.gouyin.im.R;
 import com.gouyin.im.base.BaseActivity;
 import com.gouyin.im.event.Events;
@@ -38,7 +40,7 @@ public class PersonInfoChangeActivity extends BaseActivity {
      * 修改的类型
      */
     public enum ChangeType {
-        HEIGHT(1), SEX(2), NIKE(3), ADDRESS(4);
+        HEIGHT(1), SEX(2), NIKE(3), ADDRESS(4), SIGNATURE(5), INTRODUCTION(6), EDUCATION(7), JOB(8), WEIGHT(9);
         int chengeType;
 
         private ChangeType(int type) {
@@ -69,6 +71,21 @@ public class PersonInfoChangeActivity extends BaseActivity {
             case 4:
                 type = ChangeType.ADDRESS;
                 break;
+            case 5:
+                type = ChangeType.SIGNATURE;
+                break;
+            case 6:
+                type = ChangeType.INTRODUCTION;
+                break;
+            case 7:
+                type = ChangeType.EDUCATION;
+                break;
+            case 8:
+                type = ChangeType.JOB;
+                break;
+            case 9:
+                type = ChangeType.WEIGHT;
+                break;
 
         }
         return UIUtils.inflateLayout(R.layout.activity_person_info_change);
@@ -84,6 +101,7 @@ public class PersonInfoChangeActivity extends BaseActivity {
                 tvMonad.setText(UIUtils.getStringRes(R.string.cm));
                 tvMonad.setTextColor(UIUtils.getResources().getColor(R.color.text_black_color));
                 etInfo.setHint(title);
+                etInfo.setInputType(InputType.TYPE_CLASS_NUMBER);
                 break;
             case 2:
                 etInfo.setVisibility(View.INVISIBLE);
@@ -111,6 +129,28 @@ public class PersonInfoChangeActivity extends BaseActivity {
                 ActivityUtils.startActivity(SelectPlandWindowActivity.class);
                 setRx();
                 break;
+            case 5:
+                title = UIUtils.getStringRes(R.string.signature);
+                setRx();
+                break;
+            case 6:
+                title = UIUtils.getStringRes(R.string.introduction);
+                setRx();
+                break;
+            case 7:
+                title = UIUtils.getStringRes(R.string.education);
+                setRx();
+                break;
+            case 8:
+                title = UIUtils.getStringRes(R.string.job);
+                setRx();
+                break;
+            case 9:
+                title = UIUtils.getStringRes(R.string.weight);
+                etInfo.setInputType(InputType.TYPE_CLASS_NUMBER);
+                setRx();
+                break;
+
         }
         if (!StringUtis.isEmpty(title))
             return title;
@@ -201,6 +241,51 @@ public class PersonInfoChangeActivity extends BaseActivity {
                 sendRx(address, null);
                 finish();
                 break;
+            case 5:
+                String signature = etInfo.getText().toString().trim();
+                if (StringUtis.isEmpty(signature) || signature.length() == 0) {
+                    showToast(getResources().getString(R.string.not_empty));
+                    return;
+                }
+                sendRx(signature, null);
+                finish();
+                break;
+            case 6:
+                String introduction = etInfo.getText().toString().trim();
+                if (StringUtis.isEmpty(introduction) || introduction.length() == 0) {
+                    showToast(getResources().getString(R.string.not_empty));
+                    return;
+                }
+                sendRx(introduction, null);
+                finish();
+                break;
+            case 7:
+                String education = etInfo.getText().toString().trim();
+                if (StringUtis.isEmpty(education) || education.length() == 0) {
+                    showToast(getResources().getString(R.string.not_empty));
+                    return;
+                }
+                sendRx(education, null);
+                finish();
+                break;
+            case 8:
+                String job = etInfo.getText().toString().trim();
+                if (StringUtis.isEmpty(job) || job.length() == 0) {
+                    showToast(getResources().getString(R.string.not_empty));
+                    return;
+                }
+                sendRx(job, null);
+                finish();
+                break;
+            case 9:
+                String weight = etInfo.getText().toString().trim();
+                if (StringUtis.isEmpty(weight) || weight.length() == 0) {
+                    showToast(getResources().getString(R.string.not_empty));
+                    return;
+                }
+                sendRx(weight, null);
+                finish();
+                break;
         }
     }
 
@@ -216,7 +301,7 @@ public class PersonInfoChangeActivity extends BaseActivity {
         finish();
     }
 
-    public class PersonInfoChangeData implements Serializable {
+    public static class PersonInfoChangeData implements Serializable {
         private String arg1;
         private String arg2;
         private ChangeType type;

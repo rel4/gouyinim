@@ -72,7 +72,7 @@ public class ImagePagerActivity extends FragmentActivity {
 		outState.putInt(STATE_POSITION, mPager.getCurrentItem());
 	}
 
-	private class ImagePagerAdapter extends FragmentStatePagerAdapter {
+	private static  class ImagePagerAdapter extends FragmentStatePagerAdapter {
 
 		public ArrayList<String> fileList;
 

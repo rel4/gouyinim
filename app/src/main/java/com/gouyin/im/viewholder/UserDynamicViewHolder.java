@@ -28,7 +28,7 @@ import butterknife.Bind;
 /**
  * Created by pc on 2016/6/4.
  */
-public class UserInfoViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList> {
+public class UserDynamicViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList> {
 
     //1 红包图集
     public static final int TYPE_REDPACTKET_DYNAMIC = 1;
@@ -62,7 +62,7 @@ public class UserInfoViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.
     private VideoView play;
     private TextView tv_show_redpacket;
 
-    public UserInfoViewHolder(View view, int viewType) {
+    public UserDynamicViewHolder(View view, int viewType) {
         super(view);
         this.viewType = viewType;
         initFragment();
@@ -193,7 +193,7 @@ public class UserInfoViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.
         ActivityUtils.startDynamicDatailsActivity(bean);
     }
 
-    private class PicGridView extends BaseAdapter {
+    private static class PicGridView extends BaseAdapter {
         private UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList bean;
 
         public PicGridView(UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList bean) {

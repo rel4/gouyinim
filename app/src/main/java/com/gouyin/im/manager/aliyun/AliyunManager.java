@@ -170,7 +170,7 @@ public class AliyunManager {
         void onResuit(boolean isSucced, T t);
     }
 
-    public class AliyunCallBack {
+    public static class AliyunCallBack {
         private String eTag;
         private String RequestId;
         private String serverFilePath;

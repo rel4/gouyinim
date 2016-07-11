@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class RegiterBean extends BaseBean {
 //        private RegiterCode data;
         private RegiterCode data;
-        public  class RegiterCode implements Serializable{
+        public static class RegiterCode implements Serializable{
             private  String authcode;
 
             public String getAuthcode() {

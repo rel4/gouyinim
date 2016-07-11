@@ -133,4 +133,22 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:textColor">@color/text_black_color</item>
     </style>
+
+    <style name="info_change_text" parent="android:Widget.TextView">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/text_black_color</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginLeft">@dimen/x30</item>
+    </style>
+
+    <style name="info_change_show_text">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/gray_color</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginRight">@dimen/x30</item>
+    </style>
 </resources>

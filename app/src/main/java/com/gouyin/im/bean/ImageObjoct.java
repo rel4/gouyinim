@@ -1,4 +1,4 @@
-package com.gouyin.im.base;
+package com.gouyin.im.bean;
 
 import java.io.Serializable;
 

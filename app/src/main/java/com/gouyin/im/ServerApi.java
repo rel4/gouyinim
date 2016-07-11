@@ -15,6 +15,7 @@ import com.gouyin.im.bean.RegiterBean;
 import com.gouyin.im.bean.RongyunBean;
 import com.gouyin.im.bean.SearchReasonBaen;
 import com.gouyin.im.bean.TiXinrRecordBean;
+import com.gouyin.im.bean.UserInfoChangeBean;
 import com.gouyin.im.bean.UserInfoDetailBean;
 import com.gouyin.im.bean.UserInfoListBean;
 import com.gouyin.im.utils.LogUtils;
@@ -489,6 +490,36 @@ public class ServerApi {
         Observable<SearchReasonBaen> getSearchReason(@Query("name") String key,
                                                      @Query("page") int page,
                                                      @Query("authcode") String authcode);
+
+        /**
+         * 用户的信息
+         *
+         * @param uid
+         * @return
+         */
+        @GET("User/user_detail")
+        Observable<UserInfoChangeBean> getUserInfoBasic(@Query("uid") String uid);
+
+        /**
+         * 修正资料
+         *
+         * @return
+         */
+        @FormUrlEncoded
+        @POST("User/edit_profile")
+        Observable<DefaultDataBean> getChangeInfo(@Field("face") String face,
+                                                  @Field("birthday") String birth,
+                                                  @Field("nickname") String nickname,
+                                                  @Field("height") String height,
+                                                  @Field("prifession") String prifession,
+                                                  @Field("residence") String addrss,
+                                                  @Field("city") String city,
+                                                  @Field("signature") String signature,
+                                                  @Field("weight") String weight,
+                                                  @Field("sex") String sex,
+                                                  @Field("degree") String degree,
+                                                  @Field("self_intro") String self_intro,
+                                                  @Field("authcode") String authcode);
     }
 }
 

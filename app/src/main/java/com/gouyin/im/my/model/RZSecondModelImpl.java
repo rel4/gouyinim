@@ -5,7 +5,7 @@ import android.graphics.BitmapFactory;
 
 import com.gouyin.im.ServerApi;
 import com.gouyin.im.manager.aliyun.AliyunManager;
-import com.gouyin.im.base.ImageObjoct;
+import com.gouyin.im.bean.ImageObjoct;
 import com.gouyin.im.bean.DefaultDataBean;
 import com.gouyin.im.center.presenter.DefaultDynamicPresenterImpl;
 import com.gouyin.im.manager.UserInfoManager;
