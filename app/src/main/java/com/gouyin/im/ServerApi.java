@@ -520,6 +520,19 @@ public class ServerApi {
                                                   @Field("degree") String degree,
                                                   @Field("self_intro") String self_intro,
                                                   @Field("authcode") String authcode);
+
+        /**
+         * 修改密码
+         *
+         * @param oldpwd
+         * @param newpwd
+         * @return
+         */
+        @FormUrlEncoded
+        @POST("User/edit_pwd")
+        Observable<DefaultDataBean> getChangePassword(@Field("pwd1") String oldpwd,
+                                                      @Field("pwd2") String newpwd,
+                                                      @Field("authcode") String authcode);
     }
 }
 

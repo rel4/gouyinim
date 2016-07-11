@@ -106,7 +106,7 @@
             android:name=".my.widget.RefundActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".utils.ChangepwdActivity"
+            android:name=".my.widget.ChangepwdActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".my.widget.SettingActivity"

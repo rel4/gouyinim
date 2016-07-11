@@ -27,6 +27,7 @@ import com.gouyin.im.manager.UserInfoManager;
 import com.gouyin.im.my.widget.AddCardActivity;
 import com.gouyin.im.my.widget.AppointmentActivity;
 import com.gouyin.im.my.widget.CertificationActivity;
+import com.gouyin.im.my.widget.ChangepwdActivity;
 import com.gouyin.im.my.widget.GetMoneyActivity;
 import com.gouyin.im.my.widget.MyOrderActivity;
 import com.gouyin.im.my.widget.RZFirstActivity;

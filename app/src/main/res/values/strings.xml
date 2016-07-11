@@ -137,6 +137,11 @@
     <string name="job">工作</string>
     <string name="weight">体重</string>
     <string name="change_user_info">修改资料</string>
+    <string name="old_password">原密码</string>
+    <string name="new_password">新密码</string>
+    <string name="again_input">再次输入</string>
+    <string name="reset">重置</string>
+    <string name="not_same">不一样</string>
     <string-array name="moneys">
         <item>8</item>
         <item>28</item>
