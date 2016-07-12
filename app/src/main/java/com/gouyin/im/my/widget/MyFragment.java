@@ -12,6 +12,8 @@ import com.gouyin.im.base.BaseFragment;
 import com.gouyin.im.bean.PayRedPacketPicsBean;
 import com.gouyin.im.bean.UserInfoDetailBean;
 import com.gouyin.im.bean.UserInfoListBean;
+import com.gouyin.im.event.Events;
+import com.gouyin.im.event.RxBus;
 import com.gouyin.im.manager.UserInfoManager;
 import com.gouyin.im.my.persenter.MyFragmentPresenter;
 import com.gouyin.im.my.persenter.MyFragmentPresenterImpl;
@@ -23,6 +25,7 @@ import com.gouyin.im.utils.UIUtils;
 import com.gouyin.im.viewholder.PersonDynamicViewholder;
 import com.gouyin.im.widget.XListView;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
+import com.trello.rxlifecycle.FragmentEvent;
 
 import java.util.List;
 
@@ -105,8 +108,24 @@ public class MyFragment extends BaseFragment implements MyFragmentView {
      */
 
     private View initHeadLayout() {
+        RxBus.with(this)
+                .setEndEvent(FragmentEvent.DESTROY)
+                .setEvent(Events.EventEnum.CROP_IMAGE_PATH)
+                .onNext(events -> {
+                    if (events != null && personDynamicViewholder != null) {
+                        String path = (String) events.message;
+                        mPresenter.uploadBackground(path);
+                    }
+                })
+                .create();
         personDynamicViewholder = new PersonDynamicViewholder();
         return personDynamicViewholder.getContentView();
+    }
+
+    @Override
+    public void setUserBackground(String path) {
+        if (personDynamicViewholder != null)
+            personDynamicViewholder.upImage(path);
     }
 
     @OnClick({R.id.tv_certification, R.id.tv_withdraw_deposit, R.id.tv_appointment, R.id.tv_person_order, R.id.tv_person_setting})
@@ -119,10 +138,8 @@ public class MyFragment extends BaseFragment implements MyFragmentView {
     private void loadMoreComplete() {
         if (recyclerview == null)
             return;
-        if (!isRefresh)
-            recyclerview.loadMoreComplete();
-        else
-            recyclerview.refreshComplete();
+        recyclerview.loadMoreComplete();
+        recyclerview.refreshComplete();
 
     }
 
@@ -222,4 +239,6 @@ public class MyFragment extends BaseFragment implements MyFragmentView {
 
         personDynamicViewholder.refreshView(bean);
     }
+
+
 }

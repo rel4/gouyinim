@@ -23,4 +23,6 @@ public interface MyFragmentView extends BaseIView {
     void setListData(List<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList> t);
 
     void setUserInfo(UserInfoDetailBean bean);
+
+    void setUserBackground(String obj);
 }

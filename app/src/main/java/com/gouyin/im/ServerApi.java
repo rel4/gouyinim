@@ -564,8 +564,20 @@ public class ServerApi {
          */
         @FormUrlEncoded
         @POST("User/findpwd_step2")
-        Observable<BaseBean> getFindPasswordNext(@Field("pwd ") String newpwd,
+        Observable<BaseBean> getFindPasswordNext(@Field("pwd") String newpwd,
                                                  @Field("mobileauth") String code);
+
+        /**
+         * 更新背景图
+         *
+         * @param path
+         * @param authcode
+         * @return
+         */
+        @FormUrlEncoded
+        @POST("User/edit_like_image")
+        Observable<DefaultDataBean> getUploadBackground(@Field("like_image") String path,
+                                                        @Field("authcode") String authcode);
     }
 }
 

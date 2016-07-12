@@ -1,19 +1,25 @@
 package com.gouyin.im.my.persenter;
 
+import android.widget.Switch;
+
+import com.gouyin.im.AppConstant;
 import com.gouyin.im.R;
 import com.gouyin.im.base.BaseIModel;
+import com.gouyin.im.bean.DefaultDataBean;
 import com.gouyin.im.bean.UserInfoDetailBean;
 import com.gouyin.im.bean.UserInfoListBean;
 import com.gouyin.im.my.model.MyFragmentModel;
 import com.gouyin.im.my.model.MyFragmentModelImpl;
 import com.gouyin.im.my.view.MyFragmentView;
+import com.gouyin.im.utils.StringUtis;
+import com.gouyin.im.utils.UIUtils;
 
 import java.util.List;
 
 /**
  * Created by jb on 2016/6/27.
  */
-public class MyFragmentPresenterImpl implements MyFragmentPresenter, BaseIModel.onLoadListDateListener<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList>, BaseIModel.onLoadDateSingleListener<UserInfoDetailBean> {
+public class MyFragmentPresenterImpl implements MyFragmentPresenter, BaseIModel.onLoadListDateListener<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList>, BaseIModel.onLoadDateSingleListener {
     private MyFragmentView view;
     private MyFragmentModel model;
     private int page = 2;
@@ -72,6 +78,12 @@ public class MyFragmentPresenterImpl implements MyFragmentPresenter, BaseIModel.
         page++;
     }
 
+    @Override
+    public void uploadBackground(String path) {
+        view.showLoading();
+        model.uploadBackground(path, this);
+    }
+
 
     @Override
     public void onSuccess(List<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList> t, BaseIModel.DataType dataType) {
@@ -85,9 +97,29 @@ public class MyFragmentPresenterImpl implements MyFragmentPresenter, BaseIModel.
     }
 
     @Override
-    public void onSuccess(UserInfoDetailBean bean, BaseIModel.DataType dataType) {
+    public void onSuccess(Object obj, BaseIModel.DataType dataType) {
+        view.hideLoading();
+        if (obj == null) {
+            view.transfePageMsg(UIUtils.getStringRes(R.string.request_failed));
+            return;
+        }
+        switch (dataType) {
+            case DATA_TWO:
+                DefaultDataBean dd = (DefaultDataBean) obj;
+                if (StringUtis.equals(AppConstant.code_request_success, dd.getCode())) {
+                    view.setUserBackground((String) dd.getObj());
+                } else {
+                    view.transfePageMsg(dd.getMsg());
+                }
 
-        view.setUserInfo(bean);
+                break;
+            case DATA_ONE:
+                UserInfoDetailBean bean = (UserInfoDetailBean) obj;
+                view.setUserInfo(bean);
+                view.transfePageMsg(bean.getMsg());
+                break;
+        }
+
     }
 
     @Override

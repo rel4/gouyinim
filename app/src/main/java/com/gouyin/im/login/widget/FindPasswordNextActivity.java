@@ -1,10 +1,8 @@
 package com.gouyin.im.login.widget;
 
-import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-import com.gouyin.im.CacheManager;
 import com.gouyin.im.R;
 import com.gouyin.im.base.BaseActivity;
 import com.gouyin.im.login.presenter.FindPasswordNextActivityPresenter;
@@ -14,7 +12,6 @@ import com.gouyin.im.utils.StringUtis;
 import com.gouyin.im.utils.UIUtils;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -58,8 +55,8 @@ public class FindPasswordNextActivity extends BaseActivity implements FindPasswo
 
     @OnClick(R.id.tv_submit)
     public void onClick() {
-        String input = etInputPassword.getText().toString();
-        String newpwd = etNewpwd.getText().toString();
+        String input = etInputPassword.getText().toString().trim();
+        String newpwd = etNewpwd.getText().toString().trim();
         if (StringUtis.isEmpty(input)) {
             showToast(UIUtils.getStringRes(R.string.again_input) + UIUtils.getStringRes(R.string.not_empty));
             return;

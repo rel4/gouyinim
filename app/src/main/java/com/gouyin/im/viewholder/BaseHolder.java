@@ -36,4 +36,6 @@ public abstract class BaseHolder<T> {
     public View getContentView() {
         return contentView;
     }
+
+
 }

@@ -142,6 +142,7 @@
     <string name="again_input">再次输入</string>
     <string name="reset">重置</string>
     <string name="not_same">不一样</string>
+    <string name="select_pic">选择图片</string>
     <string-array name="moneys">
         <item>8</item>
         <item>28</item>

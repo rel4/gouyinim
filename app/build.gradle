@@ -68,8 +68,11 @@ dependencies {
     compile rootProject.ext.dependencies["support-v4"]
     compile rootProject.ext.dependencies["xrecyclerview"]
     //    compile rootProject.ext.dependencies["gson"];
+    //阿里云
     compile project(path: ':progressdialog')
     compile files('libs/aliyun-oss-sdk-android-2.2.0.jar')
     compile files('libs/alipaySdk-20160516.jar')
     compile files('libs/libammsdk.jar')
+    //图片裁剪
+    compile 'com.soundcloud.android:android-crop:1.0.1@aar'
 }

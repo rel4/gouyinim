@@ -41,10 +41,12 @@ import com.gouyin.im.my.widget.SwitchCardActivity;
 import com.gouyin.im.my.widget.TiXianRecordActivity;
 import com.gouyin.im.my.widget.UserInfoChangeActivity;
 import com.gouyin.im.my.widget.WithdRawDepositActivity;
+import com.gouyin.im.widget.image.CropImageMainActivity;
 import com.gouyin.im.widget.image.PhonePicActivity;
 import com.gouyin.im.widget.image.ShowImageActivity;
 import com.gouyin.im.widget.image.photoview.ImagePagerActivity;
 import com.gouyin.im.widget.takevideo.TakeVideoActivity;
+import com.soundcloud.android.crop.CropImageActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -428,7 +430,17 @@ public class ActivityUtils {
         startActivity(intent);
     }
 
+    /**
+     * 找回密码
+     */
     public static void startFindPasswordActivity() {
         startActivity(FindPasswordActivity.class);
+    }
+
+    /**
+     * 图片裁剪
+     */
+    public static void startCropImageMainActivity() {
+        startActivity(CropImageMainActivity.class);
     }
 }

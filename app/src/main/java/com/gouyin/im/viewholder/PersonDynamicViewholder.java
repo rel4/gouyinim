@@ -55,6 +55,13 @@ public class PersonDynamicViewholder extends BaseHolder<UserInfoDetailBean> {
         if (bean == null)
             return;
         UserInfoDetailBean.UserInfoDetailDataBean.Baseinfo baseinfo = bean.getBaseinfo();
+        userBackground.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivityUtils.startCropImageMainActivity();
+
+            }
+        });
         if (baseinfo != null) {
             ImageServerApi.showURLBigImage(userBackground, baseinfo.getLike_image());
             ImageServerApi.showURLSamllImage(ivUserIcon, baseinfo.getFace());
@@ -89,5 +96,11 @@ public class PersonDynamicViewholder extends BaseHolder<UserInfoDetailBean> {
     @OnClick(R.id.iv_user_icon)
     public void onClick() {
         ActivityUtils.startUserInfoChangeActivity();
+    }
+
+    public void upImage(String path) {
+        if (userBackground != null) {
+            ImageServerApi.showURLBigImage(userBackground, path);
+        }
     }
 }

@@ -8,5 +8,7 @@ import com.gouyin.im.base.BaseIModel;
 public interface MyFragmentModel extends BaseIModel {
     void loadPersonHeader(BaseIModel.onLoadDateSingleListener listener);
 
-    void loadonRefreshData(int page,onLoadListDateListener listener);
+    void loadonRefreshData(int page, onLoadListDateListener listener);
+
+    void uploadBackground(String path, onLoadDateSingleListener listener);
 }

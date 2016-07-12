@@ -49,12 +49,13 @@ public class FindPasswordNextActivityPresenterImpl implements FindPasswordNextAc
                 });
             }
             view.transfePageMsg(bean.getMsg());
-
+            view.hideLoading();
         }
     }
 
     @Override
     public void onFailure(String msg) {
-
+        view.transfePageMsg(msg);
+        view.hideLoading();
     }
 }

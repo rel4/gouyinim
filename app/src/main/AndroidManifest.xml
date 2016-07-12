@@ -169,6 +169,9 @@
         <activity android:name=".main.widget.UserinfoActivity" />
         <activity android:name=".login.widget.FindPasswordActivity" />
         <activity android:name=".login.widget.FindPasswordNextActivity" />
+        <!--   图片裁剪-->
+        <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
+        <activity android:name=".widget.image.CropImageMainActivity" />
         <!--会话页面-->
         <activity
             android:name=".im.widget.AppConversationActivity"

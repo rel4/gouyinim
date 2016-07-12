@@ -109,6 +109,7 @@ public class FindPasswordActivity extends BaseActivity implements FindPasswordAc
 
     @Override
     public void navigationNext(String authcode) {
+        finish();
         ActivityUtils.startFindPasswordNextActivity(authcode);
     }
 
