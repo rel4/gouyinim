@@ -1,7 +1,5 @@
 package com.gouyin.im.my.persenter;
 
-import android.widget.Switch;
-
 import com.gouyin.im.AppConstant;
 import com.gouyin.im.R;
 import com.gouyin.im.base.BaseIModel;
@@ -58,7 +56,6 @@ public class MyFragmentPresenterImpl implements MyFragmentPresenter, BaseIModel.
 
     @Override
     public void loadPersonHeader() {
-        view.showLoading();
         model.loadPersonHeader(this);
     }
 
@@ -98,8 +95,9 @@ public class MyFragmentPresenterImpl implements MyFragmentPresenter, BaseIModel.
 
     @Override
     public void onSuccess(Object obj, BaseIModel.DataType dataType) {
-        view.hideLoading();
+
         if (obj == null) {
+            view.hideLoading();
             view.transfePageMsg(UIUtils.getStringRes(R.string.request_failed));
             return;
         }
@@ -111,14 +109,16 @@ public class MyFragmentPresenterImpl implements MyFragmentPresenter, BaseIModel.
                 } else {
                     view.transfePageMsg(dd.getMsg());
                 }
-
+                view.hideLoading();
                 break;
             case DATA_ONE:
                 UserInfoDetailBean bean = (UserInfoDetailBean) obj;
                 view.setUserInfo(bean);
-                view.transfePageMsg(bean.getMsg());
+                if (bean != null && !StringUtis.equals(bean.getCode(), AppConstant.code_request_success))
+                    view.transfePageMsg(bean.getMsg());
                 break;
         }
+
 
     }
 

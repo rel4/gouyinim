@@ -56,7 +56,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".main.widget.UserDynamicActivity"
+            android:name=".main.widget.DynamicActivity"
             android:screenOrientation="portrait"></activity>
         <activity
             android:name=".main.widget.DynamicDatailsActivity"
@@ -172,6 +172,9 @@
         <!--   图片裁剪-->
         <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
         <activity android:name=".widget.image.CropImageMainActivity" />
+        <activity
+            android:name=".main.widget.DynamicAtionActivity"
+            android:theme="@style/MyDialogStyleBottom" />
         <!--会话页面-->
         <activity
             android:name=".im.widget.AppConversationActivity"

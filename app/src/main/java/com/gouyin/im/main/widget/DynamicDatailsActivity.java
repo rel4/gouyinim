@@ -16,7 +16,7 @@ import com.gouyin.im.manager.UserInfoManager;
 import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.StringUtis;
 import com.gouyin.im.utils.UIUtils;
-import com.gouyin.im.viewholder.UserDynamicViewHolder;
+import com.gouyin.im.viewholder.DynamicViewHolder;
 import com.gouyin.im.widget.XListView;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
@@ -85,8 +85,9 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
         if (mAdapter == null) {
             mAdapter = new DynamiDayailsAdapter(datas);
             View view = UIUtils.inflateLayout(R.layout.item_home_one_menu);
-            UserDynamicViewHolder holder = new UserDynamicViewHolder(view, userInfo.getType());
+            DynamicViewHolder holder = new DynamicViewHolder(view, userInfo.getType());
             holder.onBindData(userInfo);
+            holder.setView(this);
             recyclerView.addHeaderView(holder.getRootView());
             recyclerView.setAdapter(mAdapter);
         } else {

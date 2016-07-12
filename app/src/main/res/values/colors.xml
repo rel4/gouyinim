@@ -4,6 +4,8 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="app_line">#d5d5d5</color>
+    <!--app 灰色底-->
+    <color name="app_gred_background">#efefef</color>
     <!--首页导航栏文字颜色-灰-->
     <color name="home_navigation_text_gred">#999999</color>
     <!--首页导航栏文件颜色-红色-->

@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by pc on 2016/6/6.
  */
-public interface UserInfoView extends BaseIView {
+public interface DynamicView extends BaseIView {
     void loadUserinfo(List<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList> list);
 
     void switch2RewardActivity();

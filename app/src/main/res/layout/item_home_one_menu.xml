@@ -46,7 +46,6 @@
         android:textColor="@color/gray_color" />
 
     <FrameLayout
-
         android:id="@+id/layout_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -67,6 +66,7 @@
         android:layout_toRightOf="@+id/riv_user_image"
         android:drawableLeft="@mipmap/like_icon"
         android:drawablePadding="@dimen/x10"
+        android:padding="@dimen/x20"
         android:text="@string/loading"
         android:textColor="@color/gray_color"
         android:textSize="12sp" />
@@ -81,6 +81,7 @@
         android:layout_toRightOf="@+id/tv_wacth_number"
         android:drawableLeft="@mipmap/comment_iocn"
         android:drawablePadding="@dimen/x10"
+        android:padding="@dimen/x20"
         android:text="@string/loading"
         android:textColor="@color/gray_color"
         android:textSize="12sp" />
@@ -109,6 +110,7 @@
         android:layout_alignTop="@+id/tv_reply_number"
         android:layout_below="@id/layout_content"
         android:layout_marginRight="@dimen/x53"
+        android:padding="@dimen/x20"
         android:text=". . ."
         android:textColor="@color/gray_color" />
 

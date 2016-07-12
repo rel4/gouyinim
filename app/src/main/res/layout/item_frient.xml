@@ -5,10 +5,13 @@
 
     <com.gouyin.im.widget.RoundedImageView
         android:id="@+id/riv_user_image"
-        android:layout_width="@dimen/x120"
-        android:layout_height="@dimen/x120"
+        android:layout_width="@dimen/x90"
+        android:layout_height="@dimen/x90"
         android:layout_centerVertical="true"
-        android:layout_margin="@dimen/x30"
+        android:layout_marginBottom="@dimen/x20"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginRight="@dimen/x30"
+        android:layout_marginTop="@dimen/x20"
         android:src="@mipmap/load_small" />
 
     <TextView
@@ -17,16 +20,10 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/riv_user_image"
         android:layout_toRightOf="@+id/riv_user_image"
-        android:text="@string/loading" />
+        android:text="@string/loading"
+        android:textColor="@color/text_black_color"
+        android:textSize="15sp" />
 
-    <TextView
-        android:id="@+id/tv_content"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_user_name"
-        android:layout_marginTop="@dimen/x20"
-        android:layout_toRightOf="@+id/riv_user_image"
-        android:text="@string/loading" />
 
     <TextView
         android:id="@+id/tv_submit"
@@ -36,9 +33,24 @@
         android:layout_centerVertical="true"
         android:layout_marginRight="@dimen/x30"
         android:background="@drawable/shape_background_text_white_color"
-        android:paddingBottom="@dimen/x20"
-        android:paddingLeft="@dimen/x40"
-        android:paddingRight="@dimen/x40"
-        android:paddingTop="@dimen/x20"
-        android:text="@string/cancel" />
+        android:paddingBottom="@dimen/x15"
+        android:paddingLeft="@dimen/x25"
+        android:paddingRight="@dimen/x25"
+        android:paddingTop="@dimen/x15"
+        android:text="@string/cancel"
+        android:textColor="@color/app_line" />
+
+    <TextView
+
+        android:id="@+id/tv_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/riv_user_image"
+        android:layout_toLeftOf="@+id/tv_submit"
+        android:layout_toRightOf="@+id/riv_user_image"
+        android:enabled="true"
+        android:singleLine="true"
+        android:text="@string/loading"
+        android:textColor="@color/app_line"
+        android:textSize="12sp" />
 </RelativeLayout>

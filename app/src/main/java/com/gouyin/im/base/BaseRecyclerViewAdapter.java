@@ -49,6 +49,7 @@ public abstract class BaseRecyclerViewAdapter<T extends BaseDataBean> extends Re
             if (datas != null) {
                 T t = datas.get(position);
                 if (t != null) {
+                    bvh.setBaseRecyclerViewAdapter(this);
                     bvh.onBindData(t);
                     bvh.onBindData(t, position);
                     bvh.setOnClick(t, position);

@@ -1,6 +1,8 @@
 package com.gouyin.im.viewholder;
 
 import android.media.MediaPlayer;
+import android.net.Uri;
+import android.provider.ContactsContract;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -12,8 +14,13 @@ import android.widget.VideoView;
 
 import com.gouyin.im.ImageServerApi;
 import com.gouyin.im.R;
+import com.gouyin.im.base.BaseIModel;
+import com.gouyin.im.base.BaseIView;
 import com.gouyin.im.base.BaseRecyclerViewHolder;
+import com.gouyin.im.bean.DefaultDataBean;
 import com.gouyin.im.bean.UserInfoListBean;
+import com.gouyin.im.main.model.UserActionModelImpl;
+import com.gouyin.im.main.view.DynamicView;
 import com.gouyin.im.utils.ActivityUtils;
 import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.StringUtis;
@@ -28,7 +35,7 @@ import butterknife.Bind;
 /**
  * Created by pc on 2016/6/4.
  */
-public class UserDynamicViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList> {
+public class DynamicViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList> {
 
     //1 红包图集
     public static final int TYPE_REDPACTKET_DYNAMIC = 1;
@@ -55,14 +62,18 @@ public class UserDynamicViewHolder extends BaseRecyclerViewHolder<UserInfoListBe
     TextView tv_reply_number;
     @Bind(R.id.tv_play_number)
     TextView tv_play_number;
+    @Bind(R.id.tv_more__number)
+    TextView tv_more__number;
     NoScrollGridView gvUserPic;
     private int viewType;
     private TextView tvPlay;
     private ImageView playBackground;
     private VideoView play;
     private TextView tv_show_redpacket;
+    private BaseIView baseIView;
+    private boolean isAction = false;
 
-    public UserDynamicViewHolder(View view, int viewType) {
+    public DynamicViewHolder(View view, int viewType) {
         super(view);
         this.viewType = viewType;
         initFragment();
@@ -118,6 +129,7 @@ public class UserDynamicViewHolder extends BaseRecyclerViewHolder<UserInfoListBe
         tvContent.setText(bean.getTitle());
         tvTime.setText(TimeUtils.format(bean.getCreate_time() * 1000));
         tv_play_number.setText(bean.getLkpicn() + "");
+        dynamicAction(bean);
         tv_reply_number.setText(bean.getLcomn() + "");
         tv_wacth_number.setText(bean.getLupn() + "");
         tvStr.setText(bean.getNickname());
@@ -126,9 +138,10 @@ public class UserDynamicViewHolder extends BaseRecyclerViewHolder<UserInfoListBe
         playBackground.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (play != null) {
-                    play.setVideoPath(bean.getVideo());
 
+                if (play != null && bean != null && !StringUtis.isEmpty(bean.getVideo())) {
+                    Uri uri = Uri.parse(bean.getVideo());
+                    play.setVideoURI(uri);
                     play.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                         @Override
                         public void onPrepared(MediaPlayer mp) {
@@ -157,7 +170,7 @@ public class UserDynamicViewHolder extends BaseRecyclerViewHolder<UserInfoListBe
     private void setPICData(UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList bean) {
         if (bean == null)
             return;
-
+        dynamicAction(bean);
         tvContent.setText(bean.getTitle());
         tvTime.setText(TimeUtils.format(bean.getCreate_time() * 1000));
 
@@ -188,9 +201,63 @@ public class UserDynamicViewHolder extends BaseRecyclerViewHolder<UserInfoListBe
 
     }
 
+
+    /**
+     * 处理动态行为
+     *
+     * @param bean
+     */
+    private void dynamicAction(UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList bean) {
+        tv_wacth_number.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isAction) {
+                    if (baseIView != null)
+                        baseIView.transfePageMsg(UIUtils.getStringRes(R.string.already) + UIUtils.getStringRes(R.string.action));
+                    return;
+                }
+                isAction = true;
+                if (baseIView != null)
+                    baseIView.showLoading();
+                UserActionModelImpl userActionModel = new UserActionModelImpl();
+                userActionModel.likeAction(bean.getLatest_id(), "1", new BaseIModel.onLoadDateSingleListener<DefaultDataBean>() {
+                    @Override
+                    public void onSuccess(DefaultDataBean b, BaseIModel.DataType dataType) {
+                        if (baseIView != null) {
+                            baseIView.hideLoading();
+                            baseIView.transfePageMsg(b.getMsg());
+                        }
+                        String s = tv_wacth_number.getText().toString();
+                        int i = StringUtis.string2Int(s) + 1;
+                        bean.setLupn(i + "");
+                        tv_wacth_number.setText(bean.getLupn());
+                    }
+
+                    @Override
+                    public void onFailure(String msg) {
+                        if (baseIView != null) {
+                            baseIView.hideLoading();
+                            baseIView.transfePageMsg(msg);
+                        }
+                    }
+                });
+            }
+        });
+        tv_more__number.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivityUtils.startDynamicAtionActivity(bean.getUid(),bean.getLatest_id());
+            }
+        });
+    }
+
     @Override
     protected void onItemclick(View view, UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList bean, int position) {
         ActivityUtils.startDynamicDatailsActivity(bean);
+    }
+
+    public void setView(BaseIView view) {
+        this.baseIView = view;
     }
 
     private static class PicGridView extends BaseAdapter {

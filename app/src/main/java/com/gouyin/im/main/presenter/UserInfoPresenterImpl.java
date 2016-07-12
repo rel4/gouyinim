@@ -7,7 +7,7 @@ import com.gouyin.im.bean.UserInfoDetailBean;
 import com.gouyin.im.bean.UserInfoListBean;
 import com.gouyin.im.main.model.UserInfoModel;
 import com.gouyin.im.main.model.UserInfoModelImpl;
-import com.gouyin.im.main.view.UserInfoView;
+import com.gouyin.im.main.view.DynamicView;
 import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.UIUtils;
 
@@ -17,7 +17,7 @@ import java.util.List;
  * Created by pc on 2016/6/6.
  */
 public class UserInfoPresenterImpl implements UserInfoPresenter, onLoadDateSingleListener<UserInfoDetailBean>, BaseIModel.onLoadListDateListener<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList> {
-    private UserInfoView mUserInfoView;
+    private DynamicView mUserInfoView;
     private UserInfoModel mUserInfoModel;
     private int page = 2;
 
@@ -27,7 +27,7 @@ public class UserInfoPresenterImpl implements UserInfoPresenter, onLoadDateSingl
     }
 
     @Override
-    public void attachView(UserInfoView userInfoView) {
+    public void attachView(DynamicView userInfoView) {
         this.mUserInfoView = userInfoView;
         mUserInfoModel = new UserInfoModelImpl();
     }

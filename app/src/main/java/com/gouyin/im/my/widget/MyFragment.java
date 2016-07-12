@@ -14,6 +14,7 @@ import com.gouyin.im.bean.UserInfoDetailBean;
 import com.gouyin.im.bean.UserInfoListBean;
 import com.gouyin.im.event.Events;
 import com.gouyin.im.event.RxBus;
+import com.gouyin.im.main.view.DynamicView;
 import com.gouyin.im.manager.UserInfoManager;
 import com.gouyin.im.my.persenter.MyFragmentPresenter;
 import com.gouyin.im.my.persenter.MyFragmentPresenterImpl;
@@ -55,11 +56,6 @@ public class MyFragment extends BaseFragment implements MyFragmentView {
         return UIUtils.inflateLayout(R.layout.activity_person_dynamic);
     }
 
-    /**
-     *
-     */
-
-
     public void updataPayData(PayRedPacketPicsBean bean) {
         if (mAdapter != null) {
             mAdapter.updataPayData(bean);
@@ -94,20 +90,13 @@ public class MyFragment extends BaseFragment implements MyFragmentView {
                 mPresenter.loadLoadMoreData();
             }
         });
-        LogUtils.e(this, "userId : " + "");
         mPresenter.loadPersonHeader();
         recyclerview.setRefreshing(true);
+        setRx();
 
     }
 
-
-    /**
-     * 初始化头部局
-     *
-     * @return
-     */
-
-    private View initHeadLayout() {
+    private void setRx() {
         RxBus.with(this)
                 .setEndEvent(FragmentEvent.DESTROY)
                 .setEvent(Events.EventEnum.CROP_IMAGE_PATH)
@@ -118,6 +107,28 @@ public class MyFragment extends BaseFragment implements MyFragmentView {
                     }
                 })
                 .create();
+
+        RxBus.with(this)
+                .setEndEvent(FragmentEvent.DESTROY)
+                .setEvent(Events.EventEnum.DYNAMIC_ACTION)
+                .onNext(events -> {
+                    String id = (String) events.message;
+                    if (mAdapter!=null){
+                        mAdapter.deleteDynamic(id);
+                    }
+                })
+                .create();
+    }
+
+
+    /**
+     * 初始化头部局
+     *
+     * @return
+     */
+
+    private View initHeadLayout() {
+
         personDynamicViewholder = new PersonDynamicViewholder();
         return personDynamicViewholder.getContentView();
     }
@@ -224,6 +235,7 @@ public class MyFragment extends BaseFragment implements MyFragmentView {
     public void setListData(List<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList> list) {
         if (mAdapter == null) {
             mAdapter = new UserDynamicAdapter(list);
+            mAdapter.setView(this);
             recyclerview.setAdapter(mAdapter);
         } else {
             if (isRefresh)
@@ -236,8 +248,8 @@ public class MyFragment extends BaseFragment implements MyFragmentView {
 
     @Override
     public void setUserInfo(UserInfoDetailBean bean) {
-
-        personDynamicViewholder.refreshView(bean);
+        if (personDynamicViewholder != null && bean != null)
+            personDynamicViewholder.refreshView(bean);
     }
 
 

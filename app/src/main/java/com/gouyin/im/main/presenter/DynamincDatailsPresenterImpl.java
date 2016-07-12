@@ -55,7 +55,7 @@ public class DynamincDatailsPresenterImpl implements DynamincDatailsPresenter, B
 
     @Override
     public void onSuccess(DefaultDataBean bean, BaseIModel.DataType dataType) {
-        view.hideLoading();
+
         if (bean != null) {
             if (StringUtis.equals(AppConstant.code_request_success, bean.getCode())) {
                 view.CommentSuccess();
@@ -63,6 +63,7 @@ public class DynamincDatailsPresenterImpl implements DynamincDatailsPresenter, B
             view.transfePageMsg(bean.getMsg());
         } else
             view.transfePageMsg(UIUtils.getStringRes(R.string.request_failed));
+        view.hideLoading();
     }
 
     @Override

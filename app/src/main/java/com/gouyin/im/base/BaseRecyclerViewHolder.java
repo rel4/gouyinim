@@ -14,6 +14,7 @@ import butterknife.ButterKnife;
  */
 public abstract class BaseRecyclerViewHolder<T extends BaseDataBean> extends RecyclerView.ViewHolder {
     private View mRootView;
+    protected BaseRecyclerViewAdapter<T> baseRecyclerViewAdapter;
 
     public BaseRecyclerViewHolder(View view) {
         super(view);
@@ -64,6 +65,10 @@ public abstract class BaseRecyclerViewHolder<T extends BaseDataBean> extends Rec
 
     public void setOnItemClickListener(onItemClickListener listener) {
         this.listener = listener;
+    }
+
+    public void setBaseRecyclerViewAdapter(BaseRecyclerViewAdapter<T> baseRecyclerViewAdapter) {
+        this.baseRecyclerViewAdapter = baseRecyclerViewAdapter;
     }
 
 

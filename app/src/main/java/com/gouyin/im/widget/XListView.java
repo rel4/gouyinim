@@ -39,12 +39,13 @@ public class XListView extends XRecyclerView {
     public void setVerticalGridLayoutManager(int number) {
         GridLayoutManager layoutManager = new GridLayoutManager(mContext, number);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-
+//        this.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayoutManager.HORIZONTAL));
         this.setLayoutManager(layoutManager);
         this.addItemDecoration(new SpacesItemDecoration(2));
         this.setRefreshProgressStyle(ProgressStyle.BallSpinFadeLoader);
         this.setLoadingMoreProgressStyle(ProgressStyle.SysProgress);
         this.setArrowImageView(R.mipmap.iconfont_downgrey);
+
 
     }
 
@@ -57,11 +58,11 @@ public class XListView extends XRecyclerView {
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
         this.setLayoutManager(layoutManager);
-        this.addItemDecoration(new SpacesItemDecoration(2));
+//        this.addItemDecoration(new SpacesItemDecoration(2));
+        this.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL));
         this.setRefreshProgressStyle(ProgressStyle.BallSpinFadeLoader);
         this.setLoadingMoreProgressStyle(ProgressStyle.SysProgress);
         this.setArrowImageView(R.mipmap.iconfont_downgrey);
-
     }
 
     public void setNoMore() {

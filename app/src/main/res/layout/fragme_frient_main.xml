@@ -8,8 +8,8 @@
     <RelativeLayout
         android:id="@+id/layout_head"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/y90"
-        android:background="@color/gray_color">
+        android:layout_height="@dimen/y60"
+        android:background="@color/app_gred_background">
 
         <View
             android:id="@+id/center_line"
@@ -35,6 +35,12 @@
             android:gravity="center"
             android:text="@string/str_fen"
             android:textColor="@drawable/selector_home_text_color" />
+
+        <View
+            style="@style/app_line_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x1"
+            android:layout_alignParentBottom="true" />
     </RelativeLayout>
 
     <FrameLayout

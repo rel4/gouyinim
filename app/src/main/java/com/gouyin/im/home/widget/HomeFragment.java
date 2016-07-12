@@ -20,6 +20,7 @@ import com.gouyin.im.home.presenetr.HomeFragmentPresenterImpl;
 import com.gouyin.im.home.view.HomeView;
 import com.gouyin.im.utils.ActivityUtils;
 import com.gouyin.im.utils.FragmentUtils;
+import com.gouyin.im.utils.UIUtils;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -36,6 +37,8 @@ public class HomeFragment extends BaseFragment implements HomeView {
     TextView tvNavigationSameCity;
     @Bind(R.id.frameLyout_home_content)
     FrameLayout frameLyoutHomeContent;
+    @Bind(R.id.tv_search)
+    TextView tv_search;
     private HomeFragmentPresenter mPresenter;
     private FragmentManager mFragmentManager;
     private Fragment mCurrentFragment, goodSelectFragment, sameCityFragment;
@@ -50,6 +53,8 @@ public class HomeFragment extends BaseFragment implements HomeView {
 
     @Override
     protected void initData() {
+        tv_search.setText(UIUtils.getStringRes(R.string.search));
+        tv_search.setVisibility(View.VISIBLE);
         onClick(tvNavigationGoodSelect);
     }
 

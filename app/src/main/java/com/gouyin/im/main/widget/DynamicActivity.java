@@ -16,11 +16,11 @@ import com.gouyin.im.event.Events;
 import com.gouyin.im.event.RxBus;
 import com.gouyin.im.main.presenter.UserInfoPresenter;
 import com.gouyin.im.main.presenter.UserInfoPresenterImpl;
-import com.gouyin.im.main.view.UserInfoView;
+import com.gouyin.im.main.view.DynamicView;
 import com.gouyin.im.utils.ActivityUtils;
 import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.UIUtils;
-import com.gouyin.im.viewholder.UserDynamicHeadViewHolder;
+import com.gouyin.im.viewholder.DynamicHeadViewHolder;
 import com.gouyin.im.widget.XListView;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.trello.rxlifecycle.ActivityEvent;
@@ -33,7 +33,7 @@ import butterknife.OnClick;
 /**
  * Created by pc on 2016/6/3.
  */
-public class UserDynamicActivity extends BaseActivity implements UserInfoView {
+public class DynamicActivity extends BaseActivity implements DynamicView {
 
     @Bind(R.id.recyclerview)
     XListView recyclerview;
@@ -51,7 +51,7 @@ public class UserDynamicActivity extends BaseActivity implements UserInfoView {
     private UserInfoPresenter mPresenter;
     private UserDynamicAdapter mAdapter;
     private boolean isRefresh;
-    private UserDynamicHeadViewHolder headHolder;
+    private DynamicHeadViewHolder headHolder;
     private String userId;
     private String nikeName;
 
@@ -120,7 +120,7 @@ public class UserDynamicActivity extends BaseActivity implements UserInfoView {
      */
     private View initHeadLayout() {
         View headView = UIUtils.inflateLayout(R.layout.head_user_info);
-        headHolder = new UserDynamicHeadViewHolder(headView);
+        headHolder = new DynamicHeadViewHolder(headView);
         headHolder.setUserInfoView(this);
         return headView;
     }
@@ -142,6 +142,7 @@ public class UserDynamicActivity extends BaseActivity implements UserInfoView {
 
         if (mAdapter == null) {
             mAdapter = new UserDynamicAdapter(list);
+            mAdapter.setView(this);
             recyclerview.setAdapter(mAdapter);
         } else {
             mAdapter.addListData(list);

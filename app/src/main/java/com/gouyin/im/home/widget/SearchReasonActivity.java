@@ -48,15 +48,16 @@ public class SearchReasonActivity extends BaseActivity implements TextWatcher, S
     @Override
     protected void initView() {
         etChannelFind.addTextChangedListener(this);
-
         xlv.setVerticalLinearLayoutManager();
+        xlv.setPullRefreshEnabled(false);
+        xlv.setLoadingMoreEnabled(false);
         presenter = new SearchReasonActivityPresenterImpl();
         presenter.attachView(this);
         search();
     }
 
     private void search() {
-        etChannelFind.setText(key);
+        etChannelFind.setHint(key);
         saveKey();
         presenter.loadBasicData(key);
     }

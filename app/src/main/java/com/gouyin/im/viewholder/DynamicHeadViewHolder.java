@@ -12,7 +12,7 @@ import com.gouyin.im.base.BaseIModel;
 import com.gouyin.im.bean.DefaultDataBean;
 import com.gouyin.im.bean.UserInfoDetailBean;
 import com.gouyin.im.main.model.UserActionModelImpl;
-import com.gouyin.im.main.widget.UserDynamicActivity;
+import com.gouyin.im.main.widget.DynamicActivity;
 import com.gouyin.im.utils.ActivityUtils;
 import com.gouyin.im.utils.StringUtis;
 import com.gouyin.im.utils.UIUtils;
@@ -24,7 +24,7 @@ import butterknife.OnClick;
 /**
  * Created by jb on 2016/6/22.
  */
-public class UserDynamicHeadViewHolder {
+public class DynamicHeadViewHolder {
     @Bind(R.id.user_background)
     ImageView userBackground;
     @Bind(R.id.iv_user_icon)
@@ -44,9 +44,9 @@ public class UserDynamicHeadViewHolder {
     @Bind(R.id.tv_wacth_status)
     ImageView tv_wacth_status;
     private UserInfoDetailBean userInfodetail;
-    private UserDynamicActivity userInfoView;
+    private DynamicActivity userInfoView;
 
-    public UserDynamicHeadViewHolder(View view) {
+    public DynamicHeadViewHolder(View view) {
         ButterKnife.bind(this, view);
     }
 
@@ -115,7 +115,7 @@ public class UserDynamicHeadViewHolder {
 
     }
 
-    public void setUserInfoView(UserDynamicActivity userInfoView) {
+    public void setUserInfoView(DynamicActivity userInfoView) {
         this.userInfoView = userInfoView;
     }
 

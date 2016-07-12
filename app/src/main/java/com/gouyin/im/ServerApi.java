@@ -564,7 +564,7 @@ public class ServerApi {
          */
         @FormUrlEncoded
         @POST("User/findpwd_step2")
-        Observable<BaseBean> getFindPasswordNext(@Field("pwd") String newpwd,
+        Observable<BaseBean> getFindPasswordNext(@Field("pwd ") String newpwd,
                                                  @Field("mobileauth") String code);
 
         /**
@@ -576,8 +576,32 @@ public class ServerApi {
          */
         @FormUrlEncoded
         @POST("User/edit_like_image")
-        Observable<DefaultDataBean> getUploadBackground(@Field("like_image") String path,
-                                                        @Field("authcode") String authcode);
+        Observable<DefaultDataBean> getUploadBackground(@Field("") String path,
+                                                        @Field("authcode ") String authcode);
+
+        /**
+         * 点赞
+         *
+         * @param authcode
+         * @return
+         */
+        @FormUrlEncoded
+        @POST("Latest/updown")
+        Observable<DefaultDataBean> getLikeAction(@Field("latest_id") String dynamicId,
+                                                  @Field("type") String type,
+                                                  @Field("authcode") String authcode);
+
+        /**
+         * 删除动态
+         *
+         * @param id
+         * @param authcode
+         * @return
+         */
+        @FormUrlEncoded
+        @POST("Latest/del_latest")
+        Observable<DefaultDataBean> getDelectDynamic(@Field("latest_id ") String id,
+                                                     @Field("authcode") String authcode);
     }
 }
 

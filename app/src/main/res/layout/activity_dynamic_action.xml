@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginRight="@dimen/x30"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_delete"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x92"
+            android:background="@drawable/shape_background_text_white_color"
+            android:gravity="center"
+            android:text="@string/loading"
+            android:textColor="@color/app_line" />
+
+
+        <TextView
+            android:layout_marginTop="-2dp"
+            android:id="@+id/tv_up"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x92"
+            android:background="@drawable/shape_background_text_white_color"
+
+            android:gravity="center"
+            android:text="@string/loading"
+            android:textColor="@color/app_line" />
+
+
+        <TextView
+            android:id="@+id/tv_finish"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x92"
+            android:layout_marginTop="@dimen/x30"
+            android:background="@drawable/shape_background_text_white_color"
+            android:gravity="center"
+            android:text="@string/cancel"
+            android:textColor="@color/app_line" />
+    </LinearLayout>
+</RelativeLayout>

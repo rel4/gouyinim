@@ -17,13 +17,14 @@ import com.gouyin.im.home.widget.SearchActivity;
 import com.gouyin.im.home.widget.SearchReasonActivity;
 import com.gouyin.im.login.widget.FindPasswordActivity;
 import com.gouyin.im.login.widget.LoginMainActivity;
+import com.gouyin.im.main.widget.DynamicAtionActivity;
 import com.gouyin.im.main.widget.DynamicDatailsActivity;
 import com.gouyin.im.login.widget.FindPasswordNextActivity;
 import com.gouyin.im.main.widget.PayAppointmentActivity;
 import com.gouyin.im.main.widget.PayAppointmentOrderActivity;
 import com.gouyin.im.main.widget.PersonInfoChangeActivity;
 import com.gouyin.im.main.widget.RedpacketAcitivity;
-import com.gouyin.im.main.widget.UserDynamicActivity;
+import com.gouyin.im.main.widget.DynamicActivity;
 import com.gouyin.im.main.widget.UserinfoActivity;
 import com.gouyin.im.manager.UserInfoManager;
 import com.gouyin.im.my.widget.AddCardActivity;
@@ -46,7 +47,6 @@ import com.gouyin.im.widget.image.PhonePicActivity;
 import com.gouyin.im.widget.image.ShowImageActivity;
 import com.gouyin.im.widget.image.photoview.ImagePagerActivity;
 import com.gouyin.im.widget.takevideo.TakeVideoActivity;
-import com.soundcloud.android.crop.CropImageActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -87,7 +87,7 @@ public class ActivityUtils {
      * 进入用户信息列表
      */
     public static void startUserInfoActivity(String userId) {
-        Intent intent = new Intent(ConfigUtils.getInstance().getApplicationContext(), UserDynamicActivity.class);
+        Intent intent = new Intent(ConfigUtils.getInstance().getApplicationContext(), DynamicActivity.class);
         LogUtils.e(TAG, "userid : " + userId);
         intent.putExtra(AppConstant.USER_ID, userId);
         startActivity(intent);
@@ -442,5 +442,19 @@ public class ActivityUtils {
      */
     public static void startCropImageMainActivity() {
         startActivity(CropImageMainActivity.class);
+    }
+
+    /**
+     * 开启动态删除
+     *
+     * @param uid
+     * @param id
+     */
+    public static void startDynamicAtionActivity(String uid, String id) {
+        Intent intent = new Intent(getContext(), DynamicAtionActivity.class);
+        // 1 自己动态  2 他人的动态
+        intent.putExtra("uid", uid);
+        intent.putExtra("id", id);
+        startActivity(intent);
     }
 }
