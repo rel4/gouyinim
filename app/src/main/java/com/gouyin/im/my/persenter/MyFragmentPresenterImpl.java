@@ -6,6 +6,7 @@ import com.gouyin.im.base.BaseIModel;
 import com.gouyin.im.bean.DefaultDataBean;
 import com.gouyin.im.bean.UserInfoDetailBean;
 import com.gouyin.im.bean.UserInfoListBean;
+import com.gouyin.im.main.model.UserActionModelImpl;
 import com.gouyin.im.my.model.MyFragmentModel;
 import com.gouyin.im.my.model.MyFragmentModelImpl;
 import com.gouyin.im.my.view.MyFragmentView;
@@ -79,6 +80,28 @@ public class MyFragmentPresenterImpl implements MyFragmentPresenter, BaseIModel.
     public void uploadBackground(String path) {
         view.showLoading();
         model.uploadBackground(path, this);
+    }
+
+    @Override
+    public void deleteDynamic(String id) {
+        view.showLoading();
+        UserActionModelImpl actionModel = new UserActionModelImpl();
+        actionModel.deleteDynamic(id, new BaseIModel.onLoadDateSingleListener<DefaultDataBean>() {
+            @Override
+            public void onSuccess(DefaultDataBean bean, BaseIModel.DataType dataType) {
+                if (StringUtis.equals(bean.getCode(), AppConstant.code_request_success)) {
+                    view.deleteDynamic(id);
+                }
+                view.transfePageMsg(bean.getMsg());
+                view.hideLoading();
+            }
+
+            @Override
+            public void onFailure(String msg) {
+                view.transfePageMsg(msg);
+                view.hideLoading();
+            }
+        });
     }
 
 

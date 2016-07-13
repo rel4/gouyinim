@@ -86,6 +86,7 @@ public class RongyunConfig {
      * 下线
      */
     public void offline() {
+        isConnectRonyun = false;
         RongIM.getInstance().disconnect();
         RongIM.getInstance().logout();
         RongIM.getInstance().getRongIMClient().clearConversations(Conversation.ConversationType.PRIVATE);

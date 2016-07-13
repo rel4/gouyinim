@@ -14,16 +14,18 @@ import com.gouyin.im.bean.UserInfoDetailBean;
 import com.gouyin.im.bean.UserInfoListBean;
 import com.gouyin.im.event.Events;
 import com.gouyin.im.event.RxBus;
-import com.gouyin.im.main.presenter.UserInfoPresenter;
-import com.gouyin.im.main.presenter.UserInfoPresenterImpl;
+import com.gouyin.im.main.presenter.DynamicPresenter;
+import com.gouyin.im.main.presenter.DynamicPresenterImpl;
 import com.gouyin.im.main.view.DynamicView;
 import com.gouyin.im.utils.ActivityUtils;
 import com.gouyin.im.utils.LogUtils;
+import com.gouyin.im.utils.StringUtis;
 import com.gouyin.im.utils.UIUtils;
 import com.gouyin.im.viewholder.DynamicHeadViewHolder;
 import com.gouyin.im.widget.XListView;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.trello.rxlifecycle.ActivityEvent;
+import com.trello.rxlifecycle.FragmentEvent;
 
 import java.util.List;
 
@@ -47,8 +49,9 @@ public class DynamicActivity extends BaseActivity implements DynamicView {
     TextView tvAppointment;
     @Bind(R.id.layout_usee_action)
     LinearLayout layout_usee_action;
-
-    private UserInfoPresenter mPresenter;
+    @Bind(R.id.single_send_msg)
+    TextView single_send_msg;
+    private DynamicPresenter mPresenter;
     private UserDynamicAdapter mAdapter;
     private boolean isRefresh;
     private DynamicHeadViewHolder headHolder;
@@ -61,21 +64,21 @@ public class DynamicActivity extends BaseActivity implements DynamicView {
         userId = getIntent().getStringExtra(AppConstant.USER_ID);
         recyclerview.setVerticalLinearLayoutManager();
         recyclerview.addHeaderView(initHeadLayout());
-        recyclerview.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-                if (layout_usee_action != null && !layout_usee_action.isShown())
-                    layout_usee_action.setVisibility(View.VISIBLE);
-            }
-
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-                if (layout_usee_action != null && layout_usee_action.isShown())
-                    layout_usee_action.setVisibility(View.INVISIBLE);
-            }
-        });
+//        recyclerview.addOnScrollListener(new RecyclerView.OnScrollListener() {
+//            @Override
+//            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+//                super.onScrollStateChanged(recyclerView, newState);
+//                if (layout_usee_action != null && !layout_usee_action.isShown())
+//                    layout_usee_action.setVisibility(View.VISIBLE);
+//            }
+//
+//            @Override
+//            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+//                super.onScrolled(recyclerView, dx, dy);
+//                if (layout_usee_action != null && layout_usee_action.isShown())
+//                    layout_usee_action.setVisibility(View.INVISIBLE);
+//            }
+//        });
         recyclerview.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
@@ -111,6 +114,18 @@ public class DynamicActivity extends BaseActivity implements DynamicView {
                     }
                 })
                 .create();
+
+        RxBus.with(this)
+                .setEndEvent(ActivityEvent.DESTROY)
+                .setEvent(Events.EventEnum.DYNAMIC_ACTION)
+                .onNext(events -> {
+                    String id = (String) events.message;
+                    if (mAdapter != null) {
+                        mPresenter.deleteDynamic(id);
+
+                    }
+                })
+                .create();
     }
 
     /**
@@ -127,12 +142,12 @@ public class DynamicActivity extends BaseActivity implements DynamicView {
 
     @Override
     protected View setRootContentView() {
-        mPresenter = new UserInfoPresenterImpl();
+        mPresenter = new DynamicPresenterImpl();
         mPresenter.attachView(this);
         return UIUtils.inflateLayout(R.layout.activity_userinfo_dynamic);
     }
 
-    @OnClick({R.id.tv_reward, R.id.tv_send_msg, R.id.tv_appointment, R.id.tv_send_flowers})
+    @OnClick({R.id.single_send_msg, R.id.tv_reward, R.id.tv_send_msg, R.id.tv_appointment, R.id.tv_send_flowers})
     public void onClick(View view) {
         mPresenter.switchNavigation(view.getId());
     }
@@ -145,6 +160,8 @@ public class DynamicActivity extends BaseActivity implements DynamicView {
             mAdapter.setView(this);
             recyclerview.setAdapter(mAdapter);
         } else {
+            if (isRefresh)
+                mAdapter.clean();
             mAdapter.addListData(list);
             mAdapter.onRefresh();
         }
@@ -197,9 +214,17 @@ public class DynamicActivity extends BaseActivity implements DynamicView {
     @Override
     public void setUserInfodetail(UserInfoDetailBean bean) {
         if (bean != null && bean.getData() != null) {
-            avater = bean.getData().getBaseinfo().getFace();
-            nikeName = bean.getData().getBaseinfo().getNickname();
+            UserInfoDetailBean.UserInfoDetailDataBean.Baseinfo baseinfo = bean.getData().getBaseinfo();
+            avater = baseinfo.getFace();
+            nikeName = baseinfo.getNickname();
             bean.getData().setUid(userId);
+            if (StringUtis.equals(baseinfo.getIsverify(), "1")) {
+                layout_usee_action.setVisibility(View.VISIBLE);
+                single_send_msg.setVisibility(View.GONE);
+            } else {
+                layout_usee_action.setVisibility(View.GONE);
+                single_send_msg.setVisibility(View.VISIBLE);
+            }
         }
         headHolder.setUserInfodetail(bean);
     }
@@ -207,6 +232,13 @@ public class DynamicActivity extends BaseActivity implements DynamicView {
     @Override
     public void pageFinish() {
         finish();
+    }
+
+    @Override
+    public void deleteDynamic(String id) {
+        if (mAdapter != null) {
+            mAdapter.deleteDynamic(id);
+        }
     }
 
     @Override

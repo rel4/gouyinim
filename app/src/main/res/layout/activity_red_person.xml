@@ -6,43 +6,54 @@
 
     <include layout="@layout/app_titlebar" />
 
-    <ImageView
-        android:layout_width="@dimen/x120"
-        android:layout_height="@dimen/x120"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="@dimen/x30"
-        android:background="@mipmap/panel_head_sculpture"
-        android:id="@+id/iv_avater" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x240"
+        android:background="@mipmap/bg_renzheng">
+
+        <com.gouyin.im.widget.RoundedImageView
+            android:id="@+id/iv_avater"
+            android:layout_width="@dimen/x120"
+            android:layout_height="@dimen/x120"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="@dimen/x30"
+            android:background="@drawable/shape_background_yellow_color" />
+    </RelativeLayout>
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/x25"
-        android:text="申请规则："
-        android:textColor="@color/text_color"
-        android:textSize="@dimen/order_text_small4" />
 
-    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/x150"
         android:paddingLeft="@dimen/x25"
+        android:paddingStart="@dimen/x150"
         android:text="@string/renzheng_rule"
-
-        android:textColor="@color/text_color"
-        android:textSize="@dimen/order_text_small2" />
-
-
+        android:textColor="@color/text_black_color"
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/tv_apply"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/x70"
-        android:layout_marginRight="@dimen/x70"
-        android:layout_marginTop="@dimen/x250"
-        android:background="@mipmap/apply_renz"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginRight="@dimen/x30"
+        android:layout_marginTop="@dimen/x150"
+        android:background="@drawable/shape_background_text_red_color"
         android:gravity="center"
-        android:paddingBottom="@dimen/x10"
-        android:paddingTop="@dimen/x10"
+        android:padding="@dimen/x25"
+        android:text="@string/apply_renzheng"
         android:textColor="@color/white" />
+
+    <TextView
+        android:paddingBottom="@dimen/x10"
+        android:textColor="@color/text_gred_color"
+        android:paddingStart="@dimen/x10"
+        android:textSize="12sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginRight="@dimen/x30"
+        android:layout_marginTop="@dimen/x30"
+        android:text="@string/renzheng_condition" />
 </LinearLayout>

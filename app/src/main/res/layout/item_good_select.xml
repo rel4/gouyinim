@@ -15,8 +15,7 @@
             android:id="@+id/rv_user_pic"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@mipmap/ic_launcher" />
+            android:scaleType="centerCrop" />
 
         <TextView
             android:id="@+id/tv_wacth_number"
@@ -50,9 +49,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/layout_pic"
+        android:layout_centerHorizontal="true"
         android:layout_margin="@dimen/x15"
         android:ellipsize="end"
-        android:ems="8"
+
         android:maxEms="8"
         android:singleLine="true"
         android:text="@string/loading"

@@ -2,7 +2,7 @@
     <string name="app_name">gouyinim</string>
     <string name="app_home_page">首页</string>
     <string name="app_im_page">聊天</string>
-    <string name="app_find_page">发现</string>
+    <string name="find">发现</string>
     <string name="app__my_page">我的</string>
 
     <!-- TODO: Remove or change this placeholder text -->
@@ -114,7 +114,7 @@
     <string name="Logoff_notification">下线通知</string>
     <string name="connect_conflict">同一帐号已在其他设备登录</string>
     <string name="text_numer_more_150">字数不能超过150</string>
-    <string name="renzheng_rule">规则一：上传相册照片或拍照免费认证会员；\n规则二：经过官方认证后，可获得更多粉丝及商家关注；\n规则三：认证后还可以开通粉丝打赏、送礼物等特权；\n规则四：请务必保证照片等个人信息的真实有效；\n </string>
+    <string name="renzheng_rule">*   更多推荐机会，更多粉丝关注；\n\n\n*   开通粉丝打赏、送花、约会功能；\n\n\n*   助你获得商业签约机会</string>
     <string name="input">输入</string>
     <string name="input_text_number_100">输入文字不能大于一百</string>
     <string name="search">搜索</string>
@@ -124,7 +124,7 @@
     <string name="birthday_change">出生年月日:</string>
     <string name="address_change">所在地</string>
     <string name="personalized_signature_change">个性签名：</string>
-    <string name="user_introduction_change">自我简介</string>
+    <string name="user_introduction_change">自我简介: </string>
     <string name="education_change">学历</string>
     <string name="heigth_change">身高：</string>
     <string name="weight_change">体重：</string>
@@ -146,6 +146,10 @@
     <string name="action">操作</string>
     <string name="delete">删除</string>
     <string name="report">举报</string>
+    <string name="apply_renzheng">申请认证</string>
+    <string name="renzheng_condition">1.上传不少于六张照片，可以从相册选择，也可直接拍摄上传（拍摄上传会加分哦）；\n\n2.请务必保证照片等个人信息的真实有效。</string>
+    <string name="red_person_renzheng">红人认证</string>
+    <string name="pic_size_error">照片的数量不正确</string>
     <string-array name="moneys">
         <item>8</item>
         <item>28</item>

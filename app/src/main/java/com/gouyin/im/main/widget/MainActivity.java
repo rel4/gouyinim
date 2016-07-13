@@ -247,7 +247,7 @@ public class MainActivity extends BaseActivity implements MainView {
                 .setEndEvent(ActivityEvent.DESTROY)
                 .setEvent(Events.EventEnum.GET_RONGYUN_KEY)
                 .onNext(events -> {
-                    getRongyunKey();
+                    mMainPresenter.getRongyunKey();
                 })
                 .create();
         /**
@@ -280,13 +280,6 @@ public class MainActivity extends BaseActivity implements MainView {
                     }
                 })
                 .create();
-    }
-
-    /**
-     * 获取key
-     */
-    public void getRongyunKey() {
-        mMainPresenter.getRongyunKey();
     }
 
     @Override

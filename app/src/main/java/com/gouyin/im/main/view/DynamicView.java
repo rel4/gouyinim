@@ -25,4 +25,5 @@ public interface DynamicView extends BaseIView {
 
     void pageFinish();
 
+    void deleteDynamic(String id);
 }

@@ -24,6 +24,10 @@ public class RZThidActivity extends BaseActivity {
 
     }
 
+    @Override
+    protected String initTitleName() {
+        return UIUtils.getStringRes(R.string.apply_renzheng);
+    }
 
     @OnClick(R.id.tv_success)
     public void onClick() {

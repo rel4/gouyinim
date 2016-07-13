@@ -43,6 +43,10 @@ public class RZSecondActivity extends BaseActivity implements RZSecondView {
         return UIUtils.inflateLayout(R.layout.activity_rzsecond);
     }
 
+    @Override
+    protected String initTitleName() {
+        return UIUtils.getStringRes(R.string.apply_renzheng);
+    }
 
     @Override
     protected void initView() {
@@ -113,6 +117,10 @@ public class RZSecondActivity extends BaseActivity implements RZSecondView {
             case R.id.tv_submit:
                 if (pics == null || pics.size() == 0) {
                     showToast(UIUtils.getStringRes(R.string.not_empty));
+                    return;
+                }
+                if (pics.size() < 6) {
+                    UIUtils.getStringRes(R.string.pic_size_error);
                     return;
                 }
                 Intent intent = getIntent();

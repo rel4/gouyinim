@@ -44,6 +44,11 @@ public class RZFirstActivity extends BaseActivity {
     }
 
     @Override
+    protected String initTitleName() {
+        return UIUtils.getStringRes(R.string.apply_renzheng);
+    }
+
+    @Override
     protected void initView() {
         ImageServerApi.showURLSamllImage(ivAvater, UserInfoManager.getInstance().getAvater());
         PersonInfoDetail info =

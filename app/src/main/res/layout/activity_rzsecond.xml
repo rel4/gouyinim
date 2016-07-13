@@ -3,16 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include
-        android:id="@+id/top"
-        layout="@layout/comman_title_bar" />
+    <include layout="@layout/app_titlebar" />
 
     <LinearLayout
 
         android:id="@+id/linear1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/top"
+        android:layout_below="@+id/app_title_bar"
         android:orientation="vertical"
         android:padding="@dimen/x20">
 

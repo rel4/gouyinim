@@ -38,7 +38,7 @@
             android:id="@+id/tv_find_page"
             style="@style/home_text"
             android:drawableTop="@drawable/selector_find_text_draw"
-            android:text="@string/app_find_page" />
+            android:text="@string/find" />
 
         <TextView
             android:id="@+id/tv_my_page"

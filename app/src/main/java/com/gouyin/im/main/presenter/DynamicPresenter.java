@@ -6,7 +6,7 @@ import com.gouyin.im.main.view.DynamicView;
 /**
  * Created by pc on 2016/6/6.
  */
-public interface UserInfoPresenter  extends BaseIPresenter<DynamicView>{
+public interface DynamicPresenter extends BaseIPresenter<DynamicView>{
     void loadonRefreshData(String userId);
 
     void loadLoadMoreData(String userId);
@@ -14,4 +14,6 @@ public interface UserInfoPresenter  extends BaseIPresenter<DynamicView>{
     void switchNavigation(int id);
 
     void loadUserInfodetail(String uid);
+
+    void deleteDynamic(String id);
 }

@@ -41,7 +41,7 @@ public class HomeFragment extends BaseFragment implements HomeView {
     TextView tv_search;
     private HomeFragmentPresenter mPresenter;
     private FragmentManager mFragmentManager;
-    private Fragment mCurrentFragment, goodSelectFragment, sameCityFragment;
+    private GoodSelectFragment mCurrentFragment, goodSelectFragment, sameCityFragment;
 
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -55,22 +55,26 @@ public class HomeFragment extends BaseFragment implements HomeView {
     protected void initData() {
         tv_search.setText(UIUtils.getStringRes(R.string.search));
         tv_search.setVisibility(View.VISIBLE);
-        onClick(tvNavigationGoodSelect);
+        mPresenter.swicthNavigation(R.id.tv_navigation_good_select);
     }
 
 
     @Override
     public void switch2GoodSelect() {
-        if (goodSelectFragment == null)
-            goodSelectFragment = GoodSelectFragment.newInstance(GoodSelectFragment.GOOD_SELECT);
+        if (goodSelectFragment == null) {
+            goodSelectFragment = GoodSelectFragment.newInstance();
+            goodSelectFragment.setPegeType(GoodSelectFragment.GOOD_SELECT);
+        }
         enterPage(goodSelectFragment);
 
     }
 
     @Override
     public void switch2SameCity() {
-        if (sameCityFragment == null)
-            sameCityFragment = GoodSelectFragment.newInstance(GoodSelectFragment.SAME_CITY);
+        if (sameCityFragment == null) {
+            sameCityFragment = GoodSelectFragment.newInstance();
+            sameCityFragment.setPegeType(GoodSelectFragment.SAME_CITY);
+        }
         enterPage(sameCityFragment);
     }
 
@@ -86,7 +90,7 @@ public class HomeFragment extends BaseFragment implements HomeView {
      * @param fragment
      */
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
-    private void enterPage(Fragment fragment) {
+    private void enterPage(GoodSelectFragment fragment) {
         if (fragment == null)
             return;
         switchNatvigationSelect(fragment);

@@ -82,9 +82,9 @@ public class ServerApi {
                 @Override
                 public Request authenticate(Route route, Response response) throws IOException {
                     Request request = response.request();
-                    LogUtils.d(AppAPI.class, "Authenticator : The Cookie is " + request.header("Cookie"));
+                    LogUtils.d(TAG, "Authenticator : The Cookie is " + request.header("Cookie"));
                     LogUtils.e(TAG, "Authenticator : 访问网络地址: " + request.url().toString());
-                    LogUtils.d(AppAPI.class, "Authenticator : 访问body : " + request.body().toString());
+                    LogUtils.d(TAG, "Authenticator : 访问body : " + request.body().toString());
                     return request;
                 }
             };
@@ -92,14 +92,14 @@ public class ServerApi {
             Interceptor interceptor = new Interceptor() {
                 @Override
                 public Response intercept(Chain chain) throws IOException {
-                    LogUtils.d(AppAPI.class, "addInterceptor : 访问request : " + chain.request().toString());
+                    LogUtils.d(TAG, "addInterceptor : 访问request : " + chain.request().toString());
                     Response response = chain.proceed(chain.request());
 
-                    LogUtils.d(AppAPI.class, "addInterceptor : Response  code: " + response.code());
+                    LogUtils.d(TAG, "addInterceptor : Response  code: " + response.code());
                     BufferedSource source = response.body().source();
                     source.request(Long.MAX_VALUE);
                     Buffer clone = source.buffer().clone();
-                    LogUtils.d(AppAPI.class, "addInterceptor : Response  content: " + UnicodeUtils.decodeUnicode(clone.readUtf8()));
+                    LogUtils.d(TAG, "addInterceptor : Response  content: " + UnicodeUtils.decodeUnicode(clone.readUtf8()));
                     return response;
                 }
             };
@@ -108,7 +108,7 @@ public class ServerApi {
             OkHttpClient httpClient = new OkHttpClient.Builder()
                     .addInterceptor(logging)
                     .addInterceptor(interceptor)
-                    .retryOnConnectionFailure(false)
+                    .retryOnConnectionFailure(true)
                     .authenticator(mAuthenticator)
                     .connectTimeout(15, TimeUnit.SECONDS)
                     .addNetworkInterceptor(mTokenInterceptor)
@@ -420,7 +420,7 @@ public class ServerApi {
                                                     @Field("authcode") String authcode);
 
         /**
-         * y银行卡列表
+         * 银行卡列表
          *
          * @param authcode
          * @return
@@ -553,7 +553,8 @@ public class ServerApi {
          */
         @FormUrlEncoded
         @POST("User/findpwd_step1")
-        Observable<RegiterBean> getFindPasswordSecurity(@Field("mobile") String phone, @Field("code") String code);
+        Observable<RegiterBean> getFindPasswordSecurity(@Field("mobile") String phone,
+                                                        @Field("code") String code);
 
         /**
          * 找回密码 输入新密码
@@ -564,7 +565,7 @@ public class ServerApi {
          */
         @FormUrlEncoded
         @POST("User/findpwd_step2")
-        Observable<BaseBean> getFindPasswordNext(@Field("pwd ") String newpwd,
+        Observable<BaseBean> getFindPasswordNext(@Field("pwd") String newpwd,
                                                  @Field("mobileauth") String code);
 
         /**
@@ -576,8 +577,8 @@ public class ServerApi {
          */
         @FormUrlEncoded
         @POST("User/edit_like_image")
-        Observable<DefaultDataBean> getUploadBackground(@Field("") String path,
-                                                        @Field("authcode ") String authcode);
+        Observable<DefaultDataBean> getUploadBackground(@Field("like_image") String path,
+                                                        @Field("authcode") String authcode);
 
         /**
          * 点赞
@@ -600,7 +601,7 @@ public class ServerApi {
          */
         @FormUrlEncoded
         @POST("Latest/del_latest")
-        Observable<DefaultDataBean> getDelectDynamic(@Field("latest_id ") String id,
+        Observable<DefaultDataBean> getDelectDynamic(@Field("latest_id") String id,
                                                      @Field("authcode") String authcode);
     }
 }

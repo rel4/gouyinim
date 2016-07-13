@@ -34,7 +34,7 @@
     <color name="layout_bg">#ffffff</color>
     <color name="line_color">#E2E2E2</color>
 
-    <color name="text_color">#999999</color>
+    <color name="text_gred_color">#999999</color>
     <color name="title_text">#464545</color>
     <color name="blue">#1498fb</color>
     <color name="grid_state_pressed">#1Affffff</color>
@@ -80,4 +80,6 @@
     <!--popup背景蒙层-->
     <color name="popup_background">#8e030303</color>
     <color name="text_time_gray_color">#999999</color>
+    <color name="yellow">#ffff00</color>
+    <color name="text_color">#999999</color>
 </resources>

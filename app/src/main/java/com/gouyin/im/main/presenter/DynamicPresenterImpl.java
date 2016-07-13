@@ -1,14 +1,18 @@
 package com.gouyin.im.main.presenter;
 
+import com.gouyin.im.AppConstant;
 import com.gouyin.im.R;
 import com.gouyin.im.base.BaseIModel;
 import com.gouyin.im.base.BaseIModel.onLoadDateSingleListener;
+import com.gouyin.im.bean.DefaultDataBean;
 import com.gouyin.im.bean.UserInfoDetailBean;
 import com.gouyin.im.bean.UserInfoListBean;
+import com.gouyin.im.main.model.UserActionModelImpl;
 import com.gouyin.im.main.model.UserInfoModel;
 import com.gouyin.im.main.model.UserInfoModelImpl;
 import com.gouyin.im.main.view.DynamicView;
 import com.gouyin.im.utils.LogUtils;
+import com.gouyin.im.utils.StringUtis;
 import com.gouyin.im.utils.UIUtils;
 
 import java.util.List;
@@ -16,7 +20,7 @@ import java.util.List;
 /**
  * Created by pc on 2016/6/6.
  */
-public class UserInfoPresenterImpl implements UserInfoPresenter, onLoadDateSingleListener<UserInfoDetailBean>, BaseIModel.onLoadListDateListener<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList> {
+public class DynamicPresenterImpl implements DynamicPresenter, onLoadDateSingleListener<UserInfoDetailBean>, BaseIModel.onLoadListDateListener<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList> {
     private DynamicView mUserInfoView;
     private UserInfoModel mUserInfoModel;
     private int page = 2;
@@ -54,6 +58,7 @@ public class UserInfoPresenterImpl implements UserInfoPresenter, onLoadDateSingl
             case R.id.tv_send_flowers:
                 mUserInfoView.swicth2SendFlowersActivity();
                 break;
+            case R.id.single_send_msg:
             case R.id.tv_send_msg:
                 mUserInfoView.switch2SendMsgActivity();
                 break;
@@ -70,6 +75,28 @@ public class UserInfoPresenterImpl implements UserInfoPresenter, onLoadDateSingl
     public void loadUserInfodetail(String uid) {
         mUserInfoView.showLoading();
         mUserInfoModel.loadUserInfodetail(uid, this);
+    }
+
+    @Override
+    public void deleteDynamic(String id) {
+        mUserInfoView.showLoading();
+        UserActionModelImpl actionModel = new UserActionModelImpl();
+        actionModel.deleteDynamic(id, new BaseIModel.onLoadDateSingleListener<DefaultDataBean>() {
+            @Override
+            public void onSuccess(DefaultDataBean bean, BaseIModel.DataType dataType) {
+                if (StringUtis.equals(bean.getCode(), AppConstant.code_request_success)) {
+                    mUserInfoView.deleteDynamic(id);
+                }
+                mUserInfoView.transfePageMsg(bean.getMsg());
+                mUserInfoView.hideLoading();
+            }
+
+            @Override
+            public void onFailure(String msg) {
+                mUserInfoView.transfePageMsg(msg);
+                mUserInfoView.hideLoading();
+            }
+        });
     }
 
 

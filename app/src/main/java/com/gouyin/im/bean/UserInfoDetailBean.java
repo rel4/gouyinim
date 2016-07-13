@@ -16,7 +16,7 @@ public class UserInfoDetailBean extends BaseBean {
         this.data = data;
     }
 
-    public  static  class UserInfoDetailDataBean extends BaseDataBean {
+    public static class UserInfoDetailDataBean extends BaseDataBean {
 
         private Addons addons;
         private Object guard;
@@ -44,11 +44,21 @@ public class UserInfoDetailBean extends BaseBean {
             this.baseinfo = baseinfo;
         }
 
-        public static  class Baseinfo implements Serializable {
+        public static class Baseinfo implements Serializable {
             private String nickname;
             private int sex;
             private String face;
             private String like_image;
+            // 1 已审核   2审核中  3 未审核
+            private String isverify;
+
+            public String getIsverify() {
+                return isverify;
+            }
+
+            public void setIsverify(String isverify) {
+                this.isverify = isverify;
+            }
 
             public String getLike_image() {
                 return like_image;
@@ -91,7 +101,7 @@ public class UserInfoDetailBean extends BaseBean {
             }
         }
 
-        public static  class Addons {
+        public static class Addons {
             private String ufann;
             private String ufoln;
             private String ulatn;

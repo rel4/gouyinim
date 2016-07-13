@@ -19,12 +19,15 @@
         android:layout_centerVertical="true"
         android:layout_marginRight="@dimen/x30"
         android:background="@drawable/shape_background_text_white_color"
+        android:drawableLeft="@mipmap/add_wacth_icon"
+        android:drawablePadding="@dimen/x2"
         android:paddingBottom="@dimen/x15"
         android:paddingLeft="@dimen/x25"
         android:paddingRight="@dimen/x25"
         android:paddingTop="@dimen/x15"
         android:text="@string/wacth"
-        android:textColor="@color/text_black_color" />
+        android:textColor="@color/text_black_color"
+        android:textSize="12sp" />
 
     <TextView
         android:id="@+id/tv_user_name"

@@ -1,7 +1,6 @@
 package com.gouyin.im.my.widget;
 
 import android.view.View;
-import android.widget.ImageView;
 
 import com.gouyin.im.ImageServerApi;
 import com.gouyin.im.R;
@@ -11,6 +10,7 @@ import com.gouyin.im.event.RxBus;
 import com.gouyin.im.manager.UserInfoManager;
 import com.gouyin.im.utils.ActivityUtils;
 import com.gouyin.im.utils.UIUtils;
+import com.gouyin.im.widget.RoundedImageView;
 import com.trello.rxlifecycle.ActivityEvent;
 
 import butterknife.Bind;
@@ -22,11 +22,16 @@ import butterknife.OnClick;
  */
 public class CertificationActivity extends BaseActivity {
     @Bind(R.id.iv_avater)
-    ImageView ivAvater;
+    RoundedImageView ivAvater;
 
     @Override
     protected View setRootContentView() {
         return UIUtils.inflateLayout(R.layout.activity_red_person);
+    }
+
+    @Override
+    protected String initTitleName() {
+        return UIUtils.getStringRes(R.string.red_person_renzheng);
     }
 
     @Override

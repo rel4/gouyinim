@@ -246,7 +246,13 @@ public class DynamicViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.U
         tv_more__number.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ActivityUtils.startDynamicAtionActivity(bean.getUid(),bean.getLatest_id());
+                ActivityUtils.startDynamicAtionActivity(bean.getUid(), bean.getLatest_id());
+            }
+        });
+        rivUserImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivityUtils.startUserinfoActivity(bean.getUid());
             }
         });
     }

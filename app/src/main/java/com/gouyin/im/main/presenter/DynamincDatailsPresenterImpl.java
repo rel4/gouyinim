@@ -8,6 +8,7 @@ import com.gouyin.im.bean.CommentDataListBean;
 import com.gouyin.im.bean.DefaultDataBean;
 import com.gouyin.im.main.model.DynamincDatailsModel;
 import com.gouyin.im.main.model.DynamincDatailsModelImpl;
+import com.gouyin.im.main.model.UserActionModelImpl;
 import com.gouyin.im.main.view.DynamicDatailsView;
 import com.gouyin.im.utils.StringUtis;
 import com.gouyin.im.utils.UIUtils;
@@ -44,6 +45,28 @@ public class DynamincDatailsPresenterImpl implements DynamincDatailsPresenter, B
     public void sendComment(String id, String content, String pid) {
         view.showLoading();
         dynamincDatailsModel.sendComment(id, content, pid, this);
+    }
+
+    @Override
+    public void deleteDynamic(String id) {
+        view.showLoading();
+        UserActionModelImpl actionModel = new UserActionModelImpl();
+        actionModel.deleteDynamic(id, new BaseIModel.onLoadDateSingleListener<DefaultDataBean>() {
+            @Override
+            public void onSuccess(DefaultDataBean bean, BaseIModel.DataType dataType) {
+                if (StringUtis.equals(bean.getCode(), AppConstant.code_request_success)) {
+                    view.deleteDynamic(id);
+                }
+                view.transfePageMsg(bean.getMsg());
+                view.hideLoading();
+            }
+
+            @Override
+            public void onFailure(String msg) {
+                view.transfePageMsg(msg);
+                view.hideLoading();
+            }
+        });
     }
 
     @Override

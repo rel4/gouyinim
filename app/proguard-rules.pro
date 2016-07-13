@@ -71,6 +71,8 @@
 -keep class com.trello.**{*;}
 -keep class com.gouyin.im.utils.*{*;}
 -keep class com.gouyin.im.AppConstant{*;}
+-keep class com.gouyin.im.utils.gson.**{*;}
+-keep class com.gouyin.im.event.**{*;}
 #自己项目特殊处理代码
 #忽略警告
 -dontwarn com.veidy.mobile.common.**
@@ -182,3 +184,39 @@
 -keep class com.ultrapower.** {*;}
 
 #  融云  rongyun end
+
+
+       #Retrofit
+-dontwarn retrofit2.**
+-keep class retrofit2.** { *; }
+-keepattributes Signature
+-keepattributes Exceptions
+
+
+    #RxJava RxAndroid
+-dontwarn sun.misc.**
+-keepclassmembers class rx.internal.util.unsafe.*ArrayQueue*Field* {
+   long producerIndex;
+   long consumerIndex;
+}
+-keepclassmembers class rx.internal.util.unsafe.BaseLinkedQueueProducerNodeRef {
+    rx.internal.util.atomic.LinkedQueueNode producerNode;
+}
+-keepclassmembers class rx.internal.util.unsafe.BaseLinkedQueueConsumerNodeRef {
+    rx.internal.util.atomic.LinkedQueueNode consumerNode;
+}
+
+#    #Gson
+#-keepattributes Signature-keepattributes *Annotation*
+-keep class sun.misc.Unsafe { *; }
+-keep class com.google.gson.stream.** { *; }
+# Application classes that will be serialized/deserialized over Gson 下面替换成自己的实体类
+-keep class com.gouyin.im.bean.** { *; }
+#
+     #OkHttp3
+-dontwarn com.squareup.okhttp3.**
+-keep class com.squareup.okhttp3.** { *;}
+-dontwarn okio.**
+
+#Jack is required to support java 8 language features.
+-dontwarn java.lang.invoke.*

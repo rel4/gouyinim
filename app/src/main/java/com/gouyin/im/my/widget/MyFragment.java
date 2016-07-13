@@ -113,8 +113,9 @@ public class MyFragment extends BaseFragment implements MyFragmentView {
                 .setEvent(Events.EventEnum.DYNAMIC_ACTION)
                 .onNext(events -> {
                     String id = (String) events.message;
-                    if (mAdapter!=null){
-                        mAdapter.deleteDynamic(id);
+                    if (mAdapter != null) {
+                        mPresenter.deleteDynamic(id);
+
                     }
                 })
                 .create();
@@ -137,6 +138,13 @@ public class MyFragment extends BaseFragment implements MyFragmentView {
     public void setUserBackground(String path) {
         if (personDynamicViewholder != null)
             personDynamicViewholder.upImage(path);
+    }
+
+    @Override
+    public void deleteDynamic(String id) {
+        if (mAdapter != null) {
+            mAdapter.deleteDynamic(id);
+        }
     }
 
     @OnClick({R.id.tv_certification, R.id.tv_withdraw_deposit, R.id.tv_appointment, R.id.tv_person_order, R.id.tv_person_setting})

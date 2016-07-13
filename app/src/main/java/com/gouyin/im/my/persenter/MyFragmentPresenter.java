@@ -17,6 +17,8 @@ public interface MyFragmentPresenter extends BaseIPresenter<MyFragmentView> {
     void loadLoadMoreData();
 
     void uploadBackground(String path);
+
+    void deleteDynamic(String id);
 }
 
 

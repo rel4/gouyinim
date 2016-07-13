@@ -33,12 +33,15 @@
         android:layout_centerVertical="true"
         android:layout_marginRight="@dimen/x30"
         android:background="@drawable/shape_background_text_white_color"
+        android:drawableLeft="@mipmap/delect_wacth"
+        android:drawablePadding="@dimen/x2"
         android:paddingBottom="@dimen/x15"
         android:paddingLeft="@dimen/x25"
         android:paddingRight="@dimen/x25"
         android:paddingTop="@dimen/x15"
         android:text="@string/cancel"
-        android:textColor="@color/app_line" />
+        android:textColor="@color/app_line"
+        android:textSize="14sp" />
 
     <TextView
 

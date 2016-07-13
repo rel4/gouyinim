@@ -67,7 +67,18 @@ public class UserActionModelImpl implements UserActionModel {
     /**
      * 删除动态
      */
-    public void deleteDynamic(String id,onLoadDateSingleListener<DefaultDataBean> listener) {
-        ServerApi.getAppAPI().getDelectDynamic(id,UserInfoManager.getInstance().getAuthcode());
+    public void deleteDynamic(String id, onLoadDateSingleListener<DefaultDataBean> listener) {
+        Observable<DefaultDataBean> observable = ServerApi.getAppAPI().getDelectDynamic(id, UserInfoManager.getInstance().getAuthcode());
+        ObservableUtils.parser(observable, new ObservableUtils.Callback<DefaultDataBean>() {
+            @Override
+            public void onSuccess(DefaultDataBean bean) {
+                listener.onSuccess(bean, DataType.DATA_ZERO);
+            }
+
+            @Override
+            public void onFailure(String msg) {
+                listener.onFailure(msg);
+            }
+        });
     }
 }

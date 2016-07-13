@@ -5,7 +5,6 @@
 
 
     <ImageView
-
         android:id="@+id/user_background"
         android:layout_width="match_parent"
         android:layout_height="@dimen/y421"
@@ -54,6 +53,7 @@
         android:layout_marginLeft="@dimen/x20"
         android:layout_toRightOf="@+id/iv_user_icon"
         android:text="@string/loading"
+        android:textColor="@color/text_black_color"
         android:textSize="15sp" />
 
     <ImageView
@@ -99,6 +99,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:layout_marginBottom="@dimen/x30"
         android:id="@+id/layot_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -131,6 +132,7 @@
     </LinearLayout>
 
     <RelativeLayout
+        android:layout_marginBottom="@dimen/x20"
         android:id="@+id/layout_click_wacth"
         android:layout_width="match_parent"
         android:layout_height="@dimen/y60"

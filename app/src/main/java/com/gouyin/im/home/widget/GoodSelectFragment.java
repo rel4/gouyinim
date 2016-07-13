@@ -39,13 +39,13 @@ public class GoodSelectFragment extends BaseFragment implements GoodSelectView {
     XListView recyclerview;
     @Bind(R.id.text_empty)
     TextView textEmpty;
-    private static int pageType;
+    private int pageType;
     private GoodSelectPresenter goodSelectPresenter;
     public static final int GOOD_SELECT = 1;
     public static final int SAME_CITY = 2;
 
-    public static BaseFragment newInstance(int type) {
-        pageType = type;
+    public static GoodSelectFragment newInstance() {
+
         return new GoodSelectFragment();
     }
 
@@ -53,6 +53,11 @@ public class GoodSelectFragment extends BaseFragment implements GoodSelectView {
     protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         goodSelectPresenter = new GoodSelectPresenterImpl(this);
         return inflater.inflate(R.layout.fragment_good_select, container, false);
+    }
+
+    public void setPegeType(int type) {
+        pageType = type;
+
     }
 
     @Override

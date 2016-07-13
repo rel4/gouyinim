@@ -148,7 +148,9 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:textColor">@color/gray_color</item>
         <item name="android:textSize">18sp</item>
-        <item name="android:gravity">center</item>
+        <item name="android:gravity">right</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:enabled">true</item>
         <item name="android:layout_marginRight">@dimen/x30</item>
     </style>
 </resources>

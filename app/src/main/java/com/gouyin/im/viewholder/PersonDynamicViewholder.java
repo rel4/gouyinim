@@ -86,7 +86,7 @@ public class PersonDynamicViewholder extends BaseHolder<UserInfoDetailBean> {
             tvUserDayIncome.setText(UIUtils.getStringRes(R.string.day_income) + addons.getIncome_today() + UIUtils.getStringRes(R.string.yuan));
             tvFenNumber.setText(addons.getUfann());
             tvDynamicNumber.setText(addons.getUlatn());
-            tvFlowerNumber.setText(addons.getUfann());
+            tvFlowerNumber.setText(addons.getUflon());
             tvWacthNumber.setText(addons.getUfoln());
         }
 

@@ -9,6 +9,7 @@ import com.gouyin.im.base.BaseRecyclerViewHolder;
 import com.gouyin.im.bean.BaseBean;
 import com.gouyin.im.bean.BaseDataBean;
 import com.gouyin.im.bean.CommentDataListBean;
+import com.gouyin.im.utils.ActivityUtils;
 import com.gouyin.im.utils.TimeUtils;
 import com.gouyin.im.widget.RoundedImageView;
 
@@ -39,6 +40,12 @@ public class DynamicCommentViewHolder extends BaseRecyclerViewHolder<CommentData
         tvCommentContent.setText(bean.getTitle());
         tvTime.setText(TimeUtils.format(bean.getCreate_time() * 1000));
         tvUserName.setText(bean.getNickname());
+        rivItemUserImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivityUtils.startUserinfoActivity(bean.getUid());
+            }
+        });
     }
 
     @Override

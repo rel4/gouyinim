@@ -25,4 +25,6 @@ public interface MyFragmentView extends BaseIView {
     void setUserInfo(UserInfoDetailBean bean);
 
     void setUserBackground(String obj);
+
+    void deleteDynamic(String id);
 }

@@ -174,7 +174,7 @@
         <activity android:name=".widget.image.CropImageMainActivity" />
         <activity
             android:name=".main.widget.DynamicAtionActivity"
-            android:theme="@style/MyDialogStyleBottom" />
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <!--会话页面-->
         <activity
             android:name=".im.widget.AppConversationActivity"

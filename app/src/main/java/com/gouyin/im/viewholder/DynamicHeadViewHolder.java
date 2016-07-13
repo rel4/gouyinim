@@ -61,7 +61,7 @@ public class DynamicHeadViewHolder {
         tvUserName.setText(baseinfo.getNickname());
         tvFenNumber.setText(addons.getUfann());
         tvDynamicNumber.setText(addons.getUlatn());
-        tvFlowerNumber.setText(addons.getUfann());
+        tvFlowerNumber.setText(addons.getUflon());
         tvWacthNumber.setText(addons.getUfoln());
         getwacthStatus(data.getFollow(), data.getUid());
         ivUserIcon.setOnClickListener(new View.OnClickListener() {

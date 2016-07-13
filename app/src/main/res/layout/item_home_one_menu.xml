@@ -77,7 +77,7 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/tv_wacth_number"
         android:layout_below="@id/layout_content"
-        android:layout_marginLeft="@dimen/x40"
+
         android:layout_toRightOf="@+id/tv_wacth_number"
         android:drawableLeft="@mipmap/comment_iocn"
         android:drawablePadding="@dimen/x10"
@@ -87,13 +87,13 @@
         android:textSize="12sp" />
 
     <TextView
-
+        android:padding="@dimen/x20"
         android:id="@+id/tv_play_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/tv_reply_number"
         android:layout_below="@id/layout_content"
-        android:layout_marginLeft="@dimen/x40"
+
         android:layout_toRightOf="@+id/tv_reply_number"
         android:drawableLeft="@mipmap/icon_red_packet"
         android:drawablePadding="@dimen/x5"

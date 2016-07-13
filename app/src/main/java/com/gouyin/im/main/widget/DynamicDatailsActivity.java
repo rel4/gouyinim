@@ -9,6 +9,8 @@ import com.gouyin.im.adapter.DynamiDayailsAdapter;
 import com.gouyin.im.base.BaseActivity;
 import com.gouyin.im.bean.CommentDataListBean;
 import com.gouyin.im.bean.UserInfoListBean;
+import com.gouyin.im.event.Events;
+import com.gouyin.im.event.RxBus;
 import com.gouyin.im.main.presenter.DynamincDatailsPresenter;
 import com.gouyin.im.main.presenter.DynamincDatailsPresenterImpl;
 import com.gouyin.im.main.view.DynamicDatailsView;
@@ -19,6 +21,8 @@ import com.gouyin.im.utils.UIUtils;
 import com.gouyin.im.viewholder.DynamicViewHolder;
 import com.gouyin.im.widget.XListView;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
+import com.trello.rxlifecycle.ActivityEvent;
+import com.trello.rxlifecycle.FragmentEvent;
 
 import java.util.List;
 
@@ -41,7 +45,7 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
     @Override
 
     protected void initView() {
-
+        setRx();
         recyclerView.setVerticalLinearLayoutManager();
         recyclerView.setPullRefreshEnabled(false);
         if (userInfo != null) {
@@ -60,6 +64,21 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
         });
 
 
+    }
+
+    private void setRx() {
+
+        RxBus.with(this)
+                .setEndEvent(ActivityEvent.DESTROY)
+                .setEvent(Events.EventEnum.DYNAMIC_ACTION)
+                .onNext(events -> {
+                    String id = (String) events.message;
+                    if (mAdapter != null) {
+                        presenter.deleteDynamic(id);
+
+                    }
+                })
+                .create();
     }
 
     @Override
@@ -115,6 +134,16 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
             mAdapter.addSingeData(0, dataBean);
             mAdapter.onRefresh();
         }
+    }
+
+    @Override
+    public void deleteDynamic(String id) {
+        UIUtils.sendDelayedOneMillis(new Runnable() {
+            @Override
+            public void run() {
+                finish();
+            }
+        });
     }
 
     @Override

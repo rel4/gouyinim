@@ -22,12 +22,13 @@
     <LinearLayout
         android:id="@+id/layout_usee_action"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/y160"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="@dimen/y30"
         android:layout_marginLeft="@dimen/x30"
         android:layout_marginRight="@dimen/x30"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/tv_reward"
@@ -72,7 +73,24 @@
             android:paddingTop="@dimen/x10"
             android:text="@string/send_flowers"
             android:textColor="@color/background_red_color" />
-
-
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/single_send_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/x30"
+        android:background="@drawable/shape_red_half_round"
+        android:drawablePadding="0dp"
+        android:drawableTop="@mipmap/im_white_icon"
+        android:paddingBottom="@dimen/x15"
+        android:paddingLeft="@dimen/x80"
+        android:paddingRight="@dimen/x80"
+        android:paddingTop="@dimen/x15"
+        android:text="@string/send_msg"
+        android:textColor="@color/white"
+        android:textSize="10sp"
+        android:visibility="gone" />
 </RelativeLayout>

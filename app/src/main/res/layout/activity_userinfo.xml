@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gray_color"
+    android:background="@color/app_gred_background"
     android:orientation="vertical">
 
     <include layout="@layout/app_titlebar" />
@@ -11,14 +11,16 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         android:background="@color/background_white_color">
 
         <com.gouyin.im.widget.RoundedImageView
             android:id="@+id/riv_user_image"
-            android:layout_width="@dimen/x200"
-            android:layout_height="@dimen/x200"
+            android:layout_width="@dimen/x120"
+            android:layout_height="@dimen/x120"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
+            android:layout_marginTop="@dimen/x30"
             android:src="@mipmap/load_small"></com.gouyin.im.widget.RoundedImageView>
 
         <TextView
@@ -59,6 +61,7 @@
         android:gravity="center_vertical">
 
         <TextView
+            android:id="@+id/tv_signature_text"
             style="@style/info_change_text"
             android:text="@string/personalized_signature_change" />
 
@@ -66,6 +69,8 @@
             android:id="@+id/tv_signature"
             style="@style/info_change_show_text"
             android:layout_alignParentRight="true"
+            android:layout_marginLeft="@dimen/x20"
+            android:layout_toRightOf="@id/tv_signature_text"
             android:text="@string/not_available" />
     </RelativeLayout>
 
@@ -78,6 +83,7 @@
         android:gravity="center_vertical">
 
         <TextView
+            android:id="@+id/tv_introduction_text"
             style="@style/info_change_text"
             android:text="@string/user_introduction_change" />
 
@@ -85,6 +91,8 @@
             android:id="@+id/tv_introduction"
             style="@style/info_change_show_text"
             android:layout_alignParentRight="true"
+            android:layout_marginLeft="@dimen/x20"
+            android:layout_toRightOf="@+id/tv_introduction_text"
             android:text="@string/not_available" />
     </RelativeLayout>
 

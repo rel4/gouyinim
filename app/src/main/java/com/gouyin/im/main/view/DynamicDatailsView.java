@@ -15,4 +15,5 @@ public interface DynamicDatailsView extends BaseIView {
 
     void CommentSuccess();
 
+    void deleteDynamic(String id);
 }

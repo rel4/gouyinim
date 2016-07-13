@@ -58,7 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/loading"
-            android:textColor="@color/text_color"
+            android:textColor="@color/text_gray_color"
             android:textSize="16sp" />
 
         <TextView

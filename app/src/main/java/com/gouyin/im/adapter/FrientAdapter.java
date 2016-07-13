@@ -1,20 +1,15 @@
 package com.gouyin.im.adapter;
 
-import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.gouyin.im.AppConstant;
-import com.gouyin.im.ImageServerApi;
 import com.gouyin.im.R;
 import com.gouyin.im.base.BaseIModel;
 import com.gouyin.im.base.BaseRecyclerViewAdapter;
 import com.gouyin.im.base.BaseRecyclerViewHolder;
 import com.gouyin.im.bean.DefaultDataBean;
 import com.gouyin.im.bean.FrientBaen;
-import com.gouyin.im.event.Events;
-import com.gouyin.im.event.RxBus;
-import com.gouyin.im.im.widget.FrientFragment;
 import com.gouyin.im.main.model.UserActionModelImpl;
 import com.gouyin.im.my.view.FrientFragmentView;
 import com.gouyin.im.utils.StringUtis;
