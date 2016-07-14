@@ -12,10 +12,12 @@ import com.gouyin.im.bean.DefaultDataBean;
 import com.gouyin.im.bean.FrientBaen;
 import com.gouyin.im.main.model.UserActionModelImpl;
 import com.gouyin.im.my.view.FrientFragmentView;
+import com.gouyin.im.utils.ActivityUtils;
 import com.gouyin.im.utils.StringUtis;
 import com.gouyin.im.utils.UIUtils;
 import com.gouyin.im.viewholder.FrientViewHoler;
 
+import java.util.IdentityHashMap;
 import java.util.List;
 
 /**
@@ -47,7 +49,13 @@ public class FrientAdapter extends BaseRecyclerViewAdapter<FrientBaen.DataBean> 
 
     @Override
     public void onItemclick(View view, int position) {
+        if (datas != null && datas.get(position) != null) {
+            FrientBaen.DataBean dataBean = datas.get(position);
+            if (!StringUtis.isEmpty(dataBean.getUid())) {
+                ActivityUtils.startDynamicActivity(dataBean.getUid());
+            }
 
+        }
     }
 
     public void setClick(Integer position) {

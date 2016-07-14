@@ -35,8 +35,8 @@ public class SettingActivity extends BaseActivity {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.timeout:
-                RxBus.getInstance().send(Events.EventEnum.GO_TO_HOME, null);
-                RxBus.getInstance().send(Events.EventEnum.LOGIN, null);
+
+                RxBus.getInstance().send(Events.EventEnum.LOGIN_CODE_TIMEOUT, null);
                 finish();
 
                 break;

@@ -50,7 +50,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/layout_pic"
         android:layout_centerHorizontal="true"
-        android:layout_margin="@dimen/x15"
+        android:layout_marginLeft="@dimen/x15"
+        android:layout_marginRight="@dimen/x15"
+        android:layout_marginTop="@dimen/x10"
         android:ellipsize="end"
 
         android:maxEms="8"
@@ -65,7 +67,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/tv_user_name"
-        android:layout_margin="@dimen/x15"
+        android:layout_marginLeft="@dimen/x15"
+        android:layout_marginRight="@dimen/x15"
         android:text="@string/loading"
         android:textColor="@color/gray_color"
         android:textSize="12sp" />

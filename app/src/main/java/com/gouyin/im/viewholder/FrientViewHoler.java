@@ -8,6 +8,7 @@ import com.gouyin.im.R;
 import com.gouyin.im.adapter.FrientAdapter;
 import com.gouyin.im.base.BaseRecyclerViewHolder;
 import com.gouyin.im.bean.FrientBaen;
+import com.gouyin.im.utils.ActivityUtils;
 import com.gouyin.im.widget.RoundedImageView;
 
 import butterknife.Bind;
@@ -43,6 +44,12 @@ public class FrientViewHoler extends BaseRecyclerViewHolder<FrientBaen.DataBean>
         tvContent.setText(dataBean.getSignature());
         tvUserName.setText(dataBean.getNickname());
         tvSubmit.setTag(position);
+        rivUserImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivityUtils.startUserinfoActivity(dataBean.getUid());
+            }
+        });
     }
 
     @Override

@@ -154,9 +154,18 @@
         <activity
             android:name=".my.widget.SwitchCardActivity"
             android:screenOrientation="portrait" />
+        <!--微信支付  start-->
         <activity
             android:name=".wxapi.WXPayEntryActivity"
+            android:exported="true"
             android:screenOrientation="portrait" />
+
+        <receiver android:name=".wxapi.AppRegister">
+            <intent-filter>
+                <action android:name="com.tencent.mm.plugin.openapi.Intent.ACTION_REFRESH_WXAPP" />
+            </intent-filter>
+        </receiver>
+        <!--微信支付  end-->
         <activity
             android:name=".home.widget.SearchActivity"
             android:screenOrientation="portrait" />

@@ -32,6 +32,7 @@ import com.gouyin.im.main.presenter.MainPresenterImpl;
 import com.gouyin.im.main.view.MainView;
 import com.gouyin.im.manager.UserInfoManager;
 import com.gouyin.im.my.widget.MyFragment;
+import com.gouyin.im.update.UpdateManager;
 import com.gouyin.im.utils.ActivityUtils;
 import com.gouyin.im.utils.ConfigUtils;
 import com.gouyin.im.utils.FragmentUtils;
@@ -70,6 +71,7 @@ public class MainActivity extends BaseActivity implements MainView {
         mMainPresenter.switchNavigation(R.id.tv_home_page);
         initRxBus();
         initNetMianData();
+        new UpdateManager(this).checkUpdate();
     }
 
     @Override
@@ -233,10 +235,26 @@ public class MainActivity extends BaseActivity implements MainView {
                 .setEndEvent(ActivityEvent.DESTROY)
                 .setEvent(Events.EventEnum.LOGIN)
                 .onNext(events -> {
-                            UserInfoManager.getInstance().logout();
-                            showToast(UIUtils.getStringRes(R.string.login_action));
                             ActivityUtils.startLoginMainActivity();
+                        }
+                )
+                .create();
+        /**
+         * 身份失效
+         */
+        RxBus.with(this)
+                .setEndEvent(ActivityEvent.DESTROY)
+                .setEvent(Events.EventEnum.LOGIN_CODE_TIMEOUT)
+                .onNext(events -> {
+                            ActivityUtils.startLoginMainActivity();
+                            UserInfoManager.getInstance().logout();
+                            showToast(UIUtils.getStringRes(R.string.login_code_timeout));
                             ((ApplicationConfig) ConfigUtils.getInstance().getApplicationContext()).logout();
+                            imHomeFragment = null;
+                            findFragment = null;
+                            myFragment = null;
+                            switch2Home();
+
                         }
                 )
                 .create();
@@ -257,10 +275,7 @@ public class MainActivity extends BaseActivity implements MainView {
                 .setEndEvent(ActivityEvent.DESTROY)
                 .setEvent(Events.EventEnum.GO_TO_HOME)
                 .onNext(events -> {
-                    imHomeFragment = null;
-                    findFragment = null;
-                    myFragment = null;
-                    switch2Home();
+
                 })
                 .create();
         /**

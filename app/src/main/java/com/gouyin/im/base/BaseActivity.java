@@ -129,7 +129,7 @@ public abstract class BaseActivity extends RxAppCompatActivity {
         super.onPause();
         onBasePause();
         if (isFinishing()) {
-            DeviceManager.hideSoftInput(this, getCurrentFocus());
+            hideSoftInput();
         }
     }
 

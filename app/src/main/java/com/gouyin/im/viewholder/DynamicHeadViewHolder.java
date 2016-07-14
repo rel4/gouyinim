@@ -11,8 +11,11 @@ import com.gouyin.im.R;
 import com.gouyin.im.base.BaseIModel;
 import com.gouyin.im.bean.DefaultDataBean;
 import com.gouyin.im.bean.UserInfoDetailBean;
+import com.gouyin.im.event.Events;
+import com.gouyin.im.event.RxBus;
 import com.gouyin.im.main.model.UserActionModelImpl;
 import com.gouyin.im.main.widget.DynamicActivity;
+import com.gouyin.im.manager.UserInfoManager;
 import com.gouyin.im.utils.ActivityUtils;
 import com.gouyin.im.utils.StringUtis;
 import com.gouyin.im.utils.UIUtils;
@@ -85,6 +88,10 @@ public class DynamicHeadViewHolder {
             layout_click_wacth.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if (!UserInfoManager.getInstance().isLogin()) {
+                        RxBus.getInstance().send(Events.EventEnum.LOGIN, null);
+                        return;
+                    }
                     userInfoView.showLoading();
                     UserActionModelImpl userActionModel = new UserActionModelImpl();
                     userActionModel.wacthAction(uid, "1", new BaseIModel.onLoadDateSingleListener<DefaultDataBean>() {
@@ -94,6 +101,8 @@ public class DynamicHeadViewHolder {
                                 if (StringUtis.equals(bean.getCode(), AppConstant.code_request_success)) {
                                     layout_click_wacth.setVisibility(View.GONE);
                                     ImageServerApi.showResourcesImage(tv_wacth_status, R.mipmap.btn_attention_has_been);
+                                    String s = tvWacthNumber.getText().toString();
+                                    tvWacthNumber.setText((StringUtis.string2Int(s) + 1) + "");
                                 }
                                 userInfoView.transfePageMsg(bean.getMsg());
                             } else {

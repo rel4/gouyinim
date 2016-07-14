@@ -10,6 +10,7 @@ import com.gouyin.im.bean.FrientBaen;
 import com.gouyin.im.bean.GetMoneyBean;
 import com.gouyin.im.bean.GoodSelectBaen;
 import com.gouyin.im.bean.LoginBean;
+import com.gouyin.im.bean.PayBean;
 import com.gouyin.im.bean.PayRedPacketPicsBean;
 import com.gouyin.im.bean.RegiterBean;
 import com.gouyin.im.bean.RongyunBean;
@@ -18,6 +19,8 @@ import com.gouyin.im.bean.TiXinrRecordBean;
 import com.gouyin.im.bean.UserInfoChangeBean;
 import com.gouyin.im.bean.UserInfoDetailBean;
 import com.gouyin.im.bean.UserInfoListBean;
+import com.gouyin.im.bean.VersionInfo;
+import com.gouyin.im.update.down.ProgressHelper;
 import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.UnicodeUtils;
 import com.gouyin.im.utils.gson.GsonConverterFactory;
@@ -30,10 +33,12 @@ import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import okhttp3.ResponseBody;
 import okhttp3.Route;
 import okhttp3.logging.HttpLoggingInterceptor;
 import okio.Buffer;
 import okio.BufferedSource;
+import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.http.Field;
@@ -125,6 +130,7 @@ public class ServerApi {
         }
         return mAppApi;
     }
+
 
     public interface AppAPI {
         String baseUrl = "http://2.yytbzs.cn:88/public/index.php/index/";
@@ -264,10 +270,10 @@ public class ServerApi {
          */
         @FormUrlEncoded
         @POST("Reward/pub_reward")
-        Observable<DefaultDataBean> getredPacketIndent(@Field("pay_type") String playType,
-                                                       @Field("to_uid") String uid,
-                                                       @Field("money") String money,
-                                                       @Field("authcode") String authcode);
+        Observable<PayBean> getredPacketIndent(@Field("pay_type") String playType,
+                                               @Field("to_uid") String uid,
+                                               @Field("money") String money,
+                                               @Field("authcode") String authcode);
 
         /**
          * 送花
@@ -280,10 +286,10 @@ public class ServerApi {
          */
         @FormUrlEncoded
         @POST("Flower/pub_flower")
-        Observable<DefaultDataBean> getFlowerIndent(@Field("pay_type") String type,
-                                                    @Field("to_uid") String uid,
-                                                    @Field("money") String money,
-                                                    @Field("authcode") String authcode);
+        Observable<PayBean> getFlowerIndent(@Field("pay_type") String type,
+                                            @Field("to_uid") String uid,
+                                            @Field("money") String money,
+                                            @Field("authcode") String authcode);
 
         /**
          * 获取token
@@ -603,6 +609,16 @@ public class ServerApi {
         @POST("Latest/del_latest")
         Observable<DefaultDataBean> getDelectDynamic(@Field("latest_id") String id,
                                                      @Field("authcode") String authcode);
+
+        /**
+         * 获取更新信息
+         *
+         * @param
+         * @return
+         */
+        @GET("update/index")
+        Observable<VersionInfo> getLoadVersonInfo(@Query("channel") String channel);
+
     }
 }
 

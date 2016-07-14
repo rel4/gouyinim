@@ -31,6 +31,7 @@ public class LoginMainActivity extends BaseActivity implements LoginMainView {
     private LoginMainPresenter presenter;
     private FragmentManager fragmentManager;
     protected String regiterCode;
+
     @Override
     protected void initView() {
         fragmentManager = getSupportFragmentManager();
@@ -38,27 +39,34 @@ public class LoginMainActivity extends BaseActivity implements LoginMainView {
     }
 
     @Override
+    public boolean isaddActivity() {
+        return false;
+    }
+
+    @Override
     protected View setRootContentView() {
         presenter = new LoginMainPresenterImpl(this);
         return UIUtils.inflateLayout(R.layout.activity_login_main);
     }
-    private BaseFragment currentFragment,loginFragment,regiterFragment;
+
+    private BaseFragment currentFragment, loginFragment, regiterFragment;
+
     @Override
     public void swicth2Login() {
-        if (loginFragment==null) {
-           loginFragment = LoginFragment.newInstance();
+        if (loginFragment == null) {
+            loginFragment = LoginFragment.newInstance();
         }
         switchNatvigationSelect(loginFragment);
-        FragmentUtils.swichReplaceFramgent(fragmentManager,R.id.frameLyout_login_main_content,loginFragment);
+        FragmentUtils.swichReplaceFramgent(fragmentManager, R.id.frameLyout_login_main_content, loginFragment);
     }
 
     @Override
     public void swicth2Register() {
-        if (regiterFragment==null) {
+        if (regiterFragment == null) {
             regiterFragment = RegiterFragment.newInstance();
         }
         switchNatvigationSelect(regiterFragment);
-        FragmentUtils.swichReplaceFramgent(fragmentManager,R.id.frameLyout_login_main_content,regiterFragment);
+        FragmentUtils.swichReplaceFramgent(fragmentManager, R.id.frameLyout_login_main_content, regiterFragment);
     }
 
 

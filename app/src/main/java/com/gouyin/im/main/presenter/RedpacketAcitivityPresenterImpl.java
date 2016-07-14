@@ -4,8 +4,8 @@ import com.gouyin.im.R;
 import com.gouyin.im.base.BaseIModel;
 import com.gouyin.im.event.Events;
 import com.gouyin.im.event.RxBus;
-import com.gouyin.im.main.model.PlayUserAcitivityModel;
-import com.gouyin.im.main.model.PlayUserAcitivityModelImpl;
+import com.gouyin.im.main.model.RedpacketAcitivityModel;
+import com.gouyin.im.main.model.RedpacketAcitivityModelImpl;
 import com.gouyin.im.main.view.PlayUserAcitivityView;
 import com.gouyin.im.utils.StringUtis;
 import com.gouyin.im.utils.UIUtils;
@@ -15,7 +15,8 @@ import com.gouyin.im.utils.UIUtils;
  */
 public class RedpacketAcitivityPresenterImpl implements RedpacketAcitivityPresenter, BaseIModel.onLoadDateSingleListener<String> {
     private PlayUserAcitivityView view;
-    private PlayUserAcitivityModel model;
+    private RedpacketAcitivityModel model;
+    private RedpacketAcitivityModel.PayType payType;
 
     @Override
     public void onCreate() {
@@ -25,7 +26,7 @@ public class RedpacketAcitivityPresenterImpl implements RedpacketAcitivityPresen
     @Override
     public void attachView(PlayUserAcitivityView baseIView) {
         this.view = baseIView;
-        model = new PlayUserAcitivityModelImpl();
+        model = new RedpacketAcitivityModelImpl();
 
     }
 
@@ -50,13 +51,21 @@ public class RedpacketAcitivityPresenterImpl implements RedpacketAcitivityPresen
     public void aliPay(int type, String uid, String money) {
         view.showLoading();
         moneyNumber = money;
-        model.aliPay(type, PlayUserAcitivityModel.PayType.ALIPAY, uid, money, this);
+        payType = RedpacketAcitivityModel.PayType.ALIPAY;
+        model.aliPay(type, payType, uid, money, this);
+    }
+
+    @Override
+    public void weixinPay(int type, String uid, String money) {
+        view.showLoading();
+        moneyNumber = money;
+        payType = RedpacketAcitivityModel.PayType.WXPAY;
+        model.aliPay(type, payType, uid, money, this);
     }
 
     @Override
     public void onSuccess(String o, BaseIModel.DataType dataType) {
         view.hideLoading();
-
         if (StringUtis.equals("9000", o)) {
             Events<String> events = new Events<String>();
             events.what = Events.EventEnum.CHAT_SEND_REDPACKET_SUCCESS;

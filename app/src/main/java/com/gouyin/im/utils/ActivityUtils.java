@@ -86,7 +86,7 @@ public class ActivityUtils {
     /**
      * 进入用户信息列表
      */
-    public static void startUserInfoActivity(String userId) {
+    public static void startDynamicActivity(String userId) {
         Intent intent = new Intent(ConfigUtils.getInstance().getApplicationContext(), DynamicActivity.class);
         LogUtils.e(TAG, "userid : " + userId);
         intent.putExtra(AppConstant.USER_ID, userId);

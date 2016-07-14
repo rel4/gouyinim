@@ -6,7 +6,7 @@
         android:topLeftRadius="@dimen/y50"
         android:topRightRadius="@dimen/y50" />
     <stroke
-        android:width="@dimen/y2"
-        android:color="@color/text_gray_color" />
+        android:width="@dimen/y1"
+        android:color="@color/app_line" />
     <solid android:color="@android:color/white" />
 </shape>

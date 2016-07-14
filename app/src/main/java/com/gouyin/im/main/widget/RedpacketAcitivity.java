@@ -11,6 +11,8 @@ import android.widget.TextView;
 import com.gouyin.im.ImageServerApi;
 import com.gouyin.im.R;
 import com.gouyin.im.base.BaseActivity;
+import com.gouyin.im.event.Events;
+import com.gouyin.im.event.RxBus;
 import com.gouyin.im.main.presenter.RedpacketAcitivityPresenter;
 import com.gouyin.im.main.presenter.RedpacketAcitivityPresenterImpl;
 import com.gouyin.im.main.view.PlayUserAcitivityView;
@@ -18,6 +20,7 @@ import com.gouyin.im.manager.WeixinManager;
 import com.gouyin.im.utils.StringUtis;
 import com.gouyin.im.utils.UIUtils;
 import com.gouyin.im.widget.RoundedImageView;
+import com.trello.rxlifecycle.ActivityEvent;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -106,6 +109,7 @@ public class RedpacketAcitivity extends BaseActivity implements PlayUserAcitivit
 
     @OnClick({R.id.action_back, R.id.tv_weixin_play, R.id.tv_aliplay_play})
     public void onClick(View view) {
+        hideSoftInput();
         presenter.swicthAction(view.getId());
 
     }
@@ -129,7 +133,36 @@ public class RedpacketAcitivity extends BaseActivity implements PlayUserAcitivit
 
     @Override
     public void weixinPay() {
-        WeixinManager.getInstance().pay();
+        if (editText != null) {
+            String trim = editText.getText().toString().trim();
+            if (StringUtis.isEmpty(trim)) {
+                showToast(getString(R.string.input_money) + getResources().getString(R.string.not_empty));
+                return;
+            }
+            presenter.weixinPay(type, uid, trim);
+
+            RxBus.with(this)
+                    .setEndEvent(ActivityEvent.DESTROY)
+                    .setEvent(Events.EventEnum.WEIXIN_PAY_CALLBACK)
+                    .onNext(events -> {
+                        hideSoftInput();
+                        Integer errCode = (Integer) events.message;
+                        if (errCode == 0) {
+                            transfePageMsg(UIUtils.getStringRes(R.string.pay_success));
+                            UIUtils.sendDelayedOneMillis(new Runnable() {
+                                @Override
+                                public void run() {
+                                    finish();
+                                }
+                            });
+                        } else {
+                            transfePageMsg(UIUtils.getStringRes(R.string.pay_failure));
+                        }
+                        hideLoading();
+
+                    })
+                    .create();
+        }
     }
 
     private class RedpacketAdapter extends BaseAdapter {

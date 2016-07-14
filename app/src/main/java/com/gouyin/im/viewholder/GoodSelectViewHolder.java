@@ -30,9 +30,7 @@ public class GoodSelectViewHolder extends BaseRecyclerViewHolder<GoodSelectBaen.
 
     public GoodSelectViewHolder(View view) {
         super(view);
-
     }
-
     @Override
     protected void onBindData(GoodSelectBaen.Data goodSelectBaen) {
         if (goodSelectBaen == null)
@@ -44,11 +42,9 @@ public class GoodSelectViewHolder extends BaseRecyclerViewHolder<GoodSelectBaen.
         ImageServerApi.showURLImage(rvUserPic, goodSelectBaen.getFace());
     }
 
-
     @Override
     protected void onItemclick(View view, GoodSelectBaen.Data baen, int position) {
-
-        ActivityUtils.startUserInfoActivity(baen.getUserid());
+        ActivityUtils.startDynamicActivity(baen.getUserid());
 
     }
 

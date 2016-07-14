@@ -150,6 +150,10 @@
     <string name="renzheng_condition">1.上传不少于六张照片，可以从相册选择，也可直接拍摄上传（拍摄上传会加分哦）；\n\n2.请务必保证照片等个人信息的真实有效。</string>
     <string name="red_person_renzheng">红人认证</string>
     <string name="pic_size_error">照片的数量不正确</string>
+    <string name="network_error">网络异常请稍后再试</string>
+    <string name="login_code_timeout">身份信息已过期，请重新登录</string>
+    <string name="down_success">下载成功</string>
+    <string name="pdateNow">立即安装</string>
     <string-array name="moneys">
         <item>8</item>
         <item>28</item>

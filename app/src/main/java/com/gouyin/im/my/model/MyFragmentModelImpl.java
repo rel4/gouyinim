@@ -33,59 +33,38 @@ public class MyFragmentModelImpl implements MyFragmentModel {
     @Override
     public void loadPersonHeader(BaseIModel.onLoadDateSingleListener listener) {
 
-        ServerApi.getAppAPI().loadPersonInfo(UserInfoManager.getInstance().getAuthcode())
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<UserInfoDetailBean>() {
-                    @Override
-                    public void onCompleted() {
+        Observable<UserInfoDetailBean> observable = ServerApi.getAppAPI().loadPersonInfo(UserInfoManager.getInstance().getAuthcode());
+        ObservableUtils.parser(observable, new ObservableUtils.Callback<UserInfoDetailBean>() {
+            @Override
+            public void onSuccess(UserInfoDetailBean bean) {
+                listener.onSuccess(bean, BaseIModel.DataType.DATA_ONE);
+            }
 
-                    }
+            @Override
+            public void onFailure(String msg) {
+                listener.onFailure(msg);
+            }
+        });
 
-                    @Override
-                    public void onError(Throwable e) {
-                        listener.onFailure(e.getMessage());
-                    }
-
-                    @Override
-                    public void onNext(UserInfoDetailBean userInfoDetailBean) {
-                        listener.onSuccess(userInfoDetailBean, BaseIModel.DataType.DATA_ONE);
-                        LogUtils.e(this, userInfoDetailBean.toString());
-                    }
-                });
     }
 
     @Override
     public void loadonRefreshData(int page, onLoadListDateListener listener) {
 
-        ServerApi.getAppAPI().loadPersonDynamic(UserInfoManager.getInstance().getAuthcode(), page)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<UserInfoListBean>() {
-                    @Override
-                    public void onCompleted() {
+        Observable<UserInfoListBean> observable = ServerApi.getAppAPI().loadPersonDynamic(UserInfoManager.getInstance().getAuthcode(), page);
+        ObservableUtils.parser(observable, new ObservableUtils.Callback<UserInfoListBean>() {
+            @Override
+            public void onSuccess(UserInfoListBean bean) {
 
-                    }
+                listener.onSuccess(bean.getData().getList(), DataType.DATA_ZERO);
 
-                    @Override
-                    public void onError(Throwable e) {
-                        listener.onFailure(e.getMessage());
-                    }
+            }
 
-                    @Override
-                    public void onNext(UserInfoListBean userInfoListBean) {
-                        if (userInfoListBean != null) {
-                            String code = userInfoListBean.getCode();
-                            if (StringUtis.equals("1", code)) {
-                                listener.onSuccess(userInfoListBean.getData().getList(), DataType.DATA_ZERO);
-                            } else if (StringUtis.equals("1000", code)) {
-                                RxBus.getInstance().send(Events.EventEnum.LOGIN, null);
-                            } else
-                                listener.onFailure(UIUtils.getStringRes(R.string.request_failed));
-                        }
-                    }
-                });
-
+            @Override
+            public void onFailure(String msg) {
+                listener.onFailure(msg);
+            }
+        });
 
     }
 

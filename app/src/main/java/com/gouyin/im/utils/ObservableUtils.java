@@ -31,8 +31,8 @@ public class ObservableUtils {
                     public void onError(Throwable e) {
                         LogUtils.e("ObservableUtils", "onError : " + e.getMessage());
                         if (callback != null)
-                            callback.onFailure(e.getMessage());
-
+                            callback.onFailure(UIUtils.getStringRes(R.string.network_error));
+                        LogUtils.e("ObservableUtils", e.getMessage());
 
                     }
 
@@ -46,7 +46,7 @@ public class ObservableUtils {
                         }
                         if (StringUtis.equals("1000", t.getCode())) {
                             callback.onFailure(UIUtils.getStringRes(R.string.code_timeout));
-                            RxBus.getInstance().send(Events.EventEnum.LOGIN, null);
+                            RxBus.getInstance().send(Events.EventEnum.LOGIN_CODE_TIMEOUT, null);
                             return;
                         }
                         if (!StringUtis.equals(AppConstant.code_request_success, t.getCode())) {

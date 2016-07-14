@@ -5,7 +5,7 @@ import com.gouyin.im.base.BaseIModel;
 /**
  * Created by jb on 2016/6/24.
  */
-public interface PlayUserAcitivityModel extends BaseIModel {
+public interface RedpacketAcitivityModel extends BaseIModel {
     void aliPay(int type, PayType playType, String uid, String money, onLoadDateSingleListener listener);
 
     public enum PayType {

@@ -26,6 +26,31 @@ public interface BaseIModel {
 
     }
 
+    public interface onDownFileleListener<T> {
+        /**
+         * 成功
+         *
+         * @param
+         */
+        void onSuccess();
+
+        /**
+         * 数据加载失败
+         *
+         * @param msg
+         */
+        void onFailure(String msg);
+
+        /**
+         * 下载进度
+         *
+         * @param progress
+         * @param total
+         * @param done
+         */
+        void onProgress(long progress, long total, boolean done);
+    }
+
     /**
      * 列表数据
      *

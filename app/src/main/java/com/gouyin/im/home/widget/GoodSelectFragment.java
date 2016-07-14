@@ -101,7 +101,6 @@ public class GoodSelectFragment extends BaseFragment implements GoodSelectView {
             mAdapter.onRefresh();
 
         }
-        loadMoreComplete();
 
 
     }
@@ -109,10 +108,8 @@ public class GoodSelectFragment extends BaseFragment implements GoodSelectView {
     private void loadMoreComplete() {
         if (recyclerview == null)
             return;
-        if (isloadMore)
-            recyclerview.loadMoreComplete();
-        else
-            recyclerview.refreshComplete();
+        recyclerview.loadMoreComplete();
+        recyclerview.refreshComplete();
 
     }
 
@@ -123,6 +120,9 @@ public class GoodSelectFragment extends BaseFragment implements GoodSelectView {
 
     @Override
     public void hideLoading() {
+        if (mAdapter != null) {
+            loadMoreComplete();
+        }
         hideProgressDialog();
     }
 
