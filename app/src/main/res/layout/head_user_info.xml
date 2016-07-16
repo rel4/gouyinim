@@ -45,6 +45,7 @@
         android:layout_below="@+id/user_background"
         android:layout_marginLeft="@dimen/y30"
         android:layout_marginTop="@dimen/user_icon"
+        android:scaleType="centerCrop"
         android:src="@mipmap/load_small" />
 
     <TextView

@@ -51,6 +51,11 @@ public class GetMoneyActivity extends BaseActivity implements GetMoneyView {
     }
 
     @Override
+    protected String initTitleName() {
+        return UIUtils.getStringRes(R.string.withdraw_deposit);
+    }
+
+    @Override
     protected void initView() {
         persenter.loadbasicInfo();
     }

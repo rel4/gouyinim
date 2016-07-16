@@ -37,21 +37,40 @@
             android:textColor="@color/background_red_color" />
 
         <RelativeLayout
-            android:id="@+id/submit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/center_line"
             android:layout_marginLeft="@dimen/x30"
             android:layout_marginRight="@dimen/x30"
             android:layout_marginTop="@dimen/x60"
-            android:background="@drawable/shape_background_text_white_color">
+            android:gravity="center_vertical">
 
             <TextView
+                android:id="@+id/tv_weixin_play"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_marginTop="@dimen/x50"
-                android:text="@string/pay"
+                android:layout_marginLeft="@dimen/x50"
+                android:background="@drawable/shape_background_text_white_color"
+                android:paddingBottom="@dimen/x30"
+                android:paddingEnd="@dimen/x50"
+                android:paddingStart="@dimen/x50"
+
+                android:paddingTop="@dimen/x30"
+                android:text="@string/weixin_play"
+                android:textColor="@color/background_red_color" />
+
+            <TextView
+                android:id="@+id/tv_aliplay_play"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/x50"
+                android:background="@drawable/shape_background_text_white_color"
+                android:paddingBottom="@dimen/x30"
+                android:paddingEnd="@dimen/x50"
+                android:paddingStart="@dimen/x50"
+                android:paddingTop="@dimen/x30"
+                android:text="@string/aliplay_play"
                 android:textColor="@color/background_red_color" />
         </RelativeLayout>
     </RelativeLayout>

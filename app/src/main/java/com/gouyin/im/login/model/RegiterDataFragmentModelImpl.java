@@ -2,6 +2,7 @@ package com.gouyin.im.login.model;
 
 import com.alibaba.sdk.android.oss.ClientException;
 import com.alibaba.sdk.android.oss.ServiceException;
+import com.gouyin.im.AppConstant;
 import com.gouyin.im.R;
 import com.gouyin.im.ServerApi;
 import com.gouyin.im.manager.aliyun.AliyunManager;
@@ -10,6 +11,7 @@ import com.gouyin.im.utils.ConfigUtils;
 import com.gouyin.im.utils.FilePathUtlis;
 import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.MD5Util;
+import com.gouyin.im.utils.ObservableUtils;
 
 import rx.Observable;
 import rx.Subscriber;
@@ -27,28 +29,18 @@ public class RegiterDataFragmentModelImpl implements RegiterDataFragmentModel {
 //
 
 
-        ServerApi.getAppAPI().regiterLogin(face, sex, MD5Util.string2MD5(pwd), authcode)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
-                .subscribe(new Subscriber<BaseBean>() {
-                    @Override
-                    public void onCompleted() {
-                        LogUtils.e(RegiterDataFragmentModelImpl.class, "onCompleted");
-                    }
+        Observable<BaseBean> observable = ServerApi.getAppAPI().regiterLogin(face, sex, MD5Util.string2MD5(pwd), AppConstant.CHANNEL_ID, authcode);
+        ObservableUtils.parser(observable, new ObservableUtils.Callback() {
+            @Override
+            public void onSuccess(BaseBean bean) {
+                listener.onSuccess(bean, DataType.DATA_ZERO);
+            }
 
-                    @Override
-                    public void onError(Throwable e) {
-                        LogUtils.e(RegiterDataFragmentModelImpl.class, "Throwable : " + ((Exception) e).getMessage());
-                        listener.onFailure(e.getLocalizedMessage());
-
-                    }
-
-                    @Override
-                    public void onNext(BaseBean baseBean) {
-                        LogUtils.e(RegiterDataFragmentModelImpl.class, "onNext : " + baseBean.toString());
-                        listener.onSuccess(baseBean, DataType.DATA_ZERO);
-                    }
-                });
+            @Override
+            public void onFailure(String msg) {
+                listener.onFailure(msg);
+            }
+        });
     }
 
 

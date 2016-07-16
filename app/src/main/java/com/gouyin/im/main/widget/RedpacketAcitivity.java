@@ -16,7 +16,6 @@ import com.gouyin.im.event.RxBus;
 import com.gouyin.im.main.presenter.RedpacketAcitivityPresenter;
 import com.gouyin.im.main.presenter.RedpacketAcitivityPresenterImpl;
 import com.gouyin.im.main.view.PlayUserAcitivityView;
-import com.gouyin.im.manager.WeixinManager;
 import com.gouyin.im.utils.StringUtis;
 import com.gouyin.im.utils.UIUtils;
 import com.gouyin.im.widget.RoundedImageView;

@@ -1,5 +1,6 @@
 package com.gouyin.im.login.model;
 
+import com.gouyin.im.AppConstant;
 import com.gouyin.im.ServerApi;
 import com.gouyin.im.bean.BaseBean;
 import com.gouyin.im.utils.MD5Util;
@@ -13,7 +14,7 @@ import rx.Observable;
 public class FindPasswordNextActivityModelImpl implements FindPasswordNextActivityModel {
     @Override
     public void submit(String newpwd, String code, onLoadDateSingleListener listenter) {
-        Observable<BaseBean> observable = ServerApi.getAppAPI().getFindPasswordNext(MD5Util.string2MD5(newpwd), code);
+        Observable<BaseBean> observable = ServerApi.getAppAPI().getFindPasswordNext(MD5Util.string2MD5(newpwd), code, AppConstant.CHANNEL_ID);
         ObservableUtils.parser(observable, new ObservableUtils.Callback() {
             @Override
             public void onSuccess(BaseBean bean) {

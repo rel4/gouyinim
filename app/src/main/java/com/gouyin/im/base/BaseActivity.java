@@ -16,6 +16,7 @@ import com.gouyin.im.utils.ConfigUtils;
 import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.UIUtils;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
+import com.umeng.analytics.MobclickAgent;
 
 import java.util.List;
 
@@ -121,6 +122,7 @@ public abstract class BaseActivity extends RxAppCompatActivity {
     protected void onResume() {
         super.onResume();
         onBaseResume();
+        MobclickAgent.onResume(this);
     }
 
 
@@ -131,6 +133,7 @@ public abstract class BaseActivity extends RxAppCompatActivity {
         if (isFinishing()) {
             hideSoftInput();
         }
+        MobclickAgent.onPause(this);
     }
 
 

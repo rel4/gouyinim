@@ -1,11 +1,10 @@
 package com.gouyin.im;
 
-import com.gouyin.im.login.widget.LoginFragment;
-
 /**
  * Created by jb on 2016/6/20.
  */
 public interface AppConstant {
+    String CHANNEL_ID = "1000";
     /**
      * 用户id
      */
@@ -35,4 +34,6 @@ public interface AppConstant {
      * 请求成功
      */
     String code_request_success = "1";
+
+
 }

@@ -8,6 +8,7 @@ import com.gouyin.im.R;
 import com.gouyin.im.adapter.SearchAdapter;
 import com.gouyin.im.base.BaseRecyclerViewHolder;
 import com.gouyin.im.bean.SearchReasonBaen;
+import com.gouyin.im.utils.ActivityUtils;
 import com.gouyin.im.utils.UIUtils;
 import com.gouyin.im.widget.RoundedImageView;
 
@@ -43,6 +44,12 @@ public class SearchViewHolder extends BaseRecyclerViewHolder<SearchReasonBaen.Da
         tvUserName.setText(dataBean.getNickname());
         tv_user_fen.setText(UIUtils.getStringRes(R.string.str_fen) + " : " + dataBean.getFansnum());
         tvSubmit.setTag(position);
+        rivUserImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivityUtils.startUserinfoActivity(dataBean.getUid());
+            }
+        });
     }
 
     @Override

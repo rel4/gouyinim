@@ -7,7 +7,7 @@
     android:orientation="vertical"
    >
 
-    <include layout="@layout/comman_title_bar" />
+    <include layout="@layout/app_titlebar" />
 
     <LinearLayout
         android:layout_width="match_parent"

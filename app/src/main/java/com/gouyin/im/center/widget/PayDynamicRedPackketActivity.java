@@ -1,6 +1,5 @@
 package com.gouyin.im.center.widget;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -12,7 +11,11 @@ import com.gouyin.im.R;
 import com.gouyin.im.center.presenter.PayDynamicRedPackketPersenter;
 import com.gouyin.im.center.presenter.PayDynamicRedPackketPersenterImpl;
 import com.gouyin.im.center.view.PayDynamicRedPackketView;
+import com.gouyin.im.event.Events;
+import com.gouyin.im.event.RxBus;
 import com.gouyin.im.utils.UIUtils;
+import com.trello.rxlifecycle.ActivityEvent;
+import com.trello.rxlifecycle.components.RxActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -22,12 +25,26 @@ import im.gouyin.com.progressdialog.ProgressDialog;
 /**
  * Created by jb on 2016/6/29.
  */
-public class PayDynamicRedPackketActivity extends Activity implements PayDynamicRedPackketView {
+public class PayDynamicRedPackketActivity extends RxActivity implements PayDynamicRedPackketView {
     @Bind(R.id.tv_money)
     TextView tvMoney;
     private String money;
     private String id;
     PayDynamicRedPackketPersenter persenter;
+
+    public enum RedpacketType {
+        TYPE_REDPACKET(1), TYPE_FLOWER(2);
+        private final int type;
+
+        private RedpacketType(int type) {
+            this.type = type;
+        }
+
+        public int getValue() {
+            return type;
+        }
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,17 +70,42 @@ public class PayDynamicRedPackketActivity extends Activity implements PayDynamic
         tvMoney.setText(html);
     }
 
-    @OnClick({R.id.submit, R.id.action_back})
+    @OnClick({R.id.tv_aliplay_play, R.id.tv_weixin_play, R.id.action_back})
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.submit:
-                persenter.pay(id);
+            case R.id.tv_aliplay_play:
+                persenter.alipay(id);
 
+                break;
+            case R.id.tv_weixin_play:
+                persenter.weixinPay(id);
+                setRx();
                 break;
             case R.id.action_back:
                 finish();
                 break;
         }
+    }
+
+    private void setRx() {
+        RxBus.with(this)
+                .setEndEvent(ActivityEvent.DESTROY)
+                .setEvent(Events.EventEnum.WEIXIN_PAY_CALLBACK)
+                .onNext(events -> {
+                    if (events != null) {
+                        Integer message = (Integer) events.message;
+                        if (message == 0) {
+                            persenter.getPics(id);
+                        } else {
+                            hideLoading();
+                            transfePageMsg(UIUtils.getStringRes(R.string.pay_failure));
+                        }
+                    } else {
+                        hideLoading();
+                        transfePageMsg(UIUtils.getStringRes(R.string.pay_failure));
+                    }
+                })
+                .create();
     }
 
     @Override

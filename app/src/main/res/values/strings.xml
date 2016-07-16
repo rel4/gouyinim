@@ -154,6 +154,9 @@
     <string name="login_code_timeout">身份信息已过期，请重新登录</string>
     <string name="down_success">下载成功</string>
     <string name="pdateNow">立即安装</string>
+    <string name="locationing">定位中......</string>
+    <string name="change_password">修改密码</string>
+    <string name="setting">设置</string>
     <string-array name="moneys">
         <item>8</item>
         <item>28</item>

@@ -30,6 +30,7 @@ import com.gouyin.im.utils.PrefUtils;
 import com.gouyin.im.utils.SDUtils;
 import com.gouyin.im.utils.StringUtis;
 import com.gouyin.im.utils.UIUtils;
+import com.umeng.analytics.MobclickAgent;
 
 import java.io.File;
 
@@ -337,7 +338,8 @@ public class UpdateManager implements UpdateManagerView, View.OnClickListener {
         i.setDataAndType(Uri.parse("file://" + apkfile.toString()),
                 "application/vnd.android.package-archive");
         mContext.startActivity(i);
-        ((MainActivity) ConfigUtils.getInstance().getActivityContext()).finish();
+        ((MainActivity) (mContext)).finish();
+        MobclickAgent.onKillProcess(mContext);
         android.os.Process.killProcess(android.os.Process.myPid());
 
     }

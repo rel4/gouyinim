@@ -20,7 +20,6 @@ import com.gouyin.im.bean.UserInfoChangeBean;
 import com.gouyin.im.bean.UserInfoDetailBean;
 import com.gouyin.im.bean.UserInfoListBean;
 import com.gouyin.im.bean.VersionInfo;
-import com.gouyin.im.update.down.ProgressHelper;
 import com.gouyin.im.utils.LogUtils;
 import com.gouyin.im.utils.UnicodeUtils;
 import com.gouyin.im.utils.gson.GsonConverterFactory;
@@ -33,12 +32,10 @@ import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-import okhttp3.ResponseBody;
 import okhttp3.Route;
 import okhttp3.logging.HttpLoggingInterceptor;
 import okio.Buffer;
 import okio.BufferedSource;
-import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.http.Field;
@@ -136,11 +133,19 @@ public class ServerApi {
         String baseUrl = "http://2.yytbzs.cn:88/public/index.php/index/";
 //        String baseUrl = "http://mimei.cntttt.com:88/public/index.php/index/";
 
+        /**
+         * 登录
+         *
+         * @param username
+         * @param password
+         * @return
+         */
         @FormUrlEncoded
         @POST("User/login")
         Observable<LoginBean> login(
                 @Field("name") String username,
-                @Field("pwd") String password
+                @Field("pwd") String password,
+                @Field("channel") String channel
         );
 
         /**
@@ -178,6 +183,7 @@ public class ServerApi {
         Observable<BaseBean> regiterLogin(@Field("face") String face,
                                           @Field("sex") String sex,
                                           @Field("pwd") String pwd,
+                                          @Field("channel") String channel,
                                           @Field("mobileauth") String mobileauth);
 
         /**
@@ -329,10 +335,13 @@ public class ServerApi {
          */
         @FormUrlEncoded
         @POST("Latestbuy/latest_buy")
-        Observable<DefaultDataBean> redPacketPay(@Field("latest_id") String id,
+        Observable<PayBean> redPacketPay(@Field("latest_id") String id,
+                                                 @Field("pay_type") String type,
                                                  @Field("authcode") String authcode);
 
         /**
+         * 红包图片
+         *
          * @param id
          * @param authcode
          * @return
@@ -572,7 +581,8 @@ public class ServerApi {
         @FormUrlEncoded
         @POST("User/findpwd_step2")
         Observable<BaseBean> getFindPasswordNext(@Field("pwd") String newpwd,
-                                                 @Field("mobileauth") String code);
+                                                 @Field("mobileauth") String code,
+                                                 @Field("channel") String channel);
 
         /**
          * 更新背景图

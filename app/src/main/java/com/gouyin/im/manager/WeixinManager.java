@@ -1,5 +1,6 @@
 package com.gouyin.im.manager;
 
+import com.gouyin.im.AppConstant;
 import com.gouyin.im.bean.PayBean;
 import com.gouyin.im.utils.ConfigUtils;
 import com.gouyin.im.wxapi.WXPayEntryActivity;

@@ -43,7 +43,7 @@ public class XListView extends XRecyclerView {
         this.setLayoutManager(layoutManager);
         this.addItemDecoration(new SpacesItemDecoration(20));
         this.setRefreshProgressStyle(ProgressStyle.BallSpinFadeLoader);
-        this.setLoadingMoreProgressStyle(ProgressStyle.SysProgress);
+        this.setLoadingMoreProgressStyle(ProgressStyle.BallSpinFadeLoader);
         this.setArrowImageView(R.mipmap.iconfont_downgrey);
 
 
@@ -61,7 +61,7 @@ public class XListView extends XRecyclerView {
 //        this.addItemDecoration(new SpacesItemDecoration(2));
         this.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL));
         this.setRefreshProgressStyle(ProgressStyle.BallSpinFadeLoader);
-        this.setLoadingMoreProgressStyle(ProgressStyle.SysProgress);
+        this.setLoadingMoreProgressStyle(ProgressStyle.BallSpinFadeLoader);
         this.setArrowImageView(R.mipmap.iconfont_downgrey);
     }
 

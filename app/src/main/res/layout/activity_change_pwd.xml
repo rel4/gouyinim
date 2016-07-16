@@ -5,7 +5,7 @@
     android:background="@color/line_color"
     android:orientation="vertical">
 
-    <include layout="@layout/comman_title_bar" />
+    <include layout="@layout/app_titlebar" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -21,9 +21,10 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerVertical="true"
-
             android:padding="@dimen/x25"
+
             android:text="@string/old_password"
+            android:textColor="@color/text_black_color"
             android:textSize="@dimen/order_text_small2" />
 
         <LinearLayout
@@ -65,15 +66,15 @@
         android:paddingTop="@dimen/x10">
 
         <TextView
-
             android:id="@+id/tv_newpwd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerVertical="true"
-
             android:padding="@dimen/x25"
+
             android:text="@string/new_password"
+            android:textColor="@color/text_black_color"
             android:textSize="@dimen/order_text_small2" />
 
         <EditText
@@ -104,9 +105,10 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerVertical="true"
-
             android:padding="@dimen/x23"
+
             android:text="@string/again_input"
+            android:textColor="@color/text_black_color"
             android:textSize="@dimen/order_text_small2" />
 
         <EditText

@@ -30,6 +30,10 @@ public class SettingActivity extends BaseActivity {
 
     }
 
+    @Override
+    protected String initTitleName() {
+        return UIUtils.getStringRes(R.string.setting);
+    }
 
     @OnClick({R.id.tv_changepwd, R.id.timeout})
     public void onClick(View v) {

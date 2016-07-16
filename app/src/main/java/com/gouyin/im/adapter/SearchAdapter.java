@@ -13,6 +13,7 @@ import com.gouyin.im.bean.DefaultDataBean;
 import com.gouyin.im.bean.SearchReasonBaen;
 import com.gouyin.im.home.widget.SearchReasonActivity;
 import com.gouyin.im.main.model.UserActionModelImpl;
+import com.gouyin.im.utils.ActivityUtils;
 import com.gouyin.im.utils.StringUtis;
 import com.gouyin.im.utils.UIUtils;
 import com.gouyin.im.viewholder.SearchViewHolder;
@@ -47,6 +48,7 @@ public class SearchAdapter extends BaseRecyclerViewAdapter<SearchReasonBaen.Data
     protected BaseRecyclerViewHolder getBaseViewHolder(View v, int viewType) {
         return holder;
     }
+
     public void setClick(Integer position) {
         if (datas.size() - 1 >= position) {
             searchReasonActivityView.showLoading();
@@ -74,6 +76,11 @@ public class SearchAdapter extends BaseRecyclerViewAdapter<SearchReasonBaen.Data
             });
 
         }
+    }
+
+    @Override
+    public void onItemclick(View view, int position) {
+        ActivityUtils.startDynamicActivity(datas.get(position).getUid());
     }
 
     public void setSearchReasonActivityView(SearchReasonActivity searchReasonActivityView) {

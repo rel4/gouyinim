@@ -220,3 +220,14 @@
 
 #Jack is required to support java 8 language features.
 -dontwarn java.lang.invoke.*
+# 友盟
+-keepclassmembers class * {
+   public <init> (org.json.JSONObject);
+}
+-keepclassmembers enum * {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}
+-keep public class com.gouyin.im.R$*{
+public static final int *;
+}

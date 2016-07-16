@@ -92,7 +92,6 @@ public class DynamicActivity extends BaseActivity implements DynamicView {
                 mPresenter.loadLoadMoreData(userId);
             }
         });
-        LogUtils.e(this, "userId : " + userId);
         mPresenter.loadUserInfodetail(userId);
         recyclerview.setRefreshing(true);
 
@@ -171,9 +170,7 @@ public class DynamicActivity extends BaseActivity implements DynamicView {
     private void loadMoreComplete() {
         if (recyclerview == null)
             return;
-        if (!isRefresh)
             recyclerview.loadMoreComplete();
-        else
             recyclerview.refreshComplete();
 
     }

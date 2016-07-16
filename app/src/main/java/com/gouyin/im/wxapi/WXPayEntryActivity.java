@@ -2,14 +2,12 @@ package com.gouyin.im.wxapi;
 
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
 import com.gouyin.im.R;
 import com.gouyin.im.event.Events;
 import com.gouyin.im.event.RxBus;
-import com.gouyin.im.utils.LogUtils;
 import com.tencent.mm.sdk.constants.ConstantsAPI;
 import com.tencent.mm.sdk.modelbase.BaseReq;
 import com.tencent.mm.sdk.modelbase.BaseResp;

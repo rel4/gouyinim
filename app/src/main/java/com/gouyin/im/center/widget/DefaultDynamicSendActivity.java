@@ -15,8 +15,11 @@ import com.gouyin.im.center.presenter.DefaultDynamicPresenterImpl;
 import com.gouyin.im.center.view.DefaultDynamicView;
 import com.gouyin.im.event.Events;
 import com.gouyin.im.event.RxBus;
+import com.gouyin.im.manager.GaodeManager;
 import com.gouyin.im.utils.ActivityUtils;
+import com.gouyin.im.utils.ConfigUtils;
 import com.gouyin.im.utils.LogUtils;
+import com.gouyin.im.utils.PrefUtils;
 import com.gouyin.im.utils.StringUtis;
 import com.gouyin.im.utils.UIUtils;
 import com.gouyin.im.utils.VideoUtils;
@@ -24,6 +27,9 @@ import com.gouyin.im.widget.MySwitch;
 import com.gouyin.im.widget.NoScrollGridView;
 import com.gouyin.im.widget.RoundedImageView;
 import com.trello.rxlifecycle.ActivityEvent;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -122,6 +128,35 @@ public class DefaultDynamicSendActivity extends BaseActivity implements DefaultD
             showPicAdapter = new ShowPicAdapter(datas);
             gvPicList.setAdapter(showPicAdapter);
         }
+
+        ivSwitch.setOnChangeListener(new MySwitch.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(MySwitch mySwitch, boolean isOpen) {
+                if (isOpen) {
+                    tvAddress.setVisibility(View.VISIBLE);
+                } else {
+                    tvAddress.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
+        ivSwitch.setOpen(true);
+        if (ivSwitch.getOpen()) {
+            String location = PrefUtils.getString(ConfigUtils.getInstance().getApplicationContext(), GaodeManager.class.getName(), "");
+            if (StringUtis.isEmpty(location)) {
+                tvAddress.setText(UIUtils.getStringRes(R.string.locationing));
+            } else {
+                try {
+                    JSONObject jsonObject = new JSONObject(location);
+                    String province = jsonObject.getString("province");
+                    String city = jsonObject.getString("city");
+                    tvAddress.setText(province + "." + city);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    tvAddress.setText(UIUtils.getStringRes(R.string.locationing));
+                }
+
+            }
+        }
     }
 
 
@@ -143,7 +178,7 @@ public class DefaultDynamicSendActivity extends BaseActivity implements DefaultD
                     showToast(UIUtils.getStringRes(R.string.text_numer_more_150));
                     return;
                 }
-                String address = tvAddress.getText().toString().trim();
+//                String address = tvAddress.getText().toString().trim();
                 if (dynamicType != DynamicSendActivity.DynamicType.video) {
                     if (datas.size() < 9) {
                         datas.remove(datas.size() - 1);
@@ -155,7 +190,11 @@ public class DefaultDynamicSendActivity extends BaseActivity implements DefaultD
                         datas.remove(datas.size() - 1);
                     }
                 }
-                presenter.sendDynamic(dynamicType, content, datas, address);
+                String location = "";
+                if (ivSwitch.getOpen()) {
+                    location = PrefUtils.getString(ConfigUtils.getInstance().getApplicationContext(), GaodeManager.class.getName(), "");
+                }
+                presenter.sendDynamic(dynamicType, content, datas, location);
                 break;
             case R.id.tv_address:
                 break;

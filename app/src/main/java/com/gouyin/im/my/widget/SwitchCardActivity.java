@@ -37,6 +37,11 @@ public class SwitchCardActivity extends BaseActivity implements SwitchCardActivi
     }
 
     @Override
+    protected String initTitleName() {
+        return UIUtils.getStringRes(R.string.withdraw_deposit);
+    }
+
+    @Override
     protected void initView() {
         xlv.setLoadingMoreEnabled(false);
         xlv.setPullRefreshEnabled(false);

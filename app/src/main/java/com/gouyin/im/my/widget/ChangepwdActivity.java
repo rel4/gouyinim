@@ -32,6 +32,11 @@ public class ChangepwdActivity extends BaseActivity implements ChangepwdActivity
     }
 
     @Override
+    protected String initTitleName() {
+        return UIUtils.getStringRes(R.string.change_password);
+    }
+
+    @Override
     protected void initView() {
         presenter = new ChangepwdActivityPresenterImpl();
         presenter.attachView(this);

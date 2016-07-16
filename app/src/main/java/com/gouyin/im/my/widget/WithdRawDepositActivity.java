@@ -51,6 +51,11 @@ public class WithdRawDepositActivity extends BaseActivity implements WithdRawDep
     }
 
     @Override
+    protected String initTitleName() {
+        return UIUtils.getStringRes(R.string.withdraw_deposit);
+    }
+
+    @Override
     protected void initView() {
 
         fragmentList = new ArrayList<Fragment>();

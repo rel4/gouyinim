@@ -272,12 +272,12 @@
         "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
     },
     {
-        "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_select_dialog_material.xml",
-        "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\abc_select_dialog_material.xml"
-    },
-    {
         "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_picsel_catalog_listview.xml",
         "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_picsel_catalog_listview.xml"
+    },
+    {
+        "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_select_dialog_material.xml",
+        "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\abc_select_dialog_material.xml"
     },
     {
         "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_public_service_input_menus.xml",
@@ -400,12 +400,12 @@
         "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\abc_screen_toolbar.xml"
     },
     {
-        "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_pic_popup_window.xml",
-        "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_pic_popup_window.xml"
-    },
-    {
         "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_picprev_activity.xml",
         "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_picprev_activity.xml"
+    },
+    {
+        "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_pic_popup_window.xml",
+        "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_pic_popup_window.xml"
     },
     {
         "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\notification_template_part_time.xml",

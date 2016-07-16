@@ -10,6 +10,8 @@ import com.gouyin.im.center.presenter.PayDynamicRedPackketPersenter;
 import com.gouyin.im.center.view.PayDynamicRedPackketView;
 import com.gouyin.im.event.Events;
 import com.gouyin.im.event.RxBus;
+import com.gouyin.im.main.model.RedpacketAcitivityModel;
+import com.gouyin.im.main.widget.MainActivity;
 import com.gouyin.im.utils.StringUtis;
 import com.gouyin.im.utils.UIUtils;
 
@@ -33,10 +35,22 @@ public class PayDynamicRedPackketPersenterImpl implements PayDynamicRedPackketPe
     }
 
     @Override
-    public void pay(String id) {
+    public void alipay(String id) {
         view.showLoading();
-        model.pay(id, this);
+        model.pay(id, PayDynamicRedPacketModel.PayType.ALIPAY, this);
 
+    }
+
+    @Override
+    public void weixinPay(String id) {
+        view.showLoading();
+        model.pay(id, PayDynamicRedPacketModel.PayType.WXPAY, this);
+    }
+
+    @Override
+    public void getPics(String id) {
+        view.showLoading();
+        model.getPics(id, this);
     }
 
     @Override
