@@ -3,14 +3,11 @@ package com.gouyin.im.center.model;
 import com.gouyin.im.AppConstant;
 import com.gouyin.im.R;
 import com.gouyin.im.ServerApi;
-import com.gouyin.im.base.BaseIModel;
 import com.gouyin.im.bean.PayBean;
-import com.gouyin.im.manager.WeixinManager;
-import com.gouyin.im.manager.aliyun.AliyunManager;
-import com.gouyin.im.bean.DefaultDataBean;
 import com.gouyin.im.bean.PayRedPacketPicsBean;
 import com.gouyin.im.manager.UserInfoManager;
-import com.gouyin.im.utils.ActivityUtils;
+import com.gouyin.im.manager.WeixinManager;
+import com.gouyin.im.manager.aliyun.AliyunManager;
 import com.gouyin.im.utils.ObservableUtils;
 import com.gouyin.im.utils.StringUtis;
 import com.gouyin.im.utils.UIUtils;
@@ -91,9 +88,7 @@ public class PayDynamicRedPacketModelImpl implements PayDynamicRedPacketModel {
                             else if (StringUtis.equals(s, "8000"))
                                 getPayDynamicPic(id, listener);
                             else
-//
                                 listener.onFailure(UIUtils.getStringRes(R.string.pay_failure));
-//                                view.transfePageMsg(UIUtils.getStringRes(R.string.pay_failure));
                         } else
                             listener.onFailure(UIUtils.getStringRes(R.string.request_failed));
                     }

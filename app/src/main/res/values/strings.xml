@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">gouyinim</string>
+    <string name="app_name">迷妹</string>
     <string name="app_home_page">首页</string>
     <string name="app_im_page">聊天</string>
     <string name="find">发现</string>
@@ -157,6 +157,8 @@
     <string name="locationing">定位中......</string>
     <string name="change_password">修改密码</string>
     <string name="setting">设置</string>
+    <string name="not_dredge">暂未开通</string>
+    <string name="person_info">个人信息</string>
     <string-array name="moneys">
         <item>8</item>
         <item>28</item>

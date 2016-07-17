@@ -170,8 +170,8 @@ public class DynamicActivity extends BaseActivity implements DynamicView {
     private void loadMoreComplete() {
         if (recyclerview == null)
             return;
-            recyclerview.loadMoreComplete();
-            recyclerview.refreshComplete();
+        recyclerview.loadMoreComplete();
+        recyclerview.refreshComplete();
 
     }
 
@@ -189,7 +189,8 @@ public class DynamicActivity extends BaseActivity implements DynamicView {
 
     @Override
     public void switch2AppointmentActivity() {
-        ActivityUtils.startPayAppointmentActivity();
+        showToast(UIUtils.getStringRes(R.string.not_dredge));
+//        ActivityUtils.startPayAppointmentActivity();
     }
 
     @Override

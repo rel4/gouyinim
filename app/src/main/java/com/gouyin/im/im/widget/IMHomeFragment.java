@@ -36,7 +36,8 @@ public class IMHomeFragment extends BaseFragment implements BaseIView, IMHomeVie
     TextView tvNavigationSameCity;
     @Bind(R.id.frameLyout_home_content)
     FrameLayout frameLyoutHomeContent;
-    private Fragment chatFragment, frientFragment, mCurrentFragment;
+    private Fragment chatFragment, mCurrentFragment;
+    private FrientFragment frientFragment;
     private Fragment conversationListFragment;
     private FragmentManager mFragmentManager;
 
@@ -58,17 +59,17 @@ public class IMHomeFragment extends BaseFragment implements BaseIView, IMHomeVie
 
     @Override
     public void showLoading() {
-
+        showProgressDialog();
     }
 
     @Override
     public void hideLoading() {
-
+        hideProgressDialog();
     }
 
     @Override
     public void transfePageMsg(String msg) {
-
+        showToast(msg);
     }
 
 
@@ -89,8 +90,10 @@ public class IMHomeFragment extends BaseFragment implements BaseIView, IMHomeVie
 
     @Override
     public void swith2Friend() {
-        if (frientFragment == null)
-            frientFragment = FrientFragment.newInstance(3);
+        if (frientFragment == null) {
+            frientFragment = FrientFragment.newInstance();
+            frientFragment.setPageType(FrientFragment.PAGE_MAIN);
+        }
         enterPage(frientFragment);
     }
 

@@ -252,10 +252,10 @@ public class TakeVideoActivity extends Activity implements OnClickListener,
         stopRecording();
         // chronometer.stop();
         isStartRecord = false;
-        if (recorder_play != null) {
-            recorder_play.setVisibility(View.VISIBLE);
-            recorder_play.setClickable(true);
-        }
+//        if (recorder_play != null) {
+//            recorder_play.setVisibility(View.VISIBLE);
+//            recorder_play.setClickable(true);
+//        }
         if (recorder_send != null) {
             recorder_send.setVisibility(View.VISIBLE);
             recorder_send.setClickable(true);

@@ -8,8 +8,7 @@
         android:id="@+id/riv_item_user_image"
         android:layout_width="@dimen/x82"
         android:layout_height="@dimen/y82"
-        android:layout_marginLeft="@dimen/x15"
-        android:src="@mipmap/ic_launcher" />
+        android:layout_marginLeft="@dimen/x15" />
 
     <TextView
         android:id="@+id/tv_user_name"

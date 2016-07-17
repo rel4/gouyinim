@@ -43,10 +43,14 @@ public class FrientFragment extends BaseFragment implements FrientFragmentView {
     public static final int PAGE_WACTH = 1;
     public static final int PAGE_FEN = 2;
     public static final int PAGE_MAIN = 3;
-    private static int pageType;
+    private int pageType;
     private FrientFragmentPresenter presenter;
     private FrientAdapter adapter;
     private boolean isLoadMord;
+
+    public void setPageType(int pageType) {
+        this.pageType = pageType;
+    }
 
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -93,8 +97,7 @@ public class FrientFragment extends BaseFragment implements FrientFragmentView {
     }
 
 
-    public static BaseFragment newInstance(int type) {
-        pageType = type;
+    public static FrientFragment newInstance() {
         return new FrientFragment();
     }
 
@@ -111,17 +114,22 @@ public class FrientFragment extends BaseFragment implements FrientFragmentView {
         }
     }
 
-    private BaseFragment currenFragment, fenFragment, wacthFragment;
+    private FrientFragment currenFragment, fenFragment, wacthFragment;
 
     private void switchPage(int flag) {
-        BaseFragment fragment = null;
+        FrientFragment fragment = null;
         if (flag == PAGE_WACTH) {
-            if (wacthFragment == null)
-                wacthFragment = FrientFragment.newInstance(PAGE_WACTH);
+            if (wacthFragment == null) {
+                wacthFragment = FrientFragment.newInstance();
+                wacthFragment.setPageType(PAGE_WACTH);
+
+            }
             fragment = wacthFragment;
         } else if (flag == PAGE_FEN) {
-            if (fenFragment == null)
-                fenFragment = FrientFragment.newInstance(PAGE_FEN);
+            if (fenFragment == null) {
+                fenFragment = FrientFragment.newInstance();
+                fenFragment.setPageType(PAGE_FEN);
+            }
             fragment = fenFragment;
         }
         if (fragment != null) {

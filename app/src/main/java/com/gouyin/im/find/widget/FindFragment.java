@@ -4,13 +4,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.gouyin.im.R;
 import com.gouyin.im.base.BaseFragment;
 import com.gouyin.im.utils.UIUtils;
-
-import butterknife.Bind;
 
 /**
  * Created by pc on 2016/5/31.

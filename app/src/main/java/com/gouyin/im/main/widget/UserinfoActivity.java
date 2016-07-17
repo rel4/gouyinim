@@ -52,6 +52,11 @@ public class UserinfoActivity extends BaseActivity implements UserinfoActivityVi
     }
 
     @Override
+    protected String initTitleName() {
+        return UIUtils.getStringRes(R.string.person_info);
+    }
+
+    @Override
     protected void initView() {
         presenter = new UserinfoActivityPresenterImpl();
         presenter.attachView(this);

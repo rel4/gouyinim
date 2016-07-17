@@ -21,15 +21,14 @@
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/x30"
-            android:src="@mipmap/load_small"></com.gouyin.im.widget.RoundedImageView>
+            android:src="@mipmap/load_small" />
 
         <TextView
             android:id="@+id/tv_charm"
             style="@style/info_change_text"
             android:layout_below="@+id/riv_user_image"
             android:layout_marginBottom="@dimen/x30"
-            android:layout_marginTop="@dimen/x30"
-            android:text="@string/loading" />
+            android:layout_marginTop="@dimen/x30" />
 
         <TextView
             android:id="@+id/tv_sex"
@@ -47,8 +46,7 @@
             android:layout_below="@+id/riv_user_image"
             android:layout_marginBottom="@dimen/x30"
             android:layout_marginRight="@dimen/x30"
-            android:layout_marginTop="@dimen/x30"
-            android:text="@string/loading" />
+            android:layout_marginTop="@dimen/x30" />
     </RelativeLayout>
 
 

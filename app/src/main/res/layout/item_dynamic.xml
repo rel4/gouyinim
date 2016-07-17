@@ -11,7 +11,7 @@
         android:layout_width="@dimen/x100"
         android:layout_height="@dimen/y100"
         android:scaleType="fitXY"
-        android:src="@mipmap/ic_launcher" />
+        />
 
     <TextView
         android:id="@+id/tv_user_name"

@@ -220,7 +220,8 @@ public class MyFragment extends BaseFragment implements MyFragmentView {
      */
     @Override
     public void swich2Appointment() {
-        ActivityUtils.startAppointmentActivity();
+        showToast(UIUtils.getStringRes(R.string.not_dredge));
+//        ActivityUtils.startAppointmentActivity();
     }
 
     /**
@@ -228,7 +229,8 @@ public class MyFragment extends BaseFragment implements MyFragmentView {
      */
     @Override
     public void swich2PersonOrder() {
-        ActivityUtils.startMyOrderActivity();
+        showToast(UIUtils.getStringRes(R.string.not_dredge));
+//        ActivityUtils.startMyOrderActivity();
     }
 
     /**
