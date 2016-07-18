@@ -14,7 +14,7 @@
         android:padding="@dimen/y30"
         android:src="@mipmap/dynamic_logout" />
 
-    <com.gouyin.im.widget.RoundedImageView
+    <com.moonsister.im.widget.RoundedImageView
         android:id="@+id/iv_user_icon"
         android:layout_width="@dimen/x120"
         android:layout_height="@dimen/y120"
@@ -22,6 +22,7 @@
         android:src="@mipmap/load_small" />
 
     <TextView
+        android:id="@+id/tv_msg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"

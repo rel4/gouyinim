@@ -24,7 +24,7 @@
             android:layout_height="match_parent"
             android:layout_toLeftOf="@+id/center_line"
             android:gravity="center"
-            android:text="@string/wacth"
+            android:text="@string/my_wacth"
             android:textColor="@drawable/selector_home_text_color" />
 
         <TextView
@@ -33,7 +33,7 @@
             android:layout_height="match_parent"
             android:layout_toRightOf="@+id/center_line"
             android:gravity="center"
-            android:text="@string/str_fen"
+            android:text="@string/my_fen"
             android:textColor="@drawable/selector_home_text_color" />
 
         <View

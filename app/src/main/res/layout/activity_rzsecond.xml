@@ -138,7 +138,7 @@
             android:layout_marginTop="@dimen/x25"
             android:background="@color/j_wheel_timebtn_pre" />
 
-        <com.gouyin.im.widget.NoScrollGridView
+        <com.moonsister.im.widget.NoScrollGridView
             android:id="@+id/grid_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

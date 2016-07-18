@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/holo_green_dark">
 
-    <com.gouyin.im.widget.RoundedImageView
+    <com.moonsister.im.widget.RoundedImageView
         android:id="@+id/riv_user_image"
         android:layout_width="@dimen/x100"
         android:layout_height="@dimen/y100"

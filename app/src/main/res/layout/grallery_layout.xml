@@ -11,7 +11,7 @@
         android:layout_centerHorizontal="true"
         android:textSize="16sp" />
     
-    <com.gouyin.im.widget.image.GalleryView
+    <com.moonsister.im.widget.image.GalleryView
         android:id="@+id/mygallery"
         android:spacing="20dp"
         android:layout_width="fill_parent"

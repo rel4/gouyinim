@@ -14,7 +14,7 @@
 
         android:background="@color/background_white_color">
 
-        <com.gouyin.im.widget.RoundedImageView
+        <com.moonsister.im.widget.RoundedImageView
             android:id="@+id/riv_user_image"
             android:layout_width="@dimen/x120"
             android:layout_height="@dimen/x120"

@@ -59,7 +59,7 @@
 -keep class com.jcodecraeer.**{*;}
 -keep class android.support.**{*;}
 -keep class com.android.tools.**{*;}
--keep class im.gouyin.com.progressdialog.**{*;}
+-keep class com.moonsister.im.progressdialog.**{*;}
 -dontwarn im.gouyin.com.progressdialog.**
 
 -keep class retrofit.**{*;}
@@ -69,10 +69,14 @@
 -keep class javax.inject.**{*;}
 -keep class org.**{*;}
 -keep class com.trello.**{*;}
--keep class com.gouyin.im.utils.*{*;}
--keep class com.gouyin.im.AppConstant{*;}
--keep class com.gouyin.im.utils.gson.**{*;}
--keep class com.gouyin.im.event.**{*;}
+-keep class com.moonsister.im.utils.*{*;}
+-keep class com.moonsister.im.AppConstant{*;}
+-keep class com.moonsister.im.utils.gson.**{*;}
+-keep class com.moonsister.im.event.**{*;}
+-keep class com.moonsister.im.bean.** { *; }
+-keep public class com.gouyin.im.R$*{
+public static final int *;
+}
 #自己项目特殊处理代码
 #忽略警告
 -dontwarn com.veidy.mobile.common.**
@@ -211,7 +215,7 @@
 -keep class sun.misc.Unsafe { *; }
 -keep class com.google.gson.stream.** { *; }
 # Application classes that will be serialized/deserialized over Gson 下面替换成自己的实体类
--keep class com.gouyin.im.bean.** { *; }
+
 #
      #OkHttp3
 -dontwarn com.squareup.okhttp3.**
@@ -227,7 +231,4 @@
 -keepclassmembers enum * {
     public static **[] values();
     public static ** valueOf(java.lang.String);
-}
--keep public class com.gouyin.im.R$*{
-public static final int *;
 }

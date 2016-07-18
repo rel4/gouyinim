@@ -85,7 +85,7 @@
 
     </LinearLayout>
 
-    <com.gouyin.im.widget.XListView
+    <com.moonsister.im.widget.XListView
 
         android:id="@+id/recyclerview"
         android:layout_width="fill_parent"

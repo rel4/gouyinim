@@ -11,7 +11,7 @@
         android:layout_height="@dimen/y300">
 
 
-        <com.gouyin.im.widget.RoundedImageView
+        <com.moonsister.im.widget.RoundedImageView
             android:id="@+id/rv_user_pic"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
