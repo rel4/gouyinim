@@ -40,7 +40,7 @@ public class XListView extends XRecyclerView {
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 //        this.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayoutManager.HORIZONTAL));
         this.setLayoutManager(layoutManager);
-        this.addItemDecoration(new SpacesItemDecoration(20));
+        this.addItemDecoration(new SpacesItemDecoration(10));
         this.setRefreshProgressStyle(ProgressStyle.BallSpinFadeLoader);
         this.setLoadingMoreProgressStyle(ProgressStyle.BallSpinFadeLoader);
         this.setArrowImageView(R.mipmap.iconfont_downgrey);

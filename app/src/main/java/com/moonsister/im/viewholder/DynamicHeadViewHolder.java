@@ -46,6 +46,10 @@ public class DynamicHeadViewHolder {
     RelativeLayout layout_click_wacth;
     @Bind(R.id.tv_wacth_status)
     ImageView tv_wacth_status;
+    @Bind(R.id.iv_add_v)
+    ImageView iv_add_v;
+
+
     private UserInfoDetailBean userInfodetail;
     private DynamicActivity userInfoView;
 
@@ -59,8 +63,8 @@ public class DynamicHeadViewHolder {
         UserInfoDetailBean.UserInfoDetailDataBean data = userInfodetail.getData();
         UserInfoDetailBean.UserInfoDetailDataBean.Addons addons = data.getAddons();
         UserInfoDetailBean.UserInfoDetailDataBean.Baseinfo baseinfo = data.getBaseinfo();
-        ImageServerApi.showURLImage(userBackground, baseinfo.getLikeImage());
-        ImageServerApi.showURLImage(ivUserIcon, baseinfo.getFace());
+        ImageServerApi.showURLBigImage(userBackground, baseinfo.getLikeImage());
+        ImageServerApi.showURLSamllImage(ivUserIcon, baseinfo.getFace());
         tvUserName.setText(baseinfo.getNickname());
         tvFenNumber.setText(addons.getUfann());
         tvDynamicNumber.setText(addons.getUlatn());
@@ -73,6 +77,9 @@ public class DynamicHeadViewHolder {
                 ActivityUtils.startUserinfoActivity(userInfodetail.getData().getUid());
             }
         });
+        if (StringUtis.equals(data.getBaseinfo().getIsverify(), "1")) {
+            iv_add_v.setVisibility(View.VISIBLE);
+        } else iv_add_v.setVisibility(View.GONE);
 
     }
 

@@ -27,7 +27,7 @@
     <style name="text_color_home_one_menu" parent="android:Widget.TextView">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@drawable/selector_home_text_color</item>
+        <item name="android:textColor">@drawable/selector_home_mune_text_color</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:textSize">18sp</item>

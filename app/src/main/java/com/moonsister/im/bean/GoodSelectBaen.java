@@ -24,6 +24,23 @@ public class GoodSelectBaen extends BaseBean {
         private String place;
         private String fansnum;
         private String uid;
+        private String anum;
+
+        public String getAnum() {
+            return anum;
+        }
+
+        public void setAnum(String anum) {
+            this.anum = anum;
+        }
+
+        public String getUid() {
+            return uid;
+        }
+
+        public void setUid(String uid) {
+            this.uid = uid;
+        }
 
         public String getUserid() {
             return uid;

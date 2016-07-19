@@ -31,6 +31,7 @@ public class GoodSelectViewHolder extends BaseRecyclerViewHolder<GoodSelectBaen.
     public GoodSelectViewHolder(View view) {
         super(view);
     }
+
     @Override
     protected void onBindData(GoodSelectBaen.Data goodSelectBaen) {
         if (goodSelectBaen == null)
@@ -38,8 +39,9 @@ public class GoodSelectViewHolder extends BaseRecyclerViewHolder<GoodSelectBaen.
         tvUserName.setText(goodSelectBaen.getNickname());
         tvAddress.setText(goodSelectBaen.getPlace());
         tvFenNumber.setText(goodSelectBaen.getFansnum());
-        tvWacthNumber.setText(goodSelectBaen.getSex());
+        tvWacthNumber.setText(goodSelectBaen.getAnum());
         ImageServerApi.showURLImage(rvUserPic, goodSelectBaen.getFace());
+
     }
 
     @Override

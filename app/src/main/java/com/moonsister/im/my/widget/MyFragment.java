@@ -30,6 +30,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.OnClick;
+import retrofit2.http.Multipart;
 
 /**
  * Created by pc on 2016/5/31.
@@ -114,6 +115,17 @@ public class MyFragment extends BaseFragment implements MyFragmentView {
                     if (mAdapter != null) {
                         mPresenter.deleteDynamic(id);
 
+                    }
+                })
+                .create();
+        RxBus.with(this)
+                .setEndEvent(FragmentEvent.DESTROY)
+                .setEvent(Events.EventEnum.USERINFO_CHANGE)
+                .onNext(events -> {
+                    if (mPresenter != null) {
+                        mPresenter.loadPersonHeader();
+                        if (recyclerview != null)
+                            recyclerview.setRefreshing(true);
                     }
                 })
                 .create();

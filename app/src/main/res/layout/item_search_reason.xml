@@ -26,7 +26,7 @@
         android:paddingRight="@dimen/x25"
         android:paddingTop="@dimen/x15"
         android:text="@string/wacth"
-        android:textColor="@color/text_black_color"
+        android:textColor="@color/home_navigation_text_red"
         android:textSize="12sp" />
 
     <TextView
@@ -54,7 +54,7 @@
         android:layout_toRightOf="@+id/riv_user_image"
         android:singleLine="true"
         android:text="@string/loading"
-        android:textColor="@color/app_line"
+        android:textColor="@color/home_navigation_text_gred"
         android:textSize="13sp" />
 
     <TextView
@@ -68,7 +68,7 @@
         android:layout_toRightOf="@+id/riv_user_image"
         android:singleLine="true"
         android:text="@string/loading"
-        android:textColor="@color/app_line"
+        android:textColor="@color/home_navigation_text_gred"
         android:textSize="13sp" />
 
 

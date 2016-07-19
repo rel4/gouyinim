@@ -39,7 +39,8 @@ public class PersonDynamicViewholder extends BaseHolder<UserInfoDetailBean> {
     TextView tvDynamicNumber;
     @Bind(R.id.tv_flower_number)
     TextView tvFlowerNumber;
-
+    @Bind(R.id.tv_add_v)
+    ImageView tv_add_v;
 
     @Override
     protected View initView() {
@@ -78,8 +79,13 @@ public class PersonDynamicViewholder extends BaseHolder<UserInfoDetailBean> {
                 tvUserName.setCompoundDrawables(null, null, nav_up, null);
                 tvUserName.setCompoundDrawablePadding(10);
             }
+            int certificationStatus = UserInfoManager.getInstance().getCertificationStatus();
+            if (certificationStatus == 1) {
+                tv_add_v.setVisibility(View.VISIBLE);
+            } else tv_add_v.setVisibility(View.GONE);
 
         }
+
         UserInfoDetailBean.UserInfoDetailDataBean.Addons addons = bean.getAddons();
         if (addons != null) {
             tvUserAllIncome.setText(UIUtils.getStringRes(R.string.all_income) + addons.getIncome_all() + UIUtils.getStringRes(R.string.yuan));

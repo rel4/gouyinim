@@ -28,7 +28,11 @@ public class GoodSelectModelImpl implements GoodSelectModel {
         if (pageType == GoodSelectFragment.SAME_CITY) {
             observable = ServerApi.getAppAPI().getSameCity(type, page, authcode, AppConstant.CHANNEL_ID);
         } else if (GoodSelectFragment.GOOD_SELECT == pageType) {
-            observable = ServerApi.getAppAPI().getGoodSelect(type, page, authcode,AppConstant.CHANNEL_ID);
+            observable = ServerApi.getAppAPI().getGoodSelect(type, page, authcode, AppConstant.CHANNEL_ID);
+        }
+        if (observable == null) {
+            listener.onFailure(UIUtils.getStringRes(R.string.request_failed));
+            return;
         }
         ObservableUtils.parser(observable, new ObservableUtils.Callback<GoodSelectBaen>() {
             @Override

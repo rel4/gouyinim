@@ -58,8 +58,12 @@ public class DynamicViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.U
     TextView tv_reply_number;
     @Bind(R.id.tv_play_number)
     TextView tv_play_number;
+    @Bind(R.id.tv_add_v)
+    ImageView tv_add_v;
     @Bind(R.id.tv_more__number)
-    TextView tv_more__number;
+    ImageView tv_more__number;
+
+    ImageView iv_play;
     NoScrollGridView gvUserPic;
     private int viewType;
     private TextView tvPlay;
@@ -88,6 +92,7 @@ public class DynamicViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.U
             case TYPE_VIDEO_DYNAMIC:
                 mfragment.removeAllViews();
                 View palyView = UIUtils.inflateLayout(R.layout.item_user_tv);
+                iv_play = (ImageView) palyView.findViewById(R.id.iv_play);
                 tvPlay = (TextView) palyView.findViewById(R.id.tv_play_content);
                 playBackground = (ImageView) palyView.findViewById(R.id.iv_play_background);
                 play = (VideoView) palyView.findViewById(R.id.play);
@@ -123,13 +128,16 @@ public class DynamicViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.U
             return;
         ImageServerApi.showURLImage(playBackground, bean.getVimg());
         tvContent.setText(bean.getTitle());
-        tvTime.setText(TimeUtils.format(bean.getCreate_time() * 1000));
+        tvTime.setText(TimeUtils.getDynamicTimeString(bean.getCreate_time()));
         tv_play_number.setText(bean.getLkpicn() + "");
         dynamicAction(bean);
         tv_reply_number.setText(bean.getLcomn() + "");
         tv_wacth_number.setText(bean.getLupn() + "");
         tvStr.setText(bean.getNickname());
-
+        if (StringUtis.equals(bean.getIsauth(), "1"))
+            tv_add_v.setVisibility(View.VISIBLE);
+        else
+            tv_add_v.setVisibility(View.GONE);
         ImageServerApi.showURLImage(rivUserImage, bean.getFace());
         playBackground.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -142,6 +150,7 @@ public class DynamicViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.U
                         @Override
                         public void onPrepared(MediaPlayer mp) {
                             playBackground.setVisibility(View.GONE);
+                            iv_play.setVisibility(View.GONE);
                             play.start();
                         }
                     });
@@ -150,7 +159,7 @@ public class DynamicViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.U
                         @Override
                         public void onCompletion(MediaPlayer mp) {
                             playBackground.setVisibility(View.VISIBLE);
-
+                            iv_play.setVisibility(View.VISIBLE);
                         }
                     });
                 }
@@ -167,9 +176,13 @@ public class DynamicViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.U
         if (bean == null)
             return;
         dynamicAction(bean);
+        if (StringUtis.equals(bean.getIsauth(), "1"))
+            tv_add_v.setVisibility(View.VISIBLE);
+        else
+            tv_add_v.setVisibility(View.GONE);
         tvContent.setText(bean.getTitle());
-        tvTime.setText(TimeUtils.format(bean.getCreate_time() * 1000));
-
+//        tvTime.setText(TimeUtils.format(bean.getCreate_time() * 1000));
+        tvTime.setText(TimeUtils.getDynamicTimeString(bean.getCreate_time()));
         tv_reply_number.setText(bean.getLcomn());
         tv_wacth_number.setText(bean.getLupn());
         tvStr.setText(bean.getNickname());
@@ -187,10 +200,10 @@ public class DynamicViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.U
             }
         } else {
             if (tv_show_redpacket != null) {
-                tv_show_redpacket.setVisibility(View.INVISIBLE);
+                tv_show_redpacket.setVisibility(View.GONE);
             }
             if (tv_play_number != null) {
-                tv_play_number.setVisibility(View.INVISIBLE);
+                tv_play_number.setVisibility(View.GONE);
             }
         }
         gvUserPic.setAdapter(new PicGridView(bean));
@@ -245,12 +258,12 @@ public class DynamicViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.U
                 ActivityUtils.startDynamicAtionActivity(bean.getUid(), bean.getLatest_id());
             }
         });
-//        rivUserImage.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                ActivityUtils.startUserinfoActivity(bean.getUid());
-//            }
-//        });
+        rivUserImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivityUtils.startUserinfoActivity(bean.getUid());
+            }
+        });
     }
 
     @Override

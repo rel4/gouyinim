@@ -5,6 +5,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.moonsister.im.CacheManager;
 import com.moonsister.im.R;
@@ -33,6 +34,8 @@ public class SearchReasonActivity extends BaseActivity implements TextWatcher, S
     Button btn_search_pager_cancel;
     @Bind(R.id.xlv)
     XListView xlv;
+    @Bind(R.id.tv_not_data)
+    TextView tv_not_data;
     private String key;
     private SearchReasonActivityPresenter presenter;
 
@@ -51,6 +54,7 @@ public class SearchReasonActivity extends BaseActivity implements TextWatcher, S
         xlv.setVerticalLinearLayoutManager();
         xlv.setPullRefreshEnabled(false);
         xlv.setLoadingMoreEnabled(false);
+        xlv.setEmptyView(tv_not_data);
         presenter = new SearchReasonActivityPresenterImpl();
         presenter.attachView(this);
         search();

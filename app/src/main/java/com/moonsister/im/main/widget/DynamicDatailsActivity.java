@@ -109,7 +109,6 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
             finish();
             return null;
         }
-        LogUtils.e(this, "userInfo id : " + userInfo.getUid());
         presenter = new DynamincDatailsPresenterImpl();
         presenter.attachView(this);
         return UIUtils.inflateLayout(R.layout.activity_dynamic_datails);

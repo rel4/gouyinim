@@ -17,7 +17,17 @@
         android:layout_height="@dimen/y150"
         android:layout_below="@+id/user_background"
         android:layout_marginLeft="@dimen/y30"
-        android:layout_marginTop="@dimen/user_icon" />
+        android:layout_marginTop="@dimen/user_icon"
+        android:src="@mipmap/load_small" />
+
+    <ImageView
+        android:id="@+id/tv_add_v"
+        android:layout_width="@dimen/x30"
+        android:layout_height="@dimen/x30"
+        android:layout_alignBottom="@+id/iv_user_icon"
+        android:layout_marginLeft="-12dp"
+        android:layout_toRightOf="@id/iv_user_icon"
+        android:src="@mipmap/add_v_icon" />
 
 
     <TextView
@@ -25,7 +35,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/user_background"
-        android:layout_marginLeft="@dimen/x20"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginTop="@dimen/x17"
         android:layout_toRightOf="@+id/iv_user_icon"
         android:text="@string/loading"
         android:textColor="@color/text_black_color" />
@@ -35,8 +46,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_user_name"
-        android:layout_marginLeft="@dimen/x20"
-        android:layout_marginTop="@dimen/y20"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginTop="@dimen/y15"
         android:layout_toRightOf="@+id/iv_user_icon"
         android:text="@string/loading"
         android:textColor="@color/text_black_color" />
@@ -53,11 +64,11 @@
         android:textColor="@color/text_black_color" />
 
     <LinearLayout
-        android:layout_marginTop="@dimen/x20"
         android:id="@+id/layout_info"
         android:layout_width="match_parent"
         android:layout_height="@dimen/y90"
         android:layout_below="@+id/iv_user_icon"
+        android:layout_marginTop="@dimen/x20"
         android:orientation="horizontal">
 
         <RelativeLayout
@@ -186,5 +197,15 @@
         </RelativeLayout>
     </LinearLayout>
 
+    <View
+        android:id="@+id/line"
+        style="@style/horizontal_line_style"
+        android:layout_below="@+id/layout_info" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x20"
+        android:layout_below="@+id/line"
+        android:background="@color/app_gred_background" />
 
 </RelativeLayout>

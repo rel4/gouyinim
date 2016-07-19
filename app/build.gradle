@@ -9,7 +9,8 @@ android {
         applicationId "com.moonsister.im"
         minSdkVersion rootProject.ext.android.minSdkVersion
         targetSdkVersion rootProject.ext.android.targetSdkVersion
-        versionCode rootProject.ext.android.versionCode;
+        /*versionCode rootProject.ext.android.versionCode;*/
+        versionCode 12
         versionName rootProject.ext.android.versionName
     }
     buildTypes {

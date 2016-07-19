@@ -17,7 +17,7 @@ public class UserInfoListBean extends BaseBean {
         this.data = data;
     }
 
-    public static  class UserInfoListBeanData {
+    public static class UserInfoListBeanData {
         private List<UserInfoListBeanDataList> list;
 
         public List<UserInfoListBeanDataList> getList() {
@@ -48,6 +48,16 @@ public class UserInfoListBean extends BaseBean {
             private String money;
             private String video;
             private String tmoney;
+            //1认证  0 未认证
+            private String isauth;
+
+            public String getIsauth() {
+                return isauth;
+            }
+
+            public void setIsauth(String isauth) {
+                this.isauth = isauth;
+            }
 
             public String getTmoney() {
                 return tmoney;
@@ -228,7 +238,7 @@ public class UserInfoListBean extends BaseBean {
 
             }
 
-            public static  class Img implements Serializable {
+            public static class Img implements Serializable {
                 private String url;
 
                 public void setUrl(String url) {

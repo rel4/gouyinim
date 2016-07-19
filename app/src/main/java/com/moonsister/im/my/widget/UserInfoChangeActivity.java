@@ -236,6 +236,7 @@ public class UserInfoChangeActivity extends BaseActivity implements UserInfoChan
 
     @Override
     public void pageFinish() {
+        RxBus.getInstance().send(Events.EventEnum.USERINFO_CHANGE,null);
         finish();
     }
 

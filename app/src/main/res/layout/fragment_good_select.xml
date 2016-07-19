@@ -6,7 +6,9 @@
     <com.moonsister.im.widget.XListView
         android:id="@+id/recyclerview"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" />
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="@dimen/x10"
+        android:layout_marginRight="@dimen/x10" />
 
     <TextView
         android:id="@+id/text_empty"

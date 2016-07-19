@@ -6,58 +6,59 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/x150"
-        android:background="@color/gray_color">
+        android:layout_height="@dimen/x90"
+        android:background="@color/white">
 
         <RelativeLayout
             android:id="@+id/rl_channel_find"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginBottom="@dimen/x30"
             android:layout_marginLeft="@dimen/x30"
             android:layout_marginRight="@dimen/x20"
-            android:layout_marginTop="@dimen/x30"
             android:layout_toLeftOf="@+id/btn_search_pager_cancel"
             android:background="@mipmap/sy_srk"
             android:focusable="true"
             android:focusableInTouchMode="true">
 
             <ImageButton
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="@dimen/x10"
+                android:layout_marginLeft="@dimen/x20"
                 android:background="@null"
                 android:src="@mipmap/sy_bd_ss" />
 
             <EditText
                 android:id="@+id/et_channel_find"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="@dimen/y60"
                 android:background="@null"
                 android:hint="请输入关键词"
-                android:paddingBottom="@dimen/x20"
                 android:paddingLeft="@dimen/x60"
-                android:paddingTop="@dimen/y20"
                 android:textColor="@color/text_black_color"
                 android:textColorHint="@color/gray_color"
                 android:textCursorDrawable="@null"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
         </RelativeLayout>
 
         <Button
             android:id="@+id/btn_search_pager_cancel"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/y60"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginTop="@dimen/y30"
             android:background="@null"
-            android:padding="@dimen/x20"
+            android:gravity="center"
+            android:padding="@dimen/x10"
             android:text="取消"
-            android:textColor="@color/background_white_color"
-            android:textSize="20sp" />
+            android:textColor="@color/text_black_color"
+            android:textSize="16sp" />
+
+        <View
+            style="@style/horizontal_line_style"
+            android:layout_alignParentBottom="true" />
     </RelativeLayout>
 
     <LinearLayout
@@ -81,7 +82,7 @@
                 android:paddingBottom="@dimen/y30"
                 android:paddingTop="@dimen/y30"
                 android:text="搜索记录"
-                android:textColor="@color/text_black_color" />
+                android:textColor="@color/text_gred_color" />
 
             <TextView
                 android:id="@+id/tv_del_all"
@@ -90,7 +91,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:text="清空数据"
-                android:textColor="@color/text_black_color" />
+                android:textColor="@color/text_gred_color" />
         </RelativeLayout>
 
         <com.moonsister.im.widget.FlowLayout

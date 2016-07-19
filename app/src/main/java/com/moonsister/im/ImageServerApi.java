@@ -16,7 +16,7 @@ public class ImageServerApi {
     private static volatile Picasso mPicasso;
     private static int errorImage = R.mipmap.load_failure;
     private static int loadingSamllImage = R.mipmap.load_small;
-    private static int loadingBigImage = R.mipmap.load_small;
+    private static int loadingBigImage = R.mipmap.load_big;
 
     private static Picasso getPicasso() {
         if (mPicasso == null) {

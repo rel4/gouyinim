@@ -62,22 +62,26 @@ public class UpdateManagerPresenterImpl implements UpdateManagerPresenter, BaseI
 
     }
 
+
+
     private VersionInfo versionInfo;
 
     @Override
-    public void onSuccess() {
+    public void onDownFileleSuccess() {
         view.transfePageMsg(UIUtils.getStringRes(R.string.down_success));
         view.downApkSuccess(versionInfo);
-
     }
 
+    @Override
+    public void onDownFileleFailure(String msg) {
+
+    }
     @Override
     public void onFailure(String msg) {
-        LogUtils.e(this, msg);
+        LogUtils.e(this,msg);
     }
-
     @Override
-    public void onProgress(long progress, long total, boolean done) {
+    public void onDownFileleProgress(long progress, long total, boolean done) {
         view.onProgress(progress, total, done);
     }
 

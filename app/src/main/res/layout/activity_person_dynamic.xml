@@ -85,12 +85,17 @@
 
     </LinearLayout>
 
+    <View
+        android:id="@+id/view_line"
+        style="@style/horizontal_line_style"
+        android:layout_below="@+id/layout_person_head" />
+
     <com.moonsister.im.widget.XListView
 
         android:id="@+id/recyclerview"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_below="@+id/layout_person_head" />
+        android:layout_below="@+id/view_line" />
 
     <TextView
         android:id="@+id/text_empty"

@@ -16,9 +16,12 @@ import android.widget.Toast;
 import com.moonsister.im.R;
 import com.moonsister.im.event.Events;
 import com.moonsister.im.event.RxBus;
+import com.moonsister.im.utils.ActivityUtils;
 import com.moonsister.im.utils.GlobalConstantUtils;
 import com.moonsister.im.utils.IconCompress;
 import com.moonsister.im.utils.UIUtils;
+import com.moonsister.im.utils.URIUtils;
+import com.soundcloud.android.crop.Crop;
 
 import java.io.File;
 
@@ -123,28 +126,32 @@ public class SelectPicPopupActivity extends Activity {
     private static final int REQUESTCODE_CUTTING = 3;
 
     public void startPhotoZoom(Uri uri) {
-        Intent intent = new Intent("com.android.camera.action.CROP");
-        intent.setDataAndType(uri, "image/*");
-        intent.putExtra("crop", true);
-        intent.putExtra("aspectX", 1);
-        intent.putExtra("aspectY", 1);
-        intent.putExtra("outputX", 400);
-        intent.putExtra("outputY", 400);
-        intent.putExtra("return-data", true);
-        intent.putExtra("noFaceDetection", true);
-        startActivityForResult(intent, REQUESTCODE_CUTTING);
+        Uri destination = Uri.fromFile(new File(getCacheDir(), "cropped"));
+        Crop.of(uri, destination).withAspect(400,400).start(this);
+//        ActivityUtils.startCropImageMainActivity();
+//        Intent intent = new Intent("com.android.camera.action.CROP");
+//        intent.setDataAndType(uri, "image/*");
+//        intent.putExtra("crop", true);
+//        intent.putExtra("aspectX", 1);
+//        intent.putExtra("aspectY", 1);
+//        intent.putExtra("outputX", 400);
+//        intent.putExtra("outputY", 400);
+//        intent.putExtra("return-data", true);
+//        intent.putExtra("noFaceDetection", true);
+//        startActivityForResult(intent, REQUESTCODE_CUTTING);
     }
 
     private void savePic(Intent picdata) {
         Bundle extras = picdata.getExtras();
         if (extras != null) {
-            Bitmap photo = extras.getParcelable("data");
-            Bitmap bmCoompress = null;
-            bmCoompress = IconCompress.comp(photo);
-            File file = IconCompress.saveBitmap(bmCoompress,
-                    GlobalConstantUtils.HEAD_ICON_SAVEPATH, System.currentTimeMillis()+".jpg");
+//            Bitmap photo = extras.getParcelable("data");
+            Uri output = Crop.getOutput(picdata);
+//            Bitmap bmCoompress = null;
+//            bmCoompress = IconCompress.comp(photo);
+//            File file = IconCompress.saveBitmap(bmCoompress,
+//                    GlobalConstantUtils.HEAD_ICON_SAVEPATH, System.currentTimeMillis() + ".jpg");
 
-            seedRxBusMsg(file.getAbsolutePath());
+            seedRxBusMsg(URIUtils.getRealFilePath(this, output));
             finish();
         }
 
@@ -166,7 +173,7 @@ public class SelectPicPopupActivity extends Activity {
     private File faceFile;
 
     private void doPhoto2(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUESTCODE_CUTTING) {
+        if (requestCode == Crop.REQUEST_CROP) {
             if (data != null) {
                 savePic(data);
             }

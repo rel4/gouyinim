@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.moonsister.im.R;
@@ -38,7 +39,7 @@ public class HomeFragment extends BaseFragment implements HomeView {
     @Bind(R.id.layout_home_content)
     FrameLayout layout_home_content;
     @Bind(R.id.tv_search)
-    TextView tv_search;
+    ImageView tv_search;
     private HomeFragmentPresenter mPresenter;
     private FragmentManager mFragmentManager;
     private GoodSelectFragment mCurrentFragment, goodSelectFragment, sameCityFragment;
@@ -53,7 +54,6 @@ public class HomeFragment extends BaseFragment implements HomeView {
 
     @Override
     protected void initData() {
-        tv_search.setText(UIUtils.getStringRes(R.string.search));
         tv_search.setVisibility(View.VISIBLE);
         mPresenter.swicthNavigation(R.id.tv_navigation_good_select);
     }

@@ -32,14 +32,14 @@ public interface BaseIModel {
          *
          * @param
          */
-        void onSuccess();
+        void onDownFileleSuccess();
 
         /**
          * 数据加载失败
          *
          * @param msg
          */
-        void onFailure(String msg);
+        void onDownFileleFailure(String msg);
 
         /**
          * 下载进度
@@ -48,7 +48,7 @@ public interface BaseIModel {
          * @param total
          * @param done
          */
-        void onProgress(long progress, long total, boolean done);
+        void onDownFileleProgress(long progress, long total, boolean done);
     }
 
     /**

@@ -1,5 +1,7 @@
 package com.moonsister.im.event;
 
+import android.webkit.ValueCallback;
+
 import com.trello.rxlifecycle.ActivityEvent;
 import com.trello.rxlifecycle.ActivityLifecycleProvider;
 import com.trello.rxlifecycle.FragmentEvent;
@@ -19,7 +21,7 @@ import rx.subjects.Subject;
  **/
 public class RxBus {
 
-    private static RxBus rxBus;
+    private  static RxBus rxBus;
     private final Subject<Events<?>, Events<?>> _bus = new SerializedSubject<>(PublishSubject.create());
 
     private RxBus(){}

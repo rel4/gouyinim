@@ -11,16 +11,28 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/y350">
+        android:layout_height="@dimen/y350"
+        android:background="@color/text_black_color">
+
         <VideoView
             android:id="@+id/play"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center" />
+
         <ImageView
-            android:scaleType="centerCrop"
             android:id="@+id/iv_play_background"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop" />
+
+        <ImageView
+            android:id="@+id/iv_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@mipmap/bofang" />
     </FrameLayout>
 
 

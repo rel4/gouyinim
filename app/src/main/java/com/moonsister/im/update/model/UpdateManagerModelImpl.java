@@ -56,7 +56,7 @@ public class UpdateManagerModelImpl implements UpdateManagerModel {
                 Log.e("是否在主线程中运行", String.valueOf(Looper.getMainLooper() == Looper.myLooper()));
                 Log.e("onProgress", String.format("%d%% done\n", (100 * bytesRead) / contentLength));
                 Log.e("done", "--->" + String.valueOf(done));
-                listener.onProgress(bytesRead, contentLength, done);
+                listener.onDownFileleProgress(bytesRead, contentLength, done);
 
             }
         });
@@ -106,12 +106,12 @@ public class UpdateManagerModelImpl implements UpdateManagerModel {
 
                     @Override
                     public void onError(Throwable e) {
-                        listener.onFailure(e.getMessage());
+                        listener.onDownFileleFailure(e.getMessage());
                     }
 
                     @Override
                     public void onNext(String s) {
-                        listener.onSuccess();
+                        listener.onDownFileleSuccess();
                     }
                 });
 

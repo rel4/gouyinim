@@ -6,9 +6,10 @@
 
 
     <RelativeLayout
+
         android:id="@+id/layout_pic"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/y300">
+        android:layout_width="@dimen/x330"
+        android:layout_height="@dimen/y330">
 
 
         <com.moonsister.im.widget.RoundedImageView
@@ -17,14 +18,19 @@
             android:layout_height="match_parent"
             android:scaleType="centerCrop" />
 
+        <com.moonsister.im.widget.RoundedImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@mipmap/half_bg" />
+
         <TextView
             android:id="@+id/tv_wacth_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentStart="true"
-            android:layout_margin="@dimen/x30"
-            android:layout_marginBottom="@dimen/y10"
+            android:layout_marginBottom="@dimen/y20"
+            android:layout_marginLeft="@dimen/x20"
             android:drawableLeft="@mipmap/home_watch"
             android:drawablePadding="@dimen/x10"
             android:text="@string/loading"
@@ -37,11 +43,13 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            android:layout_margin="@dimen/x30"
-            android:layout_marginBottom="@dimen/y10"
+            android:layout_marginBottom="@dimen/y20"
+            android:layout_marginRight="@dimen/x20"
             android:text="@string/loading"
             android:textColor="@color/background_white_color"
             android:textSize="10sp" />
+
+
     </RelativeLayout>
 
     <TextView
@@ -49,8 +57,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/layout_pic"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="@dimen/x15"
         android:layout_marginRight="@dimen/x15"
         android:layout_marginTop="@dimen/x10"
         android:ellipsize="end"

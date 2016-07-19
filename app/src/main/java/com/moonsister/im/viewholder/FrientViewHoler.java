@@ -53,6 +53,7 @@ public class FrientViewHoler extends BaseRecyclerViewHolder<FrientBaen.DataBean>
 //            drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
             tvSubmit.setCompoundDrawables(null, null, null, null);
             tvSubmit.setText(UIUtils.getStringRes(R.string.together) + UIUtils.getStringRes(R.string.wacth));
+            tvSubmit.setTextColor(UIUtils.getResources().getColor(R.color.home_navigation_text_gred));
             tvSubmit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -65,6 +66,7 @@ public class FrientViewHoler extends BaseRecyclerViewHolder<FrientBaen.DataBean>
             drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
             tvSubmit.setCompoundDrawables(drawable, null, null, null);
             tvSubmit.setText(UIUtils.getStringRes(R.string.wacth));
+            tvSubmit.setTextColor(UIUtils.getResources().getColor(R.color.home_navigation_text_red));
             tvSubmit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -72,6 +74,7 @@ public class FrientViewHoler extends BaseRecyclerViewHolder<FrientBaen.DataBean>
                 }
             });
         } else {
+            tvSubmit.setTextColor(UIUtils.getResources().getColor(R.color.home_navigation_text_gred));
             tvSubmit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

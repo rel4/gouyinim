@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">同城交友</string>
+    <string name="app_name">寂陌陌生人</string>
     <string name="app_home_page">首页</string>
     <string name="app_im_page">聊天</string>
     <string name="find">发现</string>
@@ -164,6 +164,7 @@
     <string name="flower_msg">鲜花代表我的心意！</string>
     <string name="birthday">生日</string>
     <string name="together">相互</string>
+    <string name="not_search_reason">没有找相关用户</string>
     <string-array name="moneys">
         <item>8</item>
         <item>28</item>

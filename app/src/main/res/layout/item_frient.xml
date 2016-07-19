@@ -40,7 +40,7 @@
         android:paddingRight="@dimen/x25"
         android:paddingTop="@dimen/x15"
         android:text="@string/cancel"
-        android:textColor="@color/app_line"
+        android:textColor="@color/home_navigation_text_gred"
         android:textSize="14sp" />
 
     <TextView
@@ -54,6 +54,6 @@
         android:enabled="true"
         android:singleLine="true"
         android:text="@string/loading"
-        android:textColor="@color/app_line"
+        android:textColor="@color/home_navigation_text_gred"
         android:textSize="12sp" />
 </RelativeLayout>

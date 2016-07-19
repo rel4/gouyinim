@@ -2,8 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="@dimen/y416"
-    android:background="@mipmap/login_bg">
+    android:background="@mipmap/login_bg"
+    android:paddingTop="@dimen/y416">
 
     <RelativeLayout
 
@@ -52,7 +52,8 @@
             style="@style/edittext_login"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/tv_pwd"
-            android:hint="@string/input_password" />
+            android:hint="@string/input_password"
+            android:inputType="textPassword" />
     </RelativeLayout>
 
     <TextView

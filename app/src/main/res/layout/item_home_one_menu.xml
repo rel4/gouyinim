@@ -13,6 +13,14 @@
         android:layout_marginTop="@dimen/y15"
         android:scaleType="fitXY"
         android:src="@mipmap/load_small" />
+    <ImageView
+        android:id="@+id/tv_add_v"
+        android:layout_toRightOf="@+id/riv_user_image"
+        android:layout_alignBottom="@+id/riv_user_image"
+        android:layout_marginLeft="-10dp"
+        android:layout_width="@dimen/x20"
+        android:layout_height="@dimen/x20"
+        android:src="@mipmap/add_v_icon"/>
 
     <TextView
         android:id="@+id/tv_user_name"
@@ -29,6 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/x30"
+        android:layout_marginRight="@dimen/x30"
         android:layout_marginTop="@dimen/y60"
         android:layout_toRightOf="@id/riv_user_image"
         android:text="@string/loading"
@@ -40,10 +49,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/riv_user_image"
-        android:layout_marginRight="@dimen/x30"
+        android:layout_marginRight="@dimen/x40"
         android:singleLine="true"
-        android:text="shijin"
-        android:textColor="@color/gray_color" />
+        android:textColor="@color/gray_color"
+        android:textSize="12sp" />
 
     <FrameLayout
         android:id="@+id/layout_content"
@@ -60,9 +69,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/layout_content"
-        android:layout_marginBottom="@dimen/x20"
+        android:layout_marginBottom="@dimen/x10"
         android:layout_marginLeft="@dimen/x30"
-        android:layout_marginTop="@dimen/x20"
+
         android:layout_toRightOf="@+id/riv_user_image"
         android:drawableLeft="@mipmap/like_icon"
         android:drawablePadding="@dimen/x10"
@@ -87,31 +96,31 @@
         android:textSize="12sp" />
 
     <TextView
-        android:padding="@dimen/x20"
         android:id="@+id/tv_play_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/tv_reply_number"
         android:layout_below="@id/layout_content"
-
         android:layout_toRightOf="@+id/tv_reply_number"
+
         android:drawableLeft="@mipmap/icon_red_packet"
         android:drawablePadding="@dimen/x5"
+        android:padding="@dimen/x20"
         android:text="@string/loading"
         android:textColor="@color/background_red_color"
         android:textSize="12sp"
         android:visibility="invisible" />
 
-    <TextView
+    <ImageView
         android:id="@+id/tv_more__number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/tv_reply_number"
         android:layout_below="@id/layout_content"
-        android:layout_marginRight="@dimen/x53"
+        android:layout_marginRight="@dimen/x40"
         android:padding="@dimen/x20"
-        android:text=". . ."
+        android:src="@mipmap/delete_point"
         android:textColor="@color/gray_color" />
 
 </RelativeLayout>

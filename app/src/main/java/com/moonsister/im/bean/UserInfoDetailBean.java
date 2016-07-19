@@ -24,6 +24,8 @@ public class UserInfoDetailBean extends BaseBean {
         private Baseinfo baseinfo;
         private String uid;
 
+
+
         public String getUid() {
             return uid;
         }
