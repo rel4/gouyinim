@@ -78,6 +78,8 @@ public class TimeUtils {
     static StringBuffer result = new StringBuffer();
 
     public static String getDynamicTimeString(long milliseconds) {
+        if (milliseconds<1000)
+            return "";
 
         result.delete(0, result.length());
 

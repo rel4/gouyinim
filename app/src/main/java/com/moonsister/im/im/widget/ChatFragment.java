@@ -31,7 +31,7 @@ public class ChatFragment extends BaseFragment {
                 .appendQueryParameter(Conversation.ConversationType.PRIVATE.getName(), "false") //设置私聊会话是否聚合显示
                 .appendQueryParameter(Conversation.ConversationType.GROUP.getName(), "true")
                 .appendQueryParameter(Conversation.ConversationType.DISCUSSION.getName(), "false")
-                .appendQueryParameter(Conversation.ConversationType.SYSTEM.getName(), "true")
+                .appendQueryParameter(Conversation.ConversationType.SYSTEM.getName(), "false")
                 .build();
 
         fragment.setUri(uri);

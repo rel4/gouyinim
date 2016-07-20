@@ -82,7 +82,8 @@ public class UpdateManager implements UpdateManagerView, View.OnClickListener {
         //b:等于,说明当前版本相同，需要进行网络检查是否有更新版本
         //c:小于，说明当前存储错误，需要进行网络检查是否有更新版本
         int currentCode = PrefUtils.getInt(UPLOAD_VERSIONCODE, 0);
-        if (currentCode > PackageUtils.getVersionCode(mContext)) {  //情况a
+        int versionCode = PackageUtils.getVersionCode(mContext);
+        if (currentCode > versionCode) {  //情况a
             File apk_file = new File(getApkPath(mContext));
             if (apk_file.exists()) {//当前路径下有升级版本包给出升级弹框
                 // 显示提示对话框

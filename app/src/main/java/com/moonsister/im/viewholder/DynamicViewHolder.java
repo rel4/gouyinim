@@ -158,8 +158,10 @@ public class DynamicViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.U
                     play.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                         @Override
                         public void onCompletion(MediaPlayer mp) {
+                            mp.stop();
                             playBackground.setVisibility(View.VISIBLE);
                             iv_play.setVisibility(View.VISIBLE);
+                            play.stopPlayback();
                         }
                     });
                 }
