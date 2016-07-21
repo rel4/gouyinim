@@ -11,7 +11,7 @@
         android:layout_height="@dimen/x240"
         android:background="@mipmap/bg_renzheng">
 
-        <com.moonsister.im.widget.RoundedImageView
+        <com.moonsister.tcjy.widget.RoundedImageView
             android:id="@+id/iv_avater"
             android:layout_width="@dimen/x120"
             android:layout_height="@dimen/x120"

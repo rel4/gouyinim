@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:padding="@dimen/x15">
 
-    <com.moonsister.im.widget.RoundedImageView
+    <com.moonsister.tcjy.widget.RoundedImageView
         android:id="@+id/riv_item_user_image"
         android:layout_width="@dimen/x82"
         android:layout_height="@dimen/y82"

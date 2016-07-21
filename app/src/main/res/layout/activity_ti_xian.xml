@@ -146,7 +146,7 @@
         android:layout_height="wrap_content"
         android:paddingLeft="@dimen/x25"
         android:paddingTop="@dimen/x15"
-        android:text="每次转出金额需≥100" />
+        android:text="每次转出金额需≥200" />
 
     <TextView
         android:id="@+id/tv_sure"

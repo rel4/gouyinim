@@ -30,7 +30,7 @@
         android:src="@mipmap/guardian"
         android:visibility="gone" />
 
-    <com.moonsister.im.widget.RoundedImageView
+    <com.moonsister.tcjy.widget.RoundedImageView
         android:layout_width="@dimen/x82"
         android:layout_height="@dimen/y82"
         android:layout_alignBaseline="@id/iv_guardian"
@@ -41,7 +41,7 @@
         android:visibility="gone" />
 
 
-    <com.moonsister.im.widget.RoundedImageView
+    <com.moonsister.tcjy.widget.RoundedImageView
         android:id="@+id/iv_user_icon"
         android:layout_width="@dimen/x150"
         android:layout_height="@dimen/y150"

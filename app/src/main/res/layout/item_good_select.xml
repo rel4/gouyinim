@@ -12,13 +12,13 @@
         android:layout_height="@dimen/y330">
 
 
-        <com.moonsister.im.widget.RoundedImageView
+        <com.moonsister.tcjy.widget.RoundedImageView
             android:id="@+id/rv_user_pic"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop" />
 
-        <com.moonsister.im.widget.RoundedImageView
+        <com.moonsister.tcjy.widget.RoundedImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@mipmap/half_bg" />

@@ -94,11 +94,11 @@
                 android:textColor="@color/text_gred_color" />
         </RelativeLayout>
 
-        <com.moonsister.im.widget.FlowLayout
+        <com.moonsister.tcjy.widget.FlowLayout
 
             android:id="@+id/fl_erach_cache"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="@null"></com.moonsister.im.widget.FlowLayout>
+            android:background="@null"></com.moonsister.tcjy.widget.FlowLayout>
     </LinearLayout>
 </LinearLayout>

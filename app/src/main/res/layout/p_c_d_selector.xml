@@ -50,7 +50,7 @@
         android:orientation="horizontal"
         android:weightSum="3" >
 
-        <com.moonsister.im.widget.wheelview.WheelView
+        <com.moonsister.tcjy.widget.wheelview.WheelView
             android:id="@+id/wv_pcd_left"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -60,7 +60,7 @@
             android:layout_weight="1"
             mywheelview:ctextsize="30" />
 
-        <com.moonsister.im.widget.wheelview.WheelView
+        <com.moonsister.tcjy.widget.wheelview.WheelView
             android:id="@+id/wv_pcd_center"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -70,7 +70,7 @@
             android:layout_weight="1"
             mywheelview:ctextsize="30" />
 
-        <com.moonsister.im.widget.wheelview.WheelView
+        <com.moonsister.tcjy.widget.wheelview.WheelView
             android:id="@+id/wv_pcd_right"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"

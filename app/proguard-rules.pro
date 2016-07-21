@@ -59,8 +59,8 @@
 -keep class com.jcodecraeer.**{*;}
 -keep class android.support.**{*;}
 -keep class com.android.tools.**{*;}
--keep class com.moonsister.im.progressdialog.**{*;}
--dontwarn im.gouyin.com.progressdialog.**
+-keep class com.moonsister.tcjy.progressdialog.**{*;}
+-dontwarn com.moonsister.tcjy.progressdialog.**
 
 -keep class retrofit.**{*;}
 -keep class dagger.**{*;}
@@ -69,12 +69,14 @@
 -keep class javax.inject.**{*;}
 -keep class org.**{*;}
 -keep class com.trello.**{*;}
--keep class com.moonsister.im.utils.*{*;}
--keep class com.moonsister.im.AppConstant{*;}
--keep class com.moonsister.im.utils.gson.**{*;}
--keep class com.moonsister.im.event.**{*;}
--keep class com.moonsister.im.bean.** { *; }
--keep public class com.gouyin.im.R$*{
+-keep class com.moonsister.tcjy.utils.*{*;}
+-keep class com.moonsister.tcjy.AppConstant{*;}
+-keep class com.moonsister.tcjy.utils.gson.**{*;}
+-keep class com.moonsister.tcjy.event.**{*;}
+-keep class com.moonsister.tcjy.bean.** { *; }
+-keep class com.moonsister.tcjy.progressdialog.**{*;}
+-dontwarn com.moonsister.tcjy.progressdialog.**
+-keep public class com.moonsister.tcjy.R$*{
 public static final int *;
 }
 #自己项目特殊处理代码

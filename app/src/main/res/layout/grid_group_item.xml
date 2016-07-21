@@ -8,7 +8,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
 
-        <com.moonsister.im.widget.MyImageView
+        <com.moonsister.tcjy.widget.MyImageView
             android:id="@+id/group_image"
             android:layout_width="fill_parent"
             android:layout_height="150dip"

@@ -17,9 +17,7 @@
             android:layout_marginLeft="@dimen/x30"
             android:layout_marginRight="@dimen/x20"
             android:layout_toLeftOf="@+id/btn_search_pager_cancel"
-            android:background="@mipmap/sy_srk"
-            android:focusable="true"
-            android:focusableInTouchMode="true">
+            android:background="@mipmap/sy_srk">
 
             <ImageButton
 
@@ -62,17 +60,18 @@
     </RelativeLayout>
 
 
-    <com.moonsister.im.widget.XListView
+    <com.moonsister.tcjy.widget.XListView
         android:id="@+id/xlv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"></com.moonsister.im.widget.XListView>
+        android:background="@color/white"></com.moonsister.tcjy.widget.XListView>
+
     <TextView
         android:id="@+id/tv_not_data"
-        android:gravity="center"
-        android:textColor="@color/text_black_color"
-        android:text="@string/not_search_reason"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/y60" />
+        android:layout_height="@dimen/y60"
+        android:gravity="center"
+        android:text="@string/not_search_reason"
+        android:textColor="@color/text_black_color" />
 
 </LinearLayout>
