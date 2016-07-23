@@ -151,11 +151,30 @@ public class UserInfoManager {
         return info.getAttestation();
     }
 
+    /**
+     * 性别
+     *
+     * @return
+     */
     public String getUserSex() {
         return info.getSex();
     }
 
+    /**
+     * 名字
+     *
+     * @return
+     */
     public String getNickeName() {
         return info.getNickname();
+    }
+
+    /**
+     * id
+     *
+     * @return
+     */
+    public String getUid() {
+        return info.getId();
     }
 }

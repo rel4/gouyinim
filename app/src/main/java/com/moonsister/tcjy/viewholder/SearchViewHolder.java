@@ -47,7 +47,7 @@ public class SearchViewHolder extends BaseRecyclerViewHolder<SearchReasonBaen.Da
         String isfollow = dataBean.getIsfollow();
         if (StringUtis.equals(isfollow, "1")) {
             tvSubmit.setCompoundDrawables(null, null, null, null);
-            tvSubmit.setText(UIUtils.getStringRes(R.string.already) + UIUtils.getStringRes(R.string.wacth));
+            tvSubmit.setText(UIUtils.getStringRes(R.string.already_wacth));
             tvSubmit.setTextColor(UIUtils.getResources().getColor(R.color.home_navigation_text_gred));
         } else {
             Drawable drawable = UIUtils.getResources().getDrawable(R.mipmap.add_wacth_icon);

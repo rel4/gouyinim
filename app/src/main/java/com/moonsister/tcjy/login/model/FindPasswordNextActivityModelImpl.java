@@ -15,7 +15,7 @@ public class FindPasswordNextActivityModelImpl implements FindPasswordNextActivi
     @Override
     public void submit(String newpwd, String code, onLoadDateSingleListener listenter) {
         Observable<BaseBean> observable = ServerApi.getAppAPI().getFindPasswordNext(MD5Util.string2MD5(newpwd), code, AppConstant.CHANNEL_ID);
-        ObservableUtils.parser(observable, new ObservableUtils.Callback() {
+        ObservableUtils.parser(observable, new ObservableUtils.Callback<BaseBean>() {
             @Override
             public void onSuccess(BaseBean bean) {
                 listenter.onSuccess(bean, DataType.DATA_ZERO);

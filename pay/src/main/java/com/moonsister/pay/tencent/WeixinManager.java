@@ -1,8 +1,7 @@
-package com.moonsister.tcjy.manager;
+package com.moonsister.pay.tencent;
 
-import com.moonsister.tcjy.bean.PayBean;
-import com.moonsister.tcjy.utils.ConfigUtils;
-import com.moonsister.tcjy.wxapi.WXPayEntryActivity;
+import android.content.Context;
+
 import com.tencent.mm.sdk.modelpay.PayReq;
 import com.tencent.mm.sdk.openapi.IWXAPI;
 import com.tencent.mm.sdk.openapi.WXAPIFactory;
@@ -14,11 +13,11 @@ public class WeixinManager {
     private volatile static WeixinManager instance;
     private static IWXAPI api;
 
-    public static WeixinManager getInstance() {
+    public static WeixinManager getInstance(Context context,String appID) {
         if (instance == null) {
-            synchronized (UserInfoManager.class) {
+            synchronized (WeixinManager.class) {
                 if (instance == null) {
-                    api = WXAPIFactory.createWXAPI(ConfigUtils.getInstance().getApplicationContext(), WXPayEntryActivity.APP_ID);
+                    api = WXAPIFactory.createWXAPI(context, appID);
                     instance = new WeixinManager();
                 }
 

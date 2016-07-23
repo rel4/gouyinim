@@ -1,11 +1,11 @@
-package com.moonsister.tcjy.bean;
+package com.moonsister.pay.tencent;
 
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by jb on 2016/7/14.
  */
-public class PayBean extends BaseBean {
+public class PayBean {
 
     /**
      * appid : wxd73266bdf4679ebf
@@ -16,8 +16,25 @@ public class PayBean extends BaseBean {
      * timestamp : 1468468490
      * sign : 9FBD701370FEDE23E7182D718F5C0545
      */
-
+    private String code;
+    private String msg;
     private DataBean data;
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
 
     public DataBean getData() {
         return data;

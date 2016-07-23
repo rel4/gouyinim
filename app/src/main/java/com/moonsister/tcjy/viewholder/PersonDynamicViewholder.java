@@ -99,9 +99,21 @@ public class PersonDynamicViewholder extends BaseHolder<UserInfoDetailBean> {
 
     }
 
-    @OnClick(R.id.iv_user_icon)
-    public void onClick() {
-        ActivityUtils.startUserInfoChangeActivity();
+    @OnClick({R.id.iv_user_icon, R.id.layout_wacth,R.id.layout_fen})
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.iv_user_icon:
+                ActivityUtils.startUserInfoChangeActivity();
+                break;
+            case R.id.layout_wacth:
+
+                    ActivityUtils.startWacthRelationActivity(UserInfoManager.getInstance().getUid());
+                break;
+            case R.id.layout_fen:
+                    ActivityUtils.startFenRelationActivity(UserInfoManager.getInstance().getUid());
+                break;
+        }
+
     }
 
     public void upImage(String path) {

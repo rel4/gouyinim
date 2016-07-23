@@ -48,15 +48,10 @@ public class LoginFragmentPersenterImpl implements LoginFragmentPersenter, BaseI
                 data.setLogin(true);
                 if (data != null)
                     UserInfoManager.getInstance().saveMemoryInstance(data);
-                UIUtils.sendDelayedOneMillis(new Runnable() {
-                    @Override
-                    public void run() {
-                        loginView.loginSuccss();
-                    }
-                });
+                loginView.loginSuccss();
 
-            }
-            loginView.transfePageMsg(loginBean.getMsg());
+            } else
+                loginView.transfePageMsg(loginBean.getMsg());
         } else {
             loginView.transfePageMsg(UIUtils.getResources().getString(R.string.str_login) + UIUtils.getStringRes(R.string.request_failed));
 

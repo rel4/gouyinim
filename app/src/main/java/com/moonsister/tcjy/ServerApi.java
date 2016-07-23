@@ -10,7 +10,7 @@ import com.moonsister.tcjy.bean.FrientBaen;
 import com.moonsister.tcjy.bean.GetMoneyBean;
 import com.moonsister.tcjy.bean.GoodSelectBaen;
 import com.moonsister.tcjy.bean.LoginBean;
-import com.moonsister.tcjy.bean.PayBean;
+import com.moonsister.pay.tencent.PayBean;
 import com.moonsister.tcjy.bean.PayRedPacketPicsBean;
 import com.moonsister.tcjy.bean.RegiterBean;
 import com.moonsister.tcjy.bean.RongyunBean;
@@ -675,6 +675,38 @@ public class ServerApi {
         @FormUrlEncoded
         @POST("Location/update_data")
         Observable<DefaultDataBean> getuploadPhoneInfo(@Field("address") String serialize);
+
+        /**
+         * 获取关注列表
+         *
+         * @param page
+         * @param uid
+         * @param authcode @return
+         */
+
+        @GET("Follow/get_list_follows_other")
+        Observable<FrientBaen> getWacthRelation(@Query("page") int page,
+                                                @Query("ouid") String uid,
+                                                @Query("authcode") String authcode,
+                                                @Query("channel") String channel);
+
+        /**
+         * @param page
+         * @param authcode
+         * @param channel
+         * @return
+         */
+        @GET("Follow/get_list_fans_other")
+        Observable<FrientBaen> getFenRelation(@Query("page") int page,
+                                              @Query("ouid") String uid,
+                                              @Query("authcode") String authcode,
+                                              @Query("channel") String channel);
+
+        @FormUrlEncoded
+        @POST("Location/update_location")
+        Observable<DefaultDataBean> uploadLoation(@Field("address") String address,
+                                                  @Field("authcode") String authcode,
+                                                  @Field("channel") String channel);
     }
 }
 

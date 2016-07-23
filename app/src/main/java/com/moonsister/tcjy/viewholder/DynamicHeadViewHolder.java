@@ -48,8 +48,10 @@ public class DynamicHeadViewHolder {
     ImageView tv_wacth_status;
     @Bind(R.id.iv_add_v)
     ImageView iv_add_v;
-
-
+    @Bind(R.id.layot_fen_number)
+    RelativeLayout layot_fen_number;
+    @Bind(R.id.layout_wacth_number)
+    RelativeLayout layout_wacth_number;
     private UserInfoDetailBean userInfodetail;
     private DynamicActivity userInfoView;
 
@@ -75,6 +77,18 @@ public class DynamicHeadViewHolder {
             @Override
             public void onClick(View v) {
                 ActivityUtils.startUserinfoActivity(userInfodetail.getData().getUid());
+            }
+        });
+        layout_wacth_number.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivityUtils.startWacthRelationActivity(data.getUid());
+            }
+        });
+        layot_fen_number.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivityUtils.startFenRelationActivity(data.getUid());
             }
         });
         if (StringUtis.equals(data.getBaseinfo().getIsverify(), "1")) {

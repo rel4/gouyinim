@@ -68,7 +68,8 @@ public class MainActivity extends BaseActivity implements MainView {
             @Override
             public void run() {
                 new UpdateManager(MainActivity.this).checkUpdate();
-                GaodeManager.getInstance().getLocLocation();
+                if (UserInfoManager.getInstance().isLogin())
+                    GaodeManager.getInstance().getLocLocation();
             }
         }, 5000);
 

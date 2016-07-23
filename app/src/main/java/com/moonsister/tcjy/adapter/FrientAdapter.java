@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseIModel;
+import com.moonsister.tcjy.base.BaseIView;
 import com.moonsister.tcjy.base.BaseRecyclerViewAdapter;
 import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
 import com.moonsister.tcjy.bean.DefaultDataBean;
@@ -27,10 +28,10 @@ import java.util.List;
 public class FrientAdapter extends BaseRecyclerViewAdapter<FrientBaen.DataBean> {
 
     private FrientViewHoler viewHoler;
-    private FrientFragmentView view;
+    private BaseIView view;
     private int pageType;
 
-    public FrientAdapter(List<FrientBaen.DataBean> list, FrientFragmentView view) {
+    public FrientAdapter(List<FrientBaen.DataBean> list, BaseIView view) {
         super(list);
         this.view = view;
     }

@@ -6,12 +6,14 @@ android {
     buildToolsVersion rootProject.ext.android.buildToolsVersion
 
     defaultConfig {
+
         applicationId "com.moonsister.tcjy"
         minSdkVersion rootProject.ext.android.minSdkVersion
         targetSdkVersion rootProject.ext.android.targetSdkVersion
         versionCode rootProject.ext.android.versionCode;
 //        versionCode 12
         versionName rootProject.ext.android.versionName
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -35,6 +37,8 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile project(':IMKit')
+    compile project(':pay')
+    compile project(':progressdialog')
     // Reactive Programming RxJava
     compile 'io.reactivex:rxandroid:1.0.1'
     compile 'io.reactivex:rxjava:1.0.14'
@@ -70,10 +74,7 @@ dependencies {
     compile rootProject.ext.dependencies["xrecyclerview"]
     //    compile rootProject.ext.dependencies["gson"];
     //阿里云
-    compile project(path: ':progressdialog')
     compile files('libs/aliyun-oss-sdk-android-2.2.0.jar')
-    compile files('libs/alipaySdk-20160516.jar')
-    compile files('libs/libammsdk.jar')
     //图片裁剪
     compile 'com.soundcloud.android:android-crop:1.0.1@aar'
     //友盟

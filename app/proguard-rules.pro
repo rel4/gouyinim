@@ -41,7 +41,11 @@
 -keep public class * extends android.app.backup.BackupAgentHelper
 -keep public class * extends android.preference.Preference
 -keep public class com.android.vending.licensing.ILicensingService
-#如果有引用v4包可以添加下面这行
+# 解决warning: Ignoring InnerClasses attribute for an anonymous inner class
+    -keepattributes Signature
+    -keepattributes EnclosingMethod
+
+#如果有引用v4包可以添加下面这行\
 -keep public class * extends android.support.v4.app.Fragment
 #忽略警告
 -ignorewarning

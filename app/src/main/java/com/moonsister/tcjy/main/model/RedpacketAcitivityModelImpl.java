@@ -1,13 +1,19 @@
 package com.moonsister.tcjy.main.model;
 
+import com.moonsister.pay.aliyun.AliPayManager;
 import com.moonsister.tcjy.AppConstant;
+import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.ServerApi;
-import com.moonsister.tcjy.bean.PayBean;
-import com.moonsister.tcjy.manager.WeixinManager;
-import com.moonsister.tcjy.manager.aliyun.AliyunManager;
+import com.moonsister.pay.tencent.PayBean;
+import com.moonsister.pay.tencent.WeixinManager;
+import com.moonsister.tcjy.event.Events;
+import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.manager.UserInfoManager;
+import com.moonsister.tcjy.utils.ConfigUtils;
 import com.moonsister.tcjy.utils.ObservableUtils;
 import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tcjy.utils.UIUtils;
+import com.moonsister.tcjy.wxapi.WXPayEntryActivity;
 
 import rx.Observable;
 import rx.Subscriber;
@@ -25,27 +31,68 @@ public class RedpacketAcitivityModelImpl implements RedpacketAcitivityModel {
         String authcode = UserInfoManager.getInstance().getAuthcode();
         Observable<PayBean> pay = null;
         if (type == 1) {
-            pay = ServerApi.getAppAPI().getredPacketIndent(playType.getType(), uid, money, authcode,AppConstant.CHANNEL_ID);
+            pay = ServerApi.getAppAPI().getredPacketIndent(playType.getType(), uid, money, authcode, AppConstant.CHANNEL_ID);
         } else if (type == 2) {
-            pay = ServerApi.getAppAPI().getFlowerIndent(playType.getType(), uid, money, authcode,AppConstant.CHANNEL_ID);
+            pay = ServerApi.getAppAPI().getFlowerIndent(playType.getType(), uid, money, authcode, AppConstant.CHANNEL_ID);
         }
         if (pay != null) {
-            ObservableUtils.parser(pay, new ObservableUtils.Callback<PayBean>() {
-                @Override
-                public void onSuccess(PayBean bean) {
-                    if (StringUtis.equals(bean.getCode(), AppConstant.code_request_success) && bean.getData() != null) {
-                        PayBean.DataBean data = bean.getData();
-                        startAliPlayApp(data, playType, listener);
-                    } else {
-                        listener.onFailure(bean.getMsg());
-                    }
-                }
+            pay.observeOn(AndroidSchedulers.mainThread())
+                    .subscribeOn(Schedulers.io())
+                    .subscribe(new Subscriber<PayBean>() {
+                        @Override
+                        public void onCompleted() {
 
-                @Override
-                public void onFailure(String msg) {
-                    listener.onFailure(msg);
-                }
-            });
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                            listener.onFailure(UIUtils.getStringRes(R.string.network_error));
+                        }
+
+                        @Override
+                        public void onNext(PayBean payBean) {
+
+                            if (payBean == null) {
+                                listener.onFailure(UIUtils.getStringRes(R.string.request_failed));
+                                return;
+                            }
+                            if (StringUtis.equals("1000", payBean.getCode())) {
+                                listener.onFailure(UIUtils.getStringRes(R.string.code_timeout));
+                                RxBus.getInstance().send(Events.EventEnum.LOGIN_CODE_TIMEOUT, null);
+                                return;
+                            }
+                            if (!StringUtis.equals(AppConstant.code_request_success, payBean.getCode())) {
+                                listener.onFailure(payBean.getMsg());
+                                return;
+                            }
+                            if (StringUtis.equals(payBean.getCode(), AppConstant.code_request_success) && payBean.getData() != null) {
+                                PayBean.DataBean data = payBean.getData();
+                                startAliPlayApp(data, playType, listener);
+                            } else {
+                                listener.onFailure(payBean.getMsg());
+                            }
+
+
+                        }
+                    });
+
+
+//            ObservableUtils.parser(pay, new ObservableUtils.Callback<PayBean>() {
+//                @Override
+//                public void onSuccess(PayBean bean) {
+//                    if (StringUtis.equals(bean.getCode(), AppConstant.code_request_success) && bean.getData() != null) {
+//                        PayBean.DataBean data = bean.getData();
+//                        startAliPlayApp(data, playType, listener);
+//                    } else {
+//                        listener.onFailure(bean.getMsg());
+//                    }
+//                }
+//
+//                @Override
+//                public void onFailure(String msg) {
+//                    listener.onFailure(msg);
+//                }
+//            });
 
         }
 
@@ -59,10 +106,11 @@ public class RedpacketAcitivityModelImpl implements RedpacketAcitivityModel {
 
                 try {
                     if (playType == PayType.ALIPAY) {
-                        String play = AliyunManager.getInstance().play(data.getAlicode());
+                        String play = AliPayManager.getInstance().play(ConfigUtils.getInstance().getActivityContext(), data.getAlicode());
                         subscriber.onNext(play);
-                    }else if (playType==PayType.WXPAY){
-                        WeixinManager.getInstance().pay(data);
+                    } else if (playType == PayType.WXPAY) {
+                        WeixinManager.getInstance(ConfigUtils.getInstance().getApplicationContext(), WXPayEntryActivity.APP_ID).pay(data);
+                        listener.onSuccess(null, DataType.DATA_ONE);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -80,7 +128,7 @@ public class RedpacketAcitivityModelImpl implements RedpacketAcitivityModel {
 
                     @Override
                     public void onError(Throwable e) {
-                        listener.onFailure(e.getMessage());
+                        UIUtils.getStringRes(R.string.network_error);
                     }
 
                     @Override

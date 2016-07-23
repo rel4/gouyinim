@@ -52,28 +52,26 @@ public class PayDynamicRedPackketPersenterImpl implements PayDynamicRedPackketPe
 
     @Override
     public void onSuccess(PayRedPacketPicsBean bean, BaseIModel.DataType dataType) {
-//        if (code != null) {
-//            if (StringUtis.equals(code, "9000"))
-//                view.transfePageMsg(UIUtils.getStringRes(R.string.pay_success));
-//            else if (StringUtis.equals(code, "8000"))
-//                view.transfePageMsg(UIUtils.getStringRes(R.string.pay_affirm));
-//            else
-//                view.transfePageMsg(UIUtils.getStringRes(R.string.pay_failure));
-//        }
-        if (bean == null) {
-            view.transfePageMsg(UIUtils.getStringRes(R.string.request_failed));
-        } else {
-            if (StringUtis.equals(AppConstant.code_request_success, bean.getCode())) {
-                Events<PayRedPacketPicsBean> events = new Events<PayRedPacketPicsBean>();
-                events.what = Events.EventEnum.PAY_SUCCESS_GET_DATA;
-                events.message = bean;
-                RxBus.getInstance().send(events);
-                view.finishPage();
-            }
-            view.transfePageMsg(bean.getMsg());
 
+        switch (dataType) {
+            case DATA_ZERO:
+                if (bean == null) {
+                    view.transfePageMsg(UIUtils.getStringRes(R.string.request_failed));
+                } else {
+                    if (StringUtis.equals(AppConstant.code_request_success, bean.getCode())) {
+                        Events<PayRedPacketPicsBean> events = new Events<PayRedPacketPicsBean>();
+                        events.what = Events.EventEnum.PAY_SUCCESS_GET_DATA;
+                        events.message = bean;
+                        RxBus.getInstance().send(events);
+                        view.finishPage();
+                    }
+                    view.transfePageMsg(bean.getMsg());
+
+                }
+                break;
+            case DATA_ONE:
+                break;
         }
-
         view.hideLoading();
     }
 

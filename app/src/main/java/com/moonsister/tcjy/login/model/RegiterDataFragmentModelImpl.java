@@ -25,10 +25,8 @@ public class RegiterDataFragmentModelImpl implements RegiterDataFragmentModel {
 
     @Override
     public void login(String face, String sex, String pwd, String authcode, onLoadDateSingleListener listener) {
-//
-
-        Observable<BaseBean> observable = ServerApi.getAppAPI().regiterLogin(face, sex, MD5Util.string2MD5(pwd), AppConstant.CHANNEL_ID, authcode);
-        ObservableUtils.parser(observable, new ObservableUtils.Callback() {
+        Observable<BaseBean> observable = ServerApi.getAppAPI().regiterLogin(face == null ? "" : face, sex, MD5Util.string2MD5(pwd), AppConstant.CHANNEL_ID, authcode);
+        ObservableUtils.parser(observable, new ObservableUtils.Callback<BaseBean>() {
             @Override
             public void onSuccess(BaseBean bean) {
                 listener.onSuccess(bean, DataType.DATA_ZERO);
@@ -40,7 +38,6 @@ public class RegiterDataFragmentModelImpl implements RegiterDataFragmentModel {
             }
         });
     }
-
 
 
     @Override

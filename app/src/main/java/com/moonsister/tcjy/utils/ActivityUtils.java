@@ -25,6 +25,7 @@ import com.moonsister.tcjy.main.widget.PayAppointmentOrderActivity;
 import com.moonsister.tcjy.main.widget.PersonInfoChangeActivity;
 import com.moonsister.tcjy.main.widget.RedpacketAcitivity;
 import com.moonsister.tcjy.main.widget.DynamicActivity;
+import com.moonsister.tcjy.main.widget.RelationActivity;
 import com.moonsister.tcjy.main.widget.UserinfoActivity;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.my.widget.AddCardActivity;
@@ -467,6 +468,30 @@ public class ActivityUtils {
     public static void startBirthdayActivity(String s) {
         Intent intent = new Intent(getContext(), BirthdayActivity.class);
         intent.putExtra("editdata", s);
+        startActivity(intent);
+    }
+
+    /**
+     * 关注点击列表
+     *
+     * @param uid
+     */
+    public static void startWacthRelationActivity(String uid) {
+        Intent intent = new Intent(getContext(), RelationActivity.class);
+        intent.putExtra("type", RelationActivity.WACTH_PAGE);
+        intent.putExtra("uid", uid);
+        startActivity(intent);
+    }
+
+    /**
+     * 粉丝点击列表
+     *
+     * @param uid
+     */
+    public static void startFenRelationActivity(String uid) {
+        Intent intent = new Intent(getContext(), RelationActivity.class);
+        intent.putExtra("type", RelationActivity.FANS_PAGE);
+        intent.putExtra("uid", uid);
         startActivity(intent);
     }
 }

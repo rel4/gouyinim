@@ -1,16 +1,20 @@
 package com.moonsister.tcjy.center.model;
 
+import com.moonsister.pay.aliyun.AliPayManager;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.ServerApi;
-import com.moonsister.tcjy.bean.PayBean;
+import com.moonsister.pay.tencent.PayBean;
 import com.moonsister.tcjy.bean.PayRedPacketPicsBean;
+import com.moonsister.tcjy.event.Events;
+import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.manager.UserInfoManager;
-import com.moonsister.tcjy.manager.WeixinManager;
-import com.moonsister.tcjy.manager.aliyun.AliyunManager;
+import com.moonsister.pay.tencent.WeixinManager;
+import com.moonsister.tcjy.utils.ConfigUtils;
 import com.moonsister.tcjy.utils.ObservableUtils;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
+import com.moonsister.tcjy.wxapi.WXPayEntryActivity;
 
 import rx.Observable;
 import rx.Subscriber;
@@ -23,33 +27,87 @@ import rx.schedulers.Schedulers;
 public class PayDynamicRedPacketModelImpl implements PayDynamicRedPacketModel {
     @Override
     public void pay(String id, PayType type, onLoadDateSingleListener listener) {
-        Observable<PayBean> observable = ServerApi.getAppAPI().redPacketPay(id, type.getType(), UserInfoManager.getInstance().getAuthcode(),AppConstant.CHANNEL_ID);
-        ObservableUtils.parser(observable, new ObservableUtils.Callback<PayBean>() {
-            @Override
-            public void onSuccess(PayBean bean) {
-                if (bean.getData() == null) {
-                    listener.onFailure(bean.getMsg());
-                    return;
-                }
-                if (StringUtis.equals(bean.getCode(), AppConstant.code_request_success)) {
-                    if (type == PayType.ALIPAY) {
-                        startPlayApp(id, bean.getData().getAlicode(), listener);
-                    } else if (type == PayType.WXPAY) {
-                        WeixinManager.getInstance().pay(bean.getData());
-                    } else {
-                        listener.onFailure(bean.getMsg());
+        Observable<PayBean> observable = ServerApi.getAppAPI().redPacketPay(id, type.getType(), UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
+
+        observable.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<PayBean>() {
+                    @Override
+                    public void onCompleted() {
+
                     }
-                } else {
-                    listener.onFailure(bean.getMsg());
-                }
 
-            }
+                    @Override
+                    public void onError(Throwable e) {
+                        listener.onFailure(UIUtils.getStringRes(R.string.network_error));
+                    }
 
-            @Override
-            public void onFailure(String msg) {
-                listener.onFailure(msg);
-            }
-        });
+                    @Override
+                    public void onNext(PayBean payBean) {
+
+                        if (payBean == null) {
+                            listener.onFailure(UIUtils.getStringRes(R.string.request_failed));
+                            return;
+                        }
+                        if (StringUtis.equals("1000", payBean.getCode())) {
+                            listener.onFailure(UIUtils.getStringRes(R.string.code_timeout));
+                            RxBus.getInstance().send(Events.EventEnum.LOGIN_CODE_TIMEOUT, null);
+                            return;
+                        }
+                        if (!StringUtis.equals(AppConstant.code_request_success, payBean.getCode())) {
+                            listener.onFailure(payBean.getMsg());
+                            return;
+                        }
+
+
+                        if (payBean.getData() == null) {
+                            listener.onFailure(payBean.getMsg());
+                            return;
+                        }
+                        if (StringUtis.equals(payBean.getCode(), AppConstant.code_request_success)) {
+                            if (type == PayType.ALIPAY) {
+                                startPlayApp(id, payBean.getData().getAlicode(), listener);
+                            } else if (type == PayType.WXPAY) {
+                                WeixinManager.getInstance(ConfigUtils.getInstance().getApplicationContext(), WXPayEntryActivity.APP_ID).pay(payBean.getData());
+                                listener.onSuccess(null, DataType.DATA_ONE);
+                            } else {
+                                listener.onFailure(payBean.getMsg());
+                            }
+                        } else {
+                            listener.onFailure(payBean.getMsg());
+                        }
+
+
+                    }
+                });
+
+
+//        ObservableUtils.parser(observable, new ObservableUtils.Callback<PayBean>() {
+//            @Override
+//            public void onSuccess(PayBean bean) {
+//                if (bean.getData() == null) {
+//                    listener.onFailure(bean.getMsg());
+//                    return;
+//                }
+//                if (StringUtis.equals(bean.getCode(), AppConstant.code_request_success)) {
+//                    if (type == PayType.ALIPAY) {
+//                        startPlayApp(id, bean.getData().getAlicode(), listener);
+//                    } else if (type == PayType.WXPAY) {
+//                        WeixinManager.getInstance(ConfigUtils.getInstance().getApplicationContext(), WXPayEntryActivity.APP_ID).pay(bean.getData());
+//                    } else {
+//                        listener.onFailure(bean.getMsg());
+//                    }
+//                } else {
+//                    listener.onFailure(bean.getMsg());
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onFailure(String msg) {
+//                listener.onFailure(msg);
+//            }
+//        });
     }
 
     private void startPlayApp(String id, String res, onLoadDateSingleListener listener) {
@@ -58,7 +116,7 @@ public class PayDynamicRedPacketModelImpl implements PayDynamicRedPacketModel {
             public void call(Subscriber<? super String> subscriber) {
 
                 try {
-                    String play = AliyunManager.getInstance().play(res);
+                    String play = AliPayManager.getInstance().play(ConfigUtils.getInstance().getActivityContext(), res);
                     subscriber.onNext(play);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -96,7 +154,7 @@ public class PayDynamicRedPacketModelImpl implements PayDynamicRedPacketModel {
     }
 
     private void getPayDynamicPic(String id, onLoadDateSingleListener listener) {
-        Observable<PayRedPacketPicsBean> observable = ServerApi.getAppAPI().getPayDynamicPic(id, UserInfoManager.getInstance().getAuthcode(),AppConstant.CHANNEL_ID);
+        Observable<PayRedPacketPicsBean> observable = ServerApi.getAppAPI().getPayDynamicPic(id, UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
         ObservableUtils.parser(observable, new ObservableUtils.Callback<PayRedPacketPicsBean>() {
             @Override
             public void onSuccess(PayRedPacketPicsBean bean) {

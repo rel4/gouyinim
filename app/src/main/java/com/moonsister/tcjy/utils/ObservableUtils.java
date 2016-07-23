@@ -60,7 +60,7 @@ public class ObservableUtils {
 
     }
 
-    public interface Callback<T extends BaseBean> {
+    public interface Callback<T> {
         /**
          * 加载成功
          *

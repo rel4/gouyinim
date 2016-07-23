@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/IMKit/IMKit.iml" filepath="$PROJECT_DIR$/IMKit/IMKit.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/gouyinim.iml" filepath="$PROJECT_DIR$/gouyinim.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pay/pay.iml" filepath="$PROJECT_DIR$/pay/pay.iml" />
       <module fileurl="file://$PROJECT_DIR$/progressdialog/progressdialog.iml" filepath="$PROJECT_DIR$/progressdialog/progressdialog.iml" />
     </modules>
   </component>

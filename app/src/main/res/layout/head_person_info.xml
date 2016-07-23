@@ -68,13 +68,16 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/y90"
         android:layout_below="@+id/iv_user_icon"
+        android:layout_marginBottom="@dimen/x10"
         android:layout_marginTop="@dimen/x20"
         android:orientation="horizontal">
 
         <RelativeLayout
+            android:id="@+id/layout_fen"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:gravity="center">
 
             <TextView
                 android:id="@+id/tv_fen_number"
@@ -93,19 +96,23 @@
                 android:textColor="@color/gray_color"
                 android:textSize="12sp" />
 
-            <ImageView
-                android:layout_width="@dimen/x1"
-                android:layout_height="match_parent"
-                android:layout_alignParentRight="true"
-                android:layout_marginBottom="@dimen/x15"
-                android:layout_marginTop="@dimen/x15"
-                android:background="@color/gray_color" />
+
         </RelativeLayout>
 
+        <ImageView
+            android:layout_width="@dimen/x1"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/x15"
+            android:layout_marginTop="@dimen/x15"
+            android:background="@color/gray_color" />
+
         <RelativeLayout
+            android:id="@+id/layout_wacth"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:gravity="center">
 
             <TextView
                 android:id="@+id/tv_wacth_number"
@@ -126,14 +133,15 @@
                 android:textSize="12sp" />
 
 
-            <ImageView
-                android:layout_width="@dimen/x1"
-                android:layout_height="match_parent"
-                android:layout_alignParentRight="true"
-                android:layout_marginBottom="@dimen/x15"
-                android:layout_marginTop="@dimen/x15"
-                android:background="@color/gray_color" />
         </RelativeLayout>
+
+        <ImageView
+            android:layout_width="@dimen/x1"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/x15"
+            android:layout_marginTop="@dimen/x15"
+            android:background="@color/gray_color" />
 
         <RelativeLayout
             android:layout_width="0dp"
@@ -160,14 +168,15 @@
                 android:textSize="12sp" />
 
 
-            <ImageView
-                android:layout_width="@dimen/x1"
-                android:layout_height="match_parent"
-                android:layout_alignParentRight="true"
-                android:layout_marginBottom="@dimen/x15"
-                android:layout_marginTop="@dimen/x15"
-                android:background="@color/gray_color" />
         </RelativeLayout>
+
+        <ImageView
+            android:layout_width="@dimen/x1"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/x15"
+            android:layout_marginTop="@dimen/x15"
+            android:background="@color/gray_color" />
 
         <RelativeLayout
             android:layout_width="0dp"
@@ -193,6 +202,7 @@
                 android:text="@string/flower"
                 android:textColor="@color/gray_color"
                 android:textSize="12sp" />
+
 
         </RelativeLayout>
     </LinearLayout>

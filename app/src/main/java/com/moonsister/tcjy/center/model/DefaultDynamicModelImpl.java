@@ -129,7 +129,7 @@ public class DefaultDynamicModelImpl implements DefaultDynamicModel {
         String authcode = UserInfoManager.getInstance().getAuthcode();
         Observable<BaseBean> baseBeanObservable = ServerApi.getAppAPI().sendAllDefaultDynamic(dynamicType.getValue(), content, json, address, authcode, AppConstant.CHANNEL_ID);
 
-        ObservableUtils.parser(baseBeanObservable, new ObservableUtils.Callback() {
+        ObservableUtils.parser(baseBeanObservable, new ObservableUtils.Callback<BaseBean>() {
             @Override
             public void onSuccess(BaseBean bean) {
                 listener.onSuccess(bean, DataType.DATA_ZERO);

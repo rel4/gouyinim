@@ -65,22 +65,28 @@ public class RedpacketAcitivityPresenterImpl implements RedpacketAcitivityPresen
 
     @Override
     public void onSuccess(String o, BaseIModel.DataType dataType) {
+        switch (dataType) {
+            case DATA_ZERO:
+                if (StringUtis.equals("9000", o)) {
+                    Events<String> events = new Events<String>();
+                    events.what = Events.EventEnum.CHAT_SEND_REDPACKET_SUCCESS;
+                    events.message = moneyNumber;
+                    RxBus.getInstance().send(events);
+                    view.transfePageMsg(UIUtils.getStringRes(R.string.pay_success));
+                    UIUtils.sendDelayedOneMillis(new Runnable() {
+                        @Override
+                        public void run() {
+                            view.pageFinish();
+                        }
+                    });
+                } else if (StringUtis.equals("8000", o))
+                    view.transfePageMsg(UIUtils.getStringRes(R.string.pay_affirm));
+                else view.transfePageMsg(UIUtils.getStringRes(R.string.pay_failure));
+                break;
+            case DATA_ONE:
+                break;
+        }
         view.hideLoading();
-        if (StringUtis.equals("9000", o)) {
-            Events<String> events = new Events<String>();
-            events.what = Events.EventEnum.CHAT_SEND_REDPACKET_SUCCESS;
-            events.message = moneyNumber;
-            RxBus.getInstance().send(events);
-            view.transfePageMsg(UIUtils.getStringRes(R.string.pay_success));
-            UIUtils.sendDelayedOneMillis(new Runnable() {
-                @Override
-                public void run() {
-                    view.pageFinish();
-                }
-            });
-        } else if (StringUtis.equals("8000", o))
-            view.transfePageMsg(UIUtils.getStringRes(R.string.pay_affirm));
-        else view.transfePageMsg(UIUtils.getStringRes(R.string.pay_failure));
 
 
     }

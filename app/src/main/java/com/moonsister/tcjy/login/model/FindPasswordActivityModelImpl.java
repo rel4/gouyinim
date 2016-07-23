@@ -15,7 +15,7 @@ public class FindPasswordActivityModelImpl implements FindPasswordActivityModel 
     @Override
     public void getSecurityCode(String phoneNumber, onLoadDateSingleListener listener) {
         Observable<BaseBean> observable = ServerApi.getAppAPI().getSecurityCode(phoneNumber, AppConstant.CHANNEL_ID);
-        ObservableUtils.parser(observable, new ObservableUtils.Callback() {
+        ObservableUtils.parser(observable, new ObservableUtils.Callback<BaseBean>() {
             @Override
             public void onSuccess(BaseBean bean) {
                 listener.onSuccess(bean, DataType.DATA_ZERO);
