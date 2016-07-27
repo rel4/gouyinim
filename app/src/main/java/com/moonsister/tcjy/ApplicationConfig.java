@@ -3,6 +3,7 @@ package com.moonsister.tcjy;
 import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
+import android.support.multidex.MultiDexApplication;
 
 import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.utils.ConfigUtils;
@@ -14,19 +15,19 @@ import io.rong.imkit.RongyunConfig;
 /**
  * Created by pc on 2016/6/3.
  */
-public class ApplicationConfig extends Application {
-    AppComponent appComponent;
+public class ApplicationConfig extends MultiDexApplication {
+//    AppComponent appComponent;
     private ArrayList<BaseActivity> activities = new ArrayList<BaseActivity>();
 
     @Override
     public void onCreate() {
         super.onCreate();
         ConfigUtils.getInstance().setApplicationContext(this);
-        appComponent = DaggerAppComponent.builder()
-                .appModule(new AppModule(this))
-                .serverApiModule(new ServerApiModule(new ServerApi()))
-                .build();
-//
+//        appComponent = DaggerAppComponent.builder()
+//                .appModule(new AppModule(this))
+//                .serverApiModule(new ServerApiModule(new ServerApi()))
+//                .build();
+////
         initRongYun();
     }
 
@@ -47,10 +48,10 @@ public class ApplicationConfig extends Application {
 
     }
 
-    public AppComponent getAppComponent() {
-
-        return appComponent;
-    }
+//    public AppComponent getAppComponent() {
+//
+//        return appComponent;
+//    }
 
     /**
      * 获得当前进程的名字

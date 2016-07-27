@@ -36,7 +36,7 @@ public class AliPayManager {
         PayTask alipay = new PayTask(activity);
         // 调用支付接口，获取支付结果
         String result = alipay.pay(playInfo, true);
-        PayResult payResult = new PayResult((String) result);
+        PayResult payResult = new PayResult((String)result);
         /**
          * 同步返回的结果必须放置到服务端进行验证（验证的规则请看https://doc.open.alipay.com/doc2/
          * detail.htm?spm=0.0.0.0.xdvAU6&treeId=59&articleId=103665&

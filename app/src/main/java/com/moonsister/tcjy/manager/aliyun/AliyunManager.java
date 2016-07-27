@@ -1,6 +1,6 @@
 package com.moonsister.tcjy.manager.aliyun;
 
-import android.text.TextUtils;
+
 import android.util.Log;
 
 import com.alibaba.sdk.android.oss.ClientConfiguration;
@@ -13,7 +13,7 @@ import com.alibaba.sdk.android.oss.common.auth.OSSCredentialProvider;
 import com.alibaba.sdk.android.oss.common.auth.OSSPlainTextAKSKCredentialProvider;
 import com.alibaba.sdk.android.oss.model.PutObjectRequest;
 import com.alibaba.sdk.android.oss.model.PutObjectResult;
-import com.alipay.sdk.app.PayTask;
+
 import com.moonsister.tcjy.utils.ConfigUtils;
 import com.moonsister.tcjy.utils.FilePathUtlis;
 import com.moonsister.tcjy.utils.LogUtils;

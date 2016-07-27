@@ -51,16 +51,18 @@ public class RedpacketAcitivityPresenterImpl implements RedpacketAcitivityPresen
     public void aliPay(int type, String uid, String money) {
         view.showLoading();
         moneyNumber = money;
-        payType = RedpacketAcitivityModel.PayType.ALIPAY;
-        model.aliPay(type, payType, uid, money, this);
+//        payType = RedpacketAcitivityModel.PayType.ALI_PAY;
+        payType = RedpacketAcitivityModel.PayType.IAPP_PAY;
+        model.pay(type, payType, uid, money, this);
     }
 
     @Override
     public void weixinPay(int type, String uid, String money) {
         view.showLoading();
         moneyNumber = money;
-        payType = RedpacketAcitivityModel.PayType.WXPAY;
-        model.aliPay(type, payType, uid, money, this);
+//        payType = RedpacketAcitivityModel.PayType.WX_PAY;
+        payType = RedpacketAcitivityModel.PayType.IAPP_PAY;
+        model.pay(type, payType, uid, money, this);
     }
 
     @Override
@@ -82,11 +84,17 @@ public class RedpacketAcitivityPresenterImpl implements RedpacketAcitivityPresen
                 } else if (StringUtis.equals("8000", o))
                     view.transfePageMsg(UIUtils.getStringRes(R.string.pay_affirm));
                 else view.transfePageMsg(UIUtils.getStringRes(R.string.pay_failure));
+                view.hideLoading();
                 break;
             case DATA_ONE:
+                UIUtils.sendDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        view.hideLoading();
+                    }
+                }, 5000);
                 break;
         }
-        view.hideLoading();
 
 
     }

@@ -744,12 +744,12 @@
         "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_origin_check_sel.png"
     },
     {
-        "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi-v4\\u1f609.png",
-        "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f609.png"
-    },
-    {
         "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi-v4\\u1f47b.png",
         "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f47b.png"
+    },
+    {
+        "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi-v4\\u1f609.png",
+        "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f609.png"
     },
     {
         "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi-v4\\u1f389.png",

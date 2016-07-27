@@ -204,12 +204,12 @@
         "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_picsel_back_normal.png"
     },
     {
-        "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\select_check_nor.png",
-        "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\select_check_nor.png"
-    },
-    {
         "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f366.png",
         "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f366.png"
+    },
+    {
+        "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\select_check_nor.png",
+        "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\select_check_nor.png"
     },
     {
         "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f6ab.png",
@@ -252,16 +252,16 @@
         "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f4a2.png"
     },
     {
+        "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f622.png",
+        "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f622.png"
+    },
+    {
         "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f60c.png",
         "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f60c.png"
     },
     {
         "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_picsel_catalog_pic_shadow.png",
         "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_picsel_catalog_pic_shadow.png"
-    },
-    {
-        "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f622.png",
-        "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f622.png"
     },
     {
         "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_emoji_block.png",
@@ -740,12 +740,12 @@
         "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_volume_cancel.png"
     },
     {
-        "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_origin_check_sel.png",
-        "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_origin_check_sel.png"
-    },
-    {
         "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_text_selected.png",
         "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_text_selected.png"
+    },
+    {
+        "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_origin_check_sel.png",
+        "source": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_origin_check_sel.png"
     },
     {
         "merged": "G:\\Android\\androidStudio\\gouyinim\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f649.png",

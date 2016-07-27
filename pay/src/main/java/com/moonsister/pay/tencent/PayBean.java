@@ -45,6 +45,7 @@ public class PayBean {
     }
 
     public static class DataBean {
+        //支付宝
         private String alicode;
         private String appid;
         private String noncestr;
@@ -54,6 +55,16 @@ public class PayBean {
         private String prepayid;
         private String timestamp;
         private String sign;
+        //爱贝
+        private String abcode;
+
+        public String getAbcode() {
+            return abcode;
+        }
+
+        public void setAbcode(String abcode) {
+            this.abcode = abcode;
+        }
 
         public String getAlicode() {
             return alicode;

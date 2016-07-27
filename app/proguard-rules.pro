@@ -80,6 +80,8 @@
 -keep class com.moonsister.tcjy.bean.** { *; }
 -keep class com.moonsister.tcjy.progressdialog.**{*;}
 -dontwarn com.moonsister.tcjy.progressdialog.**
+-keep class  com.moonsister.pay.** { *; }
+-dontwarn com.moonsister.pay.**
 -keep public class com.moonsister.tcjy.R$*{
 public static final int *;
 }

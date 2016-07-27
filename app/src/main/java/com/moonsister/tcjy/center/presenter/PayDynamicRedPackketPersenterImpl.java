@@ -68,11 +68,18 @@ public class PayDynamicRedPackketPersenterImpl implements PayDynamicRedPackketPe
                     view.transfePageMsg(bean.getMsg());
 
                 }
+                view.hideLoading();
                 break;
             case DATA_ONE:
+                UIUtils.sendDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        view.hideLoading();
+                    }
+                },5000);
                 break;
         }
-        view.hideLoading();
+
     }
 
     @Override

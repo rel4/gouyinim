@@ -1,5 +1,6 @@
 package com.moonsister.tcjy.main.model;
 
+import com.moonsister.pay.aibeipay.AiBeiPayManager;
 import com.moonsister.pay.aliyun.AliPayManager;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
@@ -27,7 +28,7 @@ public class RedpacketAcitivityModelImpl implements RedpacketAcitivityModel {
 
 
     @Override
-    public void aliPay(int type, PayType playType, String uid, String money, onLoadDateSingleListener listener) {
+    public void pay(int type, PayType playType, String uid, String money, onLoadDateSingleListener listener) {
         String authcode = UserInfoManager.getInstance().getAuthcode();
         Observable<PayBean> pay = null;
         if (type == 1) {
@@ -105,12 +106,25 @@ public class RedpacketAcitivityModelImpl implements RedpacketAcitivityModel {
             public void call(Subscriber<? super String> subscriber) {
 
                 try {
-                    if (playType == PayType.ALIPAY) {
+                    if (playType == PayType.ALI_PAY) {
                         String play = AliPayManager.getInstance().play(ConfigUtils.getInstance().getActivityContext(), data.getAlicode());
                         subscriber.onNext(play);
-                    } else if (playType == PayType.WXPAY) {
+                    } else if (playType == PayType.WX_PAY) {
                         WeixinManager.getInstance(ConfigUtils.getInstance().getApplicationContext(), WXPayEntryActivity.APP_ID).pay(data);
                         listener.onSuccess(null, DataType.DATA_ONE);
+                    } else if (playType == PayType.IAPP_PAY) {
+                        UIUtils.onRunMainThred(new Runnable() {
+                            @Override
+                            public void run() {
+                                AiBeiPayManager.getInstance().pay(ConfigUtils.getInstance().getActivityContext(), data.getAbcode(), new AiBeiPayManager.AiBeiResultCallback() {
+                                    @Override
+                                    public void onPayResult(int resultCode, String signvalue, String resultInfo) {
+//                                        if ()
+                                    }
+                                });
+                            }
+                        });
+
                     }
                 } catch (Exception e) {
                     e.printStackTrace();

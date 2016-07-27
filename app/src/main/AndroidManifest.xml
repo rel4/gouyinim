@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.moonsister.tcjy">
 
-
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -17,31 +16,30 @@
     <uses-permission android:name="android.permission.BROADCAST_STICKY" />
     <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
-    <!--获取运营商信息，用于支持提供运营商信息相关的接口-->
+    <!-- 获取运营商信息，用于支持提供运营商信息相关的接口 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-    <!--用于访问wifi网络信息，wifi信息会用于进行网络定位-->
+    <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位 -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <!--这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位-->
+    <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
-
 
     <!-- 不是SDK需要的权限，是示例中的后台唤醒定位需要的权限 -->
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <!-- 需要运行时注册的权限 -->
-    <!--用于进行网络定位-->
+    <!-- 用于进行网络定位 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <!--用于访问GPS定位-->
+    <!-- 用于访问GPS定位 -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
-    <!--写入扩展存储，向扩展卡写入数据，用于写入缓存定位数据-->
+    <!-- 写入扩展存储，向扩展卡写入数据，用于写入缓存定位数据 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <!--读取缓存数据-->
+    <!-- 读取缓存数据 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
-    <!--用于读取手机当前的状态-->
+    <!-- 用于读取手机当前的状态 -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <!-- 更改设置 -->
@@ -50,27 +48,64 @@
     <permission
         android:name="io.rong.app.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
+
     <uses-permission android:name="io.rong.app.permission.C2D_MESSAGE" />
     <!-- GCM 配置结束 < -->
+
 
     <!-- 小米 配置开始 < -->
     <permission
         android:name="io.rong.app.permission.MIPUSH_RECEIVE"
         android:protectionLevel="signature" />
+
     <uses-permission android:name="io.rong.app.permission.MIPUSH_RECEIVE" />
     <!-- 小米 配置结束 < -->
 
 
+    <!-- 爱贝 -->
+    <!-- 银联3.3.3添加权限 -->
+    <uses-permission android:name="android.permission.NFC" />
+
+    <uses-feature android:name="android.hardware.nfc.hce" />
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="org.simalliance.openmobileapi.SMARTCARD" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <!-- 定位 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <!-- sms pay 短信代扣权限 -->
+    <uses-permission android:name="android.permission.SEND_SMS" />
+
+    <!-- bank 卡支付 -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.GET_PACKAGE_SIZE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.WRITE_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+
+    <!-- 爱贝 -->
     <application
-        android:name="com.moonsister.tcjy.ApplicationConfig"
+        android:name=".ApplicationConfig"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
         <activity
-            android:name="com.moonsister.tcjy.main.widget.MainActivity"
+            android:name=".main.widget.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -79,162 +114,327 @@
             </intent-filter>
         </activity>
 
-        <!--友盟 start-->
-        <!-- <meta-data
+        <!-- 友盟 start -->
+        <!--
+             <meta-data
              android:name="UMENG_APPKEY"
-             android:value="57874f22e0f55a71d7000570" />-->
+             android:value="57874f22e0f55a71d7000570" />
+        -->
         <meta-data
             android:name="UMENG_APPKEY"
             android:value="5788bb3467e58e039300172f" />
         <meta-data
             android:name="UMENG_CHANNEL"
             android:value="1001" />
-        <!--友盟  end-->
-        <!--高德 start-->
+        <!-- 友盟  end -->
+        <!-- 高德 start -->
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="7abe9e8b05c8761115a05e52b8a1356d" />
         <!-- 定位需要的服务 -->
-        <service android:name="com.amap.api.location.APSService"></service>
-        <!--高德 end-->
+        <service android:name="com.amap.api.location.APSService" />
+        <!-- 高德 end -->
 
         <activity
-            android:name="com.moonsister.tcjy.main.widget.DynamicActivity"
-            android:screenOrientation="portrait"></activity>
-        <activity
-            android:name="com.moonsister.tcjy.main.widget.DynamicDatailsActivity"
+            android:name=".main.widget.DynamicActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.moonsister.tcjy.login.widget.LoginMainActivity"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="com.moonsister.tcjy.center.widget.DynamicSendActivity"
+            android:name=".main.widget.DynamicDatailsActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.moonsister.tcjy.widget.image.PhonePicActivity"
+            android:name=".login.widget.LoginMainActivity"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.moonsister.tcjy.widget.image.ShowImageActivity"
+            android:name=".center.widget.DynamicSendActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.moonsister.tcjy.center.widget.DefaultDynamicSendActivity"
+            android:name=".widget.image.PhonePicActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.moonsister.tcjy.login.widget.SelectPicPopupActivity"
+            android:name=".widget.image.ShowImageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".center.widget.DefaultDynamicSendActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".login.widget.SelectPicPopupActivity"
             android:screenOrientation="portrait"
             android:theme="@style/MyDialogStyleBottom" />
         <activity
-            android:name="com.moonsister.tcjy.main.widget.RedpacketAcitivity"
+            android:name=".main.widget.RedpacketAcitivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.moonsister.tcjy.my.widget.MyOrderActivity"
+            android:name=".my.widget.MyOrderActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.moonsister.tcjy.my.widget.CertificationActivity"
+            android:name=".my.widget.CertificationActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.moonsister.tcjy.my.widget.RZFirstActivity"
+            android:name=".my.widget.RZFirstActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.moonsister.tcjy.my.widget.RZSecondActivity"
+            android:name=".my.widget.RZSecondActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.moonsister.tcjy.my.widget.RZThidActivity"
+            android:name=".my.widget.RZThidActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.moonsister.tcjy.my.widget.AppointmentActivity"
+            android:name=".my.widget.AppointmentActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.moonsister.tcjy.my.widget.RefundActivity"
+            android:name=".my.widget.RefundActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.moonsister.tcjy.my.widget.ChangepwdActivity"
+            android:name=".my.widget.ChangepwdActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.moonsister.tcjy.my.widget.SettingActivity"
+            android:name=".my.widget.SettingActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.moonsister.tcjy.my.widget.WithdRawDepositActivity"
+            android:name=".my.widget.WithdRawDepositActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.moonsister.tcjy.my.widget.GetMoneyActivity"
+            android:name=".my.widget.GetMoneyActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.moonsister.tcjy.center.widget.RedpacketDynaimcActivity"
+            android:name=".center.widget.RedpacketDynaimcActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.moonsister.tcjy.center.widget.PayDynamicRedPackketActivity"
+            android:name=".center.widget.PayDynamicRedPackketActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
-            android:name="com.moonsister.tcjy.widget.image.photoview.ImagePagerActivity"
+            android:name=".widget.image.photoview.ImagePagerActivity"
             android:screenOrientation="portrait" />
-        <activity android:name="com.moonsister.tcjy.widget.takevideo.TakeVideoActivity" />
+        <activity android:name=".widget.takevideo.TakeVideoActivity" />
         <activity
-            android:name="com.moonsister.tcjy.main.widget.PersonInfoChangeActivity"
+            android:name=".main.widget.PersonInfoChangeActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.moonsister.tcjy.my.widget.info.SelectPlandWindowActivity"
+            android:name=".my.widget.info.SelectPlandWindowActivity"
             android:screenOrientation="portrait"
             android:theme="@style/MyDialogStyleBottom" />
         <activity
-            android:name="com.moonsister.tcjy.my.widget.info.SelectSexActivity"
+            android:name=".my.widget.info.SelectSexActivity"
             android:screenOrientation="portrait"
             android:theme="@style/MyDialogStyleBottom" />
         <activity
-            android:name="com.moonsister.tcjy.main.widget.PayAppointmentActivity"
+            android:name=".main.widget.PayAppointmentActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.moonsister.tcjy.main.widget.PayAppointmentOrderActivity"
+            android:name=".main.widget.PayAppointmentOrderActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.moonsister.tcjy.my.widget.TiXianRecordActivity"
+            android:name=".my.widget.TiXianRecordActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.moonsister.tcjy.my.widget.AddCardActivity"
+            android:name=".my.widget.AddCardActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.moonsister.tcjy.my.widget.SwitchCardActivity"
+            android:name=".my.widget.SwitchCardActivity"
             android:screenOrientation="portrait" />
-        <activity android:name="com.moonsister.tcjy.my.widget.BirthdayActivity" />
-        <!--微信支付  start-->
+        <activity android:name=".my.widget.BirthdayActivity" />
+        <!-- 微信支付  start -->
         <activity
-            android:name="com.moonsister.tcjy.wxapi.WXPayEntryActivity"
+            android:name=".wxapi.WXPayEntryActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
 
-        <receiver android:name="com.moonsister.tcjy.wxapi.AppRegister">
+        <receiver android:name=".wxapi.AppRegister">
             <intent-filter>
                 <action android:name="com.tencent.mm.plugin.openapi.Intent.ACTION_REFRESH_WXAPP" />
             </intent-filter>
         </receiver>
-        <!--微信支付  end-->
+        <!-- 微信支付  end -->
+
+
+        <!-- 爱贝支付  开始 -->
+
+
+        <!-- 显示网页界面 -->
         <activity
-            android:name="com.moonsister.tcjy.home.widget.SearchActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.moonsister.tcjy.home.widget.SearchReasonActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.moonsister.tcjy.my.widget.UserInfoChangeActivity"
-            android:screenOrientation="portrait" />
-        <activity android:name="com.moonsister.tcjy.main.widget.UserinfoActivity" />
-        <activity android:name="com.moonsister.tcjy.login.widget.FindPasswordActivity" />
-        <activity android:name="com.moonsister.tcjy.login.widget.FindPasswordNextActivity" />
-        <!--   图片裁剪-->
-        <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
-        <activity android:name="com.moonsister.tcjy.widget.image.CropImageMainActivity" />
-        <activity
-            android:name="com.moonsister.tcjy.main.widget.DynamicAtionActivity"
+            android:name="com.iapppay.account.channel.ipay.ui.WebActivity"
+            android:configChanges="screenSize|orientation|keyboard|navigation|layoutDirection"
+            android:launchMode="singleInstance"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <!--会话页面-->
+        <activity
+            android:name="com.iapppay.ui.activity.AccountCheckPasswordActivity"
+            android:configChanges="screenSize|orientation|keyboard|navigation|layoutDirection"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.iapppay.pay.channel.weixinpay.WeixinWapPayActivity"
+            android:configChanges="screenSize|orientation|keyboard|navigation|layoutDirection"
+            android:theme="@android:style/Theme.Translucent" />
+        <activity
+            android:name="com.iapppay.ui.activity.AccountModifyPasswordActivity"
+            android:configChanges="screenSize|orientation|keyboard|navigation|layoutDirection"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.iapppay.ui.activity.AccountSmallAmountPasswordActivity"
+            android:configChanges="screenSize|orientation|keyboard|navigation|layoutDirection"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.iapppay.ui.activity.AccountSmallAmountValueActivty"
+            android:configChanges="screenSize|orientation|keyboard|navigation|layoutDirection"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.iapppay.ui.activity.ServiceCenterActivity"
+            android:configChanges="screenSize|orientation|keyboard|navigation|layoutDirection"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.iapppay.ui.activity.AccountBindActivity"
+            android:configChanges="screenSize|orientation|keyboard|navigation|layoutDirection"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.iapppay.fastpay.ui.InputBankCarNoActivity"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.iapppay.fastpay.ui.InputBankCarMoreInfoActivity"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.iapppay.fastpay.ui.VerificationCodeActivity"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.iapppay.fastpay.ui.CommonWebActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <!-- 收银台-普通 -->
+        <activity
+            android:name="com.iapppay.ui.activity.normalpay.PayHubActivity"
+            android:configChanges="screenSize|orientation|keyboard|navigation|layoutDirection"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <!-- 收银台-爱贝快付 -->
+        <activity
+            android:name="com.iapppay.ui.activity.minipay.MiniPayHubActivity"
+            android:configChanges="screenSize|orientation|keyboard|navigation|layoutDirection"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Translucent" />
+        <!-- 收银台-爱贝币 -->
+        <activity
+            android:name="com.iapppay.ui.activity.iapppay.IAppPayHubActivity"
+            android:configChanges="screenSize|orientation|keyboard|navigation|layoutDirection"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Translucent" />
+
+        <!-- 选择充值金额界面 -->
+        <activity
+            android:name="com.iapppay.ui.activity.SelectAmountActivity"
+            android:configChanges="screenSize|orientation|keyboard|navigation|layoutDirection"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.iapppay.ui.activity.minipay.BankCardActivity"
+            android:configChanges="screenSize|orientation|keyboard|navigation|layoutDirection"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.iapppay.ui.activity.normalpay.ChargeActivity"
+            android:configChanges="screenSize|orientation|keyboard|navigation|layoutDirection"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!-- 游戏卡和话费卡界面 -->
+        <activity
+            android:name="com.iapppay.pay.channel.gamepay.GamepayActivity"
+            android:configChanges="screenSize|orientation|keyboard|navigation|layoutDirection"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!-- 支付结果返回 -->
+        <activity
+            android:name="com.iapppay.pay.channel.unionpay.UpPayResultActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@android:style/Theme.Translucent" />
+        <!-- 银联3.3.3start -->
+        <uses-library
+            android:name="org.simalliance.openmobileapi"
+            android:required="false" />
+
+        <activity
+            android:name="com.unionpay.uppay.PayActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:excludeFromRecents="true"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <!-- 银联3.3.3 end -->
+
+
+        <!-- alipay sdk begin (新的支付宝) -->
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name="com.alipay.sdk.auth.AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind" />
+        <!-- alipay sdk end -->
+
+
+        <!-- 财付通wap start -->
+        <activity
+            android:name="com.iapppay.pay.channel.tenpay.wap.TenpayWapPayActivity"
+            android:configChanges="screenSize|orientation|keyboard|navigation|layoutDirection"
+            android:theme="@android:style/Theme.Translucent" />
+        <activity
+            android:name="com.iapppay.pay.channel.tenpay.wap.WebActivity"
+            android:configChanges="screenSize|orientation|keyboard|navigation|layoutDirection"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!-- 财付通wap end -->
+
+
+        <!-- 爱贝支付  结束 -->
+
+
+        <!-- 登录界面 -->
+        <activity
+            android:name="com.iapppay.account.channel.ipay.ui.LoginActivity"
+            android:configChanges="screenSize|orientation|keyboard|navigation|layoutDirection"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!-- 注册界面 -->
+        <activity
+            android:name="com.iapppay.account.channel.ipay.ui.RegistActivity"
+            android:configChanges="screenSize|orientation|keyboard|navigation|layoutDirection"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!-- 注册界面 》设置登录支付密码 -->
+        <activity
+            android:name="com.iapppay.account.channel.ipay.ui.RegSetPwdActivity"
+            android:configChanges="screenSize|orientation|keyboard|navigation|layoutDirection"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!-- aibei end -->
+
+        <activity
+            android:name=".home.widget.SearchActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".home.widget.SearchReasonActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".my.widget.UserInfoChangeActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".main.widget.UserinfoActivity" />
+        <activity android:name=".login.widget.FindPasswordActivity" />
+        <activity android:name=".login.widget.FindPasswordNextActivity" />
+        <!-- 图片裁剪 -->
+        <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
+        <activity android:name=".widget.image.CropImageMainActivity" />
+        <activity
+            android:name=".main.widget.DynamicAtionActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!-- 会话页面 -->
         <activity android:name=".main.widget.RelationActivity" />
         <activity
-            android:name="com.moonsister.tcjy.im.widget.AppConversationActivity"
+            android:name=".im.widget.AppConversationActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize">
-
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -247,25 +447,31 @@
             </intent-filter>
         </activity>
 
-        <!--聚合会话列表-->
+        <!-- 聚合会话列表 -->
 
         <activity
-            android:name="com.moonsister.tcjy.im.widget.SubConversationListActivtiy"
+            android:name=".im.widget.SubConversationListActivtiy"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data
                     android:host="com.moonsister.tcjy"
                     android:pathPrefix="/subconversationlist"
                     android:scheme="rong" />
             </intent-filter>
-        </activity><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
-     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
+        </activity>
+        <!--
+ ATTENTION: This was auto-generated to add Google Play services to your project for
+     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
+        -->
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
     </application>
 
 </manifest>
