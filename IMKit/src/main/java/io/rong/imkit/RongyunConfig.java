@@ -2,6 +2,7 @@ package io.rong.imkit;
 
 import android.content.Context;
 import android.net.Uri;
+import android.util.Log;
 
 import io.rong.imkit.provider.RedPacketMessage;
 import io.rong.imkit.provider.RedPacketMessageItemProvider;
@@ -14,8 +15,12 @@ import io.rong.imkit.widget.provider.LocationInputProvider;
 import io.rong.imlib.RongIMClient;
 import io.rong.imlib.model.Conversation;
 import io.rong.imlib.model.Message;
+import io.rong.imlib.model.MessageContent;
 import io.rong.imlib.model.UserInfo;
+import io.rong.message.ImageMessage;
+import io.rong.message.RichContentMessage;
 import io.rong.message.TextMessage;
+import io.rong.message.VoiceMessage;
 
 /**
  * Created by jb on 2016/6/18.
@@ -69,8 +74,8 @@ public class RongyunConfig {
                 RongLogUtils.d(TAG, "-------------连接融云成功 id : " + s);
                 RongIM.getInstance().setMessageAttachedUserInfo(true);
                 if (callback != null)
-
                     callback.onSuccess(s);
+                setSendMessageListener();
             }
 
             @Override
@@ -189,5 +194,47 @@ public class RongyunConfig {
             });
         }
 
+    }
+
+    public void setSendMessageListener() {
+        RongIM.getInstance().setSendMessageListener(new RongIM.OnSendMessageListener() {
+            @Override
+            public Message onSend(Message message) {
+                MessageContent messageContent = message.getContent();
+                if (messageContent instanceof TextMessage) {// 文本消息
+                    TextMessage textMessage = (TextMessage) messageContent;
+                    Log.e(TAG, "onSent-TextMessage:" + textMessage.getContent());
+                    // sendSync(message, "2", textMessage.getContent());
+                } else if (messageContent instanceof ImageMessage) {// 图片消息
+                    ImageMessage imageMessage = (ImageMessage) messageContent;
+                    Log.e(TAG, "onSent-ImageMessage:" + imageMessage.getLocalUri().getPath());
+                } else if (messageContent instanceof VoiceMessage) {// 语音消息
+                    VoiceMessage voiceMessage = (VoiceMessage) messageContent;
+                    Log.e(TAG, "onSent-voiceMessage:"
+                            + voiceMessage.getUri().toString());
+
+                } else if (messageContent instanceof RichContentMessage) {// 图文消息
+                    RichContentMessage richContentMessage = (RichContentMessage) messageContent;
+                    Log.e(TAG,
+                            "onSent-RichContentMessage:"
+                                    + richContentMessage.getContent());
+                } else {
+                    Log.e(TAG, "onSent-其他消息，自己来判断处理");
+                }
+
+                RongIM.getInstance()
+                        .getRongIMClient()
+                        .insertMessage(message.getConversationType(),
+                                message.getTargetId(), message.getSenderUserId(),
+                                message.getContent());
+
+                return null;
+            }
+
+            @Override
+            public boolean onSent(Message message, RongIM.SentMessageErrorCode sentMessageErrorCode) {
+                return false;
+            }
+        });
     }
 }

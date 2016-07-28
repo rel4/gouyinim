@@ -29,6 +29,7 @@ public class AiBeiPayManager {
             IAppPay.init(activity, IAppPay.PORTRAIT, PayConfig.appid);//接入时！不要使用Demo中的appid
 //        String cporderid = System.currentTimeMillis() + "";
 //        String param = getTransdata("userid001", "cpprivateinfo123456", 1, 1, cporderid);
+
         IAppPay.startPay(activity, transid, new IPayResultCallback() {
             @Override
             public void onPayResult(int resultCode, String signvalue, String resultInfo) {
