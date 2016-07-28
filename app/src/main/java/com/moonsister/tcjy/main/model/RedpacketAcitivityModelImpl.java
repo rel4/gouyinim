@@ -112,14 +112,20 @@ public class RedpacketAcitivityModelImpl implements RedpacketAcitivityModel {
                     } else if (playType == PayType.WX_PAY) {
                         WeixinManager.getInstance(ConfigUtils.getInstance().getApplicationContext(), WXPayEntryActivity.APP_ID).pay(data);
                         listener.onSuccess(null, DataType.DATA_ONE);
+                        subscriber.onCompleted();
                     } else if (playType == PayType.IAPP_PAY) {
                         UIUtils.onRunMainThred(new Runnable() {
                             @Override
                             public void run() {
                                 AiBeiPayManager.getInstance().pay(ConfigUtils.getInstance().getActivityContext(), data.getAbcode(), new AiBeiPayManager.AiBeiResultCallback() {
                                     @Override
-                                    public void onPayResult(int resultCode, String signvalue, String resultInfo) {
-//                                        if ()
+                                    public void onPayResult(int resultCode, String resultInfo) {
+                                        if (resultCode == 1) {
+                                            listener.onSuccess(resultCode + "", DataType.DATA_TWO);
+                                        } else {
+                                            listener.onFailure(UIUtils.getStringRes(R.string.pay_failure));
+                                        }
+                                        subscriber.onCompleted();
                                     }
                                 });
                             }

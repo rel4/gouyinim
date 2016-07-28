@@ -1,1 +1,1 @@
-include ':app', ':progressdialog', ':IMKit', ':pay'
+include ':app', ':progressdialog', ':IMKit', ':pay', ':baidu'

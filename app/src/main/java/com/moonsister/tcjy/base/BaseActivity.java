@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 
@@ -71,6 +72,12 @@ public abstract class BaseActivity extends RxAppCompatActivity {
         });
         ((TextView) view.findViewById(R.id.tv_title_name)).setText(initTitleName());
 
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        hideSoftInput();
+        return super.onTouchEvent(event);
     }
 
     /**

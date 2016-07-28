@@ -9,8 +9,10 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.baidu.BaiduManager;
 import com.moonsister.tcjy.ApplicationConfig;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
@@ -53,6 +55,9 @@ public class MainActivity extends BaseActivity implements MainView {
 
     @Bind(R.id.main_content)
     FrameLayout mainContent;
+
+    @Bind(R.id.appx_banner_container)
+    RelativeLayout appx_banner_container;
     //当前一级页面显示的Fragment
     private BaseFragment mCurrentFragment, homeFragment, imHomeFragment, findFragment, myFragment;
 
@@ -118,6 +123,7 @@ public class MainActivity extends BaseActivity implements MainView {
 
     @Override
     public void switch2Home() {
+        BaiduManager.getInstance(this).show(this, appx_banner_container);
         if (homeFragment == null)
             homeFragment = new HomeFragment();
         enterPage(homeFragment);
@@ -125,6 +131,7 @@ public class MainActivity extends BaseActivity implements MainView {
 
     @Override
     public void switch2IM() {
+
         if (!UserInfoManager.getInstance().isLogin()) {
             RxBus.getInstance().send(Events.EventEnum.LOGIN, null);
             return;

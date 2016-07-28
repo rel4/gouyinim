@@ -1,5 +1,7 @@
 package com.moonsister.tcjy.main.presenter;
 
+import android.view.View;
+
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.event.Events;
@@ -94,6 +96,20 @@ public class RedpacketAcitivityPresenterImpl implements RedpacketAcitivityPresen
                     }
                 }, 5000);
                 break;
+            case DATA_THREE:
+                if (StringUtis.equals(o, "1")) {
+                    view.transfePageMsg(UIUtils.getStringRes(R.string.pay_success));
+                    UIUtils.sendDelayedOneMillis(new Runnable() {
+                        @Override
+                        public void run() {
+                            view.pageFinish();
+                        }
+                    });
+                } else {
+                    view.transfePageMsg(UIUtils.getStringRes(R.string.pay_success));
+                }
+                view.hideLoading();
+                break;
         }
 
 
@@ -102,6 +118,6 @@ public class RedpacketAcitivityPresenterImpl implements RedpacketAcitivityPresen
     @Override
     public void onFailure(String msg) {
         view.hideLoading();
-        view.transfePageMsg(UIUtils.getStringRes(R.string.request_failed));
+        view.transfePageMsg(msg);
     }
 }

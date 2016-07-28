@@ -42,6 +42,7 @@ dependencies {
     compile project(':IMKit')
     compile project(':pay')
     compile project(':progressdialog')
+    compile project(':baidu')
     // Reactive Programming RxJava
     compile 'io.reactivex:rxandroid:1.0.1'
     compile 'io.reactivex:rxjava:1.0.14'

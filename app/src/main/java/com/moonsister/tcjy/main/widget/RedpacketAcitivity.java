@@ -2,6 +2,7 @@ package com.moonsister.tcjy.main.widget;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -62,6 +63,8 @@ public class RedpacketAcitivity extends BaseActivity implements PlayUserAcitivit
     public void afterTextChanged(Editable s) {
 
     }
+
+
 
     public enum RedpacketType {
         TYPE_REDPACKET(1), TYPE_FLOWER(2);
@@ -145,7 +148,7 @@ public class RedpacketAcitivity extends BaseActivity implements PlayUserAcitivit
                 showToast(getString(R.string.input_money) + getResources().getString(R.string.not_empty));
                 return;
             }
-            if (trim.length()>8) {
+            if (trim.length() > 8) {
                 showToast(getString(R.string.input_money) + getResources().getString(R.string.not_more));
                 return;
             }

@@ -16,8 +16,9 @@ public class AiBeiPayManager {
     public static AiBeiPayManager getInstance() {
         if (instances == null) {
             synchronized (AiBeiPayManager.class) {
-                if (instances == null)
+                if (instances == null) {
                     return new AiBeiPayManager();
+                }
                 return instances;
             }
         }
@@ -25,7 +26,7 @@ public class AiBeiPayManager {
     }
 
     public void pay(Activity activity, String transid, final AiBeiResultCallback callback) {
-        IAppPay.init(activity, IAppPay.PORTRAIT, PayConfig.appid);//接入时！不要使用Demo中的appid
+            IAppPay.init(activity, IAppPay.PORTRAIT, PayConfig.appid);//接入时！不要使用Demo中的appid
 //        String cporderid = System.currentTimeMillis() + "";
 //        String param = getTransdata("userid001", "cpprivateinfo123456", 1, 1, cporderid);
         IAppPay.startPay(activity, transid, new IPayResultCallback() {
@@ -39,18 +40,25 @@ public class AiBeiPayManager {
                             boolean payState = IAppPayOrderUtils.checkPayResult(signvalue, PayConfig.publicKey);
                             if (payState) {
                                 PayLog.e(AiBeiPayManager.this, "支付成功");
+                                if (callback != null)
+                                    callback.onPayResult(1, "支付成功");
+                            } else {
+                                PayLog.e(AiBeiPayManager.this, "失败");
+                                if (callback != null)
+                                    callback.onPayResult(2, "支付失败");
                             }
                             break;
                         case IAppPay.PAY_ING:
                             PayLog.e(AiBeiPayManager.this, "成功下单");
+                            if (callback != null)
+                                callback.onPayResult(3, "成功下单");
                             break;
                         default:
                             PayLog.e(AiBeiPayManager.this, resultInfo);
-
+                            if (callback != null)
+                                callback.onPayResult(4, resultInfo);
                             break;
                     }
-                    if (callback != null)
-                        callback.onPayResult(resultCode, signvalue, resultInfo);
                     PayLog.d("MainDemoActivity", "requestCode:" + resultCode + ",signvalue:" + signvalue + ",resultInfo:" + resultInfo);
                 }
 
@@ -59,7 +67,7 @@ public class AiBeiPayManager {
     }
 
     public interface AiBeiResultCallback {
-        void onPayResult(int resultCode, String signvalue, String resultInfo);
+        void onPayResult(int resultCode, String resultInfo);
     }
 
     /**

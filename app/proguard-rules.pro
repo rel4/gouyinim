@@ -240,3 +240,119 @@ public static final int *;
     public static **[] values();
     public static ** valueOf(java.lang.String);
 }
+#百度联盟 start
+-keep public class com.baidu.appx.**
+
+-keep public class com.baidu.appx.** { *; }
+
+-keepattributes *Annotation*,*Exceptions*,Signature
+#百度联盟 end
+
+
+#爱贝支付 start
+
+#-----------keep httpclient -------------------
+-keep class org.apache.** {
+    public <fields>;
+    public <methods>;
+}
+
+#--------------unionpay 3.3.0--------------
+-keep class com.unionpay.** {*;}
+-keep class com.UCMobile.PayPlugin.** {*;}
+-keep class cn.gov.pbc.tsm.client.mobile.android.bank.service.** {*;}
+
+
+-keepattributes *Annotation*
+-keepattributes *JavascriptInterface*
+
+
+#--------------sms--------------
+-keep class com.iapppay.sms.** {*;}
+
+#--------------alipay-------------
+-keep class com.ta.utdid2.** {
+    public <fields>;
+    public <methods>;
+}
+-keep class com.ut.device.** {
+    public <fields>;
+    public <methods>;
+}
+-keep class com.alipay.android.app.** {
+    public <fields>;
+    public <methods>;
+}
+-keep class com.alipay.sdk.** {
+    public <fields>;
+    public <methods>;
+}
+-keep class com.alipay.mobilesecuritysdk.** {
+    public <fields>;
+    public <methods>;
+}
+-keep class HttpUtils.** {
+    public <fields>;
+    public <methods>;
+}
+-keep class org.json.alipay.** {
+    public <fields>;
+    public <methods>;
+}
+
+#-----------keep iapppay -------------------
+-keep class com.iapppay.tool {*;}
+-keep class com.iapppay.service {*;}
+-keep class com.iapppay.provider {*;}
+-keep class com.iapppay.apppaysystem {*;}
+-keep class com.iapppay.account.channel.ipay.IpayAccountApi {*;}
+-keep class com.iapppay.account.channel.ipay.IpayOpenidApi {*;}
+-keep class com.iapppay.account.channel.ipay.view.** {
+    public <fields>;
+    public <methods>;
+}
+-keep public class com.iapppay.fastpay.ui.** {
+    public <fields>;
+    public <methods>;
+}
+-keep public class com.iapppay.fastpay.view.** {
+    public <fields>;
+    public <methods>;
+}
+#-----------keep iapppay -------------------
+-keep class com.iapppay.utils.RSAHelper {*;}
+-keep class com.iapppay.network.** {
+    public <fields>;
+    public <methods>;
+}
+-keep class com.iapppay.sdk.main.** {
+    public <fields>;
+    public <methods>;
+}
+#iapppay_sub_pay
+-keep public class com.iapppay.pay.channel.** {
+    public <fields>;
+    public <methods>;
+}
+-keep class com.iapppay.interfaces.callback.** {*;}
+-keep class com.iapppay.interfaces.** {
+    public <fields>;
+    public <methods>;
+}
+
+#iapppay UI
+-keep public class com.iapppay.ui.activity.** {
+    public <fields>;
+    public <methods>;
+}
+# View
+-keep public class com.iapppay.ui.widget.**{
+    public <fields>;
+    public <methods>;
+}
+-keep public class com.iapppay.ui.view.**{
+    public <fields>;
+    public <methods>;
+}
+
+#爱贝支付  end
