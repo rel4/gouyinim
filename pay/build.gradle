@@ -40,8 +40,8 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile files('libs/libammsdk.jar')
     compile 'com.google.code.gson:gson:2.5'
-    compile files('libs/iapppay_plugin.jar')
-    compile files('libs/alipaySdk-20160516.jar')
+    compile files('src/main/libs/alipaySdk-20160516.jar')
+    compile files('src/main/libs/iapppay_plugin.jar')
+    compile files('src/main/libs/libammsdk.jar')
 }

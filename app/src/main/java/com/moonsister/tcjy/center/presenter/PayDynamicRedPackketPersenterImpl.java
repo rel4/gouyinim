@@ -34,14 +34,14 @@ public class PayDynamicRedPackketPersenterImpl implements PayDynamicRedPackketPe
     @Override
     public void alipay(String id) {
         view.showLoading();
-        model.pay(id, PayDynamicRedPacketModel.PayType.ALIPAY, this);
+        model.pay(id, PayDynamicRedPacketModel.PayType.IAPP_PAY, this);
 
     }
 
     @Override
     public void weixinPay(String id) {
         view.showLoading();
-        model.pay(id, PayDynamicRedPacketModel.PayType.WXPAY, this);
+        model.pay(id, PayDynamicRedPacketModel.PayType.IAPP_PAY, this);
     }
 
     @Override
@@ -76,7 +76,7 @@ public class PayDynamicRedPackketPersenterImpl implements PayDynamicRedPackketPe
                     public void run() {
                         view.hideLoading();
                     }
-                },5000);
+                }, 5000);
                 break;
         }
 

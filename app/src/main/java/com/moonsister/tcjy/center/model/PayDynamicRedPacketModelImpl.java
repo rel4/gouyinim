@@ -1,5 +1,6 @@
 package com.moonsister.tcjy.center.model;
 
+import com.moonsister.pay.aibeipay.AiBeiPayManager;
 import com.moonsister.pay.aliyun.AliPayManager;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
@@ -65,11 +66,27 @@ public class PayDynamicRedPacketModelImpl implements PayDynamicRedPacketModel {
                             return;
                         }
                         if (StringUtis.equals(payBean.getCode(), AppConstant.code_request_success)) {
-                            if (type == PayType.ALIPAY) {
+                            if (type == PayType.ALI_PAY) {
                                 startPlayApp(id, payBean.getData().getAlicode(), listener);
-                            } else if (type == PayType.WXPAY) {
+                            } else if (type == PayType.WX_PAY) {
                                 WeixinManager.getInstance(ConfigUtils.getInstance().getApplicationContext(), WXPayEntryActivity.APP_ID).pay(payBean.getData());
                                 listener.onSuccess(null, DataType.DATA_ONE);
+                            } else if (type == PayType.IAPP_PAY) {
+
+                                AiBeiPayManager.getInstance().pay(ConfigUtils.getInstance().getActivityContext(),  payBean.getData().getAbcode(), new AiBeiPayManager.AiBeiResultCallback() {
+                                    @Override
+                                    public void onPayResult(int resultCode, String resultInfo) {
+                                        if (resultCode == 1) {
+//                                            listener.onSuccess(resultCode + "", DataType.DATA_TWO);
+                                            getPayDynamicPic(id, listener, DataType.DATA_ZERO);
+                                        } else if (resultCode == 4) {
+                                            listener.onFailure(resultInfo);
+                                        } else {
+                                            listener.onFailure(UIUtils.getStringRes(R.string.pay_failure));
+                                        }
+                                    }
+                                });
+
                             } else {
                                 listener.onFailure(payBean.getMsg());
                             }
@@ -142,9 +159,9 @@ public class PayDynamicRedPacketModelImpl implements PayDynamicRedPacketModel {
                     public void onNext(String s) {
                         if (s != null) {
                             if (StringUtis.equals(s, "9000"))
-                                getPayDynamicPic(id, listener);
+                                getPayDynamicPic(id, listener, DataType.DATA_ZERO);
                             else if (StringUtis.equals(s, "8000"))
-                                getPayDynamicPic(id, listener);
+                                getPayDynamicPic(id, listener, DataType.DATA_ZERO);
                             else
                                 listener.onFailure(UIUtils.getStringRes(R.string.pay_failure));
                         } else
@@ -153,12 +170,12 @@ public class PayDynamicRedPacketModelImpl implements PayDynamicRedPacketModel {
                 });
     }
 
-    private void getPayDynamicPic(String id, onLoadDateSingleListener listener) {
+    private void getPayDynamicPic(String id, onLoadDateSingleListener listener, DataType type) {
         Observable<PayRedPacketPicsBean> observable = ServerApi.getAppAPI().getPayDynamicPic(id, UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
         ObservableUtils.parser(observable, new ObservableUtils.Callback<PayRedPacketPicsBean>() {
             @Override
             public void onSuccess(PayRedPacketPicsBean bean) {
-                listener.onSuccess(bean, DataType.DATA_ZERO);
+                listener.onSuccess(bean, type);
             }
 
             @Override
@@ -170,6 +187,6 @@ public class PayDynamicRedPacketModelImpl implements PayDynamicRedPacketModel {
 
     @Override
     public void getPics(String id, onLoadDateSingleListener<PayRedPacketPicsBean> listener) {
-        getPayDynamicPic(id, listener);
+        getPayDynamicPic(id, listener, DataType.DATA_ZERO);
     }
 }

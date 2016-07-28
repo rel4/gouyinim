@@ -122,6 +122,8 @@ public class RedpacketAcitivityModelImpl implements RedpacketAcitivityModel {
                                     public void onPayResult(int resultCode, String resultInfo) {
                                         if (resultCode == 1) {
                                             listener.onSuccess(resultCode + "", DataType.DATA_TWO);
+                                        } else if (resultCode == 4) {
+                                            listener.onFailure(resultInfo);
                                         } else {
                                             listener.onFailure(UIUtils.getStringRes(R.string.pay_failure));
                                         }

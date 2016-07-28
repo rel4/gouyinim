@@ -70,7 +70,7 @@ public class RedpacketAcitivityPresenterImpl implements RedpacketAcitivityPresen
     @Override
     public void onSuccess(String o, BaseIModel.DataType dataType) {
         switch (dataType) {
-            case DATA_ZERO:
+            case DATA_ZERO://支付宝
                 if (StringUtis.equals("9000", o)) {
                     Events<String> events = new Events<String>();
                     events.what = Events.EventEnum.CHAT_SEND_REDPACKET_SUCCESS;
@@ -88,7 +88,7 @@ public class RedpacketAcitivityPresenterImpl implements RedpacketAcitivityPresen
                 else view.transfePageMsg(UIUtils.getStringRes(R.string.pay_failure));
                 view.hideLoading();
                 break;
-            case DATA_ONE:
+            case DATA_ONE://微信支付
                 UIUtils.sendDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -96,7 +96,7 @@ public class RedpacketAcitivityPresenterImpl implements RedpacketAcitivityPresen
                     }
                 }, 5000);
                 break;
-            case DATA_THREE:
+            case DATA_TWO://爱贝支付
                 if (StringUtis.equals(o, "1")) {
                     view.transfePageMsg(UIUtils.getStringRes(R.string.pay_success));
                     UIUtils.sendDelayedOneMillis(new Runnable() {
@@ -106,7 +106,7 @@ public class RedpacketAcitivityPresenterImpl implements RedpacketAcitivityPresen
                         }
                     });
                 } else {
-                    view.transfePageMsg(UIUtils.getStringRes(R.string.pay_success));
+                    view.transfePageMsg(UIUtils.getStringRes(R.string.pay_failure));
                 }
                 view.hideLoading();
                 break;

@@ -12,7 +12,7 @@ public interface PayDynamicRedPacketModel extends BaseIModel {
     void getPics(String id,onLoadDateSingleListener<PayRedPacketPicsBean> listener);
 
     public enum PayType {
-        ALIPAY("alipay"), WXPAY("wxpay");
+        ALI_PAY("alipay"), WX_PAY("wxpay"),IAPP_PAY("iapppay");
         private final String type;
 
         private PayType(String type) {
