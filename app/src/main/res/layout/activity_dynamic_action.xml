@@ -30,7 +30,7 @@
             android:gravity="center"
 
             android:text="@string/loading"
-            android:textColor="@color/app_line"
+            android:textColor="@color/text_black_color"
             android:visibility="gone" />
 
 

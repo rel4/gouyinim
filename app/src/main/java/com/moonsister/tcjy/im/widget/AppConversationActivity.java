@@ -14,7 +14,7 @@ import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.trello.rxlifecycle.ActivityEvent;
 
-import io.rong.imkit.RongyunConfig;
+import io.rong.imkit.RongyunManager;
 import io.rong.imkit.fragment.ConversationFragment;
 import io.rong.imkit.fragment.MessageListFragment;
 import io.rong.imkit.fragment.UriFragment;
@@ -46,7 +46,7 @@ public class AppConversationActivity extends BaseActivity {
         String mTargetId = getIntent().getData().getQueryParameter("targetId");
         String name = getIntent().getData().getQueryParameter("title");
         if (StringUtis.isEmpty(name)) {
-            name = RongyunConfig.getInstance().getUserName(mTargetId);
+            name = RongyunManager.getInstance().getUserName(mTargetId);
         }
         return name;
     }
@@ -90,7 +90,7 @@ public class AppConversationActivity extends BaseActivity {
                 .setEndEvent(ActivityEvent.DESTROY)
                 .setEvent(Events.EventEnum.CHAT_SEND_REDPACKET_SUCCESS)
                 .onNext(events -> {
-                    RongyunConfig.getInstance().sendRedPacketMessage(mTargetId, (String) events.message);
+                    RongyunManager.getInstance().sendRedPacketMessage(mTargetId, (String) events.message);
                 })
                 .create();
     }

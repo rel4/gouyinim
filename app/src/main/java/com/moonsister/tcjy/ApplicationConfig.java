@@ -1,7 +1,6 @@
 package com.moonsister.tcjy;
 
 import android.app.ActivityManager;
-import android.app.Application;
 import android.content.Context;
 import android.support.multidex.MultiDexApplication;
 
@@ -10,7 +9,7 @@ import com.moonsister.tcjy.utils.ConfigUtils;
 
 import java.util.ArrayList;
 
-import io.rong.imkit.RongyunConfig;
+import io.rong.imkit.RongyunManager;
 
 /**
  * Created by pc on 2016/6/3.
@@ -43,7 +42,7 @@ public class ApplicationConfig extends MultiDexApplication {
             /**
              * IMKit SDK调用第一步 初始化
              */
-            RongyunConfig.getInstance().init(this);
+            RongyunManager.getInstance().init(this);
         }
 
     }

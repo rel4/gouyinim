@@ -27,6 +27,8 @@ public class DynamicAtionActivity extends Activity {
     TextView tvUp;
     private String id;
     private boolean isMy;
+    private int type;
+    private String top;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,12 +38,22 @@ public class DynamicAtionActivity extends Activity {
         Intent intent = getIntent();
         String uid = intent.getStringExtra("uid");
         id = intent.getStringExtra("id");
+        type = intent.getIntExtra("type", -1);
+        top = intent.getStringExtra("top");
         String id1 = UserInfoManager.getInstance().getMemoryPersonInfoDetail().getId();
         isMy = StringUtis.equals(uid, id1);
         if (isMy) {
             tvDelete.setText(UIUtils.getStringRes(R.string.delete) + UIUtils.getStringRes(R.string.dynamic));
         } else {
             tvDelete.setText(UIUtils.getStringRes(R.string.report));
+        }
+        if (type == 1) {
+            TextView up = (TextView) findViewById(R.id.tv_up);
+            if (StringUtis.equals(top, "1")) {
+                up.setText(UIUtils.getStringRes(R.string.cancel) + UIUtils.getStringRes(R.string.up_dynamic));
+            } else
+                up.setText(UIUtils.getStringRes(R.string.up_dynamic));
+            up.setVisibility(View.VISIBLE);
         }
 
     }
@@ -52,16 +64,25 @@ public class DynamicAtionActivity extends Activity {
             case R.id.tv_delete:
                 if (isMy) {
                     Events<String> events = new Events<>();
-                    events.what = Events.EventEnum.DYNAMIC_ACTION;
+                    events.what = Events.EventEnum.DYNAMIC_DELETE_ACTION;
                     events.message = id;
                     RxBus.getInstance().send(events);
                 } else {
                     UIUtils.showToast(this, UIUtils.getStringRes(R.string.success));
-
                 }
                 finish();
                 break;
             case R.id.tv_up:
+                if (isMy) {
+                    Events<String> events = new Events<>();
+                    if (StringUtis.equals(top, "1"))
+                        events.what = Events.EventEnum.DYNAMIC_DEL_UP_ACTION;
+                    else
+                        events.what = Events.EventEnum.DYNAMIC_UP_ACTION;
+                    events.message = id;
+                    RxBus.getInstance().send(events);
+                }
+                finish();
                 break;
             case R.id.tv_finish:
                 finish();

@@ -146,9 +146,9 @@ public class DefaultDynamicSendActivity extends BaseActivity implements DefaultD
                 tvAddress.setText(UIUtils.getStringRes(R.string.locationing));
             } else {
                 try {
-                    JSONObject jsonObject = new JSONObject(location);
-                    String province = jsonObject.getString("province");
-                    String city = jsonObject.getString("city");
+                        JSONObject jsonObject = new JSONObject(location);
+                        String province = jsonObject.getString("province");
+                        String city = jsonObject.getString("city");
                     tvAddress.setText(province + "." + city);
                 } catch (JSONException e) {
                     e.printStackTrace();

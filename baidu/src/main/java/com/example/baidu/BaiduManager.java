@@ -3,9 +3,9 @@ package com.example.baidu;
 import android.app.Activity;
 import android.content.Context;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 
 import com.baidu.appx.BDBannerAd;
+
 
 /**
  * Created by jb on 2016/7/28.
@@ -59,7 +59,6 @@ public class BaiduManager {
             }
         });
         viewGroup.addView(bdBannerAd);
-
 
 
     }

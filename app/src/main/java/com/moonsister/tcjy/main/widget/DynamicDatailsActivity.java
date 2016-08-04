@@ -71,7 +71,7 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
 
         RxBus.with(this)
                 .setEndEvent(ActivityEvent.DESTROY)
-                .setEvent(Events.EventEnum.DYNAMIC_ACTION)
+                .setEvent(Events.EventEnum.DYNAMIC_DELETE_ACTION)
                 .onNext(events -> {
                     String id = (String) events.message;
                     if (mAdapter != null) {

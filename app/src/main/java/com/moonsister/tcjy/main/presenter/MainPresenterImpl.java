@@ -18,7 +18,7 @@ import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 
-import io.rong.imkit.RongyunConfig;
+import io.rong.imkit.RongyunManager;
 import io.rong.imkit.provider.RedPacketProvider;
 
 /**
@@ -71,7 +71,7 @@ public class MainPresenterImpl implements MainPresenter, BaseIModel.onLoadDateSi
      */
     @Override
     public void loginRongyun() {
-        RongyunConfig.getInstance().setConnectionStatusListener(new RongyunConfig.ConnectCallback() {
+        RongyunManager.getInstance().setConnectionStatusListener(new RongyunManager.ConnectCallback() {
             @Override
             public void onSuccess(String s) {
                 if (StringUtis.equals(s, "3")) {
@@ -91,13 +91,13 @@ public class MainPresenterImpl implements MainPresenter, BaseIModel.onLoadDateSi
             RxBus.getInstance().send(Events.EventEnum.GET_RONGYUN_KEY, null);
             return;
         }
-        RongyunConfig.getInstance().connectRonyun(rongyunKey, new RongyunConfig.ConnectCallback() {
+        RongyunManager.getInstance().connectRonyun(rongyunKey, new RongyunManager.ConnectCallback() {
 
             @Override
             public void onSuccess(String s) {
                 PersonInfoDetail infoDetail = UserInfoManager.getInstance().getMemoryPersonInfoDetail();
-                RongyunConfig.getInstance().setCurrentUserInfo(infoDetail.getId(), infoDetail.getNickname(), infoDetail.getFace());
-                RongyunConfig.getInstance().setInputProvider(new RedPacketProvider.onPluginClickListenter() {
+                RongyunManager.getInstance().setCurrentUserInfo(infoDetail.getId(), infoDetail.getNickname(), infoDetail.getFace());
+                RongyunManager.getInstance().setInputProvider(new RedPacketProvider.onPluginClickListenter() {
 
                     @Override
                     public void onPluginClick(String userId, String name, String path) {

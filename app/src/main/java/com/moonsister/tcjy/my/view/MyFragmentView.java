@@ -27,4 +27,7 @@ public interface MyFragmentView extends BaseIView {
     void setUserBackground(String obj);
 
     void deleteDynamic(String id);
+
+    void upLoadDynamic();
+
 }

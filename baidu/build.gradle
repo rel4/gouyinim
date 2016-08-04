@@ -21,8 +21,7 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.4.0'
-    compile files('src/main/libs/baidu_cuid.jar')
+    compile rootProject.ext.dependencies["appcompat-v7"]
     compile files('src/main/libs/BaiduAppX_V2.4.0_20160317.jar')
+    compile files('src/main/libs/baidu_cuid.jar')
 }

@@ -50,6 +50,15 @@ public class UserInfoListBean extends BaseBean {
             private String tmoney;
             //1认证  0 未认证
             private String isauth;
+            private  String istop;
+
+            public String getIstop() {
+                return istop;
+            }
+
+            public void setIstop(String istop) {
+                this.istop = istop;
+            }
 
             public String getIsauth() {
                 return isauth;

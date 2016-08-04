@@ -8,8 +8,8 @@ import com.moonsister.tcjy.bean.DefaultDataBean;
 import com.moonsister.tcjy.bean.UserInfoDetailBean;
 import com.moonsister.tcjy.bean.UserInfoListBean;
 import com.moonsister.tcjy.main.model.UserActionModelImpl;
-import com.moonsister.tcjy.main.model.UserInfoModel;
-import com.moonsister.tcjy.main.model.UserInfoModelImpl;
+import com.moonsister.tcjy.main.model.DynamicModel;
+import com.moonsister.tcjy.main.model.DynamicModelImpl;
 import com.moonsister.tcjy.main.view.DynamicView;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.StringUtis;
@@ -22,8 +22,9 @@ import java.util.List;
  */
 public class DynamicPresenterImpl implements DynamicPresenter, onLoadDateSingleListener<UserInfoDetailBean>, BaseIModel.onLoadListDateListener<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList> {
     private DynamicView mUserInfoView;
-    private UserInfoModel mUserInfoModel;
-    private int page = 2;
+    private DynamicModel mUserInfoModel;
+    private int page = 1;
+    private String upID;
 
     @Override
     public void onCreate() {
@@ -33,20 +34,21 @@ public class DynamicPresenterImpl implements DynamicPresenter, onLoadDateSingleL
     @Override
     public void attachView(DynamicView userInfoView) {
         this.mUserInfoView = userInfoView;
-        mUserInfoModel = new UserInfoModelImpl();
+        mUserInfoModel = new DynamicModelImpl();
     }
 
     @Override
     public void loadonRefreshData(String userId) {
+        upID = null;
         mUserInfoView.showLoading();
-        mUserInfoModel.loadUserInfoData(userId, 1, this);
+        page = 1;
+        mUserInfoModel.loadUserInfoData(userId, page, this);
     }
 
     @Override
     public void loadLoadMoreData(String userId) {
         mUserInfoView.showLoading();
         mUserInfoModel.loadUserInfoData(userId, page, this);
-        page++;
     }
 
     @Override
@@ -99,6 +101,50 @@ public class DynamicPresenterImpl implements DynamicPresenter, onLoadDateSingleL
         });
     }
 
+    @Override
+    public void upDynamic(String id) {
+        mUserInfoView.showLoading();
+        UserActionModelImpl actionModel = new UserActionModelImpl();
+        actionModel.upDynamic("1", id, new BaseIModel.onLoadDateSingleListener<DefaultDataBean>() {
+            @Override
+            public void onSuccess(DefaultDataBean bean, BaseIModel.DataType dataType) {
+                if (StringUtis.equals(bean.getCode(), AppConstant.code_request_success)) {
+                    mUserInfoView.upLoadDynamic();
+                }
+                mUserInfoView.transfePageMsg(bean.getMsg());
+                mUserInfoView.hideLoading();
+            }
+
+            @Override
+            public void onFailure(String msg) {
+                mUserInfoView.transfePageMsg(msg);
+                mUserInfoView.hideLoading();
+            }
+        });
+    }
+
+    @Override
+    public void delUpDynamic(String id) {
+        mUserInfoView.showLoading();
+        UserActionModelImpl actionModel = new UserActionModelImpl();
+        actionModel.upDynamic("2", id, new BaseIModel.onLoadDateSingleListener<DefaultDataBean>() {
+            @Override
+            public void onSuccess(DefaultDataBean bean, BaseIModel.DataType dataType) {
+                if (StringUtis.equals(bean.getCode(), AppConstant.code_request_success)) {
+                    mUserInfoView.upLoadDynamic();
+                }
+                mUserInfoView.transfePageMsg(bean.getMsg());
+                mUserInfoView.hideLoading();
+            }
+
+            @Override
+            public void onFailure(String msg) {
+                mUserInfoView.transfePageMsg(msg);
+                mUserInfoView.hideLoading();
+            }
+        });
+    }
+
 
     @Override
     public void onSuccess(UserInfoDetailBean bean, BaseIModel.DataType type) {
@@ -109,6 +155,45 @@ public class DynamicPresenterImpl implements DynamicPresenter, onLoadDateSingleL
 
     @Override
     public void onSuccess(List<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList> t, BaseIModel.DataType dataType) {
+
+        if (t != null) {
+            if (t.size() != 0) {
+                if (page == 1) {
+                    page++;
+                    UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList beanDataList = t.get(t.size() - 1);
+                    if (StringUtis.equals(beanDataList.getIstop(), "1")) {
+                        upID = beanDataList.getLatest_id();
+                        t.remove(beanDataList);
+                        UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList beanDataList1 = null;
+                        for (UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList bean : t) {
+                            if (StringUtis.equals(bean.getLatest_id(), upID)) {
+                                beanDataList1 = bean;
+                                break;
+                            }
+                        }
+                        if (beanDataList1 != null)
+                            t.remove(beanDataList1);
+                        t.add(0, beanDataList);
+                    }
+
+
+                } else {
+                    if (!StringUtis.isEmpty(upID)) {
+                        UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList beanDataList1 = null;
+                        for (UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList bean : t) {
+                            if (StringUtis.equals(bean.getLatest_id(), upID)) {
+                                beanDataList1 = bean;
+                                break;
+                            }
+                        }
+                        if (beanDataList1 != null)
+                            t.remove(beanDataList1);
+                    }
+                }
+
+
+            }
+        }
         mUserInfoView.loadUserinfo(t);
         mUserInfoView.hideLoading();
 

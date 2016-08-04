@@ -171,6 +171,10 @@
     <string name="not_more">超过上限</string>
     <string name="show_verson_name">版本号 ：</string>
     <string name="already_wacth">已关注</string>
+    <string name="rank">排行</string>
+    <string name="experience_gift">经验礼物</string>
+    <string name="nearby">附近</string>
+    <string name="up_dynamic">置顶</string>
     <string-array name="moneys">
         <item>8</item>
         <item>28</item>

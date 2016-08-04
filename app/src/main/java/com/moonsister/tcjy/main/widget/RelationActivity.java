@@ -84,13 +84,13 @@ public class RelationActivity extends BaseActivity implements RelationActivityVi
     public void setFrientData(FrientBaen frientBaen) {
 
         if (frientBaen == null) {
-            xlv.setNoMore();
+//            xlv.setNoMore();
             xlv.loadMoreComplete();
             xlv.refreshComplete();
             return;
         }
         if (frientBaen.getData() == null || frientBaen.getData().size() == 0) {
-            xlv.setNoMore();
+//            xlv.setNoMore();
             xlv.loadMoreComplete();
             xlv.refreshComplete();
             return;

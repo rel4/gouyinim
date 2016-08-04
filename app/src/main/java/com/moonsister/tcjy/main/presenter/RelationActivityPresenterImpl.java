@@ -33,12 +33,16 @@ public class RelationActivityPresenterImpl implements RelationActivityPresenter,
 
     @Override
     public void onSuccess(FrientBaen frientBaen, BaseIModel.DataType dataType) {
+        if (frientBaen != null && frientBaen.getData() != null && frientBaen.getData().size() != 0) {
+            page++;
+        }
         view.setFrientData(frientBaen);
         view.hideLoading();
     }
 
     @Override
     public void onFailure(String msg) {
-
+        view.hideLoading();
+        view.transfePageMsg(msg);
     }
 }

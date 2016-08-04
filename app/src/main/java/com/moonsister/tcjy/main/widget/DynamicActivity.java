@@ -58,7 +58,7 @@ public class DynamicActivity extends BaseActivity implements DynamicView {
 
     @Override
     protected void initView() {
-        setRxbus();
+
         userId = getIntent().getStringExtra(AppConstant.USER_ID);
         recyclerview.setVerticalLinearLayoutManager();
         recyclerview.addHeaderView(initHeadLayout());
@@ -91,9 +91,8 @@ public class DynamicActivity extends BaseActivity implements DynamicView {
                 mPresenter.loadLoadMoreData(userId);
             }
         });
-        mPresenter.loadUserInfodetail(userId);
         recyclerview.setRefreshing(true);
-
+        setRxbus();
     }
 
     private void setRxbus() {
@@ -115,7 +114,7 @@ public class DynamicActivity extends BaseActivity implements DynamicView {
 
         RxBus.with(this)
                 .setEndEvent(ActivityEvent.DESTROY)
-                .setEvent(Events.EventEnum.DYNAMIC_ACTION)
+                .setEvent(Events.EventEnum.DYNAMIC_DELETE_ACTION)
                 .onNext(events -> {
                     String id = (String) events.message;
                     if (mAdapter != null) {
@@ -124,6 +123,29 @@ public class DynamicActivity extends BaseActivity implements DynamicView {
                     }
                 })
                 .create();
+        RxBus.with(this)
+                .setEndEvent(ActivityEvent.DESTROY)
+                .setEvent(Events.EventEnum.DYNAMIC_UP_ACTION)
+                .onNext(events -> {
+                    String id = (String) events.message;
+                    if (mAdapter != null) {
+                        mPresenter.upDynamic(id);
+
+                    }
+                })
+                .create();
+        RxBus.with(this)
+                .setEndEvent(ActivityEvent.DESTROY)
+                .setEvent(Events.EventEnum.DYNAMIC_DEL_UP_ACTION)
+                .onNext(events -> {
+                    String id = (String) events.message;
+                    if (mAdapter != null) {
+                        mPresenter.delUpDynamic(id);
+
+                    }
+                })
+                .create();
+
     }
 
     /**
@@ -236,6 +258,12 @@ public class DynamicActivity extends BaseActivity implements DynamicView {
         if (mAdapter != null) {
             mAdapter.deleteDynamic(id);
         }
+    }
+
+    @Override
+    public void upLoadDynamic() {
+        if (mPresenter != null)
+            mPresenter.loadonRefreshData(userId);
     }
 
     @Override

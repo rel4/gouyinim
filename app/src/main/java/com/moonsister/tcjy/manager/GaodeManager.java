@@ -56,6 +56,7 @@ public class GaodeManager implements AMapLocationListener {
     public void onLocationChanged(AMapLocation aMapLocation) {
         LogUtils.e(this, "-------- finish loclocation---------");
         if (aMapLocation != null) {
+            LogUtils.d(this, aMapLocation.toStr());
             PrefUtils.setString(GaodeManager.class.getName(), aMapLocation.toStr());
             Observable<DefaultDataBean> observable = ServerApi.getAppAPI().uploadLoation(aMapLocation.toStr(), UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
             ObservableUtils.parser(observable, new ObservableUtils.Callback<DefaultDataBean>() {

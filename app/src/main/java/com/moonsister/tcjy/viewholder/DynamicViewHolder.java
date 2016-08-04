@@ -4,6 +4,7 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -184,7 +185,13 @@ public class DynamicViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.U
             tv_add_v.setVisibility(View.GONE);
         tvContent.setText(bean.getTitle());
 //        tvTime.setText(TimeUtils.format(bean.getCreate_time() * 1000));
-        tvTime.setText(TimeUtils.getDynamicTimeString(bean.getCreate_time()));
+        if (StringUtis.equals(bean.getIstop(), "1")) {
+            tvTime.setText(UIUtils.getStringRes(R.string.up_dynamic));
+            tvTime.setTextColor(UIUtils.getResources().getColor(R.color.home_navigation_text_red));
+        } else {
+            tvTime.setText(TimeUtils.getDynamicTimeString(bean.getCreate_time()));
+            tvTime.setTextColor(UIUtils.getResources().getColor(R.color.gray_color));
+        }
         tv_reply_number.setText(bean.getLcomn());
         tv_wacth_number.setText(bean.getLupn());
         tvStr.setText(bean.getNickname());
@@ -208,8 +215,21 @@ public class DynamicViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.U
                 tv_play_number.setVisibility(View.GONE);
             }
         }
+
         gvUserPic.setAdapter(new PicGridView(bean));
 
+        gvUserPic.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ActivityUtils.startDynamicDatailsActivity(bean);
+            }
+        });
+        gvUserPic.setOnTouchInvalidPositionListener(new NoScrollGridView.OnTouchInvalidPositionListener() {
+            @Override
+            public boolean onTouchInvalidPosition(int motionEvent) {
+                return false; //不终止路由事件让父级控件处理事件
+            }
+        });
     }
 
 
@@ -257,7 +277,7 @@ public class DynamicViewHolder extends BaseRecyclerViewHolder<UserInfoListBean.U
         tv_more__number.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ActivityUtils.startDynamicAtionActivity(bean.getUid(), bean.getLatest_id());
+                ActivityUtils.startDynamicAtionActivity(bean.getUid(), bean.getLatest_id(), bean.getType(),bean.getIstop());
             }
         });
         rivUserImage.setOnClickListener(new View.OnClickListener() {

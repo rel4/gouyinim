@@ -36,7 +36,7 @@ public class DynamicCommentViewHolder extends BaseRecyclerViewHolder<CommentData
             return;
         ImageServerApi.showURLSamllImage(rivItemUserImage, bean.getFace());
         tvCommentContent.setText(bean.getTitle());
-        tvTime.setText(TimeUtils.getDynamicTimeString(bean.getCreate_time() * 1000));
+        tvTime.setText(TimeUtils.getDynamicTimeString(bean.getCreate_time()));
         tvUserName.setText(bean.getNickname());
     }
 

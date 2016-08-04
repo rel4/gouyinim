@@ -69,14 +69,10 @@ public class MainActivity extends BaseActivity implements MainView {
         mMainPresenter.switchNavigation(R.id.tv_home_page);
         initRxBus();
         initNetMianData();
-        UIUtils.sendDelayed(new Runnable() {
-            @Override
-            public void run() {
-                new UpdateManager(MainActivity.this).checkUpdate();
-                if (UserInfoManager.getInstance().isLogin())
-                    GaodeManager.getInstance().getLocLocation();
-            }
-        }, 5000);
+        new UpdateManager(MainActivity.this).checkUpdate();
+        if (UserInfoManager.getInstance().isLogin())
+            GaodeManager.getInstance().getLocLocation();
+
 
     }
 

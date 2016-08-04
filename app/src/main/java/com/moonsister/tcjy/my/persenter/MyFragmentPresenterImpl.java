@@ -4,6 +4,7 @@ import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.bean.DefaultDataBean;
+import com.moonsister.tcjy.bean.PayRedPacketPicsBean;
 import com.moonsister.tcjy.bean.UserInfoDetailBean;
 import com.moonsister.tcjy.bean.UserInfoListBean;
 import com.moonsister.tcjy.main.model.UserActionModelImpl;
@@ -22,6 +23,7 @@ public class MyFragmentPresenterImpl implements MyFragmentPresenter, BaseIModel.
     private MyFragmentView view;
     private MyFragmentModel model;
     private int page = 2;
+    private String upID;
 
     @Override
     public void onCreate() {
@@ -63,9 +65,10 @@ public class MyFragmentPresenterImpl implements MyFragmentPresenter, BaseIModel.
 
     @Override
     public void loadonRefreshData() {
+        upID = null;
         view.showLoading();
-        model.loadonRefreshData(1, this);
-        page = 2;
+        page = 1;
+        model.loadonRefreshData(page, this);
 
     }
 
@@ -73,7 +76,6 @@ public class MyFragmentPresenterImpl implements MyFragmentPresenter, BaseIModel.
     public void loadLoadMoreData() {
         view.showLoading();
         model.loadonRefreshData(page, this);
-        page++;
     }
 
     @Override
@@ -109,6 +111,44 @@ public class MyFragmentPresenterImpl implements MyFragmentPresenter, BaseIModel.
     public void onSuccess(List<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList> t, BaseIModel.DataType dataType) {
         switch (dataType) {
             case DATA_ZERO:
+                if (t != null) {
+                    if (t.size() != 0) {
+                        if (page == 1) {
+                            page++;
+                            UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList beanDataList = t.get(t.size() - 1);
+                            if (StringUtis.equals(beanDataList.getIstop(), "1")) {
+                                upID = beanDataList.getLatest_id();
+                                t.remove(beanDataList);
+                                UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList beanDataList1 = null;
+                                for (UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList bean : t) {
+                                    if (StringUtis.equals(bean.getLatest_id(), upID)) {
+                                        beanDataList1 = bean;
+                                        break;
+                                    }
+                                }
+                                if (beanDataList1 != null)
+                                    t.remove(beanDataList1);
+                                t.add(0, beanDataList);
+                            }
+
+
+                        } else {
+                            if (!StringUtis.isEmpty(upID)) {
+                                UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList beanDataList1 = null;
+                                for (UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList bean : t) {
+                                    if (StringUtis.equals(bean.getLatest_id(), upID)) {
+                                        beanDataList1 = bean;
+                                        break;
+                                    }
+                                }
+                                if (beanDataList1 != null)
+                                    t.remove(beanDataList1);
+                            }
+                        }
+
+
+                    }
+                }
                 view.setListData(t);
                 break;
         }
@@ -144,6 +184,51 @@ public class MyFragmentPresenterImpl implements MyFragmentPresenter, BaseIModel.
 
 
     }
+
+    @Override
+    public void upDynamic(String id) {
+        view.showLoading();
+        UserActionModelImpl actionModel = new UserActionModelImpl();
+        actionModel.upDynamic("1", id, new BaseIModel.onLoadDateSingleListener<DefaultDataBean>() {
+            @Override
+            public void onSuccess(DefaultDataBean bean, BaseIModel.DataType dataType) {
+                if (StringUtis.equals(bean.getCode(), AppConstant.code_request_success)) {
+                    view.upLoadDynamic();
+                }
+                view.transfePageMsg(bean.getMsg());
+                view.hideLoading();
+            }
+
+            @Override
+            public void onFailure(String msg) {
+                view.transfePageMsg(msg);
+                view.hideLoading();
+            }
+        });
+    }
+
+    @Override
+    public void delUpDynamic(String id) {
+        view.showLoading();
+        UserActionModelImpl actionModel = new UserActionModelImpl();
+        actionModel.upDynamic("2", id, new BaseIModel.onLoadDateSingleListener<DefaultDataBean>() {
+            @Override
+            public void onSuccess(DefaultDataBean bean, BaseIModel.DataType dataType) {
+                if (StringUtis.equals(bean.getCode(), AppConstant.code_request_success)) {
+                    view.upLoadDynamic();
+                }
+                view.transfePageMsg(bean.getMsg());
+                view.hideLoading();
+            }
+
+            @Override
+            public void onFailure(String msg) {
+                view.transfePageMsg(msg);
+                view.hideLoading();
+            }
+        });
+    }
+
 
     @Override
     public void onFailure(String msg) {

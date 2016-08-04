@@ -5,7 +5,7 @@ import com.moonsister.tcjy.bean.PersonInfoDetail;
 import com.moonsister.tcjy.utils.ConfigUtils;
 import com.moonsister.tcjy.utils.StringUtis;
 
-import io.rong.imkit.RongyunConfig;
+import io.rong.imkit.RongyunManager;
 
 
 /**
@@ -118,7 +118,7 @@ public class UserInfoManager {
     public void logout() {
         saveFileInstance(null);
         initFilePersonInfoDetail();
-        RongyunConfig.getInstance().offline();
+        RongyunManager.getInstance().offline();
     }
 
     /**

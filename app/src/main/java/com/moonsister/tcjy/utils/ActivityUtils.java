@@ -13,6 +13,8 @@ import com.moonsister.tcjy.center.widget.PayDynamicRedPackketActivity;
 import com.moonsister.tcjy.center.widget.RedpacketDynaimcActivity;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
+import com.moonsister.tcjy.find.widget.NearbyActivity;
+import com.moonsister.tcjy.find.widget.RankActivity;
 import com.moonsister.tcjy.home.widget.SearchActivity;
 import com.moonsister.tcjy.home.widget.SearchReasonActivity;
 import com.moonsister.tcjy.login.widget.FindPasswordActivity;
@@ -53,7 +55,7 @@ import com.moonsister.tcjy.widget.takevideo.TakeVideoActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.rong.imkit.RongyunConfig;
+import io.rong.imkit.RongyunManager;
 import io.rong.imlib.model.Conversation;
 
 /**
@@ -82,6 +84,8 @@ public class ActivityUtils {
      * @param intent
      */
     public static void startActivity(Intent intent) {
+        if (intent == null)
+            return;
         ConfigUtils.getInstance().getActivityContext().startActivity(intent);
     }
 
@@ -168,7 +172,7 @@ public class ActivityUtils {
                 .appendPath(Conversation.ConversationType.PRIVATE.getName().toLowerCase())
                 .appendQueryParameter("targetId", userId)
                 .appendQueryParameter("title", name).build();
-        RongyunConfig.getInstance().setUserInfoCache(userId, name, avatar);
+        RongyunManager.getInstance().setUserInfoCache(userId, name, avatar);
         startActivity(new Intent("android.intent.action.VIEW", uri));
 
 
@@ -451,12 +455,16 @@ public class ActivityUtils {
      *
      * @param uid
      * @param id
+     * @param type
+     * @param istop
      */
-    public static void startDynamicAtionActivity(String uid, String id) {
+    public static void startDynamicAtionActivity(String uid, String id, int type, String istop) {
         Intent intent = new Intent(getContext(), DynamicAtionActivity.class);
         // 1 自己动态  2 他人的动态
         intent.putExtra("uid", uid);
         intent.putExtra("id", id);
+        intent.putExtra("type", type);
+        intent.putExtra("top", istop);
         startActivity(intent);
     }
 
@@ -493,5 +501,16 @@ public class ActivityUtils {
         intent.putExtra("type", RelationActivity.FANS_PAGE);
         intent.putExtra("uid", uid);
         startActivity(intent);
+    }
+
+    /**
+     * 排行榜
+     */
+    public static void startRankActivity() {
+        startActivity(RankActivity.class);
+    }
+
+    public static void startNearbyActivity() {
+        startActivity(NearbyActivity.class);
     }
 }

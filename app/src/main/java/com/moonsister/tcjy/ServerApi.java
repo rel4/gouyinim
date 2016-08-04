@@ -11,7 +11,9 @@ import com.moonsister.tcjy.bean.GetMoneyBean;
 import com.moonsister.tcjy.bean.GoodSelectBaen;
 import com.moonsister.tcjy.bean.LoginBean;
 import com.moonsister.pay.tencent.PayBean;
+import com.moonsister.tcjy.bean.NearbyBean;
 import com.moonsister.tcjy.bean.PayRedPacketPicsBean;
+import com.moonsister.tcjy.bean.RankBean;
 import com.moonsister.tcjy.bean.RegiterBean;
 import com.moonsister.tcjy.bean.RongyunBean;
 import com.moonsister.tcjy.bean.SearchReasonBaen;
@@ -658,6 +660,34 @@ public class ServerApi {
                                                      @Field("channel") String channel);
 
         /**
+         * 置顶
+         *
+         * @param id
+         * @param authcode
+         * @param channel
+         * @return
+         */
+        @FormUrlEncoded
+        @POST("Latesttop/ins")
+        Observable<DefaultDataBean> getupDynamic(@Field("latest_id") String id,
+                                                 @Field("authcode") String authcode,
+                                                 @Field("channel") String channel);
+
+        /**
+         * 取消置顶
+         *
+         * @param id
+         * @param authcode
+         * @param channel
+         * @return
+         */
+        @FormUrlEncoded
+        @POST("Latesttop/del")
+        Observable<DefaultDataBean> getdelUpDynamic(@Field("latest_id") String id,
+                                                    @Field("authcode") String authcode,
+                                                    @Field("channel") String channel);
+
+        /**
          * 获取更新信息
          *
          * @param
@@ -707,6 +737,40 @@ public class ServerApi {
         Observable<DefaultDataBean> uploadLoation(@Field("address") String address,
                                                   @Field("authcode") String authcode,
                                                   @Field("channel") String channel);
+
+        /**
+         * 排行
+         *
+         * @param page
+         * @param authcode
+         * @return
+         */
+        @GET("rank/fx")
+        Observable<RankBean> getRankData(@Query("type") int type,
+                                         @Query("page") int page,
+                                         @Query("pagesize") int pagesize,
+                                         @Query("authcode") String authcode);
+
+        /**
+         * //        1、authcode 用户身份验证码
+         * //        2、sex性别（1男，2女），默认为0，为不限
+         * //        3、page 分页，默认为1
+         * //        4、lat 维度
+         * //        5、lng 经度
+         *
+         * @param longitude
+         * @param latitude
+         * @param authcode
+         * @return
+         */
+        @GET("user/find_near")
+        Observable<NearbyBean> getNearby(@Query("sex") String sex,
+                                         @Query("page") int page,
+                                         @Query("lng") double longitude,
+                                         @Query("lat") double latitude,
+                                         @Query("authcode") String authcode);
+
+
     }
 }
 

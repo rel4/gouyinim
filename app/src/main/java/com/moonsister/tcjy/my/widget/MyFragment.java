@@ -96,6 +96,7 @@ public class MyFragment extends BaseFragment implements MyFragmentView {
     }
 
     private void setRx() {
+        //背景图
         RxBus.with(this)
                 .setEndEvent(FragmentEvent.DESTROY)
                 .setEvent(Events.EventEnum.CROP_IMAGE_PATH)
@@ -106,18 +107,42 @@ public class MyFragment extends BaseFragment implements MyFragmentView {
                     }
                 })
                 .create();
-
+        // 删除动态
         RxBus.with(this)
                 .setEndEvent(FragmentEvent.DESTROY)
-                .setEvent(Events.EventEnum.DYNAMIC_ACTION)
+                .setEvent(Events.EventEnum.DYNAMIC_DELETE_ACTION)
                 .onNext(events -> {
                     String id = (String) events.message;
                     if (mAdapter != null) {
                         mPresenter.deleteDynamic(id);
 
                     }
+                }).create();
+        // 置顶
+        RxBus.with(this)
+                .setEndEvent(FragmentEvent.DESTROY)
+                .setEvent(Events.EventEnum.DYNAMIC_UP_ACTION)
+                .onNext(events -> {
+                    String id = (String) events.message;
+                    if (mAdapter != null) {
+                        mPresenter.upDynamic(id);
+
+                    }
                 })
                 .create();
+        // 删除置顶
+        RxBus.with(this)
+                .setEndEvent(FragmentEvent.DESTROY)
+                .setEvent(Events.EventEnum.DYNAMIC_DEL_UP_ACTION)
+                .onNext(events -> {
+                    String id = (String) events.message;
+                    if (mAdapter != null) {
+                        mPresenter.delUpDynamic(id);
+
+                    }
+                })
+                .create();
+        //更新用户信息
         RxBus.with(this)
                 .setEndEvent(FragmentEvent.DESTROY)
                 .setEvent(Events.EventEnum.USERINFO_CHANGE)
@@ -157,6 +182,12 @@ public class MyFragment extends BaseFragment implements MyFragmentView {
         if (mAdapter != null) {
             mAdapter.deleteDynamic(id);
         }
+    }
+
+    @Override
+    public void upLoadDynamic() {
+        if (mPresenter != null)
+            mPresenter.loadonRefreshData();
     }
 
     @OnClick({R.id.tv_certification, R.id.tv_withdraw_deposit, R.id.tv_appointment, R.id.tv_person_order, R.id.tv_person_setting})
