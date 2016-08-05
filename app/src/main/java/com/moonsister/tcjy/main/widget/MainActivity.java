@@ -36,6 +36,8 @@ import com.moonsister.tcjy.utils.ConfigUtils;
 import com.moonsister.tcjy.utils.FragmentUtils;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.UIUtils;
+import com.moonsister.tcjy.widget.speak.PressToSpeakListenr;
+import com.moonsister.tcjy.widget.speak.VoicePlay;
 import com.trello.rxlifecycle.ActivityEvent;
 
 import butterknife.Bind;
@@ -66,13 +68,19 @@ public class MainActivity extends BaseActivity implements MainView {
     private MainPresenter mMainPresenter;
 
     @Override
+    protected View setRootContentView() {
+        mMainPresenter = new MainPresenterImpl();
+        mMainPresenter.attachView(this);
+        return UIUtils.inflateLayout(R.layout.activity_main);
+    }
+
+    @Override
     protected void initView() {
         mMainPresenter.switchNavigation(R.id.tv_home_page);
         initRxBus();
         initNetMianData();
         new UpdateManager(MainActivity.this).checkUpdate();
         GaodeManager.getInstance().getLocLocation();
-
 
     }
 
@@ -98,12 +106,6 @@ public class MainActivity extends BaseActivity implements MainView {
         mMainPresenter.getCertificationStatus();
     }
 
-    @Override
-    protected View setRootContentView() {
-        mMainPresenter = new MainPresenterImpl();
-        mMainPresenter.attachView(this);
-        return UIUtils.inflateLayout(R.layout.activity_main);
-    }
 
     @Override
     protected void onBaseCreate(Bundle savedInstanceState) {

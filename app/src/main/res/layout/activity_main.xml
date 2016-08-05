@@ -68,4 +68,10 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/view_line"
         android:layout_centerHorizontal="true"></RelativeLayout>
+
+    <include
+        layout="@layout/recording_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
 </RelativeLayout>
