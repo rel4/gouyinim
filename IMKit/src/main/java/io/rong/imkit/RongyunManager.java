@@ -31,6 +31,7 @@ public class RongyunManager {
 
     private Context context;
     private boolean isConnectRonyun;
+    private String authcode;
 
     public static RongyunManager getInstance() {
         if (instance == null) {
@@ -67,6 +68,10 @@ public class RongyunManager {
         if (userInfo != null)
             return userInfo.getName();
         return "";
+    }
+
+    public void setAuthcode(String authcode) {
+        this.authcode = authcode;
     }
 
     /**
@@ -235,38 +240,17 @@ public class RongyunManager {
     public void setSendMessageListener() {
         RongIM.getInstance().setSendMessageListener(new RongIM.OnSendMessageListener() {
             @Override
-            public Message onSend(Message message) {
-                SendMsgForServiceHelper helper = new SendMsgForServiceHelper();
-                helper.send(message);
-//                MessageContent messageContent = message.getContent();
-//                if (messageContent instanceof TextMessage) {// 文本消息
-//                    TextMessage textMessage = (TextMessage) messageContent;
-//                    Log.e(TAG, "onSent-TextMessage:" + textMessage.getContent());
-//                    // sendSync(message, "2", textMessage.getContent());
-//                } else if (messageContent instanceof ImageMessage) {// 图片消息
-//                    ImageMessage imageMessage = (ImageMessage) messageContent;
-//                    Log.e(TAG, "onSent-ImageMessage:" + imageMessage.getLocalUri().getPath());
-//                } else if (messageContent instanceof VoiceMessage) {// 语音消息
-//                    VoiceMessage voiceMessage = (VoiceMessage) messageContent;
-//                    Log.e(TAG, "onSent-voiceMessage:"
-//                            + voiceMessage.getUri().toString());
-//
-//                } else if (messageContent instanceof RichContentMessage) {// 图文消息
-//                    RichContentMessage richContentMessage = (RichContentMessage) messageContent;
-//                    Log.e(TAG,
-//                            "onSent-RichContentMessage:"
-//                                    + richContentMessage.getContent());
-//                } else {
-//                    Log.e(TAG, "onSent-其他消息，自己来判断处理");
-//                }
+            public Message onSend(final Message message) {
 
-//                RongIM.getInstance()
-//                        .getRongIMClient()
-//                        .insertMessage(message.getConversationType(),
-//                                message.getTargetId(), message.getSenderUserId(),
-//                                message.getContent());
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        SendMsgForServiceHelper helper = new SendMsgForServiceHelper();
+                        helper.send(message, authcode);
+                    }
+                }).start();
 
-                return null;
+                return message;
             }
 
             @Override
@@ -274,10 +258,6 @@ public class RongyunManager {
                 return false;
             }
         });
-    }
-
-    public void sendMsgForService() {
-
     }
 
 }

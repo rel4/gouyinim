@@ -1,9 +1,11 @@
 package io.rong.imkit;
 
 
+import android.graphics.BitmapFactory;
 import android.text.TextUtils;
 
-import com.google.gson.Gson;
+import java.io.File;
+import java.net.URLEncoder;
 
 import io.rong.imkit.userInfoCache.RongUserInfoManager;
 import io.rong.imlib.model.Message;
@@ -36,12 +38,12 @@ public class SendMsgForServiceHelper {
 
     }
 
-    private static void sendMsg(ChatType chatType, String touid, MsgContent context) {
-        String s = new Gson().toJson(context);
-        if (TextUtils.isEmpty(s))
-            return;
-        Observable<MsgBean> observable = RongServerAPI.getRongAPI().send(chatType.getValue(), touid, s);
-        observable.observeOn(AndroidSchedulers.mainThread())
+    private static void sendMsg(ChatType chatType, String touid, String content, String authcode) {
+//        String msgContent = new Gson().toJson(context);
+//        if (TextUtils.isEmpty(msgContent))
+//            return;
+        Observable<MsgBean> observable = RongServerAPI.getRongAPI().send(chatType.getValue(), touid, content, authcode);
+        observable.observeOn(Schedulers.io())
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Subscriber<MsgBean>() {
                     @Override
@@ -61,27 +63,44 @@ public class SendMsgForServiceHelper {
                 });
     }
 
-    public void send(Message message) {
+    public void send(Message message, String authcode) {
         MessageContent messageContent = message.getContent();
         if (messageContent instanceof TextMessage) {// 文本消息
             TextMessage textMessage = (TextMessage) messageContent;
-
-
             RongLogUtils.e(this, "onSent-TextMessage:" + textMessage.getContent());
-
-            MsgContent msgContent = new MsgContent();
-            msgContent.setContent(textMessage.getContent());
-            msgContent.setUser(gerUser(message.getUId()));
-            sendMsg(ChatType.TXT_MSG, message.getTargetId(), msgContent);
-            // sendSync(message, "2", textMessage.getContent());
+            sendMsg(ChatType.TXT_MSG, message.getTargetId(), textMessage.getContent(), authcode);
         } else if (messageContent instanceof ImageMessage) {// 图片消息
             ImageMessage imageMessage = (ImageMessage) messageContent;
+            String path = imageMessage.getLocalUri().getPath();
+            File file = new File(path);
+            if (!file.exists()) {
+                return;
+            }
+            String imgString = null;
+            if (path.contains(".jpg")) {
+                imgString = FileUtils.Bitmap2StrByBase64(BitmapFactory.decodeFile(path),
+                        "data:image/jpg;base64,");
+            } else if (path.contains(".png")) {
+                imgString = FileUtils.Bitmap2StrByBase64(BitmapFactory.decodeFile(path),
+                        "data:image/png;base64,");
+            }
+            if (TextUtils.isEmpty(imgString))
+                return;
+            imgString = URLEncoder.encode(imgString);
+            sendMsg(ChatType.IMG_MSG, message.getTargetId(), imgString, authcode);
             RongLogUtils.e(this, "onSent-ImageMessage:" + imageMessage.getLocalUri().getPath());
         } else if (messageContent instanceof VoiceMessage) {// 语音消息
             VoiceMessage voiceMessage = (VoiceMessage) messageContent;
             RongLogUtils.e(this, "onSent-voiceMessage:"
                     + voiceMessage.getUri().toString());
-
+            String path = voiceMessage.getUri().getPath();
+            File fileSound = new File(path);
+            if (!fileSound.exists()) {
+                return;
+            }
+            String voiceString = FileUtils.getString(path, "data:audio/amr;base64,");
+            voiceString = URLEncoder.encode(voiceString);
+            sendMsg(ChatType.VC_MSG, message.getTargetId(), voiceString, authcode);
         } else if (messageContent instanceof RichContentMessage) {// 图文消息
             RichContentMessage richContentMessage = (RichContentMessage) messageContent;
             RongLogUtils.e(this,

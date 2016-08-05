@@ -58,20 +58,12 @@ public class GaodeManager implements AMapLocationListener {
         if (aMapLocation != null) {
             LogUtils.d(this, aMapLocation.toStr());
             PrefUtils.setString(GaodeManager.class.getName(), aMapLocation.toStr());
-            Observable<DefaultDataBean> observable = ServerApi.getAppAPI().uploadLoation(aMapLocation.toStr(), UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
-            ObservableUtils.parser(observable, new ObservableUtils.Callback<DefaultDataBean>() {
-                @Override
-                public void onSuccess(DefaultDataBean baseBean) {
+            if (UserInfoManager.getInstance().isLogin()) {
+                Observable<DefaultDataBean> observable = ServerApi.getAppAPI().uploadLoation(aMapLocation.toStr(), UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
+                ObservableUtils.parser(observable, null);
 
-                }
-
-                @Override
-                public void onFailure(String msg) {
-
-                }
-            });
-
-            RxBus.getInstance().send(Events.EventEnum.GET_LOCLOCATION, null);
+                RxBus.getInstance().send(Events.EventEnum.GET_LOCLOCATION, null);
+            }
         }
         locationClient.stopLocation();
         LogUtils.e(this, "-------- finish loclocation---------");

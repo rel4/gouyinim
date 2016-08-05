@@ -40,6 +40,7 @@ import com.trello.rxlifecycle.ActivityEvent;
 
 import butterknife.Bind;
 import butterknife.OnClick;
+import io.rong.imkit.RongyunManager;
 
 public class MainActivity extends BaseActivity implements MainView {
     @Bind(R.id.tv_home_page)
@@ -70,8 +71,7 @@ public class MainActivity extends BaseActivity implements MainView {
         initRxBus();
         initNetMianData();
         new UpdateManager(MainActivity.this).checkUpdate();
-        if (UserInfoManager.getInstance().isLogin())
-            GaodeManager.getInstance().getLocLocation();
+        GaodeManager.getInstance().getLocLocation();
 
 
     }
@@ -85,9 +85,9 @@ public class MainActivity extends BaseActivity implements MainView {
      * 初始化网络数据
      */
     private void initNetMianData() {
-        PersonInfoDetail memoryPersonInfoDetail = UserInfoManager.getInstance().getMemoryPersonInfoDetail();
-        if (!memoryPersonInfoDetail.isLogin())
+        if (!UserInfoManager.getInstance().isLogin())
             return;
+        RongyunManager.getInstance().setAuthcode(UserInfoManager.getInstance().getAuthcode());
         /**
          * 登录融云
          */

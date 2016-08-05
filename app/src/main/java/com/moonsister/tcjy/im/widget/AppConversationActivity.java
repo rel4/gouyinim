@@ -51,6 +51,11 @@ public class AppConversationActivity extends BaseActivity {
         return name;
     }
 
+    @Override
+    public boolean isBaseonActivityResult() {
+        return false;
+    }
+
     /**
      * 展示如何从 Intent 中得到 融云会话页面传递的 Uri
      */

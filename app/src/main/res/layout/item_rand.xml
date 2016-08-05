@@ -23,7 +23,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:gravity="center" />
+            android:gravity="center"
+            android:textColor="@color/app_line" />
     </RelativeLayout>
 
 
@@ -51,13 +52,13 @@
             android:textColor="@color/title_text" />
 
         <TextView
-
             android:id="@+id/tv_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginTop="@dimen/x10"
-            android:text="2568954 经验礼物" />
+            android:text="2568954 经验礼物"
+            android:textColor="@color/app_line" />
 
     </LinearLayout>
 

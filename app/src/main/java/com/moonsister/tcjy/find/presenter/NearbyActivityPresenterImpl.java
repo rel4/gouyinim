@@ -43,12 +43,12 @@ public class NearbyActivityPresenterImpl implements NearbyActivityPresenter, Bas
 
     @Override
     public void onSuccess(List<NearbyBean.DataBean> t, BaseIModel.DataType dataType) {
-
+        view.setData(t);
         if (t != null) {
-            view.setData(t);
             if (t.size() != 0)
                 page++;
         }
+
         view.hideLoading();
     }
 

@@ -233,32 +233,40 @@ public abstract class BaseActivity extends RxAppCompatActivity {
         progressDialog = null;
     }
 
+
+    public boolean isBaseonActivityResult() {
+        return true;
+    }
+
     /**
      * 更新界面
      */
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        FragmentManager fm = getSupportFragmentManager();
-        int index = requestCode >> 16;
-        if (index != 0) {
-            index--;
-            if (fm.getFragments() == null || index < 0
-                    || index >= fm.getFragments().size()) {
-                LogUtils.e(TAG,
-                        "Activity result fragment index out of range: 0x"
-                                + Integer.toHexString(requestCode));
+        if (!isBaseonActivityResult())
+            super.onActivityResult(requestCode, resultCode, data);
+        else {
+            FragmentManager fm = getSupportFragmentManager();
+            int index = requestCode >> 16;
+            if (index != 0) {
+                index--;
+                if (fm.getFragments() == null || index < 0
+                        || index >= fm.getFragments().size()) {
+                    LogUtils.e(TAG,
+                            "Activity result fragment index out of range: 0x"
+                                    + Integer.toHexString(requestCode));
+                    return;
+                }
+                Fragment frag = fm.getFragments().get(index);
+                if (frag == null) {
+                    LogUtils.e(TAG,
+                            "Activity result no fragment exists for index: 0x"
+                                    + Integer.toHexString(requestCode));
+                } else {
+                    handleResult(frag, requestCode, resultCode, data);
+                }
                 return;
             }
-            Fragment frag = fm.getFragments().get(index);
-            if (frag == null) {
-                LogUtils.e(TAG,
-                        "Activity result no fragment exists for index: 0x"
-                                + Integer.toHexString(requestCode));
-            } else {
-                handleResult(frag, requestCode, resultCode, data);
-            }
-            return;
         }
     }
 
@@ -286,4 +294,6 @@ public abstract class BaseActivity extends RxAppCompatActivity {
     public boolean isaddActivity() {
         return true;
     }
+
+
 }

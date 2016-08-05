@@ -62,9 +62,10 @@ public class RongServerAPI {
 
     public interface RongAPI {
         @FormUrlEncoded
-        @POST("chat.php?action=chat&authcode=58a75329d8d31938dfeb9d468cb06bd7")
+        @POST("chat.php?action=chat")
         Observable<MsgBean> send(@Field("chat_type") String chatType,
                                  @Field("to_uid") String toUid,
-                                 @Field("chat_content") String content);
+                                 @Field("chat_content") String content,
+                                 @Field("authcode") String authcode);
     }
 }

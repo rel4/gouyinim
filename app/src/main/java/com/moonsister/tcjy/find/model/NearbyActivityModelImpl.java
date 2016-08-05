@@ -36,24 +36,25 @@ public class NearbyActivityModelImpl implements NearbyActivityModel {
                     e.printStackTrace();
                 }
             }
-            Observable<NearbyBean> observable = ServerApi.getAppAPI().getNearby(sex, page, longitude, latitude, UserInfoManager.getInstance().getAuthcode());
-            ObservableUtils.parser(observable, new ObservableUtils.Callback<NearbyBean>() {
-                @Override
-                public void onSuccess(NearbyBean nearbyBean) {
-                    if (nearbyBean == null) {
-                        listener.onFailure(UIUtils.getStringRes(R.string.request_failed));
-                    } else {
-                        listener.onSuccess(nearbyBean.getData(), DataType.DATA_ZERO);
-                    }
-
-                }
-
-                @Override
-                public void onFailure(String msg) {
-                    listener.onFailure(msg);
-                }
-            });
-
         }
+        Observable<NearbyBean> observable = ServerApi.getAppAPI().getNearby(sex, page, longitude, latitude, UserInfoManager.getInstance().getAuthcode());
+        ObservableUtils.parser(observable, new ObservableUtils.Callback<NearbyBean>() {
+            @Override
+            public void onSuccess(NearbyBean nearbyBean) {
+                if (nearbyBean == null) {
+                    listener.onFailure(UIUtils.getStringRes(R.string.request_failed));
+                } else {
+                    listener.onSuccess(nearbyBean.getData(), DataType.DATA_ZERO);
+                }
+
+            }
+
+            @Override
+            public void onFailure(String msg) {
+                listener.onFailure(msg);
+            }
+        });
+
     }
+
 }
