@@ -13,12 +13,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.baidu.BaiduManager;
+import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.ApplicationConfig;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.base.BaseFragment;
 import com.moonsister.tcjy.bean.PayRedPacketPicsBean;
-import com.moonsister.tcjy.bean.PersonInfoDetail;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.find.widget.FindFragment;
@@ -28,6 +28,9 @@ import com.moonsister.tcjy.main.presenter.MainPresenter;
 import com.moonsister.tcjy.main.presenter.MainPresenterImpl;
 import com.moonsister.tcjy.main.view.MainView;
 import com.moonsister.tcjy.manager.GaodeManager;
+
+import io.rong.imkit.IMManager;
+
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.my.widget.MyFragment;
 import com.moonsister.tcjy.update.UpdateManager;
@@ -36,8 +39,6 @@ import com.moonsister.tcjy.utils.ConfigUtils;
 import com.moonsister.tcjy.utils.FragmentUtils;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.UIUtils;
-import com.moonsister.tcjy.widget.speak.PressToSpeakListenr;
-import com.moonsister.tcjy.widget.speak.VoicePlay;
 import com.trello.rxlifecycle.ActivityEvent;
 
 import butterknife.Bind;
@@ -61,6 +62,9 @@ public class MainActivity extends BaseActivity implements MainView {
 
     @Bind(R.id.appx_banner_container)
     RelativeLayout appx_banner_container;
+
+    @Bind(R.id.tv_msg_number)
+    TextView tvMsgNumber;
     //当前一级页面显示的Fragment
     private BaseFragment mCurrentFragment, homeFragment, imHomeFragment, findFragment, myFragment;
 
@@ -93,8 +97,24 @@ public class MainActivity extends BaseActivity implements MainView {
      * 初始化网络数据
      */
     private void initNetMianData() {
+
         if (!UserInfoManager.getInstance().isLogin())
             return;
+        RongyunManager.getInstance().setMsgNumber(new RongyunManager.onNotReadCallback() {
+            @Override
+            public void onSuccess(int number) {
+                if (tvMsgNumber == null)
+                    return;
+                if (number < 1) {
+                    number = 0;
+                    tvMsgNumber.setText(number + "");
+                    tvMsgNumber.setVisibility(View.GONE);
+                } else {
+                    tvMsgNumber.setText(number + "");
+                    tvMsgNumber.setVisibility(View.VISIBLE);
+                }
+            }
+        });
         RongyunManager.getInstance().setAuthcode(UserInfoManager.getInstance().getAuthcode());
         /**
          * 登录融云
@@ -104,6 +124,8 @@ public class MainActivity extends BaseActivity implements MainView {
          *认证状态
          */
         mMainPresenter.getCertificationStatus();
+        IMManager.getInstance().start(UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
+
     }
 
 
@@ -129,7 +151,6 @@ public class MainActivity extends BaseActivity implements MainView {
 
     @Override
     public void switch2IM() {
-
         if (!UserInfoManager.getInstance().isLogin()) {
             RxBus.getInstance().send(Events.EventEnum.LOGIN, null);
             return;
@@ -246,6 +267,17 @@ public class MainActivity extends BaseActivity implements MainView {
                 )
                 .create();
         /**
+         * 登录成功
+         */
+        RxBus.with(this)
+                .setEndEvent(ActivityEvent.DESTROY)
+                .setEvent(Events.EventEnum.LOGIN_SUCCSS)
+                .onNext(events -> {
+                            initNetMianData();
+                        }
+                )
+                .create();
+        /**
          * 身份失效
          */
         RxBus.with(this)
@@ -275,16 +307,6 @@ public class MainActivity extends BaseActivity implements MainView {
                 })
                 .create();
         /**
-         * 退出进入首页
-         */
-        RxBus.with(this)
-                .setEndEvent(ActivityEvent.DESTROY)
-                .setEvent(Events.EventEnum.GO_TO_HOME)
-                .onNext(events -> {
-
-                })
-                .create();
-        /**
          * 更新红包数据
          */
         RxBus.with(this)
@@ -301,6 +323,12 @@ public class MainActivity extends BaseActivity implements MainView {
                     }
                 })
                 .create();
+    }
+
+    @Override
+    protected void onBaseDestroy() {
+        IMManager.getInstance().stop();
+        super.onBaseDestroy();
     }
 
     @Override

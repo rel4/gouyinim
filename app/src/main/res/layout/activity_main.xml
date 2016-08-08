@@ -18,12 +18,32 @@
             android:drawableTop="@drawable/selector_home_text_draw"
             android:text="@string/app_home_page" />
 
-        <TextView
-            android:id="@+id/tv_im_page"
-            style="@style/home_text"
-            android:drawableTop="@drawable/selector_im_text_draw"
-            android:text="@string/app_im_page" />
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
 
+            <TextView
+                android:id="@+id/tv_im_page"
+                style="@style/home_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:drawableTop="@drawable/selector_im_text_draw"
+                android:text="@string/app_im_page" />
+
+            <TextView
+                android:id="@+id/tv_msg_number"
+                android:layout_width="@dimen/x35"
+                android:layout_height="@dimen/x35"
+                android:layout_marginLeft="-8dp"
+                android:layout_toRightOf="@+id/tv_im_page"
+                android:background="@drawable/shapw_red_point"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="9sp"
+                android:visibility="gone" />
+        </RelativeLayout>
 
         <ImageView
             android:id="@+id/tv_center_page"

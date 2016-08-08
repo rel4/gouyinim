@@ -6,6 +6,6 @@ import com.moonsister.tcjy.bean.SearchReasonBaen;
 /**
  * Created by jb on 2016/7/10.
  */
-public interface SearchReasonActivityView extends BaseIView {
+public interface SearchResultActivityView extends BaseIView {
     void setReasonData(SearchReasonBaen searchReasonBaen);
 }

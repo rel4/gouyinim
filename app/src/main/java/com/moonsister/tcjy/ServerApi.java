@@ -57,75 +57,91 @@ public class ServerApi {
 
     public static AppAPI getAppAPI() {
         if (mAppApi == null) {
+            if (LogUtils.getDeBugState()) {
+                Interceptor mTokenInterceptor = new Interceptor() {
+                    @Override
+                    public Response intercept(Chain chain) throws IOException {
+                        Response response = chain.proceed(chain.request());
+                        LogUtils.d(TAG, "addNetworkInterceptor : Response  code: " + response.code());
+                        BufferedSource source = response.body().source();
+                        source.request(Long.MAX_VALUE);
+                        Buffer clone = source.buffer().clone();
+                        LogUtils.d(TAG, "addNetworkInterceptor : Response  content: " + UnicodeUtils.decodeUnicode(clone.readUtf8()));
+                        return response;
+                    }
 
-            Interceptor mTokenInterceptor = new Interceptor() {
-                @Override
-                public Response intercept(Chain chain) throws IOException {
-                    Response response = chain.proceed(chain.request());
-                    LogUtils.d(TAG, "addNetworkInterceptor : Response  code: " + response.code());
-                    BufferedSource source = response.body().source();
-                    source.request(Long.MAX_VALUE);
-                    Buffer clone = source.buffer().clone();
-                    LogUtils.d(TAG, "addNetworkInterceptor : Response  content: " + UnicodeUtils.decodeUnicode(clone.readUtf8()));
-                    return response;
-                }
+                };
+                // init okhttp 3 logger
+                HttpLoggingInterceptor logging = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
+                    @Override
+                    public void log(String message) {
+                        LogUtils.d(TAG, (message.startsWith("{") ? UnicodeUtils.decodeUnicode(message) : message));
+                    }
 
-            };
-            // init okhttp 3 logger
-            HttpLoggingInterceptor logging = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
-                @Override
-                public void log(String message) {
-                    LogUtils.e(TAG, "HttpLoggingInterceptor: " + message);
-                }
+                });
+                logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+                //401 Not Authorised
+                Authenticator mAuthenticator = new Authenticator() {
 
-            });
-            logging.setLevel(HttpLoggingInterceptor.Level.BODY);
-            //401 Not Authorised
-            Authenticator mAuthenticator = new Authenticator() {
+                    @Override
+                    public Request authenticate(Route route, Response response) throws IOException {
+                        Request request = response.request();
+                        LogUtils.d(TAG, "Authenticator : The Cookie is " + request.header("Cookie"));
+                        LogUtils.e(TAG, "Authenticator : 访问网络地址: " + request.url().toString());
+                        LogUtils.d(TAG, "Authenticator : 访问body : " + request.body().toString());
+                        return request;
+                    }
+                };
 
-                @Override
-                public Request authenticate(Route route, Response response) throws IOException {
-                    Request request = response.request();
-                    LogUtils.d(TAG, "Authenticator : The Cookie is " + request.header("Cookie"));
-                    LogUtils.e(TAG, "Authenticator : 访问网络地址: " + request.url().toString());
-                    LogUtils.d(TAG, "Authenticator : 访问body : " + request.body().toString());
-                    return request;
-                }
-            };
+                Interceptor interceptor = new Interceptor() {
+                    @Override
+                    public Response intercept(Chain chain) throws IOException {
+                        LogUtils.d(TAG, "addInterceptor : 访问request : " + chain.request().toString());
+                        Response response = chain.proceed(chain.request());
 
-            Interceptor interceptor = new Interceptor() {
-                @Override
-                public Response intercept(Chain chain) throws IOException {
-                    LogUtils.d(TAG, "addInterceptor : 访问request : " + chain.request().toString());
-                    Response response = chain.proceed(chain.request());
+                        LogUtils.d(TAG, "addInterceptor : Response  code: " + response.code());
+                        BufferedSource source = response.body().source();
+                        source.request(Long.MAX_VALUE);
+                        Buffer clone = source.buffer().clone();
+                        LogUtils.d(TAG, "addInterceptor : Response  content: " + UnicodeUtils.decodeUnicode(clone.readUtf8()));
+                        return response;
+                    }
+                };
 
-                    LogUtils.d(TAG, "addInterceptor : Response  code: " + response.code());
-                    BufferedSource source = response.body().source();
-                    source.request(Long.MAX_VALUE);
-                    Buffer clone = source.buffer().clone();
-                    LogUtils.d(TAG, "addInterceptor : Response  content: " + UnicodeUtils.decodeUnicode(clone.readUtf8()));
-                    return response;
-                }
-            };
+                //OkHttpClient
+                OkHttpClient httpClient = new OkHttpClient.Builder()
+                        .addInterceptor(logging)
+//                        .addInterceptor(interceptor)
+                        .retryOnConnectionFailure(true)
+                        .authenticator(mAuthenticator)
+                        .connectTimeout(15, TimeUnit.SECONDS)
+                        .addNetworkInterceptor(mTokenInterceptor)
+                        .build();
+                //Retrofit.
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl(AppAPI.baseUrl)
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                        .client(httpClient)
+                        .build();
 
-            //OkHttpClient
-            OkHttpClient httpClient = new OkHttpClient.Builder()
-                    .addInterceptor(logging)
-                    .addInterceptor(interceptor)
-                    .retryOnConnectionFailure(true)
-                    .authenticator(mAuthenticator)
-                    .connectTimeout(15, TimeUnit.SECONDS)
-                    .addNetworkInterceptor(mTokenInterceptor)
-                    .build();
-            //Retrofit.
-            Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl(AppAPI.baseUrl)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                    .client(httpClient)
-                    .build();
+                mAppApi = retrofit.create(AppAPI.class);
+            } else {
+                //OkHttpClient
+                OkHttpClient httpClient = new OkHttpClient.Builder()
+                        .retryOnConnectionFailure(true)
+                        .connectTimeout(15, TimeUnit.SECONDS)
+                        .build();
+                //Retrofit.
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl(AppAPI.baseUrl)
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                        .client(httpClient)
+                        .build();
 
-            mAppApi = retrofit.create(AppAPI.class);
+                mAppApi = retrofit.create(AppAPI.class);
+            }
         }
         return mAppApi;
     }
@@ -732,6 +748,14 @@ public class ServerApi {
                                               @Query("authcode") String authcode,
                                               @Query("channel") String channel);
 
+        /**
+         * 更新位置信息
+         *
+         * @param address
+         * @param authcode
+         * @param channel
+         * @return
+         */
         @FormUrlEncoded
         @POST("Location/update_location")
         Observable<DefaultDataBean> uploadLoation(@Field("address") String address,
@@ -749,7 +773,8 @@ public class ServerApi {
         Observable<RankBean> getRankData(@Query("type") int type,
                                          @Query("page") int page,
                                          @Query("pagesize") int pagesize,
-                                         @Query("authcode") String authcode);
+                                         @Query("authcode") String authcode,
+                                         @Query("channel") String channel);
 
         /**
          * //        1、authcode 用户身份验证码
@@ -768,7 +793,8 @@ public class ServerApi {
                                          @Query("page") int page,
                                          @Query("lng") double longitude,
                                          @Query("lat") double latitude,
-                                         @Query("authcode") String authcode);
+                                         @Query("authcode") String authcode,
+                                         @Query("channel") String channel);
 
 
     }

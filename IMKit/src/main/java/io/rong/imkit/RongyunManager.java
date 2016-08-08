@@ -32,6 +32,7 @@ public class RongyunManager {
     private Context context;
     private boolean isConnectRonyun;
     private String authcode;
+    private onNotReadCallback msgNumber;
 
     public static RongyunManager getInstance() {
         if (instance == null) {
@@ -70,9 +71,24 @@ public class RongyunManager {
         return "";
     }
 
+    /**
+     * 设置authcode
+     *
+     * @param authcode
+     */
     public void setAuthcode(String authcode) {
         this.authcode = authcode;
     }
+
+    /**
+     * 设置未读数
+     *
+     * @param msgNumber
+     */
+    public void setMsgNumber(onNotReadCallback msgNumber) {
+        this.msgNumber = msgNumber;
+    }
+
 
     /**
      * 连接回调
@@ -81,6 +97,13 @@ public class RongyunManager {
         void onSuccess(String s);
 
         void onTokenIncorrect();
+    }
+
+    /**
+     * 未读数回调
+     */
+    public interface onNotReadCallback {
+        void onSuccess(int number);
     }
 
     /**
@@ -109,6 +132,13 @@ public class RongyunManager {
                 if (callback != null)
                     callback.onSuccess(s);
                 setSendMessageListener();
+                RongIM.getInstance().setOnReceiveUnreadCountChangedListener(new RongIM.OnReceiveUnreadCountChangedListener() {
+                    @Override
+                    public void onMessageIncreased(int i) {
+                        if (msgNumber != null)
+                            msgNumber.onSuccess(i);
+                    }
+                }, Conversation.ConversationType.PRIVATE);
             }
 
             @Override

@@ -1,5 +1,6 @@
 package com.moonsister.tcjy.find.model;
 
+import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.ServerApi;
 import com.moonsister.tcjy.bean.NearbyBean;
@@ -37,7 +38,7 @@ public class NearbyActivityModelImpl implements NearbyActivityModel {
                 }
             }
         }
-        Observable<NearbyBean> observable = ServerApi.getAppAPI().getNearby(sex, page, longitude, latitude, UserInfoManager.getInstance().getAuthcode());
+        Observable<NearbyBean> observable = ServerApi.getAppAPI().getNearby(sex, page, longitude, latitude, UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
         ObservableUtils.parser(observable, new ObservableUtils.Callback<NearbyBean>() {
             @Override
             public void onSuccess(NearbyBean nearbyBean) {

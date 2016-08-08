@@ -106,8 +106,7 @@ public class LoginFragment extends BaseFragment implements LoginFragmentView {
     @Override
     public void loginSuccss() {
         showToast(resources.getString(R.string.str_login) + resources.getString(R.string.success));
-        RxBus.getInstance().send(Events.EventEnum.GET_RONGYUN_KEY, null);
-        UserInfoManager.getInstance().isLogin();
+        RxBus.getInstance().send(Events.EventEnum.LOGIN_SUCCSS, null);
         UIUtils.sendDelayed(new Runnable() {
             @Override
             public void run() {

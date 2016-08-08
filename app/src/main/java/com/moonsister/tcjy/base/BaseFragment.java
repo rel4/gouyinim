@@ -4,7 +4,9 @@ package com.moonsister.tcjy.base;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -12,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.moonsister.tcjy.utils.ConfigUtils;
+import com.moonsister.tcjy.utils.FragmentUtils;
 import com.moonsister.tcjy.utils.UIUtils;
 
 import butterknife.ButterKnife;
@@ -65,55 +68,14 @@ public abstract class BaseFragment extends BaseRxFragment implements View.OnTouc
     protected abstract void initData();
 
     @Override
-    public void onStart() {
-        super.onStart();
-        onBaseStart();
-    }
-
-    protected void onBaseStart() {
-    }
-
-    @Override
     public void onPause() {
         super.onPause();
-        onBasePause();
         FragmentActivity activity = getActivity();
         if (activity != null && activity instanceof BaseActivity) {
             ((BaseActivity) activity).hideSoftInput();
         }
     }
 
-    protected void onBasePause() {
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        onBaseResume();
-
-    }
-
-
-    protected void onBaseResume() {
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        onBaseStop();
-    }
-
-    protected void onBaseStop() {
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        onBaseDestroy();
-    }
-
-    protected void onBaseDestroy() {
-    }
 
     @Override
     public void onDestroyView() {
@@ -153,4 +115,26 @@ public abstract class BaseFragment extends BaseRxFragment implements View.OnTouc
     public boolean onTouch(View v, MotionEvent event) {
         return false;
     }
+
+
+    /**
+     * 替换fragment
+     *
+     * @param fragment
+     */
+    protected void replaceFramgent(Fragment fragment, @IdRes int resid) {
+        if (fragment == null)
+            return;
+        FragmentUtils.swichReplaceFramgent(getChildFragmentManager(), resid, fragment);
+    }
+
+    /**
+     * 隐藏fragment
+     */
+    protected void hideFragment(Fragment hide, Fragment show, @IdRes int resid) {
+        if (hide == null || show == null)
+            return;
+        FragmentUtils.switchHideFragment(getChildFragmentManager(), resid, hide, show);
+    }
+
 }

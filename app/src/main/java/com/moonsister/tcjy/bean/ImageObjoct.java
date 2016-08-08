@@ -14,6 +14,7 @@ public class ImageObjoct implements Serializable {
      * 原图
      */
     public String l;
+    
     private String v;
 
     public String getS() {

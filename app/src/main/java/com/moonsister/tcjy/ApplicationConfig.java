@@ -1,5 +1,6 @@
 package com.moonsister.tcjy;
 
+import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.support.multidex.MultiDexApplication;
@@ -7,6 +8,7 @@ import android.support.multidex.MultiDexApplication;
 import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.utils.ConfigUtils;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import io.rong.imkit.RongyunManager;
@@ -15,8 +17,8 @@ import io.rong.imkit.RongyunManager;
  * Created by pc on 2016/6/3.
  */
 public class ApplicationConfig extends MultiDexApplication {
-//    AppComponent appComponent;
-    private ArrayList<BaseActivity> activities = new ArrayList<BaseActivity>();
+    //    AppComponent appComponent;
+    private ArrayList<Activity> activities = new ArrayList<Activity>();
 
     @Override
     public void onCreate() {
@@ -80,7 +82,7 @@ public class ApplicationConfig extends MultiDexApplication {
      *
      * @param activity
      */
-    public void addActivity(BaseActivity activity) {
+    public void addActivity(Activity activity) {
         if (!activities.contains(activity))
             activities.add(activity);
     }
@@ -90,7 +92,7 @@ public class ApplicationConfig extends MultiDexApplication {
      *
      * @param activity
      */
-    public void removeActivity(BaseActivity activity) {
+    public void removeActivity(Activity activity) {
         if (activities.contains(activity))
             activities.remove(activity);
     }

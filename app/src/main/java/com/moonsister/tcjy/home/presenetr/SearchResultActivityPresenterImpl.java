@@ -2,16 +2,16 @@ package com.moonsister.tcjy.home.presenetr;
 
 import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.bean.SearchReasonBaen;
-import com.moonsister.tcjy.home.model.SearchReasonActivityModel;
-import com.moonsister.tcjy.home.model.SearchReasonActivityModelImpl;
-import com.moonsister.tcjy.home.view.SearchReasonActivityView;
+import com.moonsister.tcjy.home.model.SearchResultActivityModel;
+import com.moonsister.tcjy.home.model.SearchResultActivityModelImpl;
+import com.moonsister.tcjy.home.view.SearchResultActivityView;
 
 /**
  * Created by jb on 2016/7/10.
  */
-public class SearchReasonActivityPresenterImpl implements SearchReasonActivityPresenter, BaseIModel.onLoadDateSingleListener<SearchReasonBaen> {
-    private SearchReasonActivityView view;
-    private SearchReasonActivityModel model;
+public class SearchResultActivityPresenterImpl implements SearchResultActivityPresenter, BaseIModel.onLoadDateSingleListener<SearchReasonBaen> {
+    private SearchResultActivityView view;
+    private SearchResultActivityModel model;
     private int page = 1;
 
     @Override
@@ -20,9 +20,9 @@ public class SearchReasonActivityPresenterImpl implements SearchReasonActivityPr
     }
 
     @Override
-    public void attachView(SearchReasonActivityView searchReasonActivityView) {
+    public void attachView(SearchResultActivityView searchReasonActivityView) {
         this.view = searchReasonActivityView;
-        model = new SearchReasonActivityModelImpl();
+        model = new SearchResultActivityModelImpl();
     }
 
     @Override

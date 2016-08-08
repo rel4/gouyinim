@@ -186,6 +186,10 @@
     <string name="nearby_wacth_boy">只看男</string>
     <string name="nearby_wacth_girl">只看女</string>
     <string name="nearby_all">全部</string>
+    <string name="dynamic_publish_edittext_hint">分享这一刻想法，付费动态需要累积粉丝才能获取更好的收益哦。</string>
+    <string name="dynamic_charge">是否设置为收费动态</string>
+    <string name="dynamic_show_adress">地址显示</string>
+    <string name="add_lable">添加标签</string>
     <string-array name="moneys">
         <item>8</item>
         <item>28</item>

@@ -1,5 +1,6 @@
 package com.moonsister.tcjy.find.model;
 
+import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.ServerApi;
 import com.moonsister.tcjy.bean.RankBean;
@@ -15,7 +16,7 @@ import rx.Observable;
 public class RankFragmentModelImpl implements RankFragmentModel {
     @Override
     public void loadData(int type, int page, onLoadListDateListener<RankBean.DataBean> listener) {
-        Observable<RankBean> observable = ServerApi.getAppAPI().getRankData(type, page, 20, UserInfoManager.getInstance().getAuthcode());
+        Observable<RankBean> observable = ServerApi.getAppAPI().getRankData(type, page, 20, UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
         ObservableUtils.parser(observable, new ObservableUtils.Callback<RankBean>() {
             @Override
             public void onSuccess(RankBean rankBean) {

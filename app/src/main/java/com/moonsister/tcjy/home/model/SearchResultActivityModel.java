@@ -6,6 +6,6 @@ import com.moonsister.tcjy.bean.SearchReasonBaen;
 /**
  * Created by jb on 2016/7/10.
  */
-public interface SearchReasonActivityModel extends BaseIModel{
+public interface SearchResultActivityModel extends BaseIModel{
     void loadBasicData(String key, int page, onLoadDateSingleListener<SearchReasonBaen> listener);
 }

@@ -12,9 +12,9 @@ import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.adapter.SearchAdapter;
 import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.bean.SearchReasonBaen;
-import com.moonsister.tcjy.home.presenetr.SearchReasonActivityPresenter;
-import com.moonsister.tcjy.home.presenetr.SearchReasonActivityPresenterImpl;
-import com.moonsister.tcjy.home.view.SearchReasonActivityView;
+import com.moonsister.tcjy.home.presenetr.SearchResultActivityPresenter;
+import com.moonsister.tcjy.home.presenetr.SearchResultActivityPresenterImpl;
+import com.moonsister.tcjy.home.view.SearchResultActivityView;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.XListView;
@@ -27,7 +27,7 @@ import butterknife.OnClick;
 /**
  * Created by jb on 2016/7/10.
  */
-public class SearchReasonActivity extends BaseActivity implements TextWatcher, SearchReasonActivityView {
+public class SearchReasonActivity extends BaseActivity implements TextWatcher, SearchResultActivityView {
     @Bind(R.id.et_channel_find)
     EditText etChannelFind;
     @Bind(R.id.btn_search_pager_cancel)
@@ -37,7 +37,7 @@ public class SearchReasonActivity extends BaseActivity implements TextWatcher, S
     @Bind(R.id.tv_not_data)
     TextView tv_not_data;
     private String key;
-    private SearchReasonActivityPresenter presenter;
+    private SearchResultActivityPresenter presenter;
 
     @Override
     protected View setRootContentView() {
@@ -55,7 +55,7 @@ public class SearchReasonActivity extends BaseActivity implements TextWatcher, S
         xlv.setPullRefreshEnabled(false);
         xlv.setLoadingMoreEnabled(false);
         xlv.setEmptyView(tv_not_data);
-        presenter = new SearchReasonActivityPresenterImpl();
+        presenter = new SearchResultActivityPresenterImpl();
         presenter.attachView(this);
         search();
     }

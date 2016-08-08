@@ -11,7 +11,7 @@ import rx.Observable;
 /**
  * Created by jb on 2016/7/10.
  */
-public class SearchReasonActivityModelImpl implements SearchReasonActivityModel {
+public class SearchResultActivityModelImpl implements SearchResultActivityModel {
     @Override
     public void loadBasicData(String key, int page, onLoadDateSingleListener<SearchReasonBaen> listener) {
         Observable<SearchReasonBaen> observable = ServerApi.getAppAPI().getSearchReason(key,page, UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);

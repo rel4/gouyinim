@@ -2,10 +2,15 @@ package io.rong.imkit;
 
 import android.text.TextUtils;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
+import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
+import okio.Buffer;
+import okio.BufferedSource;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -29,28 +34,58 @@ public class RongServerAPI {
         if (mRongAPI == null) {
             synchronized (RongServerAPI.class) {
                 if (mRongAPI == null) {
-                    // init okhttp 3 logger
-                    HttpLoggingInterceptor logging = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
-                        @Override
-                        public void log(String message) {
-                            RongLogUtils.e("RongServerAPI", "HttpLoggingInterceptor: " + message);
-                        }
+                    if (RongLogUtils.getDeBugState()) {
 
-                    });
-                    logging.setLevel(HttpLoggingInterceptor.Level.BODY);
-                    OkHttpClient client = new OkHttpClient.Builder()
-                            .retryOnConnectionFailure(true)
-                            .connectTimeout(15, TimeUnit.SECONDS)
-                            .addInterceptor(logging)
-                            .build();
+                        Interceptor mTokenInterceptor = new Interceptor() {
+                            @Override
+                            public Response intercept(Chain chain) throws IOException {
+                                Response response = chain.proceed(chain.request());
+                                RongLogUtils.d("RongServerAPI", "addNetworkInterceptor : Response  code: " + response.code());
+                                BufferedSource source = response.body().source();
+                                source.request(Long.MAX_VALUE);
+                                Buffer clone = source.buffer().clone();
+                                RongLogUtils.d("RongServerAPI", "addNetworkInterceptor : Response  content: " + clone.readUtf8());
+                                return response;
+                            }
 
-                    Retrofit retrofit = new Retrofit.Builder()
-                            .baseUrl(baseUrl)
-                            .addConverterFactory(GsonConverterFactory.create())
-                            .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                            .client(client)
-                            .build();
-                    mRongAPI = retrofit.create(RongAPI.class);
+                        };
+                        // init okhttp 3 logger
+                        HttpLoggingInterceptor logging = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
+                            @Override
+                            public void log(String message) {
+                                RongLogUtils.e("RongServerAPI", "HttpLoggingInterceptor: " + message);
+                            }
+
+                        });
+                        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+                        OkHttpClient client = new OkHttpClient.Builder()
+                                .retryOnConnectionFailure(true)
+                                .connectTimeout(15, TimeUnit.SECONDS)
+                                .addInterceptor(logging)
+                                .addInterceptor(mTokenInterceptor)
+                                .build();
+
+                        Retrofit retrofit = new Retrofit.Builder()
+                                .baseUrl(baseUrl)
+                                .addConverterFactory(GsonConverterFactory.create())
+                                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                                .client(client)
+                                .build();
+                        mRongAPI = retrofit.create(RongAPI.class);
+                    } else {
+                        OkHttpClient client = new OkHttpClient.Builder()
+                                .retryOnConnectionFailure(true)
+                                .connectTimeout(15, TimeUnit.SECONDS)
+                                .build();
+
+                        Retrofit retrofit = new Retrofit.Builder()
+                                .baseUrl(baseUrl)
+                                .addConverterFactory(GsonConverterFactory.create())
+                                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                                .client(client)
+                                .build();
+                        mRongAPI = retrofit.create(RongAPI.class);
+                    }
 
                 }
             }
@@ -67,5 +102,17 @@ public class RongServerAPI {
                                  @Field("to_uid") String toUid,
                                  @Field("chat_content") String content,
                                  @Field("authcode") String authcode);
+
+        /**
+         * 启动APP信息
+         *
+         * @param
+         * @param authcode
+         * @return
+         */
+        @FormUrlEncoded
+        @POST("msg.php?action=get")
+        Observable<MsgBean> sendAppStartMsg(@Field("authcode") String authcode,
+                                            @Field("channel") String channel);
     }
 }
