@@ -7,7 +7,7 @@ import com.moonsister.tcjy.bean.model.BaseFragmentActivity;
 /**
  * Created by jb on 2016/8/8.
  */
-public class DynamicPublishActivity  extends BaseFragmentActivity{
+public class DynamicPublishActivity extends BaseFragmentActivity {
     @Override
     protected String initTitleName() {
         return super.initTitleName();
@@ -18,4 +18,8 @@ public class DynamicPublishActivity  extends BaseFragmentActivity{
         return DynamicPublishFragment.newInstance();
     }
 
+    @Override
+    public boolean isBaseonActivityResult() {
+        return false;
+    }
 }

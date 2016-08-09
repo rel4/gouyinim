@@ -1,5 +1,6 @@
 package com.moonsister.tcjy.utils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -25,9 +26,11 @@ import com.moonsister.tcjy.login.widget.FindPasswordNextActivity;
 import com.moonsister.tcjy.main.widget.PayAppointmentActivity;
 import com.moonsister.tcjy.main.widget.PayAppointmentOrderActivity;
 import com.moonsister.tcjy.main.widget.PersonInfoChangeActivity;
+import com.moonsister.tcjy.main.widget.PictureSelectorActivity;
 import com.moonsister.tcjy.main.widget.RedpacketAcitivity;
 import com.moonsister.tcjy.main.widget.DynamicActivity;
 import com.moonsister.tcjy.main.widget.RelationActivity;
+import com.moonsister.tcjy.main.widget.SwitchItemActivity;
 import com.moonsister.tcjy.main.widget.UserinfoActivity;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.my.widget.AddCardActivity;
@@ -53,7 +56,9 @@ import com.moonsister.tcjy.widget.image.photoview.ImagePagerActivity;
 import com.moonsister.tcjy.widget.takevideo.TakeVideoActivity;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import io.rong.imkit.RongyunManager;
 import io.rong.imlib.model.Conversation;
@@ -87,6 +92,15 @@ public class ActivityUtils {
         if (intent == null)
             return;
         ConfigUtils.getInstance().getActivityContext().startActivity(intent);
+    }
+
+    /**
+     * @param intent
+     */
+    public static void startActivityForResult(Intent intent) {
+        if (intent == null)
+            return;
+        ConfigUtils.getInstance().getActivityContext().startActivityForResult(intent, 1);
     }
 
     /**
@@ -512,5 +526,24 @@ public class ActivityUtils {
 
     public static void startNearbyActivity() {
         startActivity(NearbyActivity.class);
+    }
+
+    /**
+     * 选择条目
+     *
+     * @param map
+     * @param tag
+     */
+    public static void startSwitchItemActivity(HashMap<String, String> map, String tag) {
+        Intent intent = new Intent(getContext(), SwitchItemActivity.class);
+        intent.putExtra("map", map);
+        intent.putExtra("tag", tag);
+        startActivity(intent);
+    }
+
+
+    public static void startPictureSelectorActivity(Activity activity) {
+        Intent intent = new Intent(activity, PictureSelectorActivity.class);
+        startActivityForResult(intent);
     }
 }

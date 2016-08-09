@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseFragment;
+import com.moonsister.tcjy.main.widget.DynamicActivity;
 import com.moonsister.tcjy.widget.MySwitch;
 
 import butterknife.Bind;
@@ -50,6 +51,7 @@ public class DynamicPublishFragment extends BaseFragment {
 
     private void initLableLayout() {
         replaceFramgent(LableFragment.newInstance(), flLabelContent.getId());
+        replaceFramgent(DynamicContentFragment.newInsatance(),flUploadContent.getId());
     }
 
 

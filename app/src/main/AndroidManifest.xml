@@ -199,10 +199,23 @@
             android:name=".my.widget.AddCardActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".main.widget.VideoSelectorActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".my.widget.SwitchCardActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".my.widget.BirthdayActivity" />
         <activity android:name=".center.widget.DynamicPublishActivity" />
+        <activity
+            android:name=".main.widget.PictureSelectorActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".main.widget.PicturePreviewActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".main.widget.SwitchItemActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyDialogStyleBottom" />
         <!-- 微信支付  start -->
         <activity
             android:name=".wxapi.WXPayEntryActivity"

@@ -190,6 +190,20 @@
     <string name="dynamic_charge">是否设置为收费动态</string>
     <string name="dynamic_show_adress">地址显示</string>
     <string name="add_lable">添加标签</string>
+    <string name="pic">图片</string>
+    <string name="video">视频</string>
+    <string name="voice">语音</string>
+    <!-- PictureSelectorActivity -->
+    <string name="picsel_toolbar">图片</string>
+    <string name="picsel_toolbar_send">发送</string>
+    <string name="picsel_toolbar_send_num">发送(%d/</string>
+    <string name="picsel_pictype">图片</string>
+    <string name="picsel_toolbar_preview">预览</string>
+    <string name="picsel_toolbar_preview_num">预览(%d)</string>
+    <string name="picsel_selected_max">您最多只能选择9张图片</string>
+    <string name="picsel_take_picture">拍摄照片</string>
+    <string name="picsel_catalog_allpic">所有图片</string>
+    <string name="picsel_catalog_number">%d张</string>
     <string-array name="moneys">
         <item>8</item>
         <item>28</item>

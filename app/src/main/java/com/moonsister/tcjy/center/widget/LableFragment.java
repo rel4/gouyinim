@@ -74,28 +74,6 @@ public class LableFragment extends BaseFragment implements View.OnClickListener 
 
             moveView(flLableSelected, flLableSelect, v);
         }
-//        if (arrs.contains(v)) {
-//            TextView tv = (TextView) UIUtils.inflateLayout(
-//                    R.layout.activity_search_tv, flLableSelected);
-//            tv.setText("itme  is  " + arrs.size());
-//            tv.setTextColor(getResources().getColor(R.color.home_navigation_text_red));
-//            flLableSelected.addView(tv);
-//            flLableSelect.removeView(v);
-//            arrs.remove(v);
-//
-//            tv.setOnClickListener(this);
-//            v = null;
-//        } else {
-//            TextView tv = (TextView) UIUtils.inflateLayout(
-//                    R.layout.activity_search_tv, flLableSelect);
-//            tv.setText("itme  is  " + arrs.size());
-//            tv.setTextColor(getResources().getColor(R.color.home_navigation_text_red));
-//            flLableSelect.addView(tv);
-//            flLableSelected.removeView(v);
-//            arrs.add(tv);
-//            tv.setOnClickListener(this);
-//            v = null;
-//        }
     }
 
     private void moveView(ViewGroup addLayout, ViewGroup removeLayout, View removeView) {
