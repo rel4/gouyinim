@@ -17,48 +17,75 @@ import android.widget.TextView;
 
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseFragment;
+import com.moonsister.tcjy.bean.LableBean;
+import com.moonsister.tcjy.center.presenter.LableFragmentPersenter;
+import com.moonsister.tcjy.center.presenter.LableFragmentPersenterImpl;
+import com.moonsister.tcjy.center.view.LableFragmentView;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.widget.FlowLayout;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import retrofit2.http.FormUrlEncoded;
 
 /**
  * Created by jb on 2016/8/8.
  */
-public class LableFragment extends BaseFragment implements View.OnClickListener {
+public class LableFragment extends BaseFragment implements View.OnClickListener, LableFragmentView {
     @Bind(R.id.fl_lable_selected)
     FlowLayout flLableSelected;
     @Bind(R.id.fl_lable_select)
     FlowLayout flLableSelect;
+    @Bind(R.id.iv_refresh)
+    ImageView iv_refresh;
     private ArrayList<View> selects = new ArrayList<View>();
     public boolean isMove;
+    private LableFragmentPersenter persenter;
 
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        persenter = new LableFragmentPersenterImpl();
+        persenter.attachView(this);
         return inflater.inflate(R.layout.fragment_lable, container, false);
     }
 
     @Override
     protected void initData() {
+        persenter.loadData();
+    }
 
-        for (int i = 0; i < 10; i++) {
-            TextView tv = (TextView) UIUtils.inflateLayout(
-                    R.layout.activity_search_tv, flLableSelect);
-            tv.setText("itme " + i);
-            tv.setTextColor(getResources().getColor(R.color.home_navigation_text_red));
-            setOnClickListener(tv);
-            flLableSelect.addView(tv);
-            selects.add(tv);
+    @Override
+    public void setLable(LableBean lableBean) {
+
+        if (lableBean != null) {
+
+            List<String> data = lableBean.getData();
+            if (data.size() > 0) {
+                flLableSelect.removeAllViews();
+                flLableSelected.removeAllViews();
+            }
+            for (String s : data) {
+                TextView tv = (TextView) UIUtils.inflateLayout(
+                        R.layout.activity_search_tv, flLableSelect);
+                tv.setText(s);
+                tv.setTextColor(getResources().getColor(R.color.home_navigation_text_red));
+                setOnClickListener(tv);
+                flLableSelect.addView(tv);
+                selects.add(tv);
+            }
         }
+
     }
 
     private void setOnClickListener(View v) {
         v.setOnClickListener(this);
     }
 
-    public static Fragment newInstance() {
+    public static LableFragment newInstance() {
         return new LableFragment();
     }
 
@@ -68,10 +95,8 @@ public class LableFragment extends BaseFragment implements View.OnClickListener 
         if (isMove)
             return;
         if (!selects.contains(v)) {
-
             moveView(flLableSelect, flLableSelected, v);
         } else {
-
             moveView(flLableSelected, flLableSelect, v);
         }
     }
@@ -145,23 +170,6 @@ public class LableFragment extends BaseFragment implements View.OnClickListener 
             @Override
             public void onAnimationEnd(Animation animation) {
 
-//                if (!selects.contains(moveView)) {
-//                    TextView tv = (TextView) UIUtils.inflateLayout(
-//                            R.layout.activity_search_tv, flLableSelected);
-//                    tv.setText("itme  is  " + ((TextView) moveView).getText());
-//                    tv.setTextColor(getResources().getColor(R.color.home_navigation_text_red));
-//                    setOnClickListener(tv);
-//                    flLableSelected.addView(tv);
-//                    selects.add(moveView);
-//                } else {
-//                    TextView tv = (TextView) UIUtils.inflateLayout(
-//                            R.layout.activity_search_tv, flLableSelect);
-//                    tv.setText("itme  is  " + selecteds.size());
-//                    tv.setTextColor(getResources().getColor(R.color.home_navigation_text_red));
-//                    tv.setOnClickListener(LableFragment.this);
-//                    flLableSelect.addView(tv);
-//                    selects.remove(moveView);
-//                }
                 if (selects.contains(moveView)) {
                     flLableSelected.addView(moveView);
                     selects.remove(moveView);
@@ -224,5 +232,36 @@ public class LableFragment extends BaseFragment implements View.OnClickListener 
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         moveViewGroup.addView(moveLinearLayout);
         return moveLinearLayout;
+    }
+
+    @Override
+    public void showLoading() {
+        showProgressDialog();
+    }
+
+    @Override
+    public void hideLoading() {
+        hideProgressDialog();
+    }
+
+    @Override
+    public void transfePageMsg(String msg) {
+        transfePageMsg(msg);
+    }
+
+    @OnClick(R.id.iv_refresh)
+    public void onClick() {
+        if (persenter != null)
+            persenter.loadData();
+    }
+
+    public List<String> getSelectLables() {
+        ArrayList<String> lists = new ArrayList<String>();
+        int childCount = flLableSelected.getChildCount();
+        for (int i = 0; i < childCount; i++) {
+            TextView child = (TextView) flLableSelected.getChildAt(i);
+            lists.add(child.getText().toString());
+        }
+        return lists;
     }
 }

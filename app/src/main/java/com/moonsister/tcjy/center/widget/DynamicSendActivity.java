@@ -14,12 +14,12 @@ import butterknife.OnClick;
  */
 public class DynamicSendActivity extends BaseActivity {
     /**
-     * type 动态类型 1红包图集，2普通图文，3普通小视频动态
+     * type 动态类型 1红包图集，2普通图文，3普通小视频动态，4免费语音，5付费语音，6付费视频
      *
      * @return
      */
     public enum DynamicType {
-        DEFAULT("2"), RED_PACKET("1"), video("3");
+        CHARGE_PIC("1"),  PIC("2"),  VIDEO("3"),VOICE("4"),CHARGE_VOICE("5"), CHARGE_VIDEO("6");
 
 
         private final String type;
@@ -55,7 +55,7 @@ public class DynamicSendActivity extends BaseActivity {
                 ActivityUtils.startTakeVideoActivity();
                 break;
             case R.id.send_dynamic:
-//                ActivityUtils.startDefaultDynamicSendActivity(null, DynamicType.DEFAULT);
+//                ActivityUtils.startDefaultDynamicSendActivity(null, DynamicType.PIC);
                 ActivityUtils.startActivity(DynamicPublishActivity.class);
                 break;
             case R.id.iv_action_back:

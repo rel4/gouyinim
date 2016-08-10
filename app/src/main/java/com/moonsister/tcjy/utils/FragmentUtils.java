@@ -55,7 +55,7 @@ public class FragmentUtils {
         FragmentTransaction transaction = manager.beginTransaction();
 
         transaction.replace(containerViewId, fragment);
-        transaction.commit();
+        transaction.commitAllowingStateLoss();
 
     }
 }

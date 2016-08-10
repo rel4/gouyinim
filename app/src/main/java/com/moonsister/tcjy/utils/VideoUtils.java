@@ -70,12 +70,12 @@ public class VideoUtils {
 //									.getLong(cursor
 //											.getColumnIndexOrThrow(MediaStore.Video.Media.SIZE));
 //							String imgPath = getVideoData(path);
-//							LocalVideo video = new LocalVideo(id, title, album,
+//							LocalVideo VIDEO = new LocalVideo(id, title, album,
 //									artist, displayName, mimeType, path, size,
 //									CaculationUtils.calSecond(duration / 1000));
-//							video.imgPath = imgPath;
-//							LocalVideoDao.getInstance().SaveDL(video);
-//							list.add(video);
+//							VIDEO.imgPath = imgPath;
+//							LocalVideoDao.getInstance().SaveDL(VIDEO);
+//							list.add(VIDEO);
 //						}
 //					}
 //				}
@@ -103,7 +103,7 @@ public class VideoUtils {
 
             if (bitmap == null) {
                 LogUtils.d("chatactivity",
-                        "problem load video thumbnail bitmap,use default icon");
+                        "problem load VIDEO thumbnail bitmap,use default icon");
                 bitmap = BitmapFactory.decodeResource(ConfigUtils.getInstance().getApplicationContext()
                         .getResources(), R.drawable.app_panel_video_icon);
             }
@@ -173,7 +173,7 @@ public class VideoUtils {
 //
 //            if (bitmap == null) {
 //                EMLog.d("chatactivity",
-//                        "problem load video thumbnail bitmap,use default icon");
+//                        "problem load VIDEO thumbnail bitmap,use default icon");
 //                bitmap = BitmapFactory.decodeResource(UIUtils.getContext()
 //                        .getResources(), R.drawable.app_panel_video_icon);
 //

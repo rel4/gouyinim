@@ -2,8 +2,8 @@ package com.moonsister.tcjy.center.presenter;
 
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseIModel;
-import com.moonsister.tcjy.center.model.DefaultDynamicModel;
-import com.moonsister.tcjy.center.model.DefaultDynamicModelImpl;
+import com.moonsister.tcjy.center.model.DynamicPublishModel;
+import com.moonsister.tcjy.center.model.DynamicPublishModelImpl;
 import com.moonsister.tcjy.center.view.DefaultDynamicView;
 import com.moonsister.tcjy.center.widget.DynamicSendActivity;
 import com.moonsister.tcjy.utils.UIUtils;
@@ -13,9 +13,9 @@ import java.util.List;
 /**
  * Created by jb on 2016/6/23.
  */
-public class DefaultDynamicPresenterImpl implements DefaultDynamicPresenter, BaseIModel.onLoadDateSingleListener {
+public class DynamicPublishPresenterImpl implements DynamicPublishPresenter, BaseIModel.onLoadDateSingleListener {
     private DefaultDynamicView view;
-    private DefaultDynamicModel model;
+    private DynamicPublishModel model;
 
     @Override
     public void onCreate() {
@@ -25,7 +25,7 @@ public class DefaultDynamicPresenterImpl implements DefaultDynamicPresenter, Bas
     @Override
     public void attachView(DefaultDynamicView defaultDynamicView) {
         this.view = defaultDynamicView;
-        model = new DefaultDynamicModelImpl();
+        model = new DynamicPublishModelImpl();
 
     }
 

@@ -22,7 +22,7 @@ public class FilePathUtlis {
 
     public enum FileType {
 
-        JPG("image", ".jpg"), MP4("video", ".mp4");
+        JPG("image", ".jpg"), MP4("VIDEO", ".mp4"), AMR("VOICE", ".amr");
         private String suffixName;
         private String fileFormat;
 

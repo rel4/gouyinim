@@ -213,6 +213,10 @@
             android:name=".main.widget.PicturePreviewActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".center.widget.VoiceActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyDialogStyleBottom" />
+        <activity
             android:name=".main.widget.SwitchItemActivity"
             android:screenOrientation="portrait"
             android:theme="@style/MyDialogStyleBottom" />

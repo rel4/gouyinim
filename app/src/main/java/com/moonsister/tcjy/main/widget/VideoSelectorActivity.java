@@ -94,6 +94,17 @@ public class VideoSelectorActivity extends Activity implements AdapterView.OnIte
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (data == null)
+            return;
+        if (requestCode == 100) {
+            setResult(Activity.RESULT_OK, data);
+            finish();
+        }
+    }
+
+    @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         if (position == 0) {
 

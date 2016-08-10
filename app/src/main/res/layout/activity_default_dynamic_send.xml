@@ -34,7 +34,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/x30"
-            android:text="@string/send"
+            android:text="@string/publish"
             android:textColor="@color/background_red_color" />
     </RelativeLayout>
 

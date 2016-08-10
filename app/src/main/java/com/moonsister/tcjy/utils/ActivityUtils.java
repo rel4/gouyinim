@@ -57,6 +57,7 @@ import com.moonsister.tcjy.widget.takevideo.TakeVideoActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -534,7 +535,7 @@ public class ActivityUtils {
      * @param map
      * @param tag
      */
-    public static void startSwitchItemActivity(HashMap<String, String> map, String tag) {
+    public static void startSwitchItemActivity(LinkedHashMap<String, String> map, String tag) {
         Intent intent = new Intent(getContext(), SwitchItemActivity.class);
         intent.putExtra("map", map);
         intent.putExtra("tag", tag);

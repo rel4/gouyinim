@@ -6,9 +6,9 @@ import android.graphics.BitmapFactory;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.ServerApi;
 import com.moonsister.tcjy.manager.aliyun.AliyunManager;
-import com.moonsister.tcjy.bean.ImageObjoct;
+import com.moonsister.tcjy.bean.DynamicContent;
 import com.moonsister.tcjy.bean.DefaultDataBean;
-import com.moonsister.tcjy.center.presenter.DefaultDynamicPresenterImpl;
+import com.moonsister.tcjy.center.presenter.DynamicPublishPresenterImpl;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.FilePathUtlis;
 import com.moonsister.tcjy.utils.ImageUtils;
@@ -31,14 +31,14 @@ public class RZSecondModelImpl implements RZSecondModel {
     @Override
     public void submit(String address1, String address2, String height, String sexid, String nike, String avaterpath, ArrayList<String> pics, onLoadDateSingleListener listener) {
         LogUtils.e(RZSecondModelImpl.this, "start upload");
-        ArrayList<ImageObjoct> aliyunPtahs = new ArrayList<ImageObjoct>();
-        Observable.create(new Observable.OnSubscribe<ArrayList<ImageObjoct>>() {
+        ArrayList<DynamicContent> aliyunPtahs = new ArrayList<DynamicContent>();
+        Observable.create(new Observable.OnSubscribe<ArrayList<DynamicContent>>() {
             @Override
-            public void call(Subscriber<? super ArrayList<ImageObjoct>> subscriber) {
+            public void call(Subscriber<? super ArrayList<DynamicContent>> subscriber) {
 
                 try {
                     for (int i = 0; i < pics.size(); i++) {
-                        ImageObjoct image = new ImageObjoct();
+                        DynamicContent image = new DynamicContent();
                         String path = pics.get(i);
                         Bitmap size = ImageUtils.compressImageWithPathSzie(path, 800, 600);
                         Bitmap bitmap = ImageUtils.compressImage(size, 1000);
@@ -54,7 +54,7 @@ public class RZSecondModelImpl implements RZSecondModel {
             }
         }).observeOn(Schedulers.io())
                 .subscribeOn(Schedulers.io())
-                .subscribe(new Subscriber<ArrayList<ImageObjoct>>() {
+                .subscribe(new Subscriber<ArrayList<DynamicContent>>() {
                     @Override
                     public void onCompleted() {
 
@@ -68,14 +68,14 @@ public class RZSecondModelImpl implements RZSecondModel {
                     }
 
                     @Override
-                    public void onNext(ArrayList<ImageObjoct> s) {
+                    public void onNext(ArrayList<DynamicContent> s) {
                         String loadFile = "";
                         if (!StringUtis.isEmpty(avaterpath)) {
                             Bitmap avater = ImageUtils.compressImageSzie(BitmapFactory.decodeFile(avaterpath), 120, 120);
                             Bitmap bitmap = ImageUtils.compressImage(avater, 10);
                             loadFile = AliyunManager.getInstance().upLoadFiletFromByteArray(ImageUtils.getBitmapByte(bitmap), FilePathUtlis.FileType.JPG);
                         }
-                        LogUtils.e(DefaultDynamicPresenterImpl.class, "  onNext :　" + aliyunPtahs.toString());
+                        LogUtils.e(DynamicPublishPresenterImpl.class, "  onNext :　" + aliyunPtahs.toString());
                         String serialize = JsonUtils.serialize(s);
                         LogUtils.e(RZSecondModelImpl.this, "JsonUtils : " + serialize);
                         sendAllRz(address1, address2, height, sexid, nike, loadFile, serialize, listener);

@@ -15,6 +15,8 @@ import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.ObservableUtils;
 import com.moonsister.tcjy.utils.PrefUtils;
 
+import java.util.ArrayList;
+
 import rx.Observable;
 
 /**
@@ -64,9 +66,15 @@ public class GaodeManager implements AMapLocationListener {
 
                 RxBus.getInstance().send(Events.EventEnum.GET_LOCLOCATION, null);
             }
+            for (onLocationFinishListenter listenter : listenters)
+                listenter.onLocationListenter(aMapLocation);
         }
         locationClient.stopLocation();
         LogUtils.e(this, "-------- finish loclocation---------");
+    }
+
+    public String getStringAdress() {
+        return PrefUtils.getString(GaodeManager.class.getName(), "");
     }
 
     // 根据控件的选择，重新设置定位参数
@@ -98,5 +106,21 @@ public class GaodeManager implements AMapLocationListener {
 
     }
 
+    private ArrayList<onLocationFinishListenter> listenters = new ArrayList<onLocationFinishListenter>();
 
+    public void setLocationFinishListenter(onLocationFinishListenter listenter) {
+        if (!listenters.contains(listenter)) {
+            listenters.add(listenter);
+        }
+    }
+
+    public void removeLocationFinishListenter(onLocationFinishListenter listenter) {
+        if (listenters.contains(listenter))
+            listenters.remove(listenter);
+    }
+
+
+    public interface onLocationFinishListenter {
+        void onLocationListenter(AMapLocation aMapLocation);
+    }
 }

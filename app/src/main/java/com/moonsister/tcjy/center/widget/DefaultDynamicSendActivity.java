@@ -10,8 +10,8 @@ import android.widget.TextView;
 import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
-import com.moonsister.tcjy.center.presenter.DefaultDynamicPresenter;
-import com.moonsister.tcjy.center.presenter.DefaultDynamicPresenterImpl;
+import com.moonsister.tcjy.center.presenter.DynamicPublishPresenter;
+import com.moonsister.tcjy.center.presenter.DynamicPublishPresenterImpl;
 import com.moonsister.tcjy.center.view.DefaultDynamicView;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
@@ -53,7 +53,7 @@ public class DefaultDynamicSendActivity extends BaseActivity implements DefaultD
     MySwitch ivSwitch;
     @Bind(R.id.video_back)
     ImageView video_back;
-    private DefaultDynamicPresenter presenter;
+    private DynamicPublishPresenter presenter;
     private ShowPicAdapter showPicAdapter;
     private List datas;
     private DynamicSendActivity.DynamicType dynamicType;
@@ -68,7 +68,7 @@ public class DefaultDynamicSendActivity extends BaseActivity implements DefaultD
         String type = getIntent().getStringExtra("type");
         switch (type) {
             case "3":
-                dynamicType = DynamicSendActivity.DynamicType.video;
+                dynamicType = DynamicSendActivity.DynamicType.VIDEO;
                 ArrayList<String> videos = getIntent().getStringArrayListExtra("data");
                 if (videos != null && videos.size() == 1) {
                     videoPath = videos.get(0);
@@ -82,13 +82,13 @@ public class DefaultDynamicSendActivity extends BaseActivity implements DefaultD
                 break;
             case "2":
 
-                dynamicType = DynamicSendActivity.DynamicType.DEFAULT;
+                dynamicType = DynamicSendActivity.DynamicType.PIC;
                 if (datas == null)
                     datas = new ArrayList();
                 datas.add(R.mipmap.add_dynamic_pic);
                 break;
             case "1":
-                dynamicType = DynamicSendActivity.DynamicType.RED_PACKET;
+                dynamicType = DynamicSendActivity.DynamicType.CHARGE_PIC;
                 ArrayList<String> pics = getIntent().getStringArrayListExtra("data");
 
                 if (datas == null)
@@ -98,7 +98,7 @@ public class DefaultDynamicSendActivity extends BaseActivity implements DefaultD
                     datas.add(R.mipmap.add_dynamic_pic);
                 break;
         }
-        presenter = new DefaultDynamicPresenterImpl();
+        presenter = new DynamicPublishPresenterImpl();
         presenter.attachView(this);
         setRxBus();
         return UIUtils.inflateLayout(R.layout.activity_default_dynamic_send);
@@ -117,7 +117,7 @@ public class DefaultDynamicSendActivity extends BaseActivity implements DefaultD
     @Override
     protected void initView() {
 
-        if (dynamicType == DynamicSendActivity.DynamicType.video) {
+        if (dynamicType == DynamicSendActivity.DynamicType.VIDEO) {
 
             gvPicList.setVisibility(View.GONE);
             ViewGroup.LayoutParams params = video_back.getLayoutParams();
@@ -129,7 +129,7 @@ public class DefaultDynamicSendActivity extends BaseActivity implements DefaultD
             gvPicList.setAdapter(showPicAdapter);
         }
 
-        ivSwitch.setOnChangeListener(new MySwitch.OnCheckedChangeListener() {
+        ivSwitch.setOnSelectChangeListener(new MySwitch.OnSelectChangeListener() {
             @Override
             public void onCheckedChanged(MySwitch mySwitch, boolean isOpen) {
                 if (isOpen) {
@@ -146,9 +146,9 @@ public class DefaultDynamicSendActivity extends BaseActivity implements DefaultD
                 tvAddress.setText(UIUtils.getStringRes(R.string.locationing));
             } else {
                 try {
-                        JSONObject jsonObject = new JSONObject(location);
-                        String province = jsonObject.getString("province");
-                        String city = jsonObject.getString("city");
+                    JSONObject jsonObject = new JSONObject(location);
+                    String province = jsonObject.getString("province");
+                    String city = jsonObject.getString("city");
                     tvAddress.setText(province + "." + city);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -179,7 +179,7 @@ public class DefaultDynamicSendActivity extends BaseActivity implements DefaultD
                     return;
                 }
 //                String address = tvAddress.getText().toString().trim();
-                if (dynamicType != DynamicSendActivity.DynamicType.video) {
+                if (dynamicType != DynamicSendActivity.DynamicType.VIDEO) {
                     if (datas.size() < 9) {
                         datas.remove(datas.size() - 1);
                     }

@@ -1,6 +1,7 @@
 package com.moonsister.tcjy.center.widget;
 
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -15,19 +16,25 @@ import android.widget.RelativeLayout;
 import com.moonsister.tcjy.ImageServerApi;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseFragment;
+import com.moonsister.tcjy.bean.DynamicContent;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.main.widget.PictureSelectorActivity;
 import com.moonsister.tcjy.main.widget.VideoSelectorActivity;
+import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
+import com.moonsister.tcjy.utils.VideoUtils;
 import com.moonsister.tcjy.widget.NoScrollGridView;
 import com.moonsister.tcjy.widget.RoundedImageView;
+import com.moonsister.tcjy.widget.speak.VoicePlay;
+import com.moonsister.tcjy.widget.takevideo.TakeVideoActivity;
 import com.trello.rxlifecycle.FragmentEvent;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import butterknife.Bind;
@@ -43,10 +50,61 @@ public class DynamicContentFragment extends BaseFragment {
     RelativeLayout root;
     private NoScrollGridView noScrollGridView;
     private ArrayList pics;
+    private String videoPath;
+    private String voicePath;
+    private DynamicType dynamicType;
+
+    public enum DynamicType {
+        PIC, VIDEO, VOICE
+    }
+
+    /**
+     * 获取动态类型
+     *
+     * @return
+     */
+    public DynamicType getDynamicType() {
+        return dynamicType;
+    }
+
+    /**
+     * 获取动态类型
+     *
+     * @return
+     */
+    public List<String> getDynamicContent() {
+        List<String> dynamicContents = new ArrayList<String>();
+        switch (dynamicType) {
+            case PIC:
+                if (pics != null) {
+                    for (Object path : pics) {
+                        if (path instanceof String) {
+                            dynamicContents.add((String) path);
+                        } else if (path instanceof Uri) {
+                            dynamicContents.add(((Uri) path).getPath());
+                        }
+                    }
+
+                }
+                break;
+            case VIDEO:
+                dynamicContents.add(videoPath);
+                break;
+            case VOICE:
+                dynamicContents.add(voicePath);
+                break;
+        }
+
+        return dynamicContents;
+    }
 
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return UIUtils.inflateLayout(R.layout.fragment_dynamic_content);
+    }
+
+    public static DynamicContentFragment newInsatance() {
+        return new DynamicContentFragment();
     }
 
     @Override
@@ -73,8 +131,8 @@ public class DynamicContentFragment extends BaseFragment {
     private void doClick(String id) {
         switch (id) {
             case "1":
+                dynamicType = DynamicType.PIC;
                 startPicActivityForResult();
-
                 noScrollGridView = new NoScrollGridView(getActivity());
                 noScrollGridView.setNumColumns(3);
                 noScrollGridView.setHorizontalSpacing(20);
@@ -89,24 +147,22 @@ public class DynamicContentFragment extends BaseFragment {
                 noScrollGridView.setLayoutParams(params);
                 break;
             case "2":
-                ActivityUtils.startActivity(VideoSelectorActivity.class);
+                dynamicType = DynamicType.VIDEO;
+                startVideoActivityForResult();
                 break;
             case "3":
+                dynamicType = DynamicType.VOICE;
+                startVoiceActivityForResult();
                 break;
         }
 
     }
 
-    public static Fragment newInsatance() {
-        return new DynamicContentFragment();
-    }
-
-
     @OnClick(R.id.iv_add_content)
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_add_content:
-                HashMap<String, String> map = new HashMap<>();
+                LinkedHashMap<String, String> map = new LinkedHashMap<String, String>();
                 map.put("1", UIUtils.getStringRes(R.string.pic));
                 map.put("2", UIUtils.getStringRes(R.string.video));
                 map.put("3", UIUtils.getStringRes(R.string.voice));
@@ -147,7 +203,52 @@ public class DynamicContentFragment extends BaseFragment {
             ivAddContent.setVisibility(View.GONE);
             ShowPicAdapter showPicAdapter = new ShowPicAdapter(pics);
             noScrollGridView.setAdapter(showPicAdapter);
+        } else if (requestCode == 2) {
+            String video_path = data.getStringExtra("path");
+            videoPath = video_path;
+            ivAddContent.setVisibility(View.GONE);
+            String videoThumbnail = VideoUtils.getInstance().getVideoThumbnail(video_path);
+            ImageView imageView = new ImageView(getActivity());
+            imageView.setImageBitmap(BitmapFactory.decodeFile(videoThumbnail));
+            root.addView(imageView);
+            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) imageView.getLayoutParams();
+            int dimension = (int) getResources().getDimension(R.dimen.x240);
+            params.width = dimension;
+            params.height = dimension;
+            imageView.setLayoutParams(params);
+
+        } else if (requestCode == 3) {
+            String video_path = data.getStringExtra("path");
+            voicePath = video_path;
+            if (StringUtis.isEmpty(video_path))
+                return;
+            int dimension = (int) getResources().getDimension(R.dimen.x240);
+            ImageView bg = new ImageView(getActivity());
+            ImageServerApi.showURLBigImage(bg, UserInfoManager.getInstance().getAvater());
+            root.addView(bg);
+            RelativeLayout.LayoutParams bgparams = (RelativeLayout.LayoutParams) bg.getLayoutParams();
+            bgparams.height = dimension;
+            bgparams.width = dimension;
+            bgparams.addRule(RelativeLayout.CENTER_IN_PARENT);
+            bg.setLayoutParams(bgparams);
+
+            ivAddContent.setVisibility(View.GONE);
+
+
+            ImageView imageView = new ImageView(getActivity());
+            imageView.setImageResource(R.mipmap.dynamic_publish_voice);
+            root.addView(imageView);
+            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) imageView.getLayoutParams();
+            params.addRule(RelativeLayout.CENTER_IN_PARENT);
+            imageView.setLayoutParams(params);
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    new VoicePlay().playVoice(getActivity(), video_path);
+                }
+            });
         }
+
     }
 
     private void startPicActivityForResult() {
@@ -164,6 +265,18 @@ public class DynamicContentFragment extends BaseFragment {
         intent.putExtra("max", munber);
         startActivityForResult(intent, 1);
     }
+
+    private void startVideoActivityForResult() {
+        Intent intent = new Intent(getActivity(), VideoSelectorActivity.class);
+        startActivityForResult(intent, 2);
+    }
+
+
+    private void startVoiceActivityForResult() {
+        Intent intent = new Intent(getActivity(), VoiceActivity.class);
+        startActivityForResult(intent, 3);
+    }
+
 
     private class ShowPicAdapter extends BaseAdapter {
         private List datas;
@@ -216,7 +329,6 @@ public class DynamicContentFragment extends BaseFragment {
                         @Override
                         public void onClick(View v) {
                             startPicActivityForResult();
-
                         }
                     });
                 } else if (o instanceof Uri) {

@@ -32,7 +32,7 @@ public class VoiceRecorder {
         this.context = context;
     }
 
-    public String startRecording(String paramString1, String paramString2, Context paramContext) {
+    public String startRecording(String paramString1, Context paramContext) {
         this.file = null;
         try {
             if (this.recorder != null) {
@@ -43,11 +43,11 @@ public class VoiceRecorder {
             this.recorder.setAudioSource(1);
             this.recorder.setOutputFormat(3);
             this.recorder.setAudioEncoder(1);
-//      this.recorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
+//      this.recorder.setAudioEncoder(MediaRecorder.AudioEncoder.PIC);
             this.recorder.setAudioChannels(1);
             this.recorder.setAudioSamplingRate(8000);
             this.recorder.setAudioEncodingBitRate(64);
-            this.voiceFileName = getVoiceFileName(paramString2);
+            this.voiceFileName = getVoiceFileName();
             this.voiceFilePath = getVoiceFilePath(context);
             this.file = new File(this.voiceFilePath);
             this.recorder.setOutputFile(this.file.getAbsolutePath());
@@ -63,7 +63,8 @@ public class VoiceRecorder {
                     while (VoiceRecorder.this.isRecording) {
                         Message localMessage = new Message();
                         localMessage.what = (VoiceRecorder.this.recorder.getMaxAmplitude() * 13 / 32767);
-                        VoiceRecorder.this.handler.sendMessage(localMessage);
+                        if (VoiceRecorder.this.handler != null)
+                            VoiceRecorder.this.handler.sendMessage(localMessage);
                         SystemClock.sleep(100L);
                     }
                 } catch (Exception localException) {
@@ -117,17 +118,25 @@ public class VoiceRecorder {
             this.recorder.release();
     }
 
-    public String getVoiceFileName(String paramString) {
+    private String getVoiceFileName() {
         Time localTime = new Time();
         localTime.setToNow();
-        return paramString + localTime.toString().substring(0, 15) + ".amr";
+        return localTime.toString().substring(0, 15) + ".amr";
     }
 
     public boolean isRecording() {
         return this.isRecording;
     }
 
-    public String getVoiceFilePath(Context context) {
+    private String getVoiceFilePath(Context context) {
         return SDUtils.getRootFile(context) + File.separator + this.voiceFileName;
+    }
+
+    public String getVoicePath() {
+        return voiceFilePath;
+    }
+
+    public String getVoiceName() {
+        return voiceFileName;
     }
 }

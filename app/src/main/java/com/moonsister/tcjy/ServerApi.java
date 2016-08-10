@@ -9,6 +9,7 @@ import com.moonsister.tcjy.bean.DefaultDataBean;
 import com.moonsister.tcjy.bean.FrientBaen;
 import com.moonsister.tcjy.bean.GetMoneyBean;
 import com.moonsister.tcjy.bean.GoodSelectBaen;
+import com.moonsister.tcjy.bean.LableBean;
 import com.moonsister.tcjy.bean.LoginBean;
 import com.moonsister.pay.tencent.PayBean;
 import com.moonsister.tcjy.bean.NearbyBean;
@@ -796,7 +797,23 @@ public class ServerApi {
                                          @Query("authcode") String authcode,
                                          @Query("channel") String channel);
 
-
+        /**
+         * 动态标签获取
+         *
+         * @param page
+         * @param type
+         * @param catid
+         * @param pagesize
+         * @param authcode
+         * @return
+         */
+        @GET("tags/get")
+        Observable<LableBean> getDynamicLable(@Query("page") int page,
+                                              @Query("type") int type,
+                                              @Query("catid") int catid,
+                                              @Query("pagesize") int pagesize,
+                                              @Query("authcode") String authcode,
+                                              @Query("channel") String channel);
     }
 }
 

@@ -312,7 +312,7 @@ public class TakeVideoActivity extends Activity implements OnClickListener,
             mCamera.setDisplayOrientation(90);
             // setCameraDisplayOrientation(this, frontCamera, mCamera);
         } catch (RuntimeException ex) {
-            LogUtils.e("video", "init Camera fail " + ex.getMessage());
+            LogUtils.e("VIDEO", "init Camera fail " + ex.getMessage());
             return false;
         }
         return true;
@@ -451,9 +451,11 @@ public class TakeVideoActivity extends Activity implements OnClickListener,
 //				bundle.putSerializable(GlobalConstant.INTENT_BUNDLE, localvideo);
 //				intent.putExtras(bundle);
 //				startActivity(intent);
-                    ArrayList<String> lists = new ArrayList<>();
-                    lists.add(localPath);
-                    ActivityUtils.startDefaultDynamicSendActivity(lists, DynamicSendActivity.DynamicType.video);
+                    Intent data = new Intent();
+                    data.putExtra("path", localPath);
+                    setResult(-2, data);
+                    finish();
+
                 } else {
                     UIUtils.showToast(this, "文件损坏或拍摄时间过短");
                     startActivity(new Intent(TakeVideoActivity.this,
@@ -535,14 +537,14 @@ public class TakeVideoActivity extends Activity implements OnClickListener,
             mCamera.startPreview();
             handleSurfaceChanged();
         } catch (Exception e1) {
-            LogUtils.e("video", "start preview fail " + e1.getMessage());
+            LogUtils.e("VIDEO", "start preview fail " + e1.getMessage());
             showFailDialog();
         }
     }
 
     @Override
     public void surfaceDestroyed(SurfaceHolder arg0) {
-        LogUtils.v("video", "surfaceDestroyed");
+        LogUtils.v("VIDEO", "surfaceDestroyed");
     }
 
     public boolean startRecording() {
@@ -585,9 +587,9 @@ public class TakeVideoActivity extends Activity implements OnClickListener,
 
         /*****************************************/
         // //设置视频源
-        // mediaRecorder.setVideoSource(MediaRecorder.VideoSource.DEFAULT);
+        // mediaRecorder.setVideoSource(MediaRecorder.VideoSource.PIC);
         // //设置音频源
-        // mediaRecorder.setAudioSource(MediaRecorder.AudioSource.DEFAULT);
+        // mediaRecorder.setAudioSource(MediaRecorder.AudioSource.PIC);
         //
         // //相机参数配置类
         // CamcorderProfile cProfile =
@@ -663,7 +665,7 @@ public class TakeVideoActivity extends Activity implements OnClickListener,
             try {
                 mediaRecorder.stop();
             } catch (IllegalStateException e) {
-                LogUtils.e("video", "stopRecording error:" + e.getMessage());
+                LogUtils.e("VIDEO", "stopRecording error:" + e.getMessage());
             }
         }
         releaseRecorder();
@@ -764,7 +766,7 @@ public class TakeVideoActivity extends Activity implements OnClickListener,
 
                         @Override
                         public void onMediaScannerConnected() {
-                            msc.scanFile(localPath, "video/*");
+                            msc.scanFile(localPath, "VIDEO/*");
                         }
                     });
 
@@ -808,9 +810,9 @@ public class TakeVideoActivity extends Activity implements OnClickListener,
 
     @Override
     public void onInfo(MediaRecorder mr, int what, int extra) {
-        LogUtils.v("video", "onInfo");
+        LogUtils.v("VIDEO", "onInfo");
         if (what == MediaRecorder.MEDIA_RECORDER_INFO_MAX_DURATION_REACHED) {
-            LogUtils.v("video", "max duration reached");
+            LogUtils.v("VIDEO", "max duration reached");
             btnStart.setSelected(false);
             stopRecorder();
             // stopRecording();
@@ -840,7 +842,7 @@ public class TakeVideoActivity extends Activity implements OnClickListener,
 
     @Override
     public void onError(MediaRecorder mr, int what, int extra) {
-        LogUtils.e("video", "recording onError:");
+        LogUtils.e("VIDEO", "recording onError:");
         stopRecording();
         Toast.makeText(this,
                 "Recording error has occurred. Stopping the recording",

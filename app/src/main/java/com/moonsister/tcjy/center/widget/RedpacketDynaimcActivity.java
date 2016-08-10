@@ -52,7 +52,7 @@ public class RedpacketDynaimcActivity extends BaseActivity {
                                 if (message != null && message instanceof ArrayList) {
                                     ArrayList pics = (ArrayList) message;
                                     LogUtils.e(DefaultDynamicSendActivity.class, "pics : " + pics.toString());
-                                    ActivityUtils.startDefaultDynamicSendActivity(pics, DynamicSendActivity.DynamicType.RED_PACKET);
+                                    ActivityUtils.startDefaultDynamicSendActivity(pics, DynamicSendActivity.DynamicType.CHARGE_PIC);
                                     finish();
 
                                 }
