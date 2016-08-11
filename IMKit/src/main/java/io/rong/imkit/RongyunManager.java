@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.util.Log;
 
+import io.rong.imkit.provider.MyConversationBehaviorListener;
 import io.rong.imkit.provider.RedPacketMessage;
 import io.rong.imkit.provider.RedPacketMessageItemProvider;
 import io.rong.imkit.provider.RedPacketProvider;
@@ -56,6 +57,14 @@ public class RongyunManager {
         RongIM.init(context);
         RongIM.registerMessageType(RedPacketMessage.class);
         RongIM.getInstance().registerMessageTemplate(new RedPacketMessageItemProvider());
+
+    }
+
+    public void setConversationBehaviorListener(MyConversationBehaviorListener listener) {
+        if (listener != null) {
+            RongIM.setConversationBehaviorListener(listener);
+        }
+
     }
 
     /**

@@ -31,7 +31,7 @@ public class DynamicCommentViewHolder extends BaseRecyclerViewHolder<CommentData
     }
 
     @Override
-    protected void onBindData(CommentDataListBean.DataBean bean) {
+    public void onBindData(CommentDataListBean.DataBean bean) {
         if (bean == null)
             return;
         ImageServerApi.showURLSamllImage(rivItemUserImage, bean.getFace());

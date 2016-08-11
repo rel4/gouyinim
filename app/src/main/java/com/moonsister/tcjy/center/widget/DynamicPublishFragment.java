@@ -78,8 +78,8 @@ public class DynamicPublishFragment extends BaseFragment {
     private void initLableLayout() {
         lableFragment = LableFragment.newInstance();
         contentFragment = DynamicContentFragment.newInsatance();
-        hideFragment(null, lableFragment, flLabelContent.getId());
-        hideFragment(null, contentFragment, flUploadContent.getId());
+        replaceFramgent(lableFragment, flLabelContent.getId());
+        replaceFramgent(contentFragment, flUploadContent.getId());
     }
 
     /**
@@ -119,7 +119,7 @@ public class DynamicPublishFragment extends BaseFragment {
      * @return
      */
     public boolean isCharge() {
-        return msDynamicCharge.isSelected();
+        return msDynamicCharge.isOpen();
     }
 
     /**
@@ -128,7 +128,7 @@ public class DynamicPublishFragment extends BaseFragment {
      * @return
      */
     public boolean isShowAdress() {
-        return msAdressShow.isSelected();
+        return msAdressShow.isOpen();
     }
 
     /**

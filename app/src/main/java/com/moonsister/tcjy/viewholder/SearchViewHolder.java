@@ -68,7 +68,7 @@ public class SearchViewHolder extends BaseRecyclerViewHolder<SearchReasonBaen.Da
     }
 
     @Override
-    protected void onBindData(SearchReasonBaen.DataBean dataBean) {
+    public void onBindData(SearchReasonBaen.DataBean dataBean) {
 
     }
 

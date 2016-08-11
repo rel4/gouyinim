@@ -45,7 +45,7 @@ public class RankViewHolder extends BaseRecyclerViewHolder<RankBean.DataBean> {
     }
 
     @Override
-    protected void onBindData(RankBean.DataBean dataBean) {
+    public void onBindData(RankBean.DataBean dataBean) {
 
     }
 

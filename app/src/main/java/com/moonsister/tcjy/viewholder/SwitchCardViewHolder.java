@@ -30,7 +30,7 @@ public class SwitchCardViewHolder extends BaseRecyclerViewHolder<CardInfoBean.Da
     }
 
     @Override
-    protected void onBindData(CardInfoBean.DataBean dataBean) {
+    public void onBindData(CardInfoBean.DataBean dataBean) {
         if (dataBean == null)
             return;
         ImageServerApi.showURLSamllImage(ivBankLogo, dataBean.getLogo());

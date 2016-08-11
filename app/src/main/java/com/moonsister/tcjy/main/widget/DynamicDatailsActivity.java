@@ -5,8 +5,10 @@ import android.widget.EditText;
 
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.adapter.DynamiDayailsAdapter;
+import com.moonsister.tcjy.adapter.DynamicAdapter;
+import com.moonsister.tcjy.adapter.DynamicDetailsAdapter;
 import com.moonsister.tcjy.base.BaseActivity;
+import com.moonsister.tcjy.base.BaseRecyclerViewHolder;
 import com.moonsister.tcjy.bean.CommentDataListBean;
 import com.moonsister.tcjy.bean.PayRedPacketPicsBean;
 import com.moonsister.tcjy.bean.UserInfoListBean;
@@ -20,6 +22,9 @@ import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.viewholder.DynamicViewHolder;
+import com.moonsister.tcjy.viewholder.dynamic.PicViewHolder;
+import com.moonsister.tcjy.viewholder.dynamic.VideoViewHolder;
+import com.moonsister.tcjy.viewholder.dynamic.VoiceViewHolder;
 import com.moonsister.tcjy.widget.XListView;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.trello.rxlifecycle.ActivityEvent;
@@ -38,10 +43,10 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
     XListView recyclerView;
     @Bind(R.id.ed_input)
     EditText edInput;
-    private DynamiDayailsAdapter mAdapter;
+    private DynamicDetailsAdapter mAdapter;
     private DynamincDatailsPresenter presenter;
     private UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList userInfo;
-    private DynamicViewHolder holder;
+    private BaseRecyclerViewHolder<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList> holder;
 
     @Override
 
@@ -122,9 +127,10 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
     @Override
     public void loadData(List<CommentDataListBean.DataBean> datas) {
         if (mAdapter == null) {
-            mAdapter = new DynamiDayailsAdapter(datas);
+            mAdapter = new DynamicDetailsAdapter(datas);
             View view = UIUtils.inflateLayout(R.layout.item_home_one_menu);
-            holder = new DynamicViewHolder(view, userInfo.getType());
+//            holder = new DynamicViewHolder(view, userInfo.getType());
+            initHeader(userInfo.getType());
             holder.onBindData(userInfo);
             holder.setView(this);
             recyclerView.addHeaderView(holder.getRootView());
@@ -138,6 +144,29 @@ public class DynamicDatailsActivity extends BaseActivity implements DynamicDatai
         }
         if (recyclerView != null) {
             recyclerView.loadMoreComplete();
+        }
+    }
+
+    private void initHeader(int type) {
+        switch (type) {
+            case DynamicAdapter.TYPE_CHARGE_PIC:
+                holder = new PicViewHolder(UIUtils.inflateLayout(R.layout.item_dynamic_pic));
+                break;
+            case DynamicAdapter.TYPE_FREE_PIC:
+                holder = new PicViewHolder(UIUtils.inflateLayout(R.layout.item_dynamic_pic));
+                break;
+            case DynamicAdapter.TYPE_CHARGE_VIDEO:
+                holder = new VideoViewHolder(UIUtils.inflateLayout(R.layout.item_dynamic_video));
+                break;
+            case DynamicAdapter.TYPE_FREE_VIDEO:
+                holder = new VideoViewHolder(UIUtils.inflateLayout(R.layout.item_dynamic_video));
+                break;
+            case DynamicAdapter.TYPE_CHARGE_VOICE:
+                holder = new VoiceViewHolder(UIUtils.inflateLayout(R.layout.item_dynamic_voice));
+                break;
+            case DynamicAdapter.TYPE_FREE_VOICE:
+                holder = new VoiceViewHolder(UIUtils.inflateLayout(R.layout.item_dynamic_voice));
+                break;
         }
     }
 

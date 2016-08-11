@@ -10,6 +10,9 @@ import com.moonsister.tcjy.center.presenter.DynamicPublishPresenter;
 import com.moonsister.tcjy.center.presenter.DynamicPublishPresenterImpl;
 import com.moonsister.tcjy.center.view.DefaultDynamicView;
 import com.moonsister.tcjy.manager.GaodeManager;
+import com.moonsister.tcjy.manager.UserInfoManager;
+import com.moonsister.tcjy.utils.ActivityUtils;
+import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 
@@ -36,7 +39,7 @@ public class DynamicPublishActivity extends BaseFragmentActivity implements View
         tv_title_right.setOnClickListener(this);
         presenter = new DynamicPublishPresenterImpl();
         presenter.attachView(this);
-        return DynamicPublishFragment.newInstance();
+        return dyf;
     }
 
     @Override
@@ -48,18 +51,18 @@ public class DynamicPublishActivity extends BaseFragmentActivity implements View
     public void onClick(View v) {
         if (dyf == null)
             return;
-
+        List<String> lables = dyf.getLables();
+        if (lables == null || lables.size() == 0) {
+            showToast(UIUtils.getStringRes(R.string.lable_is_empty));
+            return;
+        }
 
         List<String> dynamicContent = dyf.getDynamicContent();
         if (dynamicContent == null || dynamicContent.size() == 0) {
             showToast(UIUtils.getStringRes(R.string.dynamic_content_is_empty));
             return;
         }
-        List<String> lables = dyf.getLables();
-        if (lables == null || lables.size() == 0) {
-            showToast(UIUtils.getStringRes(R.string.lable_is_empty));
-            return;
-        }
+
         DynamicContentFragment.DynamicType dynamicType = dyf.getDynamicType();
         if (dynamicType == DynamicContentFragment.DynamicType.PIC && dynamicContent.size() < 6) {
             showToast(UIUtils.getStringRes(R.string.dynamic_pic_not_more_6));
@@ -71,23 +74,23 @@ public class DynamicPublishActivity extends BaseFragmentActivity implements View
             return;
         }
         boolean charge = dyf.isCharge();
-        DynamicSendActivity.DynamicType type = null;
+        EnumConstant.DynamicType type = null;
         if (dynamicType == DynamicContentFragment.DynamicType.PIC) {
             if (charge)
-                type = DynamicSendActivity.DynamicType.CHARGE_PIC;
+                type = EnumConstant.DynamicType.CHARGE_PIC;
             else {
-                type = DynamicSendActivity.DynamicType.PIC;
+                type = EnumConstant.DynamicType.FREE_PIC;
             }
         } else if (dynamicType == DynamicContentFragment.DynamicType.VOICE) {
             if (charge) {
-                type = DynamicSendActivity.DynamicType.CHARGE_VOICE;
+                type = EnumConstant.DynamicType.CHARGE_VOICE;
             } else
-                type = DynamicSendActivity.DynamicType.VOICE;
+                type = EnumConstant.DynamicType.FREE_VOICE;
         } else if (dynamicType == DynamicContentFragment.DynamicType.VIDEO) {
             if (charge)
-                type = DynamicSendActivity.DynamicType.CHARGE_VIDEO;
+                type = EnumConstant.DynamicType.CHARGE_VIDEO;
             else
-                type = DynamicSendActivity.DynamicType.CHARGE_VIDEO;
+                type = EnumConstant.DynamicType.FREE_VIDEO;
         }
         if (type == null) {
             showToast(UIUtils.getStringRes(R.string.publish_failure));
@@ -101,12 +104,13 @@ public class DynamicPublishActivity extends BaseFragmentActivity implements View
 
     @Override
     public void finishPage() {
+        ActivityUtils.startDynamicActivity(UserInfoManager.getInstance().getUid());
         finish();
     }
 
     @Override
     public void showLoading() {
-//        showProgressDialog();
+        showProgressDialog();
     }
 
     @Override

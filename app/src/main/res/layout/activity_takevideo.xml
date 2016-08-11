@@ -4,27 +4,23 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <RelativeLayout
-        android:id="@+id/rl_takevideo_back"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/y100"
-        android:paddingLeft="@dimen/x30">
+    <!--<RelativeLayout-->
+    <!--android:id="@+id/rl_takevideo_back"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="@dimen/y100"-->
+    <!--android:paddingLeft="@dimen/x30">-->
 
-        <ImageView
-            android:layout_width="@dimen/x23"
-            android:layout_height="@dimen/y44"
-            android:layout_centerVertical="true"
-            android:src="@mipmap/title_back_icon" />
+    <!---->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/x40"
-            android:text="发布视频"
-            android:textColor="@color/background_white_color"
-            android:textSize="@dimen/x32" />
-    </RelativeLayout>
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_centerVertical="true"-->
+    <!--android:layout_marginLeft="@dimen/x40"-->
+    <!--android:text="发布视频"-->
+    <!--android:textColor="@color/background_white_color"-->
+    <!--android:textSize="@dimen/x32" />-->
+    <!--</RelativeLayout>-->
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -156,6 +152,13 @@
                 android:src="@mipmap/icon_takevideo_nextstep"
                 android:visibility="gone" />
         </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/rl_takevideo_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/x50"
+            android:src="@mipmap/title_back_icon" />
     </RelativeLayout>
 
 </LinearLayout>

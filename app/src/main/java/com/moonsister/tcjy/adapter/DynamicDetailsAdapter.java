@@ -15,10 +15,10 @@ import java.util.List;
 /**
  * Created by pc on 2016/6/8.
  */
-public class DynamiDayailsAdapter extends BaseRecyclerViewAdapter<CommentDataListBean.DataBean> {
+public class DynamicDetailsAdapter extends BaseRecyclerViewAdapter<CommentDataListBean.DataBean> {
 
 
-    public DynamiDayailsAdapter(List<CommentDataListBean.DataBean> list) {
+    public DynamicDetailsAdapter(List<CommentDataListBean.DataBean> list) {
         super(list);
     }
 

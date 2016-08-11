@@ -2,6 +2,7 @@ package com.moonsister.tcjy.main.widget;
 
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -44,6 +45,9 @@ import com.trello.rxlifecycle.ActivityEvent;
 import butterknife.Bind;
 import butterknife.OnClick;
 import io.rong.imkit.RongyunManager;
+import io.rong.imkit.provider.MyConversationBehaviorListener;
+import io.rong.imlib.model.Conversation;
+import io.rong.imlib.model.UserInfo;
 
 public class MainActivity extends BaseActivity implements MainView {
     @Bind(R.id.tv_home_page)
@@ -113,6 +117,13 @@ public class MainActivity extends BaseActivity implements MainView {
                     tvMsgNumber.setText(number + "");
                     tvMsgNumber.setVisibility(View.VISIBLE);
                 }
+            }
+        });
+        RongyunManager.getInstance().setConversationBehaviorListener(new MyConversationBehaviorListener() {
+            @Override
+            public boolean onUserPortraitClick(Context context, Conversation.ConversationType conversationType, UserInfo userInfo) {
+                ActivityUtils.startDynamicActivity(userInfo.getUserId());
+                return super.onUserPortraitClick(context, conversationType, userInfo);
             }
         });
         RongyunManager.getInstance().setAuthcode(UserInfoManager.getInstance().getAuthcode());

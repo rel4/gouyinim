@@ -28,8 +28,17 @@ public class PayRedPacketPicsBean extends BaseBean {
 
     public static class DataBean {
         private List<String> simg;
-        private ArrayList<String> img;
+        private List<String> img;
         private String latest_id;
+        private List<String> v;
+
+        public List<String> getV() {
+            return v;
+        }
+
+        public void setV(List<String> v) {
+            this.v = v;
+        }
 
         public String getLatest_id() {
             return latest_id;
@@ -47,7 +56,7 @@ public class PayRedPacketPicsBean extends BaseBean {
             this.simg = simg;
         }
 
-        public ArrayList<String> getImg() {
+        public List<String> getImg() {
             return img;
         }
 

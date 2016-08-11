@@ -43,7 +43,7 @@ public class VoiceRecorder {
             this.recorder.setAudioSource(1);
             this.recorder.setOutputFormat(3);
             this.recorder.setAudioEncoder(1);
-//      this.recorder.setAudioEncoder(MediaRecorder.AudioEncoder.PIC);
+//      this.recorder.setAudioEncoder(MediaRecorder.AudioEncoder.FREE_PIC);
             this.recorder.setAudioChannels(1);
             this.recorder.setAudioSamplingRate(8000);
             this.recorder.setAudioEncodingBitRate(64);
@@ -119,9 +119,7 @@ public class VoiceRecorder {
     }
 
     private String getVoiceFileName() {
-        Time localTime = new Time();
-        localTime.setToNow();
-        return localTime.toString().substring(0, 15) + ".amr";
+        return System.currentTimeMillis() + ".amr";
     }
 
     public boolean isRecording() {

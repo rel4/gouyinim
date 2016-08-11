@@ -29,7 +29,7 @@ public class TixianViewHolder extends BaseRecyclerViewHolder<TiXinrRecordBean.Da
     }
 
     @Override
-    protected void onBindData(TiXinrRecordBean.DataBean dataBean) {
+    public void onBindData(TiXinrRecordBean.DataBean dataBean) {
         tvMoney.setText(dataBean.getMoney());
         tvTime.setText(TimeUtils.format(dataBean.getAudit_time() * 1000));
         /**

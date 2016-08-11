@@ -14,11 +14,16 @@ import butterknife.ButterKnife;
 public abstract class BaseRecyclerViewHolder<T extends BaseDataBean> extends RecyclerView.ViewHolder {
     private View mRootView;
     protected BaseRecyclerViewAdapter<T> baseRecyclerViewAdapter;
+    protected BaseIView baseIView;
 
     public BaseRecyclerViewHolder(View view) {
         super(view);
         this.mRootView = view;
         ButterKnife.bind(this, view);
+    }
+
+    public void setView(BaseIView view) {
+        this.baseIView = view;
     }
 
     /**
@@ -48,7 +53,7 @@ public abstract class BaseRecyclerViewHolder<T extends BaseDataBean> extends Rec
         return mRootView;
     }
 
-    protected abstract void onBindData(T t);
+    public abstract void onBindData(T t);
 
     public void onBindData(T t, int position) {
     }

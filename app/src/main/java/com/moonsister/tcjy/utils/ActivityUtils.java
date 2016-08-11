@@ -140,7 +140,7 @@ public class ActivityUtils {
      *
      * @param pics
      */
-    public static void startDefaultDynamicSendActivity(ArrayList pics, DynamicSendActivity.DynamicType type) {
+    public static void startDefaultDynamicSendActivity(ArrayList pics, EnumConstant.DynamicType type) {
         if (UserInfoManager.getInstance().isLogin()) {
             Intent intent = new Intent(ConfigUtils.getInstance().getActivityContext(), DefaultDynamicSendActivity.class);
             intent.putExtra("type", type.getValue());

@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.adapter.UserDynamicAdapter;
+import com.moonsister.tcjy.adapter.DynamicAdapter;
 import com.moonsister.tcjy.base.BaseFragment;
 import com.moonsister.tcjy.bean.PayRedPacketPicsBean;
 import com.moonsister.tcjy.bean.UserInfoDetailBean;
@@ -41,7 +41,7 @@ public class MyFragment extends BaseFragment implements MyFragmentView {
     @Bind(R.id.recyclerview)
     XListView recyclerview;
     private MyFragmentPresenter mPresenter;
-    private UserDynamicAdapter mAdapter;
+    private DynamicAdapter mAdapter;
     private boolean isRefresh;
 
     private PersonDynamicViewholder personDynamicViewholder;
@@ -287,7 +287,7 @@ public class MyFragment extends BaseFragment implements MyFragmentView {
     @Override
     public void setListData(List<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList> list) {
         if (mAdapter == null) {
-            mAdapter = new UserDynamicAdapter(list);
+            mAdapter = new DynamicAdapter(list);
             mAdapter.setView(this);
             recyclerview.setAdapter(mAdapter);
         } else {

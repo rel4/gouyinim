@@ -6,6 +6,7 @@ import com.moonsister.tcjy.center.model.DynamicPublishModel;
 import com.moonsister.tcjy.center.model.DynamicPublishModelImpl;
 import com.moonsister.tcjy.center.view.DefaultDynamicView;
 import com.moonsister.tcjy.center.widget.DynamicSendActivity;
+import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.utils.UIUtils;
 
 import java.util.List;
@@ -30,7 +31,7 @@ public class DynamicPublishPresenterImpl implements DynamicPublishPresenter, Bas
     }
 
     @Override
-    public void sendDynamic(DynamicSendActivity.DynamicType dynamicType, String content, List<String> datas, String address) {
+    public void sendDynamic(EnumConstant.DynamicType dynamicType, String content, List<String> datas, String address) {
         view.showLoading();
         model.sendDynamicPics(dynamicType, content, datas, address, this);
 

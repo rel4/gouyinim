@@ -18,6 +18,7 @@ import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.manager.GaodeManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.ConfigUtils;
+import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.PrefUtils;
 import com.moonsister.tcjy.utils.StringUtis;
@@ -56,7 +57,7 @@ public class DefaultDynamicSendActivity extends BaseActivity implements DefaultD
     private DynamicPublishPresenter presenter;
     private ShowPicAdapter showPicAdapter;
     private List datas;
-    private DynamicSendActivity.DynamicType dynamicType;
+    private EnumConstant.DynamicType dynamicType;
     private String videoPath;
     private String videoBackPath;
 
@@ -68,7 +69,7 @@ public class DefaultDynamicSendActivity extends BaseActivity implements DefaultD
         String type = getIntent().getStringExtra("type");
         switch (type) {
             case "3":
-                dynamicType = DynamicSendActivity.DynamicType.VIDEO;
+                dynamicType = EnumConstant.DynamicType.FREE_VIDEO;
                 ArrayList<String> videos = getIntent().getStringArrayListExtra("data");
                 if (videos != null && videos.size() == 1) {
                     videoPath = videos.get(0);
@@ -82,13 +83,13 @@ public class DefaultDynamicSendActivity extends BaseActivity implements DefaultD
                 break;
             case "2":
 
-                dynamicType = DynamicSendActivity.DynamicType.PIC;
+                dynamicType =EnumConstant.DynamicType.FREE_PIC;
                 if (datas == null)
                     datas = new ArrayList();
                 datas.add(R.mipmap.add_dynamic_pic);
                 break;
             case "1":
-                dynamicType = DynamicSendActivity.DynamicType.CHARGE_PIC;
+                dynamicType = EnumConstant.DynamicType.CHARGE_PIC;
                 ArrayList<String> pics = getIntent().getStringArrayListExtra("data");
 
                 if (datas == null)
@@ -117,7 +118,7 @@ public class DefaultDynamicSendActivity extends BaseActivity implements DefaultD
     @Override
     protected void initView() {
 
-        if (dynamicType == DynamicSendActivity.DynamicType.VIDEO) {
+        if (dynamicType == EnumConstant.DynamicType.FREE_VIDEO) {
 
             gvPicList.setVisibility(View.GONE);
             ViewGroup.LayoutParams params = video_back.getLayoutParams();
@@ -140,7 +141,7 @@ public class DefaultDynamicSendActivity extends BaseActivity implements DefaultD
             }
         });
         ivSwitch.setOpen(true);
-        if (ivSwitch.getOpen()) {
+        if (ivSwitch.isShown()) {
             String location = PrefUtils.getString(ConfigUtils.getInstance().getApplicationContext(), GaodeManager.class.getName(), "");
             if (StringUtis.isEmpty(location)) {
                 tvAddress.setText(UIUtils.getStringRes(R.string.locationing));
@@ -179,7 +180,7 @@ public class DefaultDynamicSendActivity extends BaseActivity implements DefaultD
                     return;
                 }
 //                String address = tvAddress.getText().toString().trim();
-                if (dynamicType != DynamicSendActivity.DynamicType.VIDEO) {
+                if (dynamicType != EnumConstant.DynamicType.FREE_VIDEO) {
                     if (datas.size() < 9) {
                         datas.remove(datas.size() - 1);
                     }
@@ -191,7 +192,7 @@ public class DefaultDynamicSendActivity extends BaseActivity implements DefaultD
                     }
                 }
                 String location = "";
-                if (ivSwitch.getOpen()) {
+                if (ivSwitch.isOpen()) {
                     location = PrefUtils.getString(ConfigUtils.getInstance().getApplicationContext(), GaodeManager.class.getName(), "");
                 }
                 presenter.sendDynamic(dynamicType, content, datas, location);

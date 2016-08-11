@@ -174,7 +174,9 @@
         <activity
             android:name=".widget.image.photoview.ImagePagerActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".widget.takevideo.TakeVideoActivity" />
+        <activity
+            android:name=".widget.takevideo.TakeVideoActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".main.widget.PersonInfoChangeActivity"
             android:screenOrientation="portrait" />

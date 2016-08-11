@@ -35,7 +35,7 @@ public class NearbyViewHolder extends BaseRecyclerViewHolder<NearbyBean.DataBean
     }
 
     @Override
-    protected void onBindData(NearbyBean.DataBean dataBean) {
+    public void onBindData(NearbyBean.DataBean dataBean) {
         if (dataBean == null)
             return;
         String location = PrefUtils.getString(GaodeManager.class.getName(), "");

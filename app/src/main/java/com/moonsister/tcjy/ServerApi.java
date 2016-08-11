@@ -76,7 +76,7 @@ public class ServerApi {
                 HttpLoggingInterceptor logging = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
                     @Override
                     public void log(String message) {
-                        LogUtils.d(TAG, (message.startsWith("{") ? UnicodeUtils.decodeUnicode(message) : message));
+                        LogUtils.e(TAG, (message.startsWith("{") ? UnicodeUtils.decodeUnicode(message) : message));
                     }
 
                 });
@@ -112,9 +112,9 @@ public class ServerApi {
                 //OkHttpClient
                 OkHttpClient httpClient = new OkHttpClient.Builder()
                         .addInterceptor(logging)
-//                        .addInterceptor(interceptor)
+                        .addInterceptor(interceptor)
                         .retryOnConnectionFailure(true)
-                        .authenticator(mAuthenticator)
+//                        .authenticator(mAuthenticator)
                         .connectTimeout(15, TimeUnit.SECONDS)
                         .addNetworkInterceptor(mTokenInterceptor)
                         .build();
@@ -285,7 +285,7 @@ public class ServerApi {
          */
         @FormUrlEncoded
         @POST("Latest/insert_latest")
-        Observable<BaseBean> sendAllDefaultDynamic(@Field("type") String type,
+        Observable<BaseBean> sendAllDefaultDynamic(@Field("type") int type,
                                                    @Field("title") String title,
                                                    @Field("contents") String content,
                                                    @Field("address") String address,

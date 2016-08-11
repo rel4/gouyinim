@@ -7,6 +7,7 @@ import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.utils.ActivityUtils;
+import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.trello.rxlifecycle.ActivityEvent;
@@ -52,7 +53,7 @@ public class RedpacketDynaimcActivity extends BaseActivity {
                                 if (message != null && message instanceof ArrayList) {
                                     ArrayList pics = (ArrayList) message;
                                     LogUtils.e(DefaultDynamicSendActivity.class, "pics : " + pics.toString());
-                                    ActivityUtils.startDefaultDynamicSendActivity(pics, DynamicSendActivity.DynamicType.CHARGE_PIC);
+                                    ActivityUtils.startDefaultDynamicSendActivity(pics, EnumConstant.DynamicType.CHARGE_PIC);
                                     finish();
 
                                 }

@@ -109,7 +109,7 @@ public class MySwitch extends View {
     // int startY;
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        currentOpen = getOpen();
+        currentOpen = isOpen();
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 // 按下的时候记录开始的坐标
@@ -196,7 +196,7 @@ public class MySwitch extends View {
         }
     }
 
-    public boolean getOpen() {
+    public boolean isOpen() {
         return this.open;
 
     }

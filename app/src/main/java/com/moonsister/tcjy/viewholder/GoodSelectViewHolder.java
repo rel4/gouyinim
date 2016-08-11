@@ -33,7 +33,7 @@ public class GoodSelectViewHolder extends BaseRecyclerViewHolder<GoodSelectBaen.
     }
 
     @Override
-    protected void onBindData(GoodSelectBaen.Data goodSelectBaen) {
+    public void onBindData(GoodSelectBaen.Data goodSelectBaen) {
         if (goodSelectBaen == null)
             return;
         tvUserName.setText(goodSelectBaen.getNickname());

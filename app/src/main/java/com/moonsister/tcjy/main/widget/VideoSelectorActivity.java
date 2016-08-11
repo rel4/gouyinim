@@ -5,6 +5,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
@@ -21,7 +22,9 @@ import android.widget.Toast;
 
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.utils.DateUtils;
+import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.TextFormater;
+import com.moonsister.tcjy.utils.VideoUtils;
 import com.moonsister.tcjy.widget.RecyclingImageView;
 import com.moonsister.tcjy.widget.takevideo.TakeVideoActivity;
 import com.moonsister.tcjy.widget.takevideo.VideoEntity;
@@ -74,14 +77,18 @@ public class VideoSelectorActivity extends Activity implements AdapterView.OnIte
                 // 大小：MediaStore.Audio.Media.SIZE
                 int size = (int) cursor.getLong(cursor
                         .getColumnIndexOrThrow(MediaStore.Video.Media.SIZE));
+                if (StringUtis.isEmpty(url))
+                    continue;
 
-                VideoEntity entty = new VideoEntity();
-                entty.ID = id;
-                entty.title = title;
-                entty.filePath = url;
-                entty.duration = duration;
-                entty.size = size;
-                mList.add(entty);
+                if (url.endsWith(".mp4") || url.endsWith(".MP4")) {
+                    VideoEntity entty = new VideoEntity();
+                    entty.ID = id;
+                    entty.title = title;
+                    entty.filePath = url;
+                    entty.duration = duration;
+                    entty.size = size;
+                    mList.add(entty);
+                }
             } while (cursor.moveToNext());
 
         }
@@ -192,8 +199,12 @@ public class VideoSelectorActivity extends Activity implements AdapterView.OnIte
 
                 holder.tvDur.setText(DateUtils.toTime(entty.duration));
                 holder.tvSize.setText(TextFormater.getDataSize(entty.size));
-                holder.imageView.setImageResource(R.mipmap.empty_photo);
-//                mImageResizer.loadImage(entty.filePath, holder.imageView);
+                try {
+                    holder.imageView.setImageBitmap(BitmapFactory.decodeFile(VideoUtils.getInstance().getVideoThumbnail(entty.filePath)));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
             }
             return convertView;
             // END_INCLUDE(load_gridview_item)

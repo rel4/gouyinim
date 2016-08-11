@@ -10,8 +10,8 @@ import com.moonsister.tcjy.manager.aliyun.AliyunManager;
 import com.moonsister.tcjy.bean.DynamicContent;
 import com.moonsister.tcjy.bean.BaseBean;
 import com.moonsister.tcjy.center.presenter.DynamicPublishPresenterImpl;
-import com.moonsister.tcjy.center.widget.DynamicSendActivity;
 import com.moonsister.tcjy.manager.UserInfoManager;
+import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.utils.FastBlur;
 import com.moonsister.tcjy.utils.FilePathUtlis;
 import com.moonsister.tcjy.utils.ImageUtils;
@@ -32,7 +32,7 @@ import rx.schedulers.Schedulers;
  */
 public class DynamicPublishModelImpl implements DynamicPublishModel {
     @Override
-    public void sendDynamicPics(DynamicSendActivity.DynamicType dynamicType, String content, List<String> srcdatas, String address, onLoadDateSingleListener listener) {
+    public void sendDynamicPics(EnumConstant.DynamicType dynamicType, String content, List<String> srcdatas, String address, onLoadDateSingleListener listener) {
         LogUtils.e(DynamicPublishModelImpl.this, "start upload");
 //        ArrayList<DynamicContent> aliyunPtahs = new ArrayList<DynamicContent>();
 
@@ -40,7 +40,7 @@ public class DynamicPublishModelImpl implements DynamicPublishModel {
             @Override
             public void call(Subscriber<? super ArrayList<DynamicContent>> subscriber) {
                 upLoadFile(dynamicType, srcdatas, subscriber);
-//                if (dynamicType == DynamicSendActivity.DynamicType.VIDEO || dynamicType == DynamicSendActivity.DynamicType.CHARGE_VIDEO) {
+//                if (dynamicType == DynamicSendActivity.DynamicType.FREE_VIDEO || dynamicType == DynamicSendActivity.DynamicType.CHARGE_VIDEO) {
 //                    if (srcdatas != null && srcdatas.size() == 2) {
 //
 //                        try {
@@ -127,7 +127,7 @@ public class DynamicPublishModelImpl implements DynamicPublishModel {
                 });
     }
 
-    private void sendAllDynamic(DynamicSendActivity.DynamicType dynamicType, String content, String json, String address, onLoadDateSingleListener listener) {
+    private void sendAllDynamic(EnumConstant.DynamicType dynamicType, String content, String json, String address, onLoadDateSingleListener listener) {
         String authcode = UserInfoManager.getInstance().getAuthcode();
         Observable<BaseBean> baseBeanObservable = ServerApi.getAppAPI().sendAllDefaultDynamic(dynamicType.getValue(), content, json, address, authcode, AppConstant.CHANNEL_ID);
 
@@ -145,23 +145,23 @@ public class DynamicPublishModelImpl implements DynamicPublishModel {
 
     }
 
-    private void upLoadFile(DynamicSendActivity.DynamicType dynamicType, List<String> datas, Subscriber<? super ArrayList<DynamicContent>> subscriber) {
+    private void upLoadFile(EnumConstant.DynamicType dynamicType, List<String> datas, Subscriber<? super ArrayList<DynamicContent>> subscriber) {
         try {
             ArrayList<DynamicContent> aliyunPtahs = new ArrayList<DynamicContent>();
             switch (dynamicType) {
-                case PIC:
+                case FREE_PIC:
                     upPic(datas, aliyunPtahs, false);
                     break;
                 case CHARGE_PIC:
                     upPic(datas, aliyunPtahs, true);
                     break;
-                case VIDEO:
+                case FREE_VIDEO:
                     upLoadVideo(datas.get(0), aliyunPtahs, false);
                     break;
                 case CHARGE_VIDEO:
                     upLoadVideo(datas.get(0), aliyunPtahs, true);
                     break;
-                case VOICE:
+                case FREE_VOICE:
                     upLoadVoice(datas.get(0), aliyunPtahs, false);
                     break;
                 case CHARGE_VOICE:
@@ -236,7 +236,7 @@ public class DynamicPublishModelImpl implements DynamicPublishModel {
             //压缩质量
 
             //宽高压缩
-            Bitmap bitmapsize = ImageUtils.compressImageSzie(bitmap, 200, 200);
+            Bitmap bitmapsize = ImageUtils.compressImageSzie(bitmap, 600, 480);
             //质量压缩
             Bitmap bitmap1 = ImageUtils.compressImage(bitmapsize, 50);
             //模糊
@@ -258,6 +258,8 @@ public class DynamicPublishModelImpl implements DynamicPublishModel {
         String s = AliyunManager.getInstance().upLoadFile(videoPath, FilePathUtlis.FileType.AMR);
         DynamicContent content = new DynamicContent();
         content.setV(s);
+        content.setL("");
+        content.setS("");
         aliyunPtahs.add(content);
     }
 }

@@ -14,7 +14,7 @@ public class MyOrderViewHolder extends BaseRecyclerViewHolder {
     }
 
     @Override
-    protected void onBindData(BaseDataBean baseDataBean) {
+    public void onBindData(BaseDataBean baseDataBean) {
 
     }
 

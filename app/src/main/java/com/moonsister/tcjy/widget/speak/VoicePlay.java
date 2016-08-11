@@ -22,6 +22,8 @@ import android.media.MediaPlayer;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
+import com.moonsister.tcjy.utils.StringUtis;
+
 
 public class VoicePlay {
     private static final String TAG = "VoicePlayClickListener";
@@ -49,10 +51,8 @@ public class VoicePlay {
     }
 
     public void playVoice(Context context, String filePath) {
-        if (!(new File(filePath).exists())) {
+        if (StringUtis.isEmpty(filePath))
             return;
-        }
-
         AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
 
         mediaPlayer = new MediaPlayer();

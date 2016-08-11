@@ -312,7 +312,7 @@ public class TakeVideoActivity extends Activity implements OnClickListener,
             mCamera.setDisplayOrientation(90);
             // setCameraDisplayOrientation(this, frontCamera, mCamera);
         } catch (RuntimeException ex) {
-            LogUtils.e("VIDEO", "init Camera fail " + ex.getMessage());
+            LogUtils.e("FREE_VIDEO", "init Camera fail " + ex.getMessage());
             return false;
         }
         return true;
@@ -537,14 +537,14 @@ public class TakeVideoActivity extends Activity implements OnClickListener,
             mCamera.startPreview();
             handleSurfaceChanged();
         } catch (Exception e1) {
-            LogUtils.e("VIDEO", "start preview fail " + e1.getMessage());
+            LogUtils.e("FREE_VIDEO", "start preview fail " + e1.getMessage());
             showFailDialog();
         }
     }
 
     @Override
     public void surfaceDestroyed(SurfaceHolder arg0) {
-        LogUtils.v("VIDEO", "surfaceDestroyed");
+        LogUtils.v("FREE_VIDEO", "surfaceDestroyed");
     }
 
     public boolean startRecording() {
@@ -587,9 +587,9 @@ public class TakeVideoActivity extends Activity implements OnClickListener,
 
         /*****************************************/
         // //设置视频源
-        // mediaRecorder.setVideoSource(MediaRecorder.VideoSource.PIC);
+        // mediaRecorder.setVideoSource(MediaRecorder.VideoSource.FREE_PIC);
         // //设置音频源
-        // mediaRecorder.setAudioSource(MediaRecorder.AudioSource.PIC);
+        // mediaRecorder.setAudioSource(MediaRecorder.AudioSource.FREE_PIC);
         //
         // //相机参数配置类
         // CamcorderProfile cProfile =
@@ -665,7 +665,7 @@ public class TakeVideoActivity extends Activity implements OnClickListener,
             try {
                 mediaRecorder.stop();
             } catch (IllegalStateException e) {
-                LogUtils.e("VIDEO", "stopRecording error:" + e.getMessage());
+                LogUtils.e("FREE_VIDEO", "stopRecording error:" + e.getMessage());
             }
         }
         releaseRecorder();
@@ -766,7 +766,7 @@ public class TakeVideoActivity extends Activity implements OnClickListener,
 
                         @Override
                         public void onMediaScannerConnected() {
-                            msc.scanFile(localPath, "VIDEO/*");
+                            msc.scanFile(localPath, "FREE_VIDEO/*");
                         }
                     });
 
@@ -810,9 +810,9 @@ public class TakeVideoActivity extends Activity implements OnClickListener,
 
     @Override
     public void onInfo(MediaRecorder mr, int what, int extra) {
-        LogUtils.v("VIDEO", "onInfo");
+        LogUtils.v("FREE_VIDEO", "onInfo");
         if (what == MediaRecorder.MEDIA_RECORDER_INFO_MAX_DURATION_REACHED) {
-            LogUtils.v("VIDEO", "max duration reached");
+            LogUtils.v("FREE_VIDEO", "max duration reached");
             btnStart.setSelected(false);
             stopRecorder();
             // stopRecording();
@@ -842,7 +842,7 @@ public class TakeVideoActivity extends Activity implements OnClickListener,
 
     @Override
     public void onError(MediaRecorder mr, int what, int extra) {
-        LogUtils.e("VIDEO", "recording onError:");
+        LogUtils.e("FREE_VIDEO", "recording onError:");
         stopRecording();
         Toast.makeText(this,
                 "Recording error has occurred. Stopping the recording",

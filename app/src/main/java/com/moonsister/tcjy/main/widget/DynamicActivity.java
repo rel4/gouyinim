@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.adapter.UserDynamicAdapter;
+import com.moonsister.tcjy.adapter.DynamicAdapter;
 import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.bean.PayRedPacketPicsBean;
 import com.moonsister.tcjy.bean.UserInfoDetailBean;
@@ -50,7 +50,7 @@ public class DynamicActivity extends BaseActivity implements DynamicView {
     @Bind(R.id.single_send_msg)
     TextView single_send_msg;
     private DynamicPresenter mPresenter;
-    private UserDynamicAdapter mAdapter;
+    private DynamicAdapter mAdapter;
     private boolean isRefresh;
     private DynamicHeadViewHolder headHolder;
     private String userId;
@@ -176,7 +176,7 @@ public class DynamicActivity extends BaseActivity implements DynamicView {
     public void loadUserinfo(List<UserInfoListBean.UserInfoListBeanData.UserInfoListBeanDataList> list) {
 
         if (mAdapter == null) {
-            mAdapter = new UserDynamicAdapter(list);
+            mAdapter = new DynamicAdapter(list);
             mAdapter.setView(this);
             recyclerview.setAdapter(mAdapter);
         } else {

@@ -36,7 +36,7 @@ public class FrientViewHoler extends BaseRecyclerViewHolder<FrientBaen.DataBean>
     }
 
     @Override
-    protected void onBindData(FrientBaen.DataBean dataBean) {
+    public void onBindData(FrientBaen.DataBean dataBean) {
 
 
     }
