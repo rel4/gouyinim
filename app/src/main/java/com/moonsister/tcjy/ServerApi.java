@@ -814,6 +814,21 @@ public class ServerApi {
                                               @Query("pagesize") int pagesize,
                                               @Query("authcode") String authcode,
                                               @Query("channel") String channel);
+
+        /**
+         * 购买VIP
+         *
+         * @param payType
+         * @param opentype
+         * @param authcode
+         * @return
+         */
+        @FormUrlEncoded
+        @POST("mmvip/openvip")
+        Observable<PayBean> getBuyVIP(@Field("pay_type") String payType,
+                                      @Field("opentype") int opentype,
+                                      @Field("authcode") String authcode,
+                                      @Field("channel") String channel);
     }
 }
 

@@ -16,6 +16,7 @@ import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.main.presenter.DynamicPresenter;
 import com.moonsister.tcjy.main.presenter.DynamicPresenterImpl;
 import com.moonsister.tcjy.main.view.DynamicView;
+import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.StringUtis;
@@ -145,6 +146,16 @@ public class DynamicActivity extends BaseActivity implements DynamicView {
                     }
                 })
                 .create();
+        //购买vip
+        RxBus.with(this)
+                .setEndEvent(ActivityEvent.DESTROY)
+                .setEvent(Events.EventEnum.BUY_VIP_SUCCESS)
+                .onNext(events -> {
+                    if (mPresenter != null) {
+                        mPresenter.loadonRefreshData(userId);
+                    }
+                })
+                .create();
 
     }
 
@@ -237,13 +248,19 @@ public class DynamicActivity extends BaseActivity implements DynamicView {
             avater = baseinfo.getFace();
             nikeName = baseinfo.getNickname();
             bean.getData().setUid(userId);
-            if (StringUtis.equals(baseinfo.getIsverify(), "1")) {
-                layout_usee_action.setVisibility(View.VISIBLE);
+            if (StringUtis.equals(userId, UserInfoManager.getInstance().getUid())) {
+                layout_usee_action.setVisibility(View.GONE);
                 single_send_msg.setVisibility(View.GONE);
             } else {
-                layout_usee_action.setVisibility(View.GONE);
-                single_send_msg.setVisibility(View.VISIBLE);
+                if (StringUtis.equals(baseinfo.getIsverify(), "1")) {
+                    layout_usee_action.setVisibility(View.VISIBLE);
+                    single_send_msg.setVisibility(View.GONE);
+                } else {
+                    layout_usee_action.setVisibility(View.GONE);
+                    single_send_msg.setVisibility(View.VISIBLE);
+                }
             }
+
         }
         headHolder.setUserInfodetail(bean);
     }

@@ -8,9 +8,9 @@ import android.net.Uri;
 import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.bean.TiXinrRecordBean;
 import com.moonsister.tcjy.bean.UserInfoListBean;
+import com.moonsister.tcjy.center.widget.BuyDynamicRedPackketActivity;
 import com.moonsister.tcjy.center.widget.DefaultDynamicSendActivity;
 import com.moonsister.tcjy.center.widget.DynamicSendActivity;
-import com.moonsister.tcjy.center.widget.PayDynamicRedPackketActivity;
 import com.moonsister.tcjy.center.widget.RedpacketDynaimcActivity;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
@@ -20,6 +20,7 @@ import com.moonsister.tcjy.home.widget.SearchActivity;
 import com.moonsister.tcjy.home.widget.SearchReasonActivity;
 import com.moonsister.tcjy.login.widget.FindPasswordActivity;
 import com.moonsister.tcjy.login.widget.LoginMainActivity;
+import com.moonsister.tcjy.main.widget.BuyVipActivity;
 import com.moonsister.tcjy.main.widget.DynamicAtionActivity;
 import com.moonsister.tcjy.main.widget.DynamicDatailsActivity;
 import com.moonsister.tcjy.login.widget.FindPasswordNextActivity;
@@ -56,10 +57,8 @@ import com.moonsister.tcjy.widget.image.photoview.ImagePagerActivity;
 import com.moonsister.tcjy.widget.takevideo.TakeVideoActivity;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 import io.rong.imkit.RongyunManager;
 import io.rong.imlib.model.Conversation;
@@ -310,7 +309,7 @@ public class ActivityUtils {
             RxBus.getInstance().send(Events.EventEnum.LOGIN, null);
             return;
         }
-        Intent intent = new Intent(ConfigUtils.getInstance().getActivityContext(), PayDynamicRedPackketActivity.class);
+        Intent intent = new Intent(ConfigUtils.getInstance().getActivityContext(), BuyDynamicRedPackketActivity.class);
         intent.putExtra("money", money);
         intent.putExtra("id", id);
         startActivity(intent);
@@ -546,5 +545,13 @@ public class ActivityUtils {
     public static void startPictureSelectorActivity(Activity activity) {
         Intent intent = new Intent(activity, PictureSelectorActivity.class);
         startActivityForResult(intent);
+    }
+
+    /**
+     * 开启购买vip
+     */
+    public static void startBuyVipActivity() {
+        Intent intent = new Intent(getContext(), BuyVipActivity.class);
+        startActivity(intent);
     }
 }

@@ -6,80 +6,48 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="ERROR" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cef3abe8-43a3-4875-9156-0b243031df3e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/IMKit/src/main/java/io/rong/imkit/provider/MyConversationBehaviorListener.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/adapter/DynamicAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/utils/EnumConstant.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/dynamic/PicViewHolder.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/dynamic/VideoViewHolder.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/dynamic/VoiceViewHolder.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_dynamic_pic.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_dynamic_video.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_dynamic_voice.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_voice.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/adapter/UserDynamicAdapter.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IMKit/build/intermediates/bundles/debug/classes.jar" afterPath="$PROJECT_DIR$/IMKit/build/intermediates/bundles/debug/classes.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IMKit/build/intermediates/bundles/debug/libs/Rong_IMKit_v2_6_2.jar" afterPath="$PROJECT_DIR$/IMKit/build/intermediates/bundles/debug/libs/Rong_IMKit_v2_6_2.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IMKit/build/intermediates/bundles/release/classes.jar" afterPath="$PROJECT_DIR$/IMKit/build/intermediates/bundles/release/classes.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IMKit/build/intermediates/bundles/release/libs/Rong_IMKit_v2_6_2.jar" afterPath="$PROJECT_DIR$/IMKit/build/intermediates/bundles/release/libs/Rong_IMKit_v2_6_2.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IMKit/build/intermediates/res/resources-debug-androidTest.ap_" afterPath="$PROJECT_DIR$/IMKit/build/intermediates/res/resources-debug-androidTest.ap_" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IMKit/build/outputs/aar/IMKit-debug.aar" afterPath="$PROJECT_DIR$/IMKit/build/outputs/aar/IMKit-debug.aar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IMKit/build/outputs/aar/IMKit-release.aar" afterPath="$PROJECT_DIR$/IMKit/build/outputs/aar/IMKit-release.aar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/vip_selected.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/main/model/BuyVipFragmentModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/main/model/BuyVipFragmentModelImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/main/presenter/BuyVipFragmentPersenter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/main/presenter/BuyVipFragmentPersenterImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/main/view/BuyVipFragmentView.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/main/widget/BuyVipActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/main/widget/BuyVipFragment.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/shape_text_ffd.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/shape_text_full_ffd.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/shape_vip_text_left.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/shape_vip_text_right.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragme_buy_vip.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/values/arrays.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/gouyinim.time" afterPath="$PROJECT_DIR$/.idea/gouyinim.time" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IMKit/build/intermediates/blame/res/androidTest/debug/single/drawable-xhdpi-v4.json" afterPath="$PROJECT_DIR$/IMKit/build/intermediates/blame/res/androidTest/debug/single/drawable-xhdpi-v4.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IMKit/build/intermediates/blame/res/debug/single/drawable-xhdpi-v4.json" afterPath="$PROJECT_DIR$/IMKit/build/intermediates/blame/res/debug/single/drawable-xhdpi-v4.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IMKit/build/intermediates/blame/res/debug/single/drawable.json" afterPath="$PROJECT_DIR$/IMKit/build/intermediates/blame/res/debug/single/drawable.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IMKit/build/intermediates/blame/res/debug/single/layout.json" afterPath="$PROJECT_DIR$/IMKit/build/intermediates/blame/res/debug/single/layout.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IMKit/build/intermediates/blame/res/release/single/drawable-hdpi-v4.json" afterPath="$PROJECT_DIR$/IMKit/build/intermediates/blame/res/release/single/drawable-hdpi-v4.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IMKit/build/intermediates/blame/res/release/single/drawable-mdpi-v4.json" afterPath="$PROJECT_DIR$/IMKit/build/intermediates/blame/res/release/single/drawable-mdpi-v4.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IMKit/build/intermediates/blame/res/release/single/drawable-xhdpi-v4.json" afterPath="$PROJECT_DIR$/IMKit/build/intermediates/blame/res/release/single/drawable-xhdpi-v4.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IMKit/build/intermediates/blame/res/release/single/drawable-xxhdpi-v4.json" afterPath="$PROJECT_DIR$/IMKit/build/intermediates/blame/res/release/single/drawable-xxhdpi-v4.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IMKit/build/intermediates/blame/res/release/single/drawable-xxxhdpi-v4.json" afterPath="$PROJECT_DIR$/IMKit/build/intermediates/blame/res/release/single/drawable-xxxhdpi-v4.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IMKit/build/intermediates/blame/res/release/single/layout.json" afterPath="$PROJECT_DIR$/IMKit/build/intermediates/blame/res/release/single/layout.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IMKit/src/main/java/io/rong/imkit/RongyunManager.java" afterPath="$PROJECT_DIR$/IMKit/src/main/java/io/rong/imkit/RongyunManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/ServerApi.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/ServerApi.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/base/BaseRecyclerViewHolder.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/base/BaseRecyclerViewHolder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/bean/PayRedPacketPicsBean.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/bean/PayRedPacketPicsBean.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/model/DynamicPublishModel.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/model/DynamicPublishModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/model/DynamicPublishModelImpl.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/model/DynamicPublishModelImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/presenter/DynamicPublishPresenter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/presenter/DynamicPublishPresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/presenter/DynamicPublishPresenterImpl.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/presenter/DynamicPublishPresenterImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/widget/DefaultDynamicSendActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/widget/DefaultDynamicSendActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/widget/DynamicPublishActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/widget/DynamicPublishActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/widget/DynamicPublishFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/widget/DynamicPublishFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/widget/DynamicSendActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/widget/DynamicSendActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/widget/RedpacketDynaimcActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/widget/RedpacketDynaimcActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/adapter/DynamicAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/adapter/DynamicAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/widget/DynamicContentFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/widget/DynamicContentFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/event/Events.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/event/Events.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/main/widget/DynamicActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/main/widget/DynamicActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/main/widget/DynamicDatailsActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/main/widget/DynamicDatailsActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/main/widget/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/main/widget/MainActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/main/widget/VideoSelectorActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/main/widget/VideoSelectorActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/my/widget/MyFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/my/widget/MyFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/utils/ActivityUtils.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/utils/ActivityUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/utils/FilePathUtlis.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/utils/FilePathUtlis.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/utils/VideoUtils.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/utils/VideoUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/DynamicCommentViewHolder.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/DynamicCommentViewHolder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/DynamicViewHolder.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/DynamicViewHolder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/FrientViewHoler.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/FrientViewHoler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/GoodSelectViewHolder.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/GoodSelectViewHolder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/MyOrderViewHolder.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/MyOrderViewHolder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/NearbyViewHolder.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/NearbyViewHolder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/RankViewHolder.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/RankViewHolder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/SearchViewHolder.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/SearchViewHolder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/SwitchCardViewHolder.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/SwitchCardViewHolder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/TixianViewHolder.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/TixianViewHolder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/widget/MySwitch.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/widget/MySwitch.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/widget/speak/VoicePlay.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/widget/speak/VoicePlay.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/widget/speak/VoiceRecorder.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/widget/speak/VoiceRecorder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/widget/takevideo/TakeVideoActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/widget/takevideo/TakeVideoActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_takevideo.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_takevideo.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_choose_gridi.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_choose_gridi.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/adapter/DynamiDayailsAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/adapter/DynamicDetailsAdapter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_user_tv.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_video.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/utils/EnumConstant.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/utils/EnumConstant.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/shape_background_text_white_color.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/shape_background_text_white_color.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/shape_two_half_round.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/shape_two_half_round.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_pay_dynamic_packet.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_pay_dynamic_packet.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/model/PayDynamicRedPacketModel.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/model/BuyDynamicRedPacketModel.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/model/PayDynamicRedPacketModelImpl.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/model/BuyDynamicRedPacketModelImpl.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/presenter/PayDynamicRedPackketPersenter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/presenter/BuyDynamicRedPackketPersenter.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/presenter/PayDynamicRedPackketPersenterImpl.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/presenter/BuyDynamicRedPackketPersenterImpl.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/view/PayDynamicRedPackketView.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/view/BuyDynamicRedPackketView.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/widget/PayDynamicRedPackketActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/widget/BuyDynamicRedPackketActivity.java" />
     </list>
     <ignored path="gouyinim.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -119,93 +87,110 @@
     <favorites_list name="gouyinim" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="DynamicContentFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/widget/DynamicContentFragment.java">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="BuyVipFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/main/widget/BuyVipFragment.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="54" column="35" selection-start-line="54" selection-start-column="24" selection-end-line="54" selection-end-column="35" />
-              <folding>
-                <element signature="e#2191#2199#0" expanded="true" />
-                <element signature="e#5513#5529#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DynamicPublishActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/widget/DynamicPublishActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="106" column="81" selection-start-line="106" selection-start-column="81" selection-end-line="106" selection-end-column="81" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DefaultDynamicSendActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/widget/DefaultDynamicSendActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="194" column="37" selection-start-line="194" selection-start-column="37" selection-end-line="194" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DynamicSendActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/widget/DynamicSendActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RongyunManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/IMKit/src/main/java/io/rong/imkit/RongyunManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="61" column="0" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/main/widget/MainActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.80508476">
-              <caret line="108" column="33" selection-start-line="108" selection-start-column="24" selection-end-line="108" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MyConversationBehaviorListener.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/IMKit/src/main/java/io/rong/imkit/provider/MyConversationBehaviorListener.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+              <caret line="119" column="29" selection-start-line="119" selection-start-column="29" selection-end-line="119" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#803#804#0" expanded="true" />
-                <element signature="e#831#832#0" expanded="true" />
-                <element signature="e#913#914#0" expanded="true" />
-                <element signature="e#941#942#0" expanded="true" />
-                <element signature="e#1041#1042#0" expanded="true" />
-                <element signature="e#1069#1070#0" expanded="true" />
+                <element signature="e#2546#2591#0" expanded="true" />
+                <element signature="e#3960#3961#0" expanded="true" />
+                <element signature="e#3996#3997#0" expanded="true" />
+                <element signature="e#4043#4044#0" expanded="true" />
+                <element signature="e#4079#4080#0" expanded="true" />
+                <element signature="e#4139#4140#0" expanded="true" />
+                <element signature="e#4169#4170#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RongIM.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/IMKit/src/main/libs/Rong_IMKit_v2_6_2.jar!/io/rong/imkit/RongIM.class">
+      <file leaf-file-name="BuyDynamicRedPacketModelImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/model/BuyDynamicRedPacketModelImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-114.03571">
-              <caret line="2252" column="21" selection-start-line="2252" selection-start-column="21" selection-end-line="2252" selection-end-column="21" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="74" column="67" selection-start-line="74" selection-start-column="60" selection-end-line="74" selection-end-column="67" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BuyVipFragmentPersenterImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/main/presenter/BuyVipFragmentPersenterImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="32" column="47" selection-start-line="32" selection-start-column="47" selection-end-line="32" selection-end-column="47" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1188#1208#0" expanded="true" />
+                <element signature="e#1298#1319#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EnumConstant.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/utils/EnumConstant.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BuyVipFragmentView.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/main/view/BuyVipFragmentView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BuyVipFragmentModelImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/main/model/BuyVipFragmentModelImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="29" column="68" selection-start-line="29" selection-start-column="68" selection-end-line="29" selection-end-column="68" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1627#1650#0" expanded="true" />
+                <element signature="e#1874#1897#0" expanded="true" />
+                <element signature="e#2532#2552#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ServerApi.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/ServerApi.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="829" column="0" selection-start-line="829" selection-start-column="0" selection-end-line="830" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BuyDynamicRedPackketActivity.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/widget/BuyDynamicRedPackketActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.28">
+              <caret line="99" column="0" selection-start-line="99" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DynamicActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/main/widget/DynamicActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="148" column="15" selection-start-line="148" selection-start-column="15" selection-end-line="148" selection-end-column="15" />
               <folding />
             </state>
           </provider>
@@ -217,6 +202,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="layoutResourceFile_vertical" />
+        <option value="resourceFile" />
         <option value="Interface" />
         <option value="Class" />
       </list>
@@ -5331,48 +5317,14 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/manager/GaodeManager.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/utils/FragmentUtils.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/bean/model/BaseFragmentActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_takevideo.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/adapter/DynamicDetailsAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/utils/EnmeType.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/presenter/DynamicPublishPresenter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/model/DynamicPublishModel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/ServerApi.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/utils/ActivityUtils.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/presenter/DynamicPublishPresenterImpl.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/widget/RedpacketDynaimcActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/item_dynamic_pic.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/DynamicViewHolder.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/widget/speak/VoiceRecorder.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/widget/speak/VoicePlay.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/item_dynamic_video.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/item_dynamic_voice.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/utils/EnumConstant.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/utils/FilePathUtlis.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/widget/MySwitch.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/widget/DynamicPublishFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/widget/DefaultDynamicSendActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/main/widget/DynamicDatailsActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/base/BaseRecyclerViewHolder.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/FrientViewHoler.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/MyOrderViewHolder.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/NearbyViewHolder.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/RankViewHolder.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/SearchViewHolder.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/SwitchCardViewHolder.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/TixianViewHolder.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/DynamicCommentViewHolder.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/GoodSelectViewHolder.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/item_video.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/item_choose_gridi.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/main/widget/VideoSelectorActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/model/DynamicPublishModelImpl.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/bean/PayRedPacketPicsBean.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/adapter/DynamicAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/dynamic/VideoViewHolder.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/dynamic/VoiceViewHolder.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/dynamic/PicViewHolder.java" />
@@ -5382,14 +5334,48 @@
         <option value="$PROJECT_DIR$/IMKit/src/main/java/io/rong/imkit/provider/MyConversationBehaviorListener.java" />
         <option value="$PROJECT_DIR$/IMKit/src/main/java/io/rong/imkit/RongyunManager.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/main/widget/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/adapter/DynamicAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/main/widget/VideoSelectorActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/widget/DynamicContentFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/shape_two_half_round.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/arrays.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/main/widget/BuyVipActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/shape_background_text_white_color.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/shape_vip_text_right.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/shape_vip_text_left.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_pay_dynamic_packet.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/presenter/BuyDynamicRedPackketPersenter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/utils/ActivityUtils.java" />
+        <option value="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values/values.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/shape_text_ffd.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/shape_text_full_ffd.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragme_buy_vip.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/main/presenter/BuyVipFragmentView.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/utils/EnumConstant.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/model/BuyDynamicRedPacketModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/presenter/BuyDynamicRedPackketPersenterImpl.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/main/presenter/BuyVipFragmentPersenter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/main/model/BuyVipFragmentModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/main/model/BuyVipFragmentModelImpl.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/main/view/BuyVipFragmentView.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/main/presenter/BuyVipFragmentPersenterImpl.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/model/BuyDynamicRedPacketModelImpl.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/ServerApi.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/main/widget/BuyVipFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/my/widget/MyFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/main/widget/DynamicActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/widget/BuyDynamicRedPackketActivity.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="x" value="67" />
+    <option name="y" value="19" />
+    <option name="width" value="1194" />
+    <option name="height" value="1011" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -5435,6 +5421,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="AndroidView">
@@ -5547,7 +5534,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -5569,16 +5555,16 @@
       <recent name="io.rong.imkit" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.moonsister.tcjy.main.model" />
+      <recent name="com.moonsister.tcjy.main.presenter" />
+      <recent name="com.moonsister.tcjy.main.view" />
+      <recent name="com.moonsister.tcjy.main.widget" />
       <recent name="io.rong.imkit.provider" />
-      <recent name="com.moonsister.tcjy.bean" />
-      <recent name="com.moonsister.tcjy.center.model" />
-      <recent name="com.moonsister.tcjy.center.presenter" />
-      <recent name="com.moonsister.tcjy.center.view" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="G:\Android\androidStudio\gouyinim\app\src\main\res\layout" />
-      <recent name="G:\Android\androidStudio\gouyinim\app\src\main\res\mipmap-xhdpi" />
       <recent name="G:\Android\androidStudio\gouyinim\app\src\main\res\drawable" />
+      <recent name="G:\Android\androidStudio\gouyinim\app\src\main\res\mipmap-xhdpi" />
+      <recent name="G:\Android\androidStudio\gouyinim\app\src\main\res\layout" />
       <recent name="G:\Android\androidStudio\gouyinim\app\src\main\res\mipmap-hdpi" />
       <recent name="G:\Android\androidStudio\gouyinim\app\src\main\res\values" />
     </key>
@@ -5869,28 +5855,27 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <frame x="67" y="19" width="1194" height="1011" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="FindBugs-IDEA" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25612473" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5935412" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20788912" sideWeight="0.50555557" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6403118" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3411514" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37983587" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2680776" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.06904232" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="CheckStyle" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.57349664" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.57349664" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23081024" sideWeight="0.49444443" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33407572" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4223986" sideWeight="0.49444443" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
@@ -5902,6 +5887,7 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33407572" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -5910,27 +5896,27 @@
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20788912" sideWeight="0.50555557" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25612473" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18819599" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27951002" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3518931" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25612473" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3411514" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33421516" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.06904232" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="CheckStyle" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.04899777" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.57349664" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23081024" sideWeight="0.49444443" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3474427" sideWeight="0.49444443" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33407572" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
@@ -5987,7 +5973,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/widget/DynamicContentFragment.java</url>
-          <line>163</line>
+          <line>166</line>
           <properties />
           <option name="timeStamp" value="41" />
         </line-breakpoint>
@@ -6005,343 +5991,106 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/main/widget/VideoSelectorActivity.java</url>
-          <line>55</line>
+          <line>58</line>
           <properties />
           <option name="timeStamp" value="62" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/adapter/DynamicAdapter.java</url>
-          <line>89</line>
+          <line>90</line>
           <properties />
           <option name="timeStamp" value="65" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/adapter/DynamicAdapter.java</url>
-          <line>95</line>
+          <line>96</line>
           <properties />
           <option name="timeStamp" value="66" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$APPLICATION_HOME_DIR$/gradle/gradle-2.10/caches/modules-2/files-2.1/io.reactivex/rxjava/1.1.1/403c0215220d990f2856904658185a7b5ba8b521/rxjava-1.1.1-sources.jar!/rx/functions/Action1.java</url>
+          <line>22</line>
+          <properties />
+          <option name="timeStamp" value="67" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="67" />
+      <option name="time" value="68" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/utils/EnumConstant.java">
+    <entry file="jar://$APPLICATION_HOME_DIR$/gradle/gradle-2.10/caches/modules-2/files-2.1/io.reactivex/rxjava/1.1.1/403c0215220d990f2856904658185a7b5ba8b521/rxjava-1.1.1-sources.jar!/rx/observers/Subscribers.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26237053">
-          <caret line="12" column="78" selection-start-line="12" selection-start-column="66" selection-end-line="12" selection-end-column="78" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-23/android/view/View.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="383.52014">
-          <caret line="17991" column="19" selection-start-line="17991" selection-start-column="19" selection-end-line="17991" selection-end-column="19" />
-          <folding>
-            <element signature="e#697100#697101#0" expanded="false" />
-            <element signature="e#697160#697161#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/widget/MySwitch.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.5086306">
-          <caret line="107" column="0" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="9" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_comment.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_dynamic_datails.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.5689654">
-          <caret line="17" column="52" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/DynamicViewHolder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="67" column="11" selection-start-line="67" selection-start-column="11" selection-end-line="67" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/base/BaseRecyclerViewHolder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="55" column="10" selection-start-line="55" selection-start-column="10" selection-end-line="55" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/main/widget/DynamicDatailsActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-48.233334">
-          <caret line="210" column="5" selection-start-line="210" selection-start-column="5" selection-end-line="210" selection-end-column="5" />
-          <folding>
-            <element signature="e#4593#4657#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/FrientViewHoler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="26" selection-start-line="27" selection-start-column="26" selection-end-line="27" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/MyOrderViewHolder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="10" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/NearbyViewHolder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="37" column="10" selection-start-line="37" selection-start-column="10" selection-end-line="37" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/RankViewHolder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="47" column="10" selection-start-line="47" selection-start-column="10" selection-end-line="47" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/SearchViewHolder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="70" column="10" selection-start-line="70" selection-start-column="10" selection-end-line="70" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/SwitchCardViewHolder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="32" column="10" selection-start-line="32" selection-start-column="10" selection-end-line="32" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/TixianViewHolder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="10" selection-start-line="31" selection-start-column="10" selection-end-line="31" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/DynamicCommentViewHolder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="10" selection-start-line="33" selection-start-column="10" selection-end-line="33" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/GoodSelectViewHolder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="35" column="10" selection-start-line="35" selection-start-column="10" selection-end-line="35" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_dynamic_video.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.9827585">
-          <caret line="59" column="29" selection-start-line="59" selection-start-column="29" selection-end-line="59" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_video.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.1034484">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/widget/DynamicPublishFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23705408">
-          <caret line="78" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-23/android/provider/MediaStore.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.9205984">
-          <caret line="2041" column="61" selection-start-line="2041" selection-start-column="52" selection-end-line="2041" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/ImageServerApi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38895282">
-          <caret line="45" column="29" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/widget/RecyclingImageView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21864212">
-          <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/empty_photo.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_video_selector.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23427866">
-          <caret line="10" column="41" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/video_download_btn_nor.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_choose_gridi.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7262639">
-          <caret line="31" column="42" selection-start-line="31" selection-start-column="42" selection-end-line="31" selection-end-column="42" />
-          <folding>
-            <element signature="e#318#331#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.30306748">
+          <caret line="48" column="36" selection-start-line="48" selection-start-column="36" selection-end-line="48" selection-end-column="36" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/main/widget/VideoSelectorActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6340621">
-          <caret line="168" column="84" selection-start-line="168" selection-start-column="84" selection-end-line="168" selection-end-column="84" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/model/DynamicPublishModelImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="252" column="0" selection-start-line="252" selection-start-column="0" selection-end-line="253" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/adapter/DynamicDetailsAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/bean/UserInfoListBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.522604">
-          <caret line="192" column="24" selection-start-line="192" selection-start-column="24" selection-end-line="192" selection-end-column="24" />
+          <caret line="111" column="10" selection-start-line="111" selection-start-column="10" selection-end-line="111" selection-end-column="53" />
           <folding>
-            <element signature="e#4758#4759#0" expanded="false" />
-            <element signature="e#4806#4807#0" expanded="false" />
+            <element signature="e#5266#5319#0" expanded="false" />
+            <element signature="e#7897#7945#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/utils/ActivityUtils.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_userinfo_dynamic.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.1034484">
+          <caret line="22" column="20" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/widget/DynamicContentFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="312" column="93" selection-start-line="312" selection-start-column="93" selection-end-line="312" selection-end-column="93" />
+          <caret line="226" column="21" selection-start-line="226" selection-start-column="12" selection-end-line="226" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/my/widget/MyFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33273056">
-          <caret line="58" column="28" selection-start-line="58" selection-start-column="28" selection-end-line="58" selection-end-column="28" />
+        <state vertical-scroll-proportion="-6.178571">
+          <caret line="140" column="51" selection-start-line="140" selection-start-column="51" selection-end-line="140" selection-end-column="51" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/bean/PayRedPacketPicsBean.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/shape_two_half_round.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.19349">
-          <caret line="58" column="15" selection-start-line="58" selection-start-column="15" selection-end-line="58" selection-end-column="15" />
-          <folding>
-            <element signature="e#1022#1023#0" expanded="false" />
-            <element signature="e#1049#1050#0" expanded="false" />
-            <element signature="e#1332#1333#0" expanded="false" />
-            <element signature="e#1364#1365#0" expanded="false" />
-            <element signature="e#1408#1409#0" expanded="false" />
-            <element signature="e#1442#1443#0" expanded="false" />
-            <element signature="e#1667#1668#0" expanded="false" />
-            <element signature="e#1702#1703#0" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="-1.3571428">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="6" selection-end-column="50" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/widget/PayDynamicRedPackketActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/arrays.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.022592152">
+          <caret line="1" column="11" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.535714">
+          <caret line="202" column="63" selection-start-line="202" selection-start-column="63" selection-end-line="202" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/adapter/DynamicAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+          <caret line="53" column="34" selection-start-line="53" selection-start-column="34" selection-end-line="53" selection-end-column="34" />
           <folding />
         </state>
       </provider>
@@ -6349,149 +6098,697 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/dynamic/PicViewHolder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
-          <folding />
+          <caret line="208" column="52" selection-start-line="208" selection-start-column="52" selection-end-line="208" selection-end-column="52" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_dynamic_pic.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/utils/ConfigUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="61" column="20" selection-start-line="61" selection-start-column="20" selection-end-line="61" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/shape_background_text_white_color.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16964285">
+          <caret line="6" column="33" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/shape_vip_text_right.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.084821425">
+          <caret line="3" column="41" selection-start-line="3" selection-start-column="41" selection-end-line="3" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/shape_vip_text_left.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.11309524">
+          <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/presenter/BuyDynamicRedPackketPersenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.40714285">
+          <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_pay_dynamic_packet.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.8793104">
+          <caret line="101" column="47" selection-start-line="101" selection-start-column="33" selection-end-line="101" selection-end-column="47" />
+          <folding>
+            <element signature="e#721#733#0" expanded="true" />
+            <element signature="e#5058#5078#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
       <provider editor-type-id="android-designer">
         <state />
       </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="18.672413">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/dynamic/VoiceViewHolder.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/utils/ActivityUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="78" column="56" selection-start-line="78" selection-start-column="56" selection-end-line="78" selection-end-column="56" />
+          <caret line="553" column="52" selection-start-line="553" selection-start-column="52" selection-end-line="553" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/main/widget/BuyVipActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="32" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-23/java/util/AbstractCollection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="35" column="14" selection-start-line="35" selection-start-column="14" selection-end-line="35" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#15519#0" expanded="false" />
+            <element signature="e#1503#1504#0" expanded="false" />
+            <element signature="e#1560#1561#0" expanded="false" />
+            <element signature="e#7443#7444#0" expanded="false" />
+            <element signature="e#7477#7478#0" expanded="false" />
+            <element signature="e#14195#14196#0" expanded="false" />
+            <element signature="e#14241#14242#0" expanded="false" />
+            <element signature="e#14285#14286#0" expanded="false" />
+            <element signature="e#14339#14340#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-23/android/text/style/ForegroundColorSpan.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="29" column="37" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#1787#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#1005#1006#0" expanded="false" />
+            <element signature="e#1035#1036#0" expanded="false" />
+            <element signature="e#1081#1082#0" expanded="false" />
+            <element signature="e#1119#1120#0" expanded="false" />
+            <element signature="e#1157#1158#0" expanded="false" />
+            <element signature="e#1203#1204#0" expanded="false" />
+            <element signature="e#1262#1263#0" expanded="false" />
+            <element signature="e#1316#1317#0" expanded="false" />
+            <element signature="e#1353#1354#0" expanded="false" />
+            <element signature="e#1377#1378#0" expanded="false" />
+            <element signature="e#1434#1435#0" expanded="false" />
+            <element signature="e#1484#1485#0" expanded="false" />
+            <element signature="e#1566#1567#0" expanded="false" />
+            <element signature="e#1603#1604#0" expanded="false" />
+            <element signature="e#1656#1657#0" expanded="false" />
+            <element signature="e#1685#1686#0" expanded="false" />
+            <element signature="e#1748#1749#0" expanded="false" />
+            <element signature="e#1783#1784#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-23/android/graphics/Color.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="44" column="38" selection-start-line="44" selection-start-column="38" selection-end-line="44" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#14607#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#2462#2463#0" expanded="false" />
+            <element signature="e#2497#2498#0" expanded="false" />
+            <element signature="e#2670#2671#0" expanded="false" />
+            <element signature="e#2713#2714#0" expanded="false" />
+            <element signature="e#2889#2890#0" expanded="false" />
+            <element signature="e#2931#2932#0" expanded="false" />
+            <element signature="e#3098#3099#0" expanded="false" />
+            <element signature="e#3133#3134#0" expanded="false" />
+            <element signature="e#11861#11862#0" expanded="false" />
+            <element signature="e#11905#11906#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/platforms/android-23/data/res/values/colors.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.5">
+          <caret line="35" column="17" selection-start-line="35" selection-start-column="17" selection-end-line="35" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_voice.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.678571">
+          <caret line="87" column="32" selection-start-line="87" selection-start-column="32" selection-end-line="87" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values/values.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.3392857">
+          <caret line="2288" column="0" selection-start-line="2288" selection-start-column="0" selection-end-line="2288" selection-end-column="0" />
+          <folding>
+            <marker date="1471022695165" expanded="true" signature="144:240611" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="183:428" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="466:711" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="744:986" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="1027:5258" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="5290:10149" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="138534:138703" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="138960:139206" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="139276:139707" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="139874:140043" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="140125:140324" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="140400:140609" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="140695:141002" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="141083:141479" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="141534:141701" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="141756:141923" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="141979:142191" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="142248:142418" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="142476:142648" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="142706:142878" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="142936:143108" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="143166:143338" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="143396:143565" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="143622:143804" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="143859:144030" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="144093:144275" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="144392:144405" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="144522:144535" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="144591:144765" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="144829:145013" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="145067:145232" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="145304:145515" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="145586:145723" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="145791:145854" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="145909:146081" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="146144:146327" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="146384:146552" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="146617:146799" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="146854:147020" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="147083:147265" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="147377:147541" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="147658:147842" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="147975:148166" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="148278:148457" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="148585:148771" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="149256:149348" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="149455:149556" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="149667:149680" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="149791:149804" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="150139:150240" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="150373:150386" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="150513:150526" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="150599:150612" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="150674:150960" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="151101:151278" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="151335:151696" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="151752:151929" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="152096:152109" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="152205:152726" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="152885:153062" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="153125:153486" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="153548:153725" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="153965:154145" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="154243:156096" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="156158:156338" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="156438:158420" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="158491:168286" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="167934:168053" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="168366:169553" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="169636:179529" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="179177:179296" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="179621:180810" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="180920:181346" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="181432:181676" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="181737:182799" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="182856:183055" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="183123:183291" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="183360:183838" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="183907:184332" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="184437:184937" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="185001:185085" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="185208:185673" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="185735:186237" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="186308:186612" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="186802:187268" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="187327:187425" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="187492:187569" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="187691:187889" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="187945:188145" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="188199:188315" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="188390:188456" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="188633:188802" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="188921:189088" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="189190:189764" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="189879:190028" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="190104:190366" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="190438:190719" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="190902:190999" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="191097:191305" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="191368:191567" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="191679:191692" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="191806:191819" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="191947:192058" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="192172:192269" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="192375:192388" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="192454:192581" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="192648:193036" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="193119:193217" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="193276:193339" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="193432:193598" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="193698:193711" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="193771:193898" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="193987:194000" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="194089:194444" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="194555:194568" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="194653:194853" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="194948:195361" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="195452:195857" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="195933:196744" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="196806:197038" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="197111:197608" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="197700:198340" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="198400:198512" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="198619:198848" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="198921:199756" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="199847:200034" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="200096:200362" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="200403:200972" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="201020:201170" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="201216:201362" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="201400:201899" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="201968:202564" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="202625:205426" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="205499:208428" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="208546:209120" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="209177:209734" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="209883:210451" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="210533:210673" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="210743:210881" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="210960:211149" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="211215:211644" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="211713:211727" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="211795:211809" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="211891:211987" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="212056:212070" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="212136:212358" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="212426:212440" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="212505:212902" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="213002:213015" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="213106:213244" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="213332:213404" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="213489:213556" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="213655:213727" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="213817:213894" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="213981:214137" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="214230:214307" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="214400:214480" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="214573:214651" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="214771:214925" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="215015:215124" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="215209:215329" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="215443:215659" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="217344:217357" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="217498:217511" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="217944:217957" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="218078:218091" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="218850:218863" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="219150:219163" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="219438:219451" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="219588:219601" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="219873:219886" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="220384:220397" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="220526:220539" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="220668:220681" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="221428:221441" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="221572:221585" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="221710:221723" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="222934:222947" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="223546:223559" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="223612:223722" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="223769:223879" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="224438:224451" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="224550:224563" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="224664:224677" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="224780:224793" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="224896:224909" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="225318:225331" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="225438:225451" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="225560:225573" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="226850:226922" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="227315:227328" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="227439:227452" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="227632:227645" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="227828:227841" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="227972:227985" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="228100:228113" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="229240:229253" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="229370:229383" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="229696:229709" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="229994:230007" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="230094:230107" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="230212:230225" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="230316:230329" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="230420:230433" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="230546:230559" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="231827:232223" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="232269:232663" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="232468:232548" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="232702:232900" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="232967:233548" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="233610:234031" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="234080:234274" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="234315:234513" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="234554:235023" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="235092:235466" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="235534:236298" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="236340:236421" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="236505:236817" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="236889:237397" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="237469:237885" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="237960:238168" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="238245:238957" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="239031:239395" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="239467:239718" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="239785:240043" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="240123:240357" placeholder="..." />
+            <marker date="1471022695165" expanded="true" signature="240404:240598" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/shape_text_ffd.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.071429">
+          <caret line="6" column="35" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
+          <folding>
+            <element signature="e#183#194#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.857143">
+          <caret line="224" column="38" selection-start-line="224" selection-start-column="33" selection-end-line="224" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/bean/PersonInfoDetail.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="76" column="15" selection-start-line="76" selection-start-column="15" selection-end-line="76" selection-end-column="15" />
+          <folding>
+            <element signature="e#1419#1420#0" expanded="false" />
+            <element signature="e#1453#1454#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/manager/UserInfoManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="149" column="29" selection-start-line="149" selection-start-column="29" selection-end-line="149" selection-end-column="29" />
+          <folding>
+            <element signature="e#2498#2499#0" expanded="false" />
+            <element signature="e#2535#2536#0" expanded="false" />
+            <element signature="e#3587#3588#0" expanded="false" />
+            <element signature="e#3631#3632#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/shape_text_full_ffd.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.08755761">
+          <caret line="2" column="30" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragme_buy_vip.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.31034482">
+          <caret line="195" column="12" selection-start-line="195" selection-start-column="12" selection-end-line="195" selection-end-column="12" />
+          <folding>
+            <element signature="e#376#389#0" expanded="true" />
+            <element signature="e#561#574#0" expanded="true" />
+            <element signature="e#609#622#0" expanded="true" />
+            <element signature="e#706#718#0" expanded="true" />
+            <element signature="e#860#872#0" expanded="true" />
+            <element signature="e#907#919#0" expanded="true" />
+            <element signature="e#1322#1334#0" expanded="true" />
+            <element signature="e#1414#1431#0" expanded="true" />
+            <element signature="e#1506#1527#0" expanded="true" />
+            <element signature="e#1739#1751#0" expanded="true" />
+            <element signature="e#1789#1801#0" expanded="true" />
+            <element signature="e#1881#1912#0" expanded="true" />
+            <element signature="e#1994#2015#0" expanded="true" />
+            <element signature="e#2176#2188#0" expanded="true" />
+            <element signature="e#2210#2229#0" expanded="true" />
+            <element signature="e#2417#2429#0" expanded="true" />
+            <element signature="e#2724#2736#0" expanded="true" />
+            <element signature="e#2811#2832#0" expanded="true" />
+            <element signature="e#3099#3111#0" expanded="true" />
+            <element signature="e#3436#3462#0" expanded="true" />
+            <element signature="e#3630#3643#0" expanded="true" />
+            <element signature="e#4045#4057#0" expanded="true" />
+            <element signature="e#4212#4224#0" expanded="true" />
+            <element signature="e#4250#4272#0" expanded="true" />
+            <element signature="e#4627#4639#0" expanded="true" />
+            <element signature="e#4941#4953#0" expanded="true" />
+            <element signature="e#4993#5005#0" expanded="true" />
+            <element signature="e#5167#5179#0" expanded="true" />
+            <element signature="e#5473#5485#0" expanded="true" />
+            <element signature="e#5560#5581#0" expanded="true" />
+            <element signature="e#5847#5859#0" expanded="true" />
+            <element signature="e#6182#6207#0" expanded="true" />
+            <element signature="e#6374#6387#0" expanded="true" />
+            <element signature="e#6884#6896#0" expanded="true" />
+            <element signature="e#7198#7210#0" expanded="true" />
+            <element signature="e#7250#7262#0" expanded="true" />
+            <element signature="e#7424#7436#0" expanded="true" />
+            <element signature="e#7730#7742#0" expanded="true" />
+            <element signature="e#7817#7838#0" expanded="true" />
+            <element signature="e#8141#8153#0" expanded="true" />
+            <element signature="e#8365#8377#0" expanded="true" />
+            <element signature="e#8411#8423#0" expanded="true" />
+            <element signature="e#8445#8478#0" expanded="true" />
+            <element signature="e#8550#8571#0" expanded="true" />
+            <element signature="e#8709#8721#0" expanded="true" />
+            <element signature="e#8743#8777#0" expanded="true" />
+            <element signature="e#8995#9007#0" expanded="true" />
+            <element signature="e#9041#9053#0" expanded="true" />
+            <element signature="e#9170#9182#0" expanded="true" />
+            <element signature="e#9204#9232#0" expanded="true" />
+            <element signature="e#9299#9320#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
       <provider editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/base/BaseIPresenter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46060607">
-          <caret line="21" column="48" selection-start-line="21" selection-start-column="48" selection-end-line="21" selection-end-column="48" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/ServerApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6252465">
+          <caret line="817" column="8" selection-start-line="817" selection-start-column="8" selection-end-line="817" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pay/src/main/java/com/moonsister/pay/aibeipay/AiBeiPayManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="44" column="58" selection-start-line="44" selection-start-column="57" selection-end-line="44" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/base/BaseIModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="77" column="16" selection-start-line="77" selection-start-column="16" selection-end-line="77" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pay/src/main/java/com/moonsister/pay/tencent/PayBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="58" column="29" selection-start-line="58" selection-start-column="23" selection-end-line="58" selection-end-column="29" />
           <folding>
-            <element signature="e#513#526#0" expanded="true" />
+            <element signature="e#1666#1667#0" expanded="false" />
+            <element signature="e#1702#1703#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_dynamic_voice.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/model/BuyDynamicRedPacketModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34747475">
-          <caret line="59" column="30" selection-start-line="59" selection-start-column="30" selection-end-line="59" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/presenter/BuyDynamicRedPackketPersenterImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.6745563">
+          <caret line="56" column="44" selection-start-line="56" selection-start-column="44" selection-end-line="56" selection-end-column="44" />
           <folding>
-            <element signature="e#2420#2432#0" expanded="true" />
-            <element signature="e#2468#2480#0" expanded="true" />
-            <element signature="e#2514#2526#0" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/adapter/DynamicAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5840868">
-          <caret line="65" column="82" selection-start-line="65" selection-start-column="82" selection-end-line="65" selection-end-column="82" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/viewholder/dynamic/VideoViewHolder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6564195">
-          <caret line="76" column="99" selection-start-line="76" selection-start-column="99" selection-end-line="76" selection-end-column="193" />
-          <folding>
-            <element signature="e#2682#2711#0" expanded="true" />
-            <element signature="e#5692#5708#0" expanded="true" />
-            <element signature="e#5733#5748#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/widget/DynamicPublishActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/main/presenter/BuyVipFragmentPersenter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="106" column="81" selection-start-line="106" selection-start-column="81" selection-end-line="106" selection-end-column="81" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/widget/DefaultDynamicSendActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="194" column="37" selection-start-line="194" selection-start-column="37" selection-end-line="194" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/widget/DynamicSendActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/IMKit/src/main/libs/Rong_IMKit_v2_6_2.jar!/io/rong/imkit/RongIM.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-114.03571">
-          <caret line="2252" column="21" selection-start-line="2252" selection-start-column="21" selection-end-line="2252" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/widget/DynamicContentFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="54" column="35" selection-start-line="54" selection-start-column="24" selection-end-line="54" selection-end-column="35" />
-          <folding>
-            <element signature="e#2191#2199#0" expanded="true" />
-            <element signature="e#5513#5529#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/IMKit/src/main/java/io/rong/imkit/provider/MyConversationBehaviorListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#803#804#0" expanded="true" />
-            <element signature="e#831#832#0" expanded="true" />
-            <element signature="e#913#914#0" expanded="true" />
-            <element signature="e#941#942#0" expanded="true" />
-            <element signature="e#1041#1042#0" expanded="true" />
-            <element signature="e#1069#1070#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/IMKit/src/main/java/io/rong/imkit/RongyunManager.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/main/model/BuyVipFragmentModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="61" column="0" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/main/view/BuyVipFragmentView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/main/widget/MainActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.jcodecraeer/xrecyclerview/1.2.7/res/values-zh/values-zh.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.80508476">
-          <caret line="108" column="33" selection-start-line="108" selection-start-column="24" selection-end-line="108" selection-end-column="33" />
+        <state vertical-scroll-proportion="-3.0535715">
+          <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.jcodecraeer/xrecyclerview/1.2.7/res/values/values.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.54767185">
+          <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/main/model/BuyVipFragmentModelImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="29" column="68" selection-start-line="29" selection-start-column="68" selection-end-line="29" selection-end-column="68" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1627#1650#0" expanded="true" />
+            <element signature="e#1874#1897#0" expanded="true" />
+            <element signature="e#2532#2552#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/ServerApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="829" column="0" selection-start-line="829" selection-start-column="0" selection-end-line="830" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/model/BuyDynamicRedPacketModelImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="74" column="67" selection-start-line="74" selection-start-column="60" selection-end-line="74" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/main/presenter/BuyVipFragmentPersenterImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="32" column="47" selection-start-line="32" selection-start-column="47" selection-end-line="32" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1188#1208#0" expanded="true" />
+            <element signature="e#1298#1319#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/utils/EnumConstant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/main/widget/BuyVipFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="119" column="29" selection-start-line="119" selection-start-column="29" selection-end-line="119" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2546#2591#0" expanded="true" />
+            <element signature="e#3960#3961#0" expanded="true" />
+            <element signature="e#3996#3997#0" expanded="true" />
+            <element signature="e#4043#4044#0" expanded="true" />
+            <element signature="e#4079#4080#0" expanded="true" />
+            <element signature="e#4139#4140#0" expanded="true" />
+            <element signature="e#4169#4170#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/my/widget/MyFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9612142">
+          <caret line="159" column="15" selection-start-line="159" selection-start-column="15" selection-end-line="159" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/main/widget/DynamicActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="148" column="15" selection-start-line="148" selection-start-column="15" selection-end-line="148" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moonsister/tcjy/center/widget/BuyDynamicRedPackketActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.28">
+          <caret line="99" column="0" selection-start-line="99" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
           <folding />
         </state>
       </provider>

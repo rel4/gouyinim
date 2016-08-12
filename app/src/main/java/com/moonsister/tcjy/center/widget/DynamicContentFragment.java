@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +24,7 @@ import com.moonsister.tcjy.main.widget.PictureSelectorActivity;
 import com.moonsister.tcjy.main.widget.VideoSelectorActivity;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.ActivityUtils;
+import com.moonsister.tcjy.utils.SDUtils;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.moonsister.tcjy.utils.VideoUtils;
@@ -32,6 +34,7 @@ import com.moonsister.tcjy.widget.speak.VoicePlay;
 import com.moonsister.tcjy.widget.takevideo.TakeVideoActivity;
 import com.trello.rxlifecycle.FragmentEvent;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -204,7 +207,8 @@ public class DynamicContentFragment extends BaseFragment {
             ShowPicAdapter showPicAdapter = new ShowPicAdapter(pics);
             noScrollGridView.setAdapter(showPicAdapter);
         } else if (requestCode == 2) {
-            String video_path = data.getStringExtra("path");
+//            String video_path = data.getStringExtra("path");
+            String video_path = data.getData().getPath();
             videoPath = video_path;
             ivAddContent.setVisibility(View.GONE);
             String videoThumbnail = VideoUtils.getInstance().getVideoThumbnail(video_path);
@@ -219,6 +223,7 @@ public class DynamicContentFragment extends BaseFragment {
 
         } else if (requestCode == 3) {
             String video_path = data.getStringExtra("path");
+
             voicePath = video_path;
             if (StringUtis.isEmpty(video_path))
                 return;
@@ -267,7 +272,9 @@ public class DynamicContentFragment extends BaseFragment {
     }
 
     private void startVideoActivityForResult() {
+
         Intent intent = new Intent(getActivity(), VideoSelectorActivity.class);
+
         startActivityForResult(intent, 2);
     }
 

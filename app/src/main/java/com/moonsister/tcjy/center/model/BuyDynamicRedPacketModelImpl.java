@@ -12,6 +12,7 @@ import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.pay.tencent.WeixinManager;
 import com.moonsister.tcjy.utils.ConfigUtils;
+import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.utils.ObservableUtils;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
@@ -25,9 +26,9 @@ import rx.schedulers.Schedulers;
 /**
  * Created by jb on 2016/6/29.
  */
-public class PayDynamicRedPacketModelImpl implements PayDynamicRedPacketModel {
+public class BuyDynamicRedPacketModelImpl implements BuyDynamicRedPacketModel {
     @Override
-    public void pay(String id, PayType type, onLoadDateSingleListener listener) {
+    public void pay(String id, EnumConstant.PayType type, onLoadDateSingleListener listener) {
         Observable<PayBean> observable = ServerApi.getAppAPI().redPacketPay(id, type.getType(), UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID);
 
         observable.subscribeOn(Schedulers.io())
@@ -66,12 +67,12 @@ public class PayDynamicRedPacketModelImpl implements PayDynamicRedPacketModel {
                             return;
                         }
                         if (StringUtis.equals(payBean.getCode(), AppConstant.code_request_success)) {
-                            if (type == PayType.ALI_PAY) {
+                            if (type == EnumConstant.PayType.ALI_PAY) {
                                 startPlayApp(id, payBean.getData().getAlicode(), listener);
-                            } else if (type == PayType.WX_PAY) {
+                            } else if (type == EnumConstant.PayType.WX_PAY) {
                                 WeixinManager.getInstance(ConfigUtils.getInstance().getApplicationContext(), WXPayEntryActivity.APP_ID).pay(payBean.getData());
                                 listener.onSuccess(null, DataType.DATA_ONE);
-                            } else if (type == PayType.IAPP_PAY) {
+                            } else if (type == EnumConstant.PayType.IAPP_PAY) {
 
                                 AiBeiPayManager.getInstance().pay(ConfigUtils.getInstance().getActivityContext(),  payBean.getData().getAbcode(), new AiBeiPayManager.AiBeiResultCallback() {
                                     @Override

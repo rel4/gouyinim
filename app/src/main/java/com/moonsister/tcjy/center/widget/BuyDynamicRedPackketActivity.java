@@ -8,11 +8,13 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.moonsister.tcjy.R;
-import com.moonsister.tcjy.center.presenter.PayDynamicRedPackketPersenter;
-import com.moonsister.tcjy.center.presenter.PayDynamicRedPackketPersenterImpl;
-import com.moonsister.tcjy.center.view.PayDynamicRedPackketView;
+import com.moonsister.tcjy.center.presenter.BuyDynamicRedPackketPersenter;
+import com.moonsister.tcjy.center.presenter.BuyDynamicRedPackketPersenterImpl;
+import com.moonsister.tcjy.center.view.BuyDynamicRedPackketView;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
+import com.moonsister.tcjy.main.widget.BuyVipActivity;
+import com.moonsister.tcjy.utils.ActivityUtils;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.trello.rxlifecycle.ActivityEvent;
 import com.trello.rxlifecycle.components.RxActivity;
@@ -25,12 +27,12 @@ import im.gouyin.com.progressdialog.ProgressDialog;
 /**
  * Created by jb on 2016/6/29.
  */
-public class PayDynamicRedPackketActivity extends RxActivity implements PayDynamicRedPackketView {
+public class BuyDynamicRedPackketActivity extends RxActivity implements BuyDynamicRedPackketView {
     @Bind(R.id.tv_money)
     TextView tvMoney;
     private String money;
     private String id;
-    PayDynamicRedPackketPersenter persenter;
+    BuyDynamicRedPackketPersenter persenter;
 
     public enum RedpacketType {
         TYPE_REDPACKET(1), TYPE_FLOWER(2);
@@ -56,7 +58,7 @@ public class PayDynamicRedPackketActivity extends RxActivity implements PayDynam
 
 
     protected View setRootContentView() {
-        persenter = new PayDynamicRedPackketPersenterImpl();
+        persenter = new BuyDynamicRedPackketPersenterImpl();
         persenter.attachView(this);
         money = getIntent().getStringExtra("money");
         id = getIntent().getStringExtra("id");
@@ -70,7 +72,7 @@ public class PayDynamicRedPackketActivity extends RxActivity implements PayDynam
         tvMoney.setText(html);
     }
 
-    @OnClick({R.id.tv_aliplay_play, R.id.tv_weixin_play, R.id.action_back})
+    @OnClick({R.id.tv_aliplay_play, R.id.tv_weixin_play, R.id.action_back, R.id.tv_single_buy, R.id.tv_upgrade_vip})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tv_aliplay_play:
@@ -81,13 +83,21 @@ public class PayDynamicRedPackketActivity extends RxActivity implements PayDynam
                 persenter.weixinPay(id);
                 setRx();
                 break;
+            case R.id.tv_single_buy:
+                persenter.singBuy(id);
+                break;
             case R.id.action_back:
                 finish();
+                break;
+            case R.id.tv_upgrade_vip:
+                ActivityUtils.startBuyVipActivity();
+                setRx();
                 break;
         }
     }
 
     private void setRx() {
+        //微信支付回调
         RxBus.with(this)
                 .setEndEvent(ActivityEvent.DESTROY)
                 .setEvent(Events.EventEnum.WEIXIN_PAY_CALLBACK)
@@ -104,6 +114,16 @@ public class PayDynamicRedPackketActivity extends RxActivity implements PayDynam
                         hideLoading();
                         transfePageMsg(UIUtils.getStringRes(R.string.pay_failure));
                     }
+                })
+                .create();
+        /**
+         * 购买vip
+         */
+        RxBus.with(this)
+                .setEndEvent(ActivityEvent.DESTROY)
+                .setEvent(Events.EventEnum.BUY_VIP_SUCCESS)
+                .onNext(events -> {
+                    BuyDynamicRedPackketActivity.this.finish();
                 })
                 .create();
     }

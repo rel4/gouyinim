@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
@@ -22,6 +23,7 @@ import android.widget.Toast;
 
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.utils.DateUtils;
+import com.moonsister.tcjy.utils.SDUtils;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.TextFormater;
 import com.moonsister.tcjy.utils.VideoUtils;
@@ -29,6 +31,7 @@ import com.moonsister.tcjy.widget.RecyclingImageView;
 import com.moonsister.tcjy.widget.takevideo.TakeVideoActivity;
 import com.moonsister.tcjy.widget.takevideo.VideoEntity;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -106,6 +109,7 @@ public class VideoSelectorActivity extends Activity implements AdapterView.OnIte
         if (data == null)
             return;
         if (requestCode == 100) {
+//            String path = data.getData().getPath();
             setResult(Activity.RESULT_OK, data);
             finish();
         }
@@ -114,9 +118,20 @@ public class VideoSelectorActivity extends Activity implements AdapterView.OnIte
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         if (position == 0) {
-
             Intent intent = new Intent();
-            intent.setClass(this, TakeVideoActivity.class);
+            intent.setAction("android.media.action.VIDEO_CAPTURE");
+            intent.addCategory("android.intent.category.DEFAULT");
+            File file = new File(SDUtils.getRootFile(this) + File.separator + System.currentTimeMillis() + ".mp4");
+            if (file.exists()) {
+                file.delete();
+            }
+            Uri uri2 = Uri.fromFile(file);
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, uri2);
+            intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
+            intent.putExtra(MediaStore.EXTRA_SIZE_LIMIT, 1024 * 1024 * 10);
+            intent.putExtra(MediaStore.EXTRA_DURATION_LIMIT, 10);
+//            Intent intent = new Intent();
+//            intent.setClass(this, TakeVideoActivity.class);
             startActivityForResult(intent, 100);
         } else {
             VideoEntity vEntty = mList.get(position - 1);

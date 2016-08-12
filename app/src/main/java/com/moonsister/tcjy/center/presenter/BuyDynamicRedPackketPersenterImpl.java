@@ -4,20 +4,21 @@ import com.moonsister.tcjy.AppConstant;
 import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseIModel;
 import com.moonsister.tcjy.bean.PayRedPacketPicsBean;
-import com.moonsister.tcjy.center.model.PayDynamicRedPacketModel;
-import com.moonsister.tcjy.center.model.PayDynamicRedPacketModelImpl;
-import com.moonsister.tcjy.center.view.PayDynamicRedPackketView;
+import com.moonsister.tcjy.center.model.BuyDynamicRedPacketModel;
+import com.moonsister.tcjy.center.model.BuyDynamicRedPacketModelImpl;
+import com.moonsister.tcjy.center.view.BuyDynamicRedPackketView;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
+import com.moonsister.tcjy.utils.EnumConstant;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 
 /**
  * Created by jb on 2016/6/29.
  */
-public class PayDynamicRedPackketPersenterImpl implements PayDynamicRedPackketPersenter, BaseIModel.onLoadDateSingleListener<PayRedPacketPicsBean> {
-    private PayDynamicRedPackketView view;
-    private PayDynamicRedPacketModel model;
+public class BuyDynamicRedPackketPersenterImpl implements BuyDynamicRedPackketPersenter, BaseIModel.onLoadDateSingleListener<PayRedPacketPicsBean> {
+    private BuyDynamicRedPackketView view;
+    private BuyDynamicRedPacketModel model;
 
 
     @Override
@@ -26,28 +27,34 @@ public class PayDynamicRedPackketPersenterImpl implements PayDynamicRedPackketPe
     }
 
     @Override
-    public void attachView(PayDynamicRedPackketView payDynamicRedPackketView) {
+    public void attachView(BuyDynamicRedPackketView payDynamicRedPackketView) {
         this.view = payDynamicRedPackketView;
-        model = new PayDynamicRedPacketModelImpl();
+        model = new BuyDynamicRedPacketModelImpl();
     }
 
     @Override
     public void alipay(String id) {
         view.showLoading();
-        model.pay(id, PayDynamicRedPacketModel.PayType.IAPP_PAY, this);
+        model.pay(id, EnumConstant.PayType.IAPP_PAY, this);
 
     }
 
     @Override
     public void weixinPay(String id) {
         view.showLoading();
-        model.pay(id, PayDynamicRedPacketModel.PayType.IAPP_PAY, this);
+        model.pay(id,  EnumConstant.PayType.IAPP_PAY, this);
     }
 
     @Override
     public void getPics(String id) {
         view.showLoading();
         model.getPics(id, this);
+    }
+
+    @Override
+    public void singBuy(String id) {
+        view.showLoading();
+        model.pay(id,  EnumConstant.PayType.IAPP_PAY, this);
     }
 
     @Override

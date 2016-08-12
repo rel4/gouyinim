@@ -168,7 +168,7 @@
             android:name=".center.widget.RedpacketDynaimcActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".center.widget.PayDynamicRedPackketActivity"
+            android:name=".center.widget.BuyDynamicRedPackketActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
@@ -200,6 +200,7 @@
         <activity
             android:name=".my.widget.AddCardActivity"
             android:screenOrientation="portrait" />
+        <activity android:name=".main.widget.BuyVipActivity" />
         <activity
             android:name=".main.widget.VideoSelectorActivity"
             android:screenOrientation="portrait" />

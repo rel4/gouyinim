@@ -27,6 +27,7 @@ import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.trello.rxlifecycle.FragmentEvent;
 
 import java.util.List;
+import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -153,6 +154,16 @@ public class MyFragment extends BaseFragment implements MyFragmentView {
                             mPresenter.loadPersonHeader();
                             recyclerview.setRefreshing(true);
                         }
+                    }
+                })
+                .create();
+        //购买vip
+        RxBus.with(this)
+                .setEndEvent(FragmentEvent.DESTROY)
+                .setEvent(Events.EventEnum.BUY_VIP_SUCCESS)
+                .onNext(events -> {
+                    if (mPresenter != null) {
+                        mPresenter.loadonRefreshData();
                     }
                 })
                 .create();

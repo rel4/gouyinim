@@ -78,6 +78,7 @@ public class DynamicAdapter extends BaseRecyclerViewAdapter<UserInfoListBean.Use
 
     @Override
     protected BaseRecyclerViewHolder getBaseViewHolder(View v, int viewType) {
+
         return holder;
     }
 

@@ -23,4 +23,16 @@ public class EnumConstant {
             return type;
         }
     }
+    public enum PayType {
+        ALI_PAY("alipay"), WX_PAY("wxpay"),IAPP_PAY("iapppay");
+        private final String type;
+
+        private PayType(String type) {
+            this.type = type;
+        }
+
+        public String getType() {
+            return type;
+        }
+    }
 }
