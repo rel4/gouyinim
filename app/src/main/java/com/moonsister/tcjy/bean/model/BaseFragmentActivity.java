@@ -24,12 +24,17 @@ public abstract class BaseFragmentActivity extends BaseActivity {
 
     @Override
     protected View setRootContentView() {
+
         return UIUtils.inflateLayout(R.layout.activity_base_fragment);
     }
 
     @Override
     protected void initView() {
         FragmentUtils.swichReplaceFramgent(getSupportFragmentManager(), flBaseContent.getId(), initFragment());
+        initData();
+    }
+
+    protected void initData() {
     }
 
     protected abstract Fragment initFragment();

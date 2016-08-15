@@ -10,6 +10,7 @@ import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.base.BaseActivity;
 import com.moonsister.tcjy.event.Events;
 import com.moonsister.tcjy.event.RxBus;
+import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.utils.StringUtis;
 import com.moonsister.tcjy.utils.UIUtils;
 import com.trello.rxlifecycle.ActivityEvent;
@@ -36,8 +37,21 @@ public class AppConversationActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        Intent intent = getIntent();
-        getIntentDate(intent);
+        int certificationStatus = UserInfoManager.getInstance().getCertificationStatus();
+        if (3 == certificationStatus) {
+            showToast(UIUtils.getStringRes(R.string.not_certification));
+            UIUtils.sendDelayedOneMillis(new Runnable() {
+                @Override
+                public void run() {
+                    finish();
+                }
+            });
+
+        } else {
+            Intent intent = getIntent();
+            getIntentDate(intent);
+        }
+
 
     }
 

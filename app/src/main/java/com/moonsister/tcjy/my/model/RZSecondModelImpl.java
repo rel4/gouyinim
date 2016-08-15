@@ -3,18 +3,26 @@ package com.moonsister.tcjy.my.model;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
+import com.moonsister.pay.aibeipay.AiBeiPayManager;
+import com.moonsister.pay.tencent.PayBean;
 import com.moonsister.tcjy.AppConstant;
+import com.moonsister.tcjy.R;
 import com.moonsister.tcjy.ServerApi;
+import com.moonsister.tcjy.event.Events;
+import com.moonsister.tcjy.event.RxBus;
 import com.moonsister.tcjy.manager.aliyun.AliyunManager;
 import com.moonsister.tcjy.bean.DynamicContent;
 import com.moonsister.tcjy.bean.DefaultDataBean;
 import com.moonsister.tcjy.center.presenter.DynamicPublishPresenterImpl;
 import com.moonsister.tcjy.manager.UserInfoManager;
+import com.moonsister.tcjy.utils.ConfigUtils;
 import com.moonsister.tcjy.utils.FilePathUtlis;
 import com.moonsister.tcjy.utils.ImageUtils;
 import com.moonsister.tcjy.utils.JsonUtils;
 import com.moonsister.tcjy.utils.LogUtils;
+import com.moonsister.tcjy.utils.ObservableUtils;
 import com.moonsister.tcjy.utils.StringUtis;
+import com.moonsister.tcjy.utils.UIUtils;
 
 import java.util.ArrayList;
 
@@ -30,6 +38,45 @@ public class RZSecondModelImpl implements RZSecondModel {
 
     @Override
     public void submit(String address1, String address2, String height, String sexid, String nike, String avaterpath, ArrayList<String> pics, onLoadDateSingleListener listener) {
+        Observable<PayBean> observable = ServerApi.getAppAPI().getCertificationPay(UserInfoManager.getInstance().getAuthcode());
+        observable.observeOn(Schedulers.io())
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<PayBean>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        listener.onFailure(UIUtils.getStringRes(R.string.request_failed));
+                    }
+
+                    @Override
+                    public void onNext(PayBean bean) {
+                        if (bean == null) {
+                            listener.onFailure(UIUtils.getStringRes(R.string.request_failed));
+                        } else if (StringUtis.equals(bean.getCode(), "1000")) {
+                            listener.onFailure(UIUtils.getStringRes(R.string.login_code_timeout));
+                            RxBus.getInstance().send(Events.EventEnum.LOGIN_CODE_TIMEOUT, null);
+                        } else if (StringUtis.equals("1", bean.getCode())) {
+                            AiBeiPayManager.getInstance().pay(ConfigUtils.getInstance().getActivityContext(), bean.getData().getAbcode(), new AiBeiPayManager.AiBeiResultCallback() {
+                                @Override
+                                public void onPayResult(int resultCode, String resultInfo) {
+                                    if (resultCode == 1) {
+                                        sumbitData(address1, address2, height, sexid, nike, avaterpath, pics, bean.getData().getOrder_id(), listener);
+                                    } else
+                                        listener.onFailure(resultInfo);
+
+                                }
+                            });
+                        } else
+                            listener.onFailure(bean.getMsg());
+                    }
+                });
+    }
+
+    private void sumbitData(String address1, String address2, String height, String sexid, String nike, String avaterpath, ArrayList<String> pics, String orderID, onLoadDateSingleListener listener) {
         LogUtils.e(RZSecondModelImpl.this, "start upload");
         ArrayList<DynamicContent> aliyunPtahs = new ArrayList<DynamicContent>();
         Observable.create(new Observable.OnSubscribe<ArrayList<DynamicContent>>() {
@@ -46,7 +93,6 @@ public class RZSecondModelImpl implements RZSecondModel {
                         image.setL(loadFile);
                         aliyunPtahs.add(image);
                     }
-
                     subscriber.onNext(aliyunPtahs);
                 } catch (Exception e) {
 
@@ -78,16 +124,16 @@ public class RZSecondModelImpl implements RZSecondModel {
                         LogUtils.e(DynamicPublishPresenterImpl.class, "  onNext :　" + aliyunPtahs.toString());
                         String serialize = JsonUtils.serialize(s);
                         LogUtils.e(RZSecondModelImpl.this, "JsonUtils : " + serialize);
-                        sendAllRz(address1, address2, height, sexid, nike, loadFile, serialize, listener);
+                        sendAllRz(address1, address2, height, sexid, nike, loadFile, serialize, orderID, listener);
                     }
 
 
                 });
     }
 
-    private void sendAllRz(String address1, String address2, String height, String sexid, String nike, String loadFile, String serialize, onLoadDateSingleListener listener) {
+    private void sendAllRz(String address1, String address2, String height, String sexid, String nike, String loadFile, String serialize, String orderid, onLoadDateSingleListener listener) {
 
-        ServerApi.getAppAPI().sendAllRzInfo(address1, address2, height, sexid, nike, loadFile, serialize, UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID)
+        ServerApi.getAppAPI().sendAllRzInfo(address1, address2, height, sexid, nike, loadFile, serialize, orderid, UserInfoManager.getInstance().getAuthcode(), AppConstant.CHANNEL_ID)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Subscriber<DefaultDataBean>() {

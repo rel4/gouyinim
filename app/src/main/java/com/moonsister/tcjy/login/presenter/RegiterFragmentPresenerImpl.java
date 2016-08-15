@@ -57,7 +57,7 @@ public class RegiterFragmentPresenerImpl implements RegiterFragmentPresener, Bas
     @Override
     public void onFailure(String msg) {
         view.hideLoading();
-        view.requestFailed(ConfigUtils.getInstance().getResources().getString(R.string.net_Exception));
+        view.requestFailed(msg);
     }
 
 
@@ -85,7 +85,7 @@ public class RegiterFragmentPresenerImpl implements RegiterFragmentPresener, Bas
     @Override
     public void onSubmitFailure(String msg, Exception e) {
         view.hideLoading();
-        view.requestFailed(ConfigUtils.getInstance().getResources().getString(R.string.request_failed));
+        view.requestFailed(msg);
     }
 
 }

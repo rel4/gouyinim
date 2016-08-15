@@ -15,6 +15,7 @@ import com.moonsister.pay.tencent.PayBean;
 import com.moonsister.tcjy.bean.NearbyBean;
 import com.moonsister.tcjy.bean.PayRedPacketPicsBean;
 import com.moonsister.tcjy.bean.RankBean;
+import com.moonsister.tcjy.bean.RecommendMemberFragmentBean;
 import com.moonsister.tcjy.bean.RegiterBean;
 import com.moonsister.tcjy.bean.RongyunBean;
 import com.moonsister.tcjy.bean.SearchReasonBaen;
@@ -23,6 +24,7 @@ import com.moonsister.tcjy.bean.UserInfoChangeBean;
 import com.moonsister.tcjy.bean.UserInfoDetailBean;
 import com.moonsister.tcjy.bean.UserInfoListBean;
 import com.moonsister.tcjy.bean.VersionInfo;
+import com.moonsister.tcjy.main.widget.RecommendMemberFragment;
 import com.moonsister.tcjy.utils.LogUtils;
 import com.moonsister.tcjy.utils.UnicodeUtils;
 import com.moonsister.tcjy.utils.gson.GsonConverterFactory;
@@ -405,6 +407,7 @@ public class ServerApi {
                                                   @Field("nickname") String nike,
                                                   @Field("face") String loadFile,
                                                   @Field("apply_image") String serialize,
+                                                  @Field("order_id") String orderid,
                                                   @Field("authcode") String authcode,
                                                   @Field("channel") String channel);
 
@@ -829,6 +832,41 @@ public class ServerApi {
                                       @Field("opentype") int opentype,
                                       @Field("authcode") String authcode,
                                       @Field("channel") String channel);
+
+        /**
+         * 认证押金
+         *
+         * @param authcode
+         * @return
+         */
+        @FormUrlEncoded
+        @POST("apply/gobuy")
+        Observable<PayBean> getCertificationPay(@Field("authcode") String authcode);
+
+        /**
+         * 推送用户信息
+         *
+         * @param pagesize
+         * @param authcode
+         * @param channel
+         * @return
+         */
+        @GET("push/index")
+        Observable<RecommendMemberFragmentBean> getRecommendMemberBean(@Query("pagesize") int pagesize,
+                                                                       @Query("authcode") String authcode,
+                                                                       @Query("channel") String channel);
+
+        /**
+         * 推送用户信息：点击喜欢，不喜欢
+         *
+         * @param uid
+         * @param
+         * @return
+         */
+        @GET("push/ilike")
+        Observable<DefaultDataBean> getRecommend(@Query("like_uid") String uid,
+                                                 @Query("authcode") String authcode,
+                                                 @Query("channel") String channel);
     }
 }
 

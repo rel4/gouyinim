@@ -99,5 +99,7 @@
     <color name="picsel_catalog_shadow">#C0000000</color>
     <!-- PicturePreviewActivity -->
     <color name="picprev_toolbar_transparent">@color/picsel_toolbar_transparent</color>
+    <color name="card_background">#ffffff</color>
+    <color name="card_shadow">#10000000</color>
 </resources>
 

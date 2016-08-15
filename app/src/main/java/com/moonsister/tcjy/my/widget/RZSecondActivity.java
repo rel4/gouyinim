@@ -114,45 +114,48 @@ public class RZSecondActivity extends BaseActivity implements RZSecondView {
                 setRxBus();
                 break;
             case R.id.tv_submit:
-                if (pics == null || pics.size() == 0) {
-                    showToast(UIUtils.getStringRes(R.string.not_empty));
-                    return;
-                }
-                if (pics.size() < 6) {
-                    showToast(UIUtils.getStringRes(R.string.pic_size_not_six));
-                    return;
-                }
-                Intent intent = getIntent();
-                if (intent == null)
-                    return;
-
-                String address = intent.getStringExtra("address");
-                String height = intent.getStringExtra("height");
-                String sex = intent.getStringExtra("sex");
-                String nike = intent.getStringExtra("nike");
-                String avaterpath = intent.getStringExtra("path");
-                String sexid = null;
-                if (StringUtis.equals(UIUtils.getStringRes(R.string.boy), sex)) {
-                    sexid = "1";
-                } else {
-                    sexid = "2";
-                }
-                String[] splits = null;
-                if (address.contains(".")) {
-                    splits = address.split("\\.");
-                }
-                String address1 = "";
-                String address2 = "";
-                if (splits != null) {
-                    if (splits.length >= 2) {
-                        address1 = splits[0];
-                        address2 = splits[1];
-                    }
-                }
-                persenter.submit(address1, address2, height, sexid, nike, avaterpath, pics);
-
+                submit();
                 break;
         }
+    }
+
+    private void submit() {
+        if (pics == null || pics.size() == 0) {
+            showToast(UIUtils.getStringRes(R.string.not_empty));
+            return;
+        }
+        if (pics.size() < 6) {
+            showToast(UIUtils.getStringRes(R.string.pic_size_not_six));
+            return;
+        }
+        Intent intent = getIntent();
+        if (intent == null)
+            return;
+
+        String address = intent.getStringExtra("address");
+        String height = intent.getStringExtra("height");
+        String sex = intent.getStringExtra("sex");
+        String nike = intent.getStringExtra("nike");
+        String avaterpath = intent.getStringExtra("path");
+        String sexid = null;
+        if (StringUtis.equals(UIUtils.getStringRes(R.string.boy), sex)) {
+            sexid = "1";
+        } else {
+            sexid = "2";
+        }
+        String[] splits = null;
+        if (address.contains(".")) {
+            splits = address.split("\\.");
+        }
+        String address1 = "";
+        String address2 = "";
+        if (splits != null) {
+            if (splits.length >= 2) {
+                address1 = splits[0];
+                address2 = splits[1];
+            }
+        }
+        persenter.submit(address1, address2, height, sexid, nike, avaterpath, pics);
     }
 
     @Override

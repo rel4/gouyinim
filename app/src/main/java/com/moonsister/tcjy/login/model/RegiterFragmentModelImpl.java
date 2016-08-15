@@ -72,6 +72,7 @@ public class RegiterFragmentModelImpl implements RegiterFragmentModel {
 
             @Override
             public void onFailure(String msg) {
+
                 listener.onFailure(msg);
             }
         });

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 
 import com.moonsister.tcjy.AppConstant;
+import com.moonsister.tcjy.bean.RecommendMemberFragmentBean;
 import com.moonsister.tcjy.bean.TiXinrRecordBean;
 import com.moonsister.tcjy.bean.UserInfoListBean;
 import com.moonsister.tcjy.center.widget.BuyDynamicRedPackketActivity;
@@ -28,6 +29,7 @@ import com.moonsister.tcjy.main.widget.PayAppointmentActivity;
 import com.moonsister.tcjy.main.widget.PayAppointmentOrderActivity;
 import com.moonsister.tcjy.main.widget.PersonInfoChangeActivity;
 import com.moonsister.tcjy.main.widget.PictureSelectorActivity;
+import com.moonsister.tcjy.main.widget.RecommendMemberActivity;
 import com.moonsister.tcjy.main.widget.RedpacketAcitivity;
 import com.moonsister.tcjy.main.widget.DynamicActivity;
 import com.moonsister.tcjy.main.widget.RelationActivity;
@@ -553,5 +555,17 @@ public class ActivityUtils {
     public static void startBuyVipActivity() {
         Intent intent = new Intent(getContext(), BuyVipActivity.class);
         startActivity(intent);
+    }
+
+    /**
+     * 开启推荐
+     *
+     * @param datas
+     */
+    public static void startRecommendMemberActivity(ArrayList<RecommendMemberFragmentBean.DataBean> datas) {
+        Intent intent = new Intent(getContext(), RecommendMemberActivity.class);
+        intent.putExtra("datas", datas);
+        startActivity(intent);
+
     }
 }

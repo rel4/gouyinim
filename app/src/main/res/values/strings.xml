@@ -224,6 +224,7 @@
     <string name="single_buy">单独购买</string>
     <string name="combo_type"><![CDATA[ %1$s个月，<font color="#ff8201">%2$s</font> 元 ]]>  </string>
     <string name="refresh_page">刷新页面</string>
+    <string name="not_certification">你还没认证，请认证</string>
 
 
 </resources>

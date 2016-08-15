@@ -204,6 +204,7 @@
         <activity
             android:name=".main.widget.VideoSelectorActivity"
             android:screenOrientation="portrait" />
+        <activity android:name=".main.widget.RecommendMemberActivity" />
         <activity
             android:name=".my.widget.SwitchCardActivity"
             android:screenOrientation="portrait" />

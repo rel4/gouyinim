@@ -32,6 +32,7 @@ import com.moonsister.tcjy.manager.GaodeManager;
 
 import io.rong.imkit.IMManager;
 
+import com.moonsister.tcjy.manager.RecommendMananger;
 import com.moonsister.tcjy.manager.UserInfoManager;
 import com.moonsister.tcjy.my.widget.MyFragment;
 import com.moonsister.tcjy.update.UpdateManager;
@@ -101,7 +102,7 @@ public class MainActivity extends BaseActivity implements MainView {
      * 初始化网络数据
      */
     private void initNetMianData() {
-
+        RecommendMananger.getInstance().start();
         if (!UserInfoManager.getInstance().isLogin())
             return;
         RongyunManager.getInstance().setMsgNumber(new RongyunManager.onNotReadCallback() {
